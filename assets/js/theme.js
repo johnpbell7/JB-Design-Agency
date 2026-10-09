@@ -1,8 +1,10 @@
-// Light / dark mode. Loaded in <head> so the saved choice applies before first paint.
+// Light / dark mode. Loaded in <head> so the theme applies before first paint.
+// Always opens in light mode (the system dark setting is ignored); dark only when picked
 (() => {
   const root = document.documentElement;
-  try { const saved = localStorage.getItem('jb-theme'); if (saved) root.dataset.theme = saved; } catch {}
-  const current = () => root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  root.dataset.theme = 'light';
+  try { const saved = localStorage.getItem('jb-theme'); if (saved === 'dark') root.dataset.theme = saved; } catch {}
+  const current = () => root.dataset.theme;
   const sync = () => document.querySelectorAll('.theme-switch button').forEach(b => b.setAttribute('aria-pressed', b.dataset.set === current()));
   document.addEventListener('click', e => {
     const b = e.target.closest('.theme-switch button');
@@ -76,5 +78,4 @@
     if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { near = e.isIntersecting; show(); }, { rootMargin: '0px 0px 25% 0px' }).observe(contact);
   };
   document.addEventListener('DOMContentLoaded', () => { mark(); menu(); bar(); sync(); });
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sync);
 })();
