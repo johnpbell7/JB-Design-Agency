@@ -17,112 +17,60 @@
   },
   "steps": [
     {
-      "label": "Three offers, one hero",
-      "page": "index.html",
-      "start": 0,
-      "actions": [
-        {
-          "wait": 1100
-        },
-        {
-          "click": ".hero__arr[data-hn]",
-          "ms": 1300,
-          "after": 2000
-        },
-        {
-          "click": ".hero__arr[data-hn]",
-          "ms": 500,
-          "after": 1900
-        }
-      ]
-    },
-    {
-      "label": "A mega menu per aisle",
+      "label": "The menu",
       "page": "index.html",
       "start": 0,
       "actions": [
         {
           "hover": ".nav__top",
           "nth": 0,
-          "ms": 1200,
-          "after": 1900
+          "ms": 900,
+          "after": 1700
         },
         {
           "hover": ".nav__top",
           "nth": 1,
-          "ms": 700,
-          "after": 1900
+          "ms": 600,
+          "after": 1700
+        },
+        {
+          "hover": ".nav__top",
+          "nth": 2,
+          "ms": 500,
+          "after": 1500
         },
         {
           "move": [
             1010,
             840
           ],
-          "ms": 900,
-          "after": 700
-        }
-      ]
-    },
-    {
-      "label": "Pick a craving",
-      "page": "index.html",
-      "start": {
-        "to": ".sec--first",
-        "offset": 90
-      },
-      "actions": [
-        {
-          "wait": 500
-        },
-        {
-          "hover": ".crav__t",
-          "nth": 4,
-          "ms": 900,
-          "after": 700
-        },
-        {
-          "hover": ".crav__t",
-          "nth": 2,
-          "ms": 800,
-          "after": 700
-        },
-        {
-          "click": ".crav__t",
-          "nth": 1,
-          "ms": 800,
+          "ms": 700,
           "after": 300
         }
       ]
     },
     {
-      "label": "Buy now from the card",
-      "page": "collection.html?c=chocolate",
+      "label": "Searching",
+      "page": "index.html",
       "start": 0,
       "actions": [
         {
-          "wait": 900
+          "click": "[data-search-open]",
+          "ms": 900,
+          "after": 500
         },
         {
-          "scrollTo": ".es",
-          "offset": 150,
-          "ms": 1500
-        },
-        {
-          "click": ".es__add",
-          "nth": 3,
-          "ms": 1000,
-          "after": 1500
-        },
-        {
-          "click": ".es.is-added [data-inc]",
-          "nth": 0,
-          "ms": 600,
-          "after": 1800
+          "type": [
+            "[data-srch-in]",
+            "cola"
+          ],
+          "charMs": 120,
+          "after": 2600
         }
       ]
     },
     {
-      "label": "The product page",
+      "label": "A quick look",
       "page": "collection.html?c=chocolate",
       "start": {
         "to": ".es",
@@ -130,48 +78,54 @@
       },
       "actions": [
         {
-          "click": ".es__name a",
+          "click": ".es__quick",
           "nth": 3,
-          "at": [
-            0.35,
-            0.5
-          ],
-          "ms": 1100,
-          "after": 200
-        },
-        {
-          "wait": 1300
-        },
-        {
-          "move": ".buyrow",
-          "at": [
-            0.2,
-            0.5
-          ],
-          "ms": 1300,
+          "ms": 900,
           "after": 1200
         },
         {
-          "scroll": 240,
-          "ms": 1400,
-          "after": 900
+          "click": "#qa [data-opt]",
+          "nth": 1,
+          "ms": 800,
+          "after": 1000
         },
         {
-          "scroll": -240,
-          "ms": 1200,
-          "after": 400
+          "click": "#qa [data-qq='1']",
+          "ms": 600,
+          "after": 500
+        },
+        {
+          "click": "#qa [data-qa-add]",
+          "ms": 700,
+          "after": 2200
         }
       ]
     },
     {
-      "label": "Into the basket",
-      "page": "product.html?p=mars-chocolate-bar-51g-box",
-      "start": 0,
+      "label": "Adding to the basket",
+      "page": "collection.html?c=chocolate",
+      "start": {
+        "to": ".es",
+        "offset": 150
+      },
       "actions": [
         {
-          "click": ".buyrow .btn",
-          "ms": 1000,
-          "after": 3000
+          "click": ".es__add",
+          "nth": 1,
+          "ms": 900,
+          "after": 900
+        },
+        {
+          "click": ".es.is-added [data-inc]",
+          "nth": 0,
+          "ms": 500,
+          "after": 700
+        },
+        {
+          "click": "#toast [data-open-drawer]",
+          "scroll": false,
+          "ms": 900,
+          "after": 2600
         }
       ]
     }

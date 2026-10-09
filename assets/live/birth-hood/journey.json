@@ -10,67 +10,50 @@
   "closeOnJump": [".quiz-modal-close"],
   "steps": [
     {
-      "label": "Welcome in",
+      "label": "The menu",
       "page": "index.html",
       "start": 0,
       "actions": [
-        { "wait": 1600 },
-        { "move": [760, 560], "ms": 1300, "after": 1800 },
-        { "move": [1080, 470], "ms": 1200, "after": 1200 }
+        { "hover": ".nav-dropdown > a", "nth": 0, "ms": 900, "after": 900 },
+        { "hover": ".nav-drop-menu a", "nth": 0, "ms": 500, "after": 300 },
+        { "hover": ".nav-drop-menu a", "nth": 1, "ms": 400, "after": 500 },
+        { "hover": ".nav-dropdown > a", "nth": 1, "ms": 600, "after": 900 },
+        { "hover": ".nav-drop-menu a", "nth": 0, "ms": 500, "after": 700 },
+        { "move": [980, 420], "ms": 1100, "after": 1600 }
       ]
     },
     {
-      "label": "Every service in the nav",
+      "label": "The services",
       "page": "index.html",
-      "start": 0,
+      "start": { "to": ".services", "offset": 0 },
       "actions": [
-        { "hover": ".nav-dropdown > a", "nth": 0, "ms": 1200, "after": 1300 },
-        { "hover": ".nav-drop-menu a", "nth": 0, "ms": 700, "after": 500 },
-        { "hover": ".nav-drop-menu a", "nth": 1, "ms": 600, "after": 900 },
-        { "click": ".nav-drop-menu a", "nth": 1, "ms": 400, "after": 300 }
+        { "hover": ".service-cell", "nth": 0, "at": [0.5, 0.45], "ms": 800, "after": 800 },
+        { "hover": ".service-cell", "nth": 1, "at": [0.5, 0.45], "ms": 600, "after": 800 },
+        { "hover": ".service-cell", "nth": 2, "at": [0.5, 0.45], "ms": 600, "after": 800 },
+        { "hover": ".service-cell", "nth": 3, "at": [0.5, 0.45], "ms": 600, "after": 1200 }
       ]
     },
     {
-      "label": "The Birth Doula page",
-      "page": "birth-doula.html",
-      "start": 0,
+      "label": "What clients say",
+      "page": "index.html",
+      "start": { "to": ".testimonials", "offset": 0 },
       "actions": [
-        { "wait": 1800 },
-        { "move": [1100, 640], "ms": 1100, "after": 400 },
-        { "scroll": 720, "ms": 2300, "after": 1600 }
+        { "hover": ".review-card", "nth": 0, "ms": 800, "after": 1000 },
+        { "hover": ".review-card", "nth": 1, "ms": 600, "after": 1000 },
+        { "hover": ".review-card", "nth": 2, "ms": 600, "after": 1300 }
       ]
     },
     {
-      "label": "Three clear packages",
-      "page": "birth-doula.html",
-      "start": { "to": ".price-card", "offset": 230 },
+      "label": "Finding a package",
+      "page": "find-your-package.html",
+      "start": { "to": ".quiz", "offset": 140 },
       "actions": [
-        { "wait": 900 },
-        { "hover": ".price-card", "nth": 0, "visible": false, "at": [0.5, 0.35], "ms": 1100, "after": 1000 },
-        { "hover": ".price-card", "nth": 1, "visible": false, "at": [0.5, 0.35], "ms": 900, "after": 1300 },
-        { "hover": ".price-card", "nth": 2, "visible": false, "at": [0.5, 0.35], "ms": 900, "after": 1000 }
-      ]
-    },
-    {
-      "label": "Five quick questions",
-      "page": "birth-doula.html",
-      "start": { "to": ".price-card", "offset": 230 },
-      "actions": [
-        { "click": "button.btn-primary", "text": "Find your package", "visible": false, "ms": 1100, "after": 1500 },
-        { "tap": ".quiz-option", "nth": 1, "ms": 900, "after": 900 },
-        { "tap": ".quiz-option", "nth": 1, "ms": 700, "after": 900 },
-        { "tap": ".quiz-option", "nth": 1, "ms": 700, "after": 900 },
-        { "tap": ".quiz-option", "nth": 2, "ms": 700, "after": 900 }
-      ]
-    },
-    {
-      "label": "A best match, then a free call",
-      "page": "birth-doula.html?finder=1,1,1,2",
-      "start": { "to": ".price-card", "offset": 230 },
-      "actions": [
-        { "wait": 300 },
-        { "tap": ".quiz-option", "nth": 1, "ms": 800, "after": 1500 },
-        { "hover": ".quiz-result-actions .btn-primary", "nth": 0, "ms": 1200, "after": 2400 }
+        { "click": ".quiz-option", "nth": 0, "ms": 800, "after": 700 },
+        { "click": ".quiz-option", "nth": 2, "ms": 600, "after": 700 },
+        { "click": ".quiz-option", "nth": 1, "ms": 600, "after": 700 },
+        { "click": ".quiz-option", "nth": 2, "ms": 600, "after": 700 },
+        { "click": ".quiz-option", "nth": 1, "ms": 600, "after": 1400 },
+        { "hover": ".quiz-result-list", "ms": 900, "after": 1800 }
       ]
     }
   ],

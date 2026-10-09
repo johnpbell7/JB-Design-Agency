@@ -10,60 +10,37 @@
   "closeOnJump": [".dr__head [data-close-cart]"],
   "steps": [
     {
-      "label": "Shop by strength",
+      "label": "The menu",
       "page": "index.html",
       "start": 0,
       "actions": [
-        {"wait": 1300},
-        {"scrollTo": "#finder", "offset": 260, "ms": 2200, "after": 700},
-        {"hover": ".fband", "nth": 0, "ms": 1100, "after": 700},
-        {"hover": ".fband", "nth": 1, "ms": 800, "after": 600},
-        {"click": ".fband[data-b=high]", "ms": 900, "after": 400}
+        {"wait": 500},
+        {"hover": "[data-mega-link]", "ms": 900, "after": 1000},
+        {"hover": "#mega .mega__list a", "nth": 2, "ms": 900, "after": 700},
+        {"click": "#mega [data-pgdir='1']", "ms": 900, "after": 1300, "scroll": false},
+        {"hover": "#mega .mega__flav", "nth": 4, "ms": 900, "after": 1200}
       ]
     },
     {
-      "label": "Strength on every card",
+      "label": "Adding to the basket",
       "page": "collection-high-strength-nicotine-pouches.html",
       "start": 300,
       "actions": [
-        {"wait": 1200},
-        {"hover": ".pc[data-h=velo-bright-spearmint] .mgc", "nth": 0, "ms": 1100, "after": 500},
-        {"click": ".pc[data-h=velo-bright-spearmint] .mgc", "nth": 1, "ms": 700, "after": 1300},
-        {"click": ".pc[data-h=velo-bright-spearmint] .mgc", "nth": 3, "ms": 800, "after": 1600}
+        {"wait": 400},
+        {"click": ".pc[data-h=velo-tropical-mango-10mg] .pc__add", "ms": 900, "after": 1200},
+        {"click": ".qa__packs [role=radio]", "nth": 2, "ms": 800, "after": 900, "scroll": false},
+        {"click": "[data-qadd]", "ms": 800, "after": 2400, "scroll": false}
       ]
     },
     {
-      "label": "Quick-add from the card",
-      "page": "collection-high-strength-nicotine-pouches.html",
-      "start": 300,
-      "actions": [
-        {"wait": 600},
-        {"click": ".pc[data-h=velo-tropical-mango-10mg] .pc__add", "ms": 1100, "after": 1500},
-        {"click": ".qa__packs [role=radio]", "nth": 1, "ms": 900, "after": 1000, "scroll": false},
-        {"click": "[data-qadd]", "ms": 900, "after": 2200, "scroll": false},
-        {"click": ".dr__head [data-close-cart]", "ms": 900, "after": 500, "scroll": false}
-      ]
-    },
-    {
-      "label": "A strength and a pack",
+      "label": "Picking a strength",
       "page": "product.html?p=velo-bright-spearmint",
       "start": 0,
       "actions": [
-        {"wait": 1400},
-        {"click": ".pdp__chips .mgc", "nth": 3, "ms": 1100, "after": 1400},
-        {"scroll": 380, "ms": 1600, "after": 600},
-        {"click": ".packs .pack", "nth": 2, "ms": 1000, "after": 1700}
-      ]
-    },
-    {
-      "label": "Mix & Match in the basket",
-      "page": "product.html?p=velo-bright-spearmint",
-      "start": 380,
-      "actions": [
         {"wait": 500},
-        {"click": ".packs .pack", "nth": 2, "ms": 900, "after": 700},
-        {"click": ".buy .btn--lg", "ms": 1000, "after": 3200},
-        {"click": ".dr__head [data-close-cart]", "ms": 900, "after": 400, "scroll": false}
+        {"click": ".pdp__chips .mgc", "nth": 2, "ms": 900, "after": 900},
+        {"click": ".pdp__chips .mgc", "nth": 3, "ms": 600, "after": 1200},
+        {"click": ".packs .pack", "nth": 2, "ms": 900, "after": 1500}
       ]
     },
     {
@@ -71,12 +48,9 @@
       "page": "product.html?p=velo-bright-spearmint",
       "start": 0,
       "actions": [
-        {"wait": 500},
-        {"click": ".points-btn", "ms": 1200, "after": 300},
-        {"wait": 1300},
-        {"hover": ".npm", "nth": 0, "ms": 1100, "after": 900},
-        {"hover": ".npm", "nth": 1, "ms": 800, "after": 900},
-        {"hover": ".npm", "nth": 2, "ms": 800, "after": 1400}
+        {"wait": 400},
+        {"click": ".points-btn", "ms": 1000, "after": 1700},
+        {"scrollTo": ".nptiers", "offset": 60, "ms": 1800, "after": 1800}
       ]
     }
   ],

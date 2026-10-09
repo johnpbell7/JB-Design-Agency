@@ -6,69 +6,44 @@
   "startOffset": 70,
   "steps": [
     {
-      "label": "Big days, and Tuesdays",
+      "label": "The opening",
+      "page": "index.html",
+      "start": 0,
+      "reload": true,
+      "actions": [
+        { "wait": 2600 },
+        { "hover": ".hero-center .btn", "ms": 1000, "after": 1500 }
+      ]
+    },
+    {
+      "label": "The menu",
       "page": "index.html",
       "start": 0,
       "actions": [
-        { "wait": 2200 },
-        { "move": [880, 560], "ms": 1200, "after": 600 },
-        { "scrollTo": "#bouquets", "offset": 70, "ms": 2400, "after": 900 },
-        { "hover": ".product .p-img", "nth": 0, "ms": 1100, "after": 1200 }
+        { "click": ".menu-btn", "ms": 900, "after": 1300 },
+        { "hover": ".menu-link", "nth": 1, "ms": 800, "after": 700 },
+        { "hover": ".menu-link", "nth": 3, "ms": 700, "after": 1500 }
       ]
     },
     {
-      "label": "Colour from the calendar",
+      "label": "The Birdie Card",
       "page": "index.html",
-      "start": { "to": ".swatches", "offset": 250 },
+      "start": { "to": "#card", "offset": 760 },
+      "reload": true,
       "actions": [
-        { "wait": 700 },
-        { "hover": ".swatch.is-today", "ms": 1100, "after": 1300 },
-        { "hover": ".swatch", "nth": 1, "ms": 900, "after": 900 },
-        { "click": ".swatch", "nth": 0, "ms": 900, "after": 400 }
+        { "scrollTo": "#card", "offset": 40, "ms": 1400, "after": 8600 }
       ]
     },
     {
-      "label": "The seasons guide",
+      "label": "Season by season",
       "page": "seasons.html",
       "start": { "to": "#winter", "offset": 66 },
-      "actions": [
-        { "wait": 1400 },
-        { "scrollTo": "#spring", "offset": 66, "ms": 1700, "after": 1100 },
-        { "scrollTo": "#summer", "offset": 66, "ms": 1700, "after": 1100 },
-        { "scrollTo": "#autumn", "offset": 66, "ms": 1700, "after": 1200 },
-        { "click": ".bar-nav a", "text": "Flowers", "ms": 1100, "after": 400 }
-      ]
-    },
-    {
-      "label": "Pick a bouquet",
-      "page": "shop.html",
-      "start": { "to": "#bouquets", "offset": 66 },
-      "actions": [
-        { "wait": 1100 },
-        { "hover": ".product .p-img", "nth": 0, "ms": 1000, "after": 900 },
-        { "hover": ".product .p-img", "nth": 1, "ms": 900, "after": 1100 },
-        { "click": ".product a.btn", "nth": 1, "ms": 1000, "after": 400 }
-      ]
-    },
-    {
-      "label": "An enquiry, half written",
-      "page": "contact.html?bouquet=The+Pumpkin+Edit",
-      "start": { "to": "#enquire", "offset": 120 },
-      "actions": [
-        { "wait": 1100 },
-        { "type": ["#c-name", "Sam"], "ms": 1000, "charMs": 140, "after": 700 },
-        { "hover": "#c-bouquet", "ms": 1000, "after": 1800 },
-        { "click": ".bar-nav a", "text": "Weddings", "ms": 1200, "after": 400 }
-      ]
-    },
-    {
-      "label": "Weddings",
-      "page": "weddings.html",
-      "start": 0,
+      "reload": true,
       "actions": [
         { "wait": 1600 },
-        { "scroll": 620, "ms": 2200, "after": 1200 },
-        { "scrollTo": "#enquire", "offset": 120, "ms": 2400, "after": 2000 }
+        { "scrollTo": "#spring", "offset": 66, "ms": 1400, "after": 1100 },
+        { "scrollTo": "#summer", "offset": 66, "ms": 1400, "after": 1100 },
+        { "scrollTo": "#autumn", "offset": 66, "ms": 1400, "after": 1600 }
       ]
     }
   ],

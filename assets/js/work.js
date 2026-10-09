@@ -25,6 +25,14 @@
         const fresh = batch.filter(el => !seen.has(el));
         show(fresh);
         gsap.to(fresh, { autoAlpha: 1, y: 0, duration: 0.9, ease: 'expo.out', stagger: 0.08, clearProps: 'transform' });
+        // brand pieces pop out with a bounce once the card lands (they float in CSS)
+        fresh.forEach((card, n) => {
+          const kids = $$('.wpop > *', card);
+          if (kids.length) gsap.from(kids, {
+            opacity: 0, scale: 0.3, x: (i, el) => +(el.parentElement.dataset.fromX || 0) * 0.6, y: (i, el) => +(el.parentElement.dataset.fromY || 40) * 0.6,
+            duration: 0.8, delay: 0.4 + n * 0.08, ease: 'back.out(2.2)', stagger: 0.14, clearProps: 'opacity,transform',
+          });
+        });
       },
     });
   }

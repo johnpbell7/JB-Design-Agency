@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Josefin+Sans:wght@600;700&family=Montserrat:wght@500;700;800&family=Newsreader:opsz,wght@6..72,400&display=swap");
 /* Work: every project on one page (projects/work.html, .wk-*).
    Hero, the websites as laptop + phone cards with filter chips (work.js
    re-flows them with GSAP Flip), then print + brand as one flat-lay of real
@@ -88,20 +89,6 @@
 .wk-card:not(.wk-card--lg):not(.wk-card--md) .wk-card__info { flex-direction: column; gap: 8px; }
 .wk-card__desc { font-size: 15px; color: var(--grey-7); max-width: 52ch; padding-inline: 2px; margin-top: -6px; }
 
-/* brand pieces floating over the feature cards (one each) */
-.wk-pop { position: absolute; z-index: 3; left: var(--x); top: var(--y); width: var(--w, auto); rotate: var(--r, 0deg); filter: drop-shadow(0 14px 18px rgb(0 0 0 / 0.3)); pointer-events: none; transition: translate 0.8s var(--ease-out); }
-.wk-pop img { width: 100%; }
-.wk-card:hover .wk-pop { translate: 0 -8px; }
-.wk-pop--card img { aspect-ratio: 240.9 / 155.9; object-fit: cover; border-radius: 3px; }
-.wk-pop--sticker { padding: 4.2cqw 4.6cqw; border-radius: 3cqw; background: #fff; }
-.wk-pop--polaroid { padding: 4% 4% 14%; background: #fffdf8; border-radius: 3px; }
-.wk-pop--polaroid img { aspect-ratio: 4 / 5; object-fit: cover; }
-.wk-pop--chip { display: flex; align-items: center; gap: 0.7em; padding: 0.7em 1.1em 0.7em 0.8em; border-radius: 999px; background: #fff; color: #1d1d1f; font-size: clamp(10px, 2.1cqw, 15px); white-space: nowrap; }
-.wk-pop--chip b { font-weight: 700; }
-.wk-meter { display: flex; gap: 0.22em; }
-.wk-meter i { width: 0.5em; height: 1.3em; border-radius: 0.2em; background: #e4e7ec; }
-.wk-meter i.on { background: #0070d5; }
-
 /* Filtered: a plain, even grid (work.js sets data-cols) */
 .wk-grid[data-cols] .wk-card { grid-column: span 6; }
 .wk-grid[data-cols="3"] .wk-card { grid-column: span 4; }
@@ -134,6 +121,206 @@
 .wk-card:not(.wk-card--lg):not(.wk-card--md) .wk-card__art { flex: none; }
 .wk-card:not(.wk-card--lg):not(.wk-card--md) .wk-card__info { flex-direction: column; gap: 8px; }
 .wk-card__desc { font-size: 14.5px; }
+}
+
+/* ---------- Brand pieces around the devices (copied from home.css, .wpop / .wp-*) ----------
+   The same pops as the home page work cards. Sizes are in em off the card art's
+   width (a size container), so each piece keeps the scale of the devices. They only
+   show in the default All layout: hidden when the grid is filtered, and on phones
+   each card keeps its one data-sm piece. */
+@font-face { font-family: "Rubik"; font-style: normal; font-weight: 300 900; font-display: swap; src: url(../projects/gosweet/fonts/Rubik.woff2) format("woff2"); }
+@font-face { font-family: "Plus Jakarta Sans"; font-style: normal; font-weight: 200 800; font-display: swap; src: url(../projects/gosweet/fonts/PlusJakartaSans.woff2) format("woff2"); }
+.wp-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.wpop {
+  position: absolute; z-index: 4; left: var(--x); top: var(--y); width: var(--w, auto);
+  font-size: clamp(6px, 1.3cqw, 9.5px); line-height: 1.3; letter-spacing: 0; pointer-events: none;
+  filter: drop-shadow(0 0.25em 0.3em rgb(10 10 20 / 0.16)) drop-shadow(0 1.6em 1.8em rgb(10 10 20 / 0.26));
+}
+.wpop > * { display: block; rotate: var(--r, 0deg); animation: wpop-float var(--d, 3.2s) ease-in-out infinite alternate; }
+.wpop:nth-of-type(odd) > * { animation-delay: -1.4s; }
+@keyframes wpop-float { from { translate: 0 0.4em; } to { translate: 0 -0.6em; } }
+.wpop img { display: block; width: 100%; }
+:root[data-theme="dark"] .wpop { filter: drop-shadow(0 0.25em 0.3em rgb(0 0 0 / 0.24)) drop-shadow(0 1.6em 1.8em rgb(0 0 0 / 0.4)); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .wpop { filter: drop-shadow(0 0.25em 0.3em rgb(0 0 0 / 0.24)) drop-shadow(0 1.6em 1.8em rgb(0 0 0 / 0.4)); } }
+
+/* PATCH: enamel badge, business card, ambassadors chip */
+.wp-stk { aspect-ratio: 1; }
+.wp-stk svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.wp-stk__key { fill: none; stroke: #111318; stroke-width: 1.1; opacity: 0.9; }
+.wp-stk__ring { transform-box: view-box; transform-origin: 100px 100px; animation: wp-spin 48s linear infinite; fill: #111318; }
+.wp-stk__ring text { font-family: "Montserrat", var(--font); font-weight: 800; font-size: 13.5px; letter-spacing: 0.1em; }
+.wp-stk__a { fill: #111318; }
+@keyframes wp-spin { to { transform: rotate(360deg); } }
+.wp-bc { aspect-ratio: 240.9 / 155.9; border-radius: 2px; overflow: hidden; background: #1b1c1c; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08), 0 0 0 1px rgb(255 255 255 / 0.1); }
+.wp-bc img { height: 100%; object-fit: cover; }
+.wp-patch-chip { display: grid !important; justify-items: start; gap: 0.5em; padding: 1.2em 1.5em 1.3em; border-radius: 1.3em; background: #b3dd03; color: #111318; font-family: "Montserrat", var(--font); white-space: nowrap; }
+.wp-patch-chip strong { font-size: 2.9em; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.wp-patch-chip span { font-size: 0.95em; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.3; }
+
+/* Birth-hood: package-finder result, scalloped sticker, sparkle */
+.wp-bh-card { padding: 1.3em 1.3em 1.4em; border-radius: 1.5em; background: #fff; color: #111; }
+.wp-bh-card__eye { display: block; font-size: 0.8em; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #b83f93; }
+.wp-bh-card__head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6em; margin-top: 0.5em; }
+.wp-bh-card__head b { font-size: 1.75em; font-weight: 700; line-height: 1; letter-spacing: -0.03em; }
+.wp-bh-card__head i { font-style: normal; font-size: 1.35em; white-space: nowrap; font-weight: 700; color: #b83f93; }
+.wp-bh-card__tag { display: block; margin-top: 0.4em; font-size: 0.78em; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #767676; }
+.wp-bh-card__list { display: grid; gap: 0.4em; margin-top: 0.9em; font-size: 1em; line-height: 1.35; }
+.wp-bh-card__list span { display: flex; gap: 0.5em; }
+.wp-bh-card__list em { font-style: normal; font-weight: 800; color: #b83f93; }
+.wp-bh-card__btn { display: block; margin-top: 1.1em; padding: 0.8em 0.4em; background: #111; color: #fff; border-radius: 2px; text-align: center; font-size: 0.72em; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.wp-bh-scallop { position: relative; display: grid !important; gap: 0.25em; padding: 1.7em 2em 1.8em; color: #111; font-size: 1.15em; font-weight: 600; line-height: 1.2; white-space: nowrap; }
+.wp-bh-scallop > span { position: relative; z-index: 1; display: flex; align-items: center; gap: 0.5em; }
+.wp-bh-scallop > span::before { content: ""; width: 0.55em; height: 0.55em; background: #b83f93; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+.wp-bh-scallop::before, .wp-bh-scallop::after {
+  content: ""; position: absolute; inset: 0; border-radius: 1.8em; --sr: 0.9em;
+  background:
+    linear-gradient(var(--f), var(--f)) center / calc(100% - 2 * var(--sr)) calc(100% - 2 * var(--sr)) no-repeat,
+    radial-gradient(circle var(--sr) at center, var(--f) 99%, #0000) top / calc(2 * var(--sr)) calc(2 * var(--sr)) repeat-x,
+    radial-gradient(circle var(--sr) at center, var(--f) 99%, #0000) bottom / calc(2 * var(--sr)) calc(2 * var(--sr)) repeat-x,
+    radial-gradient(circle var(--sr) at center, var(--f) 99%, #0000) left / calc(2 * var(--sr)) calc(2 * var(--sr)) repeat-y,
+    radial-gradient(circle var(--sr) at center, var(--f) 99%, #0000) right / calc(2 * var(--sr)) calc(2 * var(--sr)) repeat-y;
+}
+.wp-bh-scallop::before { --f: #b83f93; transform: translate(0.5em, 0.6em); }
+.wp-bh-scallop::after { --f: #fff; }
+.wp-bh-spark { display: grid !important; place-items: center; aspect-ratio: 1; border-radius: 50%; background: #fff; box-shadow: 0 0 0 0.25em #f7d4ee; }
+.wp-bh-spark svg { width: 58%; height: 58%; fill: #b83f93; animation: wp-twinkle 3s ease-in-out infinite; }
+@keyframes wp-twinkle { 50% { transform: scale(0.82) rotate(18deg); } }
+
+/* GoSweet: product card, SAVE roundel, free-delivery progress */
+.wp-gs-card { overflow: hidden; border-radius: 1.6em; background: #fff; color: #1a1230; font-family: "Plus Jakarta Sans", var(--font); border: 1px solid #ebe3f7; }
+.wp-gs-card__tile { display: block; margin: 0.8em 0.8em 0; aspect-ratio: 1; border-radius: 1.1em; overflow: hidden; background: #faf6ff; }
+.wp-gs-card__tile img { height: 100%; object-fit: cover; }
+.wp-gs-card__words { display: block; padding: 1em 1.2em 1em; }
+.wp-gs-card__words small { display: block; font-size: 0.82em; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6b6478; }
+.wp-gs-card__words b { display: block; margin-top: 0.2em; font-size: 1.22em; font-weight: 700; line-height: 1.25; }
+.wp-gs-card__buy { display: flex; align-items: center; justify-content: space-between; gap: 0.6em; padding: 1em 1.1em 1.2em; background: #faf8fc; border-top: 1px solid #ebe3f7; }
+.wp-gs-card__price { display: grid; gap: 0.2em; }
+.wp-gs-card__price strong { font: 700 1.7em/1 "Rubik", var(--font); color: #c2185b; }
+.wp-gs-card__price s { font-size: 0.9em; color: #9189a0; }
+.wp-gs-card__add { padding: 0.85em 1em; border-radius: 0.9em; background: #5c2a9d; color: #fff; font-size: 1em; font-weight: 700; white-space: nowrap; box-shadow: 0.22em 0.22em 0 #36146a; }
+.wp-gs-roundel { display: grid !important; place-content: center; aspect-ratio: 1; border-radius: 50%; background: #e73e80; color: #fff; text-align: center; font: 800 2.7em/1 "Plus Jakarta Sans", var(--font); letter-spacing: -0.02em; box-shadow: 0 0 0 0.16em #fff; }
+.wp-gs-roundel small { display: block; margin-bottom: 0.12em; font-size: 0.36em; letter-spacing: 0.12em; text-transform: uppercase; }
+.wp-gs-ship { padding: 1.1em 1.3em 1.3em; border-radius: 1.3em; background: #fff; color: #1a1230; font-family: "Plus Jakarta Sans", var(--font); }
+.wp-gs-ship__t { display: flex; align-items: center; gap: 0.7em; font-size: 1.15em; font-weight: 600; line-height: 1.3; }
+.wp-gs-ship__t svg { flex: none; width: 1.4em; height: 1.4em; fill: #5c2a9d; }
+.wp-gs-ship b { color: #5c2a9d; font-weight: 800; }
+.wp-gs-ship__bar { position: relative; display: block; height: 0.8em; margin-top: 0.8em; border-radius: 1em; background: #f1e9fb; overflow: hidden; }
+.wp-gs-ship__bar i { position: absolute; inset: 0 20% 0 0; border-radius: inherit; background: #5c2a9d; }
+
+/* Nic Pouches: product card, Nic Points tier, strength chip */
+.wp-np-card { padding: 0.7em 0.7em 0.9em; border-radius: 1.4em; background: #fff; color: #1d1d1f; font-family: "Archivo", var(--font); }
+.wp-np-card__media { position: relative; display: block; aspect-ratio: 1 / 0.88; border-radius: 1em; background: #f4f4f4; }
+.wp-np-card__media img { height: 100%; object-fit: contain; padding: 4%; }
+.wp-np-pouch { position: absolute; top: 0.7em; right: 0.7em; display: grid; place-items: center; width: 4.4em; height: 2.7em; }
+.wp-np-pouch svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; fill: #fff; stroke: #ffb21a; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.wp-np-pouch > span { position: relative; display: flex; align-items: baseline; }
+.wp-np-pouch b { font-size: 1.1em; font-weight: 700; font-stretch: 88%; }
+.wp-np-pouch small { font-size: 0.8em; font-weight: 600; color: #717680; }
+.wp-np-card__brand { display: block; margin: 0.7em 0.4em 0; font-size: 0.95em; font-weight: 800; font-stretch: 80%; letter-spacing: 0.07em; text-transform: uppercase; color: #717680; }
+.wp-np-card__name { display: block; margin: 0.1em 0.4em 0; font-size: 1.3em; font-weight: 600; }
+.wp-np-card__chips { display: flex !important; gap: 0.45em; margin: 0.7em 0.4em 0; }
+.wp-np-card__chips i { flex: 1; display: grid; place-items: center; height: 2.4em; border-radius: 0.6em; background: #fafafa; box-shadow: inset 0 0 0 1px #e9eaeb; font-style: normal; font-size: 1em; font-weight: 500; }
+.wp-np-card__chips i.on { background: #fff3da; color: #855800; box-shadow: inset 0 0 0 1px #ffb21a; font-weight: 600; }
+.wp-np-card__price { display: flex !important; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.2em 0.4em; margin: 0.8em 0.4em 0; white-space: nowrap; }
+.wp-np-card__price small { font-size: 0.9em; color: #717680; }
+.wp-np-card__price b { margin: 0 0.15em; font-size: 1.45em; font-weight: 700; font-stretch: 92%; }
+.wp-np-card__price em { font-style: normal; font-size: 0.95em; font-weight: 700; color: #106b45; }
+.wp-np-tier { border-radius: 1.6em; background: #fff; color: #1d1d1f; font-family: "Archivo", var(--font); }
+.wp-np-tier__top { position: relative; display: block; padding: 1.2em 7em 1.1em 1.3em; border-radius: 1.6em 1.6em 0 0; background: linear-gradient(135deg, #fef4e1 0%, #ffe6ac 52%, #cea442 100%); }
+.wp-np-tier__top b { display: block; font: 700 2em/1.05 "Bricolage Grotesque", "Archivo", sans-serif; letter-spacing: -0.02em; }
+.wp-np-tier__top small { display: block; font-size: 1.1em; font-weight: 600; color: #5e4a19; }
+.wp-np-tier__top img { position: absolute; top: -1.8em; right: 0.6em; width: 6.6em; rotate: -9deg; filter: drop-shadow(0 1em 1em rgb(0 30 70 / 0.3)); }
+.wp-np-tier__stub { display: grid; gap: 0.6em; padding: 1em 1.3em 1.2em; }
+.wp-np-tier__rate { font-size: 1.05em; line-height: 1.35; color: #414651; }
+.wp-np-tier__rate b { margin-right: 0.15em; font: 800 2.4em/1 "Bricolage Grotesque", "Archivo", sans-serif; letter-spacing: -0.02em; color: #856823; vertical-align: -0.12em; }
+.wp-np-tier__spend { padding-top: 0.6em; border-top: 1px solid #ffe6ac; font-size: 1em; font-weight: 700; }
+.wp-np-chip { display: inline-flex !important; align-items: center; gap: 0.8em; padding: 0.85em 1.4em; border-radius: 999px; background: #fff; color: #1d1d1f; font: 400 1.15em/1 "Archivo", var(--font); white-space: nowrap; }
+.wp-np-chip b { font-weight: 800; }
+.wp-np-meter { display: inline-flex; gap: 0.25em; }
+.wp-np-meter i { width: 0.6em; height: 0.6em; border-radius: 50%; background: #d5d7da; }
+.wp-np-meter i.on { background: #ffb21a; }
+
+/* VSL Trade: consultation step, app tile, next-day chip */
+.wp-vsl-step { padding: 1.3em 1.4em 1.4em; border-radius: 1.6em; background: #fff; color: #0d1110; font-family: "Montserrat", var(--font); }
+.wp-vsl-step__pill { display: inline-block; padding: 0.25em 0.85em; border-radius: 99px; background: #43b02a; color: #fff; font-size: 1em; font-weight: 800; }
+.wp-vsl-step__bar { display: block; height: 0.6em; margin: 0.9em 0 1em; border-radius: 99px; background: #e6ebe6; overflow: hidden; }
+.wp-vsl-step__bar i { display: block; width: 25%; height: 100%; border-radius: inherit; background: #43b02a; }
+.wp-vsl-step b { display: block; font-size: 1.5em; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+.wp-vsl-step__opt { display: flex; align-items: center; gap: 0.6em; margin-top: 0.8em; padding: 0.7em 0.8em; border-radius: 0.8em; background: #edf7e9; box-shadow: inset 0 0 0 1.5px #43b02a; font-size: 0.95em; font-weight: 600; line-height: 1.3; }
+.wp-vsl-step__opt i { flex: none; width: 1.1em; height: 1.1em; border-radius: 50%; border: 0.32em solid #43b02a; background: #fff; }
+.wp-vsl-app { display: block; }
+.wp-vsl-app__ic { display: grid; place-items: center; width: 100%; aspect-ratio: 1; border-radius: 23%; background: radial-gradient(100% 120% at 20% 0%, #5fc444 0%, #43b02a 45%, #2a7a1f 100%); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18); }
+.wp-vsl-app__ic svg { width: 54%; height: 54%; fill: none; stroke: #fff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.wp-vsl-chip { display: flex !important; align-items: center; gap: 1em; padding: 0.9em 1.5em 0.9em 0.9em; border-radius: 1.2em; background: #fff; color: #0d1110; font-family: "Montserrat", var(--font); white-space: nowrap; }
+.wp-vsl-chip__ic { flex: none; display: grid; place-items: center; width: 3.4em; height: 3.4em; border-radius: 0.9em; background: #43b02a; }
+.wp-vsl-chip__ic svg { width: 1.8em; height: 1.8em; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.wp-vsl-chip b { display: block; font-size: 1.25em; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+.wp-vsl-chip span:last-child { font-size: 0.9em; font-weight: 500; line-height: 1.35; color: #5b645b; }
+
+/* Birdie Blooms: shop card, B sticker, seasonal colour chip */
+.wp-bb-card { display: grid !important; gap: 0.7em; padding: 0.8em 0.8em 1.1em; border-radius: 1em; background: #e0662c; color: #2b1a16; font-family: "Newsreader", Georgia, serif; }
+.wp-bb-card__img { display: block; aspect-ratio: 1; overflow: hidden; border-radius: 0.5em; }
+.wp-bb-card__img img { height: 100%; object-fit: cover; }
+.wp-bb-card__row { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5em; }
+.wp-bb-card__row b { font-size: 1.55em; font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; }
+.wp-bb-card__row span { font-size: 1.3em; }
+.wp-bb-card__btn { justify-self: start; display: inline-flex; align-items: center; gap: 0.6em; padding: 0.8em 1.1em 0.6em; border-radius: 99px; background: #2b1a16; color: #e0662c; font: 700 0.85em/1 "Josefin Sans", var(--font); letter-spacing: 0.12em; text-transform: uppercase; }
+.wp-bb-card__btn svg { width: 1.2em; height: 1.2em; margin-top: -0.2em; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.wp-bb-sticker { position: relative; display: grid !important; place-items: center; aspect-ratio: 1; border-radius: 50%; background: #e0662c; color: #2b1a16; border: 2px solid #2b1a16; box-shadow: 0.4em 0.5em 0 #2b1a16; }
+.wp-bb-sticker__ring { position: absolute; inset: 5%; width: 90%; height: 90%; animation: wp-spin 22s linear infinite; }
+.wp-bb-sticker__ring text { font: 700 13px "Josefin Sans", var(--font); letter-spacing: 0.24em; fill: currentColor; }
+.wp-bb-b { width: 26%; aspect-ratio: 597 / 817; background: currentColor; -webkit-mask: url("../projects/birdie-blooms/monogram.svg") center / contain no-repeat; mask: url("../projects/birdie-blooms/monogram.svg") center / contain no-repeat; }
+.wp-bb-chip { display: inline-flex !important; align-items: center; gap: 0.9em; padding: 0.8em 1.4em 0.7em 0.9em; border-radius: 99px; background: #fbf7f0; color: #2b1a16; border: 2px solid #2b1a16; box-shadow: 0.35em 0.4em 0 #2b1a16; font: 700 1em/1 "Josefin Sans", var(--font); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+.wp-bb-chip__dots { display: flex; gap: 0.4em; margin-top: -0.2em; }
+.wp-bb-chip__dots i { width: 1.3em; height: 1.3em; border-radius: 50%; border: 2px solid #2b1a16; background: var(--c); }
+.wp-bb-chip__dots i.on { box-shadow: 0 0 0 2px #fbf7f0, 0 0 0 4px #2b1a16; }
+.wp-bb-chip > span:last-child { display: grid; gap: 0.35em; }
+.wp-bb-chip small { font-size: 0.75em; opacity: 0.7; }
+.wp-bb-chip b { font-size: 1.15em; }
+
+/* SCCC Heritage: decade card, cricket ball, years tag */
+.wp-sc-card { position: relative; aspect-ratio: 1; overflow: hidden; background: #222; }
+.wp-sc-card img { height: 100%; object-fit: cover; scale: 1.1; }
+.wp-sc-card::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgb(0 0 0 / 0.6), transparent 70%); }
+.wp-sc-card__slip { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; height: 34%; background: #1a472a; clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%); }
+.wp-sc-card__txt { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; padding: 1.2em; color: #fff; }
+.wp-sc-card__txt b { display: block; font: 400 1.45em/1.08 "Archivo Black", "Archivo", sans-serif; }
+.wp-sc-card__txt span { display: block; margin-top: 0.3em; font: 0.95em/1.3 "Archivo", sans-serif; opacity: 0.9; }
+.wp-sc-ball { aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 0.3em solid #fff; background: #fff; }
+.wp-sc-ball img { height: 100%; object-fit: cover; animation: wp-spin 30s linear infinite; }
+.wp-sc-tag { display: grid !important; justify-items: start; gap: 0.15em; padding: 1em 1.4em 1.1em; background: #f8f6f3; color: #8b1538; border-left: 0.45em solid #1a472a; }
+.wp-sc-tag small { font: 600 0.8em/1 "Archivo", sans-serif; letter-spacing: 0.16em; text-transform: uppercase; color: #222; opacity: 0.7; }
+.wp-sc-tag b { font: 400 3.2em/1 "Archivo Black", "Archivo", sans-serif; letter-spacing: -0.01em; }
+.wp-sc-tag span { font: italic 1.05em/1.2 Georgia, serif; color: #222; }
+
+/* Beetle Eyes: taped polaroid, No. 9 stamp, Curious Magpie label */
+.wp-be-polaroid { position: relative; padding: 0.5em 0.5em 0; background: #fff; border-radius: 2px; }
+.wp-be-polaroid img { aspect-ratio: 1; object-fit: cover; filter: saturate(0.9) contrast(1.02); }
+.wp-be-polaroid span { display: block; padding: 0.5em 0 0.7em; text-align: center; font: italic 1.05em/1.2 "Fraunces", Georgia, serif; color: #5a3a32; }
+.wp-be-polaroid::before, .wp-be-polaroid::after {
+  content: ""; position: absolute; top: -0.7em; z-index: 2; width: 42%; height: 1.7em;
+  background:
+    repeating-linear-gradient(135deg, rgb(255 255 255 / 0.14) 0 2px, transparent 2px 5px),
+    linear-gradient(90deg, rgb(224 196 199 / 0.5) 0%, rgb(224 196 199 / 0.92) 14%, rgb(224 196 199 / 0.92) 86%, rgb(224 196 199 / 0.5) 100%);
+  box-shadow: 0 0.2em 0.5em rgb(28 29 24 / 0.18);
+}
+.wp-be-polaroid::before { left: -14%; rotate: -24deg; }
+.wp-be-polaroid::after { right: -14%; rotate: 24deg; }
+.wp-be-stamp { container-type: inline-size; background: #e0c4c7; color: #5a3a32; border: 1px solid rgb(184 122 130 / 0.35); text-align: center; }
+.wp-be-stamp strong { display: block; padding: 13cqw 6cqw 0; margin-bottom: 0.3em; font: 600 21cqw/1 "Fraunces", Georgia, serif; letter-spacing: -0.01em; }
+.wp-be-stamp span { display: block; padding: 0 6cqw 12cqw; font: italic 300 11cqw/1.35 "Fraunces", Georgia, serif; color: #3d2622; }
+.wp-be-tag { padding: 0.8em 1.3em 0.9em; background: #e0c4c7; color: #5a3a32; border: 1px solid rgb(184 122 130 / 0.35); font: italic 1.35em/1.2 "Fraunces", Georgia, serif; white-space: nowrap; }
+.wp-be-tag strong { display: block; margin-bottom: 0.25em; font: normal 600 0.47em/1 var(--font); letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
+
+
+.wpop { transition: opacity 0.45s var(--ease-out) 0.25s, visibility 0s linear 0s; }
+.wk-grid[data-cols] .wpop { opacity: 0; visibility: hidden; transition: opacity 0.25s, visibility 0s linear 0.25s; }
+@media (max-width: 640px) {
+  .wpop { font-size: calc(clamp(3.5px, 1.3cqw, 8px) * var(--sf, 1)); left: var(--sx, var(--x)); top: var(--sy, var(--y)); }
+  .wpop:not([data-sm]) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wpop > *, .wp-stk__ring, .wp-bb-sticker__ring, .wp-sc-ball img, .wp-bh-spark svg { animation: none; }
 }
 
 /* ---------- Print + brand: text left, one flat-lay of real pieces right ----------
