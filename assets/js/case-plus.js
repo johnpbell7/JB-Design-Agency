@@ -66,7 +66,9 @@
     const list = film.querySelector('.cp-steps'), items = $$('li', list);
     const bar = browser.querySelector('.cp-browser__bar'), video = browser.querySelector('video');
     const src = new URL(film.dataset.live, location.href).href;
-    const VW = +film.dataset.liveWidth || 1440, VH = +film.dataset.liveHeight || 900, MW = +film.dataset.liveMobile || 390;
+    // phones run the desktop site at 1024px rather than 1440px: still the desktop layout, but ~40% bigger in the frame
+    const small = innerWidth <= 760;
+    const VW = small ? 1024 : +film.dataset.liveWidth || 1440, VH = small ? 640 : +film.dataset.liveHeight || 900, MW = +film.dataset.liveMobile || 390;
     const box = document.createElement('div');
     box.className = 'cp-live';
     box.style.cssText = `--vw:${VW};--vh:${VH}`;

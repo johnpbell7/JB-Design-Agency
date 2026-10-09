@@ -114,6 +114,7 @@
       .lv-pulse,.lv-tap{position:fixed;z-index:2147483646;border-radius:50%;pointer-events:none}
       .lv-pulse{--s:${c.size}px;width:calc(var(--s) * 2.6);height:calc(var(--s) * 2.6);margin:calc(var(--s) * -1.3) 0 0 calc(var(--s) * -1.3);border:calc(var(--s) / 11) solid ${c.color}}
       .lv-tap{width:56px;height:56px;margin:-28px 0 0 -28px;background:rgba(24,24,26,.2)}
+      #lv-cursor,.lv-pulse,.lv-tap{display:none!important} /* no visible pointer or click rings: the pages just move */
       ${J.css || ''}${(track === 'mobile' && J.mobile && J.mobile.css) || ''}`;
     document.head.append(styleEl);
     cursorEl = document.createElement('div'); cursorEl.id = 'lv-cursor'; cursorEl.setAttribute('aria-hidden', 'true');
