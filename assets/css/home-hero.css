@@ -585,10 +585,12 @@
 /* phones: the faded laptop sits up under the button, filling the space, rather than mostly off the bottom */
 @media (max-width: 560px) {
   .bt-hero .bt-ghost {
-    top: calc(100% - 470px); translate: 0 0; opacity: 0.3;
+    top: calc(100% - 470px); translate: 0 0; opacity: 0.46;
     /* soft top edge: it fades up into the page behind the button instead of starting on a line */
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 34%), radial-gradient(110% 80% at 70% 34%, #000 28%, transparent 72%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 34%), radial-gradient(110% 80% at 70% 34%, #000 28%, transparent 72%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 34%), radial-gradient(130% 95% at 60% 40%, #000 40%, transparent 80%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 34%), radial-gradient(130% 95% at 60% 40%, #000 40%, transparent 80%);
     -webkit-mask-composite: source-in; mask-composite: intersect;
   }
 }
+/* desktop: the scrolling site behind the headline a little stronger */
+@media (min-width: 561px) { .bt-hero .bt-ghost { opacity: 0.28; } }
