@@ -372,6 +372,17 @@
   // and ends at that rest state: it plays on arrival, loops gently while the card is on
   // screen, replays on hover, and on touch whenever the card scrolls back into view.
   const whoCards = $$('#who .who-card');
+  // The concept sites only start loading when their section is a screen away, one after
+  // another, so they don't compete with the top of the page (or run before anyone sees them)
+  const whoFrames = whoCards.map(c => $('iframe[data-src]', c)).filter(Boolean);
+  if (whoFrames.length) {
+    const start = () => whoFrames.forEach((f, i) => setTimeout(() => { f.src = f.dataset.src; f.removeAttribute('data-src'); }, i * 500));
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); start(); } }, { rootMargin: '100% 0px' });
+      io.observe(whoCards[0].closest('section') || whoCards[0]);
+    } else start();
+  }
+
   if (whoCards.length && hasGsap && !reduce) {
     // Centre of an element in its mini site's own (untransformed) coordinates
     const centre = (el, root) => {
