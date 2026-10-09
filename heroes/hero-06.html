@@ -25,8 +25,6 @@
       --sh-col: 60 42 24;
       --sh-a: 0.22;
     }
-    :root[data-theme="dark"] { --desk: #24221f; --desk-2: #1d1b19; --desk-ink: rgb(255 255 255 / 0.03); --sh-col: 0 0 0; --sh-a: 0.55; }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --desk: #24221f; --desk-2: #1d1b19; --desk-ink: rgb(255 255 255 / 0.03); --sh-col: 0 0 0; --sh-a: 0.55; } }
 
     .hero { position: relative; min-height: 100dvh; display: flex; align-items: center; padding: 110px 0 60px; overflow: hidden; }
     .hero__copy { position: relative; z-index: 2; width: min(40%, 540px); }
@@ -55,15 +53,11 @@
         var(--desk);
       overflow: hidden;
     }
-    :root[data-theme="dark"] .desk { background: radial-gradient(120% 80% at 30% 20%, rgb(255 255 255 / 0.04), transparent 60%), radial-gradient(90% 70% at 85% 100%, var(--desk-2), transparent 70%), var(--desk); }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .desk { background: radial-gradient(120% 80% at 30% 20%, rgb(255 255 255 / 0.04), transparent 60%), radial-gradient(90% 70% at 85% 100%, var(--desk-2), transparent 70%), var(--desk); } }
     /* paper grain */
     .desk::before {
       content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.55; mix-blend-mode: multiply;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .27 0 0 0 0 .2 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
-    :root[data-theme="dark"] .desk::before { mix-blend-mode: screen; opacity: 0.25; }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .desk::before { mix-blend-mode: screen; opacity: 0.25; } }
 
     .stage { position: absolute; left: 50%; top: 50%; width: 1000px; height: 900px; transform-origin: 50% 50%; translate: -50% -50%; }
 
@@ -234,7 +228,6 @@
       <a href="../index.html#work">Work</a>
       <a href="../projects/property.html">Print</a>
       <a href="../index.html#faq">FAQs</a>
-      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
       <a class="is-cta" href="../index.html#contact">Start a project</a>
     </nav>
   </header>

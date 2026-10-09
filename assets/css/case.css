@@ -436,8 +436,6 @@ body[data-pen] .hl { --pen: var(--project-pen); }
 /* Highlighter scribble behind the hero devices: thick, see-through marker strokes */
 .stage__scribble { position: absolute; inset: 0 -2% 2% -4%; width: 106%; height: 98%; z-index: -1; overflow: visible; pointer-events: none; }
 .stage__scribble path { fill: none; stroke: var(--stage-hl, var(--hl-yellow)); stroke-width: 74; stroke-linecap: round; stroke-linejoin: round; opacity: 0.6; mix-blend-mode: multiply; }
-:root[data-theme="dark"] .stage__scribble path { mix-blend-mode: normal; opacity: 0.4; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stage__scribble path { mix-blend-mode: normal; opacity: 0.4; } }
 .stage .stage__glow { opacity: 0.6; }
 
 /* ---------- Brief + what I did (compact, under the hero) ----------
@@ -493,7 +491,7 @@ body[data-pen] .hl { --pen: var(--project-pen); }
   .reel__slide { flex: 0 0 86%; opacity: 1; visibility: visible; transform: none; scroll-snap-align: center; border-radius: var(--radius-l); background: var(--reel-bg, var(--grey-1)); box-shadow: inset 0 0 0 1px var(--line); height: min(72svh, 560px); align-content: start; gap: 12px; padding: 18px; overflow: hidden; }
   .reel__label { display: block; justify-self: start; font-size: 14px; font-weight: 600; }
   .reel__label small { display: none; }
-  .reel .reel__label { color: #18181a; } /* reel stages stay pale in both themes */
+  .reel .reel__label { color: #18181a; }
   .reel__slide { grid-template-rows: auto 1fr; place-items: stretch; }
   .reel__slide .reel__fit { align-self: center; justify-self: center; }
 }

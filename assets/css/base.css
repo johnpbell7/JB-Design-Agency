@@ -32,36 +32,11 @@
   --z-nav: 50;
   --z-lightbox: 80;
 
-  color-scheme: light;
+  color-scheme: only light; /* light only: also opts out of browsers' forced dark modes */
   --nav-bg: rgb(255 255 255 / 0.78);
   --veil: rgb(255 255 255 / 0.94);
   --hl-text: currentColor;
 }
-
-/* Dark mode: follows the system unless the visitor picks one (data-theme on <html>).
-   Greys flip and "white"/"ink" swap, so components keep working unchanged.
-   Highlighted words switch to dark text so they stay readable on the pens. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --white: #111113; --ink: #f2f2ef;
-    --grey-1: #1b1b1e; --grey-2: #242428; --grey-3: #38383d; --grey-5: #8f8f95; --grey-7: #bdbdc2;
-    --line: rgb(255 255 255 / 0.1);
-    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 40px -12px rgb(0 0 0 / 0.6);
-    --nav-bg: rgb(17 17 19 / 0.72); --veil: rgb(17 17 19 / 0.94);
-    --hl-text: #18181a;
-  }
-}
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --white: #111113; --ink: #f2f2ef;
-  --grey-1: #1b1b1e; --grey-2: #242428; --grey-3: #38383d; --grey-5: #8f8f95; --grey-7: #bdbdc2;
-  --line: rgb(255 255 255 / 0.1);
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 40px -12px rgb(0 0 0 / 0.6);
-  --nav-bg: rgb(17 17 19 / 0.72); --veil: rgb(17 17 19 / 0.94);
-  --hl-text: #18181a;
-}
-body { transition: background-color 0.4s var(--ease-out), color 0.4s var(--ease-out); }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -147,7 +122,7 @@ html { scroll-padding-top: 48px; }
 .site-nav a { text-decoration: none; }
 .site-nav__mark { display: inline-grid; grid-template-columns: auto auto; align-items: center; column-gap: 10px; font-weight: 700; font-size: 20px; line-height: 1; letter-spacing: -0.025em; text-decoration: none; white-space: nowrap; }
 /* JB mark: a yellow keyboard key with the Poppins Bold JB ligature on its top face.
-   Same in both themes. Hover: the key top presses down into its skirt. */
+   Hover: the key top presses down into its skirt. */
 .jb-mark { display: block; width: 38px; height: 38px; flex: none; }
 .jb-mark svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .jb-mark__cap { transition: transform 0.25s var(--ease-out); }
@@ -215,16 +190,12 @@ html.nav-locked { overflow: hidden; }
 .nm-work a:active .nm-thumb { translate: 0 -4px; }
 .nm-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .nm-cta { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px; background: var(--ink); color: var(--white); font-size: 16px; font-weight: 600; text-decoration: none; }
-.nav-menu .theme-switch { font-size: 13px; }
-.nav-menu .theme-switch button { padding: 7px 14px; }
 @media (prefers-reduced-motion: reduce) {
   .nav-menu, .nav-menu.is-in { transition: none; }
   .nm-pages a, .nm-work a, .nm-foot > *, .nav-menu.is-in .nm-pages a, .nav-menu.is-in .nm-work a, .nav-menu.is-in .nm-foot > * { transition: none; }
 }
 @media (max-width: 900px) {
   .nav-burger { display: grid; }
-  .site-nav .site-nav__links .theme-switch { display: none; }
-  .nav-menu .theme-switch { display: inline-flex; }
 }
 
 /* ---------- Footer ---------- */
@@ -288,22 +259,7 @@ html.nav-locked { overflow: hidden; }
   .hl { background-size: 100% 72%; }
 }
 
-/* ---------- Theme switch (Light / Dark) ---------- */
-.theme-switch {
-  display: inline-flex; padding: 3px; border-radius: 999px; border: 1px solid var(--line); background: var(--grey-1);
-  font-size: 12px; font-weight: 600;
-}
-.theme-switch button { border: 0; background: none; cursor: pointer; padding: 5px 10px; border-radius: 999px; color: var(--grey-5); transition: background 0.25s, color 0.25s; }
-.theme-switch button[aria-pressed="true"] { background: var(--ink); color: var(--white); }
 
-
-@media (max-width: 560px) {
-  .site-nav .site-nav__links .theme-switch { margin: 0; padding: 2px; font-size: 11.5px; }
-  .site-nav .site-nav__links .theme-switch button { padding: 5px 8px; font-size: 11.5px; }
-}
-@media (max-width: 400px) {
-  .site-nav .site-nav__links .theme-switch button { padding: 5px 7px; font-size: 11px; }
-}
 
 /* ---------- Phones: floating "start a project" bar ---------- */
 .cta-bar { display: none; }

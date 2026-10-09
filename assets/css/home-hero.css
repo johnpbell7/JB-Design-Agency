@@ -182,8 +182,6 @@
       fill: none; stroke: var(--hl-yellow); stroke-width: 86; stroke-linecap: round; stroke-linejoin: round;
       mix-blend-mode: multiply; opacity: 0.85;
     }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pf-scribble path { mix-blend-mode: normal; opacity: 0.72; } }
-    :root[data-theme="dark"] .pf-scribble path { mix-blend-mode: normal; opacity: 0.72; }
 
     .pf-card {
       position: absolute; left: 50%; bottom: 92px;
@@ -385,8 +383,6 @@
 .bt-ghost__screen { position: relative; aspect-ratio: auto; height: 100%; }
 .bt-ghost__screen img { position: absolute; left: 0; top: 0; width: 100%; height: auto; opacity: 0; transition: opacity 1.4s ease; will-change: transform; }
 .bt-ghost__screen img.is-on { opacity: 1; }
-:root[data-theme="dark"] .bt-ghost { opacity: 0.14; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bt-ghost { opacity: 0.14; } }
 @media (max-width: 900px) { .bt-ghost { width: 120vw; right: -40vw; top: 34%; opacity: 0.14; } }
 .bt-ghost { opacity: 0.17; -webkit-mask-image: radial-gradient(110% 80% at 70% 34%, #000 28%, transparent 72%); mask-image: radial-gradient(110% 80% at 70% 34%, #000 28%, transparent 72%); }
 
@@ -424,7 +420,6 @@
 .bt-ghost__glow { position: absolute; z-index: 0; right: 4%; top: 18%; width: 52vw; aspect-ratio: 1.3; border-radius: 50%; pointer-events: none;
   background: radial-gradient(closest-side, var(--glow, #ff9ed2), transparent); opacity: 0.32; filter: blur(30px); transition: background 1.2s ease; }
 .bt-ghost { opacity: 0.26; }
-:root[data-theme="dark"] .bt-ghost__glow { opacity: 0.2; }
 
 /* Proof bar */
 .bt-proof { margin-top: clamp(26px, 4vh, 48px); padding-top: 18px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 18px 28px; flex-wrap: wrap; font-size: 14px; color: var(--grey-7); }
@@ -481,8 +476,6 @@
 .bt-g1__track { will-change: transform; }
 .bt-g1__shot { display: block; aspect-ratio: 9 / 19.5; margin-bottom: 22px; border-radius: calc(var(--cw) * 0.12); overflow: hidden; background: var(--grey-2); box-shadow: 0 0 0 1px var(--line); }
 .bt-g1__shot img { width: 100%; height: 100%; object-fit: cover; }
-:root[data-theme="dark"] .bt-g1 { opacity: 0.22; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bt-g1 { opacity: 0.22; } }
 @media (max-width: 1100px) { .bt-g1 { right: -10vw; } }
 /* phones: the wall sinks to the band under the buttons */
 @media (max-width: 560px) {
@@ -507,8 +500,6 @@
 .bt-g2__page img { position: absolute; left: 0; top: 0; width: 100%; height: auto; opacity: 0; transition: opacity 0.9s ease; will-change: transform; }
 .bt-g2__page img.is-on { opacity: 1; }
 .bt-g2__glow { position: absolute; right: -6vw; top: 12%; width: 46vw; aspect-ratio: 1; border-radius: 50%; background-color: var(--g2, #c7f016); opacity: 0.26; filter: blur(90px); transition: background-color 1.2s ease; }
-:root[data-theme="dark"] .bt-g2__glow { opacity: 0.14; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bt-g2__glow { opacity: 0.14; } }
 @media (max-width: 1100px) { .bt-g2__phone { right: calc(var(--pw) * -0.45); top: 30%; } }
 /* phones: the phone peeks up from the bottom corner, under the buttons */
 @media (max-width: 560px) {
@@ -529,8 +520,6 @@
 .bt-g3__blob--a { right: -8vw; top: 4%;  width: 44vw; aspect-ratio: 1.15; background-color: var(--g3a, #ff9ed2); }
 .bt-g3__blob--b { right: 18vw; top: 34%; width: 30vw; aspect-ratio: 1;    background-color: var(--g3b, #ffd1ea); opacity: 0.55; }
 .bt-g3__blob--c { right: 2vw;  top: 56%; width: 26vw; aspect-ratio: 1.3;  background-color: var(--g3a, #ff9ed2); opacity: 0.3; }
-:root[data-theme="dark"] .bt-g3__blob { opacity: 0.24; filter: blur(80px) saturate(1.5); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bt-g3__blob { opacity: 0.24; filter: blur(80px) saturate(1.5); } }
 
 .bt-g3__logos { position: relative; z-index: 1; list-style: none; margin: clamp(18px, 2.6vh, 28px) 0 0; padding: 0; display: flex; align-items: center; justify-content: space-between; gap: 20px 32px; }
 .bt-g3__logos li { display: flex; }
@@ -549,12 +538,6 @@
 .bt-g3__logo.is-svg svg { display: block; width: 100%; height: 100%; }
 .bt-g3__logo:hover, .bt-g3__logo:focus-visible { background-color: var(--t); color: var(--t); opacity: 1; translate: 0 -2px; }
 .bt-g3__logo.is-svg:hover, .bt-g3__logo.is-svg:focus-visible { background: none; }
-:root[data-theme="dark"] .bt-g3__logo:hover, :root[data-theme="dark"] .bt-g3__logo:focus-visible { background-color: var(--td); color: var(--td); }
-:root[data-theme="dark"] .bt-g3__logo.is-svg:hover { background: none; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .bt-g3__logo:hover, :root:not([data-theme="light"]) .bt-g3__logo:focus-visible { background-color: var(--td); color: var(--td); }
-  :root:not([data-theme="light"]) .bt-g3__logo.is-svg:hover { background: none; }
-}
 .bt-g3__logo .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (max-width: 860px) { .bt-g3__logos { justify-content: flex-start; gap: 18px 30px; flex-wrap: wrap; } }
 /* phones: four logos in one tidy row under the buttons; the wash sits low */
@@ -589,14 +572,6 @@
 .bt-g4__bar b { flex: 0 1 38%; height: 12px; margin: 0 auto; border-radius: 6px; background: var(--grey-2); translate: -18px 0; }
 .bt-g4__view { position: relative; flex: 1; overflow: hidden; background: var(--white); }
 .bt-g4__view img { position: absolute; left: 0; top: 0; width: 100%; height: auto; opacity: 0.42; filter: saturate(0.85); will-change: transform; }
-:root[data-theme="dark"] .bt-g4__view img { opacity: 0.22; }
-:root[data-theme="dark"] .bt-g4__win { box-shadow: 0 0 0 1px rgb(255 255 255 / 0.16), 0 24px 50px -26px rgb(0 0 0 / 0.7); }
-:root[data-theme="dark"] .bt-g4__bar { background: var(--grey-2); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .bt-g4__view img { opacity: 0.22; }
-  :root:not([data-theme="light"]) .bt-g4__win { box-shadow: 0 0 0 1px rgb(255 255 255 / 0.16), 0 24px 50px -26px rgb(0 0 0 / 0.7); }
-  :root:not([data-theme="light"]) .bt-g4__bar { background: var(--grey-2); }
-}
 @media (max-width: 1100px) { .bt-g4 { right: calc(-8vw - var(--bw) * 0.18); } }
 /* phones: the cascade peeks up from the bottom corner */
 @media (max-width: 560px) {

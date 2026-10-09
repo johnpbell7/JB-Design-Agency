@@ -72,8 +72,6 @@
       fill: none; stroke: var(--hl-yellow); stroke-width: 86; stroke-linecap: round; stroke-linejoin: round;
       mix-blend-mode: multiply; opacity: 0.85;
     }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .scribble path { mix-blend-mode: normal; opacity: 0.72; } }
-    :root[data-theme="dark"] .scribble path { mix-blend-mode: normal; opacity: 0.72; }
 
     .card {
       position: absolute; left: 50%; bottom: 92px;
@@ -217,8 +215,6 @@
       .hero__ctas .btn { flex: 1 1 auto; justify-content: center; padding: 14px 16px; font-size: 15px; white-space: nowrap; }
       .site-nav { padding-left: 16px; }
       .site-nav__links { gap: 6px; }
-      .theme-switch { font-size: 11px; }
-      .theme-switch button { padding: 4px 8px; }
       .strip__in { font-size: 13px; }
     }
     @media (min-width: 861px) { .fan__stage { position: absolute; inset: 0; } }
@@ -235,7 +231,6 @@
       <a href="../index.html#work">Work</a>
       <a href="../projects/property.html">Print</a>
       <a href="../index.html#faq">FAQs</a>
-      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
       <a class="is-cta" href="../index.html#contact">Start a project</a>
     </nav>
   </header>

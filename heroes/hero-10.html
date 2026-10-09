@@ -26,10 +26,6 @@
   <style>
     /* ================= Hero 10 · Scrapbook ================= */
     :root { --paper: #fdfdfb; --tape: rgb(246 241 222 / 0.78); --tape-edge: rgb(24 24 26 / 0.06); --swatch-blend: multiply; --swatch-op: 0.62; }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) { --paper: #f4f3ee; --tape: rgb(232 226 205 / 0.62); --tape-edge: rgb(0 0 0 / 0.2); --swatch-blend: normal; --swatch-op: 0.66; }
-    }
-    :root[data-theme="dark"] { --paper: #f4f3ee; --tape: rgb(232 226 205 / 0.62); --tape-edge: rgb(0 0 0 / 0.2); --swatch-blend: normal; --swatch-op: 0.66; }
 
     .hero {
       position: relative; min-height: 100dvh; overflow: clip;
@@ -167,7 +163,6 @@
       <a href="../index.html#work">Work</a>
       <a href="../projects/property.html">Print</a>
       <a href="../index.html#faq">FAQs</a>
-      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
       <a class="is-cta" href="../index.html#contact">Start a project</a>
     </nav>
   </header>

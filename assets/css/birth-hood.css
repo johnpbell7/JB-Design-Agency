@@ -125,8 +125,6 @@ body {
 .bh-type .big em { font-style: italic; color: var(--pink-deep); }
 .bh-type .sig { margin: 0; line-height: 0; }
 .bh-type .sig img { display: block; width: min(100%, 420px); height: auto; }
-:root[data-theme="dark"] .bh-type .sig img { filter: invert(1); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bh-type .sig img { filter: invert(1); } }
 .bh-type small { font-size: 13px; color: var(--grey-5); }
 @media (max-width: 760px) { .bh-type { grid-template-columns: 1fr; } }
 

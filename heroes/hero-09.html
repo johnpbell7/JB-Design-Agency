@@ -207,16 +207,6 @@
     .strip__row .more { margin-left: auto; font-size: 14px; font-weight: 500; text-decoration: none; }
 
     /* ---------- Dark mode tweaks ---------- */
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) .ba__scribble { mix-blend-mode: normal; }
-      :root:not([data-theme="light"]) .ba__scribble path { opacity: 0.72; }
-      :root:not([data-theme="light"]) .laptop { filter: drop-shadow(0 34px 44px rgb(0 0 0 / 0.55)); }
-      :root:not([data-theme="light"]) .laptop__lid { box-shadow: inset 0 0 0 1px #4a4a4e, inset 0 0 0 3px #111; }
-    }
-    :root[data-theme="dark"] .ba__scribble { mix-blend-mode: normal; }
-    :root[data-theme="dark"] .ba__scribble path { opacity: 0.72; }
-    :root[data-theme="dark"] .laptop { filter: drop-shadow(0 34px 44px rgb(0 0 0 / 0.55)); }
-    :root[data-theme="dark"] .laptop__lid { box-shadow: inset 0 0 0 1px #4a4a4e, inset 0 0 0 3px #111; }
 
     /* ---------- Responsive ---------- */
     @media (max-width: 1080px) {
@@ -260,7 +250,6 @@
       <a href="../index.html#work">Work</a>
       <a href="../projects/property.html">Print</a>
       <a href="../index.html#faq">FAQs</a>
-      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
       <a class="is-cta" href="../index.html#contact">Start a project</a>
     </nav>
   </header>

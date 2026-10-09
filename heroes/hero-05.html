@@ -70,8 +70,6 @@
     .stage { position: relative; height: min(720px, calc(100dvh - 150px)); min-height: 560px; }
     .scribble { position: absolute; left: 2%; top: -2%; width: 96%; height: 104%; overflow: visible; pointer-events: none; }
     .scribble path { fill: none; stroke: transparent; stroke-width: 78; stroke-linecap: round; stroke-linejoin: round; opacity: 0.5; mix-blend-mode: multiply; }
-    :root[data-theme="dark"] .scribble path { opacity: 0.4; mix-blend-mode: normal; }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .scribble path { opacity: 0.4; mix-blend-mode: normal; } }
 
     .laptop { position: absolute; left: 0; top: 7%; width: 76%; }
     .laptop__lid {
@@ -346,7 +344,6 @@
       <a href="../index.html#work">Work</a>
       <a href="../projects/property.html">Print</a>
       <a href="../index.html#faq">FAQs</a>
-      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
       <a class="is-cta" href="../index.html#contact">Start a project</a>
     </nav>
   </header>

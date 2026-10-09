@@ -30,8 +30,6 @@
 .ab-collage { position: relative; aspect-ratio: 1; width: 100%; max-width: 560px; justify-self: center; isolation: isolate; }
 .ab-scribble { position: absolute; inset: 4% -4%; width: 108%; height: 92%; z-index: -1; overflow: visible; pointer-events: none; }
 .ab-scribble path { fill: none; stroke: var(--hl-yellow); stroke-width: 88; stroke-linecap: round; stroke-linejoin: round; opacity: 0.8; mix-blend-mode: multiply; }
-:root[data-theme="dark"] .ab-scribble path { mix-blend-mode: normal; opacity: 0.3; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ab-scribble path { mix-blend-mode: normal; opacity: 0.3; } }
 
 .ab-piece {
   position: absolute; left: var(--x); top: var(--y); width: var(--w); rotate: var(--r);
@@ -225,8 +223,6 @@ a.ab-piece:hover, a.ab-piece:focus-visible { rotate: 0deg; scale: 1.05; z-index:
 }
 
 /* Dark mode: a hairline so the dark PATCH tile doesn't melt into the page */
-:root[data-theme="dark"] .ab-piece--logo, :root[data-theme="dark"] .ab-shot--logo img { outline: 1px solid rgb(255 255 255 / 0.12); outline-offset: -1px; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ab-piece--logo, :root:not([data-theme="light"]) .ab-shot--logo img { outline: 1px solid rgb(255 255 255 / 0.12); outline-offset: -1px; } }
 
 /* ---------- Story as a central timeline: line down the middle, chapters alternate sides ---------- */
 @media (min-width: 801px) {

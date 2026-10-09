@@ -15,8 +15,6 @@ body { --project-pen: #ffe08a; }
 .pr-scribble { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; overflow: visible; pointer-events: none; }
 .pr-scribble path { fill: none; stroke: var(--hl-yellow); stroke-width: 96; stroke-linecap: round; stroke-linejoin: round; opacity: 0.75; mix-blend-mode: multiply; }
 .pr-scribble--sage path { stroke: #c6e8a4; stroke-width: 70; }
-:root[data-theme="dark"] .pr-scribble path { mix-blend-mode: normal; opacity: 0.32; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pr-scribble path { mix-blend-mode: normal; opacity: 0.32; } }
 .pr-hand {
   --ph: clamp(130px, 13vw, 196px);
   position: relative; isolation: isolate; display: flex; justify-content: center; align-items: center;
@@ -242,14 +240,12 @@ body { --project-pen: #ffe08a; }
     border-radius: 999px; background: var(--job-pen); opacity: 0.75; rotate: -1.5deg;
   }
   .yalla__row:nth-of-type(2)::before { rotate: 1.2deg; }
-  :root[data-theme="dark"] .yalla__row::before { opacity: 0.32; }
   .yalla__row + .yalla__row { margin-top: 0; }
   .yalla__row img, .yalla__row:nth-of-type(n) img { grid-column: 1; grid-row: 2; }
   .yalla__row figcaption, .yalla__row:nth-of-type(n) figcaption { grid-column: 1; grid-row: 1; justify-items: start; text-align: left; padding: 0; grid-template-columns: auto 1fr; align-items: baseline; column-gap: 10px; }
   .yalla__row figcaption span { grid-column: 1 / -1; justify-self: start; }
   .yalla__row figcaption b { font-size: 24px; }
 }
-@media (max-width: 800px) and (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .yalla__row::before { opacity: 0.32; } }
 
 /* ---------- Strip of mock-ups: drag, swipe or trackpad sideways ---------- */
 .strip {

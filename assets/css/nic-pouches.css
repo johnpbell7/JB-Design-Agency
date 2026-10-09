@@ -1,7 +1,7 @@
 /* Nic Pouches: tokens from the live Shopify theme (blues, inks) plus the
    redesign's brighter accents, and the live pieces rebuilt from the prototype
-   (np.css, page-nicpoints.css). Brand UI stays light in both themes, as on
-   the real store; the panels around it switch with the portfolio. */
+   (np.css, page-nicpoints.css). Brand UI matches
+   the real store. */
 body {
   --np-blue: #0070d5;
   --np-blue-700: #005aaa;
@@ -38,10 +38,6 @@ body {
   --np-panel-muted: #414651;
   --np-panel-em: #0070d5;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) body { --np-panel: #0f2237; --np-panel-fg: #f2f2ef; --np-panel-muted: #b8c3cf; --np-panel-em: #8cc4f5; }
-}
-:root[data-theme="dark"] body { --np-panel: #0f2237; --np-panel-fg: #f2f2ef; --np-panel-muted: #b8c3cf; --np-panel-em: #8cc4f5; }
 
 /* ---------- Shared brand bits ---------- */
 .np { font-family: var(--np-ui); color: var(--np-ink); line-height: 1.4; }

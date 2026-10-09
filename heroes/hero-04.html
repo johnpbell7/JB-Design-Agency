@@ -28,27 +28,9 @@
       --frame-shadow: 0 2px 4px rgb(24 24 26 / 0.05), 0 40px 80px -36px rgb(24 24 26 / 0.45);
       --scribble-blend: multiply; --scribble-op: 0.72;
     }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --mat: #222226;
-        --photo-a: #2b2b30; --photo-b: #1c1c20; --sil: #3c3c42;
-        --chip-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 22px 44px -18px rgb(0 0 0 / 0.8);
-        --frame-shadow: 0 2px 4px rgb(0 0 0 / 0.4), 0 40px 80px -30px rgb(0 0 0 / 0.9);
-        --scribble-blend: normal; --scribble-op: 0.8;
-      }
-    }
-    :root[data-theme="dark"] {
-      --mat: #222226;
-      --photo-a: #2b2b30; --photo-b: #1c1c20; --sil: #3c3c42;
-      --chip-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 22px 44px -18px rgb(0 0 0 / 0.8);
-      --frame-shadow: 0 2px 4px rgb(0 0 0 / 0.4), 0 40px 80px -30px rgb(0 0 0 / 0.9);
-      --scribble-blend: normal; --scribble-op: 0.8;
-    }
 
     /* Nav extras (from home.css) */
-    .site-nav__links .theme-switch { margin-inline: 6px; }
     @media (max-width: 900px) { .site-nav__links a:not(.is-cta) { display: none; } }
-    @media (max-width: 760px) { .site-nav__links .theme-switch { margin: 0; } .site-nav__links .theme-switch button { padding: 5px 8px; } }
 
     /* ===================== Hero ===================== */
     .hero { position: relative; min-height: 100dvh; display: flex; align-items: center; overflow: clip; }
@@ -212,7 +194,6 @@
       <a href="../index.html#work">Work</a>
       <a href="../projects/property.html">Print</a>
       <a href="../index.html#faq">FAQs</a>
-      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
       <a class="is-cta" href="../index.html#contact">Start a project</a>
     </nav>
   </header>

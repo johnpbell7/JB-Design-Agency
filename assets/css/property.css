@@ -26,38 +26,6 @@ body {
   --dim-pill: rgb(255 255 255 / 0.92);
   --stars: 0; --glow: 0;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) body {
-    --desk-hi: #2a2a2e; --desk-lo: #1a1a1d; --desk-line: rgb(255 255 255 / 0.04);
-    --item-shadow: 0 1px 1px rgb(0 0 0 / 0.3), 0 10px 16px -6px rgb(0 0 0 / 0.5), 0 30px 50px -18px rgb(0 0 0 / 0.7);
-    --sky-a: #0f1630; --sky-b: #29345a; --sky-c: #5b5470;
-    --sun: #f3f0e2; --sun-glow: rgb(220 225 255 / 0.25);
-    --cloud: #5a6386;
-    --hill-far: #2c3a45; --hill-near: #23302a;
-    --grass-a: #2b3b26; --grass-b: #1d2a1a;
-    --rail: #7b8087; --mesh: rgb(170 178 190 / 0.35); --feet: #2d2f33;
-    --post-a: #4b3826; --post-b: #6a5039;
-    --person: #121619;
-    --dim: rgb(242 242 239 / 0.75);
-    --dim-pill: rgb(17 17 19 / 0.88);
-    --stars: 1; --glow: 1;
-  }
-}
-:root[data-theme="dark"] body {
-  --desk-hi: #2a2a2e; --desk-lo: #1a1a1d; --desk-line: rgb(255 255 255 / 0.04);
-  --item-shadow: 0 1px 1px rgb(0 0 0 / 0.3), 0 10px 16px -6px rgb(0 0 0 / 0.5), 0 30px 50px -18px rgb(0 0 0 / 0.7);
-  --sky-a: #0f1630; --sky-b: #29345a; --sky-c: #5b5470;
-  --sun: #f3f0e2; --sun-glow: rgb(220 225 255 / 0.25);
-  --cloud: #5a6386;
-  --hill-far: #2c3a45; --hill-near: #23302a;
-  --grass-a: #2b3b26; --grass-b: #1d2a1a;
-  --rail: #7b8087; --mesh: rgb(170 178 190 / 0.35); --feet: #2d2f33;
-  --post-a: #4b3826; --post-b: #6a5039;
-  --person: #121619;
-  --dim: rgb(242 242 239 / 0.75);
-  --dim-pill: rgb(17 17 19 / 0.88);
-  --stars: 1; --glow: 1;
-}
 
 /* ---------- Hero ---------- */
 .cs-hero .pm-h1 { font-size: clamp(44px, 5.4vw, 82px); }
@@ -373,12 +341,9 @@ body {
    No cartoon sun, clouds, tree or person. Sizes show as neat tags on the
    pieces instead of technical-drawing lines. Soft contact shadows ground them. */
 body { --sky-a: #e9eef3; --sky-b: #f4efe6; --sky-c: #f7e7cf; --hill-far: #d7dccb; --hill-near: #c3cfb2; --grass-a: #b9c9a3; --grass-b: #a6ba8d; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body { --sky-a: #121626; --sky-b: #1e2238; --sky-c: #3a3350; --hill-far: #262c37; --hill-near: #20272a; --grass-a: #232c22; --grass-b: #1b2219; } }
-:root[data-theme="dark"] body { --sky-a: #121626; --sky-b: #1e2238; --sky-c: #3a3350; --hill-far: #262c37; --hill-near: #20272a; --grass-a: #232c22; --grass-b: #1b2219; }
 .site { --m: calc(100cqh / 4.25); }
 .site__sun, .site__cloud, .site__tree, .site__person { display: none !important; }
 .site__sky::after { content: ""; position: absolute; right: 12%; top: 18%; width: 42%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(closest-side, rgb(255 214 150 / 0.55), transparent); filter: blur(10px); }
-:root[data-theme="dark"] .site__sky::after { background: radial-gradient(closest-side, rgb(170 180 255 / 0.18), transparent); }
 .site__hills--near { display: none; }
 .site__ground { background: linear-gradient(var(--grass-a), var(--grass-b)); }
 .site__ground::before { display: none; }
@@ -405,8 +370,6 @@ body { --sky-a: #e9eef3; --sky-b: #f4efe6; --sky-c: #f7e7cf; --hill-far: #d7dccb
 /* Loose on the page, over a big sage highlighter scribble like the web heroes */
 .pm-scribble { position: absolute; left: -4%; top: 0; width: 108%; height: 100%; z-index: -1; overflow: visible; pointer-events: none; }
 .pm-scribble path { fill: none; stroke: var(--project-pen); stroke-width: 120; stroke-linecap: round; stroke-linejoin: round; opacity: 0.7; mix-blend-mode: multiply; }
-:root[data-theme="dark"] .pm-scribble path { mix-blend-mode: normal; opacity: 0.32; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pm-scribble path { mix-blend-mode: normal; opacity: 0.32; } }
 .pm-desk--wow .pm-desk__plane { transform: rotateX(16deg); transform-origin: 50% 65%; }
 .pm-item--fan { z-index: 1; translate: -50% 0; transform-origin: 50% 160%; transition: translate 0.5s var(--ease-spring); }
 .pm-item--fan:hover { translate: -50% -14px; }

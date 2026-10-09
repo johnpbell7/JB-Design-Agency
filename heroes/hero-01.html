@@ -32,8 +32,6 @@
       padding: clamp(96px, 12vh, 132px) 0 clamp(36px, 6vh, 64px);
       overflow: hidden;
     }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero { --scrib-blend: normal; --scrib-alpha: 0.5; --wash: 10%; } }
-    :root[data-theme="dark"] .hero { --scrib-blend: normal; --scrib-alpha: 0.5; --wash: 10%; }
 
     /* Background wash: a whisper of the client's colour over the white page */
     .sr-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none;
@@ -198,7 +196,6 @@
       <a href="../index.html#work">Work</a>
       <a href="../projects/property.html">Print</a>
       <a href="../index.html#faq">FAQs</a>
-      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
       <a class="is-cta" href="../index.html#contact">Start a project</a>
     </nav>
   </header>

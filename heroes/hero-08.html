@@ -84,8 +84,6 @@
       overflow: visible;
     }
     .swash path { fill: none; stroke: var(--pen, var(--hl-yellow)); stroke-width: 62; stroke-linecap: round; mix-blend-mode: multiply; opacity: 0.78; }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .swash path { mix-blend-mode: normal; opacity: 0.6; } }
-    :root[data-theme="dark"] .swash path { mix-blend-mode: normal; opacity: 0.6; }
 
     .device {
       position: relative; z-index: 1; display: block; width: var(--pw);
@@ -168,8 +166,6 @@
       .avail i { display: inline-block; margin-right: 8px; vertical-align: 1px; }
       .site-nav { padding-left: 16px; }
       .site-nav__links { gap: 6px; }
-      .theme-switch { font-size: 11px; }
-      .theme-switch button { padding: 4px 8px; }
       .strip__in { font-size: 13px; }
     }
   </style>
@@ -185,7 +181,6 @@
       <a href="../index.html#work">Work</a>
       <a href="../projects/property.html">Print</a>
       <a href="../index.html#faq">FAQs</a>
-      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
       <a class="is-cta" href="../index.html#contact">Start a project</a>
     </nav>
   </header>

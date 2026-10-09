@@ -1,24 +1,13 @@
-// Light / dark mode. Loaded in <head> so the theme applies before first paint.
-// Always opens in light mode (the system dark setting is ignored); dark only when picked
+// Shared nav bits on every page: the JB mark, the phone menu and the phone CTA bar.
+// The site is light only (no dark mode)
 (() => {
-  const root = document.documentElement;
-  root.dataset.theme = 'light';
-  try { const saved = localStorage.getItem('jb-theme'); if (saved === 'dark') root.dataset.theme = saved; } catch {}
-  const current = () => root.dataset.theme;
-  const sync = () => document.querySelectorAll('.theme-switch button').forEach(b => b.setAttribute('aria-pressed', b.dataset.set === current()));
-  document.addEventListener('click', e => {
-    const b = e.target.closest('.theme-switch button');
-    if (!b) return;
-    root.dataset.theme = b.dataset.set;
-    try { localStorage.setItem('jb-theme', b.dataset.set); } catch {}
-    sync();
-  });
+  try { localStorage.removeItem('jb-theme'); } catch {} // old saved Light/Dark choice
   // The JB mark beside the wordmark in the nav, on every page: a yellow keyboard key
   // with the Poppins Bold JB ligature (the J shares the B's stem) on its top face
   const MARK = '<span class="jb-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><defs><linearGradient id="jbT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff58a"/><stop offset="1" stop-color="#ffe94a"/></linearGradient><linearGradient id="jbS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5c400"/><stop offset="1" stop-color="#e2a400"/></linearGradient></defs><rect x="1.5" y="1.5" width="45" height="45" rx="10.5" fill="url(#jbS)" stroke="#18181a" stroke-width="1.6"/><g class="jb-mark__cap"><rect x="5" y="3.6" width="38" height="36.4" rx="8" fill="url(#jbT)" stroke="#e9b400" stroke-width="0.8"/><path d="M37.9 29.29Q37.9 32.2 35.87 33.9Q33.83 35.61 30.2 35.61H17.4Q13.73 35.61 11.52 33.64Q9.3 31.67 9.3 27.84H14.92Q14.92 29.29 15.52 30.03Q16.11 30.78 17.24 30.78Q18.26 30.78 18.82 30.12Q19.38 29.46 19.38 28.2V12.39H29.83Q33.37 12.39 35.37 14.01Q37.37 15.63 37.37 18.41Q37.37 20.46 36.3 21.82Q35.22 23.17 33.44 23.7Q35.45 24.13 36.68 25.7Q37.9 27.27 37.9 29.29ZM25.04 21.78H28.74Q30.13 21.78 30.87 21.17Q31.62 20.56 31.62 19.37Q31.62 18.18 30.87 17.55Q30.13 16.92 28.74 16.92H25.04ZM32.18 28.53Q32.18 27.31 31.37 26.61Q30.56 25.92 29.14 25.92H25.04V31.04H29.2Q30.63 31.04 31.4 30.4Q32.18 29.75 32.18 28.53Z" fill="#18181a" transform="translate(24 21.8) scale(0.92) translate(-23.6 -24)"/></g></svg></span>';
   const mark = () => document.querySelectorAll('.site-nav__mark').forEach(a => { if (!a.querySelector('.jb-mark')) a.insertAdjacentHTML('afterbegin', MARK); });
   // Phones: a burger opens a full-screen menu that wipes out from the burger: big page links,
-  // then every project as a little phone card, then the CTA and theme switch
+  // then every project as a little phone card, then the CTA
   const menu = () => {
     const nav = document.querySelector('.site-nav'), links = nav && nav.querySelector('.site-nav__links');
     if (!links || nav.querySelector('.nav-burger')) return;
@@ -29,7 +18,6 @@
       if (a.classList.contains('is-cta')) { cta = a.getAttribute('href'); return ''; }
       return `<a href="${a.getAttribute('href')}">${a.textContent}</a>`;
     }).join('');
-    const sw = links.querySelector('.theme-switch');
     const PROJ = [
       ['patch.html', 'PATCH', '#c7f016', 'captures/patch-agency/home-mobile.webp'], ['birth-hood.html', 'Birth-hood', '#fe7fcc', 'captures/birth-hood/home-mobile.webp'],
       ['gosweet.html', 'GoSweet', '#7b3fc4', 'captures/gosweet/home-mobile.webp'], ['nic-pouches.html', 'Nic Pouches', '#0070d5', 'captures/nic-pouches/home-mobile.webp'],
@@ -46,7 +34,7 @@
     document.body.insertAdjacentHTML('beforeend', `<div class="nav-menu" id="nav-menu" hidden><div class="nav-menu__in">
       <nav class="nm-pages" aria-label="Menu">${items}</nav>
       <div class="nm-work"><span class="nm-k">Projects</span><nav aria-label="Projects">${projects}</nav></div>
-      <div class="nm-foot">${cta ? `<a class="nm-cta" href="${cta}">Start a project <span aria-hidden="true">→</span></a>` : ''}${sw ? sw.outerHTML : ''}</div>
+      <div class="nm-foot">${cta ? `<a class="nm-cta" href="${cta}">Start a project <span aria-hidden="true">→</span></a>` : ''}</div>
     </div></div>`);
     const btn = nav.querySelector('.nav-burger'), panel = document.getElementById('nav-menu');
     [...panel.querySelectorAll('.nm-pages a, .nm-work a, .nm-foot > *')].forEach((el, i) => el.style.setProperty('--i', i));
@@ -77,5 +65,5 @@
     setTimeout(() => { past = true; show(); }, 900); // it's the only call to action on phones, so it shows from the start
     if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { near = e.isIntersecting; show(); }, { rootMargin: '0px 0px 25% 0px' }).observe(contact);
   };
-  document.addEventListener('DOMContentLoaded', () => { mark(); menu(); bar(); sync(); });
+  document.addEventListener('DOMContentLoaded', () => { mark(); menu(); bar(); });
 })();

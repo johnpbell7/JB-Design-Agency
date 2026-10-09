@@ -233,9 +233,6 @@ body { --project-pen: #c7f016; }
 
 /* ---------- Quote: on the brand black, with a keyline in dark mode ---------- */
 .pk-quote { font-family: var(--font); }
-:root[data-theme="dark"] .pk-break__panel--black { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14); background-color: #16181d; }
-:root[data-theme="dark"] .pk-quote { box-shadow: inset 0 0 0 1px var(--line); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pk-quote { box-shadow: inset 0 0 0 1px var(--line); } }
 
 /* ---------- The kit: an editorial grid of the real mockups, no chrome ----------
    Each row is justified: tiles grow by their aspect ratio, so every image sits
