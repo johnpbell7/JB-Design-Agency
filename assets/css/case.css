@@ -374,6 +374,29 @@ body {
   .pop[data-pop-sm="hide"] { display: none; }
 }
 
+/* Phones: the parade as a deck (case.js). One phone at a time, centred; the rest wait hidden
+   in the same spot, and a caption pill with arrows sits underneath. Pop-outs stay on desktop. */
+.parade__deck { display: none; }
+@media (max-width: 800px) {
+  .parade.is-deck { padding-block: 36px 30px; }
+  .parade.is-deck .parade__row { display: grid; justify-content: center; overflow: visible; scroll-snap-type: none; padding: 8px 0 0; margin: 0; }
+  .parade.is-deck .phone { grid-area: 1 / 1; width: min(66vw, 300px); margin: 0 !important; }
+  .parade.is-deck .phone:not(.is-on):not(.is-leaving) { visibility: hidden; }
+  .parade.is-deck .phone.is-on { z-index: 2; }
+  .parade.is-deck .pop { display: none; }
+  .parade.is-deck .parade__deck { position: relative; z-index: 6; display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 22px; }
+  .parade__nav { display: grid; place-items: center; flex: none; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: #fff; color: #18181a; cursor: pointer;
+    box-shadow: 0 10px 24px -12px rgb(24 24 40 / 0.5), 0 0 0 1px rgb(0 0 0 / 0.06); -webkit-tap-highlight-color: transparent; transition: scale 0.2s var(--ease-out); }
+  .parade__nav:active { scale: 0.9; }
+  .parade__nav svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .parade__now { position: relative; display: flex; align-items: center; gap: 9px; min-width: 0; max-width: 62vw; padding: 6px 16px 8px 6px; border-radius: 999px; background: #fff; overflow: hidden;
+    box-shadow: 0 14px 34px -14px rgb(24 24 40 / 0.45), 0 0 0 1px rgb(0 0 0 / 0.06); }
+  .parade__now b { display: grid; place-items: center; flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--pen, var(--hl-yellow)); color: #18181a; font-size: 11px; font-weight: 700; }
+  .parade__now strong { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 14px; font-weight: 600; color: #18181a; }
+  .parade__now i { position: absolute; left: 18px; right: 18px; bottom: 4px; height: 2px; border-radius: 2px; background: rgb(0 0 0 / 0.1); overflow: hidden; }
+  .parade__now em { position: absolute; inset: 0; background: #18181a; transform-origin: 0 50%; transform: scaleX(0); }
+}
+
 /* Solo parade (one-page sites): one larger phone between a short side
    column and the brand pieces, instead of a row of four */
 .parade--solo {

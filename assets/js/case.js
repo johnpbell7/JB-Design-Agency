@@ -284,6 +284,52 @@
       tl.eventCallback('onComplete', (prev => () => { prev?.(); flow(); })(tl.eventCallback('onComplete')));
     }
 
+    // Phones: a deck instead of a row. One phone at a time, sliding on to the next with a
+    // motion blur; a caption pill (as on the films) names the screen and fills as it plays.
+    // Auto-advances while on screen; arrows and a swipe step through it.
+    const names = [...parade.querySelectorAll('.parade__caption span')].map(s => s.textContent);
+    if (row && phones.length > 1) gsap.matchMedia().add('(max-width: 800px)', () => {
+      const HOLD = 6.5;
+      let cur = 0, timer = null, live = false;
+      parade.classList.add('is-deck');
+      phones.forEach((p, i) => p.classList.toggle('is-on', i === 0));
+      row.insertAdjacentHTML('afterend', `<div class="parade__deck"><button type="button" class="parade__nav" data-d="-1" aria-label="Previous screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="parade__now" aria-live="polite"><b></b><strong></strong><i><em></em></i></div><button type="button" class="parade__nav" data-d="1" aria-label="Next screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>`);
+      const deck = row.nextElementSibling, now = deck.querySelector('.parade__now'), bar = deck.querySelector('em');
+      const label = () => {
+        now.querySelector('b').textContent = String(cur + 1).padStart(2, '0');
+        now.querySelector('strong').textContent = names[cur] || `Screen ${cur + 1}`;
+        gsap.fromTo(now, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: 'back.out(2)', overwrite: true });
+      };
+      const tick = () => {
+        timer?.kill();
+        timer = gsap.fromTo(bar, { scaleX: 0 }, { scaleX: 1, duration: HOLD, ease: 'none', paused: !live, onComplete: () => go(cur + 1, 1) });
+      };
+      const go = (k, dir) => {
+        k = (k + phones.length) % phones.length;
+        if (k === cur) return;
+        const a = phones[cur], b = phones[k], blur = 'blur(14px)';
+        cur = k;
+        a.classList.remove('is-on'); a.classList.add('is-leaving'); b.classList.add('is-on');
+        gsap.killTweensOf([a, b]);
+        gsap.to(a, { xPercent: -75 * dir, rotation: -7 * dir, scale: 0.88, opacity: 0, filter: blur, duration: 0.55, ease: 'power3.in',
+          onComplete: () => { a.classList.remove('is-leaving'); gsap.set(a, { clearProps: 'transform,opacity,filter' }); } });
+        gsap.fromTo(b, { xPercent: 75 * dir, rotation: 7 * dir, scale: 0.88, opacity: 0, filter: blur },
+          { xPercent: 0, rotation: 0, scale: 1, opacity: 1, filter: 'blur(0px)', duration: 0.8, delay: 0.12, ease: 'expo.out', clearProps: 'transform,filter' });
+        label(); tick();
+      };
+      deck.addEventListener('click', e => { const n = e.target.closest('.parade__nav'); if (n) go(cur + +n.dataset.d, +n.dataset.d); });
+      let x0 = null;
+      row.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+      row.addEventListener('touchend', e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); }, { passive: true });
+      const io = new IntersectionObserver(([e]) => { live = e.isIntersecting; if (timer) live ? timer.play() : timer.pause(); }, { threshold: 0.4 });
+      io.observe(row);
+      label(); tick();
+      return () => {
+        io.disconnect(); timer?.kill(); deck.remove(); parade.classList.remove('is-deck');
+        phones.forEach(p => { p.classList.remove('is-on', 'is-leaving'); gsap.set(p, { clearProps: 'opacity,filter' }); });
+      };
+    });
+
     // The whole row tilts gently towards the pointer
     if (row && !crisp && matchMedia('(hover: hover) and (min-width: 801px)').matches) {
       const rx = gsap.quickTo(row, 'rotationX', { duration: 0.8, ease: 'power3.out' });
