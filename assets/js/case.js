@@ -464,5 +464,22 @@
     }));
   });
 
+  // ---------- "What I did": folded away on phones behind a tap-to-open bar ----------
+  document.querySelectorAll('.cs-brief__list').forEach((list, n) => {
+    const label = list.previousElementSibling;
+    if (!label) return;
+    list.id ||= `cs-brief-list-${n}`;
+    label.classList.add('cs-brief__label');
+    [...list.children].forEach((li, i) => li.style.setProperty('--k', i)); // items cascade in when it opens
+    label.insertAdjacentHTML('afterend', `<button type="button" class="cs-brief__toggle" aria-expanded="false" aria-controls="${list.id}"><span>${label.textContent}</span><em>${list.children.length}</em><i aria-hidden="true"></i></button>`);
+    const btn = label.nextElementSibling;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', open);
+      list.parentElement.classList.toggle('is-open', open);
+      if (hasGsap) setTimeout(() => ScrollTrigger.refresh(), 520); // the page below moved
+    });
+  });
+
   addEventListener('load', () => { if (hasGsap) { ScrollTrigger.sort(); ScrollTrigger.refresh(); } });
 })();

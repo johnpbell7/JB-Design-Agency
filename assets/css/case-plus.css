@@ -219,7 +219,7 @@ body[data-pen] .contact .hl, .contact .hl { --pen: #fff; color: #18181a; }
 }
 .lv-screen__frame.is-in { opacity: 0; }
 
-/* Scroll-driven film (case-plus.js scrollFilm, 1024px and wider): the grid pins, the step
+/* Scroll-driven film (case-plus.js scrollFilm, every width): the grid pins, the step
    cards slide sideways with the scroll instead of scrolling as a row */
 [data-cp-film].is-scrolly .cp-film__grid { overflow-x: clip; }
 [data-cp-film].is-scrolly .cp-film__stage { padding-block: clamp(16px, 3.4vh, 44px); }

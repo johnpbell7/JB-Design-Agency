@@ -19,6 +19,17 @@
   try { parentOk = parent.location.origin === location.origin; } catch (e) { /* cross-origin parent */ }
   if (!parentOk) return;
 
+  // Framed copies are scaled down inside the portfolio page, where phones never fire the
+  // copy's own lazy loading (blank product cards), so every image loads up front instead,
+  // including the ones the site's scripts add later
+  const eager = el => {
+    if (el.matches('img[loading="lazy"]')) el.loading = 'eager';
+    el.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = 'eager'; });
+  };
+  eager(document.documentElement);
+  new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1) eager(n); })))
+    .observe(document.documentElement, { childList: true, subtree: true });
+
   const me = document.currentScript;
   // the frame can pick the journey (parade phones): data-live-journey="file.json#key" on the iframe,
   // where key is an index into "phones", a "phones" label or "tracks" name; no key = the "mobile" track

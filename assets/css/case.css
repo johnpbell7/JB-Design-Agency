@@ -370,7 +370,7 @@ body {
   .parade .phone { width: 62vw; scroll-snap-align: center; }
   .parade .phone:nth-child(even) { margin-top: 0; }
   .parade__caption { display: none; }
-  .pop { scale: 0.72; transform-origin: top left; }
+  .pop { zoom: 0.66; } /* zoom, not scale: GSAP resets the scale property when it animates the pop in */
   .pop[data-pop-sm="hide"] { display: none; }
 }
 
@@ -452,6 +452,26 @@ body[data-pen] .hl { --pen: var(--project-pen); }
 .cs-brief__list { counter-reset: brief; }
 .cs-brief__list li::before { content: counter(brief, decimal-leading-zero); font-size: 12px; font-weight: 700; color: var(--grey-5); padding-top: 3px; }
 @media (max-width: 800px) { .cs-brief__grid { grid-template-columns: 1fr; } }
+/* Phones: "What I did" folds away behind a bar with a count (case.js adds the button) */
+.cs-brief__toggle { display: none; }
+@media (max-width: 800px) {
+  .cs-brief__label:has(+ .cs-brief__toggle) { display: none; }
+  .cs-brief__toggle {
+    display: flex; align-items: center; gap: 10px; width: 100%; padding: 13px 18px; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--grey-1); color: var(--ink); font: inherit; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; text-align: left; cursor: pointer;
+    -webkit-tap-highlight-color: transparent; transition: background 0.3s, scale 0.2s var(--ease-out);
+  }
+  .cs-brief__toggle:active { scale: 0.98; }
+  .cs-brief__toggle em { display: grid; place-items: center; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--ink); color: var(--white); font-style: normal; font-size: 11px; font-weight: 700; }
+  .cs-brief__toggle i { position: relative; width: 14px; height: 14px; margin-left: auto; }
+  .cs-brief__toggle i::before, .cs-brief__toggle i::after { content: ""; position: absolute; left: 0; top: 6px; width: 14px; height: 2px; border-radius: 2px; background: currentColor; transition: rotate 0.4s var(--ease-spring); }
+  .cs-brief__toggle i::after { rotate: 90deg; }
+  .cs-brief__toggle[aria-expanded="true"] i::after { rotate: 0deg; }
+  .cs-brief__list { display: grid; max-height: 0; overflow: hidden; opacity: 0; border-top-color: transparent; transition: max-height 0.5s var(--ease-out), opacity 0.35s; }
+  .is-open > .cs-brief__list { max-height: 1200px; opacity: 1; }
+  .is-open > .cs-brief__list li { animation: cs-brief-in 0.45s var(--ease-out) both; animation-delay: calc(var(--k, 0) * 50ms); }
+  @keyframes cs-brief-in { from { opacity: 0; translate: 0 8px; } }
+}
 
 /* ---------- Feature reel: every live feature in one pinned section ----------
    <section class="reel wrap" data-reel style="--reel-bg:#e5f1fb">

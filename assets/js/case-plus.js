@@ -16,17 +16,17 @@
     }, { threshold: 0.35 }).observe(video);
   };
 
-  // ---------- Scroll-driven film (1024px and wider, motion allowed) ----------
+  // ---------- Scroll-driven film (every width, motion allowed) ----------
   // The film's grid pins and the page's scroll drives it: the step cards slide sideways (a
   // scrubbed translate of .cp-steps) and each step plays as it becomes current, held there
-  // until the next. About 70vh of scroll per step; after the last (the phone) the pin lets go.
+  // until the next. About 70vh of scroll per step (50vh on phones); after the last (the phone) the pin lets go.
   // S (filled here): S.on while the mode runs, S.go(k) scrolls the page to step k, and the
-  // caller's S.activate(k) plays step k. Phones and tablets keep the swipe row and autoplay.
+  // caller's S.activate(k) plays step k.
   const scrollFilm = (film, S) => {
     if (!hasGsap || reduce) return;
     const grid = film.querySelector('.cp-film__grid'), list = film.querySelector('.cp-steps');
     if (!grid || !list) return;
-    gsap.matchMedia().add('(min-width: 1024px)', () => {
+    gsap.matchMedia().add('(min-width: 0px)', () => {
       const lis = () => $$('li', list), n = () => lis().length;
       film.classList.add('is-scrolly'); S.on = true; list.scrollLeft = 0;
       const shift = () => { const l = lis().at(-1); return Math.max(0, l.offsetLeft + l.offsetWidth - list.clientWidth); };
@@ -41,7 +41,7 @@
         scrollTrigger: {
           trigger: grid, pin: true, anticipatePin: 1, invalidateOnRefresh: true, scrub: 0.6,
           start: () => (grid.offsetHeight <= innerHeight - 24 ? 'center center' : 'bottom bottom-=12'),
-          end: () => `+=${Math.round(n() * innerHeight * 0.7)}`,
+          end: () => `+=${Math.round(n() * innerHeight * (innerWidth < 1024 ? 0.5 : 0.7))}`,
           onUpdate: self => { if (self.isActive) pick(Math.min(n() - 1, Math.floor(self.progress * n())), false); },
           onEnter: () => pick(0, true),
           onEnterBack: () => pick(n() - 1, true),
