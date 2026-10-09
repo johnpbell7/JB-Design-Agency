@@ -1,0 +1,13 @@
+{
+  "sccc-heritage": {
+    "url": "https://sccc-heritage.co.uk/",
+    "hide": ["a[href^=\"mailto:\"]", "a[href^=\"tel:\"]"],
+    "shots": [
+      { "name": "journey", "path": "journey" },
+      { "name": "teams", "path": "teams", "viewports": ["mobile"] },
+      { "name": "rectory-park", "path": "rectory-park", "viewports": ["mobile"] },
+      { "name": "showreel", "path": "showreel", "viewports": ["mobile"] },
+      { "name": "decade-1910", "path": "decades/1910", "viewports": ["mobile"] }
+    ]
+  }
+}

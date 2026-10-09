@@ -1,0 +1,88 @@
+{
+  "name": "PATCH",
+  "viewport": {"width": 1440, "height": 900},
+  "pace": 1,
+  "start": [1010, 650],
+  "steps": [
+    {
+      "label": "Lime on black",
+      "page": "index.html",
+      "start": 0,
+      "actions": [
+        {"wait": 1400},
+        {"hover": ".hero-cta .btn-primary", "ms": 1300, "after": 1300},
+        {"hover": ".nav-links a", "nth": 1, "ms": 1100, "after": 900},
+        {"hover": ".nav-links a", "nth": 2, "ms": 700, "after": 900}
+      ]
+    },
+    {
+      "label": "Six services",
+      "page": "index.html",
+      "start": {"to": "#services", "offset": 0},
+      "actions": [
+        {"wait": 900},
+        {"hover": ".svc-item", "nth": 0, "ms": 1100, "after": 1100, "visible": false},
+        {"hover": ".svc-item", "nth": 2, "ms": 800, "after": 1000, "visible": false},
+        {"hover": ".svc-item", "nth": 4, "ms": 800, "after": 1100, "visible": false}
+      ]
+    },
+    {
+      "label": "Boardroom to shop floor",
+      "page": "index.html",
+      "start": {"to": "#how", "offset": 0},
+      "actions": [
+        {"wait": 1200},
+        {"move": [720, 560], "ms": 1200, "after": 600},
+        {"scroll": 380, "ms": 2000, "after": 1400}
+      ]
+    },
+    {
+      "label": "Six sectors",
+      "page": "index.html",
+      "start": {"to": "#industries", "offset": 0},
+      "actions": [
+        {"wait": 900},
+        {"hover": ".ind", "nth": 0, "ms": 1100, "after": 1200, "visible": false},
+        {"hover": ".ind", "nth": 1, "ms": 800, "after": 1000, "visible": false},
+        {"hover": ".ind", "nth": 4, "ms": 900, "after": 1300, "visible": false}
+      ]
+    },
+    {
+      "label": "The field app",
+      "page": "index.html",
+      "start": {"to": "#app", "offset": 0},
+      "actions": [
+        {"wait": 1200},
+        {"move": ".app-shot", "at": [0.5, 0.4], "ms": 1300, "after": 900},
+        {"scroll": 260, "ms": 1800, "after": 1500}
+      ]
+    },
+    {
+      "label": "Book a field team",
+      "page": "index.html",
+      "start": {"to": "#contact", "offset": 0},
+      "actions": [
+        {"wait": 1000},
+        {"type": ["#fn", "Sam"], "ms": 1200, "after": 600},
+        {"type": ["#fc", "Fresh Co"], "ms": 900, "after": 1800}
+      ]
+    }
+  ],
+  "mobile": {
+    "page": "index.html",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      {"wait": 1600},
+      {"scrollTo": "#services", "offset": 0, "ms": 2400, "after": 900},
+      {"scroll": 640, "ms": 2400, "after": 900},
+      {"tap": ".menu-btn", "after": 1100},
+      {"tap": ".mmenu a[href='#app']", "after": 1200},
+      {"scroll": 520, "ms": 2200, "after": 900},
+      {"tap": ".menu-btn", "after": 1100},
+      {"tap": ".mmenu a[href='#contact']", "after": 1000},
+      {"type": ["#fn", "Sam"], "after": 1800}
+    ]
+  }
+}

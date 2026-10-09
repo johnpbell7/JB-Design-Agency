@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found · John Bell</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <script src="/assets/js/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <style>
+    .nf { min-height: 100dvh; display: grid; place-items: center; text-align: center; padding: 120px var(--gutter) 60px; }
+    .nf__num { font-size: clamp(120px, 26vw, 320px); font-weight: 800; letter-spacing: -0.07em; line-height: 0.85; color: transparent; -webkit-text-stroke: 2px var(--ink); }
+    .nf__num span { display: inline-block; animation: nf-bob 2.4s ease-in-out infinite; }
+    .nf__num span:nth-child(2) { animation-delay: 0.2s; color: var(--hl-yellow); -webkit-text-stroke-color: var(--ink); }
+    .nf__num span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes nf-bob { 50% { transform: translateY(-14px) rotate(-3deg); } }
+    .nf h1 { font-size: clamp(30px, 4.6vw, 60px); margin-top: 20px; }
+    .nf p { color: var(--grey-7); margin: 14px auto 0; max-width: 42ch; }
+    .nf__ctas { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 30px; }
+    @media (prefers-reduced-motion: reduce) { .nf__num span { animation: none; } }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <a class="site-nav__mark" href="/index.html">John Bell</a>
+    <nav class="site-nav__links" aria-label="Main">
+      <a href="/index.html#skills">Services</a>
+      <a href="/index.html#process">Process</a>
+      <a href="/projects/work.html">Work</a>
+      <a href="/projects/print.html">Print</a>
+      <a href="/projects/about.html">About</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
+      <a class="is-cta" href="/index.html#contact">Start a project</a>
+    </nav>
+  </header>
+  <main class="nf">
+    <div>
+      <p class="nf__num" aria-hidden="true"><span>4</span><span>0</span><span>4</span></p>
+      <h1>This page has <mark class="hl is-lit">wandered off.</mark></h1>
+      <p>The link might be old, or the page has moved.</p>
+      <div class="nf__ctas"><a class="btn" href="/index.html">Back to the start</a><a class="btn btn--ghost" href="/index.html#work">See the work</a></div>
+    </div>
+  </main>
+</body>
+</html>

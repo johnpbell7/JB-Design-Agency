@@ -1,0 +1,242 @@
+{
+ "name": "SCCC Heritage",
+ "viewport": {
+  "width": 1440,
+  "height": 900
+ },
+ "pace": 1.1,
+ "start": [
+  960,
+  640
+ ],
+ "startOffset": 100,
+ "cursor": {
+  "size": 22
+ },
+ "css": "a[href^=\"mailto:\"],a[href^=\"tel:\"]{display:none!important} .md\\:grid-cols-2>div{position:relative;transition:transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s} .md\\:grid-cols-2>div.lv-hover,.md\\:grid-cols-2>div:has(.lv-hover){transform:translateY(-6px) scale(1.035);box-shadow:0 20px 34px -14px rgba(139,21,56,.5);z-index:2}",
+ "escapeOnJump": true,
+ "steps": [
+  {
+   "label": "Bowl to scroll",
+   "page": "index.html?p=/",
+   "start": 0,
+   "reload": true,
+   "actions": [
+    {
+     "wait": 900
+    },
+    {
+     "tap": "section.relative.h-screen img.rounded-full",
+     "ms": 1200,
+     "after": 2200
+    },
+    {
+     "scroll": 900,
+     "ms": 2000,
+     "after": 900
+    },
+    {
+     "scrollTo": "a[href='?p=/decades']",
+     "offset": 520,
+     "ms": 1400,
+     "after": 600
+    },
+    {
+     "click": "a[href='?p=/decades']",
+     "text": "View All",
+     "ms": 1000,
+     "after": 300
+    }
+   ]
+  },
+  {
+   "label": "Fifteen decades",
+   "page": "index.html?p=/decades",
+   "start": 0,
+   "actions": [
+    {
+     "wait": 1400
+    },
+    {
+     "scrollTo": "a[href='?p=/decades/1910']",
+     "offset": 420,
+     "ms": 2000,
+     "after": 500
+    },
+    {
+     "hover": "a[href='?p=/decades/1900']",
+     "ms": 1000,
+     "after": 800
+    },
+    {
+     "hover": "a[href='?p=/decades/1910']",
+     "ms": 900,
+     "after": 1400
+    }
+   ]
+  },
+  {
+   "label": "Inside a decade",
+   "page": "index.html?p=/decades",
+   "start": {
+    "to": "a[href='?p=/decades/1910']",
+    "offset": 420
+   },
+   "actions": [
+    {
+     "click": "a[href='?p=/decades/1910']",
+     "ms": 900,
+     "after": 2200
+    },
+    {
+     "move": [
+      1180,
+      700
+     ],
+     "ms": 1000,
+     "after": 200
+    },
+    {
+     "scroll": 760,
+     "ms": 2200,
+     "after": 1500
+    }
+   ]
+  },
+  {
+   "label": "The men that served",
+   "page": "index.html?p=/decades/1910",
+   "start": {
+    "to": "section:has(h3)",
+    "offset": 90
+   },
+   "actions": [
+    {
+     "wait": 500
+    },
+    {
+     "hover": "div.p-5[class*='8B1538']",
+     "nth": 0,
+     "after": 700
+    },
+    {
+     "scroll": 380,
+     "ms": 1000,
+     "after": 300
+    },
+    {
+     "hover": "div.p-5[class*='8B1538']",
+     "nth": 1,
+     "after": 700
+    },
+    {
+     "scroll": 620,
+     "ms": 1300,
+     "after": 300
+    },
+    {
+     "hover": "div.p-5[class*='8B1538']",
+     "nth": 2,
+     "after": 700
+    },
+    {
+     "hover": "div.p-5[class*='8B1538']",
+     "nth": 3,
+     "after": 1000
+    }
+   ]
+  },
+  {
+   "label": "Meet the Teams",
+   "page": "index.html?p=/decades/1910",
+   "start": {
+    "to": "section:has(h3)",
+    "offset": -330
+   },
+   "actions": [
+    {
+     "wait": 500
+    },
+    {
+     "click": "button",
+     "text": "Menu",
+     "scroll": false,
+     "ms": 1200,
+     "after": 1100
+    },
+    {
+     "click": "a[href='?p=/teams']",
+     "text": "Meet the Teams",
+     "scroll": false,
+     "ms": 1000,
+     "after": 1800
+    },
+    {
+     "scrollTo": "[data-section-id='team-0'] button[aria-expanded]",
+     "offset": 380,
+     "ms": 2000,
+     "after": 400
+    },
+    {
+     "click": "[data-section-id='team-0'] button[aria-expanded]",
+     "ms": 900,
+     "after": 1900
+    }
+   ]
+  },
+  {
+   "label": "Archive photos, enlarged",
+   "page": "index.html?p=/teams",
+   "start": {
+    "to": "[data-section-id='team-3'] h2",
+    "offset": 110
+   },
+   "actions": [
+    {
+     "wait": 1200
+    },
+    {
+     "click": "button[aria-label^='Enlarge 1906 First XI']",
+     "ms": 1100,
+     "after": 3000
+    }
+   ]
+  }
+ ],
+ "mobile": {
+  "label": "The 1910s",
+  "page": "index.html?p=/",
+  "width": 390,
+  "touch": true,
+  "start": 0,
+  "actions": [
+   {
+    "wait": 1200
+   },
+   {
+    "tap": "button",
+    "text": "Menu",
+    "after": 1100
+   },
+   {
+    "tap": "button",
+    "text": "Through the Decades",
+    "after": 1000
+   },
+   {
+    "tap": "a[href='?p=/decades/1910']",
+    "after": 1800
+   },
+   {
+    "scroll": 640,
+    "ms": 2200,
+    "after": 900
+   },
+   {
+    "scroll": 760,
+    "ms": 2300,
+    "after": 1200
+   }
+  ]
+ }
+}

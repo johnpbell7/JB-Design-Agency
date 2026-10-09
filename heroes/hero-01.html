@@ -1,0 +1,518 @@
+<!doctype html>
+<!--
+  HERO 01 · "Showroom"
+  Idea: John's four best projects take over the hero in turn. Each one brings its own
+  laptop + phone (real captures), a see-through highlighter scribble and floating brand
+  pieces in that client's colour, and the whole hero (tint, headline highlighter) re-inks
+  to match. Choreographed GSAP hand-offs, ~4.5s each, pause on hover, clickable dots.
+-->
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>John Bell · Hero option 01 · Showroom</title>
+  <meta name="description" content="John Bell designs and builds websites, online shops and brands for small businesses. Available for freelance work in Leicestershire and across the UK.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="preload" as="image" href="../assets/captures/patch-agency/fold-desktop.webp">
+  <style>
+    /* ============ Showroom hero ============ */
+    .hero {
+      --sr-brand: #b3dd03;           /* tweened per project by GSAP */
+      --sr-pen: #cdf04a;
+      --scrib-blend: multiply;
+      --scrib-alpha: 0.5;
+      position: relative; isolation: isolate;
+      min-height: 100dvh;
+      display: flex; align-items: center;
+      padding: clamp(96px, 12vh, 132px) 0 clamp(36px, 6vh, 64px);
+      overflow: hidden;
+    }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero { --scrib-blend: normal; --scrib-alpha: 0.5; --wash: 10%; } }
+    :root[data-theme="dark"] .hero { --scrib-blend: normal; --scrib-alpha: 0.5; --wash: 10%; }
+
+    /* Background wash: a whisper of the client's colour over the white page */
+    .sr-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(52% 62% at 76% 52%, color-mix(in oklab, var(--sr-brand) var(--wash, 17%), transparent), transparent 72%),
+        radial-gradient(40% 40% at 8% 100%, color-mix(in oklab, var(--sr-brand) 7%, transparent), transparent 70%),
+        color-mix(in oklab, var(--sr-brand) 4%, var(--white));
+    }
+    .sr-bg::after { /* paper grain */
+      content: ""; position: absolute; inset: 0; opacity: 0.35; mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    }
+
+    .sr-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      align-items: center; gap: clamp(24px, 4vw, 64px);
+    }
+
+    /* ---------- Copy ---------- */
+    .avail {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 7px 14px 7px 10px; border-radius: 999px;
+      border: 1px solid var(--line); background: color-mix(in oklab, var(--white) 80%, transparent);
+      font-size: 13px; font-weight: 500; color: var(--grey-7);
+      backdrop-filter: blur(6px);
+    }
+    .avail i { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #22b35e; }
+    .avail i::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #22b35e; opacity: 0; animation: ping 2.4s var(--ease-out) infinite; }
+    @keyframes ping { 0% { transform: scale(0.5); opacity: 0.7; } 100% { transform: scale(1.6); opacity: 0; } }
+
+    .sr-title {
+      margin: 22px 0 0;
+      font-size: clamp(42px, 4.75vw, 72px); font-weight: 700; line-height: 1.03; letter-spacing: -0.045em;
+    }
+    .sr-title .line { display: block; overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+    .sr-title .line > span { display: inline-block; }
+    .sr-mark { --pen: var(--sr-pen); white-space: nowrap; }
+    .sr-lede { margin-top: 22px; max-width: 30em; font-size: clamp(15px, 1.15vw, 17px); color: var(--grey-7); }
+    .sr-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .sr-ctas .btn { padding: 15px 24px; }
+    .sr-ctas .btn span { transition: transform 0.3s var(--ease-spring); }
+    .sr-ctas .btn:hover span { transform: translateX(3px); }
+
+    /* ---------- Stage ---------- */
+    .sr-stage { position: relative; }
+    .scenes { position: relative; aspect-ratio: 700 / 560; container-type: inline-size; }
+    .scene { position: absolute; inset: 0; visibility: hidden; }
+    .scene.is-on { visibility: visible; }
+
+    .scribble { position: absolute; inset: -4% -6%; width: 112%; height: 108%; overflow: visible; mix-blend-mode: var(--scrib-blend); pointer-events: none; }
+    .scribble path { fill: none; stroke: var(--ink-c); stroke-width: 80; stroke-linecap: round; stroke-linejoin: round; opacity: var(--scrib-alpha); }
+
+    /* Laptop */
+    .laptop { position: absolute; left: 3%; top: 15%; width: 76%; filter: drop-shadow(0 30px 34px rgb(24 24 26 / 0.2)); }
+    .laptop__lid { position: relative; aspect-ratio: 16 / 10; padding: 2.1% 2.1% 2.9%; background: #1c1c1e; border-radius: 1.6cqw 1.6cqw 0.6cqw 0.6cqw; box-shadow: inset 0 0 0 1px #3a3a3c; }
+    .laptop__lid::before { content: ""; position: absolute; top: 0.9%; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: #3a3a3c; }
+    .laptop__base { height: 1.9cqw; margin: 0 -6%; border-radius: 0 0 1.8cqw 1.8cqw; background: linear-gradient(#e2e2e4, #a9a9ab); }
+    .laptop__base::before { content: ""; display: block; width: 15%; height: 36%; margin: 0 auto; border-radius: 0 0 8px 8px; background: #9a9a9c; }
+    .screen { position: relative; height: 100%; overflow: hidden; border-radius: 3px; background: #f2f2f2; }
+    .screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+    /* Phone (same build as the case-study phones, sized in its own cqw) */
+    .phone {
+      --edge: 2px;
+      position: absolute; right: 6%; bottom: 3%; width: 21.5%;
+      container-type: inline-size; aspect-ratio: 393 / 852;
+      border: var(--edge) solid transparent; border-radius: 17% / 7.9%;
+      background: linear-gradient(#0a0a0b, #0a0a0b) padding-box, linear-gradient(140deg, #c4c4c8 0%, #55555a 26%, #a6a6ab 50%, #3d3d40 76%, #b2b2b6 100%) border-box;
+      box-shadow: 0 40px 50px -26px rgb(17 17 17 / 0.55), 0 12px 24px -12px rgb(17 17 17 / 0.3);
+    }
+    .phone::before { content: ""; position: absolute; right: calc(-1 * var(--edge) - 3px); top: 27%; height: 13%; width: 3px; border-radius: 2px; background: #8e8e93; }
+    .phone__display { position: absolute; inset: 3.4cqw; overflow: hidden; border-radius: 13cqw; display: flex; flex-direction: column; background: var(--status-bg, #fff); }
+    .phone__display::before { content: ""; position: absolute; z-index: 3; top: 2.6cqw; left: 50%; width: 28cqw; height: 8cqw; translate: -50% 0; border-radius: 999px; background: #000; }
+    .phone__status { flex: 0 0 auto; height: 13cqw; display: flex; align-items: center; justify-content: space-between; padding: 0.6cqw 7.5cqw 0 9.5cqw; background: var(--status-bg, #fff); color: var(--status-fg, #111); font: 600 4.2cqw / 1 var(--font); }
+    .phone__status svg { height: 3.6cqw; width: auto; }
+    .phone .screen { flex: 1; border-radius: 0; }
+    .phone .screen img { height: auto; object-fit: initial; will-change: transform; }
+
+    /* Floating brand pieces */
+    .piece { position: absolute; z-index: 4; }
+    .piece__in { display: block; }
+    .piece img { width: 100%; border-radius: 0.9cqw; }
+    .piece--shadow img, .piece--shadow .polaroid, .piece--shadow .sticker { box-shadow: 0 2px 4px rgb(24 24 26 / 0.06), 0 22px 36px -14px rgb(24 24 26 / 0.35); }
+    .polaroid { display: block; padding: 5% 5% 0; background: #fff; border-radius: 3px; }
+    .polaroid img { aspect-ratio: 1; object-fit: cover; border-radius: 1px; }
+    .polaroid figcaption { font: 700 clamp(10px, 2.3cqw, 19px) / 1 Caveat, cursive; white-space: nowrap; color: #2c2c2c; text-align: center; padding: 7% 0 9%; }
+    .tape { position: absolute; left: 50%; top: -6%; width: 42%; height: 14%; translate: -50% 0; rotate: -4deg; background: rgb(255 255 255 / 0.55); box-shadow: 0 1px 2px rgb(0 0 0 / 0.06); backdrop-filter: blur(2px); }
+
+    .sticker { position: relative; display: grid; place-items: center; aspect-ratio: 1; border-radius: 50%; background: #b3dd03; color: #111318; box-shadow: inset 0 -0.8cqw 0 rgb(0 0 0 / 0.08); }
+    .sticker__ring { position: absolute; inset: 7%; width: 86%; height: 86%; animation: spin 16s linear infinite; }
+    .sticker__ring text { font: 800 11.5px var(--font); letter-spacing: 0.3em; fill: currentColor; }
+    .sticker__a { width: 40%; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .logo-disc { aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: #fff; display: grid; place-items: center; }
+    .logo-disc img { width: 92%; border-radius: 0; }
+    .tin img { border-radius: 0; filter: drop-shadow(0 18px 18px rgb(0 40 100 / 0.3)); box-shadow: none !important; }
+    .box img { border-radius: 0; filter: drop-shadow(0 22px 22px rgb(60 20 110 / 0.3)); box-shadow: none !important; }
+
+    /* ---------- Caption: dots + now showing ---------- */
+    .sr-caption { position: relative; z-index: 5; display: flex; align-items: center; justify-content: center; gap: 16px 22px; flex-wrap: wrap; margin-top: clamp(10px, 2.2vw, 30px); }
+    .dots { display: flex; align-items: center; gap: 6px; }
+    .dot { position: relative; width: 10px; height: 10px; padding: 0; border: 0; border-radius: 999px; background: var(--grey-3); cursor: pointer; overflow: hidden; transition: width 0.5s var(--ease-out), background 0.3s; }
+    .dot::before { content: ""; position: absolute; inset: -10px -4px; } /* bigger tap target */
+    .dot:hover { background: var(--grey-5); }
+    .dot.is-on { width: 44px; background: color-mix(in oklab, var(--ink) 14%, transparent); }
+    .dot i { position: absolute; inset: 0; border-radius: inherit; background: var(--ink); transform: scaleX(0); transform-origin: left; }
+    .dot:not(.is-on) i { transform: scaleX(0) !important; }
+    .now { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; padding: 6px 8px 6px 6px; border-radius: 999px; transition: background 0.25s; }
+    .now:hover { background: color-mix(in oklab, var(--ink) 5%, transparent); }
+    .now__swatch { width: 30px; height: 30px; border-radius: 50%; background: var(--sr-brand); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08); flex: none; }
+    .now__txt { display: grid; line-height: 1.25; overflow: hidden; }
+    .now__txt b { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+    .now__txt small { font-size: 12px; color: var(--grey-5); }
+    .now__go { display: inline-flex; align-items: center; gap: 6px; margin-left: 4px; font-size: 13px; font-weight: 500; color: var(--grey-7); border-bottom: 1px solid var(--grey-3); padding-bottom: 1px; transition: border-color 0.2s, color 0.2s; }
+    .now:hover .now__go { color: var(--ink); border-color: var(--ink); }
+    .paused { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--grey-5); opacity: 0; transition: opacity 0.3s; }
+    .sr-stage.is-paused .paused { opacity: 1; }
+
+    /* ---------- Strip below ---------- */
+    .strip { border-top: 1px solid var(--line); padding: 22px 0 28px; }
+    .strip .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px 28px; flex-wrap: wrap; }
+    .strip__label { font-size: 13px; font-weight: 500; color: var(--grey-5); }
+    .strip__list { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0; padding: 0; list-style: none; font-size: 15px; font-weight: 500; }
+    .strip__list a { text-decoration: none; color: var(--grey-7); transition: color 0.2s; }
+    .strip__list a:hover { color: var(--ink); }
+    .strip__scroll { font-size: 13px; color: var(--grey-5); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .sr-grid { grid-template-columns: 1fr; gap: 18px; }
+      .hero { align-items: flex-start; padding-top: 96px; }
+      .sr-copy { max-width: 640px; }
+    }
+    @media (max-width: 560px) {
+      .hero { padding-top: 88px; padding-bottom: 28px; }
+      .sr-title { margin-top: 16px; font-size: clamp(36px, 10.4vw, 46px); }
+      .sr-lede { margin-top: 14px; font-size: 15px; line-height: 1.6; }
+      .sr-ctas { margin-top: 20px; gap: 10px; }
+      .sr-ctas .btn { padding: 13px 18px; font-size: 14px; }
+      .avail { font-size: 12px; }
+      .scenes { width: 90%; margin: 14px auto 0; }
+      .now__go { display: none; }
+      .sr-caption { gap: 10px 14px; }
+      .paused { display: none; }
+      .strip__list { font-size: 14px; gap: 4px 16px; }
+      .strip__scroll { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sticker__ring { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-nav">
+    <a class="site-nav__mark" href="../index.html">John Bell <span>Design</span></a>
+    <nav class="site-nav__links" aria-label="Main">
+      <a href="../index.html#skills">Services</a>
+      <a href="../index.html#process">Process</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../projects/property.html">Print</a>
+      <a href="../index.html#faq">FAQs</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
+      <a class="is-cta" href="../index.html#contact">Start a project</a>
+    </nav>
+  </header>
+
+  <!-- Highlighter scribble texture: roughens the edges like a real marker -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <filter id="marker" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="4" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <symbol id="patch-a" viewBox="100.32 9.75 123.78 105.08"><path fill="currentColor" d="M212.89,81.13c-1.09,0-2.15.16-3.15.46l-39.5-54.3c1.23-1.8,1.94-3.970,1.94-6.31,0-6.2-5.03-11.23-11.23-11.23s-11.23,5.03-11.23,11.23c0,2.7.96,5.18,2.55,7.12l-38.55,64.48c-.7-.14-1.420-.21-2.17-.21-6.2,0-11.23,5.03-11.23,11.23s5.03,11.230,11.23,11.23c5.3,0,9.73-3.68,10.91-8.62l80.34-8.9c1.83,3.72,5.65,6.29,10.07,6.29,6.2,0,11.23-5.03,11.23-11.23s-5.03-11.23-11.23-11.23ZM120.24,96.46l38.55-64.48c.7.14,1.42.21,2.17.21,1.09,0,2.15-.16,3.14-.45l39.5,54.3c-.76,1.11-1.31,2.36-1.63,3.71l-80.34,8.9c-.38-.78-.85-1.52-1.4-2.19Z"/></symbol>
+      <symbol id="sig" viewBox="0 0 17 12"><path fill="currentColor" d="M1 8h2v3H1zM5 6h2v5H5zM9 4h2v7H9zM13 1h2v10h-2z"/></symbol>
+    </defs>
+  </svg>
+
+  <main id="main">
+    <section class="hero" data-showroom aria-label="Introduction">
+      <div class="sr-bg" aria-hidden="true"></div>
+
+      <div class="sr-grid wrap">
+        <div class="sr-copy">
+          <span class="avail" data-in><i></i>Available for freelance · Leicestershire / UK</span>
+          <h1 class="sr-title">
+            <span class="line"><span>I design</span></span>
+            <span class="line"><span>and build</span></span>
+            <span class="line"><span>websites people</span></span>
+            <span class="line"><span><mark class="hl sr-mark">like to use.</mark></span></span>
+          </h1>
+          <p class="sr-lede" data-in>Websites, online shops and brands for small businesses. I design them <em>and</em> build them, from the first sketch to the live site.</p>
+          <div class="sr-ctas" data-in>
+            <a class="btn" href="../index.html#contact">Start a project <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="../index.html#work">See the work</a>
+          </div>
+        </div>
+
+        <div class="sr-stage" aria-roledescription="carousel" aria-label="Selected projects">
+          <div class="scenes">
+
+            <!-- 01 PATCH -->
+            <article class="scene is-on" aria-roledescription="slide" aria-label="PATCH, 1 of 4" style="--ink-c:#b3dd03;--status-bg:#0f1014;--status-fg:#fff">
+              <svg class="scribble" viewBox="0 0 700 560" preserveAspectRatio="none" data-scribble="0" aria-hidden="true"><g filter="url(#marker)"></g></svg>
+              <div class="laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/patch-agency/fold-desktop.webp" alt="PATCH website home page on a laptop" width="1440" height="900"></div></div><div class="laptop__base"></div></div>
+              <div class="phone"><div class="phone__display"><div class="phone__status"><span>9:41</span><svg viewBox="0 0 17 12"><use href="#sig"/></svg></div><div class="screen"><img src="../assets/captures/patch-agency/home-mobile.webp" alt="PATCH website on a phone" width="780" height="16000"></div></div></div>
+              <div class="piece piece--shadow" style="left:-3%;top:2%;width:21%" data-r="-10"><div class="piece__in">
+                <div class="sticker"><svg class="sticker__ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring0" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#ring0">EVERY PATCH COVERED · EVERY PATCH COVERED ·</textPath></text></svg><svg class="sticker__a" viewBox="0 0 123.78 105.08" role="img" aria-label="PATCH connected-A mark"><use href="#patch-a"/></svg></div>
+              </div></div>
+              <figure class="piece piece--shadow" style="left:55%;top:-4%;width:21%;margin:0" data-r="7"><div class="piece__in">
+                <div class="polaroid" style="position:relative"><span class="tape" aria-hidden="true"></span><img src="../assets/projects/patch/cards.jpg" alt="PATCH business cards" width="1600" height="1200"><figcaption>business cards</figcaption></div>
+              </div></figure>
+            </article>
+
+            <!-- 02 Birth-hood -->
+            <article class="scene" aria-roledescription="slide" aria-label="Birth-hood, 2 of 4" style="--ink-c:#fe7fcc;--status-bg:#111;--status-fg:#fff">
+              <svg class="scribble" viewBox="0 0 700 560" preserveAspectRatio="none" data-scribble="1" aria-hidden="true"><g filter="url(#marker)"></g></svg>
+              <div class="laptop"><div class="laptop__lid"><div class="screen"><img data-src="../assets/captures/birth-hood/fold-desktop.webp" alt="Birth-hood website home page on a laptop" width="1440" height="900"></div></div><div class="laptop__base"></div></div>
+              <div class="phone"><div class="phone__display"><div class="phone__status"><span>9:41</span><svg viewBox="0 0 17 12"><use href="#sig"/></svg></div><div class="screen"><img data-src="../assets/captures/birth-hood/home-mobile.webp" alt="Birth-hood website on a phone" width="780" height="16000"></div></div></div>
+              <figure class="piece piece--shadow" style="left:-4%;top:0%;width:23%;margin:0" data-r="-8"><div class="piece__in">
+                <div class="polaroid" style="position:relative"><span class="tape" aria-hidden="true"></span><img data-src="../assets/projects/birth-hood/yoga-class-189.jpg" alt="A Birth-hood pregnancy yoga class" width="900" height="600"><figcaption>pregnancy yoga</figcaption></div>
+              </div></figure>
+              <div class="piece piece--shadow" style="left:57%;top:-3%;width:17%" data-r="9"><div class="piece__in">
+                <div class="logo-disc" style="box-shadow:0 22px 36px -14px rgb(120 30 90 / 0.35)"><img data-src="../assets/projects/birth-hood/logo.jpg" alt="Birth-hood logo" width="400" height="400"></div>
+              </div></div>
+            </article>
+
+            <!-- 03 GoSweet -->
+            <article class="scene" aria-roledescription="slide" aria-label="GoSweet, 3 of 4" style="--ink-c:#9b63f2;--status-bg:#f7f5fb;--status-fg:#111">
+              <svg class="scribble" viewBox="0 0 700 560" preserveAspectRatio="none" data-scribble="2" aria-hidden="true"><g filter="url(#marker)"></g></svg>
+              <div class="laptop"><div class="laptop__lid"><div class="screen"><img data-src="../assets/captures/gosweet/fold-desktop.webp" alt="GoSweet online shop home page on a laptop" width="1440" height="900"></div></div><div class="laptop__base"></div></div>
+              <div class="phone"><div class="phone__display"><div class="phone__status"><span>9:41</span><svg viewBox="0 0 17 12"><use href="#sig"/></svg></div><div class="screen"><img data-src="../assets/captures/gosweet/home-mobile.webp" alt="GoSweet online shop on a phone" width="780" height="16000"></div></div></div>
+              <div class="piece piece--shadow" style="left:55%;top:-6%;width:17%" data-r="8"><div class="piece__in">
+                <img data-src="../assets/captures/gosweet/card-desktop.webp" alt="GoSweet product card: Monster Reserve Orange Dreamsicle, box of 12" width="486" height="902">
+              </div></div>
+              <div class="piece box" style="left:-6%;top:52%;width:25%" data-r="-9"><div class="piece__in">
+                <img data-src="../assets/projects/gosweet/halloween-box.webp" alt="GoSweet Halloween mystery box" width="800" height="800">
+              </div></div>
+            </article>
+
+            <!-- 04 Nic Pouches -->
+            <article class="scene" aria-roledescription="slide" aria-label="Nic Pouches, 4 of 4" style="--ink-c:#3b95ff;--status-bg:#fff;--status-fg:#111">
+              <svg class="scribble" viewBox="0 0 700 560" preserveAspectRatio="none" data-scribble="3" aria-hidden="true"><g filter="url(#marker)"></g></svg>
+              <div class="laptop"><div class="laptop__lid"><div class="screen"><img data-src="../assets/captures/nic-pouches/fold-desktop.webp" alt="Nic Pouches online shop home page on a laptop" width="1440" height="900"></div></div><div class="laptop__base"></div></div>
+              <div class="phone"><div class="phone__display"><div class="phone__status"><span>9:41</span><svg viewBox="0 0 17 12"><use href="#sig"/></svg></div><div class="screen"><img data-src="../assets/captures/nic-pouches/home-mobile.webp" alt="Nic Pouches online shop on a phone" width="780" height="16000"></div></div></div>
+              <div class="piece piece--shadow" style="left:54%;top:-5%;width:18%" data-r="7"><div class="piece__in">
+                <img data-src="../assets/captures/nic-pouches/card-desktop.webp" alt="Nic Pouches product card: FUMi Mini Spearmint" width="494" height="752">
+              </div></div>
+              <div class="piece tin" style="left:-4%;top:60%;width:18%" data-r="-12"><div class="piece__in">
+                <img data-src="../assets/projects/nic-pouches/nic-pouch-blue-membership.png" alt="Nic Pouches blue membership tin" width="149" height="128">
+              </div></div>
+            </article>
+          </div>
+
+          <div class="sr-caption">
+            <div class="dots" role="tablist" aria-label="Choose a project">
+              <button class="dot is-on" type="button" role="tab" aria-selected="true" aria-label="PATCH"><i></i></button>
+              <button class="dot" type="button" role="tab" aria-selected="false" aria-label="Birth-hood"><i></i></button>
+              <button class="dot" type="button" role="tab" aria-selected="false" aria-label="GoSweet"><i></i></button>
+              <button class="dot" type="button" role="tab" aria-selected="false" aria-label="Nic Pouches"><i></i></button>
+            </div>
+            <a class="now" href="../projects/patch.html" aria-live="polite">
+              <span class="now__swatch" aria-hidden="true"></span>
+              <span class="now__txt"><b data-now-name>PATCH</b><small data-now-what>Brand identity + website</small></span>
+              <span class="now__go">Case study <span aria-hidden="true">→</span></span>
+            </a>
+            <span class="paused" aria-hidden="true">Paused</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="wrap">
+        <span class="strip__label">More of my work</span>
+        <ul class="strip__list">
+          <li><a href="../projects/vsl-trade.html">VSL Trade</a></li>
+          <li><a href="../projects/birdie-blooms.html">Birdie Blooms</a></li>
+          <li><a href="../projects/sccc-heritage.html">SCCC Heritage</a></li>
+          <li><a href="../projects/beetle-eyes.html">Beetle Eyes</a></li>
+          <li><a href="../projects/property.html">Property print</a></li>
+        </ul>
+        <a class="strip__scroll" href="../index.html#who">What I do <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+  (() => {
+    document.documentElement.classList.remove('no-js');
+    const hero = document.querySelector('[data-showroom]');
+    const stage = hero.querySelector('.sr-stage');
+    const scenes = [...hero.querySelectorAll('.scene')];
+    const dots = [...hero.querySelectorAll('.dot')];
+    const now = hero.querySelector('.now');
+    const nowName = hero.querySelector('[data-now-name]');
+    const nowWhat = hero.querySelector('[data-now-what]');
+    const mark = hero.querySelector('.sr-mark');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const HOLD = 4.5;
+
+    const P = [
+      { name: 'PATCH',       what: 'Brand identity + website', href: '../projects/patch.html',       brand: '#b3dd03', pen: '#cdf04a' },
+      { name: 'Birth-hood',  what: 'Website · Next.js + Sanity', href: '../projects/birth-hood.html', brand: '#fe7fcc', pen: '#ffa6d8' },
+      { name: 'GoSweet',     what: 'Online shop redesign',     href: '../projects/gosweet.html',     brand: '#7c3fd6', pen: '#d3b6ff' },
+      { name: 'Nic Pouches', what: 'Online shop redesign',     href: '../projects/nic-pouches.html', brand: '#0070d5', pen: '#9fd2ff' },
+    ];
+
+    /* ---- Highlighter scribbles: thick back-and-forth marker strokes, one path per stroke
+       so the overlaps build up colour like a real pen. Each project gets its own shape. ---- */
+    // x0/x1/y0/y1: area to colour in; tilt: rise of each stroke across the area (parallel
+    // hatching, like colouring in fast with a chisel marker); rows overlap a little.
+    const shapes = [
+      { x0: 30, x1: 650, y0: 70,  y1: 480, rows: 6, tilt: -70, wob: 18, seed: 3 },
+      { x0: 20, x1: 640, y0: 60,  y1: 490, rows: 6, tilt: 50,  wob: 26, seed: 9 },
+      { x0: 40, x1: 660, y0: 55,  y1: 475, rows: 6, tilt: -100, wob: 22, seed: 5 },
+      { x0: 30, x1: 655, y0: 75,  y1: 490, rows: 6, tilt: -30, wob: 16, seed: 12 },
+    ];
+    const rand = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
+    function strokes(sh) {
+      const r = rand(sh.seed), out = [];
+      const step = (sh.y1 - sh.y0) / (sh.rows - 1);
+      const pts = [];
+      for (let i = 0; i < sh.rows; i++) {
+        const y = sh.y0 + step * i + (r() - 0.5) * 14;
+        const edge = i === 0 || i === sh.rows - 1;
+        const xa = sh.x0 + r() * 36 + (edge ? 46 : 0);
+        const xb = sh.x1 - r() * 36 - (edge ? 56 : 0);
+        const L = [xa, y - sh.tilt / 2], R = [xb, y + sh.tilt / 2];
+        pts.push(i % 2 ? [R, L] : [L, R]);
+      }
+      pts.forEach(([s, e], i) => {
+        const cx = (s[0] + e[0]) / 2, cy = (s[1] + e[1]) / 2 + (r() - 0.5) * sh.wob * 2;
+        let d = `M${s[0].toFixed(1)} ${s[1].toFixed(1)} Q${cx.toFixed(1)} ${cy.toFixed(1)} ${e[0].toFixed(1)} ${e[1].toFixed(1)}`;
+        const nx = pts[i + 1];
+        if (nx) { // the pen doesn't lift: a tight turn into the next row
+          const dir = e[0] > s[0] ? 1 : -1;
+          d += ` Q${(e[0] + dir * 16).toFixed(1)} ${((e[1] + nx[0][1]) / 2).toFixed(1)} ${nx[0][0].toFixed(1)} ${nx[0][1].toFixed(1)}`;
+        }
+        out.push(d);
+      });
+      return out;
+    }
+    const sceneParts = scenes.map((el, i) => {
+      const g = el.querySelector('.scribble g');
+      g.innerHTML = strokes(shapes[i]).map(d => `<path d="${d}"/>`).join('');
+      const paths = [...g.querySelectorAll('path')];
+      // gap longer than the path + offsets past the ends, so no round-cap dots are left behind
+      paths.forEach(p => { const L = p.getTotalLength() + 2; p.dataset.len = L + 100; p.style.strokeDasharray = `${L} ${L + 200}`; });
+      return {
+        el, paths,
+        laptop: el.querySelector('.laptop'),
+        phone: el.querySelector('.phone'),
+        phoneImg: el.querySelector('.phone .screen img'),
+        pieces: [...el.querySelectorAll('.piece')],
+      };
+    });
+
+    // Load the later scenes once the first is up
+    const loadRest = () => hero.querySelectorAll('img[data-src]').forEach(img => { img.src = img.dataset.src; img.removeAttribute('data-src'); });
+
+    // Initial state
+    sceneParts.forEach((s, i) => {
+      s.pieces.forEach(p => gsap.set(p, { rotation: +p.dataset.r || 0 }));
+      if (i) gsap.set(s.el, { autoAlpha: 0 });
+      s.paths.forEach(p => gsap.set(p, { strokeDashoffset: i ? +p.dataset.len : 0 }));
+    });
+    gsap.set(hero, { '--sr-brand': P[0].brand, '--sr-pen': P[0].pen });
+
+    let cur = 0, active = null, phoneScroll = null;
+    const floats = [];
+
+    function idle(s) {
+      floats.forEach(t => t.kill()); floats.length = 0;
+      if (phoneScroll) phoneScroll.kill();
+      if (reduce) return;
+      s.pieces.forEach((p, k) => {
+        const inner = p.firstElementChild;
+        floats.push(gsap.to(inner, { y: k % 2 ? 9 : -9, rotation: k % 2 ? -2 : 2, duration: 2.4 + k * 0.5, ease: 'sine.inOut', yoyo: true, repeat: -1 }));
+      });
+      // the phone slowly scrolls the real mobile page
+      phoneScroll = gsap.fromTo(s.phoneImg, { yPercent: 0 }, { yPercent: -9, duration: HOLD + 2, ease: 'power1.inOut', delay: 0.4 });
+    }
+
+    function caption(i) {
+      const p = P[i];
+      now.href = p.href;
+      dots.forEach((d, k) => { d.classList.toggle('is-on', k === i); d.setAttribute('aria-selected', k === i); });
+      if (reduce) { nowName.textContent = p.name; nowWhat.textContent = p.what; return; }
+      gsap.timeline()
+        .to([nowName, nowWhat], { yPercent: -110, opacity: 0, duration: 0.3, ease: 'power2.in', stagger: 0.05 })
+        .add(() => { nowName.textContent = p.name; nowWhat.textContent = p.what; })
+        .fromTo([nowName, nowWhat], { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.6, ease: 'expo.out', stagger: 0.06 });
+    }
+
+    function go(n) {
+      if (n === cur) return;
+      if (active) active.progress(1);
+      const a = sceneParts[cur], b = sceneParts[n], p = P[n];
+      cur = n;
+      caption(n);
+      startTimer();
+
+      if (reduce) {
+        gsap.set(a.el, { autoAlpha: 0 }); a.el.classList.remove('is-on');
+        b.el.classList.add('is-on');
+        gsap.set(b.el, { autoAlpha: 1 }); b.paths.forEach(q => gsap.set(q, { strokeDashoffset: 0 }));
+        gsap.set(hero, { '--sr-brand': p.brand, '--sr-pen': p.pen });
+        return;
+      }
+
+      b.el.classList.add('is-on');
+      const tl = active = gsap.timeline({ onComplete: () => { a.el.classList.remove('is-on'); active = null; } });
+      // ---- out: pieces flick away, phone drops, laptop slides off, ink wipes off
+      tl.to(a.pieces, { scale: 0.5, opacity: 0, y: -24, rotation: '+=14', duration: 0.38, ease: 'power2.in', stagger: 0.05 }, 0)
+        .to(a.phone, { y: 70, x: 20, rotation: 5, opacity: 0, duration: 0.45, ease: 'power2.in' }, 0.04)
+        .to(a.laptop, { x: -70, opacity: 0, duration: 0.55, ease: 'power3.in' }, 0.1)
+        .to([...a.paths].reverse(), { strokeDashoffset: (k, el) => -el.dataset.len, duration: 0.32, ease: 'power1.in', stagger: 0.04 }, 0.05)
+        .set(a.el, { autoAlpha: 0 })
+      // ---- page re-inks to the next client
+        .to(hero, { '--sr-brand': p.brand, '--sr-pen': p.pen, duration: 1.1, ease: 'power2.inOut' }, 0.15)
+      // ---- in: new scribble colours in stroke by stroke, then the devices and pieces land
+        .set(b.el, { autoAlpha: 1 }, 0.44)
+        .fromTo(b.paths, { strokeDashoffset: (k, el) => +el.dataset.len }, { strokeDashoffset: 0, duration: 0.34, ease: 'power1.inOut', stagger: 0.075 }, 0.44)
+        .fromTo(b.laptop, { x: 90, opacity: 0 }, { x: 0, opacity: 1, duration: 1, ease: 'expo.out' }, 0.55)
+        .fromTo(b.phone, { y: 90, x: 0, rotation: 7, opacity: 0 }, { y: 0, rotation: 0, opacity: 1, duration: 0.95, ease: 'back.out(1.5)' }, 0.72)
+        .fromTo(b.pieces, { scale: 0.4, opacity: 0, y: 30, rotation: (k, el) => (+el.dataset.r || 0) - 22 },
+                          { scale: 1, opacity: 1, y: 0, rotation: (k, el) => +el.dataset.r || 0, duration: 0.85, ease: 'back.out(1.9)', stagger: 0.12 }, 0.88)
+        .add(() => idle(b), 0.9);
+    }
+
+    /* ---- Autoplay with progress pill, pause on hover / off-screen / hidden tab ---- */
+    const prog = { v: 0 };
+    let timer = null, hovering = false, visible = true;
+    function startTimer() {
+      if (timer) timer.kill();
+      prog.v = 0;
+      if (reduce) return;
+      const fill = dots[cur].querySelector('i');
+      gsap.set(fill, { scaleX: 0 });
+      timer = gsap.to(prog, { v: 1, duration: HOLD, ease: 'none', delay: 1, paused: hovering || !visible,
+        onUpdate: () => gsap.set(fill, { scaleX: prog.v }),
+        onComplete: () => go((cur + 1) % P.length) });
+    }
+    const sync = () => { if (!timer) return; (hovering || !visible) ? timer.pause() : timer.resume(); stage.classList.toggle('is-paused', hovering); };
+    stage.addEventListener('mouseenter', () => { hovering = true; sync(); });
+    stage.addEventListener('mouseleave', () => { hovering = false; sync(); });
+    stage.addEventListener('focusin', () => { hovering = true; sync(); });
+    stage.addEventListener('focusout', () => { hovering = false; sync(); });
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting && !document.hidden; sync(); }, { threshold: 0.25 }).observe(hero);
+    document.addEventListener('visibilitychange', () => { visible = !document.hidden; sync(); });
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+    stage.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') go((cur + 1) % P.length);
+      if (e.key === 'ArrowLeft') go((cur + P.length - 1) % P.length);
+    });
+
+    /* ---- Entrance ---- */
+    const first = sceneParts[0];
+    if (reduce) {
+      mark.classList.add('is-lit');
+      loadRest(); startTimer(); return;
+    }
+    gsap.set(mark, { transition: 'none', backgroundSize: '0% 72%' });
+    first.paths.forEach(q => gsap.set(q, { strokeDashoffset: +q.dataset.len }));
+    const intro = gsap.timeline({ delay: 0.15, onComplete: () => { loadRest(); idle(first); startTimer(); } });
+    intro.from('.sr-title .line > span', { yPercent: 105, duration: 1, ease: 'expo.out', stagger: 0.09 }, 0)
+      .from('[data-in]', { y: 16, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1 }, 0.15)
+      .to(mark, { backgroundSize: '100% 72%', duration: 0.7, ease: 'power2.inOut' }, 0.7)
+      .fromTo(first.paths, { strokeDashoffset: (k, el) => +el.dataset.len }, { strokeDashoffset: 0, duration: 0.36, ease: 'power1.inOut', stagger: 0.08 }, 0.35)
+      .from(first.laptop, { x: 90, opacity: 0, duration: 1.1, ease: 'expo.out' }, 0.55)
+      .from(first.phone, { y: 90, rotation: 7, opacity: 0, duration: 1, ease: 'back.out(1.5)' }, 0.75)
+      .from(first.pieces, { scale: 0.4, opacity: 0, y: 30, rotation: (k, el) => (+el.dataset.r || 0) - 22, duration: 0.9, ease: 'back.out(1.9)', stagger: 0.12 }, 0.95)
+      .from('.sr-caption', { opacity: 0, y: 10, duration: 0.6 }, 1.1);
+  })();
+  </script>
+</body>
+</html>

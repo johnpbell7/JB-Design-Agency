@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Birth-hood: website design and build · John Bell</title>
+  <meta name="description" content="A warm, friendly website for birth-hood, a hypnobirthing, doula and yoga business in Leicestershire. Designed and built by John Bell in Next.js, with Sanity so the owner can edit it herself.">
+  <meta property="og:title" content="Birth-hood: website design and build · John Bell">
+  <meta property="og:description" content="A website for a Leicestershire hypnobirthing and doula business, designed and built by John Bell, with a quiz that helps parents pick a package.">
+  <meta property="og:image" content="../assets/captures/birth-hood/fold-desktop.webp">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/case.css">
+  <link rel="stylesheet" href="../assets/css/case-plus.css">
+  <link rel="stylesheet" href="../assets/css/birth-hood.css">
+</head>
+<body data-pen>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="bh-star" viewBox="0 0 24 24"><path d="M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z" fill="currentColor"/></symbol>
+  </svg>
+
+  <header class="site-nav">
+    <a class="site-nav__mark" href="../index.html">John Bell</a>
+    <nav class="site-nav__links" aria-label="Main">
+      <a href="../index.html#skills">Services</a>
+      <a href="../index.html#process">Process</a>
+      <a href="work.html">Work</a>
+      <a href="print.html">Print</a>
+      <a href="about.html">About</a>
+      <a href="../index.html#faq">FAQs</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
+      <a class="is-cta" href="../index.html#contact">Start a project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="cs-hero wrap">
+      <div class="cs-hero__grid">
+        <div class="cs-hero__intro">
+          <h1>Helping parents feel <mark class="hl hl--pink">positive about birth.</mark></h1>
+          <p class="cs-hero__lede">A warm, friendly website for Leanne’s hypnobirthing, doula and yoga business, with stickers and polaroid photos. She edits every page herself.</p>
+          <span class="credit"><i>✓</i>Design and build</span>
+        </div>
+        <div class="stage" data-stage style="--stage-hl:#ff9ed2">
+          <div class="stage__glow" aria-hidden="true"></div>
+          <div class="laptop">
+            <div class="laptop__lid"><div class="screen"><img src="../assets/captures/birth-hood/home-desktop.webp" alt="birth-hood homepage on desktop"></div></div>
+            <div class="laptop__base"></div>
+          </div>
+          <div class="phone" data-start=".1" data-span=".5"><div class="screen"><img src="../assets/captures/birth-hood/home-mobile.webp" alt="birth-hood homepage on mobile"></div></div>
+          <div class="bh-sparkles" aria-hidden="true">
+            <span class="bh-sparkle" style="top:2%;left:40%;--s:30px"><svg><use href="#bh-star"/></svg></span>
+            <span class="bh-sparkle" style="top:88%;left:4%;--s:24px;--delay:1.1s"><svg><use href="#bh-star"/></svg></span>
+            <span class="bh-sparkle" style="bottom:-2%;right:30%;--s:34px;--delay:.6s"><svg><use href="#bh-star"/></svg></span>
+          </div>
+          <div class="pop bh-pop-card" style="--x:-6%;--y:-6%;--w:clamp(160px,13vw,196px);--r:-6deg" data-from-x="60" aria-hidden="true">
+            <div class="quiz-result-card">
+              <div class="quiz-result-eyebrow">Most popular</div>
+              <div class="quiz-result-head"><span class="quiz-result-name">Balanced</span><span class="quiz-result-price">£1,495</span></div>
+              <div class="quiz-result-tag">Enhanced support</div>
+              <ul class="quiz-result-list">
+                <li><span class="quiz-tick">✓</span>2 antenatal sessions + hypnobirthing hub</li>
+                <li><span class="quiz-tick">✓</span>Birth pool &amp; TENS machine included</li>
+                <li><span class="quiz-tick">✓</span>Ongoing support for 6 weeks</li>
+              </ul>
+              <div class="quiz-result-actions"><span class="quiz-btn quiz-btn--fill">Book a free consultation</span><span class="quiz-btn">See full package details</span></div>
+            </div>
+          </div>
+          <div class="pop" style="--x:72%;--y:-6%;--w:16%;--r:7deg" data-from-x="-60" data-pop-sm="hide"><figure class="bh-polaroid"><img src="../assets/projects/birth-hood/leanne-van-14.jpg" alt=""><span>Leanne</span></figure></div>
+          </div>
+      </div>
+      <dl class="meta">
+        <div><dt>Site</dt><dd>Multi-page site · 35 pages</dd></div>
+        <div><dt>Client</dt><dd>birth-hood (Leanne)</dd></div>
+        <div><dt>Sector</dt><dd>Hypnobirthing, doula &amp; yoga</dd></div>
+        <div><dt>Design + build</dt><dd>John Bell</dd></div>
+        <div><dt>Stack</dt><dd>Next.js, Sanity, GSAP, Stripe</dd></div>
+      </dl>
+    </section>
+
+    <!-- Brief + what I did -->
+    <section class="cs-brief wrap">
+      <div class="cs-brief__grid">
+        <div data-reveal><span class="label">The brief</span><p class="cs-brief__text">Leanne needed a warm site she could edit herself. It also had to answer the thing she gets asked most, which is which doula package is the right one.</p></div>
+        <div data-reveal><span class="label">What I did</span><ul class="cs-brief__list">
+          <li>Pink colours, Poppins type and Leanne’s handwritten sign-off</li>
+          <li>Sticker-style cards with scalloped edges, made in code</li>
+          <li>A collage of polaroid photos at the top of the home page</li>
+          <li>A five-question quiz to find the right package</li>
+          <li>Built in Next.js, with Sanity for editing and Stripe for payments</li>
+        </ul></div>
+      </div>
+    </section>
+
+    <!-- Mobile parade -->
+    <section class="section--tight wrap">
+      <div class="section-head" data-reveal>
+        <span class="label">Phones first</span>
+        <h2>Easy to use on a phone, <mark class="hl">even at 3am.</mark></h2>
+        <p>Big buttons, a Book button that stays on screen, and no need to zoom in.</p>
+      </div>
+      <div class="panel parade" data-parade style="--p-bg:#fe7fcc;--p-muted:rgb(17 17 17 / .55)">
+        <div class="bh-sparkles" aria-hidden="true">
+          <span class="bh-sparkle white" style="top:6%;left:30%;--s:30px"><svg><use href="#bh-star"/></svg></span>
+          <span class="bh-sparkle white" style="top:52%;right:3%;--s:24px;--delay:1s"><svg><use href="#bh-star"/></svg></span>
+          <span class="bh-sparkle" style="bottom:8%;left:6%;--s:34px;--delay:.5s"><svg><use href="#bh-star"/></svg></span>
+        </div>
+        <div class="parade__row">
+          <div class="phone" data-live="../assets/live/birth-hood/index.html" data-live-journey="phone-hypnobirthing.json"><div class="screen"><video src="../assets/clips/birth-hood/hypnobirthing.mp4" poster="../assets/clips/birth-hood/hypnobirthing.jpg" muted playsinline loop preload="none" aria-label="birth-hood on mobile: services grid to the Hypnobirthing page"></video></div></div>
+          <div class="phone" data-live="../assets/live/birth-hood/find-your-package.html" data-live-journey="phone-finder.json"><div class="screen"><video src="../assets/clips/birth-hood/finder.mp4" poster="../assets/clips/birth-hood/finder.jpg" muted playsinline loop preload="none" aria-label="birth-hood on mobile: answering the package finder quiz to a recommended package"></video></div></div>
+          <div class="phone" data-live="../assets/live/birth-hood/index.html" data-live-journey="phone-doula.json"><div class="screen"><video src="../assets/clips/birth-hood/doula.mp4" poster="../assets/clips/birth-hood/doula.jpg" muted playsinline loop preload="none" aria-label="birth-hood on mobile: menu to the Birth Doula page"></video></div></div>
+          <div class="phone" data-live="../assets/live/birth-hood/index.html" data-live-journey="phone-leanne.json"><div class="screen"><video src="../assets/clips/birth-hood/leanne.mp4" poster="../assets/clips/birth-hood/leanne.jpg" muted playsinline loop preload="none" aria-label="birth-hood on mobile: homepage to the Meet Leanne page"></video></div></div>
+        </div>
+        <div class="parade__caption" aria-hidden="true"><span>Hypnobirthing</span><span>Package finder</span><span>Birth doula</span><span>Meet Leanne</span></div>
+
+        <!-- Live features popping out of the screens -->
+        <div class="pop" style="--x:1%;--y:7%;--w:clamp(120px,12vw,170px);--r:-8deg" data-from-x="120">
+          <figure class="bh-polaroid"><img src="../assets/projects/birth-hood/leanne-van-14.jpg" alt=""><span>Leanne</span></figure>
+        </div>
+        <div class="pop" style="--x:72%;--y:64%;--w:clamp(190px,18vw,250px);--r:3deg" data-from-x="-100" data-from-y="-40" data-pop-sm="hide">
+          <div class="bh-review">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>“Leanne is an incredible hypnobirthing teacher.”</p>
+            <small>Charly · Google review</small>
+          </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- The site in use: a desktop recording with steps that follow it -->
+    <section class="section wrap" data-cp-film data-live="../assets/live/birth-hood/index.html" data-mobile="../assets/captures/birth-hood/home-mobile.webp" style="--tint:#f7d4ee;--swash:rgb(254 127 204 / 0.45);--pen:#ff9ed2">
+      <header class="cp-head" data-reveal>
+        <span class="label">In use</span>
+        <h2>From the home page <mark class="hl">to booking a call.</mark></h2>
+        <p>The live site running on a desktop.</p>
+      </header>
+      <div class="cp-film__grid">
+        <div class="cp-film__stage">
+          <div class="cp-browser">
+            <div class="cp-browser__bar"><i></i><i></i><i></i><span>birth-hood.co.uk</span></div>
+            <video src="../assets/clips/birth-hood/film-finder.mp4" poster="../assets/clips/birth-hood/film-finder.jpg" muted playsinline loop preload="none" aria-label="birth-hood on desktop: the homepage, the Doula menu, the Birth Doula page and its packages, then the package finder answered to a best match with a free consultation button"></video>
+          </div>
+        </div>
+        <ol class="cp-steps">
+          <li data-t="0.7"><button type="button"><b>01</b><strong>The home page</strong></button><i></i></li>
+          <li data-t="1.8"><button type="button"><b>02</b><strong>Every service in the menu</strong></button><i></i></li>
+          <li data-t="5.2"><button type="button"><b>03</b><strong>The Birth Doula page</strong></button><i></i></li>
+          <li data-t="8.15"><button type="button"><b>04</b><strong>Three clear packages</strong></button><i></i></li>
+          <li data-t="10.97"><button type="button"><b>05</b><strong>Five quick questions</strong></button><i></i></li>
+          <li data-t="19.97"><button type="button"><b>06</b><strong>The best match, then a free call</strong></button><i></i></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Up close: live pieces breaking out of the pink panel -->
+    <section class="section--tight wrap">
+      <header class="cp-head" data-reveal>
+        <span class="label">Up close</span>
+        <h2>The parts that <mark class="hl">help people book.</mark></h2>
+      </header>
+      <div class="bh-breakout">
+        <figure class="bh-break bh-break--cards">
+          <div class="bh-break__panel" aria-hidden="true">
+            <span class="bh-sparkle white" style="top:16%;left:4%;--s:26px"><svg><use href="#bh-star"/></svg></span>
+            <span class="bh-sparkle" style="bottom:10%;right:5%;--s:34px;--delay:.8s"><svg><use href="#bh-star"/></svg></span>
+          </div>
+          <div class="bh-break__stack">
+            <div class="bh-break__card" style="--r:-9deg;--y:2%"><div class="service-cell"><span class="scallop-shadow" aria-hidden="true"></span><div class="service-card">
+              <span class="service-num">01</span>
+              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.5a6.5 6.5 0 100-13 6.5 6.5 0 000 13z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M2 12h2m16 0h2"/></svg>
+              <h3 class="service-name">Hypnobirthing</h3>
+              <p class="service-desc">Evidence-based antenatal education using relaxation, breathing and visualisation to help you approach birth with calm confidence.</p>
+            </div></div></div>
+            <div class="bh-break__card" style="--r:3deg;--y:-14%"><div class="service-cell"><span class="scallop-shadow" aria-hidden="true"></span><div class="service-card">
+              <span class="service-num">02</span>
+              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <h3 class="service-name">Birth Doula</h3>
+              <p class="service-desc">Continuous, compassionate non-medical support before, during and after your birth. Your person in the room, always in your corner.</p>
+            </div></div></div>
+            <div class="bh-break__card" style="--r:11deg;--y:6%"><div class="service-cell"><span class="scallop-shadow" aria-hidden="true"></span><div class="service-card">
+              <span class="service-num">03</span>
+              <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="5" r="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 7v4l-3 3m3-3l3 3M9 21l3-7 3 7"/></svg>
+              <h3 class="service-name">Yoga</h3>
+              <p class="service-desc"><strong>Pregnancy and Parent &amp; Baby Yoga.</strong> Gentle yoga for every stage of pregnancy and beyond.</p>
+            </div></div></div>
+          </div>
+          <figcaption><b>Service cards</b><span>Each one looks like a sticker, with a scalloped edge and a pink shadow.</span></figcaption>
+        </figure>
+        <figure class="bh-break bh-break--quiz">
+          <div class="bh-break__panel bh-break__panel--deep" aria-hidden="true">
+            <span class="bh-sparkle white" style="top:12%;right:6%;--s:24px;--delay:.4s"><svg><use href="#bh-star"/></svg></span>
+          </div>
+          <div class="bh-break__quiz" data-quiz>
+            <div class="bh-break__ask"><div class="quiz" data-quiz-ask aria-live="polite"></div></div>
+            <div class="bh-break__match">
+              <div class="quiz-result-card" data-quiz-result aria-live="polite">
+                <div class="quiz-result-eyebrow" data-r="eyebrow">Most popular</div>
+                <div class="quiz-result-head"><span class="quiz-result-name" data-r="name">Balanced</span><span class="quiz-result-price" data-r="price">£1,495</span></div>
+                <div class="quiz-result-tag" data-r="tag">Enhanced support</div>
+                <ul class="quiz-result-list" data-r="list">
+                  <li><span class="quiz-tick">✓</span>2 antenatal sessions + hypnobirthing hub</li>
+                  <li><span class="quiz-tick">✓</span>Birth pool &amp; TENS machine included</li>
+                  <li><span class="quiz-tick">✓</span>On-call from 10 days before your due date</li>
+                  <li><span class="quiz-tick">✓</span>Ongoing support for 6 weeks</li>
+                </ul>
+                <p class="quiz-result-runner" data-r="runner" hidden></p>
+                <div class="quiz-result-actions" aria-hidden="true"><span class="quiz-btn quiz-btn--fill">Book a free consultation</span><span class="quiz-btn">See full package details</span></div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>The package finder</b><span>Five questions, and it suggests the package that fits best.</span></figcaption>
+        </figure>
+      </div>
+      <div class="bh-breakout bh-breakout--two">
+        <figure class="bh-break bh-break--compare">
+          <div class="bh-break__panel bh-break__panel--deep" aria-hidden="true">
+            <span class="bh-sparkle white" style="top:14%;left:5%;--s:24px;--delay:.3s"><svg><use href="#bh-star"/></svg></span>
+          </div>
+          <div class="bh-compare" data-compare>
+            <div class="pkgm-tabs" role="tablist" aria-label="Choose a package to view">
+              <button type="button" role="tab" class="pkgm-tab" aria-selected="false" data-pkg="0"><span class="pkgm-tab-name">Foundation</span><span class="pkgm-tab-price">£1,095</span></button>
+              <button type="button" role="tab" class="pkgm-tab is-active" aria-selected="true" data-pkg="1"><span class="pkgm-tab-name">Balanced</span><span class="pkgm-tab-price">£1,495</span></button>
+              <button type="button" role="tab" class="pkgm-tab" aria-selected="false" data-pkg="2"><span class="pkgm-tab-name">Ultimate</span><span class="pkgm-tab-price">£2,000</span></button>
+            </div>
+            <div class="pkgm-panel" role="tabpanel" aria-live="polite">
+              <div class="pkgm-head" data-c="head" style="background:#feabde">
+                <div><span class="pkgm-head-name" data-c="name">Balanced</span><span class="pkgm-head-tag" data-c="tag">Enhanced</span></div>
+                <span class="pkgm-head-price" data-c="price">£1,495</span>
+              </div>
+              <div class="pkgm-group">
+                <div class="pkgm-group-label">Before birth</div>
+                <div class="pkgm-row"><span class="pkgm-k">Antenatal sessions</span><span class="pkgm-v" data-row="0">2 × 2–3-hour</span></div>
+                <div class="pkgm-row"><span class="pkgm-k">Birth pool hire</span><span class="pkgm-v" data-row="1"><span class="pkg-check">✓</span> Included</span></div>
+                <div class="pkgm-row"><span class="pkgm-k">TENS machine hire</span><span class="pkgm-v" data-row="2"><span class="pkg-check">✓</span> Included</span></div>
+              </div>
+              <div class="pkgm-group">
+                <div class="pkgm-group-label">During birth</div>
+                <div class="pkgm-row"><span class="pkgm-k">On-call from</span><span class="pkgm-v" data-row="3">10 days before due date</span></div>
+              </div>
+              <div class="pkgm-group">
+                <div class="pkgm-group-label">After birth</div>
+                <div class="pkgm-row"><span class="pkgm-k">Postnatal visits</span><span class="pkgm-v" data-row="4">1 × 2-hour</span></div>
+                <div class="pkgm-row"><span class="pkgm-k">Phone &amp; email support</span><span class="pkgm-v" data-row="5">Ongoing · 6 weeks</span></div>
+                <div class="pkgm-row"><span class="pkgm-k">Postpartum recovery kit</span><span class="pkgm-v pkgm-v--neg" data-row="6">Not included</span></div>
+              </div>
+              <span class="pkgm-btn" data-c="btn" style="background:#feabde" aria-hidden="true">Enquire about Balanced</span>
+            </div>
+          </div>
+          <figcaption><b>Compare the packages</b><span>Each row shows what’s included in each package.</span></figcaption>
+        </figure>
+        <figure class="bh-break bh-break--book">
+          <div class="bh-break__panel" aria-hidden="true">
+            <span class="bh-sparkle" style="bottom:12%;right:6%;--s:30px;--delay:1s"><svg><use href="#bh-star"/></svg></span>
+          </div>
+          <div class="bh-book card-pink" data-booking>
+            <span class="bh-book__eyebrow">Your booking</span>
+            <h3 class="bh-book__title">Free consultation</h3>
+            <p class="bh-book__about">About the <b data-bk="pkg">Balanced</b> package, <span data-bk="price">£1,495</span></p>
+            <div class="bh-book__chips" role="radiogroup" aria-label="Times this week">
+              <button type="button" class="bh-chip" role="radio" aria-checked="false" data-slot="Mon · 10:00"><b>Mon</b>10:00</button>
+              <button type="button" class="bh-chip is-on" role="radio" aria-checked="true" data-slot="Wed · 13:30"><b>Wed</b>13:30</button>
+              <button type="button" class="bh-chip" role="radio" aria-checked="false" data-slot="Thu · 19:00"><b>Thu</b>19:00</button>
+            </div>
+            <p class="bh-book__when"><span data-bk="slot">Wed · 13:30</span> · 30 minutes · no obligation</p>
+            <span class="btn-primary bh-book__btn" aria-hidden="true">Book Free Consultation</span>
+            <p class="bh-book__sig"><img src="../assets/projects/birth-hood/signature.webp" alt="with Leanne x" width="1200" height="439" loading="lazy"></p>
+          </div>
+          <figcaption><b>The booking card</b><span>It shows the package and time you picked, signed off by Leanne.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- By the numbers -->
+    <section class="section--tight wrap">
+      <div class="cp-results" data-reveal>
+        <div class="cp-result"><b data-todo>+0%</b><span>more enquiries</span><small>Free consultation requests since launch.</small></div>
+        <div class="cp-result"><b data-todo>0</b><span>courses booked</span><small>Hypnobirthing courses booked through the new site.</small></div>
+        <div class="cp-result"><b><mark class="hl">35</mark></b><span>live pages</span><small>Services, courses, birth stories and a blog.</small></div>
+      </div>
+    </section>
+
+    <!-- What they said -->
+    <section class="section--tight wrap" style="padding-top:0">
+      <div class="cp-quote bh-quote" data-reveal style="--brand:#fe7fcc;--brand-ink:#111;--pen:#fff">
+        <span class="cp-quote__mark" aria-hidden="true">“</span>
+        <figure>
+          <blockquote data-todo>Leanne’s words go here.</blockquote>
+          <figcaption><i>L</i><span>Leanne<small>Founder, birth-hood</small></span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Brand -->
+    <section class="section wrap">
+      <div class="section-head" data-reveal>
+        <span class="label">Colour + type</span>
+        <h2>Shades of pink and a <mark class="hl hl--pink">handwritten sign-off.</mark></h2>
+      </div>
+      <div class="bh-brand-row" data-reveal>
+        <div class="palette">
+          <button class="swatch" style="--c:#fe7fcc;--on:#111;--share:1.6"><b>Pink</b><code>#FE7FCC</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#b83f93;--share:1.2"><b>Deep pink</b><code>#B83F93</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#f7d4ee;--on:#111;--share:1"><b>Pale</b><code>#F7D4EE</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#fdf0f9;--on:#111;--share:1"><b>Ultra</b><code>#FDF0F9</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#111111;--share:1.2"><b>Black</b><code>#111111</code><span class="copied">Copied</span></button>
+        </div>
+      </div>
+      <div class="bh-type" data-reveal>
+        <div><p class="big">Ready to feel <em>excited</em> about your birth?</p><small>Poppins 600, with the key word in deep pink italics</small></div>
+        <div><p class="sig"><img src="../assets/projects/birth-hood/signature.webp" alt="with Leanne x, Leanne’s handwritten signature" width="1200" height="439" loading="lazy"></p><small>Leanne’s own signature, used once per page as her sign-off</small></div>
+      </div>
+    </section>
+
+    <!-- cp:end -->
+    <section class="section wrap" id="more">
+      <header class="cp-head"><span class="label">More work</span><h2>Other projects <mark class="hl">you might like.</mark></h2></header>
+      <div class="cp-more">
+        <a class="cp-card cp-card--next" href="gosweet.html" style="--brand:#5c2a9d">
+          <div class="cp-card__art"><span class="cp-card__label">Next project</span><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/gosweet/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/gosweet/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>GoSweet</b><span>Online shop</span></div>
+        </a>
+        <a class="cp-card" href="patch.html" style="--brand:#111318">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/patch-agency/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/patch-agency/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>PATCH</b><span>Brand + website</span></div>
+        </a>
+        <a class="cp-card" href="nic-pouches.html" style="--brand:#0070d5">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/nic-pouches/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/nic-pouches/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Nic Pouches</b><span>Online shop</span></div>
+        </a>
+        <a class="cp-card" href="vsl-trade.html" style="--brand:#0d1110">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/vsl-trade/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/vsl-trade/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>VSL Trade</b><span>Wholesale website</span></div>
+        </a>
+        <a class="cp-card" href="birdie-blooms.html" style="--brand:#e8879f">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/birdie-blooms/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/birdie-blooms/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Birdie Blooms</b><span>Brand + website</span></div>
+        </a>
+        <a class="cp-card" href="sccc-heritage.html" style="--brand:#8b1538">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/sccc-heritage/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/sccc-heritage/journey-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>SCCC Heritage</b><span>Club history website</span></div>
+        </a>
+        <a class="cp-card" href="beetle-eyes.html" style="--brand:#1f3a2e">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/beetle-eyes/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/../projects/beetle-eyes/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Beetle Eyes</b><span>One-page website</span></div>
+        </a>
+        <a class="cp-card cp-card--print" href="print.html">
+          <div class="cp-card__art"><img src="../assets/projects/print/hospital/covers/impact.jpg" alt="" loading="lazy"><img src="../assets/projects/property/covers/swilley.jpg" alt="" loading="lazy"><img src="../assets/projects/print/gowling/cover-flat.jpg" alt="" loading="lazy"></div>
+          <div class="cp-card__name"><b>Print, brand and motion</b><span>Brochures · logos · film</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="contact wrap">
+        <div class="contact__intro">
+          <span class="label">Your turn</span>
+          <h2>Let’s make something people <mark class="hl">like to use.</mark></h2>
+          <p>Tell me a bit about your business and what you need. I usually reply within a working day.</p>
+          <a class="contact__email" href="mailto:jb.designagency89@gmail.com">jb.designagency89@gmail.com</a>
+        </div>
+        <form class="contact__form" data-contact data-to="jb.designagency89@gmail.com" novalidate>
+          <fieldset class="chips">
+            <legend>What do you need?</legend>
+            <label><input type="checkbox" name="need" value="New website"><span>New website</span></label>
+            <label><input type="checkbox" name="need" value="Redesign"><span>Redesign</span></label>
+            <label><input type="checkbox" name="need" value="Online shop"><span>Online shop</span></label>
+            <label><input type="checkbox" name="need" value="Logo and brand"><span>Logo &amp; brand</span></label>
+            <label><input type="checkbox" name="need" value="Print"><span>Print</span></label>
+          </fieldset>
+          <div class="field-row">
+            <label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label>
+            <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <label class="field"><span>Tell me about it</span><textarea name="message" rows="4" required></textarea></label>
+          <p class="contact__error" role="alert" data-contact-error></p>
+          <button class="btn btn--big" type="submit">Send it over <span aria-hidden="true">→</span></button>
+          <p class="contact__note">This opens your email app with everything filled in, ready to send.</p>
+        </form>
+      </div>
+    </section>
+    <!-- /cp:end -->
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <p class="site-foot__big"><a href="#contact">Got a project? <mark class="hl hl--orange">Let’s talk.</mark></a></p>
+      <div class="site-foot__row">
+        <span>© 2026 John Bell · Designed and built by me</span>
+        <nav aria-label="Footer"><a href="work.html">Work</a><a href="../index.html#faq">FAQs</a><a href="mailto:jb.designagency89@gmail.com">Email</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/case.js"></script>
+  <script src="../assets/js/case-plus.js"></script>
+  <script src="../assets/js/birth-hood.js"></script>
+</body>
+</html>

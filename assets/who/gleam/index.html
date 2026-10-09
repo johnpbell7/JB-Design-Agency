@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390">
+<title>Gleam Window Cleaning | Leeds</title>
+<meta name="description" content="Pure-water window cleaning for homes across Leeds. Fixed prices, no contract, fully insured.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<link rel="preload" as="image" href="img/hero-pole.webp">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="star" viewBox="0 0 20 20"><path d="M10 1.4l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.7l-5.4 2.9 1.2-5.9L1.4 7.6l6-.7z"/></symbol>
+    <symbol id="tick" viewBox="0 0 20 20"><path d="M3.5 10.5l4.2 4.2 8.8-9.2" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></symbol>
+    <symbol id="arrow" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5l5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <a class="brand" href="#" aria-label="Gleam Window Cleaning, home">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+      <rect width="32" height="32" fill="#1748E8"/>
+      <path d="M7 7h18v18H7z" fill="none" stroke="#fff" stroke-width="2.6"/>
+      <path d="M16 7v18M7 16h18" stroke="#fff" stroke-width="2.6"/>
+      <path d="M10 22.5 22.5 10" stroke="#8FD3FF" stroke-width="2.6"/>
+    </svg>
+    <span class="word">GLEAM</span>
+  </a>
+  <nav class="top-r">
+    <a class="call" href="tel:01134960412">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.4a11.5 11.5 0 0 0 6.5 6.5l1.4-2 4 1.4v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="currentColor"/></svg>
+      0113 496 0412
+    </a>
+    <button class="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <img class="hero-img" src="img/hero-pole.webp" alt="A Gleam cleaner washing a ground-floor window with a water-fed pole" width="1400" height="1315">
+    <p class="tag">Leeds &middot; LS1&ndash;LS29</p>
+    <div class="hero-copy">
+      <h1>Clear windows.<br>Every round.</h1>
+      <p class="rating">
+        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+        <strong>4.9</strong><span class="sep"></span>1,240 local reviews
+      </p>
+    </div>
+  </section>
+
+  <section class="quote" id="quote" aria-label="Instant quote">
+    <div class="q-top">
+      <h2>Instant quote</h2>
+      <span class="q-note"><svg><use href="#tick"/></svg>Fixed price, no contract</span>
+    </div>
+
+    <div class="q-beds">
+      <div class="q-row">
+        <label for="beds" class="vh">Bedrooms</label>
+        <output id="bedsOut">3 bed house</output>
+        <div class="seg" role="radiogroup" aria-label="How often">
+          <button role="radio" aria-checked="true" data-freq="4" class="on">4-weekly</button>
+          <button role="radio" aria-checked="false" data-freq="8">8-weekly</button>
+        </div>
+      </div>
+      <div class="slider" style="--p:50%">
+        <input id="beds" type="range" min="1" max="5" step="1" value="3" aria-label="Number of bedrooms">
+        <div class="ticks" aria-hidden="true"><span>1</span><span>2</span><span class="on">3</span><span>4</span><span>5+</span></div>
+      </div>
+    </div>
+
+    <div class="q-buy">
+      <div class="price">
+        <span class="amt"><span class="cur">£</span><span class="num" id="price">20</span></span>
+        <span class="per">per clean<br>pay after</span>
+      </div>
+      <button class="book" id="book">
+        <span class="book-idle">Book a clean<svg><use href="#arrow"/></svg></span>
+        <span class="book-done"><svg><use href="#tick"/></svg>Booked &middot; Thu 16 Oct</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="trust" aria-label="Why Gleam">
+    <div class="t">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4 5.5v6.2c0 4.7 3.3 8.6 8 9.8 4.7-1.2 8-5.1 8-9.8V5.5Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m8.4 12 2.6 2.6 4.8-5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square"/></svg>
+      <div><strong>£5m insured</strong><span>Public liability</span></div>
+    </div>
+    <div class="t">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s-6.2 6.8-6.2 11.3a6.2 6.2 0 0 0 12.4 0C18.2 9.8 12 3 12 3Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 14.6a3 3 0 0 0 2.8 2.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+      <div><strong>Pure water</strong><span>No soap, no smears</span></div>
+    </div>
+    <div class="t">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.2" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.5 21c.8-3.8 3.8-6 7.5-6s6.7 2.2 7.5 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+      <div><strong>DBS-checked</strong><span>Uniformed team</span></div>
+    </div>
+    <div class="t">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 15a4 4 0 0 1-.4-8 5.5 5.5 0 0 1 10.6 1.4A3.3 3.3 0 0 1 17 15Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 18l-1 2.5M13 18l-1 2.5M17 18l-1 2.5" stroke="currentColor" stroke-width="1.8"/></svg>
+      <div><strong>Rain promise</strong><span>Free re-clean in 48h</span></div>
+    </div>
+  </section>
+
+  <section class="services">
+    <p class="eyebrow">01 &mdash; Services</p>
+    <h2>Everything outside, done properly.</h2>
+    <ul class="svc">
+      <li>
+        <img src="img/stone-terrace.webp" alt="Stone terrace with sash windows and a yellow front door" width="900" height="900" loading="lazy">
+        <div>
+          <h3>Windows, frames &amp; sills</h3>
+          <p>Every pane, frame, sill and door, rinsed with 100% pure water.</p>
+          <span class="from">From £14</span>
+        </div>
+      </li>
+      <li>
+        <img src="img/gutter.webp" alt="A roof gutter against a blue sky" width="900" height="857" loading="lazy">
+        <div>
+          <h3>Gutters &amp; fascias</h3>
+          <p>Vacuum-cleared from the ground, with camera photos to prove it.</p>
+          <span class="from">From £45</span>
+        </div>
+      </li>
+      <li>
+        <img src="img/inside-glass.webp" alt="A spotless white-framed window seen from inside" width="1100" height="734" loading="lazy">
+        <div>
+          <h3>Inside glass</h3>
+          <p>Add the inside to any visit. Dust sheets down, shoes off.</p>
+          <span class="from">From £12</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="areas">
+    <img src="img/terrace-row.webp" alt="A long row of Yorkshire stone terraced houses" width="1400" height="933" loading="lazy">
+    <div class="areas-copy">
+      <p class="eyebrow light">02 &mdash; Rounds</p>
+      <h2>On your street every four weeks.</h2>
+      <ul class="area-list">
+        <li>Headingley <span>LS6</span></li>
+        <li>Chapel Allerton <span>LS7</span></li>
+        <li>Roundhay <span>LS8</span></li>
+        <li>Meanwood <span>LS6</span></li>
+        <li>Horsforth <span>LS18</span></li>
+        <li>Moortown <span>LS17</span></li>
+        <li>Kirkstall <span>LS5</span></li>
+        <li>Rawdon <span>LS19</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="how">
+    <p class="eyebrow">03 &mdash; How it works</p>
+    <ol>
+      <li><b>01</b><div><h3>Get your price</h3><p>Fixed, online, in ten seconds. No home visit.</p></div></li>
+      <li><b>02</b><div><h3>We text the day before</h3><p>No need to be in. Just leave the side gate unlocked.</p></div></li>
+      <li><b>03</b><div><h3>Pay after each clean</h3><p>Card or bank transfer once you've seen the glass.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="review">
+    <div class="r-score">
+      <strong>4.9</strong>
+      <div>
+        <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+        <span>1,240 verified reviews</span>
+      </div>
+    </div>
+    <blockquote>&ldquo;Text the night before, done by ten, and not a single streak on the bay. Cheaper than our last cleaner too.&rdquo;</blockquote>
+    <p class="who">Verified customer, Moortown LS17</p>
+  </section>
+
+  <section class="cta">
+    <img src="img/brick-terrace.webp" alt="Red-brick terrace with freshly cleaned white windows" width="1200" height="800" loading="lazy">
+    <div class="cta-in">
+      <h2>Join the round.</h2>
+      <p>First clean from £14. Cancel any time.</p>
+      <a class="btn" href="#quote">Get my price<svg><use href="#arrow"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="f-brand">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#fff"/><path d="M7 7h18v18H7z" fill="none" stroke="#0B1B3A" stroke-width="2.6"/><path d="M16 7v18M7 16h18" stroke="#0B1B3A" stroke-width="2.6"/><path d="M10 22.5 22.5 10" stroke="#1748E8" stroke-width="2.6"/></svg>
+    <span class="word">GLEAM</span>
+  </div>
+  <div class="f-cols">
+    <div><h4>Call</h4><p>0113 496 0412</p><p>rounds@example.co.uk</p></div>
+    <div><h4>Hours</h4><p>Mon&ndash;Fri 7:30&ndash;18:00</p><p>Sat 8:00&ndash;14:00</p></div>
+  </div>
+  <p class="f-badges"><span>Fully insured</span><span>DBS-checked</span><span>Est. 2014</span></p>
+  <p class="f-small">Gleam Window Cleaning Ltd, Unit 4, Kirkstall Road, Leeds LS4. Registered in England.</p>
+</footer>
+
+<span class="touch" aria-hidden="true"></span>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+/* Work: every project on one page (projects/work.html, .wk-*).
+   Hero, the websites as laptop + phone cards with filter chips (work.js
+   re-flows them with GSAP Flip), then print + brand as one flat-lay of real
+   pieces. Loads after base.css, case.css and case-plus.css. */
+
+/* ---------- Hero ---------- */
+.wk-hero { padding-top: clamp(116px, 13vw, 168px); }
+.wk-hero__grid { display: grid; gap: clamp(20px, 2.4vw, 30px); }
+.wk-hero__intro { display: grid; gap: 22px; justify-items: start; }
+.wk-hero h1 { font-size: clamp(44px, 7vw, 104px); letter-spacing: -0.055em; line-height: 0.96; max-width: 17ch; }
+.wk-hero__lede { font-size: clamp(17px, 1.5vw, 20px); color: var(--grey-7); max-width: 50ch; }
+.wk-facts dd { font-size: 16px; }
+.wk-facts dd b { font-size: 1.25em; font-weight: 700; letter-spacing: -0.02em; }
+
+/* ---------- Section bar: heading left, chips or a link right ---------- */
+.wk-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 18px 32px; margin-bottom: clamp(26px, 4vw, 44px); }
+.wk-bar .cp-head { flex: 1 1 420px; margin-bottom: 0; }
+.wk-bar__go { flex: none; }
+.wk-bar__go svg { transition: translate 0.35s var(--ease-spring); }
+.wk-bar__go:hover svg { translate: 4px 0; }
+.wk-sites { padding-top: clamp(48px, 7vw, 96px); }
+
+/* ---------- Filter chips ---------- */
+.wk-filter {
+  display: flex; gap: 6px; padding: 4px; border-radius: 999px; border: 1px solid var(--line); background: var(--grey-1);
+  max-width: 100%; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.wk-filter::-webkit-scrollbar { display: none; }
+.wk-filter button {
+  flex: none; display: inline-flex; align-items: center; gap: 7px; padding: 9px 16px; border: 0; border-radius: 999px;
+  background: none; color: var(--grey-7); font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+  transition: background 0.3s, color 0.3s, scale 0.3s var(--ease-spring);
+}
+.wk-filter button:hover { color: var(--ink); }
+.wk-filter button:active { scale: 0.96; }
+.wk-filter small { min-width: 20px; padding: 1px 6px; border-radius: 999px; background: var(--grey-2); font-size: 11px; font-weight: 700; text-align: center; transition: background 0.3s, color 0.3s; }
+.wk-filter button[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+.wk-filter button[aria-pressed="true"] small { background: var(--hl-yellow); color: #18181a; }
+
+/* ---------- Website cards ----------
+   12 columns: two features (7 + 5), four smaller cards, then the features
+   mirrored (5 + 7). The art is a size container, so the laptop and phone
+   are sized off whichever is tighter, its width or its height. */
+.wk-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(30px, 3.4vw, 46px) clamp(14px, 1.8vw, 24px); }
+.wk-card { grid-column: span 3; display: flex; flex-direction: column; gap: 14px; min-width: 0; text-decoration: none; color: inherit; }
+.wk-card[hidden] { display: none; }
+.wk-card--lg { grid-column: span 7; }
+.wk-card--md { grid-column: span 5; }
+
+.wk-card__art {
+  --lw: min(70cqw, 100cqh);
+  position: relative; flex: 1 1 auto; aspect-ratio: 4 / 3; container-type: size;
+  border-radius: var(--radius-l); overflow: hidden; isolation: isolate; background: var(--brand);
+  box-shadow: inset 0 0 0 1px var(--line);
+  transition: translate 0.6s var(--ease-spring);
+}
+.wk-card--lg .wk-card__art { aspect-ratio: 16 / 10.4; --lw: min(64cqw, 98cqh); }
+.wk-card:not(.wk-card--lg):not(.wk-card--md) .wk-card__art { border-radius: var(--radius-m); }
+.wk-card__glow { position: absolute; inset: -20% -10% 30% 10%; z-index: -1; border-radius: 50%; background: radial-gradient(40% 45% at 55% 35%, rgb(255 255 255 / 0.38), transparent 70%); filter: blur(18px); }
+
+.wk-card__laptop { position: absolute; z-index: 1; width: var(--lw); left: calc(50cqw - var(--lw) * 0.57); top: calc(50cqh - var(--lw) * 0.36); transition: translate 0.8s var(--ease-out), rotate 0.8s var(--ease-out); }
+.wk-card__laptop .laptop__lid { border-radius: 8px 8px 3px 3px; padding: 2.4% 2.4% 3.2%; }
+.wk-card__laptop .laptop__base { position: relative; height: max(5px, calc(var(--lw) * 0.026)); border-radius: 0 0 8px 8px; }
+.wk-card__laptop .laptop__base::before { height: 3px; }
+.wk-card__laptop .laptop__base::after { content: ""; position: absolute; left: 4%; right: 4%; top: 60%; height: 300%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, rgb(0 0 0 / 0.4), transparent); filter: blur(4px); }
+.wk-card__laptop .screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+.wk-card__phone.phone { position: absolute; z-index: 2; width: calc(var(--lw) * 0.26); left: calc(50cqw + var(--lw) * 0.31); top: calc(50cqh - var(--lw) * 0.23); box-shadow: 0 16px 24px -12px rgb(0 0 0 / 0.55); transition: translate 0.8s var(--ease-out); }
+.wk-card__phone .screen img { width: 100%; height: auto; }
+
+.wk-card:hover .wk-card__art, .wk-card:focus-visible .wk-card__art { translate: 0 -4px; }
+.wk-card:hover .wk-card__laptop { translate: -4px -6px; rotate: -1.2deg; }
+.wk-card:hover .wk-card__phone { translate: 6px -10px; }
+
+.wk-card__info { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-inline: 2px; }
+.wk-card__name { display: grid; gap: 2px; min-width: 0; }
+.wk-card__name h3 { font-size: 19px; letter-spacing: -0.025em; line-height: 1.2; }
+.wk-card__name span { font-size: 13.5px; color: var(--grey-5); line-height: 1.4; }
+.wk-card--lg .wk-card__name h3, .wk-card--md .wk-card__name h3 { font-size: clamp(22px, 2.1vw, 30px); letter-spacing: -0.04em; }
+.wk-card--lg .wk-card__name span, .wk-card--md .wk-card__name span { font-size: 14.5px; }
+.wk-card__pages {
+  flex: none; display: inline-flex; align-items: center; gap: 7px; margin-top: 2px; padding: 4px 11px 4px 9px; border-radius: 999px;
+  border: 1px solid var(--line); font-size: 12px; font-weight: 600; white-space: nowrap; color: var(--grey-7);
+}
+.wk-card__pages::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 1px var(--line); }
+/* the smaller cards: name, then type and pages underneath */
+.wk-card:not(.wk-card--lg):not(.wk-card--md) .wk-card__art { flex: none; }
+.wk-card:not(.wk-card--lg):not(.wk-card--md) .wk-card__info { flex-direction: column; gap: 8px; }
+.wk-card__desc { font-size: 15px; color: var(--grey-7); max-width: 52ch; padding-inline: 2px; margin-top: -6px; }
+
+/* brand pieces floating over the feature cards (one each) */
+.wk-pop { position: absolute; z-index: 3; left: var(--x); top: var(--y); width: var(--w, auto); rotate: var(--r, 0deg); filter: drop-shadow(0 14px 18px rgb(0 0 0 / 0.3)); pointer-events: none; transition: translate 0.8s var(--ease-out); }
+.wk-pop img { width: 100%; }
+.wk-card:hover .wk-pop { translate: 0 -8px; }
+.wk-pop--card img { aspect-ratio: 240.9 / 155.9; object-fit: cover; border-radius: 3px; }
+.wk-pop--sticker { padding: 4.2cqw 4.6cqw; border-radius: 3cqw; background: #fff; }
+.wk-pop--polaroid { padding: 4% 4% 14%; background: #fffdf8; border-radius: 3px; }
+.wk-pop--polaroid img { aspect-ratio: 4 / 5; object-fit: cover; }
+.wk-pop--chip { display: flex; align-items: center; gap: 0.7em; padding: 0.7em 1.1em 0.7em 0.8em; border-radius: 999px; background: #fff; color: #1d1d1f; font-size: clamp(10px, 2.1cqw, 15px); white-space: nowrap; }
+.wk-pop--chip b { font-weight: 700; }
+.wk-meter { display: flex; gap: 0.22em; }
+.wk-meter i { width: 0.5em; height: 1.3em; border-radius: 0.2em; background: #e4e7ec; }
+.wk-meter i.on { background: #0070d5; }
+
+/* Filtered: a plain, even grid (work.js sets data-cols) */
+.wk-grid[data-cols] .wk-card { grid-column: span 6; }
+.wk-grid[data-cols="3"] .wk-card { grid-column: span 4; }
+.wk-grid[data-cols] .wk-card__art { aspect-ratio: 16 / 11; --lw: min(66cqw, 98cqh); border-radius: var(--radius-l); }
+.wk-grid[data-cols="3"] .wk-card__art { aspect-ratio: 4 / 3; --lw: min(70cqw, 100cqh); }
+.wk-grid[data-cols="3"] .wk-card__name h3 { font-size: 22px; }
+.wk-grid[data-cols] .wk-card .wk-card__art { flex: none; }
+.wk-grid[data-cols] .wk-card .wk-card__info { flex-direction: row; gap: 12px; }
+.wk-grid[data-cols="3"] .wk-card__desc { display: none; }
+
+@media (max-width: 1100px) {
+  .wk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wk-card, .wk-card--md, .wk-grid[data-cols] .wk-card, .wk-grid[data-cols="3"] .wk-card { grid-column: span 1; }
+  .wk-card--lg { grid-column: 1 / -1; }
+  .wk-card--lg .wk-card__art { aspect-ratio: 16 / 9; }
+  .wk-grid[data-cols] .wk-card__art, .wk-grid[data-cols="3"] .wk-card__art { aspect-ratio: 4 / 3; }
+  .wk-card:not(.wk-card--lg):not(.wk-card--md) .wk-card__art { border-radius: var(--radius-l); }
+  .wk-card__name h3 { font-size: 21px; }
+}
+@media (max-width: 640px) {
+  .wk-grid { grid-template-columns: minmax(0, 1fr); row-gap: 34px; }
+  .wk-card--lg { grid-column: auto; }
+  .wk-card__art, .wk-card--lg .wk-card__art, .wk-grid[data-cols] .wk-card__art { aspect-ratio: 4 / 3.1; }
+  .wk-card__art { border-radius: var(--radius-m) !important; }
+  .wk-bar { gap: 20px; }
+  .wk-filter { width: 100%; gap: 2px; }
+  .wk-filter button { flex: 1 0 auto; justify-content: center; padding: 9px 10px; font-size: 13.5px; }
+  .wk-filter small { display: none; }
+  /* the smaller cards: name, then type and pages underneath */
+.wk-card:not(.wk-card--lg):not(.wk-card--md) .wk-card__art { flex: none; }
+.wk-card:not(.wk-card--lg):not(.wk-card--md) .wk-card__info { flex-direction: column; gap: 8px; }
+.wk-card__desc { font-size: 14.5px; }
+}
+
+/* ---------- Print + brand: text left, one flat-lay of real pieces right ----------
+   The group is a size container with a fixed ratio, so every piece is placed
+   and sized in cqw and the whole lay-up scales as one. Pieces sit at true
+   relative sizes: A4 covers 23cqw wide, landscape covers 34cqw, and so on. */
+.wk-print { padding-top: clamp(40px, 6vw, 88px); padding-bottom: clamp(40px, 5vw, 72px); }
+.work .contact-band { margin-top: clamp(40px, 5vw, 72px); }
+.work .site-foot { margin-top: 0; } /* the contact band ends <main>, so the footer sits right under it */
+
+.wk-print__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
+.wk-print__text { display: grid; gap: 18px; justify-items: start; }
+.wk-print__text h2 { font-size: clamp(34px, 4.4vw, 58px); letter-spacing: -0.05em; line-height: 1; }
+.wk-print__text p { color: var(--grey-7); font-size: 17px; max-width: 40ch; }
+.wk-print__text .btn { margin-top: 8px; }
+
+.wk-group {
+  --shadow-piece: 0 1px 1px rgb(30 24 14 / 0.08), 0 6px 10px -4px rgb(30 24 14 / 0.18), 0 22px 36px -18px rgb(30 24 14 / 0.34);
+  position: relative; display: block; aspect-ratio: 1.2; container-type: size; isolation: isolate;
+  transition: translate 0.6s var(--ease-spring);
+}
+.wk-group:hover { translate: 0 -6px; }
+
+/* one tidy highlighter swipe behind the pile */
+.wk-group__swipe {
+  position: absolute; left: 1cqw; right: 1cqw; top: 31cqw; height: 25cqw; z-index: 0;
+  border-radius: 1.4cqw 3cqw 2cqw 3.4cqw; background: var(--hl-yellow); rotate: -3deg; transform-origin: left center;
+}
+:root[data-theme="dark"] .wk-group__swipe { opacity: 0.85; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .wk-group__swipe { opacity: 0.85; } }
+
+.wk-lay {
+  position: absolute; left: calc(var(--x) * 1cqw); top: calc(var(--y) * 1cqw); width: calc(var(--w) * 1cqw); aspect-ratio: var(--ar);
+  z-index: var(--z, 1); rotate: var(--r, 0deg);
+  transition: rotate 0.7s var(--ease-spring), translate 0.7s var(--ease-spring);
+}
+.wk-lay > img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 0.4cqw; box-shadow: var(--shadow-piece); background: #fff; }
+.wk-group:hover .wk-lay { translate: calc(var(--dx, 0) * 1cqw) calc(var(--dy, 0) * 1cqw); rotate: calc(var(--r, 0deg) * 1.35); }
+.wk-group:hover .wk-lay--lead { rotate: 0deg; }
+
+/* Whitley: just the spread, cropped out of its mock-up */
+.wk-lay--crop { overflow: hidden; border-radius: 0.4cqw; box-shadow: var(--shadow-piece); background: #fff; }
+.wk-lay--crop > img { width: 141.75%; height: auto; max-width: none; margin: -11.65% 0 0 -21.36%; box-shadow: none; border-radius: 0; }
+
+/* Yalla: a tin, so no paper edge */
+.wk-lay--tin > img { border-radius: 50%; box-shadow: none; background: none; filter: drop-shadow(0 1.6cqw 1.4cqw rgb(30 24 14 / 0.32)); }
+
+@media (max-width: 900px) {
+  .wk-print__grid { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .wk-print__text p { max-width: 46ch; }
+  .wk-group:hover { translate: none; }
+}
+@media (max-width: 640px) {
+  .wk-print__text p { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wk-group, .wk-lay { transition: none; }
+}

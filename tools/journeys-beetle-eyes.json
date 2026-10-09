@@ -1,0 +1,180 @@
+{
+ "beetle-eyes": {
+  "_note": "local is a copy of sites/beetle-eyes/index.html with a recording-only snippet that holds the page-load curtain closed (animations paused) until #rec-replay is clicked, so the clip can open on the real curtain. Rebuild it from sites/beetle-eyes if the scratch folder is gone.",
+  "local": "/private/tmp/claude-502/-Users-johnB-Documents-Web-John-Bell-Portfolio/eea2c326-0d95-4ebd-a92f-c96606cf8b87/scratchpad/be-rec",
+  "hide": [
+   "img[src*=\"be-coats\"]",
+   "figure:has(> img[src*=\"be-coats\"])"
+  ],
+  "clips": [
+   {
+    "name": "tour",
+    "path": "index.html",
+    "lead": 300,
+    "steps": [
+     {
+      "tap": "#rec-replay",
+      "js": true,
+      "after": 1800,
+      "mark": "Curtains"
+     },
+     {
+      "scrollTo": "#about",
+      "ms": 1500,
+      "offset": 40,
+      "mark": "Corrine"
+     },
+     {
+      "scrollTo": "#wares",
+      "ms": 1500,
+      "offset": 40,
+      "mark": "The rails"
+     },
+     {
+      "scrollTo": "#magpie",
+      "ms": 1500,
+      "offset": 30,
+      "mark": "Curious Magpie"
+     },
+     {
+      "tap": "#burgerBtn",
+      "after": 800,
+      "mark": "Visit"
+     },
+     {
+      "tap": ".mobile-menu a[href='#visit']",
+      "after": 600
+     },
+     {
+      "scroll": 420,
+      "ms": 1200
+     }
+    ]
+   },
+   {
+    "name": "film-tour",
+    "viewport": "desktop",
+    "path": "index.html",
+    "lead": 500,
+    "steps": [
+     {
+      "mark": "The curtains part",
+      "tap": "#rec-replay",
+      "js": true,
+      "ms": 0,
+      "after": 2400
+     },
+     {
+      "mark": "A collage that leans",
+      "hover": ".hero-visual .frame.f1",
+      "ms": 450,
+      "after": 80
+     },
+     {
+      "move": [
+       1250,
+       350
+      ],
+      "ms": 480,
+      "after": 60
+     },
+     {
+      "move": [
+       980,
+       700
+      ],
+      "ms": 480,
+      "after": 60
+     },
+     {
+      "move": [
+       1150,
+       540
+      ],
+      "ms": 380,
+      "after": 150
+     },
+     {
+      "mark": "Zine-style sections",
+      "tap": ".top ul a[href='#about']",
+      "click": false,
+      "ms": 380,
+      "after": 60
+     },
+     {
+      "scrollTo": "#about",
+      "ms": 1100,
+      "offset": 20
+     },
+     {
+      "wait": 350
+     },
+     {
+      "scrollTo": "#wares",
+      "ms": 1100,
+      "offset": 20
+     },
+     {
+      "hover": ".ware",
+      "nth": 1,
+      "ms": 380,
+      "after": 350
+     },
+     {
+      "mark": "The taped-up gallery",
+      "scrollTo": "#inside",
+      "ms": 1100,
+      "offset": 20
+     },
+     {
+      "hover": ".gallery-grid figure",
+      "nth": 0,
+      "ms": 380,
+      "after": 700
+     },
+     {
+      "hover": ".gallery-grid figure",
+      "nth": 1,
+      "ms": 320,
+      "after": 700
+     },
+     {
+      "mark": "Inside Curious Magpie",
+      "tap": ".top ul a[href='#magpie']",
+      "click": false,
+      "ms": 380,
+      "after": 60
+     },
+     {
+      "scrollTo": "#magpie",
+      "ms": 1100,
+      "offset": 20
+     },
+     {
+      "hover": ".magpie-visual",
+      "ms": 380,
+      "after": 700
+     },
+     {
+      "mark": "Find the shop",
+      "tap": ".top .visit-btn",
+      "click": false,
+      "ms": 380,
+      "after": 60
+     },
+     {
+      "scrollTo": "#visit",
+      "ms": 1200,
+      "offset": 20
+     },
+     {
+      "hover": ".hours-list",
+      "ms": 380,
+      "after": 500
+     }
+    ],
+    "tail": 600
+   }
+  ]
+ }
+}

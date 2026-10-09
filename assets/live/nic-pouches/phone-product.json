@@ -1,0 +1,19 @@
+{
+  "name": "Nic Pouches: Product",
+  "css": ".proto-note,.fo,#fo{display:none!important}",
+  "mobile": {
+    "label": "Product",
+    "page": "product.html?p=pablo-silver-edition-peppermint",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      {"wait": 1400},
+      {"scroll": 560, "ms": 2100, "after": 800},
+      {"tap": ".packs .pack", "nth": 1, "after": 1000},
+      {"tap": ".packs .pack", "nth": 2, "after": 1100},
+      {"tap": ".buy .qty button", "nth": 1, "after": 900},
+      {"tap": ".buy .btn--lg", "after": 2600}
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "VSL Trade: Consultation",
+  "steps": [],
+  "mobile": {
+    "label": "Consultation",
+    "page": "consultation.html",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      { "wait": 1200 },
+      { "scrollTo": "#cfStart", "offset": 160, "ms": 1900, "after": 700 },
+      { "type": ["#storeName", "Sam's Shop"], "after": 500 },
+      { "type": ["#contactEmail", "sam@example.com"], "after": 700 },
+      { "tap": "#cfStart button[type=submit]", "after": 1500 },
+      { "tap": ".cf-opt", "nth": 0, "after": 2000 }
+    ]
+  }
+}

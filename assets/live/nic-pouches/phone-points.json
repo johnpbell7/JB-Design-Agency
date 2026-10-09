@@ -1,0 +1,18 @@
+{
+  "name": "Nic Pouches: Nic Points",
+  "css": ".proto-note,.fo,#fo,.nphow__model{display:none!important}",
+  "mobile": {
+    "label": "Nic Points",
+    "page": "index.html",
+    "width": 390,
+    "touch": true,
+    "start": {"to": "#promos", "offset": 160},
+    "actions": [
+      {"wait": 1300},
+      {"tap": "#promos .promo--blue", "after": 500},
+      {"wait": 1400},
+      {"scrollTo": ".nptiers__head", "offset": 110, "ms": 2600, "after": 1000},
+      {"scroll": 450, "ms": 2100, "after": 1500}
+    ]
+  }
+}

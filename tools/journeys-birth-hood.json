@@ -1,0 +1,102 @@
+{
+ "birth-hood": {
+  "url": "https://birth-hood.co.uk/",
+  "clips": [
+   {
+    "name": "film-finder",
+    "viewport": "desktop",
+    "path": "",
+    "lead": 700,
+    "steps": [
+     {
+      "mark": "Welcome in",
+      "wait": 1100
+     },
+     {
+      "mark": "Every service in the nav",
+      "hover": ".nav-dropdown > a",
+      "nth": 0,
+      "ms": 700,
+      "after": 700
+     },
+     {
+      "hover": ".nav-drop-menu a",
+      "nth": 1,
+      "ms": 400,
+      "after": 400
+     },
+     {
+      "mark": "The Birth Doula page",
+      "tap": ".nav-drop-menu a",
+      "nth": 1,
+      "ms": 200,
+      "cut": 2200,
+      "after": 1300
+     },
+     {
+      "move": [
+       1100,
+       640
+      ],
+      "ms": 400,
+      "after": 0
+     },
+     {
+      "mark": "Three clear packages",
+      "scrollTo": ".price-card",
+      "ms": 2200,
+      "offset": 470
+     },
+     {
+      "wait": 600
+     },
+     {
+      "mark": "Five quick questions",
+      "tap": "button.btn-primary",
+      "nth": 0,
+      "ms": 500,
+      "after": 1100
+     },
+     {
+      "tap": ".quiz-option",
+      "nth": 1,
+      "ms": 350,
+      "after": 500
+     },
+     {
+      "tap": ".quiz-option",
+      "nth": 1,
+      "ms": 300,
+      "after": 500
+     },
+     {
+      "tap": ".quiz-option",
+      "nth": 1,
+      "ms": 300,
+      "after": 500
+     },
+     {
+      "tap": ".quiz-option",
+      "nth": 2,
+      "ms": 300,
+      "after": 500
+     },
+     {
+      "tap": ".quiz-option",
+      "nth": 1,
+      "ms": 300,
+      "after": 900
+     },
+     {
+      "mark": "A best match, then a free call",
+      "hover": ".quiz-result-actions .btn-primary",
+      "nth": 0,
+      "ms": 700,
+      "after": 1300
+     }
+    ],
+    "tail": 600
+   }
+  ]
+ }
+}

@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GoSweet: online sweet shop redesign · John Bell</title>
+  <meta name="description" content="A redesign idea for GoSweet, the UK online sweet shop. A tidier, more fun Shopify store with clearer product cards, a rewards scheme and a quicker basket. Designed by John Bell, with a working prototype for a Shopify developer.">
+  <meta property="og:title" content="GoSweet: online sweet shop redesign · John Bell">
+  <meta property="og:description" content="A redesign idea for the GoSweet store by John Bell, from the product cards to the rewards scheme and the basket.">
+  <meta property="og:image" content="../assets/captures/gosweet/fold-desktop.webp">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="preload" href="../assets/projects/gosweet/fonts/Rubik.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/case.css">
+  <link rel="stylesheet" href="../assets/css/case-plus.css">
+  <link rel="stylesheet" href="../assets/css/gosweet.css">
+</head>
+<body data-pen>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="gs-eye" viewBox="0 0 256 256"><path fill="currentColor" d="M245.48,125.57c-.34-.78-8.66-19.23-27.24-37.81C201,70.54,171.38,50,128,50S55,70.54,37.76,87.76c-18.58,18.58-26.9,37-27.24,37.81a6,6,0,0,0,0,4.88c.34.77,8.66,19.22,27.24,37.8C55,185.47,84.62,206,128,206s73-20.53,90.24-37.75c18.58-18.58,26.9-37,27.24-37.8A6,6,0,0,0,245.48,125.57ZM128,194c-31.38,0-58.78-11.42-81.45-33.93A134.77,134.77,0,0,1,22.69,128,134.56,134.56,0,0,1,46.55,95.94C69.22,73.42,96.62,62,128,62s58.78,11.42,81.45,33.94A134.56,134.56,0,0,1,233.31,128C226.94,140.21,195,194,128,194Zm0-112a46,46,0,1,0,46,46A46.06,46.06,0,0,0,128,82Zm0,80a34,34,0,1,1,34-34A34,34,0,0,1,128,162Z"/></symbol>
+    <symbol id="gs-plus" viewBox="0 0 256 256"><path fill="currentColor" d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></symbol>
+    <symbol id="gs-minus" viewBox="0 0 256 256"><path fill="currentColor" d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></symbol>
+    <symbol id="gs-leaf" viewBox="0 0 256 256"><path fill="currentColor" d="M223.45,40.07a8,8,0,0,0-7.52-7.52C139.8,28.08,78.82,51,52.82,94a87.09,87.09,0,0,0-12.76,49c.57,15.92,5.21,32,13.79,47.85l-19.51,19.5a8,8,0,0,0,11.32,11.32l19.5-19.51C81,210.73,97.09,215.37,113,215.94q1.67.06,3.33.06A86.93,86.93,0,0,0,162,203.18C205,177.18,227.93,116.21,223.45,40.07ZM153.75,189.5c-22.75,13.78-49.68,14-76.71.77l88.63-88.62a8,8,0,0,0-11.32-11.32L65.73,179c-13.19-27-13-54,.77-76.71,22.09-36.47,74.6-56.44,141.31-54.06C210.2,114.89,190.22,167.41,153.75,189.5Z"/></symbol>
+    <symbol id="gs-coins" viewBox="0 0 256 256"><path fill="currentColor" d="M184,89.57V84c0-25.08-37.83-44-88-44S8,58.92,8,84v40c0,20.89,26.25,37.49,64,42.46V172c0,25.08,37.83,44,88,44s88-18.92,88-44V132C248,111.3,222.58,94.68,184,89.57ZM232,132c0,13.22-30.79,28-72,28-3.73,0-7.43-.13-11.08-.37C170.49,151.77,184,139,184,124V105.74C213.87,110.19,232,122.27,232,132ZM72,150.25V126.46A183.74,183.74,0,0,0,96,128a183.74,183.74,0,0,0,24-1.54v23.79A163,163,0,0,1,96,152,163,163,0,0,1,72,150.25Zm96-40.32V124c0,8.39-12.41,17.4-32,22.87V123.5C148.91,120.37,159.84,115.71,168,109.93ZM96,56c41.21,0,72,14.78,72,28s-30.79,28-72,28S24,97.22,24,84,54.79,56,96,56ZM24,124V109.93c8.16,5.78,19.09,10.44,32,13.57v23.37C36.41,141.4,24,132.39,24,124Zm64,48v-4.17c2.63.1,5.29.17,8,.17,3.88,0,7.67-.13,11.39-.35A121.92,121.92,0,0,0,120,171.41v23.46C100.41,189.4,88,180.39,88,172Zm48,26.25V174.4a179.48,179.48,0,0,0,24,1.6,183.74,183.74,0,0,0,24-1.54v23.79a165.45,165.45,0,0,1-48,0Zm64-3.38V171.5c12.91-3.13,23.84-7.79,32-13.57V172C232,180.39,219.59,189.4,200,194.87Z"/></symbol>
+    <symbol id="gs-bag" viewBox="0 0 256 256"><path fill="currentColor" d="M239.89,198.12l-14.26-120a16,16,0,0,0-16-14.12H176a48,48,0,0,0-96,0H46.33a16,16,0,0,0-16,14.12l-14.26,120A16,16,0,0,0,20,210.6a16.13,16.13,0,0,0,12,5.4H223.92A16.13,16.13,0,0,0,236,210.6,16,16,0,0,0,239.89,198.12ZM128,32a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32ZM32,200,46.33,80H80v24a8,8,0,0,0,16,0V80h64v24a8,8,0,0,0,16,0V80h33.75l14.17,120Z"/></symbol>
+  </svg>
+
+  <header class="site-nav">
+    <a class="site-nav__mark" href="../index.html">John Bell</a>
+    <nav class="site-nav__links" aria-label="Main">
+      <a href="../index.html#skills">Services</a>
+      <a href="../index.html#process">Process</a>
+      <a href="work.html">Work</a>
+      <a href="print.html">Print</a>
+      <a href="about.html">About</a>
+      <a href="../index.html#faq">FAQs</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
+      <a class="is-cta" href="../index.html#contact">Start a project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="cs-hero wrap">
+      <div class="cs-hero__grid">
+        <div class="cs-hero__intro">
+          <h1>A sweet shop that’s <mark class="hl">fun to browse.</mark></h1>
+          <p class="cs-hero__lede">A redesign idea for GoSweet, the UK online sweet shop. I wanted it tidy enough to find your favourite quickly, but still fun, like a proper sweet shop.</p>
+          <span class="credit"><i>✓</i>Design only</span>
+        </div>
+        <div class="stage" data-stage style="--stage-hl:#c8a6f2">
+          <div class="stage__glow" aria-hidden="true"></div>
+          <div class="laptop">
+            <div class="laptop__lid"><div class="screen"><img src="../assets/captures/gosweet/home-desktop.webp" alt="GoSweet redesign homepage on desktop"></div></div>
+            <div class="laptop__base"></div>
+          </div>
+          <div class="phone" data-start="0" data-span=".45"><div class="screen"><img src="../assets/captures/gosweet/home-mobile.webp" alt="GoSweet redesign homepage on mobile"></div></div>
+          <div class="pop gs-pop-card" style="--x:-4%;--y:12%;--w:clamp(146px,11.5vw,176px);--r:-6deg" data-from-x="60">
+            <article class="es is-sale" data-p="27.99" data-img="../assets/projects/gosweet/p/shades-by-niko-cherry-cola-box.webp">
+  <div class="es__stage"><span class="es__tile"><img class="es__img" src="../assets/projects/gosweet/p/shades-by-niko-cherry-cola-box.webp" alt="Shades by Niko Cherry Cola Box" loading="lazy"></span><span class="es__save"><small>Save</small>30%</span><span class="es__quick" aria-hidden="true"><svg viewBox="0 0 256 256"><use href="#gs-eye"/></svg></span></div>
+  <div class="es__words"><p class="es__brand">Shades by Niko</p><h3 class="es__name">Cherry Cola Box</h3></div>
+  <div class="es__info"><div class="es__cell"><span class="es__label">Pack size</span><span class="es__value">Box of 20</span></div><span class="es__divider"></span><div class="es__cell es__cell--right"><span class="es__label">Per piece</span><span class="es__vrow"><span class="es__value es__value--sale">£1.40</span><span class="es__cmp">£1.99</span></span></div></div>
+  <div class="es__buy"><div class="es__price"><strong>£27.99</strong><s>£39.80</s></div><div class="es__act"><button type="button" class="es__add" data-add>Buy now</button><div class="es__qty" role="group" aria-label="Quantity in basket"><button type="button" class="es__step" data-step="-1" aria-label="One fewer"><svg viewBox="0 0 256 256" width="17" height="17"><use href="#gs-minus"/></svg></button><output class="es__n" aria-live="polite">1</output><button type="button" class="es__step" data-step="1" aria-label="One more"><svg viewBox="0 0 256 256" width="17" height="17"><use href="#gs-plus"/></svg></button></div></div></div>
+</article>
+          </div>
+          <div class="pop" style="--x:60%;--y:-5%;--w:34%;--r:6deg" data-from-x="-60" data-pop-sm="hide">
+            <div class="wcard wcard--gold wcard--solo"><span class="wcard__top"><span><b class="wcard__tier">Gold</b><span class="wcard__pct"><strong>4%</strong> credit back</span></span><span class="wcard__brand">Go Sweet<br>Rewards</span></span><span class="wcard__chip" aria-hidden="true"></span><span class="wcard__pts"><svg viewBox="0 0 256 256" aria-hidden="true"><use href="#gs-coins"/></svg>300 – 1199 pts</span></div>
+          </div>
+          <div class="pop" style="--x:14%;--y:84%;--r:-2deg" data-from-y="-50" data-pop-sm="hide">
+            <div class="gs-toastpill"><img src="../assets/projects/gosweet/p/red-bull-250ml-original-box.webp" alt=""><div><b>Added to basket</b><span>Free UK delivery unlocked</span></div></div>
+          </div>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>Site</dt><dd>Multi-page shop · 11 templates</dd></div>
+        <div><dt>Client</dt><dd>GoSweet (redesign concept)</dd></div>
+        <div><dt>Sector</dt><dd>UK online sweet shop</dd></div>
+        <div><dt>Design + build</dt><dd>John Bell</dd></div>
+        <div><dt>Scope</dt><dd>Shop redesign and a working prototype for a Shopify developer</dd></div>
+      </dl>
+    </section>
+
+    <!-- Brief -->
+    <section class="cs-brief wrap"><div class="cs-brief__grid">
+      <div><span class="label">The brief</span><p class="cs-brief__text">GoSweet sells American sweets, chocolate and fizzy drinks across the UK. The brief was to make the shop easier to browse and buy from, and more fun.</p></div>
+      <div><span class="label">What I did</span><ul class="cs-brief__list">
+        <li>A shop designed for phones first, with a working prototype</li>
+        <li>Product cards with the pack price and the price per piece</li>
+        <li>A simple colour scheme of purple, pink and a little gold</li>
+        <li>Rubik and Plus Jakarta Sans for the fonts</li>
+        <li>Rewards cards and a quicker way to fill the basket</li>
+      </ul></div>
+    </div></section>
+
+    <!-- Mobile parade -->
+    <section class="section--tight wrap">
+      <div class="section-head" data-reveal>
+        <span class="label">Phone first</span>
+        <h2>Easy to shop <mark class="hl">on a phone.</mark></h2>
+        <p>Two products to a row, big buttons, and the basket is always close by.</p>
+      </div>
+      <div class="panel parade" data-parade>
+        <div class="parade__row">
+          <div class="phone" data-live="../assets/live/gosweet/product.html?p=monster-rehab-green-tea-458ml-box" data-live-journey="journey.json#shop"><div class="screen"><video src="../assets/clips/gosweet/shop.mp4" poster="../assets/clips/gosweet/shop.jpg" muted playsinline loop preload="none" aria-label="GoSweet on mobile: shop, open a Monster box, add three to the basket"></video></div></div>
+          <div class="phone" data-live="../assets/live/gosweet/index.html" data-live-journey="journey.json#home"><div class="screen"><video src="../assets/clips/gosweet/home.mp4" poster="../assets/clips/gosweet/home.jpg" muted playsinline loop preload="none" aria-label="GoSweet on mobile: homepage slides, quick add a bestseller, open a brand"></video></div></div>
+          <div class="phone" data-live="../assets/live/gosweet/collection.html?c=drinks" data-live-journey="journey.json#search"><div class="screen"><video src="../assets/clips/gosweet/search.mp4" poster="../assets/clips/gosweet/search.jpg" muted playsinline loop preload="none" aria-label="GoSweet on mobile: search for cola, open a product, add two to the basket"></video></div></div>
+          <div class="phone" data-live="../assets/live/gosweet/loyalty.html" data-live-journey="journey.json#rewards"><div class="screen"><video src="../assets/clips/gosweet/rewards.mp4" poster="../assets/clips/gosweet/rewards.jpg" muted playsinline loop preload="none" aria-label="GoSweet on mobile: menu to Rewards, tiers and the loyalty FAQ"></video></div></div>
+        </div>
+        <div class="parade__caption" aria-hidden="true"><span>Shop</span><span>Home</span><span>Search</span><span>Rewards</span></div>
+
+        <div class="pop" style="--x:2%;--y:5%;--w:clamp(92px,8.4vw,124px);--r:-12deg" data-from-x="120">
+          <span class="gs-roundel gs-roundel--big"><small>Save</small>40%</span>
+        </div>
+        <div class="pop" style="--x:71%;--y:68%;--w:clamp(220px,20vw,280px);--r:3deg" data-from-x="-100" data-from-y="-40" data-pop-sm="hide">
+          <div class="gs-ship"><p><svg viewBox="0 0 256 256" aria-hidden="true"><use href="#gs-bag"/></svg><span>Spend <b>£4.02</b> more for <b>FREE UK delivery</b></span></p><span class="gs-ship__bar"><i style="width:80%"></i></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The site in use: a desktop recording with steps that follow it -->
+    <section class="section wrap" data-cp-film data-live="../assets/live/gosweet/index.html" data-mobile="../assets/captures/gosweet/home-mobile.webp" style="--tint:#f1e9fb;--swash:rgb(255 210 63 / 0.5);--pen:#ffd23f">
+      <header class="cp-head" data-reveal>
+        <span class="label">In use</span>
+        <h2>From the home page <mark class="hl">to the basket.</mark></h2>
+        <p>The working prototype running on a desktop.</p>
+      </header>
+      <div class="cp-film__grid">
+        <div class="cp-film__stage">
+          <div class="cp-browser">
+            <div class="cp-browser__bar"><i></i><i></i><i></i><span>gosweet.co.uk</span></div>
+            <video src="../assets/clips/gosweet/film-shop.mp4" poster="../assets/clips/gosweet/film-shop.jpg" muted playsinline loop preload="none" aria-label="GoSweet on desktop: the top banner slides, a mega menu opens, a craving is picked, a product is bought from its card, then from its page"></video>
+          </div>
+        </div>
+        <ol class="cp-steps">
+          <li data-t="0.9"><button type="button"><b>01</b><strong>Three offers up top</strong></button><i></i></li>
+          <li data-t="4.2"><button type="button"><b>02</b><strong>A menu for each aisle</strong></button><i></i></li>
+          <li data-t="9.8"><button type="button"><b>03</b><strong>Pick what you fancy</strong></button><i></i></li>
+          <li data-t="14.5"><button type="button"><b>04</b><strong>Buy straight from the card</strong></button><i></i></li>
+          <li data-t="17.8"><button type="button"><b>05</b><strong>The product page</strong></button><i></i></li>
+          <li data-t="21"><button type="button"><b>06</b><strong>Into the basket</strong></button><i></i></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Close-ups -->
+    <section class="section--tight wrap">
+      <header class="cp-head" data-reveal>
+        <span class="label">Up close</span>
+        <h2>A closer look <mark class="hl">at the details.</mark></h2>
+      </header>
+      <div class="gs-breakout" data-cards>
+        <figure class="gs-break gs-break--cards">
+          <div class="gs-break__panel" aria-hidden="true"></div>
+          <div class="gs-break__stack">
+            <div class="gs-break__card" style="--r:-9deg;--y:4%"><article class="es is-sale" data-p="29.99" data-img="../assets/projects/gosweet/p/red-bull-250ml-original-box.webp">
+  <div class="es__stage"><span class="es__tile"><img class="es__img" src="../assets/projects/gosweet/p/red-bull-250ml-original-box.webp" alt="Red Bull 250ml Original Box" loading="lazy"></span><span class="es__save"><small>Save</small>40%</span><span class="es__quick" aria-hidden="true"><svg viewBox="0 0 256 256"><use href="#gs-eye"/></svg></span></div>
+  <div class="es__words"><p class="es__brand">Red Bull</p><h3 class="es__name">250ml Original Box</h3></div>
+  <div class="es__info"><div class="es__cell"><span class="es__label">Pack size</span><span class="es__value">Box of 24</span></div><span class="es__divider"></span><div class="es__cell es__cell--right"><span class="es__label">Per piece</span><span class="es__vrow"><span class="es__value es__value--sale">£1.25</span><span class="es__cmp">£2.10</span></span></div></div>
+  <div class="es__buy"><div class="es__price"><strong>£29.99</strong><s>£50.40</s></div><div class="es__act"><button type="button" class="es__add" data-add>Buy now</button><div class="es__qty" role="group" aria-label="Quantity in basket"><button type="button" class="es__step" data-step="-1" aria-label="One fewer"><svg viewBox="0 0 256 256" width="17" height="17"><use href="#gs-minus"/></svg></button><output class="es__n" aria-live="polite">1</output><button type="button" class="es__step" data-step="1" aria-label="One more"><svg viewBox="0 0 256 256" width="17" height="17"><use href="#gs-plus"/></svg></button></div></div></div>
+</article></div>
+            <div class="gs-break__card" style="--r:3deg;--y:-12%"><article class="es is-sale" data-p="27.99" data-img="../assets/projects/gosweet/p/shades-by-niko-cherry-cola-box.webp">
+  <div class="es__stage"><span class="es__tile"><img class="es__img" src="../assets/projects/gosweet/p/shades-by-niko-cherry-cola-box.webp" alt="Shades by Niko Cherry Cola Box" loading="lazy"></span><span class="es__save"><small>Save</small>30%</span><span class="es__quick" aria-hidden="true"><svg viewBox="0 0 256 256"><use href="#gs-eye"/></svg></span></div>
+  <div class="es__words"><p class="es__brand">Shades by Niko</p><h3 class="es__name">Cherry Cola Box</h3></div>
+  <div class="es__info"><div class="es__cell"><span class="es__label">Pack size</span><span class="es__value">Box of 20</span></div><span class="es__divider"></span><div class="es__cell es__cell--right"><span class="es__label">Per piece</span><span class="es__vrow"><span class="es__value es__value--sale">£1.40</span><span class="es__cmp">£1.99</span></span></div></div>
+  <div class="es__buy"><div class="es__price"><strong>£27.99</strong><s>£39.80</s></div><div class="es__act"><button type="button" class="es__add" data-add>Buy now</button><div class="es__qty" role="group" aria-label="Quantity in basket"><button type="button" class="es__step" data-step="-1" aria-label="One fewer"><svg viewBox="0 0 256 256" width="17" height="17"><use href="#gs-minus"/></svg></button><output class="es__n" aria-live="polite">1</output><button type="button" class="es__step" data-step="1" aria-label="One more"><svg viewBox="0 0 256 256" width="17" height="17"><use href="#gs-plus"/></svg></button></div></div></div>
+</article></div>
+            <div class="gs-break__card" style="--r:11deg;--y:8%"><article class="es is-sale" data-p="35.99" data-img="../assets/projects/gosweet/p/monster-orange-dreamsicle-473ml-box.webp">
+  <div class="es__stage"><span class="es__tile"><img class="es__img" src="../assets/projects/gosweet/p/monster-orange-dreamsicle-473ml-box.webp" alt="Monster Reserve Orange Dreamsicle 473ml Box" loading="lazy"></span><span class="es__save"><small>Save</small>14%</span><span class="es__quick" aria-hidden="true"><svg viewBox="0 0 256 256"><use href="#gs-eye"/></svg></span></div>
+  <div class="es__words"><p class="es__brand">Monster</p><h3 class="es__name">Reserve Orange Dreamsicle 473ml Box</h3></div>
+  <div class="es__info"><div class="es__cell"><span class="es__label">Pack size</span><span class="es__value">Box of 12</span></div><span class="es__divider"></span><div class="es__cell es__cell--right"><span class="es__label">Per piece</span><span class="es__vrow"><span class="es__value es__value--sale">£3.00</span><span class="es__cmp">£3.49</span></span></div></div>
+  <div class="es__buy"><div class="es__price"><strong>£35.99</strong><s>£41.88</s></div><div class="es__act"><button type="button" class="es__add" data-add>Buy now</button><div class="es__qty" role="group" aria-label="Quantity in basket"><button type="button" class="es__step" data-step="-1" aria-label="One fewer"><svg viewBox="0 0 256 256" width="17" height="17"><use href="#gs-minus"/></svg></button><output class="es__n" aria-live="polite">1</output><button type="button" class="es__step" data-step="1" aria-label="One more"><svg viewBox="0 0 256 256" width="17" height="17"><use href="#gs-plus"/></svg></button></div></div></div>
+</article></div>
+          </div>
+          <figcaption><b>The product card</b><span>The pack price, the price per piece and the saving, all together. Once it’s in the basket, you can change the quantity on the card.</span></figcaption>
+        </figure>
+        <figure class="gs-break gs-break--wallet">
+          <div class="gs-break__panel" aria-hidden="true"></div>
+          <ul class="fan gs-break__fan" data-fan aria-label="Go Sweet Rewards tiers">
+            <li class="wcard wcard--club"><span class="wcard__top"><span><b class="wcard__tier">Club</b><span class="wcard__pct"><strong>2%</strong> credit back</span></span><span class="wcard__brand">Go Sweet<br>Rewards</span></span><span class="wcard__chip"></span><span class="wcard__pts"><svg viewBox="0 0 256 256"><use href="#gs-coins"/></svg>0 – 299 pts</span></li>
+            <li class="wcard wcard--gold"><span class="wcard__top"><span><b class="wcard__tier">Gold</b><span class="wcard__pct"><strong>4%</strong> credit back</span></span><span class="wcard__brand">Go Sweet<br>Rewards</span></span><span class="wcard__chip"></span><span class="wcard__pts"><svg viewBox="0 0 256 256"><use href="#gs-coins"/></svg>300 – 1199 pts</span></li>
+            <li class="wcard wcard--black"><span class="wcard__top"><span><b class="wcard__tier">Black</b><span class="wcard__pct"><strong>8%</strong> credit back</span></span><span class="wcard__brand">Go Sweet<br>Rewards</span></span><span class="wcard__chip"></span><span class="wcard__pts"><svg viewBox="0 0 256 256"><use href="#gs-coins"/></svg>1200+ pts</span></li>
+          </ul>
+          <figcaption><b>Rewards cards</b><span>Each of the three reward levels gets its own membership card.</span></figcaption>
+        </figure>
+      </div>
+      <div class="gs-breakout gs-breakout--two">
+        <figure class="gs-break gs-break--pack">
+          <div class="gs-break__panel gs-break__panel--gold" aria-hidden="true"></div>
+          <div class="gs-buybox" data-buybox>
+            <div class="gs-buybox__tile"><img src="../assets/projects/gosweet/p/cluck-o-late-box.webp" alt="Cluck-O-Late Chicken Chocolate 50g box"><span class="es__save" data-bb-save><small>Save</small>44%</span></div>
+            <div class="gs-buybox__info">
+              <p class="gs-buybox__brand">Cluck-O-Late</p>
+              <h3 class="gs-buybox__name">Chicken Chocolate 50g</h3>
+              <div class="gs-buybox__price"><strong data-bb-price>£19.99</strong><s data-bb-was>£35.88</s></div>
+              <div class="gs-opts" role="radiogroup" aria-label="Pack size">
+                <span class="gs-opts__lbl">Choose your pack</span>
+                <button type="button" class="gs-opt" role="radio" aria-checked="false" data-pack="single" data-p="1.99" data-w="2.99" data-save="33" data-name="Single"><span class="gs-opt__radio"></span><span><span class="gs-opt__name">Single</span><span class="gs-opt__sub">One piece</span></span><span class="gs-opt__price"><strong>£1.99</strong><s>£2.99</s></span></button>
+                <button type="button" class="gs-opt is-on" role="radio" aria-checked="true" data-pack="box" data-p="19.99" data-w="35.88" data-save="44" data-name="Box of 12"><span class="gs-opt__flag">Save 44%</span><span class="gs-opt__radio"></span><span><span class="gs-opt__name">Box of 12</span><span class="gs-opt__sub"><b>£1.67</b> each</span></span><span class="gs-opt__price"><strong>£19.99</strong><s>£35.88</s></span></button>
+              </div>
+              <div class="gs-buyrow">
+                <div class="gs-qty" role="group" aria-label="Quantity"><button type="button" data-bb-q="-1" aria-label="One fewer"><svg viewBox="0 0 256 256" width="16" height="16"><use href="#gs-minus"/></svg></button><span data-bb-n aria-live="polite">1</span><button type="button" data-bb-q="1" aria-label="One more"><svg viewBox="0 0 256 256" width="16" height="16"><use href="#gs-plus"/></svg></button></div>
+                <button type="button" class="es__add gs-buyrow__add" data-bb-add><svg viewBox="0 0 256 256" width="18" height="18" aria-hidden="true"><use href="#gs-bag"/></svg>Add to basket</button>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>Choose your pack</b><span>Buy one or a whole box, with the price per piece and the saving shown for each.</span></figcaption>
+        </figure>
+        <figure class="gs-break gs-break--drawer">
+          <div class="gs-break__panel" aria-hidden="true"></div>
+          <aside class="gs-drawer" data-drawer aria-label="Basket">
+            <div class="gs-drawer__head"><b>Your basket <span data-dr-n>8</span></b></div>
+            <div class="gs-dship"><p data-dr-ship>Spend <b>£4.08</b> more for <b>FREE UK delivery</b></p><span class="gs-dship__bar"><i data-dr-bar style="width:79.6%"></i></span></div>
+            <div class="gs-drawer__lines" data-dr-lines>
+              <div class="gs-line" data-p="15.92" data-w="19.92"><img src="../assets/projects/gosweet/p/sour-patch-kids-blue-raspberry-102g-single.webp" alt=""><div><span class="gs-line__brand">Sour Patch Kids</span><span class="gs-line__t">Blue Raspberry 102g</span><span class="gs-line__sub">Single · Qty 8</span></div><b>£15.92</b></div>
+            </div>
+            <div class="gs-drawer__foot">
+              <p class="gs-sum gs-sum--save"><span>You’re saving</span><span data-dr-save>£4.00</span></p>
+              <p class="gs-sum gs-sum--pts"><span><svg viewBox="0 0 256 256" width="15" height="15" aria-hidden="true"><use href="#gs-coins"/></svg>Points you’ll earn</span><span data-dr-pts>15 pts</span></p>
+              <p class="gs-sum gs-sum--total"><span>Subtotal</span><b data-dr-sub>£15.92</b></p>
+              <span class="es__add gs-drawer__go">Checkout</span>
+            </div>
+          </aside>
+          <figcaption><b>The basket</b><span>A bar fills up as you get closer to free delivery, and you see your savings and points before you pay.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- By the numbers -->
+    <section class="section--tight wrap">
+      <div class="cp-results" data-reveal>
+        <div class="cp-result"><b data-count="12">12</b><span>page designs</span><small>Home, aisles, products, basket, rewards, brands, blog, search and a few more.</small></div>
+        <div class="cp-result"><b><mark class="hl">848</mark></b><span>products in the shop</span><small>Every one uses the same card, with the pack price and the price per piece.</small></div>
+        <div class="cp-result"><b>1</b><span>click to the basket</span><small>Every card has a Buy now button, and you can change the quantity without leaving the page.</small></div>
+      </div>
+    </section>
+
+    <!-- The logo -->
+    <section class="section--tight wrap">
+      <header class="cp-head" data-reveal>
+        <span class="label">The logo</span>
+        <h2>A logo with <mark class="hl">a sweet in it.</mark></h2>
+        <p>The o is a wrapped sweet. The rest is round, bold and easy to read at any size.</p>
+      </header>
+      <div class="gs-logo" data-reveal>
+        <figure class="gs-logo__hero"><img src="../assets/projects/gosweet/logo-white.svg" alt="GoSweet logo reversed out of purple"></figure>
+        <figure class="gs-logo__app"><span class="gs-app"><img src="../assets/projects/gosweet/logo-g.svg" alt=""></span><figcaption>GoSweet</figcaption></figure>
+        <figure class="gs-logo__main"><img src="../assets/projects/gosweet/logo.svg" alt="GoSweet logo: a pink G, a wrapped sweet as the o, and Sweet in purple"></figure>
+        <figure class="gs-logo__sweet"><img src="../assets/projects/gosweet/logo-sweet.svg" alt="The wrapped sweet from the logo"></figure>
+      </div>
+    </section>
+
+    <!-- Brand -->
+    <section class="section wrap">
+      <div class="section-head" data-reveal>
+        <span class="label">Colour + type</span>
+        <h2>Just a few colours, <mark class="hl">used carefully.</mark></h2>
+        <p>Every button is purple. Pink is only for savings, and gold turns up once on each screen.</p>
+      </div>
+      <div class="palette" data-reveal>
+        <button class="swatch" style="--c:#5c2a9d;--share:2"><b>Purple</b><code>#5C2A9D</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#36146a;--share:1.2"><b>Deep purple</b><code>#36146A</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#e73e80;--share:1.2"><b>Pink</b><code>#E73E80</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#ffd23f;--on:#1a1230;--share:1"><b>Gold</b><code>#FFD23F</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#f1e9fb;--on:#1a1230;--share:1"><b>Lilac</b><code>#F1E9FB</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#1a1230;--share:1"><b>Ink</b><code>#1A1230</code><span class="copied">Copied</span></button>
+      </div>
+      <div class="panel specimen gs-specimen" style="margin-top:14px" data-reveal>
+        <div class="specimen__aa">Aa</div>
+        <div>
+          <h3 class="gs-h gs-specimen__h">Sweets, <em>sorted.</em></h3>
+          <p class="gs-specimen__p">Rubik ExtraBold for headings, because it’s round and bold enough to shout about a deal. Plus Jakarta Sans for everything else.</p>
+          <div class="specimen__weights" aria-hidden="true">
+            <span style="font-weight:400">Aa<small>Regular</small></span>
+            <span style="font-weight:500">Aa<small>Medium</small></span>
+            <span style="font-weight:600">Aa<small>Semi</small></span>
+            <span style="font-weight:700">Aa<small>Bold</small></span>
+            <span style="font-weight:800">Aa<small>Extra</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- cp:end -->
+    <section class="section wrap" id="more">
+      <header class="cp-head"><span class="label">More work</span><h2>Other projects <mark class="hl">you might like.</mark></h2></header>
+      <div class="cp-more">
+        <a class="cp-card cp-card--next" href="nic-pouches.html" style="--brand:#0070d5">
+          <div class="cp-card__art"><span class="cp-card__label">Next project</span><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/nic-pouches/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/nic-pouches/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Nic Pouches</b><span>Online shop</span></div>
+        </a>
+        <a class="cp-card" href="patch.html" style="--brand:#111318">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/patch-agency/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/patch-agency/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>PATCH</b><span>Brand + website</span></div>
+        </a>
+        <a class="cp-card" href="birth-hood.html" style="--brand:#fe7fcc">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/birth-hood/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/birth-hood/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Birth-hood</b><span>Website</span></div>
+        </a>
+        <a class="cp-card" href="vsl-trade.html" style="--brand:#0d1110">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/vsl-trade/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/vsl-trade/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>VSL Trade</b><span>Wholesale website</span></div>
+        </a>
+        <a class="cp-card" href="birdie-blooms.html" style="--brand:#e8879f">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/birdie-blooms/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/birdie-blooms/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Birdie Blooms</b><span>Brand + website</span></div>
+        </a>
+        <a class="cp-card" href="sccc-heritage.html" style="--brand:#8b1538">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/sccc-heritage/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/sccc-heritage/journey-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>SCCC Heritage</b><span>Club history website</span></div>
+        </a>
+        <a class="cp-card" href="beetle-eyes.html" style="--brand:#1f3a2e">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/beetle-eyes/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/../projects/beetle-eyes/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Beetle Eyes</b><span>One-page website</span></div>
+        </a>
+        <a class="cp-card cp-card--print" href="print.html">
+          <div class="cp-card__art"><img src="../assets/projects/print/hospital/covers/impact.jpg" alt="" loading="lazy"><img src="../assets/projects/property/covers/swilley.jpg" alt="" loading="lazy"><img src="../assets/projects/print/gowling/cover-flat.jpg" alt="" loading="lazy"></div>
+          <div class="cp-card__name"><b>Print, brand and motion</b><span>Brochures · logos · film</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="contact wrap">
+        <div class="contact__intro">
+          <span class="label">Your turn</span>
+          <h2>Let’s make something people <mark class="hl">like to use.</mark></h2>
+          <p>Tell me a bit about your business and what you need. I usually reply within a working day.</p>
+          <a class="contact__email" href="mailto:jb.designagency89@gmail.com">jb.designagency89@gmail.com</a>
+        </div>
+        <form class="contact__form" data-contact data-to="jb.designagency89@gmail.com" novalidate>
+          <fieldset class="chips">
+            <legend>What do you need?</legend>
+            <label><input type="checkbox" name="need" value="New website"><span>New website</span></label>
+            <label><input type="checkbox" name="need" value="Redesign"><span>Redesign</span></label>
+            <label><input type="checkbox" name="need" value="Online shop"><span>Online shop</span></label>
+            <label><input type="checkbox" name="need" value="Logo and brand"><span>Logo &amp; brand</span></label>
+            <label><input type="checkbox" name="need" value="Print"><span>Print</span></label>
+          </fieldset>
+          <div class="field-row">
+            <label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label>
+            <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <label class="field"><span>Tell me about it</span><textarea name="message" rows="4" required></textarea></label>
+          <p class="contact__error" role="alert" data-contact-error></p>
+          <button class="btn btn--big" type="submit">Send it over <span aria-hidden="true">→</span></button>
+          <p class="contact__note">This opens your email app with everything filled in, ready to send.</p>
+        </form>
+      </div>
+    </section>
+    <!-- /cp:end -->
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <p class="site-foot__big"><a href="#contact">Got a project? <mark class="hl hl--orange">Let’s talk.</mark></a></p>
+      <div class="site-foot__row">
+        <span>© 2026 John Bell · Designed and built by me</span>
+        <nav aria-label="Footer"><a href="work.html">Work</a><a href="../index.html#faq">FAQs</a><a href="mailto:jb.designagency89@gmail.com">Email</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <div class="gs-toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/case.js"></script>
+  <script src="../assets/js/case-plus.js"></script>
+  <script src="../assets/js/gosweet.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "VSL Trade: The App",
+  "steps": [],
+  "mobile": {
+    "label": "The App",
+    "page": "phone-app.html",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      { "wait": 1300 },
+      { "scrollTo": ".ap-slide.t1", "offset": 60, "ms": 2000, "after": 1800 },
+      { "scroll": 700, "ms": 2200, "after": 1600 },
+      { "scrollTo": ".ap-slide.t2", "offset": 60, "ms": 2000, "after": 1800 },
+      { "scroll": 700, "ms": 2200, "after": 1600 }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "SCCC Heritage: Bowl to enter",
+  "mobile": {
+    "label": "Bowl to enter",
+    "page": "index.html?p=/",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      {
+        "wait": 1600
+      },
+      {
+        "tap": "section[aria-label='Enter the site']",
+        "at": [
+          0.5,
+          0.7
+        ],
+        "scroll": false,
+        "after": 2400
+      },
+      {
+        "scroll": 560,
+        "ms": 3200,
+        "after": 1600
+      },
+      {
+        "scroll": 620,
+        "ms": 3200,
+        "after": 1800
+      }
+    ]
+  }
+}

@@ -1,0 +1,282 @@
+<!doctype html>
+<!--
+  HERO 02 · "Big type, real work"
+  Idea: a giant editorial headline ("Websites that win you work.") fills the hero, the
+  highlighter sweeps in word by word, and real pieces of John's work (GoSweet + Nic Pouches
+  product cards, a Birth-hood polaroid, the PATCH lime sticker, a phone) are tucked into and
+  around the letters, floating and parallaxing with the mouse.
+-->
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>John Bell · Hero option 02 · Big type, real work</title>
+  <meta name="description" content="John Bell designs and builds websites, online shops and brands that win small businesses work. Freelance, based in Leicestershire, working across the UK.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <style>
+    /* ============ Big type hero ============ */
+    .hero {
+      position: relative; isolation: isolate; overflow: hidden;
+      min-height: 100dvh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: clamp(100px, 13vh, 130px) 0 clamp(32px, 5vh, 56px);
+    }
+    .bt { --F: clamp(64px, min(13.2vw, 21.5vh), 214px); }
+
+    .kicker { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; font-weight: 500; color: var(--grey-7); margin-bottom: clamp(14px, 2.6vh, 28px); }
+    .kicker b { font-weight: 600; color: var(--ink); }
+    .kicker .dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #22b35e; flex: none; }
+    .kicker .dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #22b35e; opacity: 0; animation: ping 2.4s var(--ease-out) infinite; }
+    .kicker .sep { width: 18px; height: 1px; background: var(--grey-3); }
+    @keyframes ping { 0% { transform: scale(0.5); opacity: 0.7; } 100% { transform: scale(1.6); opacity: 0; } }
+
+    /* The stage is sized in em of the headline, so the pieces stay tucked
+       against the same letters at every screen size. */
+    .stage { position: relative; font-size: var(--F); }
+    .bt-title { position: relative; z-index: 2; margin: 0; font-size: 1em; font-weight: 700; line-height: 0.9; letter-spacing: -0.055em; text-wrap: initial; }
+    .bt-title .ln { display: block; white-space: nowrap; overflow: hidden; padding: 0.02em 0.08em 0.1em; margin: -0.02em -0.08em -0.1em; }
+    .bt-title .ln > span { display: inline-block; }
+    .bt-title .ln--2 { padding-left: calc(var(--in2) + 0.08em); }
+    .bt-title .ln--3 { padding-left: calc(var(--in3) + 0.08em); }
+    .stage { --in2: 1.62em; --in3: 1.3em; }
+    .bt-title .hl { padding: 0 0.06em; margin: 0 -0.03em; background-position: 0 66%; }
+    .bt-title .hl.is-lit { background-size: 100% 62%; }
+    .hl--mint { --pen: #a8f0c6; }
+
+    /* Pieces: outer = parallax, .fl = float, .pc = rotation + look */
+    .piece { position: absolute; left: var(--x); top: var(--y); width: var(--w); z-index: 3; will-change: transform; }
+    .piece.is-behind { z-index: 1; }
+    .piece .fl { display: block; }
+    .piece .pc { display: block; rotate: var(--r); transition: rotate 0.6s var(--ease-spring), scale 0.6s var(--ease-spring); }
+    .piece a.pc { text-decoration: none; }
+    .piece:hover .pc { scale: 1.04; rotate: calc(var(--r) * 0.4); }
+    .pc img { width: 100%; }
+    .lift { box-shadow: 0 2px 4px rgb(24 24 26 / 0.06), 0 26px 44px -16px rgb(24 24 26 / 0.34); }
+    .card img { border-radius: 0.06em; }
+    .card { border-radius: 0.06em; background: #fff; }
+
+    .polaroid { position: relative; margin: 0; padding: 0.055em 0.055em 0; background: #fff; border-radius: 3px; }
+    .polaroid img { aspect-ratio: 1 / 1.02; object-fit: cover; object-position: 50% 30%; }
+    .polaroid figcaption { font: 700 0.13em / 1 Caveat, cursive; color: #2c2c2c; text-align: center; padding: 0.45em 0 0.6em; }
+    .tape { position: absolute; left: 50%; top: -0.05em; width: 0.42em; height: 0.12em; translate: -50% 0; rotate: 3deg; background: rgb(255 240 77 / 0.75); box-shadow: 0 1px 2px rgb(0 0 0 / 0.06); }
+
+    .sticker { position: relative; display: grid; place-items: center; aspect-ratio: 1; border-radius: 50%; background: #b3dd03; color: #111318; box-shadow: inset 0 -0.03em 0 rgb(0 0 0 / 0.08), 0 20px 34px -14px rgb(60 80 0 / 0.45); }
+    .sticker__ring { position: absolute; inset: 7%; width: 86%; height: 86%; animation: spin 16s linear infinite; }
+    .sticker__ring text { font: 800 11.5px var(--font); letter-spacing: 0.3em; fill: currentColor; }
+    .sticker__a { width: 40%; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .phone {
+      --edge: 2px;
+      position: relative; display: block; container-type: inline-size; aspect-ratio: 393 / 852;
+      border: var(--edge) solid transparent; border-radius: 17% / 7.9%;
+      background: linear-gradient(#0a0a0b, #0a0a0b) padding-box, linear-gradient(140deg, #c4c4c8 0%, #55555a 26%, #a6a6ab 50%, #3d3d40 76%, #b2b2b6 100%) border-box;
+      box-shadow: 0 40px 50px -26px rgb(17 17 17 / 0.5), 0 12px 24px -12px rgb(17 17 17 / 0.3);
+    }
+    .phone::before { content: ""; position: absolute; right: calc(-1 * var(--edge) - 3px); top: 27%; height: 13%; width: 3px; border-radius: 2px; background: #8e8e93; }
+    .phone__display { position: absolute; inset: 3.4cqw; overflow: hidden; border-radius: 13cqw; display: flex; flex-direction: column; background: #0f1014; }
+    .phone__display::before { content: ""; position: absolute; z-index: 3; top: 2.6cqw; left: 50%; width: 28cqw; height: 8cqw; translate: -50% 0; border-radius: 999px; background: #000; }
+    .phone__status { flex: 0 0 auto; height: 13cqw; display: flex; align-items: center; justify-content: space-between; padding: 0.6cqw 7.5cqw 0 9.5cqw; color: #fff; font: 600 4.2cqw / 1 var(--font); }
+    .phone__status svg { height: 3.6cqw; width: auto; }
+    .phone .screen { position: relative; display: block; flex: 1; overflow: hidden; }
+    .phone .screen img { display: block; width: 100%; will-change: transform; }
+
+    .tag { position: absolute; left: 50%; bottom: -0.2em; translate: -50% 0; white-space: nowrap; font: 600 clamp(11px, 0.068em, 13px) / 1 var(--font); letter-spacing: 0.01em; padding: 0.55em 0.9em; border-radius: 999px; background: var(--ink); color: var(--white); opacity: 0; transition: opacity 0.25s, translate 0.35s var(--ease-out); pointer-events: none; }
+    .piece:hover .tag, .piece:focus-within .tag { opacity: 1; translate: -50% 0.25em; }
+
+    /* Desktop placement (em of the headline) */
+    .p-sticker { --x: 4.12em; --y: -0.3em;  --w: 0.62em; --r: -12deg; }
+    .p-gs      { --x: 4.95em; --y: -0.22em; --w: 0.74em; --r: 7deg; }
+    .p-np      { --x: 5.82em; --y: 0.02em;  --w: 0.62em; --r: -5deg; }
+    .p-bh      { --x: 0.02em; --y: 0.98em;  --w: 1.1em;  --r: -6deg; }
+    .p-phone   { --x: 5.93em; --y: 1.24em;  --w: 0.6em;  --r: 8deg; }
+
+    /* ---------- Bottom row ---------- */
+    .bt-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; flex-wrap: wrap; margin-top: clamp(26px, 5vh, 54px); position: relative; z-index: 4; }
+    .bt-who { max-width: 31em; font-size: clamp(15px, 1.2vw, 18px); color: var(--grey-7); line-height: 1.6; }
+    .bt-who strong { color: var(--ink); font-weight: 600; }
+    .bt-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+    .bt-ctas .btn { padding: 15px 24px; }
+    .bt-ctas .btn span { transition: transform 0.3s var(--ease-spring); }
+    .bt-ctas .btn:hover span { transform: translateX(3px); }
+
+    /* ---------- Strip below ---------- */
+    .strip { border-top: 1px solid var(--line); padding: 22px 0 28px; }
+    .strip .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px 28px; flex-wrap: wrap; }
+    .strip ul { display: flex; flex-wrap: wrap; gap: 6px 24px; margin: 0; padding: 0; list-style: none; font-size: 15px; font-weight: 500; color: var(--grey-7); }
+    .strip li { display: inline-flex; align-items: center; gap: 10px; }
+    .strip li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+    .strip p { font-size: 13px; color: var(--grey-5); }
+
+    /* ---------- Tablet ---------- */
+    @media (max-width: 1100px) {
+      .bt { --F: clamp(56px, 12.4vw, 140px); }
+    }
+
+    /* ---------- Phone: headline stacks tight, pieces fan out in a band under it ---------- */
+    @media (max-width: 700px) {
+      .hero { justify-content: flex-start; padding-top: 92px; padding-bottom: 28px; }
+      .bt { --F: min(18.6vw, 84px); }
+      .kicker { font-size: 12.5px; gap: 8px; margin-bottom: 14px; }
+      .kicker .sep, .kicker .loc { display: none; }
+      .stage { --in2: 0.5em; --in3: 0.18em; padding-bottom: 2.45em; }
+      .p-sticker { --x: 3.45em; --y: -0.22em; --w: 0.82em; --r: -12deg; }
+      .p-gs      { --x: -0.04em; --y: 2.98em; --w: 1.08em; --r: -9deg; }
+      .p-bh      { --x: 0.86em; --y: 2.86em;  --w: 1.56em; --r: 4deg; }
+      .p-np      { --x: 2.3em;  --y: 3.08em;  --w: 1.02em; --r: 8deg; }
+      .p-phone   { --x: 3.6em;  --y: 2.84em;  --w: 0.9em;  --r: 9deg; }
+      .p-sticker, .p-phone { z-index: 3; }
+      .p-gs, .p-np { z-index: 2; }
+      .bt-foot { margin-top: 18px; gap: 18px; }
+      .bt-who { font-size: 15px; }
+      .bt-ctas .btn { padding: 13px 18px; font-size: 14px; }
+      .tag { display: none; }
+      .strip ul { font-size: 13.5px; gap: 4px 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sticker__ring { animation: none; }
+      .piece { will-change: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-nav">
+    <a class="site-nav__mark" href="../index.html">John Bell <span>Design</span></a>
+    <nav class="site-nav__links" aria-label="Main">
+      <a href="../index.html#skills">Services</a>
+      <a href="../index.html#process">Process</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../projects/property.html">Print</a>
+      <a href="../index.html#faq">FAQs</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
+      <a class="is-cta" href="../index.html#contact">Start a project</a>
+    </nav>
+  </header>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="patch-a" viewBox="100.32 9.75 123.78 105.08"><path fill="currentColor" d="M212.89,81.13c-1.09,0-2.15.16-3.15.46l-39.5-54.3c1.23-1.8,1.94-3.97,1.94-6.31,0-6.2-5.03-11.23-11.23-11.23s-11.23,5.03-11.23,11.23c0,2.7.96,5.18,2.55,7.12l-38.55,64.48c-.7-.14-1.42-.21-2.17-.21-6.2,0-11.23,5.03-11.23,11.23s5.03,11.23,11.23,11.23c5.3,0,9.73-3.68,10.91-8.62l80.34-8.9c1.83,3.72,5.65,6.29,10.07,6.29,6.2,0,11.23-5.03,11.23-11.23s-5.03-11.23-11.23-11.23ZM120.24,96.46l38.55-64.48c.7.14,1.42.21,2.17.21,1.09,0,2.150-.16,3.14-.45l39.5,54.3c-.76,1.11-1.31,2.36-1.63,3.71l-80.34,8.9c-.38-.78-.85-1.52-1.4-2.19Z"/></symbol>
+      <symbol id="sig" viewBox="0 0 17 12"><path fill="currentColor" d="M1 8h2v3H1zM5 6h2v5H5zM9 4h2v7H9zM13 1h2v10h-2z"/></symbol>
+    </defs>
+  </svg>
+
+  <main id="main">
+    <section class="hero bt" data-bigtype aria-label="Introduction">
+      <div class="wrap">
+        <p class="kicker" data-in><span class="dot" aria-hidden="true"></span><b>John Bell</b> designs &amp; builds websites<span class="sep" aria-hidden="true"></span><span class="loc">Available for freelance · Leicestershire / UK</span></p>
+
+        <div class="stage">
+          <h1 class="bt-title" aria-label="Websites that win you work.">
+            <span class="ln ln--1" aria-hidden="true"><span><mark class="hl hl--blue">Websites</mark></span></span>
+            <span class="ln ln--2" aria-hidden="true"><span>that <mark class="hl">win</mark></span></span>
+            <span class="ln ln--3" aria-hidden="true"><span>you <mark class="hl hl--pink">work.</mark></span></span>
+          </h1>
+
+          <!-- Real pieces of work, tucked into the letters -->
+          <div class="piece p-sticker" data-depth="1.3"><span class="fl"><a class="pc" href="../projects/patch.html" aria-label="PATCH case study">
+            <span class="sticker"><svg class="sticker__ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring0" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#ring0">EVERY PATCH COVERED · EVERY PATCH COVERED ·</textPath></text></svg><svg class="sticker__a" viewBox="0 0 123.78 105.08" aria-hidden="true"><use href="#patch-a"/></svg></span>
+            <span class="tag">PATCH · brand + website</span>
+          </a></span></div>
+
+          <div class="piece p-gs is-behind" data-depth="0.6"><span class="fl"><a class="pc card lift" href="../projects/gosweet.html" aria-label="GoSweet case study">
+            <img src="../assets/captures/gosweet/card-desktop.webp" alt="GoSweet product card: Monster Reserve Orange Dreamsicle, box of 12" width="486" height="902">
+            <span class="tag">GoSweet · online shop</span>
+          </a></span></div>
+
+          <div class="piece p-np" data-depth="1.1"><span class="fl"><a class="pc card lift" href="../projects/nic-pouches.html" aria-label="Nic Pouches case study">
+            <img src="../assets/captures/nic-pouches/card-desktop.webp" alt="Nic Pouches product card: FUMi Mini Spearmint" width="494" height="752">
+            <span class="tag">Nic Pouches · online shop</span>
+          </a></span></div>
+
+          <div class="piece p-bh" data-depth="0.9"><span class="fl"><a class="pc" href="../projects/birth-hood.html" aria-label="Birth-hood case study">
+            <figure class="polaroid lift"><span class="tape" aria-hidden="true"></span><img src="../assets/projects/birth-hood/parent-baby-150.jpg" alt="A parent and baby at a Birth-hood class" width="900" height="600"><figcaption>birth-hood</figcaption></figure>
+            <span class="tag">Birth-hood · website</span>
+          </a></span></div>
+
+          <div class="piece p-phone" data-depth="1.6"><span class="fl"><a class="pc" href="../projects/patch.html" aria-label="PATCH website on a phone, case study">
+            <span class="phone"><span class="phone__display"><span class="phone__status"><span>9:41</span><svg viewBox="0 0 17 12"><use href="#sig"/></svg></span><span class="screen"><img src="../assets/captures/patch-agency/home-mobile.webp" alt="" width="780" height="16000"></span></span></span>
+            <span class="tag">PATCH · on the phone</span>
+          </a></span></div>
+        </div>
+
+        <div class="bt-foot">
+          <p class="bt-who" data-in>For <strong>shops, cafés, salons, trades and local services</strong> who want a site that looks right, works on every phone and brings in enquiries. I design it <em>and</em> build it.</p>
+          <div class="bt-ctas" data-in>
+            <a class="btn" href="../index.html#contact">Start a project <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="../index.html#work">See the work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="wrap">
+        <ul>
+          <li style="--c:var(--hl-blue)">Websites</li>
+          <li style="--c:var(--hl-yellow)">Online shops</li>
+          <li style="--c:var(--hl-pink)">Brand identity</li>
+          <li style="--c:var(--hl-orange)">Print</li>
+        </ul>
+        <p>Based in Leicestershire · working with businesses across the UK</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+  (() => {
+    document.documentElement.classList.remove('no-js');
+    const hero = document.querySelector('[data-bigtype]');
+    const marks = [...hero.querySelectorAll('.bt-title .hl')];
+    const pieces = [...hero.querySelectorAll('.piece')];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduce || !window.gsap) { marks.forEach(m => m.classList.add('is-lit')); return; }
+
+    /* ---- Entrance: lines rise, highlighter sweeps word by word, work drops in ---- */
+    gsap.set(marks, { transition: 'none', backgroundSize: '0% 62%' });
+    const tl = gsap.timeline({ delay: 0.15 });
+    tl.from('.bt-title .ln > span', { yPercent: 110, duration: 1.1, ease: 'expo.out', stagger: 0.1 }, 0)
+      .from('[data-in]', { y: 14, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.12 }, 0.35);
+    marks.forEach((m, i) => tl.to(m, { backgroundSize: '100% 62%', duration: 0.55, ease: 'power2.inOut' }, 0.75 + i * 0.32));
+    tl.from(pieces.map(p => p.querySelector('.fl')), {
+        opacity: 0, scale: 0.55, y: 60, rotation: (i) => (i % 2 ? 18 : -18),
+        duration: 1, ease: 'back.out(1.7)', stagger: { each: 0.1, from: 'random' }
+      }, 0.9)
+      .add(startIdle, 1.9);
+
+    /* ---- Idle: each piece floats on its own rhythm; the phone scrolls its real page ---- */
+    function startIdle() {
+      pieces.forEach((p, i) => {
+        const fl = p.querySelector('.fl');
+        gsap.to(fl, { y: i % 2 ? 10 : -10, rotation: i % 2 ? 1.6 : -1.6, duration: 2.6 + i * 0.45, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+      });
+      const shot = hero.querySelector('.phone .screen img');
+      gsap.to(shot, { yPercent: -14, duration: 9, ease: 'sine.inOut', yoyo: true, repeat: -1, repeatDelay: 1.2 });
+    }
+
+    /* ---- Mouse parallax (fine pointers only) ---- */
+    if (matchMedia('(pointer: fine)').matches) {
+      const movers = pieces.map(p => ({ d: +p.dataset.depth || 1, x: gsap.quickTo(p, 'x', { duration: 0.9, ease: 'power3.out' }), y: gsap.quickTo(p, 'y', { duration: 0.9, ease: 'power3.out' }) }));
+      const title = hero.querySelector('.bt-title');
+      const tx = gsap.quickTo(title, 'x', { duration: 1.2, ease: 'power3.out' }), ty = gsap.quickTo(title, 'y', { duration: 1.2, ease: 'power3.out' });
+      hero.addEventListener('pointermove', e => {
+        const r = hero.getBoundingClientRect();
+        const nx = (e.clientX - r.left) / r.width - 0.5, ny = (e.clientY - r.top) / r.height - 0.5;
+        movers.forEach(m => { m.x(nx * 34 * m.d); m.y(ny * 26 * m.d); });
+        tx(nx * -8); ty(ny * -6);
+      });
+      hero.addEventListener('pointerleave', () => { movers.forEach(m => { m.x(0); m.y(0); }); tx(0); ty(0); });
+    }
+  })();
+  </script>
+</body>
+</html>

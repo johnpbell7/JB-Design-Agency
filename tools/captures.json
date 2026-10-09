@@ -1,0 +1,349 @@
+{
+  "birth-hood": {
+    "url": "https://birth-hood.co.uk/",
+    "shots": [
+      {
+        "name": "fold",
+        "fold": true,
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "home"
+      },
+      {
+        "name": "find-your-package",
+        "path": "find-your-package"
+      },
+      {
+        "name": "services",
+        "selector": "#services",
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "testimonials",
+        "selector": ".testimonials",
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "hypnobirthing",
+        "path": "hypnobirthing",
+        "viewports": [
+          "mobile"
+        ]
+      },
+      {
+        "name": "birth-doula",
+        "path": "birth-doula",
+        "viewports": [
+          "mobile"
+        ]
+      },
+      {
+        "name": "reviews",
+        "path": "reviews",
+        "viewports": [
+          "mobile"
+        ]
+      },
+      {
+        "name": "meet-leanne",
+        "path": "meet-leanne",
+        "viewports": [
+          "mobile"
+        ]
+      },
+      {
+        "name": "yoga",
+        "path": "yoga",
+        "viewports": [
+          "mobile"
+        ]
+      }
+    ]
+  },
+  "sccc-heritage": {
+    "url": "https://sccc-heritage.co.uk/",
+    "shots": [
+      {
+        "name": "fold",
+        "fold": true,
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "home"
+      }
+    ]
+  },
+  "patch-agency": {
+    "local": "sites/patch-agency",
+    "hide": [
+      "#intro"
+    ],
+    "css": "html.intro-lock{overflow:visible!important}",
+    "shots": [
+      {
+        "name": "fold",
+        "fold": true,
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "home"
+      }
+    ]
+  },
+  "beetle-eyes": {
+    "local": "/Users/johnB/Documents/Web/beetle-eyes",
+    "hide": [
+      "img[src*=\"be-coats\"]",
+      "#pageCurtain"
+    ],
+    "shots": [
+      {
+        "name": "fold",
+        "fold": true,
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "home"
+      },
+      {
+        "name": "fold",
+        "fold": true,
+        "viewports": [
+          "mobile"
+        ]
+      }
+    ]
+  },
+  "vsl-trade": {
+    "local": "sites/vsl-trade",
+    "sessionStorage": {
+      "vsl-intro": "1"
+    },
+    "hide": [
+      "#vsl-intro",
+      "#google_translate_element",
+      ".skiptranslate"
+    ],
+    "shots": [
+      {
+        "name": "fold",
+        "fold": true,
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "home"
+      },
+      {
+        "name": "app",
+        "path": "app.html"
+      },
+      {
+        "name": "catalogue",
+        "path": "catalogue/"
+      },
+      {
+        "name": "categories",
+        "selector": ".ce-cats",
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "vape-nicotine",
+        "path": "vape-nicotine.html",
+        "viewports": [
+          "mobile"
+        ]
+      },
+      {
+        "name": "newshub",
+        "path": "newshub.html",
+        "viewports": [
+          "mobile"
+        ]
+      },
+      {
+        "name": "about",
+        "path": "about.html",
+        "viewports": [
+          "mobile"
+        ]
+      }
+    ]
+  },
+  "nic-pouches": {
+    "local": "sites/nic-pouches",
+    "shots": [
+      {
+        "name": "fold",
+        "fold": true,
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "home"
+      },
+      {
+        "name": "shop",
+        "path": "shop.html"
+      },
+      {
+        "name": "product",
+        "path": "product.html?p=fumi-mini-spearmint"
+      },
+      {
+        "name": "mix-match",
+        "path": "page-mix-match.html"
+      },
+      {
+        "name": "loyalty",
+        "path": "page-nic-pouches-loyalty-points.html"
+      },
+      {
+        "name": "card",
+        "path": "shop.html",
+        "selector": ".pc"
+      },
+      {
+        "name": "tiers",
+        "path": "page-nic-pouches-loyalty-points.html",
+        "selector": ".nptri"
+      },
+      {
+        "name": "brand-strip",
+        "selector": "#brands",
+        "viewports": [
+          "desktop"
+        ]
+      }
+    ]
+  },
+  "birdie-blooms": {
+    "url": "https://johnpbell7.github.io/Birdie-blooms-/",
+    "shots": [
+      {
+        "name": "fold",
+        "fold": true,
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "home"
+      },
+      {
+        "name": "shop",
+        "path": "shop.html"
+      },
+      {
+        "name": "weddings",
+        "path": "weddings.html"
+      },
+      {
+        "name": "palette",
+        "selector": ".palette",
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "seasons",
+        "path": "seasons.html",
+        "viewports": [
+          "mobile"
+        ]
+      },
+      {
+        "name": "about",
+        "path": "about.html",
+        "viewports": [
+          "mobile"
+        ]
+      },
+      {
+        "name": "contact",
+        "path": "contact.html",
+        "viewports": [
+          "mobile"
+        ]
+      }
+    ]
+  },
+  "gosweet": {
+    "local": "sites/gosweet",
+    "shots": [
+      {
+        "name": "fold",
+        "fold": true,
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "home"
+      },
+      {
+        "name": "shop",
+        "path": "collection.html"
+      },
+      {
+        "name": "product",
+        "path": "product.html?p=monster-orange-dreamsicle-473ml-box"
+      },
+      {
+        "name": "halloween",
+        "path": "halloween.html"
+      },
+      {
+        "name": "loyalty",
+        "path": "loyalty.html"
+      },
+      {
+        "name": "card",
+        "path": "collection.html",
+        "selector": ".es"
+      },
+      {
+        "name": "cravings",
+        "selector": ".crav",
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "wallet",
+        "selector": ".fan",
+        "viewports": [
+          "desktop"
+        ]
+      },
+      {
+        "name": "halloween-hero",
+        "path": "halloween.html",
+        "selector": ".hhero"
+      }
+    ],
+    "localStorage": {
+      "gs_signup_seen": "1"
+    },
+    "hide": [
+      "#signup"
+    ]
+  }
+}

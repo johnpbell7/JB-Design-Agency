@@ -1,0 +1,304 @@
+/* SCCC Heritage: tokens and live pieces ported from the live site
+   (sccc-heritage.co.uk, React + Tailwind): the decade card from HomePage /
+   DecadesOverview, the Meet the Teams photo block and the Bowl to Scroll ball. */
+body {
+  --crimson: #8b1538;
+  --crimson-dk: #6b0f2a;
+  --club-green: #1a472a;
+  --deep-green: #0d1f14;
+  --cream: #f8f6f3;
+  --parchment: #f5e6d3;
+  --navy: #2c5aa0;
+  --sc-ink: #222222;
+  --sc-head: "Archivo Black", "Archivo", sans-serif;
+  --sc-sans: "Archivo", "Helvetica Neue", Helvetica, sans-serif;
+  --sc-serif: Georgia, "Times New Roman", serif;
+
+  --p-bg: var(--club-green);
+  --p-fg: #fff;
+  --p-muted: rgb(255 255 255 / 0.62);
+  --p-surface: rgb(255 255 255 / 0.08);
+  --p-accent: var(--crimson);
+  --p-font: var(--sc-serif);
+  --project-pen: #f3c9d3;
+}
+
+/* ---------- Hero pop-outs ---------- */
+.sc-tag {
+  display: grid; justify-items: start; gap: 2px; padding: 12px 16px 13px;
+  background: var(--crimson); color: #fff;
+  border-left: 5px solid var(--club-green);
+}
+.sc-tag small { font: 600 10px / 1 var(--sc-sans); letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.75; }
+.sc-tag b { font: 400 clamp(30px, 3.4vw, 46px) / 1 var(--sc-head); letter-spacing: -0.01em; }
+.sc-tag span { font: italic 13px / 1.2 var(--sc-serif); opacity: 0.9; }
+.sc-ballpop, .sc-badge__ball {
+  display: block; aspect-ratio: 1; border-radius: 50%; overflow: hidden;
+  border: 3px solid #fff; background: #fff;
+}
+.sc-ballpop img, .sc-badge__ball img { width: 100%; height: 100%; object-fit: cover; }
+.sc-ballpop { box-shadow: 0 0 0 4px rgb(139 21 56 / 0.18); }
+
+/* ---------- Parade pop-outs ---------- */
+.sc-crest { aspect-ratio: 1; border-radius: 50%; background: #fff; display: grid; place-items: center; padding: 14%; }
+.sc-crest img { width: 100%; }
+.sc-entry {
+  display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px;
+  background: #fff; color: var(--sc-ink); font-family: var(--sc-serif);
+}
+.sc-entry i { flex: none; width: 14px; height: 14px; margin-top: 2px; border-radius: 50%; background: var(--navy); border: 2px solid #fff; box-shadow: 0 0 0 1px #d1d5db; }
+.sc-entry div { display: grid; gap: 3px; }
+.sc-entry small { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4b5563; }
+.sc-entry b { font-size: 17px; font-weight: 400; line-height: 1.25; }
+.sc-entry span { font-size: 12px; color: var(--crimson); text-decoration: underline; }
+
+/* ---------- Decade card (live: HomePage rail + DecadesOverview grid) ---------- */
+@keyframes sc-bounce { 0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); } 50% { transform: none; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); } }
+@keyframes sc-pulse { 50% { opacity: 0.45; } }
+.sc-card {
+  position: relative; flex: none; overflow: hidden; scroll-snap-align: start;
+  width: clamp(190px, 21vw, 250px); aspect-ratio: 4 / 5; max-height: 100%;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.15); cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s; outline: none;
+}
+.sc-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.sc-card::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgb(0 0 0 / 0.6), transparent 70%); }
+.sc-card__slip { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; height: 34%; background: var(--crimson); clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%); transform: translateY(100%); transition: transform 0.3s; }
+.sc-card__txt { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; padding: 18px; color: #fff; transition: transform 0.3s; }
+.sc-card__txt b { display: block; font: 400 clamp(19px, 1.9vw, 24px) / 1.08 var(--sc-head); }
+.sc-card__txt span { display: block; margin-top: 4px; font: 13px / 1.3 var(--sc-sans); opacity: 0.9; }
+.sc-card__go { position: absolute; left: 18px; bottom: 16px; z-index: 3; font: normal 600 13.5px / 1 var(--sc-sans); color: #fff; opacity: 0; transition: opacity 0.3s; }
+.sc-card:hover, .sc-card:focus-visible, .sc-card.is-hot { transform: translateY(-6px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.25); }
+.sc-card:hover img, .sc-card:focus-visible img, .sc-card.is-hot img { transform: scale(1.1); }
+.sc-card:hover .sc-card__slip, .sc-card:focus-visible .sc-card__slip, .sc-card.is-hot .sc-card__slip { transform: none; }
+.sc-card:hover .sc-card__txt, .sc-card:focus-visible .sc-card__txt, .sc-card.is-hot .sc-card__txt { transform: translateY(-28px); }
+.sc-card:hover .sc-card__go, .sc-card:focus-visible .sc-card__go, .sc-card.is-hot .sc-card__go { opacity: 1; }
+.sc-card:focus-visible { box-shadow: 0 0 0 3px var(--cream), 0 0 0 5px var(--crimson); }
+.sc-card__go { display: flex; align-items: center; gap: 8px; }
+.sc-card__go svg { flex: none; }
+
+/* ---------- Up close: the site's own pieces breaking out of the club colours ---------- */
+.sc-breakout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 44px); padding-top: clamp(40px, 6vw, 90px); }
+.sc-break { position: relative; margin: 0; display: grid; grid-template-rows: auto auto; gap: 18px; isolation: isolate; }
+.sc-break__panel {
+  position: relative; grid-area: 1 / 1; align-self: end; height: 78%; border-radius: var(--radius-l); z-index: -1; overflow: hidden;
+  background: radial-gradient(100% 120% at 20% 0%, #b22b55 0%, var(--crimson) 45%, #560b21 100%);
+}
+.sc-break__panel::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(circle at 88% 112%, rgb(26 71 42 / 0.7), transparent 46%); }
+.sc-break--archive .sc-break__panel { background: radial-gradient(100% 120% at 20% 0%, #2f6e45 0%, var(--club-green) 45%, #0d1f14 100%); }
+.sc-break--archive .sc-break__panel::after { background: radial-gradient(circle at 12% 112%, rgb(139 21 56 / 0.55), transparent 46%); }
+.sc-break { align-content: start; }
+.sc-break figcaption { display: grid; gap: 4px; padding-inline: 4px; align-content: start; }
+.sc-break--cards .sc-break__panel { height: 66%; }
+.sc-break figcaption b { font: 600 18px / 1.3 var(--font); letter-spacing: -0.02em; }
+.sc-break figcaption span { font-size: 15px; color: var(--grey-7); line-height: 1.55; max-width: 46ch; }
+
+/* (a) three decade cards */
+.sc-break__stack { grid-area: 1 / 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 0 5% 9%; align-items: end; }
+.sc-break__card { translate: 0 var(--y, 0); rotate: var(--r, 0deg); margin-inline: -3%; transition: rotate 0.6s var(--ease-spring), translate 0.6s var(--ease-spring); }
+.sc-break__card:nth-child(2) { z-index: 2; }
+.sc-break__card .sc-card { width: 100%; aspect-ratio: 1; max-height: none; box-shadow: 0 2px 4px rgb(30 4 14 / 0.12), 0 34px 60px -26px rgb(30 4 14 / 0.75); }
+.sc-break__card .sc-card::before { background: linear-gradient(to top, rgb(0 0 0 / 0.55), transparent 75%); }
+.sc-break__card .sc-card__slip { height: 40%; }
+.sc-break__card .sc-card__txt { padding: clamp(14px, 1.6vw, 22px); }
+.sc-break__card .sc-card__txt b { font-size: clamp(17px, 1.75vw, 25px); }
+.sc-break__card .sc-card__go { left: clamp(14px, 1.6vw, 22px); bottom: clamp(12px, 1.4vw, 20px); font-size: clamp(12px, 1vw, 14.5px); }
+.sc-break__card:hover { rotate: 0deg; translate: 0 calc(var(--y, 0px) - 18px); z-index: 3; }
+.sc-break__stack:hover .sc-card.is-hot:not(:hover) { transform: none; box-shadow: 0 2px 4px rgb(30 4 14 / 0.12), 0 34px 60px -26px rgb(30 4 14 / 0.75); }
+.sc-break__stack:hover .sc-card.is-hot:not(:hover) img { transform: none; }
+.sc-break__stack:hover .sc-card.is-hot:not(:hover) .sc-card__slip { transform: translateY(100%); }
+.sc-break__stack:hover .sc-card.is-hot:not(:hover) .sc-card__txt { transform: none; }
+.sc-break__stack:hover .sc-card.is-hot:not(:hover) .sc-card__go { opacity: 0; }
+
+/* (b) Meet the Teams photo blocks + the Bowl to Scroll ball */
+.sc-break__photos { grid-area: 1 / 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0 7% 24%; align-items: end; }
+.sc-team {
+  appearance: none; border: 0; margin: 0 -5%; padding: clamp(10px, 1.1vw, 15px) clamp(10px, 1.1vw, 15px) clamp(8px, 0.9vw, 12px);
+  display: grid; gap: 7px; text-align: left; cursor: zoom-in; font: inherit;
+  background: #f8f6f3; color: #222;
+  translate: var(--x, 0) var(--y, 0); rotate: var(--r, 0deg);
+  box-shadow: 0 2px 4px rgb(5 20 10 / 0.14), 0 34px 60px -26px rgb(3 14 7 / 0.8);
+  transition: rotate 0.6s var(--ease-spring), translate 0.6s var(--ease-spring);
+}
+.sc-team:nth-child(2) { z-index: 2; }
+.sc-team__year { justify-self: start; padding: 3px 11px; background: var(--crimson); color: #fff; font: 700 clamp(11px, 0.95vw, 13px) / 1.4 Helvetica, Arial, sans-serif; }
+.sc-team__title { font: 400 clamp(14px, 1.35vw, 19px) / 1.1 var(--sc-head); color: var(--crimson); }
+.sc-team__img { display: block; background: #f4f1ec; overflow: hidden; }
+.sc-team__img img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; transition: opacity 0.2s; }
+.sc-team__cap { display: grid; gap: 1px; padding: 5px 0 6px; border-bottom: 1px solid #d9c9ca; font: clamp(10.5px, 0.9vw, 12.5px) / 1.35 var(--sc-serif); color: #4a4a4a; }
+.sc-team__cap small { font-size: 0.88em; color: #9b9b9b; }
+.sc-team:hover { rotate: 0deg; translate: var(--x, 0) calc(var(--y, 0px) - 16px); z-index: 3; }
+.sc-team:hover .sc-team__img img { opacity: 0.9; }
+.sc-team:focus-visible { outline: 3px solid #fff; outline-offset: 3px; z-index: 3; }
+
+.sc-badge {
+  grid-area: 1 / 1; align-self: end; justify-self: center; z-index: 4; margin-bottom: 4.5%;
+  display: grid; justify-items: center; gap: 8px; padding: 0; border: 0; background: none; color: #fff; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; user-select: none;
+}
+.sc-badge__ball { width: clamp(62px, 6vw, 88px); border-width: 2px; background: transparent; box-shadow: 0 20px 50px rgb(0 0 0 / 0.5); animation: sc-bounce 1s infinite; }
+.sc-badge:active .sc-badge__ball { scale: 0.95; }
+.sc-badge:focus-visible { outline: none; }
+.sc-badge:focus-visible .sc-badge__ball { box-shadow: 0 0 0 4px var(--crimson), 0 20px 50px rgb(0 0 0 / 0.5); }
+.sc-badge__cue { display: grid; justify-items: center; gap: 4px; text-shadow: 0 2px 6px rgb(0 0 0 / 0.6); transition: opacity 0.2s ease-out, transform 0.2s ease-out; }
+.sc-badge__cue b { font: 700 clamp(16px, 1.5vw, 22px) / 1.1 Helvetica, Arial, sans-serif; white-space: nowrap; }
+.sc-badge__cue svg { animation: sc-pulse 2s ease-in-out infinite; filter: drop-shadow(0 2px 4px rgb(0 0 0 / 0.5)); }
+.sc-badge.is-bowling .sc-badge__ball { animation: none; }
+.sc-badge.is-bowling .sc-badge__cue { opacity: 0; transform: translateY(-20px); }
+
+@media (max-width: 900px) {
+  .sc-breakout { grid-template-columns: 1fr; row-gap: 64px; }
+  .sc-break__stack { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-inline: 8%; }
+  .sc-break__card:nth-child(3) { display: none; }
+  .sc-break__card .sc-card__txt b { font-size: clamp(17px, 5vw, 24px); }
+  .sc-break__photos { padding-inline: 9%; padding-bottom: 36%; }
+}
+
+/* ---------- Up close, row two: the decade slider talks to the roll of honour ---------- */
+.sc-breakout--two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-top: clamp(30px, 5vw, 70px); }
+.sc-break--slider .sc-break__panel, .sc-break--roll .sc-break__panel { height: 70%; }
+.sc-break--slider .sc-break__panel { background: radial-gradient(100% 120% at 20% 0%, #2f6e45 0%, var(--club-green) 45%, #0d1f14 100%); }
+.sc-break--slider .sc-break__panel::after { background: radial-gradient(circle at 88% 112%, rgb(139 21 56 / 0.5), transparent 46%); }
+
+/* (c) decade slider: the live /journey slider (cricket-ball thumb) driving a decade card */
+.sc-dial {
+  grid-area: 1 / 1; align-self: end; justify-self: center; width: min(86%, 440px); margin-bottom: 9%;
+  display: grid; gap: 14px; padding: 14px 14px 12px; background: #fff; color: #222; rotate: -4deg; translate: 0 -2%;
+  box-shadow: 0 2px 4px rgb(5 20 10 / 0.12), 0 40px 70px -30px rgb(3 14 7 / 0.75);
+}
+.sc-dial__card { width: 100%; aspect-ratio: 16 / 10; box-shadow: none; cursor: default; }
+.sc-dial__card:hover, .sc-dial__card.is-hot { transform: none; box-shadow: none; }
+.sc-dial__card img { transition: transform 0.3s, opacity 0.25s; }
+.sc-dial__card.is-swap img { opacity: 0.35; }
+.sc-dial__card .sc-card__slip { height: 46%; }
+.sc-dial__card .sc-card__txt b { font-size: clamp(19px, 1.9vw, 26px); }
+.sc-slider { position: relative; padding: 4px 4px 0; }
+.sc-slider__rail { position: relative; height: 38px; }
+.sc-slider__track { position: absolute; inset: 4px 19px; border-radius: 999px; background: #f3f4f6; box-shadow: inset 0 2px 4px rgb(0 0 0 / 0.06); overflow: hidden; }
+.sc-slider__fill { position: absolute; inset: 0 auto 0 0; width: 0; border-radius: 999px; background: #e3f3e8; transition: width 0.15s ease-out; }
+.sc-slider__ticks i { position: absolute; top: 50%; width: 1px; height: 14px; translate: -50% -50%; background: #9ca3af; }
+.sc-slider__ticks i.is-key { height: 20px; }
+.sc-slider input {
+  position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: grab;
+  -webkit-appearance: none; appearance: none; background: none;
+}
+.sc-slider input:active { cursor: grabbing; }
+.sc-slider input::-webkit-slider-thumb { -webkit-appearance: none; width: 38px; height: 38px; }
+.sc-slider input::-moz-range-thumb { width: 38px; height: 38px; border: 0; }
+.sc-slider__ball {
+  position: absolute; z-index: 1; top: 50%; width: 38px; aspect-ratio: 1; border-radius: 50%; overflow: hidden; pointer-events: none;
+  border: 3px solid #fff; background: #fff;
+  left: calc(19px + (100% - 38px) * var(--p, 0)); translate: -50% -50%; rotate: calc(var(--p, 0) * 900deg);
+  box-shadow: 0 0 0 3px rgb(139 21 56 / 0.2), 0 8px 16px rgb(0 0 0 / 0.2);
+  transition: left 0.15s ease-out, rotate 0.15s ease-out, scale 0.25s var(--ease-spring);
+}
+.sc-slider__ball img { width: 100%; height: 100%; object-fit: cover; }
+.sc-slider input:focus-visible ~ .sc-slider__ball { box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--crimson); }
+.sc-slider input:active ~ .sc-slider__ball { scale: 1.12; }
+.sc-slider__labels { position: relative; height: 16px; margin: 4px 19px 0; font: 700 11px / 16px var(--sc-serif); color: #6a7282; }
+.sc-slider__labels span { position: absolute; translate: -50% 0; }
+
+/* (d) roll of honour: the DecadePage "Men that Served" cards, filter + show all */
+.sc-roll {
+  grid-area: 1 / 1; align-self: end; justify-self: center; width: min(88%, 470px); margin-bottom: 9%;
+  display: grid; gap: 12px; padding: 18px 16px 16px; background: var(--parchment); color: #222; rotate: 3deg; translate: 0 -3%;
+  box-shadow: 0 2px 4px rgb(30 4 14 / 0.12), 0 40px 70px -30px rgb(30 4 14 / 0.75);
+  transition: box-shadow 0.4s;
+}
+.sc-roll.is-lit { box-shadow: 0 0 0 4px #f3c9d3, 0 40px 70px -30px rgb(30 4 14 / 0.75); }
+.sc-roll__head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.sc-roll__head h3 { margin: 0; font: 400 clamp(19px, 1.9vw, 26px) / 1.05 var(--sc-head); color: var(--crimson); letter-spacing: 0; }
+.sc-roll__era { flex: none; padding: 4px 10px; border: 0; background: var(--crimson); color: #fff; cursor: pointer; font: 700 12px / 1.4 Helvetica, Arial, sans-serif; transition: background 0.2s; }
+.sc-roll__era:hover { background: var(--crimson-dk); }
+.sc-roll__switch { display: inline-flex; justify-self: start; padding: 3px; gap: 3px; background: rgb(255 255 255 / 0.7); border: 1px solid rgb(139 21 56 / 0.2); }
+.sc-roll__switch button { display: inline-flex; gap: 7px; align-items: center; padding: 7px 11px; border: 0; background: none; cursor: pointer; font: 600 13px / 1 Helvetica, Arial, sans-serif; color: var(--crimson); transition: background 0.25s, color 0.25s; }
+.sc-roll__switch button span { font-size: 11px; padding: 2px 5px; background: rgb(139 21 56 / 0.1); }
+.sc-roll__switch button[aria-pressed="true"] { background: var(--crimson); color: #fff; }
+.sc-roll__switch button[aria-pressed="true"] span { background: rgb(255 255 255 / 0.2); }
+.sc-roll__grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; align-content: start;
+  height: clamp(250px, 22vw, 300px); overflow-y: auto; overscroll-behavior: contain; padding: 2px 6px 2px 2px;
+  scrollbar-width: thin; scrollbar-color: rgb(139 21 56 / 0.35) transparent;
+}
+.sc-roll:not(.is-open) .sc-roll__grid { height: auto; overflow: hidden; }
+.sc-man { display: grid; align-content: start; gap: 5px; padding: 10px 11px; background: #fff; border: 1px solid #d1d5db; font-family: var(--sc-serif); }
+.sc-man header { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
+.sc-man h4 { margin: 0; font: 700 15px / 1.15 Helvetica, Arial, sans-serif; color: var(--crimson); letter-spacing: 0; overflow-wrap: anywhere; }
+.sc-man header span { flex: none; font-size: 11px; color: #4b5563; }
+.sc-man p { margin: 0; font-size: 11.5px; line-height: 1.4; color: #374151; }
+.sc-man p b { font-weight: 600; }
+.sc-man.is-fallen { background: var(--crimson); border: 2px solid var(--crimson); }
+.sc-man.is-fallen h4, .sc-man.is-fallen p, .sc-man.is-fallen header span { color: #fff; }
+.sc-man__fate { padding-top: 6px; border-top: 1px solid rgb(255 255 255 / 0.3); font-weight: 600; }
+.sc-man.is-hidden { display: none; }
+.sc-man.is-in { animation: sc-in 0.5s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 28ms); }
+@keyframes sc-in { from { opacity: 0; transform: translateY(14px); } }
+.sc-roll__more {
+  justify-self: center; padding: 10px 18px; border: 2px solid var(--crimson); background: var(--crimson); color: #fff; cursor: pointer;
+  font: 600 13.5px / 1.2 Helvetica, Arial, sans-serif; transition: background 0.25s, border-color 0.25s;
+}
+.sc-roll__more:hover { background: var(--crimson-dk); border-color: var(--crimson-dk); }
+.sc-roll__more[hidden] { display: none; }
+
+@media (max-width: 900px) {
+  .sc-breakout--two { grid-template-columns: 1fr; row-gap: 64px; }
+  .sc-dial, .sc-roll { width: 90%; }
+}
+@media (prefers-reduced-motion: reduce) { .sc-man.is-in { animation: none; } }
+
+/* ---------- Hero pop: the live decade card at full fidelity ---------- */
+.sc-card--pop { width: 100%; aspect-ratio: 1; max-height: none; cursor: default; box-shadow: 0 2px 4px rgb(0 0 0 / 0.1), 0 26px 44px -20px rgb(0 0 0 / 0.55); }
+.sc-card--pop.is-hot { transform: none; }
+.sc-card--pop .sc-card__slip { height: 42%; }
+.sc-card--pop .sc-card__txt { padding: clamp(10px, 1.1vw, 16px); }
+.sc-card--pop .sc-card__txt b { font-size: clamp(14px, 1.35vw, 19px); }
+.sc-card--pop .sc-card__txt span { font-size: 11px; }
+.sc-card--pop.is-hot .sc-card__txt { transform: translateY(-20px); }
+.sc-card--pop .sc-card__go { left: clamp(10px, 1.1vw, 16px); bottom: clamp(8px, 0.9vw, 13px); font-size: 11px; gap: 5px; }
+
+/* ---------- By the numbers: three verifiable facts and one result to come ---------- */
+.sc-results { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sc-results .cp-result b { font-size: clamp(44px, 5.2vw, 80px); }
+@media (max-width: 1000px) {
+  .sc-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sc-results .cp-result:nth-child(3) { border-left: 0; }
+  .sc-results .cp-result:nth-child(n + 3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 800px) { .sc-results { grid-template-columns: 1fr; } }
+
+/* ---------- Brand ---------- */
+.sc-brand-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 14px; }
+@media (max-width: 760px) { .sc-brand-row { grid-template-columns: 1fr; } }
+.sc-logo-card { display: grid; place-items: center; align-content: center; gap: 18px; padding: 8%; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-m); color: #111; }
+.sc-logo-card img { width: min(150px, 45%); }
+.sc-logo-card p { font: 400 clamp(18px, 1.8vw, 24px) / 1.1 var(--sc-sans); text-align: center; }
+.sc-logo-card p b { display: block; font-weight: 800; letter-spacing: -0.01em; }
+.sc-specimen { --p-bg: var(--club-green); }
+.sc-specimen .specimen__aa { font-family: var(--sc-head); font-weight: 400; letter-spacing: -0.02em; }
+.sc-specimen__h { font: 400 clamp(26px, 3.2vw, 44px) / 1.02 var(--sc-head); }
+.sc-specimen__p { margin-top: 14px; max-width: 48ch; color: var(--p-muted); font-size: 16px; line-height: 1.65; }
+.sc-specimen .specimen__weights span { font-family: var(--sc-sans); }
+.sc-specimen .specimen__weights .is-black { font-family: var(--sc-head); }
+.sc-specimen .specimen__weights .is-serif { font-family: var(--sc-serif); }
+.sc-specimen .specimen__weights small { font-family: var(--sc-sans); font-weight: 500; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-badge__ball, .sc-badge__cue svg { animation: none; }
+}
+
+
+/* Up close panels: soft flat club colours, no gradients */
+.sc-break__panel, .sc-break--slider .sc-break__panel { background: #ecd3da; }
+.sc-break--archive .sc-break__panel, .sc-break--roll .sc-break__panel { background: #d3e3d6; }
+.sc-break__panel::after { display: none; }
+.sc-break .sc-badge__cue { color: var(--club-green); text-shadow: none; }
+
+/* Up close, evenly spaced: two equal columns per row, panels the same height, captions on one line,
+   and the same gap between the rows as between the columns' art and captions */
+@media (min-width: 801px) {
+  .sc-breakout, .sc-breakout--two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; column-gap: clamp(24px, 3vw, 44px); }
+  .sc-breakout--two { margin-top: clamp(56px, 7vw, 110px); padding-top: 0; }
+  .sc-break { grid-template-rows: minmax(0, 1fr) auto; align-content: stretch; }
+  .sc-break__panel, .sc-break--cards .sc-break__panel, .sc-break--slider .sc-break__panel, .sc-break--roll .sc-break__panel { height: 68%; }
+  .sc-break__stack, .sc-break__photos { align-self: end; }
+}

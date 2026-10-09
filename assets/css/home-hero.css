@@ -1,0 +1,609 @@
+/* Home hero (big type) + phone-fan section. Ported from heroes/hero-02 and hero-07 by tools/port_hero.py */
+
+    /* ============ Big type hero ============ */
+    .bt-hero {
+      position: relative; isolation: isolate; overflow: hidden;
+      min-height: 100dvh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: clamp(100px, 13vh, 130px) 0 clamp(32px, 5vh, 56px);
+    }
+    .bt-bt { --F: clamp(64px, min(13.2vw, 21.5vh), 214px); }
+
+    .bt-kicker { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; font-weight: 500; color: var(--grey-7); margin-bottom: clamp(14px, 2.6vh, 28px); }
+    .bt-kicker b { font-weight: 600; color: var(--ink); }
+    .bt-kicker .bt-dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #22b35e; flex: none; }
+    .bt-kicker .bt-dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #22b35e; opacity: 0; animation: ping 2.4s var(--ease-out) infinite; }
+    .bt-kicker .bt-sep { width: 18px; height: 1px; background: var(--grey-3); }
+    @keyframes ping { 0% { transform: scale(0.5); opacity: 0.7; } 100% { transform: scale(1.6); opacity: 0; } }
+
+    /* The stage is sized in em of the headline, so the pieces stay tucked
+       against the same letters at every screen size. */
+    .bt-stage { position: relative; font-size: var(--F); }
+    .bt-title { position: relative; z-index: 2; margin: 0; font-size: 1em; font-weight: 700; line-height: 0.9; letter-spacing: -0.055em; text-wrap: initial; }
+    .bt-title .bt-ln { display: block; white-space: nowrap; overflow: hidden; padding: 0.02em 0.08em 0.1em; margin: -0.02em -0.08em -0.1em; }
+    .bt-title .bt-ln > span { display: inline-block; }
+    .bt-title .bt-ln--2 { padding-left: calc(var(--in2) + 0.08em); }
+    .bt-title .bt-ln--3 { padding-left: calc(var(--in3) + 0.08em); }
+    .bt-stage { --in2: 1.62em; --in3: 1.3em; }
+    .bt-title .hl { padding: 0 0.06em; margin: 0 -0.03em; background-position: 0 66%; }
+    .bt-title .hl.is-lit { background-size: 100% 62%; }
+    .hl--mint { --pen: #a8f0c6; }
+
+    /* Pieces: outer = parallax, .bt-fl = float, .bt-pc = rotation + look */
+    .bt-piece { position: absolute; left: var(--x); top: var(--y); width: var(--w); z-index: 3; will-change: transform; }
+    .bt-piece.is-behind { z-index: 1; }
+    .bt-piece .bt-fl { display: block; }
+    .bt-piece .bt-pc { display: block; rotate: var(--r); transition: rotate 0.6s var(--ease-spring), scale 0.6s var(--ease-spring); }
+    .bt-piece a.bt-pc { text-decoration: none; }
+    .bt-piece:hover .bt-pc { scale: 1.04; rotate: calc(var(--r) * 0.4); }
+    .bt-pc img { width: 100%; }
+    .bt-lift { box-shadow: 0 2px 4px rgb(24 24 26 / 0.06), 0 26px 44px -16px rgb(24 24 26 / 0.34); }
+    .bt-card img { border-radius: 0.06em; }
+    .bt-card { border-radius: 0.06em; background: #fff; }
+
+    .bt-polaroid { position: relative; margin: 0; padding: 0.055em 0.055em 0; background: #fff; border-radius: 3px; }
+    .bt-polaroid img { aspect-ratio: 1 / 1.02; object-fit: cover; object-position: 50% 30%; }
+    .bt-polaroid figcaption { font: 700 0.13em / 1 Caveat, cursive; color: #2c2c2c; text-align: center; padding: 0.45em 0 0.6em; }
+    .bt-tape { position: absolute; left: 50%; top: -0.05em; width: 0.42em; height: 0.12em; translate: -50% 0; rotate: 3deg; background: rgb(255 240 77 / 0.75); box-shadow: 0 1px 2px rgb(0 0 0 / 0.06); }
+
+    .bt-sticker { position: relative; display: grid; place-items: center; aspect-ratio: 1; border-radius: 50%; background: #b3dd03; color: #111318; box-shadow: inset 0 -0.03em 0 rgb(0 0 0 / 0.08), 0 20px 34px -14px rgb(60 80 0 / 0.45); }
+    .bt-sticker__ring { position: absolute; inset: 7%; width: 86%; height: 86%; animation: spin 16s linear infinite; }
+    .bt-sticker__ring text { font: 800 11.5px var(--font); letter-spacing: 0.3em; fill: currentColor; }
+    .bt-sticker__a { width: 40%; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .bt-phone {
+      --edge: 2px;
+      position: relative; display: block; container-type: inline-size; aspect-ratio: 393 / 852;
+      border: var(--edge) solid transparent; border-radius: 17% / 7.9%;
+      background: linear-gradient(#0a0a0b, #0a0a0b) padding-box, linear-gradient(140deg, #c4c4c8 0%, #55555a 26%, #a6a6ab 50%, #3d3d40 76%, #b2b2b6 100%) border-box;
+      box-shadow: 0 40px 50px -26px rgb(17 17 17 / 0.5), 0 12px 24px -12px rgb(17 17 17 / 0.3);
+    }
+    .bt-phone::before { content: ""; position: absolute; right: calc(-1 * var(--edge) - 3px); top: 27%; height: 13%; width: 3px; border-radius: 2px; background: #8e8e93; }
+    .bt-phone__display { position: absolute; inset: 3.4cqw; overflow: hidden; border-radius: 13cqw; display: flex; flex-direction: column; background: #0f1014; }
+    .bt-phone__display::before { content: ""; position: absolute; z-index: 3; top: 2.6cqw; left: 50%; width: 28cqw; height: 8cqw; translate: -50% 0; border-radius: 999px; background: #000; }
+    .bt-phone__status { flex: 0 0 auto; height: 13cqw; display: flex; align-items: center; justify-content: space-between; padding: 0.6cqw 7.5cqw 0 9.5cqw; color: #fff; font: 600 4.2cqw / 1 var(--font); }
+    .bt-phone__status svg { height: 3.6cqw; width: auto; }
+    .bt-phone .bt-screen { position: relative; display: block; flex: 1; overflow: hidden; }
+    .bt-phone .bt-screen img { display: block; width: 100%; will-change: transform; }
+
+    .bt-tag { position: absolute; left: 50%; bottom: -0.2em; translate: -50% 0; white-space: nowrap; font: 600 clamp(11px, 0.068em, 13px) / 1 var(--font); letter-spacing: 0.01em; padding: 0.55em 0.9em; border-radius: 999px; background: var(--ink); color: var(--white); opacity: 0; transition: opacity 0.25s, translate 0.35s var(--ease-out); pointer-events: none; }
+    .bt-piece:hover .bt-tag, .bt-piece:focus-within .bt-tag { opacity: 1; translate: -50% 0.25em; }
+
+    /* Desktop placement (em of the headline) */
+    .bt-p-sticker { --x: 4.12em; --y: -0.3em;  --w: 0.62em; --r: -12deg; }
+    .bt-p-gs      { --x: 4.95em; --y: -0.22em; --w: 0.74em; --r: 7deg; }
+    .bt-p-np      { --x: 5.82em; --y: 0.02em;  --w: 0.62em; --r: -5deg; }
+    .bt-p-bh      { --x: 0.02em; --y: 0.98em;  --w: 1.1em;  --r: -6deg; }
+    .bt-p-phone   { --x: 5.93em; --y: 1.24em;  --w: 0.6em;  --r: 8deg; }
+
+    /* ---------- Bottom row ---------- */
+    .bt-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; flex-wrap: wrap; margin-top: clamp(26px, 5vh, 54px); position: relative; z-index: 4; }
+    .bt-who { max-width: 31em; font-size: clamp(15px, 1.2vw, 18px); color: var(--grey-7); line-height: 1.6; }
+    .bt-who strong { color: var(--ink); font-weight: 600; }
+    .bt-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+    .bt-ctas .btn { padding: 15px 24px; }
+    .bt-ctas .btn span { transition: transform 0.3s var(--ease-spring); }
+    .bt-ctas .btn:hover span { transform: translateX(3px); }
+
+    /* ---------- Strip below ---------- */
+    .bt-strip { border-top: 1px solid var(--line); padding: 22px 0 28px; }
+    .bt-strip .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px 28px; flex-wrap: wrap; }
+    .bt-strip ul { display: flex; flex-wrap: wrap; gap: 6px 24px; margin: 0; padding: 0; list-style: none; font-size: 15px; font-weight: 500; color: var(--grey-7); }
+    .bt-strip li { display: inline-flex; align-items: center; gap: 10px; }
+    .bt-strip li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+    .bt-strip p { font-size: 13px; color: var(--grey-5); }
+
+    /* ---------- Tablet ---------- */
+    @media (max-width: 1100px) {
+      .bt-bt { --F: clamp(56px, 12.4vw, 140px); }
+    }
+
+    /* ---------- Phone: headline stacks tight, pieces fan out in a band under it ---------- */
+    @media (max-width: 700px) {
+      .bt-hero { justify-content: flex-start; padding-top: 92px; padding-bottom: 28px; }
+      .bt-bt { --F: min(18.6vw, 84px); }
+      .bt-kicker { font-size: 12.5px; gap: 8px; margin-bottom: 14px; }
+      .bt-kicker .bt-sep, .bt-kicker .bt-loc { display: none; }
+      .bt-stage { --in2: 0.5em; --in3: 0.18em; padding-bottom: 2.45em; }
+      .bt-p-sticker { --x: 3.45em; --y: -0.22em; --w: 0.82em; --r: -12deg; }
+      .bt-p-gs      { --x: -0.04em; --y: 2.98em; --w: 1.08em; --r: -9deg; }
+      .bt-p-bh      { --x: 0.86em; --y: 2.86em;  --w: 1.56em; --r: 4deg; }
+      .bt-p-np      { --x: 2.3em;  --y: 3.08em;  --w: 1.02em; --r: 8deg; }
+      .bt-p-phone   { --x: 3.6em;  --y: 2.84em;  --w: 0.9em;  --r: 9deg; }
+      .bt-p-sticker, .bt-p-phone { z-index: 3; }
+      .bt-p-gs, .bt-p-np { z-index: 2; }
+      .bt-foot { margin-top: 18px; gap: 18px; }
+      .bt-who { font-size: 15px; }
+      .bt-ctas .btn { padding: 13px 18px; font-size: 14px; }
+      .bt-tag { display: none; }
+      .bt-strip ul { font-size: 13.5px; gap: 4px 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bt-sticker__ring { animation: none; }
+      .bt-piece { will-change: auto; }
+    }
+  
+/* ---- phone fan ---- */
+
+    /* ---------- Hero layout ---------- */
+    main { overflow-x: clip; }
+    .pf-hero {
+      position: relative;
+      min-height: 100dvh;
+      display: grid; align-items: center;
+      max-width: var(--max); margin-inline: auto;
+      padding: 104px var(--gutter) 36px;
+    }
+    .pf-hero__grid {
+      display: grid; align-items: center;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: clamp(16px, 3vw, 48px);
+    }
+    .pf-hero__copy { position: relative; z-index: 2; }
+
+    .pf-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 7px 14px 7px 10px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--grey-1);
+      font-size: 13px; font-weight: 500;
+    }
+    .pf-badge i { width: 9px; height: 9px; border-radius: 50%; background: #34c759; animation: ping 2s infinite; }
+    @keyframes ping { 0% { box-shadow: 0 0 0 0 rgb(52 199 89 / 0.6); } 70%, 100% { box-shadow: 0 0 0 9px rgb(52 199 89 / 0); } }
+
+    .pf-hero__title {
+      margin-top: 22px;
+      font-size: clamp(40px, 4.5vw, 70px);
+      line-height: 1; letter-spacing: -0.052em;
+    }
+    .pf-hero__title .hl { white-space: nowrap; }
+    .pf-hero__lede { margin-top: 22px; max-width: 42ch; font-size: clamp(16px, 1.3vw, 19px); color: var(--grey-7); line-height: 1.6; }
+    .pf-hero__lede b { color: var(--ink); font-weight: 600; }
+    .pf-hero__ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .pf-btn--big { padding: 16px 26px; font-size: 16px; }
+    .pf-hero__note { margin-top: 22px; display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--grey-5); }
+    .pf-hero__note svg { width: 18px; height: 18px; flex: none; }
+
+    /* ---------- The fan ---------- */
+    .pf-fan {
+      --pw: clamp(168px, 14.2vw, 220px);
+      position: relative;
+      height: clamp(560px, 76vh, 700px);
+      touch-action: pan-y;
+      user-select: none; -webkit-user-select: none;
+    }
+    .pf-scribble {
+      position: absolute; z-index: 0; pointer-events: none;
+      left: 50%; top: 46%; width: 128%; max-width: 860px; translate: -50% -50%;
+      overflow: visible;
+    }
+    .pf-scribble path {
+      fill: none; stroke: var(--hl-yellow); stroke-width: 86; stroke-linecap: round; stroke-linejoin: round;
+      mix-blend-mode: multiply; opacity: 0.85;
+    }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pf-scribble path { mix-blend-mode: normal; opacity: 0.72; } }
+    :root[data-theme="dark"] .pf-scribble path { mix-blend-mode: normal; opacity: 0.72; }
+
+    .pf-card {
+      position: absolute; left: 50%; bottom: 92px;
+      width: var(--pw); margin-left: calc(var(--pw) / -2);
+      transform-origin: 50% 135%;
+      text-decoration: none; color: inherit;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+    .pf-card__lift { position: relative; display: block; will-change: transform; }
+
+    /* Realistic iPhone: titanium rim, thin black bezel, dynamic island, status bar, home bar */
+    .pf-phone {
+      position: relative; display: block;
+      aspect-ratio: 71.6 / 147.6;
+      padding: calc(var(--pw) * 0.03);
+      border-radius: calc(var(--pw) * 0.17);
+      background: #0a0a0b;
+      box-shadow:
+        0 0 0 1.5px #6e6e73,
+        0 0 0 3px #2b2b2e,
+        inset 0 0 0 1px #3a3a3e,
+        0 34px 60px -24px rgb(24 24 26 / 0.45),
+        0 12px 24px -12px rgb(24 24 26 / 0.3);
+      transition: box-shadow 0.4s var(--ease-out);
+    }
+    .pf-phone::before, .pf-phone::after { content: ""; position: absolute; width: 3px; border-radius: 2px; background: #4a4a4f; }
+    .pf-phone::before { left: -4.5px; top: 19%; height: 5%; box-shadow: 0 calc(var(--pw) * 0.13) 0 #4a4a4f, 0 calc(var(--pw) * 0.25) 0 #4a4a4f; }
+    .pf-phone::after { right: -4.5px; top: 27%; height: 11%; }
+    .pf-screen {
+      position: relative; display: block; height: 100%; overflow: hidden;
+      border-radius: calc(var(--pw) * 0.14);
+      background: var(--sb, #fff);
+      isolation: isolate;
+    }
+    .pf-screen__page { position: absolute; left: 0; right: 0; top: calc(var(--pw) * 0.13); }
+    .pf-screen__page img { width: 100%; height: auto; }
+    .pf-sb {
+      position: absolute; inset: 0 0 auto; z-index: 2;
+      height: calc(var(--pw) * 0.13);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: calc(var(--pw) * 0.012) calc(var(--pw) * 0.075) 0 calc(var(--pw) * 0.1);
+      background: var(--sb, #fff); color: var(--sbt, #111);
+      font-size: calc(var(--pw) * 0.056); font-weight: 600; letter-spacing: -0.01em; line-height: 1;
+    }
+    .pf-sb__icons { display: flex; align-items: center; gap: calc(var(--pw) * 0.016); }
+    .pf-sb__icons svg { height: calc(var(--pw) * 0.042); width: auto; fill: currentColor; }
+    .pf-island {
+      position: absolute; z-index: 3; left: 50%; top: calc(var(--pw) * 0.026);
+      width: 31%; height: calc(var(--pw) * 0.086); translate: -50% 0;
+      border-radius: 999px; background: #000;
+    }
+    .pf-homebar {
+      position: absolute; z-index: 3; left: 50%; bottom: calc(var(--pw) * 0.022);
+      width: 34%; height: 4px; translate: -50% 0; border-radius: 4px;
+      background: var(--hb, rgb(0 0 0 / 0.82));
+    }
+
+    /* Project tag: pops above the lifted phone, counter-rotated so it reads level */
+    .pf-tag {
+      position: absolute; left: 50%; bottom: calc(100% + 16px);
+      display: grid; justify-items: center; gap: 4px;
+      white-space: nowrap; text-align: center;
+      /* nudge outward and up on tilted phones so the raised corner never clips it */
+      translate: calc(-50% + var(--n, 0) * 2.2px) calc(var(--na, 0) * -1.1px);
+      rotate: calc(var(--a, 0deg) * -1);
+      opacity: 0; scale: 0.85; transform-origin: 50% 100%;
+      transition: opacity 0.3s var(--ease-out), scale 0.45s var(--ease-spring);
+      pointer-events: none;
+    }
+    .pf-tag strong {
+      font-size: 22px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.15;
+      color: #18181a;
+      padding: 0 0.22em;
+      background: linear-gradient(100deg, transparent 0.5%, var(--pen) 2%, var(--pen) 96%, transparent 99.5%) no-repeat 0 62% / 0% 78%;
+      border-radius: 0.2em 0.35em 0.25em 0.4em;
+      transition: background-size 0.55s var(--ease-out) 0.08s;
+    }
+    .pf-tag span { font-size: 12px; font-weight: 500; color: var(--grey-7); }
+    .pf-card.is-active .pf-tag { opacity: 1; scale: 1; }
+    .pf-card.is-active .pf-tag strong { background-size: 100% 78%; }
+    .pf-card.is-active .pf-phone { box-shadow: 0 0 0 1.5px #6e6e73, 0 0 0 3px #2b2b2e, inset 0 0 0 1px #3a3a3e, 0 50px 80px -28px rgb(24 24 26 / 0.55), 0 16px 30px -12px rgb(24 24 26 / 0.35); }
+    .pf-card:focus-visible .pf-phone { outline: 3px solid var(--ink); outline-offset: 6px; }
+
+    /* Phone-width caption (project name under the fan) */
+    .pf-deck-cap { display: none; }
+
+    /* ---------- Strip below ---------- */
+    .pf-strip { border-top: 1px solid var(--line); background: var(--grey-1); }
+    .pf-strip__in {
+      max-width: var(--max); margin-inline: auto; padding: 20px var(--gutter);
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px;
+      font-size: 14px; color: var(--grey-7);
+    }
+    .pf-strip__list { display: flex; flex-wrap: wrap; gap: 6px 22px; font-weight: 500; color: var(--ink); }
+    .pf-strip__list span { display: inline-flex; align-items: center; gap: 8px; }
+    .pf-strip__list span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--dot); }
+    .pf-strip a { color: var(--ink); font-weight: 500; text-underline-offset: 4px; }
+
+    /* ---------- Phone width: a smaller, tighter fan with one phone lifted ---------- */
+    @media (max-width: 860px) {
+      .pf-hero { padding-top: 92px; align-items: start; }
+      .pf-hero__grid { grid-template-columns: 1fr; gap: 8px; }
+      .pf-hero__note { display: none; }
+      .pf-fan { --pw: min(25vw, 170px); height: auto; aspect-ratio: auto; padding-top: 18px; }
+      .pf-fan__stage { position: relative; height: calc(var(--pw) * 2.06 + var(--pw) * 0.62 + 34px); }
+      .pf-card { bottom: calc(var(--pw) * 0.5); transform-origin: 50% 150%; }
+      .pf-tag { display: none; }
+      .pf-scribble { top: 48%; width: 140%; }
+      .pf-deck-cap { display: flex; justify-content: center; margin-top: 6px; }
+      .pf-deck-cap__name {
+        display: inline-flex; align-items: baseline; gap: 6px;
+        font-size: 22px; font-weight: 700; letter-spacing: -0.035em; color: var(--ink); text-decoration: none; line-height: 1.2;
+      }
+      .pf-deck-cap__name mark {
+        color: #18181a; background: linear-gradient(100deg, transparent 0.5%, var(--pen) 2%, var(--pen) 96%, transparent 99.5%) no-repeat 0 62% / 100% 78%;
+        padding: 0 0.22em; border-radius: 0.2em 0.35em 0.25em 0.4em;
+      }
+      .pf-deck-cap__name span { font-size: 18px; font-weight: 600; transition: transform 0.3s var(--ease-spring); }
+      .pf-deck-cap__name:hover span { transform: translateX(3px); }
+    }
+    @media (max-width: 560px) {
+      .pf-hero__title { font-size: clamp(36px, 10.4vw, 46px); margin-top: 18px; }
+      .pf-hero__lede { margin-top: 16px; font-size: 16px; }
+      .pf-hero__ctas { margin-top: 22px; }
+      .pf-hero__ctas { flex-wrap: nowrap; gap: 8px; }
+      .pf-hero__ctas .btn { flex: 1 1 auto; justify-content: center; padding: 14px 16px; font-size: 15px; white-space: nowrap; }
+      .pf-strip__in { font-size: 13px; }
+    }
+    @media (min-width: 861px) { .pf-fan__stage { position: absolute; inset: 0; } }
+  
+/* ---- "Websites that grow your business." refit (longer last line) ---- */
+.bt-bt { --F: clamp(54px, min(10.4vw, 17vh), 170px); }
+.bt-stage { --in2: 2.2em; --in3: 1.15em; }
+.bt-p-sticker { --x: 4.6em;  --y: -0.28em; --w: 0.6em;  --r: -12deg; }
+.bt-p-gs      { --x: 5.35em; --y: -0.24em; --w: 0.72em; --r: 7deg; }
+.bt-p-np      { --x: 6.2em;  --y: -0.04em; --w: 0.6em;  --r: -5deg; }
+.bt-p-bh      { --x: 0em;    --y: 0.96em;  --w: 1.02em; --r: -6deg; }
+.bt-p-phone   { --x: 7.12em; --y: 0.62em;  --w: 0.55em; --r: 8deg; }
+@media (max-width: 1100px) { .bt-bt { --F: clamp(48px, 9.4vw, 112px); } }
+@media (max-width: 560px) {
+  .bt-bt { --F: min(12.8vw, 60px); }
+  .bt-stage { --in2: 0.5em; --in3: 0em; }
+}
+/* Fan section title: keep the highlight phrase together */
+.pf-hero__title { text-wrap: balance; }
+.pf-hero__title .hl { white-space: nowrap; }
+
+/* Big type only (no floating pieces): sized to its container so all three
+   lines always fit. The widest line is ~8em with the desktop indents. */
+.bt-hero .wrap { container-type: inline-size; }
+.bt-hero .bt-stage { font-size: min(calc(100cqi / 8.1), 21vh, 210px); padding-bottom: 0; }
+@media (max-width: 560px) { .bt-hero .bt-stage { font-size: calc(100cqi / 6.95); } }
+
+/* Never crop the headline: the reveal uses clip-path instead of overflow */
+.bt-title .bt-ln { overflow: visible; }
+.bt-hero .bt-stage { font-size: var(--fit, min(calc(100cqi / 8.4), 20vh, 200px)); }
+
+/* Availability card, top right beside "Websites" */
+.bt-hero .wrap { padding-top: 24px; }
+.bt-avail {
+  position: absolute; z-index: 3; right: 0; top: 0.06em; width: min(300px, 26%);
+  display: grid; gap: 10px; padding: 20px 22px 22px; border-radius: 20px;
+  background: var(--white); border: 1px solid var(--line); box-shadow: var(--shadow);
+  font-size: 15px; letter-spacing: 0; line-height: 1.5;
+}
+.bt-avail__status { display: flex; align-items: center; gap: 9px; font-weight: 600; }
+.bt-avail .bt-dot { position: relative; width: 9px; height: 9px; border-radius: 50%; background: #34c759; flex: none; }
+.bt-avail__what { color: var(--grey-7); font-size: 14.5px; }
+.bt-avail__meta { color: var(--grey-5); font-size: 13px; }
+.bt-avail__btn { justify-self: start; margin-top: 4px; padding: 11px 18px; font-size: 14px; }
+@media (max-width: 1100px) { .bt-avail { position: static; width: auto; max-width: 420px; margin-bottom: 26px; } }
+/* keep the rise-in mask vertical only, so wide words are never cut sideways */
+.bt-title .bt-ln { clip-path: inset(-0.35em -2em -0.3em -2em); }
+
+/* Slim availability card: one tidy row that fits beside "Websites" */
+.bt-avail { top: 0.12em; width: auto; max-width: none; display: flex; align-items: center; gap: 16px; padding: 12px 12px 12px 18px; border-radius: 999px; }
+.bt-avail__what { display: none; }
+.bt-avail__status { font-size: 14.5px; white-space: nowrap; }
+.bt-avail__meta { display: none; }
+.bt-avail__btn { margin: 0; padding: 10px 16px; font-size: 13.5px; white-space: nowrap; }
+@media (max-width: 1100px) { .bt-avail { position: static; display: inline-flex; margin-bottom: 22px; } }
+@media (max-width: 560px) {
+  .bt-hero .bt-stage { display: flex; flex-direction: column; }
+  .bt-avail { order: 2; align-self: flex-start; margin: 22px 0 0; }
+}
+
+/* Faded laptop behind the headline, slowly scrolling real sites */
+.bt-hero { position: relative; isolation: isolate; overflow: hidden; }
+.bt-hero > .wrap { position: relative; z-index: 1; }
+.bt-ghost {
+  position: absolute; z-index: 0; right: -6%; top: 50%; width: min(980px, 68vw); translate: 0 -46%;
+  opacity: 0.2; pointer-events: none; rotate: -4deg;
+  -webkit-mask-image: radial-gradient(120% 95% at 72% 40%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(120% 95% at 72% 40%, #000 30%, transparent 78%);
+  filter: saturate(0.85);
+}
+.bt-ghost .laptop__lid { box-shadow: none; }
+.bt-ghost__screen { position: relative; aspect-ratio: auto; height: 100%; }
+.bt-ghost__screen img { position: absolute; left: 0; top: 0; width: 100%; height: auto; opacity: 0; transition: opacity 1.4s ease; will-change: transform; }
+.bt-ghost__screen img.is-on { opacity: 1; }
+:root[data-theme="dark"] .bt-ghost { opacity: 0.14; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bt-ghost { opacity: 0.14; } }
+@media (max-width: 900px) { .bt-ghost { width: 120vw; right: -40vw; top: 34%; opacity: 0.14; } }
+.bt-ghost { opacity: 0.17; -webkit-mask-image: radial-gradient(110% 80% at 70% 34%, #000 28%, transparent 72%); mask-image: radial-gradient(110% 80% at 70% 34%, #000 28%, transparent 72%); }
+
+/* ===================== Phone hero ===================== */
+@media (max-width: 560px) {
+  .bt-hero { min-height: 100svh; padding-top: 96px; padding-bottom: 0; display: flex; flex-direction: column; }
+  .bt-hero > .wrap { padding-top: 8px; }
+  .bt-hero .bt-stage { display: flex; flex-direction: column; font-size: min(18.6vw, 88px) !important; }
+  /* four left-aligned lines: Websites / that grow / your / business. */
+  .bt-stage { --in2: 0em; --in3: 0em; }
+  .bt-title { line-height: 0.92; }
+  .bt-title .bt-ln { white-space: normal; padding-left: 0.04em !important; }
+  .bt-title .bt-ln--3 mark { display: inline-block; margin-top: 0.02em; }
+  /* small availability chip above the headline, no button */
+  .bt-avail { order: -1; align-self: flex-start; margin: 0 0 18px; padding: 7px 14px 7px 12px; gap: 8px; box-shadow: none; background: var(--grey-1); }
+  .bt-avail__btn { display: none; }
+  .bt-avail__status { font-size: 13px; }
+  .bt-foot { margin-top: 22px; }
+  .bt-who { font-size: 16px; }
+  .bt-ctas { margin-top: 18px; }
+  /* faded laptop peeks up from the bottom instead of sitting behind the words */
+  .bt-ghost { top: auto; bottom: -4svh; right: -30vw; width: 135vw; translate: 0 0; rotate: -7deg; opacity: 0.22;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 40%, #000 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 40%, #000 70%, transparent 100%); }
+}
+@media (max-width: 560px) {
+  .bt-title { line-height: 0.96; }
+  .bt-ghost { bottom: -30svh; right: -38vw; width: 150vw; opacity: 0.26;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 75%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 75%, transparent 100%); }
+  .bt-ctas { position: relative; z-index: 2; }
+}
+
+/* Brand-colour glow behind the faded laptop (changes with the project) */
+.bt-ghost__glow { position: absolute; z-index: 0; right: 4%; top: 18%; width: 52vw; aspect-ratio: 1.3; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(closest-side, var(--glow, #ff9ed2), transparent); opacity: 0.32; filter: blur(30px); transition: background 1.2s ease; }
+.bt-ghost { opacity: 0.26; }
+:root[data-theme="dark"] .bt-ghost__glow { opacity: 0.2; }
+
+/* Proof bar */
+.bt-proof { margin-top: clamp(26px, 4vh, 48px); padding-top: 18px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 18px 28px; flex-wrap: wrap; font-size: 14px; color: var(--grey-7); }
+.bt-now { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 10px; border-radius: 999px; background: var(--grey-1); border: 1px solid var(--line); text-decoration: none; color: var(--ink); font-size: 13.5px; transition: background 0.3s; }
+.bt-now:hover { background: var(--grey-2); }
+.bt-now span:nth-child(2) { color: var(--grey-5); }
+.bt-now__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--glow, #ff9ed2); transition: background 0.6s; box-shadow: 0 0 0 3px color-mix(in srgb, var(--glow, #ff9ed2) 35%, transparent); }
+.bt-facts { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px 26px; flex-wrap: wrap; }
+.bt-facts li { position: relative; }
+.bt-facts li + li::before { content: ""; position: absolute; left: -14px; top: 50%; width: 4px; height: 4px; margin-top: -2px; border-radius: 50%; background: var(--grey-3); }
+.bt-facts b { color: var(--ink); font-weight: 700; }
+.bt-cue { margin-left: auto; font-weight: 600; color: var(--ink); text-decoration: none; display: inline-flex; gap: 6px; }
+.bt-cue span { display: inline-block; animation: bt-cue 1.8s ease-in-out infinite; }
+@keyframes bt-cue { 50% { transform: translateY(4px); } }
+@media (max-width: 860px) { .bt-cue { margin-left: 0; } }
+@media (max-width: 560px) { .bt-proof { gap: 12px; } .bt-facts { gap: 4px 22px; font-size: 13.5px; } .bt-ghost__glow { width: 120vw; right: -30vw; top: auto; bottom: 0; } }
+@media (prefers-reduced-motion: reduce) { .bt-cue span { animation: none; } }
+@media (max-width: 560px) {
+  .bt-facts { display: none; }
+  .bt-proof { flex-wrap: nowrap; justify-content: space-between; }
+  .bt-now { font-size: 13px; }
+  .bt-cue { margin-left: auto; font-size: 14px; white-space: nowrap; }
+}
+@media (max-width: 560px) { .bt-cue { display: none; } }
+@media (max-width: 560px) { .bt-proof { display: none; } }
+.pf-hi { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: clamp(22px, 2.2vw, 30px); font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+.pf-hi__wave { display: inline-block; transform-origin: 70% 80%; animation: pf-wave 2.6s ease-in-out 1s infinite; }
+@keyframes pf-wave { 0%, 60%, 100% { rotate: 0deg; } 10%, 30% { rotate: 16deg; } 20%, 40% { rotate: -8deg; } }
+@media (prefers-reduced-motion: reduce) { .pf-hi__wave { animation: none; } }
+
+/* =====================================================================
+   HERO BACKDROP OPTIONS (?ghost=1..4). No query keeps the faded laptop.
+   Shared bits first, then one self-contained block per option
+   (.bt-g1 … .bt-g4). Delete the blocks that aren't picked.
+   ===================================================================== */
+.bt-hero[data-ghost] .btn--ghost { background: var(--white); }   /* stays readable over any backdrop */
+.bt-hero > .bt-g1, .bt-hero > .bt-g2, .bt-hero > .bt-g3, .bt-hero > .bt-g4 { position: absolute; z-index: 0; pointer-events: none; }
+
+/* ---------------------------------------------------------------------
+   Option 1 · Work wall
+   Three slow columns of real phone screens (the phone fan's captures),
+   tilted, scrolling in opposite directions, faded at every edge.
+   --------------------------------------------------------------------- */
+.bt-g1 {
+  --cw: clamp(130px, 11vw, 176px);
+  right: -2vw; top: 0; bottom: 0; width: calc(var(--cw) * 3 + 44px + 14vw);
+  opacity: 0.3; filter: saturate(0.8);
+  mask-image: linear-gradient(to bottom, transparent 4%, #000 26%, #000 58%, transparent 84%), linear-gradient(to right, transparent 0%, #000 42%);
+  mask-composite: intersect;
+}
+.bt-g1__tilt { position: absolute; right: 0; top: -20%; bottom: -20%; display: flex; gap: 22px; rotate: 9deg; transform-origin: 50% 50%; }
+.bt-g1__col { width: var(--cw); height: 100%; overflow: hidden; }
+.bt-g1__col:nth-child(2) { margin-top: -12%; }
+.bt-g1__track { will-change: transform; }
+.bt-g1__shot { display: block; aspect-ratio: 9 / 19.5; margin-bottom: 22px; border-radius: calc(var(--cw) * 0.12); overflow: hidden; background: var(--grey-2); box-shadow: 0 0 0 1px var(--line); }
+.bt-g1__shot img { width: 100%; height: 100%; object-fit: cover; }
+:root[data-theme="dark"] .bt-g1 { opacity: 0.22; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bt-g1 { opacity: 0.22; } }
+@media (max-width: 1100px) { .bt-g1 { right: -10vw; } }
+/* phones: the wall sinks to the band under the buttons */
+@media (max-width: 560px) {
+  .bt-g1 { --cw: 30vw; top: auto; bottom: 0; right: -14vw; width: 118vw; height: 40svh; opacity: 0.3;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 55%); mask-composite: add; }
+  .bt-g1__tilt { gap: 14px; left: 0; justify-content: center; }
+  .bt-g1__shot { margin-bottom: 14px; }
+}
+
+/* ---------------------------------------------------------------------
+   Option 2 · Big phone
+   One large phone bleeding off the right edge, scrolling a project's
+   full mobile page. On each change "grow" and the glow take that
+   project's colour (set as --g2 by home-hero.js).
+   --------------------------------------------------------------------- */
+.bt-g2 { --pw: clamp(220px, 19vw, 300px); inset: 0; }
+.bt-g2__phone { position: absolute; right: calc(var(--pw) * -0.34); top: 34%; width: var(--pw); rotate: 8deg; opacity: 0.6;
+  mask-image: linear-gradient(to bottom, #000 50%, transparent 88%); }
+.bt-g2__screen { transition: background-color 0.8s ease; }
+.bt-g2__screen .pf-sb { transition: background-color 0.8s ease, color 0.8s ease; }
+.bt-g2__page { bottom: 0; }
+.bt-g2__page img { position: absolute; left: 0; top: 0; width: 100%; height: auto; opacity: 0; transition: opacity 0.9s ease; will-change: transform; }
+.bt-g2__page img.is-on { opacity: 1; }
+.bt-g2__glow { position: absolute; right: -6vw; top: 12%; width: 46vw; aspect-ratio: 1; border-radius: 50%; background-color: var(--g2, #c7f016); opacity: 0.26; filter: blur(90px); transition: background-color 1.2s ease; }
+:root[data-theme="dark"] .bt-g2__glow { opacity: 0.14; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bt-g2__glow { opacity: 0.14; } }
+@media (max-width: 1100px) { .bt-g2__phone { right: calc(var(--pw) * -0.45); top: 30%; } }
+/* phones: the phone peeks up from the bottom corner, under the buttons */
+@media (max-width: 560px) {
+  .bt-g2 { --pw: 48vw; }
+  .bt-g2__phone { top: auto; bottom: calc(var(--pw) * -1.12); right: -6vw; rotate: 12deg; }
+  .bt-g2__glow { top: auto; bottom: -20vw; right: -30vw; width: 110vw; opacity: 0.22; filter: blur(60px); }
+}
+
+/* ---------------------------------------------------------------------
+   Option 3 · Brand wash + client logos
+   No device: three soft blobs in the current client's colours drift
+   behind the right side (--g3a / --g3b), plus one quiet row of real
+   logos in grey under the facts strip. Hover a logo to colour it and
+   pull the wash to that brand.
+   --------------------------------------------------------------------- */
+.bt-g3 { inset: 0; overflow: hidden; }
+.bt-g3__blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; transition: background-color 1.8s ease; will-change: transform; }
+.bt-g3__blob--a { right: -8vw; top: 4%;  width: 44vw; aspect-ratio: 1.15; background-color: var(--g3a, #ff9ed2); }
+.bt-g3__blob--b { right: 18vw; top: 34%; width: 30vw; aspect-ratio: 1;    background-color: var(--g3b, #ffd1ea); opacity: 0.55; }
+.bt-g3__blob--c { right: 2vw;  top: 56%; width: 26vw; aspect-ratio: 1.3;  background-color: var(--g3a, #ff9ed2); opacity: 0.3; }
+:root[data-theme="dark"] .bt-g3__blob { opacity: 0.24; filter: blur(80px) saturate(1.5); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bt-g3__blob { opacity: 0.24; filter: blur(80px) saturate(1.5); } }
+
+.bt-g3__logos { position: relative; z-index: 1; list-style: none; margin: clamp(18px, 2.6vh, 28px) 0 0; padding: 0; display: flex; align-items: center; justify-content: space-between; gap: 20px 32px; }
+.bt-g3__logos li { display: flex; }
+.bt-g3__logo {
+  --H: 26px;
+  position: relative; display: block; height: calc(var(--H) * var(--s, 1)); width: calc(var(--H) * var(--s, 1) * var(--w, 2));
+  background-color: var(--grey-5); color: var(--grey-5); opacity: 0.85;
+  mask-size: contain; mask-repeat: no-repeat; mask-position: center;
+  -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;
+  transition: background-color 0.35s ease, color 0.35s ease, opacity 0.35s ease, translate 0.35s var(--ease-spring);
+}
+/* logos on a white background: the dark parts become the shape */
+.bt-g3__logo.is-lum { mask-mode: luminance, alpha; mask-composite: exclude; mask-size: 100% 100%; -webkit-mask-size: 100% 100%; }
+.bt-g3__logo.is-bh { mask-size: 196% 392%; -webkit-mask-size: 196% 392%; mask-position: 50% 49%; -webkit-mask-position: 50% 49%; }
+.bt-g3__logo.is-svg { background: none; }
+.bt-g3__logo.is-svg svg { display: block; width: 100%; height: 100%; }
+.bt-g3__logo:hover, .bt-g3__logo:focus-visible { background-color: var(--t); color: var(--t); opacity: 1; translate: 0 -2px; }
+.bt-g3__logo.is-svg:hover, .bt-g3__logo.is-svg:focus-visible { background: none; }
+:root[data-theme="dark"] .bt-g3__logo:hover, :root[data-theme="dark"] .bt-g3__logo:focus-visible { background-color: var(--td); color: var(--td); }
+:root[data-theme="dark"] .bt-g3__logo.is-svg:hover { background: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .bt-g3__logo:hover, :root:not([data-theme="light"]) .bt-g3__logo:focus-visible { background-color: var(--td); color: var(--td); }
+  :root:not([data-theme="light"]) .bt-g3__logo.is-svg:hover { background: none; }
+}
+.bt-g3__logo .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 860px) { .bt-g3__logos { justify-content: flex-start; gap: 18px 30px; flex-wrap: wrap; } }
+/* phones: four logos in one tidy row under the buttons; the wash sits low */
+@media (max-width: 560px) {
+  .bt-g3__logos { margin-top: 30px; flex-wrap: nowrap; justify-content: space-between; gap: 14px; }
+  .bt-g3__logo { --H: 20px; }
+  .bt-g3__logos li:nth-child(5) { display: none; }
+  .bt-g3__blob--a { top: auto; bottom: -10%; right: -30vw; width: 100vw; }
+  .bt-g3__blob--b { top: auto; bottom: 8%; right: 40vw; width: 60vw; }
+  .bt-g3__blob--c { display: none; }
+}
+
+/* ---------------------------------------------------------------------
+   Option 4 · Browser cascade
+   Three slim browser windows of real sites, overlapped at the right.
+   Each scrolls its page; every few seconds the front one shuffles to
+   the back. Faded at the edges like the laptop.
+   --------------------------------------------------------------------- */
+.bt-g4 {
+  --bw: clamp(380px, 34vw, 540px); --bh: calc(var(--bw) * 0.6625);
+  /* the stage is taller and wider than one window so the back windows (offset up and right) stay inside the mask */
+  right: calc(-3vw - var(--bw) * 0.18); top: calc(45% - var(--bh) * 0.42); width: calc(var(--bw) * 1.18); height: calc(var(--bh) * 1.42); rotate: -3deg;
+  mask-image: linear-gradient(to right, transparent 0%, #000 26%), linear-gradient(to bottom, #000 56%, transparent 90%);
+  mask-composite: intersect;
+}
+/* crisp frames, faded pages: the windows stay clean while the sites read as backdrop */
+.bt-g4__win { position: absolute; left: 0; bottom: 0; width: var(--bw); height: var(--bh); display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: var(--white); box-shadow: 0 0 0 1px var(--line), 0 24px 50px -26px rgb(24 24 26 / 0.3); transform-origin: 0% 100%; will-change: transform; }
+.bt-g4__bar { flex: none; height: 26px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: var(--grey-1); border-bottom: 1px solid var(--line); }
+.bt-g4__bar i { width: 9px; height: 9px; border-radius: 50%; background: #ff5f57; }
+.bt-g4__bar i:nth-child(2) { background: #febc2e; }
+.bt-g4__bar i:nth-child(3) { background: #28c840; }
+.bt-g4__bar b { flex: 0 1 38%; height: 12px; margin: 0 auto; border-radius: 6px; background: var(--grey-2); translate: -18px 0; }
+.bt-g4__view { position: relative; flex: 1; overflow: hidden; background: var(--white); }
+.bt-g4__view img { position: absolute; left: 0; top: 0; width: 100%; height: auto; opacity: 0.42; filter: saturate(0.85); will-change: transform; }
+:root[data-theme="dark"] .bt-g4__view img { opacity: 0.22; }
+:root[data-theme="dark"] .bt-g4__win { box-shadow: 0 0 0 1px rgb(255 255 255 / 0.16), 0 24px 50px -26px rgb(0 0 0 / 0.7); }
+:root[data-theme="dark"] .bt-g4__bar { background: var(--grey-2); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .bt-g4__view img { opacity: 0.22; }
+  :root:not([data-theme="light"]) .bt-g4__win { box-shadow: 0 0 0 1px rgb(255 255 255 / 0.16), 0 24px 50px -26px rgb(0 0 0 / 0.7); }
+  :root:not([data-theme="light"]) .bt-g4__bar { background: var(--grey-2); }
+}
+@media (max-width: 1100px) { .bt-g4 { right: calc(-8vw - var(--bw) * 0.18); } }
+/* phones: the cascade peeks up from the bottom corner */
+@media (max-width: 560px) {
+  .bt-g4 { --bw: 82vw; top: auto; bottom: -3svh; right: calc(-22vw - var(--bw) * 0.18); rotate: -6deg;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 50%); mask-composite: add; }
+  .bt-g4__bar { height: 18px; gap: 4px; padding: 0 8px; }
+  .bt-g4__bar i { width: 6px; height: 6px; }
+  .bt-g4__bar b { height: 8px; }
+}
+@media (max-width: 680px) { .pf-hero__ctas { display: none; } }

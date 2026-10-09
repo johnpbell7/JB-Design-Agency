@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SCCC Heritage: website design and build · John Bell</title>
+  <meta name="description" content="A history website for Sutton Coldfield Cricket Club, with over 180 years of archive photos and stories laid out as a timeline. Designed and built by John Bell in React.">
+  <meta property="og:title" content="SCCC Heritage: website design and build · John Bell">
+  <meta property="og:description" content="A club history website for Sutton Coldfield Cricket Club, designed and built by John Bell, with a cricket ball slider, a bowling intro and a roll of honour.">
+  <meta property="og:image" content="../assets/captures/sccc-heritage/fold-desktop.webp">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/case.css">
+  <link rel="stylesheet" href="../assets/css/case-plus.css">
+  <link rel="stylesheet" href="../assets/css/sccc-heritage.css">
+</head>
+<body data-pen>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-nav">
+    <a class="site-nav__mark" href="../index.html">John Bell</a>
+    <nav class="site-nav__links" aria-label="Main">
+      <a href="../index.html#skills">Services</a>
+      <a href="../index.html#process">Process</a>
+      <a href="work.html">Work</a>
+      <a href="print.html">Print</a>
+      <a href="about.html">About</a>
+      <a href="../index.html#faq">FAQs</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
+      <a class="is-cta" href="../index.html#contact">Start a project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="cs-hero wrap">
+      <div class="cs-hero__grid">
+        <div class="cs-hero__intro">
+          <h1>Every season since <mark class="hl">1847.</mark></h1>
+          <p class="cs-hero__lede">A history website for Sutton Coldfield Cricket Club. It puts over 180 years of photos, scorebooks and minute books into one timeline, and opens when you bowl a cricket ball.</p>
+          <span class="credit"><i>✓</i>Design and build</span>
+        </div>
+        <div class="stage" data-stage style="--stage-hl:#c94a6c">
+          <div class="stage__glow" aria-hidden="true"></div>
+          <div class="laptop">
+            <div class="laptop__lid"><div class="screen"><img src="../assets/captures/sccc-heritage/home-desktop.webp" alt="SCCC Heritage homepage on desktop: archive photos on a wooden table with a Bowl to Scroll cricket ball"></div></div>
+            <div class="laptop__base"></div>
+          </div>
+          <div class="phone" data-start="0" data-span=".16"><div class="screen"><img src="../assets/captures/sccc-heritage/journey-mobile.webp" alt="The club timeline on mobile"></div></div>
+          <div class="pop" style="--x:-6%;--y:-4%;--w:clamp(150px,15vw,214px);--r:-7deg" data-from-x="60"><div class="sc-card sc-card--pop is-hot" aria-hidden="true"><img src="../assets/projects/sccc-heritage/d-1906.jpg" alt=""><i class="sc-card__slip"></i><div class="sc-card__txt"><b>The Turn of the Century</b><span>1900-1909</span></div><em class="sc-card__go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>Explore this decade</em></div></div>
+          <div class="pop" style="--x:66%;--y:1%;--w:22%;--r:5deg" data-from-x="-60" data-pop-sm="hide"><div class="sc-tag"><small>Founded</small><b>1847</b><span>Rectory Park</span></div></div>
+          <div class="pop" style="--x:-1%;--y:73%;--w:13%" data-from-y="-50"><div class="sc-ballpop"><img src="../assets/projects/sccc-heritage/ball.png" alt=""></div></div>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>Site</dt><dd>Multi-page site</dd></div>
+        <div><dt>Client</dt><dd>Sutton Coldfield Cricket Club</dd></div>
+        <div><dt>Sector</dt><dd>Sports club history</dd></div>
+        <div><dt>Design + build</dt><dd>John Bell</dd></div>
+        <div><dt>Stack</dt><dd>React, Vite, Tailwind, Vercel</dd></div>
+      </dl>
+    </section>
+
+    <!-- Brief + what I did -->
+    <section class="cs-brief wrap"><div class="cs-brief__grid">
+      <div><span class="label">The brief</span><p class="cs-brief__text">Somewhere to keep over 180 years of club archive, from team photos to scorebooks and minute books, that members can read on a phone.</p></div>
+      <div><span class="label">What I did</span><ul class="cs-brief__list">
+        <li>A slider through the decades, with a cricket ball as the handle</li>
+        <li>A home page that opens when you bowl the ball</li>
+        <li>Roll of honour cards for 39 members</li>
+        <li>Archivo Black for headings, Georgia for the long stories</li>
+        <li>Built in React, Vite and Tailwind</li>
+      </ul></div>
+    </div></section>
+
+    <!-- Mobile parade -->
+    <section class="section--tight wrap">
+      <div class="section-head" data-reveal>
+        <span class="label">On a phone</span>
+        <h2>Club history you can read <mark class="hl">on your phone.</mark></h2>
+        <p>The long stories are in big, easy-to-read type, every photo has a caption, and the menu is always close by.</p>
+      </div>
+      <div class="panel parade" data-parade style="--p-bg:#1a472a;--p-muted:rgb(255 255 255 / .62)">
+        <div class="parade__row">
+          <div class="phone" data-live="../assets/live/sccc-heritage/index.html?p=/" data-live-journey="phone-home.json"><div class="screen"><video src="../assets/clips/sccc-heritage/decades.mp4" poster="../assets/clips/sccc-heritage/decades.jpg" muted playsinline loop preload="none" aria-label="SCCC Heritage on mobile: bowl the ball on the home page and the site opens and scrolls"></video></div></div>
+          <div class="phone" data-live="../assets/live/sccc-heritage/index.html?p=/decades" data-live-journey="phone-decades.json"><div class="screen"><video src="../assets/clips/sccc-heritage/timeline.mp4" poster="../assets/clips/sccc-heritage/timeline.jpg" muted playsinline loop preload="none" aria-label="SCCC Heritage on mobile: flick through the decade cards, then open the 1910s"></video></div></div>
+          <div class="phone" data-live="../assets/live/sccc-heritage/index.html?p=/journey" data-live-journey="phone-timeline.json"><div class="screen"><video src="../assets/clips/sccc-heritage/teams.mp4" poster="../assets/clips/sccc-heritage/teams.jpg" muted playsinline loop preload="none" aria-label="SCCC Heritage on mobile: open a timeline event, its photo and story open, then the next two"></video></div></div>
+          <div class="phone" data-live="../assets/live/sccc-heritage/index.html?p=/teams" data-live-journey="phone-teams.json"><div class="screen"><video src="../assets/clips/sccc-heritage/rectory-park.mp4" poster="../assets/clips/sccc-heritage/rectory-park.jpg" muted playsinline loop preload="none" aria-label="SCCC Heritage on mobile: enlarge a team photograph, then show and hide the player names"></video></div></div>
+        </div>
+        <div class="parade__caption" aria-hidden="true"><span>Bowl to enter</span><span>The decades</span><span>Timeline</span><span>Team photos</span></div>
+
+        <div class="pop" style="--x:4.5%;--y:9%;--w:clamp(96px,9vw,128px);--r:-8deg" data-from-x="120">
+          <div class="sc-crest"><img src="../assets/projects/sccc-heritage/crest.png" alt="Sutton Coldfield Cricket Club crest, a Tudor rose"></div>
+        </div>
+        <div class="pop" style="--x:73%;--y:66%;--w:clamp(200px,19vw,260px);--r:3deg" data-from-x="-100" data-from-y="-40" data-pop-sm="hide">
+          <div class="sc-entry"><i aria-hidden="true"></i><div><small>1947 · Rectory Park</small><b>The Centenary Year</b><span>Read more</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The site in use: a desktop recording with steps that follow it -->
+    <section class="section wrap" data-cp-film data-live="../assets/live/sccc-heritage/index.html?p=/" data-mobile="../assets/captures/sccc-heritage/journey-mobile.webp" style="--tint:#f5e6d3;--swash:rgb(139 21 56 / 0.14);--pen:#f3c9d3">
+      <header class="cp-head" data-reveal>
+        <span class="label">In use</span>
+        <h2>From the first ball <mark class="hl">to the team photos.</mark></h2>
+        <p>The live site running on a desktop.</p>
+      </header>
+      <div class="cp-film__grid">
+        <div class="cp-film__stage">
+          <div class="cp-browser">
+            <div class="cp-browser__bar"><i></i><i></i><i></i><span>sccc-heritage.co.uk</span></div>
+            <video src="../assets/clips/sccc-heritage/film-tour.mp4" poster="../assets/clips/sccc-heritage/film-tour.jpg" muted playsinline loop preload="none" aria-label="SCCC Heritage on desktop: the ball is bowled, the decade cards open, the Great War page reaches the roll of honour, then Meet the Teams shows a roster and enlarges the 1906 First XI"></video>
+          </div>
+        </div>
+        <ol class="cp-steps">
+          <li data-t="0.9"><button type="button"><b>01</b><strong>Bowl to scroll</strong></button><i></i></li>
+          <li data-t="5.9"><button type="button"><b>02</b><strong>Fifteen decades</strong></button><i></i></li>
+          <li data-t="10.9"><button type="button"><b>03</b><strong>Inside a decade</strong></button><i></i></li>
+          <li data-t="12.5"><button type="button"><b>04</b><strong>The men that served</strong></button><i></i></li>
+          <li data-t="17"><button type="button"><b>05</b><strong>Meet the Teams</strong></button><i></i></li>
+          <li data-t="22.2"><button type="button"><b>06</b><strong>Old photos, up close</strong></button><i></i></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Close-ups: the site's own pieces breaking out of the club colours -->
+    <section class="section--tight wrap">
+      <header class="cp-head" data-reveal>
+        <span class="label">Up close</span>
+        <h2>Built from the <mark class="hl">club’s own archive.</mark></h2>
+      </header>
+      <div class="sc-breakout">
+        <figure class="sc-break sc-break--cards">
+          <div class="sc-break__panel" aria-hidden="true"></div>
+          <div class="sc-break__stack">
+            <div class="sc-break__card" style="--r:-9deg;--y:4%"><div class="sc-card" tabindex="0" aria-label="The Great War Era, 1910–1919"><img src="../assets/projects/sccc-heritage/d-1910.jpg" alt="" loading="lazy"><i class="sc-card__slip"></i><div class="sc-card__txt"><b>The Great War Era</b><span>1910-1919</span></div><em class="sc-card__go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>Explore this decade</em></div></div>
+            <div class="sc-break__card" style="--r:3deg;--y:-12%"><div class="sc-card is-hot" tabindex="0" aria-label="The Swinging Sixties, 1960–1969"><img src="../assets/projects/sccc-heritage/d-1966.jpg" alt="" loading="lazy"><i class="sc-card__slip"></i><div class="sc-card__txt"><b>The Swinging Sixties</b><span>1960-1969</span></div><em class="sc-card__go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>Explore this decade</em></div></div>
+            <div class="sc-break__card" style="--r:11deg;--y:8%"><div class="sc-card" tabindex="0" aria-label="The Twenty-Twenties, 2020 to the present"><img src="../assets/projects/sccc-heritage/d-2022.jpg" alt="" loading="lazy"><i class="sc-card__slip"></i><div class="sc-card__txt"><b>The Twenty-Twenties</b><span>2020-Present</span></div><em class="sc-card__go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>Explore this decade</em></div></div>
+          </div>
+          <figcaption><b>Decade cards</b><span>Fifteen eras, each with its best photo on the front and a claret label.</span></figcaption>
+        </figure>
+        <figure class="sc-break sc-break--archive">
+          <div class="sc-break__panel" aria-hidden="true"></div>
+          <div class="sc-break__photos">
+            <button type="button" class="sc-team" style="--r:-7deg;--x:-6%;--y:2%" data-zoom="../assets/projects/sccc-heritage/d-1859.jpg" aria-label="Enlarge 1859 First XI">
+              <span class="sc-team__year">1859</span>
+              <span class="sc-team__title">1859 First XI</span>
+              <span class="sc-team__img"><img src="../assets/projects/sccc-heritage/d-1859.jpg" alt="1859 First XI, the earliest photograph in the club archive" loading="lazy"></span>
+              <span class="sc-team__cap">Sutton Coldfield Cricket Club, 1859<small>Club Archives</small></span>
+            </button>
+            <button type="button" class="sc-team" style="--r:6deg;--x:6%;--y:-10%" data-zoom="../assets/projects/sccc-heritage/d-1906.jpg" aria-label="Enlarge 1906 First XI">
+              <span class="sc-team__year">1906</span>
+              <span class="sc-team__title">1906 First XI</span>
+              <span class="sc-team__img"><img src="../assets/projects/sccc-heritage/d-1906.jpg" alt="1906 First XI in front of the thatched pavilion" loading="lazy"></span>
+              <span class="sc-team__cap">Sutton Coldfield Cricket Club, 1906<small>Club Archives</small></span>
+            </button>
+          </div>
+          <button type="button" class="sc-badge" data-badge aria-label="Bowl to Scroll">
+            <span class="sc-badge__ball"><img src="../assets/projects/sccc-heritage/ball.png" alt=""></span>
+            <span class="sc-badge__cue"><b>Bowl to Scroll</b><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></span>
+          </button>
+          <figcaption><b>Team photos and the ball</b><span>Fifty old photos that open full screen, and the ball that gets things started.</span></figcaption>
+        </figure>
+      </div>
+      <div class="sc-breakout sc-breakout--two">
+        <figure class="sc-break sc-break--slider">
+          <div class="sc-break__panel" aria-hidden="true"></div>
+          <div class="sc-dial" data-dial>
+            <div class="sc-card sc-dial__card is-hot" data-dial-card aria-live="polite"><img src="../assets/projects/sccc-heritage/d-1910.jpg" alt="" data-dial-img><i class="sc-card__slip"></i><div class="sc-card__txt"><b data-dial-title>The Great War Era</b><span data-dial-years>1910-1919</span></div><em class="sc-card__go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>Explore this decade</em></div>
+            <div class="sc-slider">
+              <div class="sc-slider__rail">
+                <div class="sc-slider__track"><div class="sc-slider__fill" data-dial-fill></div><div class="sc-slider__ticks" data-dial-ticks aria-hidden="true"></div></div>
+                <input type="range" min="0" max="14" step="1" value="3" aria-label="Decade" data-dial-range>
+                <div class="sc-slider__ball" aria-hidden="true"><img src="../assets/projects/sccc-heritage/ball.png" alt=""></div>
+              </div>
+              <div class="sc-slider__labels" aria-hidden="true"><span style="left:0%">1837</span><span style="left:28.57%">1920</span><span style="left:64.29%">1970</span><span style="left:100%">2020</span></div>
+            </div>
+          </div>
+          <figcaption><b>The decade slider</b><span>A cricket ball is the handle for moving through fifteen eras.</span></figcaption>
+        </figure>
+        <figure class="sc-break sc-break--roll">
+          <div class="sc-break__panel" aria-hidden="true"></div>
+          <div class="sc-roll" data-roll>
+            <div class="sc-roll__head">
+              <h3>The Men that Served</h3>
+              <button type="button" class="sc-roll__era" data-roll-era>1910-1919</button>
+            </div>
+            <div class="sc-roll__switch" role="group" aria-label="Filter the roll of honour">
+              <button type="button" aria-pressed="true" data-filter="all">All <span>39</span></button>
+              <button type="button" aria-pressed="false" data-filter="fell">Did not return <span>13</span></button>
+            </div>
+            <div class="sc-roll__grid" data-roll-grid></div>
+            <button type="button" class="sc-roll__more" data-roll-more>Show all 39 names</button>
+          </div>
+          <figcaption><b>The roll of honour</b><span>All 39 members who served in the Great War, with the 13 who died shown in claret.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- By the numbers -->
+    <section class="section--tight wrap">
+      <div class="cp-results sc-results" data-reveal>
+        <div class="cp-result"><b data-count="180" data-suffix="+">180+</b><span>years of club history</span><small>Cricket at Rectory Park from 1837 to the present day.</small></div>
+        <div class="cp-result"><b data-count="15">15</b><span>decade chapters</span><small>Each with its own page, photos and story.</small></div>
+        <div class="cp-result"><b><mark class="hl">39</mark></b><span>names on the roll of honour</span><small>Every member who served in the Great War. The 13 who died stand out in claret.</small></div>
+        <div class="cp-result" data-todo><b>00</b><span>result from launch</span><small>Visitors, new members or archive finds since the site went live.</small></div>
+      </div>
+    </section>
+
+    <!-- What they said -->
+    <section class="section--tight wrap">
+      <figure class="cp-quote" style="--brand:#8b1538;--pen:#f3c9d3" data-reveal>
+        <span class="cp-quote__mark" aria-hidden="true">“</span>
+        <div>
+          <blockquote data-todo>The club’s words go here.</blockquote>
+          <figcaption><i aria-hidden="true">SC</i><span><b data-todo>Name, role</b><small>Sutton Coldfield Cricket Club</small></span></figcaption>
+        </div>
+      </figure>
+    </section>
+
+    <!-- Brand -->
+    <section class="section wrap">
+      <div class="section-head" data-reveal>
+        <span class="label">Colour + type</span>
+        <h2>Colours from the crest <mark class="hl">and the outfield.</mark></h2>
+        <p>The crimson comes from the Tudor rose on the club crest, and the green from the Rectory Park outfield.</p>
+      </div>
+      <div class="sc-brand-row" data-reveal>
+        <div class="sc-logo-card">
+          <img src="../assets/projects/sccc-heritage/crest.png" alt="Sutton Coldfield Cricket Club crest: a red and white Tudor rose">
+          <p><b>Sutton Coldfield</b> Cricket Club</p>
+        </div>
+        <div class="palette">
+          <button class="swatch" style="--c:#8b1538;--share:1.7"><b>Crimson</b><code>#8B1538</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#6b0f2a;--share:1"><b>Hover</b><code>#6B0F2A</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#1a472a;--share:1.4"><b>Green</b><code>#1A472A</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#0d1f14;--share:1"><b>Deep</b><code>#0D1F14</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#2c5aa0;--share:.8"><b>Navy</b><code>#2C5AA0</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#f5e6d3;--on:#2a1a10;--share:1"><b>Parchment</b><code>#F5E6D3</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#f8f6f3;--on:#18181a;--share:1"><b>Cream</b><code>#F8F6F3</code><span class="copied">Copied</span></button>
+        </div>
+      </div>
+      <div class="panel specimen sc-specimen" style="margin-top:14px" data-reveal>
+        <div class="specimen__aa">Aa</div>
+        <div>
+          <h3 class="sc-specimen__h">Over 180 Years of Cricket Excellence</h3>
+          <p class="sc-specimen__p">Archivo Black for headings. Georgia for the long stories and captions, so it reads like the club’s old minute books.</p>
+          <div class="specimen__weights" aria-hidden="true">
+            <span style="font-weight:400">Aa<small>Regular</small></span>
+            <span style="font-weight:600">Aa<small>Semibold</small></span>
+            <span style="font-weight:800">Aa<small>Extra</small></span>
+            <span class="is-black">Aa<small>Black</small></span>
+            <span class="is-serif">Aa<small>Georgia</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- cp:end -->
+    <section class="section wrap" id="more">
+      <header class="cp-head"><span class="label">More work</span><h2>Other projects <mark class="hl">you might like.</mark></h2></header>
+      <div class="cp-more">
+        <a class="cp-card cp-card--next" href="beetle-eyes.html" style="--brand:#1f3a2e">
+          <div class="cp-card__art"><span class="cp-card__label">Next project</span><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/beetle-eyes/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/../projects/beetle-eyes/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Beetle Eyes</b><span>One-page website</span></div>
+        </a>
+        <a class="cp-card" href="patch.html" style="--brand:#111318">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/patch-agency/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/patch-agency/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>PATCH</b><span>Brand + website</span></div>
+        </a>
+        <a class="cp-card" href="birth-hood.html" style="--brand:#fe7fcc">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/birth-hood/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/birth-hood/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Birth-hood</b><span>Website</span></div>
+        </a>
+        <a class="cp-card" href="gosweet.html" style="--brand:#5c2a9d">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/gosweet/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/gosweet/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>GoSweet</b><span>Online shop</span></div>
+        </a>
+        <a class="cp-card" href="nic-pouches.html" style="--brand:#0070d5">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/nic-pouches/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/nic-pouches/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Nic Pouches</b><span>Online shop</span></div>
+        </a>
+        <a class="cp-card" href="vsl-trade.html" style="--brand:#0d1110">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/vsl-trade/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/vsl-trade/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>VSL Trade</b><span>Wholesale website</span></div>
+        </a>
+        <a class="cp-card" href="birdie-blooms.html" style="--brand:#e8879f">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/birdie-blooms/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/birdie-blooms/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Birdie Blooms</b><span>Brand + website</span></div>
+        </a>
+        <a class="cp-card cp-card--print" href="print.html">
+          <div class="cp-card__art"><img src="../assets/projects/print/hospital/covers/impact.jpg" alt="" loading="lazy"><img src="../assets/projects/property/covers/swilley.jpg" alt="" loading="lazy"><img src="../assets/projects/print/gowling/cover-flat.jpg" alt="" loading="lazy"></div>
+          <div class="cp-card__name"><b>Print, brand and motion</b><span>Brochures · logos · film</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="contact wrap">
+        <div class="contact__intro">
+          <span class="label">Your turn</span>
+          <h2>Let’s make something people <mark class="hl">like to use.</mark></h2>
+          <p>Tell me a bit about your business and what you need. I usually reply within a working day.</p>
+          <a class="contact__email" href="mailto:jb.designagency89@gmail.com">jb.designagency89@gmail.com</a>
+        </div>
+        <form class="contact__form" data-contact data-to="jb.designagency89@gmail.com" novalidate>
+          <fieldset class="chips">
+            <legend>What do you need?</legend>
+            <label><input type="checkbox" name="need" value="New website"><span>New website</span></label>
+            <label><input type="checkbox" name="need" value="Redesign"><span>Redesign</span></label>
+            <label><input type="checkbox" name="need" value="Online shop"><span>Online shop</span></label>
+            <label><input type="checkbox" name="need" value="Logo and brand"><span>Logo &amp; brand</span></label>
+            <label><input type="checkbox" name="need" value="Print"><span>Print</span></label>
+          </fieldset>
+          <div class="field-row">
+            <label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label>
+            <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <label class="field"><span>Tell me about it</span><textarea name="message" rows="4" required></textarea></label>
+          <p class="contact__error" role="alert" data-contact-error></p>
+          <button class="btn btn--big" type="submit">Send it over <span aria-hidden="true">→</span></button>
+          <p class="contact__note">This opens your email app with everything filled in, ready to send.</p>
+        </form>
+      </div>
+    </section>
+    <!-- /cp:end -->
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <p class="site-foot__big"><a href="#contact">Got a project? <mark class="hl hl--orange">Let’s talk.</mark></a></p>
+      <div class="site-foot__row">
+        <span>© 2026 John Bell · Designed and built by me</span>
+        <nav aria-label="Footer"><a href="work.html">Work</a><a href="../index.html#faq">FAQs</a><a href="mailto:jb.designagency89@gmail.com">Email</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/case.js"></script>
+  <script src="../assets/js/case-plus.js"></script>
+  <script src="../assets/js/sccc-heritage.js"></script>
+</body>
+</html>

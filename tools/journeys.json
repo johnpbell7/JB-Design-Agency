@@ -1,0 +1,1001 @@
+{
+  "gosweet": {
+    "local": "sites/gosweet",
+    "clips": [
+      {
+        "name": "shop",
+        "path": "collection.html",
+        "steps": [
+          {
+            "scroll": 520,
+            "ms": 1500
+          },
+          {
+            "tap": ".es__name a",
+            "nth": 2,
+            "after": 700
+          },
+          {
+            "scroll": 380,
+            "ms": 1300
+          },
+          {
+            "tap": "[data-pq=\"1\"]",
+            "after": 500
+          },
+          {
+            "tap": ".buyrow .btn",
+            "after": 1100
+          },
+          {
+            "tap": "[data-open-drawer]",
+            "after": 1400
+          }
+        ]
+      },
+      {
+        "name": "home",
+        "path": "index.html",
+        "steps": [
+          {
+            "scrollTo": ".es",
+            "ms": 1500,
+            "offset": 160
+          },
+          {
+            "tap": ".es__add",
+            "nth": 0,
+            "after": 1100
+          },
+          {
+            "scrollTo": ".bstrip",
+            "ms": 1800,
+            "offset": 300
+          },
+          {
+            "tap": ".bstrip > a",
+            "nth": 1,
+            "after": 600
+          },
+          {
+            "scroll": 500,
+            "ms": 1400
+          }
+        ]
+      },
+      {
+        "name": "rewards",
+        "path": "index.html",
+        "steps": [
+          {
+            "tap": ".hdr__burger",
+            "after": 1000
+          },
+          {
+            "tap": ".mquick .mtile--rew",
+            "after": 700
+          },
+          {
+            "scroll": 1000,
+            "ms": 1900
+          },
+          {
+            "scrollTo": ".acc__i:nth-of-type(2)",
+            "ms": 1900,
+            "offset": 220
+          },
+          {
+            "tap": ".acc__i summary",
+            "nth": 1,
+            "after": 1100
+          }
+        ]
+      },
+      {
+        "name": "search",
+        "path": "index.html",
+        "steps": [
+          {
+            "tap": "[data-search-open]",
+            "after": 700
+          },
+          {
+            "type": [
+              "[data-srch-in]",
+              "cola"
+            ],
+            "after": 1100
+          },
+          {
+            "tap": ".sprod",
+            "nth": 0,
+            "after": 800
+          },
+          {
+            "scroll": 340,
+            "ms": 1100
+          },
+          {
+            "tap": ".buyrow .btn",
+            "after": 1100
+          }
+        ],
+        "lead": 600
+      }
+    ],
+    "localStorage": {
+      "gs_signup_seen": "1"
+    },
+    "sessionStorage": {
+      "gs_signup_seen": "1"
+    },
+    "hide": [
+      ".signup"
+    ]
+  },
+  "nic-pouches": {
+    "local": "sites/nic-pouches",
+    "hide": [
+      ".proto-note",
+      "#fo"
+    ],
+    "localStorage": {
+      "np_first_order_popup": "9999999999999"
+    },
+    "clips": [
+      {
+        "name": "shop",
+        "path": "shop.html",
+        "steps": [
+          {
+            "scroll": 330,
+            "ms": 1100
+          },
+          {
+            "tap": ".toolbar .btn--ghost",
+            "text": "Filter",
+            "after": 900
+          },
+          {
+            "tap": "#f-brand label",
+            "text": "Pablo",
+            "after": 700
+          },
+          {
+            "tap": "#showN",
+            "after": 900
+          },
+          {
+            "scroll": 420,
+            "ms": 1300
+          },
+          {
+            "tap": ".pc__name",
+            "nth": 0,
+            "after": 1100
+          }
+        ]
+      },
+      {
+        "name": "product",
+        "path": "product.html?p=pablo-silver-edition-peppermint",
+        "steps": [
+          {
+            "wait": 500
+          },
+          {
+            "scroll": 560,
+            "ms": 1400
+          },
+          {
+            "tap": ".packs .pack",
+            "nth": 1,
+            "after": 600
+          },
+          {
+            "tap": ".packs .pack",
+            "nth": 2,
+            "after": 700
+          },
+          {
+            "tap": ".buy .qty button",
+            "nth": 1,
+            "after": 600
+          },
+          {
+            "tap": ".buy .btn--lg",
+            "after": 1100
+          }
+        ],
+        "tail": 500,
+        "lead": 900
+      },
+      {
+        "name": "mix-match",
+        "path": "page-mix-match.html",
+        "steps": [
+          {
+            "wait": 200
+          },
+          {
+            "scroll": 3340,
+            "ms": 3000
+          },
+          {
+            "tap": ".pc__add",
+            "nth": 2,
+            "after": 1000
+          },
+          {
+            "tap": ".qa [role=radio]",
+            "nth": 1,
+            "after": 600
+          },
+          {
+            "tap": "[data-qadd]",
+            "js": true,
+            "after": 2000
+          }
+        ]
+      },
+      {
+        "name": "points",
+        "path": "index.html",
+        "steps": [
+          {
+            "scrollTo": "#promos",
+            "ms": 1500,
+            "offset": 200
+          },
+          {
+            "tap": "#promos .promo--blue",
+            "after": 600
+          },
+          {
+            "scrollTo": ".nptiers",
+            "ms": 1600,
+            "offset": 120
+          },
+          {
+            "scroll": 450,
+            "ms": 1500
+          },
+          {
+            "wait": 300
+          }
+        ]
+      }
+    ]
+  },
+  "vsl-trade": {
+    "local": "sites/vsl-trade",
+    "sessionStorage": {
+      "vsl-intro": "1"
+    },
+    "localStorage": {
+      "vsl-intro": "1"
+    },
+    "hide": [
+      "#vsl-intro",
+      "#google_translate_element",
+      ".skiptranslate"
+    ],
+    "css": "body{top:0!important}",
+    "clips": [
+      {
+        "name": "vape",
+        "path": "index.html",
+        "steps": [
+          {
+            "wait": 500
+          },
+          {
+            "scroll": 700,
+            "ms": 1500
+          },
+          {
+            "scrollTo": ".ce-cat-a",
+            "ms": 1500,
+            "offset": 160
+          },
+          {
+            "tap": ".ce-cat-a",
+            "after": 700,
+            "navWait": 1500
+          },
+          {
+            "scroll": 650,
+            "ms": 1500
+          },
+          {
+            "scroll": 900,
+            "ms": 1700
+          }
+        ]
+      },
+      {
+        "name": "app",
+        "path": "index.html",
+        "steps": [
+          {
+            "wait": 600
+          },
+          {
+            "tap": "#ham",
+            "after": 900
+          },
+          {
+            "tap": "#mnav a",
+            "text": "The App",
+            "after": 600,
+            "navWait": 1500
+          },
+          {
+            "scroll": 600,
+            "ms": 1700
+          },
+          {
+            "scroll": 380,
+            "ms": 1600
+          },
+          {
+            "wait": 1200
+          }
+        ]
+      },
+      {
+        "name": "consultation",
+        "path": "consultation.html",
+        "steps": [
+          {
+            "scrollTo": "#cfStart",
+            "ms": 1400,
+            "offset": 160
+          },
+          {
+            "type": [
+              "#storeName",
+              "Sam's Shop"
+            ],
+            "after": 300
+          },
+          {
+            "type": [
+              "#contactEmail",
+              "sam@example.com"
+            ],
+            "after": 400
+          },
+          {
+            "tap": "#cfStart button[type=submit]",
+            "after": 1200
+          },
+          {
+            "tap": ".cf-opt",
+            "nth": 0,
+            "after": 900
+          }
+        ]
+      },
+      {
+        "name": "register",
+        "path": "index.html",
+        "steps": [
+          {
+            "wait": 500
+          },
+          {
+            "tap": ".nav-right .btn-primary",
+            "navWait": 1500,
+            "after": 500
+          },
+          {
+            "scrollTo": "#store-name",
+            "ms": 1200,
+            "offset": 220
+          },
+          {
+            "type": [
+              "#store-name",
+              "Sam's Shop"
+            ],
+            "after": 300
+          },
+          {
+            "type": [
+              "#contact-name",
+              "Sam"
+            ],
+            "after": 500
+          },
+          {
+            "scroll": 420,
+            "ms": 1300
+          }
+        ]
+      }
+    ]
+  },
+  "birth-hood": {
+    "url": "https://birth-hood.co.uk/",
+    "clips": [
+      {
+        "name": "hypnobirthing",
+        "path": "",
+        "startAt": ".services-grid",
+        "steps": [
+          {
+            "wait": 200
+          },
+          {
+            "scroll": 200,
+            "ms": 900
+          },
+          {
+            "tap": ".services-grid a.service-cell",
+            "nth": 0,
+            "cut": 1800,
+            "after": 600
+          },
+          {
+            "scroll": 700,
+            "ms": 1600
+          },
+          {
+            "scroll": 800,
+            "ms": 1700
+          },
+          {
+            "wait": 400
+          }
+        ]
+      },
+      {
+        "name": "finder",
+        "path": "find-your-package",
+        "startAt": ".quiz-options",
+        "steps": [
+          {
+            "wait": 200
+          },
+          {
+            "tap": ".quiz-option",
+            "nth": 0,
+            "after": 900
+          },
+          {
+            "tap": ".quiz-option",
+            "nth": 1,
+            "after": 900
+          },
+          {
+            "tap": ".quiz-option",
+            "nth": 0,
+            "after": 900
+          },
+          {
+            "tap": ".quiz-option",
+            "nth": 2,
+            "after": 1300
+          },
+          {
+            "tap": ".quiz-option",
+            "nth": 1,
+            "after": 900
+          }
+        ],
+        "lead": 600
+      },
+      {
+        "name": "doula",
+        "path": "",
+        "startAt": 0,
+        "steps": [
+          {
+            "tap": ".nav-ham",
+            "after": 800
+          },
+          {
+            "tap": ".mob-accordion",
+            "text": "Doula",
+            "after": 500
+          },
+          {
+            "tap": ".mob-menu a",
+            "text": "Birth Doula",
+            "cut": 1800,
+            "after": 600
+          },
+          {
+            "scroll": 700,
+            "ms": 1600
+          },
+          {
+            "scroll": 800,
+            "ms": 1700
+          }
+        ]
+      },
+      {
+        "name": "leanne",
+        "path": "",
+        "startAt": 3950,
+        "steps": [
+          {
+            "wait": 300
+          },
+          {
+            "scroll": 550,
+            "ms": 1400
+          },
+          {
+            "tap": "a.btn-outline",
+            "text": "MEET LEANNE",
+            "cut": 1800,
+            "after": 600
+          },
+          {
+            "scroll": 700,
+            "ms": 1600
+          },
+          {
+            "scroll": 800,
+            "ms": 1700
+          },
+          {
+            "wait": 300
+          }
+        ]
+      }
+    ]
+  },
+  "birdie-blooms": {
+    "local": "sites/birdie-blooms",
+    "clips": [
+      {
+        "name": "home",
+        "path": "index.html",
+        "steps": [
+          {
+            "wait": 600
+          },
+          {
+            "scroll": 800,
+            "ms": 1600
+          },
+          {
+            "scroll": 700,
+            "ms": 1500
+          },
+          {
+            "scrollTo": ".col-text a",
+            "ms": 1200,
+            "offset": 420
+          },
+          {
+            "tap": ".col-text a",
+            "nth": 0,
+            "js": true,
+            "navWait": 1200,
+            "after": 600
+          },
+          {
+            "scroll": 600,
+            "ms": 1500
+          }
+        ]
+      },
+      {
+        "name": "seasons",
+        "path": "index.html",
+        "startAt": ".swatches",
+        "steps": [
+          {
+            "wait": 400
+          },
+          {
+            "scroll": 160,
+            "ms": 900
+          },
+          {
+            "tap": ".swatch.is-today",
+            "after": 600
+          },
+          {
+            "scroll": 700,
+            "ms": 1500
+          },
+          {
+            "scroll": 900,
+            "ms": 1600
+          },
+          {
+            "scroll": 900,
+            "ms": 1600
+          },
+          {
+            "wait": 300
+          }
+        ]
+      },
+      {
+        "name": "bouquets",
+        "path": "shop.html",
+        "steps": [
+          {
+            "wait": 500
+          },
+          {
+            "scrollTo": ".product",
+            "ms": 1500,
+            "offset": 100
+          },
+          {
+            "scroll": 650,
+            "ms": 1500
+          },
+          {
+            "tap": ".product a.btn",
+            "nth": 1,
+            "after": 600
+          },
+          {
+            "type": [
+              "#c-name",
+              "Sam"
+            ],
+            "after": 500
+          },
+          {
+            "scrollTo": "#c-bouquet",
+            "ms": 1000,
+            "offset": 300
+          },
+          {
+            "wait": 300
+          }
+        ]
+      },
+      {
+        "name": "weddings",
+        "path": "index.html",
+        "steps": [
+          {
+            "wait": 600
+          },
+          {
+            "tap": ".hero-right .menu-btn",
+            "after": 900
+          },
+          {
+            "tap": ".menu-nav .menu-link",
+            "text": "Weddings",
+            "after": 600
+          },
+          {
+            "scroll": 700,
+            "ms": 1600
+          },
+          {
+            "scroll": 900,
+            "ms": 1700
+          },
+          {
+            "wait": 100
+          }
+        ],
+        "tail": 400
+      }
+    ]
+  },
+  "sccc-heritage": {
+    "url": "https://sccc-heritage.co.uk/",
+    "hide": [
+      "a[href^=\"mailto:\"]",
+      "a[href^=\"tel:\"]"
+    ],
+    "clips": [
+      {
+        "name": "decades",
+        "path": "",
+        "steps": [
+          {
+            "wait": 400
+          },
+          {
+            "tap": "button",
+            "text": "MENU",
+            "after": 800
+          },
+          {
+            "tap": "button",
+            "text": "Through the Decades",
+            "after": 800
+          },
+          {
+            "tap": "a[href='/decades/1910']",
+            "cut": 2000,
+            "after": 600
+          },
+          {
+            "scroll": 700,
+            "ms": 1600
+          },
+          {
+            "scroll": 900,
+            "ms": 1700
+          }
+        ]
+      },
+      {
+        "name": "timeline",
+        "path": "journey",
+        "steps": [
+          {
+            "wait": 400
+          },
+          {
+            "scroll": 1100,
+            "ms": 2000
+          },
+          {
+            "tap": "button.block.text-left",
+            "nth": 2,
+            "after": 1600
+          },
+          {
+            "tap": "button",
+            "text": "next",
+            "after": 1500
+          },
+          {
+            "tap": "button",
+            "text": "next",
+            "after": 1400
+          }
+        ]
+      },
+      {
+        "name": "teams",
+        "path": "teams",
+        "steps": [
+          {
+            "wait": 500
+          },
+          {
+            "scroll": 700,
+            "ms": 1500
+          },
+          {
+            "scroll": 600,
+            "ms": 1300
+          },
+          {
+            "tap": "button",
+            "text": "View Player Names",
+            "after": 1300
+          },
+          {
+            "scroll": 350,
+            "ms": 1200
+          },
+          {
+            "wait": 800
+          }
+        ]
+      },
+      {
+        "name": "rectory-park",
+        "path": "rectory-park",
+        "steps": [
+          {
+            "wait": 400
+          },
+          {
+            "scroll": 700,
+            "ms": 1800
+          },
+          {
+            "scroll": 600,
+            "ms": 1700
+          },
+          {
+            "scrollTo": "button[aria-label^='Enlarge']",
+            "ms": 1300,
+            "offset": 160
+          },
+          {
+            "tap": "button[aria-label^='Enlarge']",
+            "nth": 0,
+            "after": 2000
+          }
+        ],
+        "tail": 500
+      }
+    ],
+    "css": "div.absolute.bottom-0.left-0.right-0.px-6.py-4.border-t{visibility:hidden!important}"
+  },
+  "beetle-eyes": {
+    "local": "sites/beetle-eyes",
+    "hide": [
+      "img[src*=\"be-coats\"]",
+      "#pageCurtain"
+    ],
+    "clips": [
+      {
+        "name": "about",
+        "path": "index.html",
+        "steps": [
+          {
+            "wait": 800
+          },
+          {
+            "scroll": 600,
+            "ms": 1500
+          },
+          {
+            "scrollTo": "#about",
+            "ms": 1600,
+            "offset": 60
+          },
+          {
+            "scroll": 700,
+            "ms": 1600
+          },
+          {
+            "scroll": 700,
+            "ms": 1600
+          },
+          {
+            "wait": 400
+          }
+        ]
+      },
+      {
+        "name": "wares",
+        "path": "index.html",
+        "steps": [
+          {
+            "wait": 700
+          },
+          {
+            "tap": "#burgerBtn",
+            "after": 900
+          },
+          {
+            "tap": ".mobile-menu a[href='#wares']",
+            "after": 500
+          },
+          {
+            "scroll": 600,
+            "ms": 1500
+          },
+          {
+            "scroll": 700,
+            "ms": 1600
+          },
+          {
+            "scroll": 600,
+            "ms": 1500
+          }
+        ]
+      },
+      {
+        "name": "faq",
+        "path": "index.html",
+        "startAt": "#magpie",
+        "steps": [
+          {
+            "wait": 400
+          },
+          {
+            "scrollTo": "#faq",
+            "ms": 1600,
+            "offset": 60
+          },
+          {
+            "tap": "#faq summary",
+            "nth": 0,
+            "after": 1100
+          },
+          {
+            "tap": "#faq summary",
+            "nth": 3,
+            "after": 1100
+          },
+          {
+            "scroll": 300,
+            "ms": 1100
+          },
+          {
+            "wait": 600
+          }
+        ]
+      },
+      {
+        "name": "visit",
+        "path": "index.html",
+        "startAt": "#inside",
+        "steps": [
+          {
+            "wait": 400
+          },
+          {
+            "scroll": 500,
+            "ms": 1300
+          },
+          {
+            "tap": "#burgerBtn",
+            "after": 900
+          },
+          {
+            "tap": ".mobile-menu a[href='#visit']",
+            "after": 500
+          },
+          {
+            "scroll": 450,
+            "ms": 1300
+          },
+          {
+            "scroll": 380,
+            "ms": 1200
+          },
+          {
+            "wait": 200
+          }
+        ]
+      }
+    ]
+  },
+  "patch-agency": {
+    "local": "sites/patch-agency",
+    "hide": [
+      "#intro"
+    ],
+    "css": "html.intro-lock{overflow:visible!important}",
+    "clips": [
+      {
+        "name": "tour",
+        "path": "index.html",
+        "steps": [
+          {
+            "wait": 500
+          },
+          {
+            "scrollTo": "#services",
+            "ms": 1300,
+            "offset": 0
+          },
+          {
+            "tap": ".menu-btn",
+            "after": 700
+          },
+          {
+            "tap": ".mmenu a[href='#app']",
+            "after": 700
+          },
+          {
+            "scroll": 550,
+            "ms": 1300
+          },
+          {
+            "tap": ".menu-btn",
+            "after": 700
+          },
+          {
+            "tap": ".mmenu a[href='#contact']",
+            "text": "Contact",
+            "after": 500
+          },
+          {
+            "type": [
+              "#fn",
+              "Sam"
+            ],
+            "after": 400
+          }
+        ]
+      }
+    ]
+  }
+}

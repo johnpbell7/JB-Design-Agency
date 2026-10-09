@@ -1,0 +1,19 @@
+{
+  "name": "birth-hood: Birth doula",
+  "mobile": {
+    "label": "Birth doula",
+    "page": "index.html",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      { "wait": 1400 },
+      { "tap": ".nav-ham", "after": 1000 },
+      { "tap": ".mob-accordion", "text": "Doula", "after": 900 },
+      { "tap": ".mob-menu a", "text": "Birth Doula", "after": 300 },
+      { "wait": 1200 },
+      { "scroll": 700, "ms": 2300, "after": 900 },
+      { "scroll": 800, "ms": 2400, "after": 1200 }
+    ]
+  }
+}

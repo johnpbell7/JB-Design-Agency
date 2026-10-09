@@ -1,0 +1,37 @@
+{
+  "name": "SCCC Heritage: Timeline",
+  "mobile": {
+    "label": "Timeline",
+    "page": "index.html?p=/journey",
+    "width": 390,
+    "touch": true,
+    "start": {
+      "to": "button.block.text-left",
+      "offset": 140
+    },
+    "actions": [
+      {
+        "wait": 1500
+      },
+      {
+        "tap": "button.block.text-left",
+        "nth": 2,
+        "after": 2400
+      },
+      {
+        "tap": "button",
+        "text": "next",
+        "after": 2400
+      },
+      {
+        "tap": "button",
+        "text": "next",
+        "after": 2400
+      },
+      {
+        "tap": "button[aria-label='Close']",
+        "after": 1500
+      }
+    ]
+  }
+}

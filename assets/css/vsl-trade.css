@@ -1,0 +1,328 @@
+/* VSL Trade: tokens and live pieces ported from the site's style.css + ce.css
+   (ce.css redefines most selectors several times; these follow the last rule).
+   Proxima Nova is an Adobe kit locked to VSL's domain, so brand panels set
+   Montserrat, its closest free match. */
+body {
+  --vsl-g: #43b02a;
+  --vsl-g-dk: #389022;
+  --vsl-g-tx: #2f8f2a;
+  --vsl-lt: #8fe07a;
+  --vsl-tint: #edf7e9;
+  --vsl-ink: #0d1110;
+  --vsl-mid: #5b645b;
+  --vsl-soft: #f3f6f4;
+  --vsl-line: #e3e8e3;
+
+  --p-bg: var(--vsl-ink);
+  --p-fg: #ffffff;
+  --p-muted: rgb(255 255 255 / 0.62);
+  --p-surface: rgb(255 255 255 / 0.07);
+  --p-accent: var(--vsl-lt);
+  --p-font: "Montserrat", var(--font);
+  --project-pen: #b9ef9f;
+}
+
+/* ---------- Hero + parade pop-outs ---------- */
+.vsl-logo-card { background: #fff; border-radius: 18px; padding: 20% 16% 17%; color: var(--vsl-ink); }
+.vsl-logo-card svg { width: 100%; height: auto; }
+.vsl-van { width: 100%; height: auto; }
+.vsl-chip, .vsl-margin {
+  display: flex; align-items: center; gap: 12px; white-space: nowrap;
+  padding: 11px 18px 11px 11px; border-radius: 14px;
+  background: #fff; color: var(--vsl-ink); font-family: var(--p-font);
+}
+.vsl-chip__ic, .vsl-margin__ic {
+  flex: none; width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center;
+  background: var(--vsl-g); color: #fff;
+}
+.vsl-chip__ic svg, .vsl-margin__ic svg { width: 22px; height: 22px; }
+.vsl-chip b, .vsl-margin b { display: block; font-size: 15px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+.vsl-chip span:last-child, .vsl-margin span:last-child { font-size: 12px; font-weight: 500; line-height: 1.35; color: var(--vsl-mid); }
+.vsl-margin b i { font-style: normal; color: var(--vsl-g); }
+.vsl-review { background: var(--vsl-ink); color: #fff; border-radius: 18px; padding: 16px 18px; display: grid; gap: 8px; font-family: var(--p-font); }
+.vsl-review .stars { color: var(--vsl-lt); letter-spacing: 0.1em; font-size: 15px; line-height: 1; }
+.vsl-review p { font-size: 14px; line-height: 1.45; font-weight: 600; }
+.vsl-review small { font-size: 11.5px; color: rgb(255 255 255 / 0.58); }
+
+/* ---------- Up close: live pieces breaking out of their panels ----------
+   Same structure as GoSweet's .gs-breakout. Shared by both rows. */
+.vs-breakout {
+  /* every Up close panel is the same flat block: same height, pieces sitting the same inset above its foot */
+  --vs-panel-h: clamp(200px, 18vw, 260px); --vs-inset: clamp(26px, 3.2vw, 46px);
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 44px); padding-top: clamp(40px, 6vw, 90px); align-items: stretch; }
+/* row 1 of each figure stretches, so every panel foot and caption lines up across the row */
+.vs-break { position: relative; margin: 0; display: grid; grid-template-rows: 1fr auto; gap: 18px; isolation: isolate; }
+/* flat light pastels from the site's category colours (blush pink here, sky for --lime) */
+.vs-break__panel { position: relative; grid-area: 1 / 1; align-self: end; height: var(--vs-panel-h); border-radius: var(--radius-l); z-index: -1; overflow: hidden; background: #f4dbe6; }
+.vs-break__stack { grid-area: 1 / 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 0 4% 9%; align-items: end; }
+.vs-break__card { translate: 0 var(--y, 0); rotate: var(--r, 0deg); margin-inline: -3%; transition: rotate 0.6s var(--ease-spring), translate 0.6s var(--ease-spring); }
+.vs-break__card:nth-child(2) { z-index: 2; }
+.vs-break__card:hover { rotate: 0deg; translate: 0 calc(var(--y, 0px) - 18px); z-index: 3; }
+.vs-break figcaption { display: grid; gap: 4px; padding-inline: 4px; }
+.vs-break figcaption b { font: 600 18px/1.3 var(--font); letter-spacing: -0.02em; }
+.vs-break figcaption span { font-size: 15px; color: var(--grey-7); line-height: 1.55; max-width: 46ch; }
+@media (max-width: 900px) { .vs-breakout { grid-template-columns: 1fr; row-gap: 60px; } }
+
+/* ---------- Up close, row one: the homepage wallet and the USP strip ----------
+   Each piece breaks out of the top of its own flat panel in one of the site's
+   light category pastels (mint for the wallet, lilac for the USP tiles). Everything stays
+   inside its grid column, so nothing reaches past the .wrap gutter. */
+.vs-breakout--site { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.vs-feat { min-width: 0; }
+.vs-feat__stage { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 clamp(20px, 2.6vw, 38px) var(--vs-inset); }
+.vs-feat__panel {
+  position: absolute; left: 0; right: 0; bottom: 0; height: var(--vs-panel-h); border-radius: var(--radius-l); z-index: -1; overflow: hidden;
+  background: var(--panel);
+}
+.vs-feat__pieces { position: relative; min-width: 0; }
+.vs-feat .vs-btn:focus-visible { outline: 3px solid var(--vsl-g); outline-offset: 3px; }
+
+/* the floating chips, as they pop out around the phones in the homepage app story */
+.vs-chip {
+  position: absolute; z-index: 3; display: flex; align-items: center; gap: 11px; white-space: nowrap;
+  padding: 10px 16px 10px 10px; border-radius: 16px; background: #fff; font-family: var(--p-font); color: var(--vsl-ink);
+  box-shadow: 0 1px 2px rgb(13 17 16 / 0.07), 0 14px 26px -14px rgb(13 17 16 / 0.3);
+  rotate: var(--r, 0deg); transition: rotate 0.6s var(--ease-spring), translate 0.6s var(--ease-spring);
+}
+.vs-chip:hover { rotate: 0deg; translate: 0 -6px; }
+.vs-chip__ic { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--vsl-g); color: #fff; }
+.vs-chip__ic svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.vs-chip > span:last-child { font-size: 12.5px; font-weight: 500; line-height: 1.3; color: var(--vsl-mid); }
+.vs-chip b { display: block; font-size: 13.5px; font-weight: 800; letter-spacing: -0.01em; color: var(--vsl-g-tx); }
+
+/* ----- the wallet (app story slide, "Earn credit on orders") ----- */
+.vs-feat--wallet .vs-feat__pieces { padding-top: clamp(24px, 3vw, 40px); }
+.vs-wal {
+  position: relative; z-index: 2; box-sizing: border-box; width: min(80%, 380px); margin-inline: auto; padding: 18px 20px 20px;
+  border-radius: 24px; background: #fff; font-family: var(--p-font); color: var(--vsl-ink);
+  box-shadow: 0 1px 2px rgb(13 17 16 / 0.07), 0 14px 26px -14px rgb(13 17 16 / 0.3);
+  rotate: -4deg; transition: rotate 0.6s var(--ease-spring);
+}
+.vs-wal:hover { rotate: -1.5deg; }
+.vs-wal__top { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--vsl-line); }
+.vs-wal__top b { font-size: 15px; font-weight: 800; letter-spacing: -0.01em; }
+.vs-wal__ic { flex: none; width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; background: var(--vsl-g); color: #fff; }
+.vs-wal__ic svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.vs-wal__ic--lg { width: 44px; height: 44px; border-radius: 12px; }
+.vs-wal__ic--lg svg { width: 25px; height: 25px; }
+.vs-wal__lbl { margin: 0 0 8px; font-size: 12.5px; font-weight: 700; color: var(--vsl-mid); }
+.vs-wal__bal {
+  position: relative; display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 16px 16px 16px 14px;
+  border: 1.5px solid #bfe3b2; border-radius: 16px; background: #f3faf1;
+  transition: box-shadow 0.4s, border-color 0.4s;
+}
+.vs-wal__bal.is-up { border-color: var(--vsl-g); box-shadow: 0 0 0 4px rgb(67 176 42 / 0.16); }
+.vs-wal__amt { font-size: clamp(28px, 2.7vw, 36px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.vs-wal__cr { font-size: clamp(20px, 1.9vw, 25px); font-weight: 700; letter-spacing: -0.03em; color: var(--vsl-g); }
+.vs-wal__spark { position: absolute; top: -16px; right: -14px; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--vsl-g); box-shadow: 0 8px 18px -8px rgb(13 30 40 / 0.4); }
+.vs-wal__spark svg { width: 24px; height: 24px; fill: currentColor; }
+.vs-wal__bal.is-up .vs-wal__spark svg { animation: vs-twinkle 0.9s var(--ease-spring); }
+.vs-wal__tx { list-style: none; margin: 0 0 16px; padding: 0; display: grid; }
+.vs-wal__tx li {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 2px; border-top: 1px solid var(--vsl-line);
+  font-size: 13.5px; font-weight: 700; overflow: hidden;
+}
+.vs-wal__tx li:first-child { border-top: 0; }
+.vs-wal__o small { display: block; margin-top: 2px; font-size: 11.5px; font-weight: 500; color: #8f968f; }
+.vs-wal__tx b { font-size: 14px; font-weight: 800; color: var(--vsl-g-tx); font-variant-numeric: tabular-nums; }
+.vs-wal__tx li.is-new { animation: vs-row-in 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.vs-wal__tx li.is-new b { animation: vs-glow 1.4s ease-out; }
+.vs-wal__tx li.is-out { animation: vs-row-out 0.45s cubic-bezier(0.55, 0, 0.8, 0.2) forwards; }
+.vs-wal__pay { width: 100%; }
+.vs-chip--earn { top: 0; right: 0; --r: 5deg; }
+.vs-chip--apply { bottom: calc(8px - var(--vs-inset)); left: 0; --r: -4deg; }
+.vs-chip--earn.is-pop { animation: vs-pop 0.7s var(--ease-spring); }
+@keyframes vs-row-in { from { opacity: 0; transform: translateY(-14px); max-height: 0; padding-block: 0; } to { max-height: 60px; } }
+@keyframes vs-row-out { to { opacity: 0; max-height: 0; padding-block: 0; border-top-color: transparent; } }
+@keyframes vs-glow { 0%, 40% { background: #e2f2da; } 100% { background: transparent; } }
+@keyframes vs-pop { 0% { scale: 1; } 35% { scale: 1.12; } 100% { scale: 1; } }
+@keyframes vs-twinkle { 0% { rotate: 0deg; scale: 1; } 40% { rotate: 25deg; scale: 1.25; } 100% { rotate: 0deg; scale: 1; } }
+
+/* ----- the USP strip (ce.css .ce-usp-i) as three tiles, fanned like the GoSweet cards ----- */
+.vs-usps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; padding: clamp(30px, 3.4vw, 46px) 2% 0; }
+.vs-usps__item { position: relative; translate: 0 var(--y, 0); rotate: var(--r, 0deg); margin-inline: -2.5%; transition: rotate 0.6s var(--ease-spring), translate 0.6s var(--ease-spring); }
+.vs-usps__item:nth-child(2) { z-index: 2; }
+.vs-usps__item:hover { rotate: 0deg; translate: 0 calc(var(--y, 0px) - 16px); z-index: 3; }
+.vs-usp {
+  box-sizing: border-box; display: flex; flex-direction: column; min-height: clamp(200px, 17vw, 244px); padding: clamp(16px, 1.5vw, 22px) clamp(14px, 1.3vw, 19px) clamp(16px, 1.5vw, 20px);
+  border-radius: 22px; background: #fff; font-family: var(--p-font); color: var(--vsl-ink);
+  box-shadow: 0 1px 2px rgb(13 17 16 / 0.07), 0 14px 26px -14px rgb(13 17 16 / 0.3);
+}
+.vs-usp__ic { display: block; width: clamp(44px, 3.8vw, 56px); height: clamp(44px, 3.8vw, 56px); margin-bottom: auto; padding-bottom: 18px; color: var(--vsl-g-tx); }
+.vs-usp__ic svg { display: block; width: 100%; height: 100%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.vs-usp b { display: block; font-size: clamp(16px, 1.4vw, 20px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.08; }
+.vs-usp b i { font-style: normal; color: var(--vsl-g); }
+.vs-usp__d { display: block; margin-top: 8px; font-size: 12.5px; line-height: 1.45; color: var(--vsl-mid); }
+
+/* the icons play when the strip comes into view, and again on hover */
+.vs-usp__line, .vs-usp__head { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.vs-usp__ic rect { transform-box: fill-box; transform-origin: center; }
+.vs-usp__truck { transform-box: fill-box; }
+.vs-usp__wheel { transform-box: fill-box; transform-origin: center; stroke-dasharray: 0.78 0.22; }
+.vs-usps.is-armed .vs-usp__line, .vs-usps.is-armed .vs-usp__head { stroke-dashoffset: 1; }
+.vs-usps.is-armed .vs-usp__ic rect { scale: 0; }
+.vs-usps.is-armed .vs-usp__truck { opacity: 0; }
+.vs-usp.is-play .vs-usp__line { animation: vs-draw 0.8s cubic-bezier(0.65, 0, 0.35, 1) both; }
+.vs-usp.is-play .vs-usp__head { animation: vs-draw 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both; }
+.vs-usp.is-play .vs-usp__ic rect { animation: vs-tile 0.6s var(--ease-spring) calc(var(--k) * 0.11s) both, vs-fill 1.2s ease calc(0.55s + var(--k) * 0.11s); }
+.vs-usp.is-play .vs-usp__truck { animation: vs-drive 1.1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.vs-usp.is-play .vs-usp__wheel { animation: vs-spin 1.1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes vs-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes vs-tile { from { scale: 0; rotate: -30deg; } to { scale: 1; rotate: 0deg; } }
+@keyframes vs-fill { 0%, 100% { fill: transparent; } 35% { fill: rgb(67 176 42 / 0.28); } }
+@keyframes vs-drive { 0% { opacity: 0; translate: -70% 0; } 25% { opacity: 1; } 75% { translate: 6% 0; } 100% { opacity: 1; translate: 0 0; } }
+@keyframes vs-spin { from { rotate: -540deg; } to { rotate: 0deg; } }
+
+@media (max-width: 900px) {
+  .vs-breakout--site { grid-template-columns: 1fr; row-gap: 60px; }
+  .vs-breakout--site .vs-feat { width: min(100%, 560px); justify-self: center; }
+}
+@media (max-width: 600px) {
+  .vs-breakout--site { row-gap: 44px; padding-top: 28px; }
+  .vs-breakout { --vs-panel-h: 150px; --vs-inset: 22px; }
+  .vs-feat--wallet { --vs-inset: 44px; } /* room for the chip under the card, clear of the button */
+  .vs-feat__stage { padding-inline: 14px; }
+  .vs-wal { width: 84%; padding: 15px 16px 16px; }
+  .vs-wal__bal { padding: 13px 12px; gap: 10px; }
+  .vs-chip { padding: 8px 12px 8px 8px; gap: 9px; border-radius: 14px; }
+  .vs-chip__ic { width: 32px; height: 32px; }
+  .vs-chip__ic svg { width: 17px; height: 17px; }
+  .vs-chip b { font-size: 12px; }
+  .vs-chip > span:last-child { font-size: 11px; }
+  .vs-chip--earn { top: -6px; }
+  .vs-usps { padding-inline: 0; }
+  .vs-usps__item { margin-inline: -1.5%; }
+  .vs-usp { min-height: 168px; padding: 13px 11px 14px; border-radius: 17px; }
+  .vs-usp__ic { width: 36px; height: 36px; padding-bottom: 12px; }
+  .vs-usp b { font-size: 14.5px; letter-spacing: -0.03em; }
+  .vs-usp__d { display: none; }
+  .vs-breakout--site figcaption b { font-size: 16px; }
+  .vs-breakout--site figcaption span { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vs-chip, .vs-wal, .vs-usps__item { transition: none; }
+  .vs-wal__tx li.is-new, .vs-wal__tx li.is-new b, .vs-chip--earn.is-pop, .vs-wal__bal.is-up .vs-wal__spark svg, .vs-usp * { animation: none !important; }
+}
+
+/* ---------- Up close, row two: the consultation step card and Register Free ----------
+   Ported from consultation.css (.cf-card, .cf-clicks-l, .cf-opt, .cf-ctl, .cf-prog-bar)
+   and style.css (.reg-card, .fg, .form-ok). The two talk to each other in vsl-trade.js. */
+.vs-breakout--two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-top: clamp(30px, 5vw, 70px); }
+.vs-break__panel--lime { background: #d6e7f0; }
+.vs-cf, .vs-reg {
+  grid-area: 1 / 1; align-self: end; justify-self: center; width: min(88%, 440px); margin-bottom: var(--vs-inset);
+  font-family: var(--p-font); color: var(--vsl-ink); background: #fff; border-radius: 20px; text-align: left;
+  box-shadow: 0 1px 2px rgb(13 17 16 / 0.07), 0 14px 26px -14px rgb(13 17 16 / 0.3);
+}
+.vs-cf { padding: 22px 24px 20px; rotate: -4deg; translate: 0 -2%; }
+.vs-cf__prog { padding-bottom: 14px; border-bottom: 1px solid var(--vsl-line); }
+.vs-cf__step { margin: 0 0 12px; }
+.vs-cf__step b { display: inline-block; padding: 3px 11px; border-radius: 100px; background: var(--vsl-g); color: #fff; font-size: 13.5px; font-weight: 800; }
+.vs-cf__bar { height: 8px; background: #e6ebe6; border-radius: 100px; overflow: hidden; }
+.vs-cf__bar span { display: block; height: 100%; background: var(--vsl-g); border-radius: inherit; transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.vs-cf__screens { display: grid; padding-top: 16px; }
+.vs-cf__screen { grid-area: 1 / 1; min-width: 0; margin: 0; padding: 0; border: 0; opacity: 0; visibility: hidden; transform: translateX(16px); transition: opacity 0.35s, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.35s; }
+.vs-cf__screen.is-on { opacity: 1; visibility: visible; transform: none; }
+.vs-cf__screen.is-past { transform: translateX(-16px); }
+.vs-cf__title { display: block; margin: 0 0 8px; padding: 0; font-size: 21px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+.vs-cf__qt { margin: 0 0 12px; font-size: 14px; font-weight: 700; line-height: 1.45; }
+.vs-cf__qt mark { padding: 1px 4px; margin: 0 -1px; border-radius: 4px; color: inherit; background: #e2f2da; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.vs-cf__opts { display: grid; gap: 8px; }
+.vs-cf__opts--grid { grid-template-columns: 1fr 1fr; }
+.vs-cf__opt {
+  position: relative; display: flex; align-items: center; gap: 12px; min-height: 46px; padding: 9px 13px; cursor: pointer;
+  background: #fff; border: 1px solid #d5dcd5; border-radius: 10px;
+  box-shadow: 0 1px 2px rgb(13 17 16 / 0.05), 0 5px 12px -8px rgb(13 17 16 / 0.22);
+  transition: border-color 0.14s, background-color 0.14s, transform 0.3s var(--ease-spring);
+}
+.vs-cf__opt:hover { border-color: #aab6aa; }
+.vs-cf__opt:active { transform: scale(0.98); }
+.vs-cf__opt input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.vs-cf__opt:has(input:checked) { border-color: var(--vsl-g); background: #f3faf1; box-shadow: 0 1px 2px rgb(47 143 42 / 0.12), 0 8px 16px -10px rgb(47 143 42 / 0.5); }
+.vs-cf__opt:has(input:focus-visible) { outline: 3px solid rgb(67 176 42 / 0.45); outline-offset: 2px; }
+.vs-cf__opts--grid .vs-cf__opt { justify-content: center; text-align: center; }
+.vs-cf__opts--grid .vs-cf__t { font-weight: 600; }
+.vs-cf__ctl { flex: none; position: relative; width: 22px; height: 22px; border: 2px solid #9aa59a; border-radius: 50%; background: #fff; transition: border-color 0.14s, background-color 0.14s; }
+.vs-cf__ctl--sq { border-radius: 6px; }
+input:checked + .vs-cf__ctl { border-color: var(--vsl-g); }
+input[type="radio"]:checked + .vs-cf__ctl::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--vsl-g); }
+input[type="checkbox"]:checked + .vs-cf__ctl { background: var(--vsl-g) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / 14px no-repeat; }
+.vs-cf__t { min-width: 0; font-size: 13.5px; line-height: 1.4; }
+.vs-cf__lede { margin: 0 0 12px; font-size: 13.5px; line-height: 1.55; color: var(--vsl-mid); }
+.vs-cf__lede b { color: var(--vsl-ink); }
+.vs-cf__cta { margin: 0; padding: 12px 14px; border-radius: 12px; background: var(--vsl-tint); font-size: 13.5px; font-weight: 700; line-height: 1.45; }
+.vs-cf__nav { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--vsl-line); }
+.vs-cf__back { min-height: 40px; padding: 0 4px; border: 0; background: none; font: 700 14px/1 var(--p-font); color: var(--vsl-ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.vs-cf__back:disabled { visibility: hidden; }
+.vs-btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 24px; border: 0; border-radius: 7px; cursor: pointer;
+  background: var(--vsl-g); color: #fff; font: 800 15px/1 var(--p-font); box-shadow: 0 2px 8px rgb(67 176 42 / 0.22);
+  transition: background 0.18s, box-shadow 0.25s, transform 0.18s, opacity 0.18s;
+}
+.vs-btn:hover:not(:disabled) { background: var(--vsl-g-dk); transform: translateY(-1px); box-shadow: 0 5px 14px rgb(67 176 42 / 0.28); }
+.vs-btn:disabled { opacity: 0.45; cursor: default; box-shadow: none; }
+.vs-btn[hidden] { display: none; }
+
+.vs-reg { padding: 20px 24px 22px; rotate: 4deg; translate: 0 -6%; }
+.vs-reg__steps { list-style: none; margin: 0 0 18px; padding: 0 0 16px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; border-bottom: 1px solid var(--vsl-line); counter-reset: st; }
+.vs-reg__steps li { position: relative; display: grid; justify-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--vsl-mid); text-align: center; counter-increment: st; }
+.vs-reg__steps li::before { /* the line between steps */
+  content: ""; position: absolute; top: 13px; right: calc(50% + 18px); width: calc(100% - 30px); height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--vsl-g) 50%, var(--vsl-line) 50%) right / 200% 100%; transition: background-position 0.5s;
+}
+.vs-reg__steps li:first-child::before { display: none; }
+.vs-reg__steps li.is-done::before { background-position: left; }
+.vs-reg__steps i { position: relative; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--vsl-line); background: #fff; display: grid; place-items: center; font: 800 12px/1 var(--p-font); font-style: normal; color: var(--vsl-mid); transition: background 0.3s, border-color 0.3s, transform 0.4s var(--ease-spring); }
+.vs-reg__steps i::after { content: counter(st); }
+.vs-reg__steps li.is-done i { background: var(--vsl-g); border-color: var(--vsl-g); transform: scale(1.08); }
+.vs-reg__steps li.is-done i::after { content: ""; width: 12px; height: 7px; border: solid #fff; border-width: 0 0 2.6px 2.6px; rotate: -45deg; translate: 0 -2px; }
+.vs-reg__steps li.is-done { color: var(--vsl-ink); }
+.vs-reg__h { margin: 0 0 4px; font-size: 19px; font-weight: 800; letter-spacing: -0.02em; }
+.vs-reg__sub { margin: 0 0 16px; font-size: 13px; color: #8f968f; }
+.vs-fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.vs-fg label { font-size: 11px; font-weight: 800; color: var(--vsl-mid); text-transform: uppercase; letter-spacing: 0.05em; }
+.vs-fg input, .vs-fg select {
+  width: 100%; background: var(--vsl-soft); border: 1.5px solid var(--vsl-line); border-radius: 9px; padding: 10px 13px;
+  font: 500 14px/1.3 var(--p-font); color: var(--vsl-ink); outline: none; transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.vs-fg input::placeholder { color: #a3aaa3; }
+.vs-fg input:focus, .vs-fg select:focus, .vs-fg.is-typing input { border-color: var(--vsl-g); background: #fff; box-shadow: 0 0 0 3px rgb(67 176 42 / 0.15); }
+.vs-fg select { appearance: none; cursor: pointer; padding-right: 36px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238f968f' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; }
+.vs-reg__go { width: 100%; margin-top: 4px; }
+.vs-reg__ok { text-align: center; padding: 18px 6px 6px; }
+.vs-reg__ok:not([hidden]) { animation: vs-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.vs-reg__ok-ic { width: 56px; height: 56px; border-radius: 50%; background: var(--vsl-tint); display: grid; place-items: center; margin: 0 auto 14px; }
+.vs-reg__ok h3 { margin: 0 0 6px; font-size: 19px; font-weight: 800; letter-spacing: -0.02em; }
+.vs-reg__ok p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--vsl-mid); }
+.vs-reg__ok p b { color: var(--vsl-ink); }
+.vs-reg__again { margin-top: 14px; border: 0; background: none; font: 700 13.5px/1 var(--p-font); color: var(--vsl-g-tx); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.vs-reg.is-nudged { animation: vs-nudge 0.7s var(--ease-spring); }
+@keyframes vs-rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes vs-nudge { 40% { translate: 0 -10%; } }
+@media (max-width: 900px) {
+  .vs-breakout--two { grid-template-columns: 1fr; row-gap: 60px; }
+  .vs-cf, .vs-reg { width: 92%; }
+}
+@media (max-width: 520px) { .vs-cf, .vs-reg { padding-inline: 18px; } .vs-cf__title { font-size: 19px; } }
+@media (prefers-reduced-motion: reduce) {
+  .vs-cf__screen, .vs-cf__bar span, .vs-reg__steps i, .vs-reg__steps li::before, .vs-cf__opt { transition: none; }
+  .vs-reg__ok:not([hidden]), .vs-reg.is-nudged { animation: none; }
+}
+
+/* ---------- What they said ---------- */
+.vs-quote { margin: 0; background: radial-gradient(120% 140% at 0% 0%, #4fb636 0%, var(--brand) 55%, #23661c 100%); }
+.vs-quote figcaption i { color: var(--vsl-ink); }
+
+/* ---------- Brand ---------- */
+.vsl-pastels { height: clamp(120px, 13vw, 160px); margin-top: 10px; }
+.vsl-pastels .swatch { padding: 14px 16px; border-color: color-mix(in srgb, var(--on) 14%, transparent); }
+.vsl-pastels .swatch b { font-size: 14px; }
+.vsl-pastels .swatch small { font-size: 11.5px; font-weight: 600; opacity: 0.8; }
+@media (max-width: 700px) {
+  .vsl-pastels { display: grid; grid-template-columns: 1fr 1fr; height: auto; }
+  .vsl-pastels .swatch { min-height: 96px; }
+}
+.vsl-h { font-family: var(--p-font); font-size: clamp(28px, 3.3vw, 46px); font-weight: 800; letter-spacing: -0.045em; line-height: 1.02; }
+.vsl-h em { display: block; font-style: normal; color: var(--vsl-lt); }
+/* the ink panel needs an edge on the dark page */
+.specimen { box-shadow: inset 0 0 0 1px var(--line); }

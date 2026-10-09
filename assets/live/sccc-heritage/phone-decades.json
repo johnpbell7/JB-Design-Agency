@@ -1,0 +1,52 @@
+{
+  "name": "SCCC Heritage: The decades",
+  "mobile": {
+    "label": "The decades",
+    "page": "index.html?p=/decades",
+    "width": 390,
+    "touch": true,
+    "start": {
+      "to": "a.group.block.overflow-hidden",
+      "offset": 90
+    },
+    "actions": [
+      {
+        "wait": 1500
+      },
+      {
+        "scrollTo": "a.group.block.overflow-hidden",
+        "nth": 1,
+        "offset": 90,
+        "ms": 2700,
+        "after": 1500
+      },
+      {
+        "scrollTo": "a.group.block.overflow-hidden",
+        "nth": 2,
+        "offset": 90,
+        "ms": 2700,
+        "after": 1500
+      },
+      {
+        "scrollTo": "a.group.block.overflow-hidden",
+        "nth": 3,
+        "offset": 90,
+        "ms": 2700,
+        "after": 1100
+      },
+      {
+        "tap": "a.group.block.overflow-hidden",
+        "nth": 3,
+        "after": 200
+      },
+      {
+        "wait": 2000
+      },
+      {
+        "scroll": 520,
+        "ms": 3000,
+        "after": 1600
+      }
+    ]
+  }
+}

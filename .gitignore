@@ -1,0 +1,18 @@
+node_modules/
+.DS_Store
+.next/
+.env*
+
+# Local workshop, never pushed. Full working copies of each site and the raw
+# brand files (~650 MB, client code, trade data). The portfolio pages use
+# trimmed pieces copied out of these into assets/.
+sites/
+sources/
+
+# Internal notes and scratch tools: kept locally, not published
+docs/
+tools/_key/
+.claude/
+
+# temporary scripts agents drop into tools/
+tools/_*

@@ -1,0 +1,381 @@
+{
+ "gosweet": {
+  "local": "sites/gosweet",
+  "localStorage": {
+   "gs_signup_seen": "1"
+  },
+  "sessionStorage": {
+   "gs_signup_seen": "1"
+  },
+  "hide": [
+   ".signup"
+  ],
+  "clips": [
+   {
+    "name": "film-shop",
+    "viewport": "desktop",
+    "path": "index.html",
+    "steps": [
+     {
+      "mark": "The hero slides",
+      "wait": 600
+     },
+     {
+      "tap": ".hero__arr",
+      "nth": 1,
+      "ms": 900,
+      "after": 1400
+     },
+     {
+      "mark": "A mega menu per aisle",
+      "hover": ".nav__top",
+      "nth": 0,
+      "ms": 900,
+      "after": 1200
+     },
+     {
+      "hover": ".nav__top",
+      "nth": 1,
+      "ms": 500,
+      "after": 1200
+     },
+     {
+      "move": [
+       1000,
+       760
+      ],
+      "ms": 600,
+      "after": 200
+     },
+     {
+      "mark": "Pick a craving",
+      "scrollTo": ".sec--first",
+      "ms": 1300,
+      "offset": 90
+     },
+     {
+      "hover": ".sec--first a",
+      "nth": 2,
+      "ms": 700,
+      "after": 700
+     },
+     {
+      "hover": ".sec--first a",
+      "nth": 4,
+      "ms": 500,
+      "after": 700
+     },
+     {
+      "mark": "Buy now, straight from the card",
+      "scrollTo": ".es",
+      "ms": 1200,
+      "offset": 150
+     },
+     {
+      "tap": ".es__add",
+      "nth": 1,
+      "ms": 700,
+      "after": 900
+     },
+     {
+      "mark": "The product page",
+      "tap": ".es__name a",
+      "nth": 2,
+      "ms": 800,
+      "after": 900
+     },
+     {
+      "scroll": 260,
+      "ms": 900
+     },
+     {
+      "mark": "Into the basket",
+      "tap": ".buyrow .btn",
+      "ms": 800,
+      "after": 2200
+     }
+    ]
+   },
+   {
+    "name": "zoom-card",
+    "viewport": "desktop",
+    "path": "index.html",
+    "startAt": ".es",
+    "crop": {
+     "sel": ".es",
+     "pad": 18,
+     "first": 2
+    },
+    "width": 1200,
+    "steps": [
+     {
+      "move": [
+       330,
+       600
+      ],
+      "ms": 600,
+      "after": 300
+     },
+     {
+      "tap": ".es__add",
+      "nth": 0,
+      "ms": 700,
+      "after": 900
+     },
+     {
+      "tap": "[data-inc]",
+      "nth": 0,
+      "ms": 500,
+      "after": 600
+     },
+     {
+      "tap": "[data-inc]",
+      "nth": 0,
+      "ms": 300,
+      "after": 900
+     },
+     {
+      "tap": ".es__add",
+      "nth": 1,
+      "ms": 800,
+      "after": 1600
+     }
+    ],
+    "zoom": 2
+   },
+   {
+    "name": "zoom-rewards",
+    "viewport": "desktop",
+    "path": "index.html",
+    "startAt": ".sec--rewards",
+    "crop": {
+     "sel": ".wcard",
+     "pad": 48
+    },
+    "width": 1200,
+    "steps": [
+     {
+      "move": [
+       1300,
+       820
+      ],
+      "ms": 300,
+      "after": 600
+     },
+     {
+      "hover": ".wcard",
+      "nth": 0,
+      "ms": 900,
+      "after": 1800
+     },
+     {
+      "move": [
+       1300,
+       860
+      ],
+      "ms": 700,
+      "after": 1200
+     },
+     {
+      "hover": ".wcard",
+      "nth": 1,
+      "ms": 800,
+      "after": 1800
+     }
+    ],
+    "zoom": 2
+   }
+  ]
+ },
+ "patch-agency": {
+  "local": "sites/patch-agency",
+  "hide": [
+   "#intro"
+  ],
+  "css": "html.intro-lock{overflow:visible!important}.hero .mark::before{transform:rotate(-1.4deg) scaleX(1)!important}",
+  "clips": [
+   {
+    "name": "film-site",
+    "viewport": "desktop",
+    "path": "index.html",
+    "steps": [
+     {
+      "mark": "A lime hero",
+      "wait": 400
+     },
+     {
+      "hover": ".hero-cta .btn-primary",
+      "ms": 900,
+      "after": 700
+     },
+     {
+      "hover": ".hero-cta .btn-line",
+      "ms": 500,
+      "after": 500
+     },
+     {
+      "hover": ".nav-links a",
+      "nth": 2,
+      "ms": 700,
+      "after": 400
+     },
+     {
+      "mark": "Six services",
+      "scrollTo": "#services",
+      "ms": 1400,
+      "offset": 0
+     },
+     {
+      "hover": ".svc-item",
+      "nth": 1,
+      "ms": 700,
+      "after": 500
+     },
+     {
+      "hover": ".svc-item",
+      "nth": 4,
+      "ms": 600,
+      "after": 500
+     },
+     {
+      "mark": "Boardroom to shop floor",
+      "scrollTo": "#how",
+      "ms": 1400,
+      "offset": 0
+     },
+     {
+      "wait": 800
+     },
+     {
+      "mark": "Six sectors",
+      "scrollTo": "#industries",
+      "ms": 1500,
+      "offset": 0
+     },
+     {
+      "hover": ".ind",
+      "nth": 1,
+      "ms": 700,
+      "after": 600
+     },
+     {
+      "hover": ".ind",
+      "nth": 5,
+      "ms": 700,
+      "after": 700
+     },
+     {
+      "mark": "The field app",
+      "scrollTo": "#app",
+      "ms": 1500,
+      "offset": 0
+     },
+     {
+      "wait": 1100
+     },
+     {
+      "mark": "Book a field team",
+      "scrollTo": "#contact",
+      "ms": 1600,
+      "offset": 0
+     },
+     {
+      "type": [
+       "#fn",
+       "Sam"
+      ],
+      "ms": 700,
+      "after": 400
+     },
+     {
+      "type": [
+       "#fc",
+       "Sam’s Brands"
+      ],
+      "ms": 500,
+      "after": 900
+     }
+    ]
+   },
+   {
+    "name": "zoom-sectors",
+    "viewport": "desktop",
+    "path": "index.html",
+    "startAt": "#industries",
+    "crop": {
+     "sel": ".ind-grid",
+     "pad": 24
+    },
+    "width": 1200,
+    "zoom": 2,
+    "steps": [
+     {
+      "move": [
+       1400,
+       1780
+      ],
+      "ms": 300,
+      "after": 500
+     },
+     {
+      "hover": ".ind",
+      "nth": 0,
+      "ms": 800,
+      "after": 1300
+     },
+     {
+      "hover": ".ind",
+      "nth": 4,
+      "ms": 800,
+      "after": 1300
+     },
+     {
+      "hover": ".ind",
+      "nth": 2,
+      "ms": 700,
+      "after": 1500
+     }
+    ]
+   },
+   {
+    "name": "zoom-hero",
+    "viewport": "desktop",
+    "path": "index.html",
+    "crop": {
+     "sel": ".hero-copy",
+     "pad": 48
+    },
+    "width": 1200,
+    "zoom": 2,
+    "steps": [
+     {
+      "move": [
+       300,
+       1500
+      ],
+      "ms": 300,
+      "after": 500
+     },
+     {
+      "hover": ".hero-cta .btn-primary",
+      "ms": 900,
+      "after": 1400
+     },
+     {
+      "hover": ".hero-cta .btn-line",
+      "ms": 700,
+      "after": 1400
+     },
+     {
+      "move": [
+       300,
+       1560
+      ],
+      "ms": 600,
+      "after": 900
+     }
+    ]
+   }
+  ]
+ }
+}

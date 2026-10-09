@@ -1,0 +1,18 @@
+{
+  "name": "VSL Trade: Register",
+  "steps": [],
+  "mobile": {
+    "label": "Register",
+    "page": "phone-register.html",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      { "wait": 1300 },
+      { "scrollTo": "#store-name", "offset": 220, "ms": 1900, "after": 600 },
+      { "type": ["#store-name", "Sam's Shop"], "after": 500 },
+      { "type": ["#contact-name", "Sam Patel"], "after": 700 },
+      { "scroll": 420, "ms": 1800, "after": 1600 }
+    ]
+  }
+}

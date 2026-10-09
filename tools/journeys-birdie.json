@@ -1,0 +1,136 @@
+{
+ "birdie-blooms": {
+  "local": "sites/birdie-blooms",
+  "clips": [
+   {
+    "name": "film-tour",
+    "viewport": "desktop",
+    "path": "index.html",
+    "lead": 400,
+    "steps": [
+     {
+      "mark": "Big days, and Tuesdays",
+      "wait": 900
+     },
+     {
+      "scrollTo": "#bouquets",
+      "ms": 1400,
+      "offset": 70
+     },
+     {
+      "wait": 400
+     },
+     {
+      "mark": "Colour that follows the season",
+      "scrollTo": ".swatches",
+      "ms": 1200,
+      "offset": 250
+     },
+     {
+      "hover": ".swatch",
+      "nth": 3,
+      "ms": 450,
+      "after": 350
+     },
+     {
+      "tap": ".swatch",
+      "nth": 0,
+      "ms": 450,
+      "after": 300
+     },
+     {
+      "mark": "The seasons guide",
+      "scrollTo": "#winter",
+      "ms": 900,
+      "offset": 66
+     },
+     {
+      "wait": 200
+     },
+     {
+      "scrollTo": "#spring",
+      "ms": 800,
+      "offset": 66
+     },
+     {
+      "wait": 150
+     },
+     {
+      "scrollTo": "#summer",
+      "ms": 800,
+      "offset": 66
+     },
+     {
+      "wait": 150
+     },
+     {
+      "scrollTo": "#autumn",
+      "ms": 800,
+      "offset": 66
+     },
+     {
+      "wait": 250
+     },
+     {
+      "mark": "Pick a bouquet",
+      "tap": ".bar-nav a",
+      "text": "Flowers",
+      "ms": 450,
+      "after": 250
+     },
+     {
+      "scrollTo": "#bouquets",
+      "ms": 1000,
+      "offset": 66
+     },
+     {
+      "hover": ".product .p-img",
+      "nth": 1,
+      "ms": 450,
+      "after": 350
+     },
+     {
+      "tap": ".product a.btn",
+      "nth": 1,
+      "ms": 400,
+      "after": 200
+     },
+     {
+      "mark": "An enquiry, already filled in",
+      "scrollTo": "#enquire",
+      "ms": 900,
+      "offset": 120
+     },
+     {
+      "type": [
+       "#c-name",
+       "Sam"
+      ],
+      "ms": 450,
+      "after": 300
+     },
+     {
+      "hover": "#c-bouquet",
+      "ms": 450,
+      "after": 600
+     },
+     {
+      "mark": "Weddings",
+      "tap": ".bar-nav a",
+      "text": "Weddings",
+      "ms": 450,
+      "after": 600
+     },
+     {
+      "scroll": 620,
+      "ms": 1300
+     },
+     {
+      "wait": 100
+     }
+    ],
+    "tail": 400
+   }
+  ]
+ }
+}

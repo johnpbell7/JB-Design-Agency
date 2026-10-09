@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beetle Eyes Clothing: website design and build · John Bell</title>
+  <meta name="description" content="A one-page website for Beetle Eyes Clothing, Corrine Kaenzig's pre-loved and vintage rail inside Curious Magpie in Mountsorrel. Designed and built by John Bell.">
+  <meta property="og:title" content="Beetle Eyes Clothing: website design and build · John Bell">
+  <meta property="og:description" content="A one-page website for a vintage clothes rail in Mountsorrel, designed and built by John Bell. It opens with hand-drawn curtains.">
+  <meta property="og:image" content="../assets/captures/beetle-eyes/fold-desktop.webp">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/case.css">
+  <link rel="stylesheet" href="../assets/css/case-plus.css">
+  <link rel="stylesheet" href="../assets/css/beetle-eyes.css">
+</head>
+<body data-pen>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- One hand-drawn drape from the site's page-load curtain: rail, ten rings,
+       ten pleats and a scalloped hem. beetle-eyes.js copies it into both drapes. -->
+  <template id="be-drape"><svg>
+      <line x1="0" y1="10" x2="200" y2="10"/>
+      <g class="rings">
+        <circle cx="12" cy="14" r="4.5"/><circle cx="32" cy="14" r="4.5"/><circle cx="52" cy="14" r="4.5"/><circle cx="72" cy="14" r="4.5"/><circle cx="92" cy="14" r="4.5"/>
+        <circle cx="112" cy="14" r="4.5"/><circle cx="132" cy="14" r="4.5"/><circle cx="152" cy="14" r="4.5"/><circle cx="172" cy="14" r="4.5"/><circle cx="192" cy="14" r="4.5"/>
+      </g>
+      <g class="pleats">
+        <path d="M12 22 Q 14 140 10 270 Q 14 400 10 540 Q 10 680 14 798"/><path d="M32 22 Q 30 140 34 270 Q 30 400 34 540 Q 34 680 30 798"/>
+        <path d="M52 22 Q 54 140 50 270 Q 54 400 50 540 Q 50 680 54 798"/><path d="M72 22 Q 70 140 74 270 Q 70 400 74 540 Q 74 680 70 798"/>
+        <path d="M92 22 Q 94 140 90 270 Q 94 400 90 540 Q 90 680 94 798"/><path d="M112 22 Q 110 140 114 270 Q 110 400 114 540 Q 114 680 110 798"/>
+        <path d="M132 22 Q 134 140 130 270 Q 134 400 130 540 Q 130 680 134 798"/><path d="M152 22 Q 150 140 154 270 Q 150 400 154 540 Q 154 680 150 798"/>
+        <path d="M172 22 Q 174 140 170 270 Q 174 400 170 540 Q 170 680 174 798"/><path d="M192 22 Q 190 140 194 270 Q 190 400 194 540 Q 194 680 190 798"/>
+      </g>
+      <path class="hem" d="M0 795 Q 12 805 25 795 T 50 795 T 75 795 T 100 795 T 125 795 T 150 795 T 175 795 T 200 795"/>
+  </svg></template>
+
+  <header class="site-nav">
+    <a class="site-nav__mark" href="../index.html">John Bell</a>
+    <nav class="site-nav__links" aria-label="Main">
+      <a href="../index.html#skills">Services</a>
+      <a href="../index.html#process">Process</a>
+      <a href="work.html">Work</a>
+      <a href="print.html">Print</a>
+      <a href="about.html">About</a>
+      <a href="../index.html#faq">FAQs</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
+      <a class="is-cta" href="../index.html#contact">Start a project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="cs-hero wrap">
+      <div class="cs-hero__grid">
+        <div class="cs-hero__intro">
+          <h1>Come and <mark class="hl">rummage.</mark></h1>
+          <p class="cs-hero__lede">A one-page website for Beetle Eyes Clothing, Corrine Kaenzig’s vintage rail inside Curious Magpie in Mountsorrel. It opens with a pair of hand-drawn curtains.</p>
+          <span class="credit"><i>✓</i>Design and build</span>
+        </div>
+        <div class="stage" data-stage style="--stage-hl:#e0c4c7">
+          <div class="stage__glow" aria-hidden="true"></div>
+          <div class="laptop">
+            <div class="laptop__lid"><div class="screen"><img src="../assets/projects/beetle-eyes/home-desktop.webp" alt="Beetle Eyes Clothing homepage on desktop"></div></div>
+            <div class="laptop__base"></div>
+          </div>
+          <div class="phone" data-start="0" data-span=".45"><div class="screen"><img src="../assets/projects/beetle-eyes/home-mobile.webp" alt="Beetle Eyes Clothing homepage on mobile"></div></div>
+          <div class="pop" style="--x:1%;--y:-3%;--w:24%;--r:-7deg" data-from-x="60"><div class="be-logo-card"><img src="../assets/projects/beetle-eyes/logo-maroon.png" alt="Beetle Eyes Clothing blackletter logo"></div></div>
+          <div class="pop" style="--x:71%;--y:-7%;--w:19%;--r:5deg" data-from-x="-60" data-pop-sm="hide"><figure class="be-polaroid"><img src="../assets/projects/beetle-eyes/be-sign.jpg" alt=""><span>The sign</span></figure></div>
+          <div class="pop" style="--x:0%;--y:73%;--w:17%" data-from-y="-50"><div class="be-stamp"><strong>No. 9</strong><span>Market Place<br>Mountsorrel</span></div></div>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>Site</dt><dd>Single-page site</dd></div>
+        <div><dt>Client</dt><dd>Beetle Eyes Clothing (Corrine Kaenzig)</dd></div>
+        <div><dt>Sector</dt><dd>Pre-loved &amp; vintage clothing</dd></div>
+        <div><dt>Design + build</dt><dd>John Bell</dd></div>
+        <div><dt>Stack</dt><dd>Hand-coded HTML, CSS + vanilla JS</dd></div>
+      </dl>
+    </section>
+
+    <!-- Brief + what I did -->
+    <section class="cs-brief wrap"><div class="cs-brief__grid">
+      <div><span class="label">The brief</span><p class="cs-brief__text">There’s no online shop. The site has one job, which is to make people want to come in and have a rummage.</p></div>
+      <div><span class="label">What I did</span><ul class="cs-brief__list">
+        <li>Paper, ink and rose colours, with Fraunces and Inter Tight</li>
+        <li>Hand-drawn curtains that open when the page loads</li>
+        <li>A photo collage that tilts, and a moving banner of words</li>
+        <li>A scrapbook gallery of taped-up photos</li>
+        <li>Written by hand in HTML, CSS and JavaScript</li>
+      </ul></div>
+    </div></section>
+
+    <!-- Mobile parade: one page, so one phone and one continuous journey -->
+    <section class="section--tight wrap">
+      <div class="section-head" data-reveal>
+        <span class="label">On a phone</span>
+        <h2>One long page, <mark class="hl">like browsing the rail.</mark></h2>
+        <p>The curtains open, then the whole shop is laid out down one page.</p>
+      </div>
+      <div class="panel parade parade--solo be-parade" data-parade>
+        <ol class="parade__side be-route" data-route>
+          <li data-t="0"><b>01</b>The curtains</li>
+          <li data-t="3.2" data-poster><b>02</b>Meet Corrine</li>
+          <li data-t="6.1"><b>03</b>The rails</li>
+          <li data-t="8.9"><b>04</b>Curious Magpie</li>
+          <li data-t="10.9"><b>05</b>Come and visit</li>
+        </ol>
+        <div class="parade__row">
+          <div class="phone" data-live="../assets/live/beetle-eyes/index.html" data-live-journey="journey.json#0"><div class="screen"><video src="../assets/clips/beetle-eyes/tour.mp4" poster="../assets/clips/beetle-eyes/tour.jpg" muted playsinline loop preload="none" aria-label="Beetle Eyes on mobile: the curtains open, then About and Corrine, the rails, Curious Magpie, and the menu to Visit and the map"></video></div></div>
+        </div>
+
+        <div class="pop" style="--x:64%;--y:8%;--w:clamp(128px,11.5vw,168px);--r:7deg" data-from-x="-120">
+          <figure class="be-polaroid"><img src="../assets/projects/beetle-eyes/window-display.jpg" alt=""><span>The window</span></figure>
+        </div>
+        <div class="pop" style="--x:66%;--y:70%;--r:-4deg" data-from-x="-100" data-from-y="-40" data-pop-sm="hide">
+          <div class="be-tag"><strong>The shop</strong>Curious Magpie</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The site in use: a desktop recording with steps that follow it -->
+    <section class="section wrap" data-cp-film data-live="../assets/live/beetle-eyes/index.html" data-mobile="../assets/projects/beetle-eyes/home-mobile.webp" style="--tint:#f2e6e3;--swash:rgb(224 196 199 / 0.75);--pen:#e0c4c7">
+      <header class="cp-head" data-reveal>
+        <span class="label">In use</span>
+        <h2>A vintage shop with <mark class="hl">a bit of theatre.</mark></h2>
+        <p>The real site running on a desktop, from the curtains opening to finding the shop.</p>
+      </header>
+      <div class="cp-film__grid">
+        <div class="cp-film__stage">
+          <div class="cp-browser">
+            <div class="cp-browser__bar"><i></i><i></i><i></i><span>beetleeyesclothing.co.uk</span></div>
+            <video src="../assets/clips/beetle-eyes/film-tour.mp4" poster="../assets/clips/beetle-eyes/film-tour.jpg" muted playsinline loop preload="none" aria-label="Beetle Eyes on desktop: the hand-drawn curtains part, the photo collage leans with the pointer, the menu runs through About, Wares, the taped gallery and Curious Magpie, then Find us scrolls to the hours and map"></video>
+          </div>
+        </div>
+        <ol class="cp-steps">
+          <li data-t="0.5"><button type="button"><b>01</b><strong>The curtains part</strong></button><i></i></li>
+          <li data-t="3"><button type="button"><b>02</b><strong>A collage that tilts</strong></button><i></i></li>
+          <li data-t="7"><button type="button"><b>03</b><strong>Zine-style sections</strong></button><i></i></li>
+          <li data-t="11.8"><button type="button"><b>04</b><strong>The taped-up gallery</strong></button><i></i></li>
+          <li data-t="15.7"><button type="button"><b>05</b><strong>Inside Curious Magpie</strong></button><i></i></li>
+          <li data-t="19.2"><button type="button"><b>06</b><strong>Find the shop</strong></button><i></i></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Close-ups: four working pieces of the real site, breaking out of beetle green and rose -->
+    <section class="section--tight wrap">
+      <header class="cp-head" data-reveal>
+        <span class="label">Up close</span>
+        <h2>Some of the <mark class="hl">little details.</mark></h2>
+      </header>
+      <div class="be-breakout">
+        <figure class="be-break be-break--site">
+          <div class="be-break__panel" aria-hidden="true"></div>
+          <div class="be-site" data-site role="img" aria-label="The Beetle Eyes homepage: hand-drawn curtains part to show the headline Come and rummage, the leaning photo collage and the No. 9 stamp">
+            <div class="be-site__page" aria-hidden="true">
+              <div class="be-site__nav">
+                <img src="../assets/projects/beetle-eyes/logo-maroon.png" alt="">
+                <span class="be-site__links"><span>About</span><span>Wares</span><span>Inside</span><span>The shop</span><span>Visit</span></span>
+                <span class="be-site__find">Find us</span>
+              </div>
+              <div class="be-site__hero">
+                <div class="be-site__text">
+                  <p class="be-site__eyebrow"><i></i>Mountsorrel · Pre-loved &amp; Vintage</p>
+                  <p class="be-site__h1">Come and <em>rummage</em>.<br><span class="be-site__ul">Beautiful</span> things, kept and curated.</p>
+                  <p class="be-site__sub">A curated rail of pre-loved finds and vintage beauts inside Curious Magpie, picked one piece at a time by stylist Corrine Kaenzig.</p>
+                </div>
+                <div class="be-site__visual" data-tilt>
+                  <div class="be-site__frame be-site__frame--3" data-rot="-7"><img src="../assets/projects/beetle-eyes/be-sign.jpg" alt="" loading="lazy"></div>
+                  <div class="be-site__frame be-site__frame--1" data-rot="-3"><img src="../assets/projects/beetle-eyes/be-rail-desk.jpg" alt="" loading="lazy"></div>
+                  <div class="be-site__frame be-site__frame--2" data-rot="4"><img src="../assets/projects/beetle-eyes/rail.jpg" alt="" loading="lazy"></div>
+                  <div class="be-site__stamp"><strong>No. 9</strong><span>Market Place<br>Mountsorrel</span></div>
+                </div>
+              </div>
+              <div class="be-site__marquee"><div class="be-site__track"><span>pre-loved</span><span>true vintage</span><span>denim &amp; leather</span><span>knits &amp; coats</span><span>one-of-a-kind</span><span>have a rummage</span><span>pre-loved</span><span>true vintage</span><span>denim &amp; leather</span><span>knits &amp; coats</span><span>one-of-a-kind</span><span>have a rummage</span></div></div>
+            </div>
+            <div class="be-curtain" aria-hidden="true">
+              <div class="be-drape be-drape--l"><svg viewBox="0 0 200 800" preserveAspectRatio="xMaxYMin slice"></svg></div>
+              <div class="be-drape be-drape--r"><svg viewBox="0 0 200 800" preserveAspectRatio="xMaxYMin slice"></svg></div>
+              <div class="be-curtain__centre">
+                <img src="../assets/projects/beetle-eyes/logo-maroon.png" alt="">
+                <p>Pre-loved &amp; Vintage <span>·</span> Mountsorrel</p>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>The curtains</b><span>Hand-drawn curtains open to show the home page.</span></figcaption>
+        </figure>
+        <figure class="be-break be-break--wares">
+          <div class="be-break__panel be-break__panel--rose" aria-hidden="true"></div>
+          <div class="be-fan" data-fan>
+            <article class="be-ware" style="--r:-8deg;--y:6%"><span class="be-ware__num">— 01</span><h3 class="be-ware__h">Pre-loved <em>womenswear</em></h3><p class="be-ware__p">The bulk of the rail. High-street to designer, all secondhand.</p></article>
+            <article class="be-ware" style="--r:3deg;--y:-10%"><span class="be-ware__num">— 02</span><h3 class="be-ware__h">True <em>vintage</em></h3><p class="be-ware__p">Proper old pieces. 70s knits, 80s leathers, the occasional 90s denim moment.</p></article>
+            <article class="be-ware" style="--r:10deg;--y:9%"><span class="be-ware__num">— 03</span><h3 class="be-ware__h">Coats &amp; <em>outerwear</em></h3><p class="be-ware__p">The thing the British weather demands. Sheepskin, wool, the odd showstopper.</p></article>
+          </div>
+          <figcaption><b>The rails</b><span>The Wares cards in beetle green, which lift and turn rose pink as you move over them.</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="be-breakout be-breakout--two" data-visit>
+        <figure class="be-break be-break--faq">
+          <div class="be-break__panel be-break__panel--rose" aria-hidden="true"></div>
+          <div class="be-faq">
+            <p class="be-faq__num">05 / Questions</p>
+            <p class="be-faq__h"><span class="be-faq__ul">Obvious</span> questions, <em>answered</em>.</p>
+            <div class="be-faq__list">
+              <details><summary>Do you take pieces in?</summary><p>Sometimes. DM <em>@beetleeyesclothing</em> a few photos and Corrine will say if it suits the rail.</p></details>
+              <details><summary>Do you do refunds?</summary><p>Exchange or store credit within 7 days, with the tag still on. Sale pieces are final.</p></details>
+              <details><summary>Can I reserve something I saw on Instagram?</summary><p>Yes. DM <em>@beetleeyesclothing</em> and it’s held for 24 hours.</p></details>
+              <details data-parking open><summary>Is there parking?</summary><p>Little Lane Car Park is nearest, about a four-minute walk up to Market Place via Loughborough Road.</p></details>
+              <details><summary>Are you dog-friendly?</summary><p>Always. There’s water by the door and biscuits behind the counter.</p></details>
+            </div>
+          </div>
+          <figcaption><b>Obvious questions</b><span>Answers that slide open, and the car park drawn onto the map.</span></figcaption>
+        </figure>
+        <figure class="be-break be-break--visit">
+          <div class="be-break__panel" aria-hidden="true"></div>
+          <div class="be-visit is-route" data-map>
+            <div class="be-map">
+              <svg class="be-map__svg" viewBox="0 0 400 230" aria-hidden="true">
+                <defs>
+                  <mask id="be-walk-mask"><path class="be-map__walk-draw" d="M70 60 L150 52 Q 160 51 162 62 L 172 118 Q 174 128 184 128 L 214 128" pathLength="1"/></mask>
+                </defs>
+                <rect width="400" height="230" class="be-map__land"/>
+                <path class="be-map__park" d="M-10 150 Q 40 140 70 170 Q 90 200 60 240 L -10 240 Z"/>
+                <path class="be-map__park" d="M300 -10 Q 290 40 318 70 Q 340 92 410 84 L 410 -10 Z"/>
+                <path class="be-map__river" d="M352 -10 Q 330 50 348 100 Q 366 150 340 190 Q 326 214 334 240"/>
+                <g class="be-map__blocks">
+                  <rect x="20" y="78" width="54" height="40" rx="3"/><rect x="88" y="74" width="50" height="34" rx="3"/><rect x="186" y="66" width="72" height="44" rx="3"/>
+                  <rect x="196" y="146" width="62" height="40" rx="3"/><rect x="88" y="130" width="62" height="44" rx="3"/><rect x="20" y="12" width="44" height="30" rx="3"/>
+                  <rect x="186" y="10" width="64" height="30" rx="3"/><rect x="270" y="120" width="44" height="58" rx="3"/><rect x="104" y="196" width="50" height="30" rx="3"/>
+                </g>
+                <g class="be-map__casing">
+                  <path d="M150 -10 Q 158 60 168 118 Q 178 180 172 240"/>
+                  <path d="M-10 64 L 160 50"/>
+                  <path d="M170 128 L 268 126 Q 296 125 312 108"/>
+                  <path d="M176 190 L 320 200"/>
+                  <path d="M80 240 Q 96 186 160 176"/>
+                </g>
+                <g class="be-map__roads">
+                  <path d="M150 -10 Q 158 60 168 118 Q 178 180 172 240"/>
+                  <path d="M-10 64 L 160 50"/>
+                  <path d="M170 128 L 268 126 Q 296 125 312 108"/>
+                  <path d="M176 190 L 320 200"/>
+                  <path d="M80 240 Q 96 186 160 176"/>
+                </g>
+                <path class="be-map__walk" d="M70 60 L150 52 Q 160 51 162 62 L 172 118 Q 174 128 184 128 L 214 128" mask="url(#be-walk-mask)"/>
+                <text class="be-map__label" x="164" y="2" transform="rotate(81 164 2)">Loughborough Rd</text>
+                <text class="be-map__label" x="88" y="46" transform="rotate(-4.7 88 46)">Little Lane</text>
+                <text class="be-map__label be-map__label--place" x="228" y="117">Market Place</text>
+              </svg>
+              <button type="button" class="be-map__p" data-park aria-label="Little Lane Car Park">P</button>
+              <span class="be-map__walk-chip">4 min walk</span>
+              <span class="be-map__sonar" aria-hidden="true"></span>
+              <span class="be-map__pin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></span>
+              <span class="be-map__more">View larger map →</span>
+            </div>
+            <div class="be-visit__body">
+              <div class="be-visit__top">
+                <span class="be-visit__label">Find us inside Curious Magpie</span>
+                <span class="be-open" data-open><i></i><b>Open now</b></span>
+              </div>
+              <address class="be-visit__addr">9 Market Place<span>Mountsorrel · Leicestershire</span></address>
+              <ul class="be-hours">
+                <li class="is-closed" data-days="1"><span>Monday</span><span>closed</span></li>
+                <li data-days="2,3,4,5,6"><span>Tuesday — Saturday</span><span>10am — 5pm</span></li>
+                <li data-days="0"><span>Sunday</span><span>11am — 4pm</span></li>
+              </ul>
+            </div>
+          </div>
+          <figcaption><b>Come and see us</b><span>Today’s opening hours are highlighted, with an Open now label and the shop on the map.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- By the numbers -->
+    <section class="section--tight wrap">
+      <div class="cp-results" data-reveal>
+        <div class="cp-result"><b><mark class="hl">1</mark></b><span>hand-written file</span><small>The whole site, curtains and all, in one HTML file.</small></div>
+        <div class="cp-result"><b data-todo>00</b><span data-todo>Instagram enquiries</span><small data-todo>Corrine’s figure since launch goes here.</small></div>
+        <div class="cp-result"><b data-todo>00%</b><span data-todo>More people through the door</span><small data-todo>Result to confirm with Corrine.</small></div>
+      </div>
+    </section>
+
+    <!-- What they said -->
+    <section class="section--tight wrap">
+      <figure class="cp-quote be-quote-band" data-reveal style="--brand:#1f3a2e;--brand-ink:#f4ede0;--pen:#e0c4c7">
+        <span class="cp-quote__mark" aria-hidden="true">“</span>
+        <div>
+          <blockquote data-todo>Corrine’s words go here.</blockquote>
+          <figcaption><i>C</i><span>Corrine Kaenzig<small>Stylist and owner, Beetle Eyes Clothing</small></span></figcaption>
+        </div>
+      </figure>
+    </section>
+
+    <!-- Brand -->
+    <section class="section wrap">
+      <div class="section-head" data-reveal>
+        <span class="label">Colour + type</span>
+        <h2>Colours taken from <mark class="hl">the shop itself.</mark></h2>
+        <p>Paper, ink and beetle green, plus a dusty rose that works on cream and on dark backgrounds.</p>
+      </div>
+      <div class="be-brand-row" data-reveal>
+        <div class="be-logo-tile"><img src="../assets/projects/beetle-eyes/logo-maroon.png" alt="Beetle Eyes Clothing blackletter logo in maroon"></div>
+        <div class="palette">
+          <button class="swatch" style="--c:#f4ede0;--on:#1c1d18;--share:1.5"><b>Paper</b><code>#F4EDE0</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#1c1d18;--share:1"><b>Ink</b><code>#1C1D18</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#5a3a32;--share:1"><b>Maroon</b><code>#5A3A32</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#1f3a2e;--share:1.3"><b>Beetle</b><code>#1F3A2E</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#b87a82;--share:1.2"><b>Rose</b><code>#B87A82</code><span class="copied">Copied</span></button>
+          <button class="swatch" style="--c:#e0c4c7;--on:#3d2622;--share:1"><b>Rose soft</b><code>#E0C4C7</code><span class="copied">Copied</span></button>
+        </div>
+      </div>
+      <div class="panel specimen be-specimen" data-reveal>
+        <div class="specimen__aa">A<em>a</em></div>
+        <div>
+          <h3 class="be-display"><span class="be-underline">Rails</span> worth <em>rummaging.</em></h3>
+          <p class="be-specimen__note">Fraunces set big and tight, with one light italic word in rose. Inter Tight for the small print.</p>
+          <div class="specimen__weights" aria-hidden="true">
+            <span style="font-weight:300">Aa<small>Light</small></span>
+            <span style="font-weight:400">Aa<small>Regular</small></span>
+            <span style="font-weight:600">Aa<small>Semibold</small></span>
+            <span style="font-weight:300;font-style:italic">Aa<small>Italic</small></span>
+            <span class="is-sans">Aa<small>Inter Tight</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- cp:end -->
+    <section class="section wrap" id="more">
+      <header class="cp-head"><span class="label">More work</span><h2>Other projects <mark class="hl">you might like.</mark></h2></header>
+      <div class="cp-more">
+        <a class="cp-card cp-card--next" href="patch.html" style="--brand:#111318">
+          <div class="cp-card__art"><span class="cp-card__label">Next project</span><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/patch-agency/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/patch-agency/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>PATCH</b><span>Brand + website</span></div>
+        </a>
+        <a class="cp-card" href="birth-hood.html" style="--brand:#fe7fcc">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/birth-hood/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/birth-hood/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Birth-hood</b><span>Website</span></div>
+        </a>
+        <a class="cp-card" href="gosweet.html" style="--brand:#5c2a9d">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/gosweet/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/gosweet/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>GoSweet</b><span>Online shop</span></div>
+        </a>
+        <a class="cp-card" href="nic-pouches.html" style="--brand:#0070d5">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/nic-pouches/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/nic-pouches/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Nic Pouches</b><span>Online shop</span></div>
+        </a>
+        <a class="cp-card" href="vsl-trade.html" style="--brand:#0d1110">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/vsl-trade/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/vsl-trade/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>VSL Trade</b><span>Wholesale website</span></div>
+        </a>
+        <a class="cp-card" href="birdie-blooms.html" style="--brand:#e8879f">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/birdie-blooms/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/birdie-blooms/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Birdie Blooms</b><span>Brand + website</span></div>
+        </a>
+        <a class="cp-card" href="sccc-heritage.html" style="--brand:#8b1538">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/sccc-heritage/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/sccc-heritage/journey-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>SCCC Heritage</b><span>Club history website</span></div>
+        </a>
+        <a class="cp-card cp-card--print" href="print.html">
+          <div class="cp-card__art"><img src="../assets/projects/print/hospital/covers/impact.jpg" alt="" loading="lazy"><img src="../assets/projects/property/covers/swilley.jpg" alt="" loading="lazy"><img src="../assets/projects/print/gowling/cover-flat.jpg" alt="" loading="lazy"></div>
+          <div class="cp-card__name"><b>Print, brand and motion</b><span>Brochures · logos · film</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="contact wrap">
+        <div class="contact__intro">
+          <span class="label">Your turn</span>
+          <h2>Let’s make something people <mark class="hl">like to use.</mark></h2>
+          <p>Tell me a bit about your business and what you need. I usually reply within a working day.</p>
+          <a class="contact__email" href="mailto:jb.designagency89@gmail.com">jb.designagency89@gmail.com</a>
+        </div>
+        <form class="contact__form" data-contact data-to="jb.designagency89@gmail.com" novalidate>
+          <fieldset class="chips">
+            <legend>What do you need?</legend>
+            <label><input type="checkbox" name="need" value="New website"><span>New website</span></label>
+            <label><input type="checkbox" name="need" value="Redesign"><span>Redesign</span></label>
+            <label><input type="checkbox" name="need" value="Online shop"><span>Online shop</span></label>
+            <label><input type="checkbox" name="need" value="Logo and brand"><span>Logo &amp; brand</span></label>
+            <label><input type="checkbox" name="need" value="Print"><span>Print</span></label>
+          </fieldset>
+          <div class="field-row">
+            <label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label>
+            <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <label class="field"><span>Tell me about it</span><textarea name="message" rows="4" required></textarea></label>
+          <p class="contact__error" role="alert" data-contact-error></p>
+          <button class="btn btn--big" type="submit">Send it over <span aria-hidden="true">→</span></button>
+          <p class="contact__note">This opens your email app with everything filled in, ready to send.</p>
+        </form>
+      </div>
+    </section>
+    <!-- /cp:end -->
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <p class="site-foot__big"><a href="#contact">Got a project? <mark class="hl hl--orange">Let’s talk.</mark></a></p>
+      <div class="site-foot__row">
+        <span>© 2026 John Bell · Designed and built by me</span>
+        <nav aria-label="Footer"><a href="work.html">Work</a><a href="../index.html#faq">FAQs</a><a href="mailto:jb.designagency89@gmail.com">Email</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/case.js"></script>
+  <script src="../assets/js/case-plus.js"></script>
+  <script src="../assets/js/beetle-eyes.js"></script>
+</body>
+</html>

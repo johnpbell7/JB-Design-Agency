@@ -1,0 +1,36 @@
+{
+ "nic-pouches": {
+  "local": "sites/nic-pouches",
+  "localStorage": { "np_first_order_popup": "9999999999999" },
+  "hide": [".proto-note", ".fo", ".nphow__model"],
+  "css": "body:not(.cart-open) .drawer{box-shadow:none}",
+  "clips": [
+   {
+    "name": "film-shop",
+    "viewport": "desktop",
+    "path": "index.html",
+    "tail": 500,
+    "steps": [
+     { "wait": 300 },
+     { "mark": "Shop by strength", "scrollTo": "#finder", "ms": 1200, "offset": 330 },
+          { "tap": ".fband[data-b=high]", "ms": 500, "after": 600 },
+     { "mark": "Strength on every card", "scroll": 300, "ms": 800 },
+     { "tap": ".pc[data-h=velo-bright-spearmint] .mgc", "nth": 1, "ms": 600, "after": 700 },
+     { "mark": "Quick-add from the card", "tap": ".pc[data-h=velo-tropical-mango-10mg] .pc__add", "ms": 600, "after": 800 },
+     { "tap": ".qa__packs [role=radio]", "nth": 1, "ms": 500, "after": 400 },
+     { "tap": "[data-qadd]", "ms": 500, "after": 1100 },
+     { "tap": ".dr__head [data-close-cart]", "ms": 500, "after": 300 },
+     { "mark": "Pick a strength and a pack", "tap": ".pc[data-h=velo-bright-spearmint] .pc__name", "ms": 600, "after": 400 },
+     { "tap": ".pdp__chips .mgc", "nth": 3, "ms": 600, "after": 400 },
+     { "scroll": 380, "ms": 800 },
+     { "tap": ".packs .pack", "nth": 2, "ms": 500, "after": 500 },
+     { "mark": "Mix & Match in the basket", "tap": ".buy .btn--lg", "ms": 600, "after": 1900 },
+     { "tap": ".dr__head [data-close-cart]", "ms": 500, "after": 300 },
+     { "mark": "Nic Points", "tap": ".points-btn", "ms": 700, "after": 600 },
+     { "move": [1000, 330], "ms": 900, "after": 100 },
+     { "move": [1180, 560], "ms": 800, "after": 100 }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,82 @@
+/* Nic Pouches (nicpouches.com) tokens.
+   Source 1: the live Shopify theme's own :root variables in index.min.css
+             (//nicpouches.com/cdn/shop/t/13/assets/index.min.css), ripped 30 Sep 2026.
+   Source 2: the NP icon (np-logo.png / favicon), sampled pixel: #004BDC.
+   Source 3: accent palette — first John's swatch (30 Sep 2026), then brightened at his request (feedback 1, same day).
+   Estimates are marked "estimate". The redesign's own names are prefixed --np-. */
+:root{
+  /* ---- Live theme: blues (theme names kept) ---- */
+  --color-blue:#0070d5;               /* buttons, links, basket button */
+  --color-blue-dark:#005aaa;          /* hover */
+  --color-blue-extra-dark:#004380;
+  --color-blue-light-background:#e5f1fb;
+  --color-blue-extra-light:#cce2f7;
+  --color-blue-border:#669ce6;
+  --color-blue-points-background:#498ef5;
+  --color-blue-loyalty-background:#438cfb;
+  --np-icon-blue:#004bdc;             /* NP app icon / favicon fill (sampled) */
+
+  /* ---- Live theme: inks and greys ---- */
+  --color-black:#1d1d1f;
+  --color-charcoal:#19191c;
+  --color-charcoal-light:#252b37;
+  --color-grey-dark-text:#414651;
+  --color-grey-extra-dark-text:#717680;
+  --color-grey-dark--border:#d5d7da;
+  --color-grey:#eaeaec;
+  --color-grey-loyalty-background:#e9eaeb;
+  --color-off-white:#f4f4f4;
+  --color-grey-background:#f8f8f8;
+  --color-grey-light:#f8f9f9;
+  --color-white:#ffffff;
+  --color-red-label:#f04438;          /* live "Save £x" text */
+
+  /* ---- Live theme: strength band colours (select-option.<band>::before) ---- */
+  --live-strength-low:#76bf1d;        /* --color-green */
+  --live-strength-medium:#d65501;     /* --color-orange-dark */
+  --live-strength-high:#ff0d00;       /* --color-red-text */
+  --live-strength-strong:#7b0030;     /* --color-purple */
+  --live-strength-extra-strong:#ca1818; /* --color-red-dark */
+
+  /* ---- Accent palette v2: BRIGHTER, at John's request (feedback 1, 30 Sep 2026:
+     "i think these pastel colours could pop more? maybe brigter colours throughout").
+     Replaces his 30 Sep swatch. Hues kept (mint, sky, amber, coral), pushed to vivid; sky moved
+     towards turquoise so it reads apart from mint and from the brand blue.
+     Old swatch values, kept for reference:
+       --np-mint:#86d6bc; --np-amber:#f0b951; --np-sky:#7ec7d7; --np-coral:#ef977a;
+       --np-mint-50:#e7f7f2; --np-amber-50:#fcf1dc; --np-sky-50:#e5f4f7; --np-coral-50:#fceae4;
+       --np-mint-ink:#246b54; --np-amber-ink:#7d5811; --np-sky-ink:#246675; --np-coral-ink:#833116; */
+  --np-mint:#1ecb84;      /* hue 155 · ink text on it 8.0:1 */
+  --np-sky:#16bfdb;       /* hue 189 · ink text on it 7.6:1 (brand blue is hue 208, darker) */
+  --np-amber:#ffb21a;     /* hue 40  · ink text on it 9.3:1 */
+  --np-coral:#ff6a45;     /* hue 12  · ink text on it 5.9:1 */
+  /* -50: 16% on white (tile and panel backgrounds) */
+  --np-mint-50:#dbf7eb; --np-sky-50:#daf5f9; --np-amber-50:#fff3da; --np-coral-50:#ffe7e1;
+  /* -100: 32% on white (chips, selected states) */
+  --np-mint-100:#b7eed8; --np-sky-100:#b4ebf3; --np-amber-100:#ffe6b6; --np-coral-100:#ffcfc3;
+  /* -ink: same hue, dark — text/icons on the tints (on -100: mint 5.1, sky 4.9, amber 5.1, coral 5.9) */
+  --np-mint-ink:#106b45; --np-sky-ink:#0c6978; --np-amber-ink:#855800; --np-coral-ink:#991e00;
+  /* Mix & Match offer label — fixed brand colour, kept apart from the accent set (John, feedback 1:
+     "mix and match needs to look more like the cyrrent colour we use"). Source: live theme
+     .label-offer--mix-match { background: var(--color-green-label) #91ff24; color: var(--color-black-border) #181d27 } */
+  --np-mixmatch:#91ff24;
+  --np-mixmatch-ink:#181d27;      /* 16.9:1 on the lime */
+  --np-mixmatch-edge:#6fd40c;     /* 1px edge, a close shade (computed) */
+  /* One stroke weight for the whole site (feedback 1: "can all stroke lines be thiner throughout") */
+  --stroke:1px; --stroke-selected:1.5px;
+  /* Tags use the SOLID accent with ink text (#1d1d1f), all AA. Never white text on the accents. */
+
+  /* ---- Type ---- */
+  --font-primary:"open-sans",sans-serif;                   /* live body (Adobe kit peb8guf) */
+  --font-secondary:"neue-haas-grotesk-display",sans-serif; /* live headings (Adobe kit peb8guf) */
+  /* Redesign: headline Bricolage Grotesque (John's pick); UI/body Archivo — matches the NP icon
+     and the POUCHES wordmark (Archivo width 75, weight 900: 93% overlap on the icon letters). */
+  --np-font-head:"Bricolage Grotesque","Archivo",system-ui,sans-serif;
+  --np-font-ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+
+  /* ---- Shape and layout (live theme) ---- */
+  --radius-sm:4px; --radius:8px; --radius-md:10px; --radius-lg:12px; --radius-xl:24px; --radius-pill:60px;
+  --shadow-card:0 1px 3px 0 rgba(0,0,0,.2);   /* live .card-product */
+  --container:1480px;                          /* live max-width on most sections */
+  /* Breakpoints (live): 768, 990, 1024, 1350, 1435 */
+}

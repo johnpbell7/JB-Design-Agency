@@ -1,0 +1,106 @@
+{
+ "sccc-heritage": {
+  "url": "https://sccc-heritage.co.uk/",
+  "hide": [
+   "a[href^=\"mailto:\"]",
+   "a[href^=\"tel:\"]"
+  ],
+  "css": "div.absolute.bottom-0.left-0.right-0.px-6.py-4.border-t{visibility:hidden!important}\nhtml::after{content:\"\";position:fixed;left:-4px;top:-4px;width:2px;height:2px;background:url(/assets/1946_part1_image57-HmRKCKje.jpeg) center/cover,url(/assets/page-banner-DvddK_OF.png) center/cover,url(/assets/1913_part1_image24-Cro8XCKo.jpg) center/cover;opacity:.01;pointer-events:none}",
+  "clips": [
+   {
+    "name": "film-tour",
+    "viewport": "desktop",
+    "path": "",
+    "steps": [
+     {
+      "mark": "Bowl to scroll",
+      "wait": 500
+     },
+     {
+      "tap": "section.relative.h-screen img.rounded-full",
+      "ms": 800,
+      "after": 1700
+     },
+     {
+      "scroll": 1060,
+      "ms": 1100,
+      "after": 200
+     },
+     {
+      "mark": "Fifteen decades",
+      "tap": "a[href='/decades']",
+      "text": "View All",
+      "ms": 700,
+      "cut": 1800,
+      "after": 500
+     },
+     {
+      "scrollTo": "a[href='/decades/1910']",
+      "ms": 1100,
+      "offset": 420
+     },
+     {
+      "hover": "a[href='/decades/1910']",
+      "ms": 700,
+      "after": 800
+     },
+     {
+      "mark": "Inside a decade",
+      "tap": "a[href='/decades/1910']",
+      "ms": 300,
+      "cut": 2600,
+      "after": 900
+     },
+     {
+      "mark": "The men that served",
+      "scrollTo": "section:has(h3)",
+      "ms": 1800,
+      "offset": -20
+     },
+     {
+      "scroll": 420,
+      "ms": 1000,
+      "after": 400
+     },
+     {
+      "tap": "button",
+      "text": "MENU",
+      "ms": 700,
+      "after": 700
+     },
+     {
+      "mark": "Meet the Teams",
+      "tap": "a[href='/teams']",
+      "text": "Meet the Teams",
+      "ms": 600,
+      "cut": 2400,
+      "after": 700
+     },
+     {
+      "scrollTo": "[data-section-id='team-0'] button[aria-expanded]",
+      "ms": 1100,
+      "offset": 360
+     },
+     {
+      "tap": "button",
+      "text": "View Player Names",
+      "ms": 600,
+      "after": 1200
+     },
+     {
+      "mark": "Archive photos, enlarged",
+      "scrollTo": "[data-section-id='team-3'] h2",
+      "ms": 1200,
+      "offset": 110
+     },
+     {
+      "tap": "button[aria-label^='Enlarge 1906 First XI']",
+      "ms": 700,
+      "after": 2000
+     }
+    ],
+    "tail": 600
+   }
+  ]
+ }
+}

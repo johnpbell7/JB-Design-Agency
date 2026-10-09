@@ -1,0 +1,19 @@
+{
+  "name": "Nic Pouches: Mix & Match",
+  "css": ".proto-note,.fo,#fo{display:none!important}",
+  "mobile": {
+    "label": "Mix & Match",
+    "page": "page-mix-match.html",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      {"wait": 1300},
+      {"scroll": 700, "ms": 2200, "after": 700},
+      {"scrollTo": "#mm0", "offset": 160, "ms": 2600, "after": 800},
+      {"tap": "#mm0 .pc__add", "nth": 0, "after": 1400},
+      {"tap": ".qa [role=radio]", "nth": 1, "after": 1000, "scroll": false},
+      {"tap": "[data-qadd]", "after": 2600, "scroll": false}
+    ]
+  }
+}

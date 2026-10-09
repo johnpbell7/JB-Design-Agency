@@ -1,0 +1,21 @@
+{
+  "name": "Nic Pouches: Shop",
+  "css": ".proto-note,.fo,#fo{display:none!important}",
+  "mobile": {
+    "label": "Shop",
+    "page": "shop.html",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      {"wait": 1300},
+      {"scroll": 330, "ms": 1700, "after": 600},
+      {"tap": ".toolbar .btn--ghost", "text": "Filter", "after": 1300},
+      {"tap": "#f-brand label", "text": "Pablo", "after": 1100},
+      {"tap": "#showN", "after": 1300},
+      {"scroll": 420, "ms": 2000, "after": 900},
+      {"tap": ".pc__name", "nth": 0, "after": 500},
+      {"wait": 1600}
+    ]
+  }
+}

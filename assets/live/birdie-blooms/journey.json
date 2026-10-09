@@ -1,0 +1,142 @@
+{
+  "name": "Birdie Blooms",
+  "viewport": { "width": 1440, "height": 900 },
+  "pace": 1,
+  "start": [960, 620],
+  "startOffset": 70,
+  "steps": [
+    {
+      "label": "Big days, and Tuesdays",
+      "page": "index.html",
+      "start": 0,
+      "actions": [
+        { "wait": 2200 },
+        { "move": [880, 560], "ms": 1200, "after": 600 },
+        { "scrollTo": "#bouquets", "offset": 70, "ms": 2400, "after": 900 },
+        { "hover": ".product .p-img", "nth": 0, "ms": 1100, "after": 1200 }
+      ]
+    },
+    {
+      "label": "Colour from the calendar",
+      "page": "index.html",
+      "start": { "to": ".swatches", "offset": 250 },
+      "actions": [
+        { "wait": 700 },
+        { "hover": ".swatch.is-today", "ms": 1100, "after": 1300 },
+        { "hover": ".swatch", "nth": 1, "ms": 900, "after": 900 },
+        { "click": ".swatch", "nth": 0, "ms": 900, "after": 400 }
+      ]
+    },
+    {
+      "label": "The seasons guide",
+      "page": "seasons.html",
+      "start": { "to": "#winter", "offset": 66 },
+      "actions": [
+        { "wait": 1400 },
+        { "scrollTo": "#spring", "offset": 66, "ms": 1700, "after": 1100 },
+        { "scrollTo": "#summer", "offset": 66, "ms": 1700, "after": 1100 },
+        { "scrollTo": "#autumn", "offset": 66, "ms": 1700, "after": 1200 },
+        { "click": ".bar-nav a", "text": "Flowers", "ms": 1100, "after": 400 }
+      ]
+    },
+    {
+      "label": "Pick a bouquet",
+      "page": "shop.html",
+      "start": { "to": "#bouquets", "offset": 66 },
+      "actions": [
+        { "wait": 1100 },
+        { "hover": ".product .p-img", "nth": 0, "ms": 1000, "after": 900 },
+        { "hover": ".product .p-img", "nth": 1, "ms": 900, "after": 1100 },
+        { "click": ".product a.btn", "nth": 1, "ms": 1000, "after": 400 }
+      ]
+    },
+    {
+      "label": "An enquiry, half written",
+      "page": "contact.html?bouquet=The+Pumpkin+Edit",
+      "start": { "to": "#enquire", "offset": 120 },
+      "actions": [
+        { "wait": 1100 },
+        { "type": ["#c-name", "Sam"], "ms": 1000, "charMs": 140, "after": 700 },
+        { "hover": "#c-bouquet", "ms": 1000, "after": 1800 },
+        { "click": ".bar-nav a", "text": "Weddings", "ms": 1200, "after": 400 }
+      ]
+    },
+    {
+      "label": "Weddings",
+      "page": "weddings.html",
+      "start": 0,
+      "actions": [
+        { "wait": 1600 },
+        { "scroll": 620, "ms": 2200, "after": 1200 },
+        { "scrollTo": "#enquire", "offset": 120, "ms": 2400, "after": 2000 }
+      ]
+    }
+  ],
+  "mobile": {
+    "page": "index.html",
+    "start": 0,
+    "width": 390,
+    "touch": true,
+    "pace": 1.1,
+    "actions": [
+      { "wait": 1800 },
+      { "scroll": 760, "ms": 2200, "after": 900 },
+      { "scrollTo": "#bouquets", "offset": 60, "ms": 1800, "after": 1100 },
+      { "scroll": 620, "ms": 2000, "after": 900 },
+      { "scrollTo": ".swatches", "offset": 200, "ms": 2000, "after": 1100 },
+      { "scroll": 760, "ms": 2200, "after": 1200 }
+    ]
+  },
+  "phones": [
+    {
+      "label": "Home",
+      "page": "index.html",
+      "start": 0,
+      "touch": true,
+      "actions": [
+        { "wait": 1800 },
+        { "scroll": 760, "ms": 2200, "after": 900 },
+        { "scrollTo": "#bouquets", "offset": 60, "ms": 1800, "after": 1100 },
+        { "scroll": 620, "ms": 2000, "after": 1200 }
+      ]
+    },
+    {
+      "label": "What’s in season",
+      "page": "seasons.html",
+      "start": 0,
+      "touch": true,
+      "actions": [
+        { "wait": 1400 },
+        { "scrollTo": "#winter", "offset": 60, "ms": 2000, "after": 1000 },
+        { "scrollTo": "#spring", "offset": 60, "ms": 1900, "after": 1000 },
+        { "scrollTo": "#summer", "offset": 60, "ms": 1900, "after": 1000 },
+        { "scrollTo": "#autumn", "offset": 60, "ms": 1900, "after": 1200 }
+      ]
+    },
+    {
+      "label": "Enquire",
+      "page": "shop.html",
+      "start": { "to": "#bouquets", "offset": 60 },
+      "touch": true,
+      "actions": [
+        { "wait": 1200 },
+        { "scroll": 520, "ms": 1900, "after": 900 },
+        { "tap": ".product a.btn", "nth": 1, "after": 600 },
+        { "type": ["#c-name", "Sam"], "charMs": 140, "after": 900 },
+        { "scrollTo": "#c-bouquet", "offset": 260, "ms": 1600, "after": 1400 }
+      ]
+    },
+    {
+      "label": "Weddings",
+      "page": "weddings.html",
+      "start": 0,
+      "touch": true,
+      "actions": [
+        { "wait": 1600 },
+        { "scroll": 700, "ms": 2200, "after": 1000 },
+        { "scroll": 900, "ms": 2400, "after": 1000 },
+        { "scrollTo": "#enquire", "offset": 80, "ms": 2200, "after": 1400 }
+      ]
+    }
+  ]
+}

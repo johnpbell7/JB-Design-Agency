@@ -1,0 +1,376 @@
+<!doctype html>
+<!--
+  Hero option 10 · "Scrapbook"
+  Idea: John's work laid out as a tidy scrapbook spread around the headline (polaroids, product
+  cards, a sticker, print, a phone), placed one by one on load and free to pick up and move.
+-->
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>John Bell · Websites, shops &amp; brands worth keeping</title>
+  <meta name="description" content="John Bell designs and builds websites, shops and brands for small businesses: shops, cafés, salons, trades and property.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme.js"></script>
+  <script>
+    // Hide the scrapbook pieces until GSAP places them (skipped for reduced motion; failsafe below)
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('will-place');
+      setTimeout(() => { if (!window.gsap) document.documentElement.classList.remove('will-place'); }, 3000);
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <style>
+    /* ================= Hero 10 · Scrapbook ================= */
+    :root { --paper: #fdfdfb; --tape: rgb(246 241 222 / 0.78); --tape-edge: rgb(24 24 26 / 0.06); --swatch-blend: multiply; --swatch-op: 0.62; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) { --paper: #f4f3ee; --tape: rgb(232 226 205 / 0.62); --tape-edge: rgb(0 0 0 / 0.2); --swatch-blend: normal; --swatch-op: 0.66; }
+    }
+    :root[data-theme="dark"] { --paper: #f4f3ee; --tape: rgb(232 226 205 / 0.62); --tape-edge: rgb(0 0 0 / 0.2); --swatch-blend: normal; --swatch-op: 0.66; }
+
+    .hero {
+      position: relative; min-height: 100dvh; overflow: clip;
+      display: grid; align-items: center;
+      padding: clamp(92px, 11vh, 120px) 0 clamp(24px, 4vh, 48px);
+    }
+    .board {
+      width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: var(--gutter);
+      display: grid; align-items: center;
+      grid-template-columns: minmax(0, 1fr) minmax(460px, 540px) minmax(0, 1fr);
+      grid-template-areas: "tl copy tr" "bl copy br";
+      column-gap: clamp(20px, 2.6vw, 44px); row-gap: clamp(8px, 1.6vh, 20px);
+    }
+
+    /* ---------- Copy (centre of the spread) ---------- */
+    .copy { grid-area: copy; position: relative; z-index: 3; text-align: center; display: grid; justify-items: center; }
+    .hello-badge { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px 7px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--grey-1); font-size: 13px; font-weight: 500; }
+    .hello-badge i { width: 9px; height: 9px; border-radius: 50%; background: #34c759; animation: ping 2s infinite; }
+    @keyframes ping { 0% { box-shadow: 0 0 0 0 rgb(52 199 89 / 0.6); } 70%, 100% { box-shadow: 0 0 0 9px rgb(52 199 89 / 0); } }
+    .copy h1 { margin-top: 22px; font-size: clamp(40px, 4.6vw, 70px); letter-spacing: -0.055em; line-height: 1; }
+    .copy p { margin-top: 20px; max-width: 34ch; font-size: clamp(16px, 1.25vw, 18.5px); color: var(--grey-7); }
+    .copy p b { color: var(--ink); font-weight: 600; }
+    .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+    .btn--big { padding: 17px 28px; font-size: 16px; }
+    .btn--big span { transition: translate 0.3s var(--ease-spring); }
+    .btn--big:hover span { translate: 4px 0; }
+    .psst { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font-size: 13px; color: var(--grey-5); }
+    .psst svg { width: 16px; height: 16px; }
+
+    /* ---------- Clusters: each lays its pieces out in its own width (cqw) ---------- */
+    .cluster { position: relative; z-index: 1; container-type: inline-size; aspect-ratio: 1 / 0.92; }
+    .cluster--tl { grid-area: tl; } .cluster--tr { grid-area: tr; }
+    .cluster--bl { grid-area: bl; } .cluster--br { grid-area: br; }
+
+    .swatch { position: absolute; z-index: 0; overflow: visible; pointer-events: none; mix-blend-mode: var(--swatch-blend); }
+    .swatch path { fill: none; stroke-width: 46; stroke-linecap: round; stroke-linejoin: round; opacity: var(--swatch-op); }
+    .swatch--yellow path { stroke: var(--hl-yellow); opacity: calc(var(--swatch-op) + 0.2); }
+    .swatch--pink path { stroke: var(--hl-pink); }
+    .swatch--blue path { stroke: var(--hl-blue); }
+
+    .piece {
+      --lift: 0;
+      position: absolute; left: var(--x); top: var(--y); width: calc(var(--w) * 1cqw); margin: 0;
+      rotate: var(--r, 0deg); z-index: 1;
+      cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+      box-shadow:
+        0 1px 1px rgb(24 24 26 / 0.08),
+        0 calc(4px + var(--lift) * 26px) calc(10px + var(--lift) * 34px) calc(-4px - var(--lift) * 6px) rgb(24 24 26 / calc(0.22 + var(--lift) * 0.12));
+      will-change: transform;
+    }
+    .piece img { width: 100%; pointer-events: none; -webkit-user-drag: none; }
+    .piece.is-held { cursor: grabbing; }
+    .will-place .piece, .will-place .swatch { opacity: 0; }
+
+    /* Polaroid */
+    .polaroid { padding: 4.2cqw 4.2cqw 0; background: var(--paper); border-radius: 1px; }
+    .polaroid img { aspect-ratio: 1; object-fit: cover; }
+    .polaroid--tall img { aspect-ratio: 4 / 4.6; }
+    .polaroid figcaption { height: 12cqw; display: grid; place-items: center; font: 700 6.6cqw / 1 "Caveat", cursive; color: #2b2b2b; }
+
+    /* Product cards straight from the shops */
+    .card { border-radius: 3.2cqw; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px rgb(24 24 26 / 0.05), 0 1px 1px rgb(24 24 26 / 0.08), 0 calc(4px + var(--lift) * 26px) calc(12px + var(--lift) * 34px) calc(-4px - var(--lift) * 6px) rgb(24 24 26 / calc(0.24 + var(--lift) * 0.12)); }
+    .card { overflow: visible; }
+    .card img { border-radius: 3.2cqw; }
+
+    /* Print: brochure cover + an open spread with a soft centre fold */
+    .print { background: #fff; padding: 0; }
+    .print--spread::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, transparent 44%, rgb(0 0 0 / 0.16) 49.6%, rgb(255 255 255 / 0.18) 50.4%, transparent 56%); }
+
+    /* PATCH sticker */
+    .sticker { aspect-ratio: 1; border-radius: 50%; background: #b3dd03; color: #111318; display: grid; place-items: center; box-shadow: inset 0 -1.2cqw 0 rgb(0 0 0 / 0.08), 0 1px 1px rgb(24 24 26 / 0.1), 0 calc(3px + var(--lift) * 24px) calc(8px + var(--lift) * 30px) calc(-3px - var(--lift) * 6px) rgb(24 24 26 / calc(0.28 + var(--lift) * 0.12)); }
+    .sticker__ring { position: absolute; inset: 7%; width: 86%; height: 86%; }
+    .sticker__ring text { font: 800 11px var(--font); fill: #111318; }
+    .sticker__a { width: 40%; }
+
+    /* Phone */
+    .phone {
+      --edge: 2px;
+      container-type: inline-size; aspect-ratio: 393 / 852;
+      border: var(--edge) solid transparent; border-radius: 17% / 7.9%;
+      background: linear-gradient(#0a0a0b, #0a0a0b) padding-box, linear-gradient(140deg, #c4c4c8 0%, #55555a 26%, #a6a6ab 50%, #3d3d40 76%, #b2b2b6 100%) border-box;
+      box-shadow: 0 calc(10px + var(--lift) * 30px) calc(26px + var(--lift) * 30px) calc(-12px - var(--lift) * 4px) rgb(17 17 17 / calc(0.45 + var(--lift) * 0.1));
+    }
+    .phone__display { position: absolute; inset: 3.4cqw; overflow: hidden; border-radius: 13cqw; background: #ff9ed2; }
+    .phone__display::before { content: ""; position: absolute; z-index: 2; top: 2.6cqw; left: 50%; width: 28cqw; height: 8cqw; translate: -50% 0; border-radius: 999px; background: #000; }
+    .phone__display img { height: 100%; object-fit: cover; object-position: top; padding-top: 0; }
+
+    /* Tape strips */
+    .tape {
+      position: absolute; z-index: 2; left: 50%; top: -3.6cqw; width: 30cqw; height: 8cqw;
+      translate: -50% 0; rotate: var(--tr, -3deg); scale: var(--ts, 1) 1; transform-origin: left center;
+      background: var(--tape); box-shadow: 0 0 0 0.5px var(--tape-edge), 0 1px 2px rgb(24 24 26 / 0.08);
+      backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px);
+      clip-path: polygon(0 6%, 4% 0, 8% 8%, 12% 0, 16% 6%, 20% 0, 80% 0, 84% 7%, 88% 0, 92% 6%, 96% 0, 100% 8%, 100% 94%, 96% 100%, 92% 92%, 88% 100%, 84% 94%, 80% 100%, 20% 100%, 16% 93%, 12% 100%, 8% 92%, 4% 100%, 0 94%);
+    }
+    .tape--corner-l { left: -2cqw; top: -1.6cqw; translate: 0 0; width: 20cqw; rotate: -38deg; }
+    .tape--corner-r { left: auto; right: -5cqw; top: -1.6cqw; translate: 0 0; width: 20cqw; rotate: 38deg; }
+
+    /* ---------- Strip below ---------- */
+    .strip { border-top: 1px solid var(--line); }
+    .strip__row { display: flex; align-items: center; gap: 12px 28px; flex-wrap: wrap; padding-block: 22px; }
+    .strip__row nav { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 14px; font-weight: 500; }
+    .strip__row nav a { text-decoration: none; color: var(--grey-7); transition: color 0.2s; }
+    .strip__row nav a:hover { color: var(--ink); }
+    .strip__row .more { margin-left: auto; font-size: 14px; font-weight: 500; text-decoration: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1100px) {
+      .board { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "tl tr" "copy copy" "bl br"; row-gap: 18px; column-gap: 24px; max-width: 760px; }
+      .copy { padding-block: 8px; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding-top: 84px; padding-bottom: 18px; align-items: start; }
+      .board { column-gap: 14px; row-gap: 10px; }
+      .cluster { aspect-ratio: 1 / 0.86; }
+      .copy h1 { margin-top: 14px; font-size: clamp(34px, 10vw, 42px); }
+      .copy p { margin-top: 12px; font-size: 15px; line-height: 1.6; }
+      .hello-badge { font-size: 12px; padding: 6px 12px 6px 9px; }
+      .ctas { margin-top: 18px; gap: 10px; }
+      .ctas .btn--big { padding: 14px 20px; font-size: 15px; }
+      .psst { display: none; }
+      .strip__row .more { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { .hello-badge i { animation: none; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-nav">
+    <a class="site-nav__mark" href="../index.html">John Bell <span>Design</span></a>
+    <nav class="site-nav__links" aria-label="Main">
+      <a href="../index.html#skills">Services</a>
+      <a href="../index.html#process">Process</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../projects/property.html">Print</a>
+      <a href="../index.html#faq">FAQs</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
+      <a class="is-cta" href="../index.html#contact">Start a project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="board">
+
+        <div class="copy">
+          <span class="hello-badge"><i></i>Taking on new projects</span>
+          <h1 id="hero-title">Websites, shops &amp; brands <mark class="hl">worth keeping.</mark></h1>
+          <p>I&rsquo;m John Bell. I <b>design and build</b> them for small businesses: shops, caf&eacute;s, salons, trades and property, from the first sketch to the live site.</p>
+          <div class="ctas">
+            <a class="btn btn--big" href="../index.html#contact">Start a project <span aria-hidden="true">&rarr;</span></a>
+            <a class="btn btn--ghost btn--big" href="../index.html#work">See the work</a>
+          </div>
+          <span class="psst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12m0-1.5v-2a1.5 1.5 0 0 1 3 0V12m0-1a1.5 1.5 0 0 1 3 0v1.5m0-.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-4.6-2.2L4.5 16a1.6 1.6 0 0 1 2.4-2.1L8 15"/></svg>Everything here can be picked up and moved.</span>
+        </div>
+
+        <!-- Top left: Birth-hood polaroid + GoSweet product card -->
+        <div class="cluster cluster--tl">
+          <svg class="swatch swatch--yellow" viewBox="0 0 400 300" style="left:2%;top:26%;width:84%" aria-hidden="true">
+            <path d="M40 70 L140 30 L30 140 L230 40 L40 220 L320 50 L90 270 L370 110 L200 280 L380 220"/>
+          </svg>
+          <figure class="piece polaroid" data-order="0" style="--x:5%;--y:5%;--w:56;--r:-6deg">
+            <span class="tape" style="--tr:-4deg"></span>
+            <img src="../assets/projects/birth-hood/parent-baby-150.jpg" alt="Birth-hood: a parent and baby at a class" style="object-position:38% 50%">
+            <figcaption>Birth-hood</figcaption>
+          </figure>
+          <div class="piece card" data-order="1" style="--x:59%;--y:23%;--w:34;--r:5deg">
+            <span class="tape" style="--tr:3deg;top:-3cqw;width:22cqw"></span>
+            <img src="../assets/captures/gosweet/card-desktop.webp" alt="GoSweet product card from the online shop">
+          </div>
+        </div>
+
+        <!-- Top right: Beetle Eyes polaroid + PATCH sticker -->
+        <div class="cluster cluster--tr">
+          <figure class="piece polaroid polaroid--tall" data-order="2" style="--x:40%;--y:6%;--w:50;--r:5deg">
+            <span class="tape" style="--tr:2deg"></span>
+            <img src="../assets/projects/beetle-eyes/be-sign.jpg" alt="Beetle Eyes Clothing shop sign">
+            <figcaption>Beetle Eyes</figcaption>
+          </figure>
+          <figure class="piece polaroid" data-order="3" style="--x:5%;--y:4%;--w:38;--r:-7deg">
+            <span class="tape" style="--tr:-6deg;width:22cqw"></span>
+            <img src="../assets/projects/beetle-eyes/window-display.jpg" alt="Beetle Eyes window display">
+            <figcaption>the window</figcaption>
+          </figure>
+          <div class="piece sticker" data-order="4" style="--x:17%;--y:55%;--w:30;--r:-14deg" role="img" aria-label="PATCH sticker">
+            <svg class="sticker__ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="ring" d="M50 50 m-40 0 a40 40 0 1 1 80 0 a40 40 0 1 1 -80 0"/></defs><text textLength="248" lengthAdjust="spacing"><textPath href="#ring" textLength="248" lengthAdjust="spacing">PATCH · FIELD MARKETING · </textPath></text></svg>
+            <svg class="sticker__a" viewBox="100.32 9.75 123.78 105.08" aria-hidden="true"><path fill="#111318" d="M212.89,81.13c-1.09,0-2.15.16-3.15.46l-39.5-54.3c1.23-1.8,1.94-3.97,1.94-6.31,0-6.2-5.03-11.23-11.23-11.23s-11.23,5.03-11.23,11.23c0,2.7.96,5.18,2.55,7.12l-38.55,64.48c-.7-.14-1.42-.21-2.17-.21-6.2,0-11.23,5.03-11.23,11.23s5.03,11.23,11.23,11.23c5.3,0,9.73-3.68,10.91-8.62l80.34-8.9c1.83,3.72,5.65,6.29,10.07,6.29,6.2,0,11.23-5.03,11.23-11.23s-5.03-11.23-11.23-11.23ZM120.24,96.46l38.55-64.48c.7.14,1.42.21,2.17.21,1.09,0,2.15-.16,3.14-.45l39.5,54.3c-.76,1.11-1.31,2.36-1.63,3.71l-80.34,8.9c-.38-.78-.85-1.52-1.4-2.19Z"/></svg>
+          </div>
+        </div>
+
+        <!-- Bottom left: property brochure, cover + open spread -->
+        <div class="cluster cluster--bl">
+          <svg class="swatch swatch--blue" viewBox="0 0 400 300" style="left:-2%;top:4%;width:62%" aria-hidden="true">
+            <path d="M40 80 L150 30 L40 170 L260 40 L60 260 L330 110 L200 270"/>
+          </svg>
+          <div class="piece print" data-order="5" style="--x:5%;--y:5%;--w:58;--r:-7deg">
+            <span class="tape" style="--tr:-3deg;width:22cqw"></span>
+            <img src="../assets/projects/property/covers/churchwalk.jpg" alt="Church Walk property brochure cover">
+          </div>
+          <div class="piece print print--spread" data-order="6" style="--x:18%;--y:33%;--w:78;--r:3deg">
+            <span class="tape tape--corner-l"></span><span class="tape tape--corner-r"></span>
+            <img src="../assets/projects/property/spreads/darley-2.jpg" alt="Darley House brochure spread about Hackney">
+          </div>
+        </div>
+
+        <!-- Bottom right: Birth-hood on a phone + Nic Pouches product card -->
+        <div class="cluster cluster--br">
+          <svg class="swatch swatch--pink" viewBox="0 0 400 300" style="left:4%;top:18%;width:92%" aria-hidden="true">
+            <path d="M60 60 L180 30 L40 150 L300 40 L70 240 L360 100 L170 280 L380 200 L320 280"/>
+          </svg>
+          <div class="piece phone" data-order="7" style="--x:14%;--y:2%;--w:37;--r:-4deg">
+            <div class="phone__display"><img src="../assets/captures/birth-hood/home-mobile.webp" alt="Birth-hood website on a phone" style="aspect-ratio:auto;object-fit:cover"></div>
+          </div>
+          <div class="piece card" data-order="8" style="--x:55%;--y:16%;--w:36;--r:6deg">
+            <span class="tape" style="--tr:-4deg;top:-3cqw;width:22cqw"></span>
+            <img src="../assets/captures/nic-pouches/card-desktop.webp" alt="Nic Pouches product card from the online shop">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="strip" aria-label="Recent work">
+      <div class="wrap strip__row">
+        <span class="label">In the scrapbook</span>
+        <nav aria-label="Case studies">
+          <a href="../projects/birth-hood.html">Birth-hood</a>
+          <a href="../projects/beetle-eyes.html">Beetle Eyes</a>
+          <a href="../projects/gosweet.html">GoSweet</a>
+          <a href="../projects/nic-pouches.html">Nic Pouches</a>
+          <a href="../projects/patch.html">PATCH</a>
+          <a href="../projects/property.html">Property print</a>
+        </nav>
+        <a class="more" href="../index.html#work">All projects &rarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+  (() => {
+    const root = document.documentElement;
+    root.classList.remove('no-js');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hero = document.querySelector('.hero');
+    const pieces = [...document.querySelectorAll('.piece')].sort((a, b) => a.dataset.order - b.dataset.order);
+    const hl = document.querySelector('.copy .hl');
+    const light = () => hl.classList.add('is-lit');
+
+    if (!window.gsap) { root.classList.remove('will-place'); light(); return; }
+
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const rand = (a, b) => a + Math.random() * (b - a);
+    let z = 10;
+
+    // GSAP owns the rotation: read each piece's resting angle from --r
+    pieces.forEach(el => {
+      el._r = parseFloat(el.style.getPropertyValue('--r')) || 0;
+      el.style.rotate = '0deg';
+      gsap.set(el, { rotation: el._r });
+    });
+
+    // ---------- Pick up, drag, throw, settle ----------
+    pieces.forEach(el => {
+      const tilt = gsap.quickTo(el, 'rotation', { duration: 0.35, ease: 'power3.out' });
+      el.addEventListener('dragstart', e => e.preventDefault());
+      el.addEventListener('pointerdown', e => {
+        if (e.button !== 0) return;
+        el.setPointerCapture(e.pointerId);
+        gsap.killTweensOf(el, 'x,y,scale,--lift');
+        el.closest('.cluster').style.zIndex = ++z;
+        el.style.zIndex = ++z;
+        el.classList.add('is-held');
+
+        const startX = gsap.getProperty(el, 'x'), startY = gsap.getProperty(el, 'y');
+        const hr = hero.getBoundingClientRect(), r = el.getBoundingClientRect();
+        const b = {
+          minX: startX + hr.left - r.left - r.width * 0.25, maxX: startX + hr.right - r.right + r.width * 0.25,
+          minY: startY + hr.top + 76 - r.top, maxY: startY + hr.bottom - r.bottom + r.height * 0.15
+        };
+        let lx = e.clientX, ly = e.clientY, lt = performance.now(), vx = 0, vy = 0;
+        const px = e.clientX, py = e.clientY;
+
+        if (!reduce) gsap.to(el, { scale: 1.05, '--lift': 1, duration: 0.25, ease: 'power2.out' });
+
+        const move = ev => {
+          const now = performance.now(), dt = Math.max(8, now - lt);
+          vx = vx * 0.5 + (ev.clientX - lx) / dt * 1000 * 0.5;
+          vy = vy * 0.5 + (ev.clientY - ly) / dt * 1000 * 0.5;
+          lx = ev.clientX; ly = ev.clientY; lt = now;
+          gsap.set(el, { x: clamp(startX + ev.clientX - px, b.minX, b.maxX), y: clamp(startY + ev.clientY - py, b.minY, b.maxY) });
+          if (!reduce) tilt(el._r + clamp(vx * 0.012, -14, 14));
+        };
+        const up = () => {
+          el.removeEventListener('pointermove', move);
+          el.removeEventListener('pointerup', up);
+          el.removeEventListener('pointercancel', up);
+          el.classList.remove('is-held');
+          if (reduce) return;
+          if (performance.now() - lt > 90) { vx = 0; vy = 0; } // stopped before letting go
+          const x = gsap.getProperty(el, 'x'), y = gsap.getProperty(el, 'y');
+          gsap.to(el, { x: clamp(x + vx * 0.16, b.minX, b.maxX), y: clamp(y + vy * 0.16, b.minY, b.maxY), duration: 0.8, ease: 'power3.out' });
+          gsap.to(el, { rotation: el._r + rand(-3, 3), duration: 1.3, ease: 'elastic.out(1, 0.4)', overwrite: 'auto' });
+          gsap.to(el, { scale: 1, '--lift': 0, duration: 0.55, ease: 'back.out(2.4)' });
+        };
+        el.addEventListener('pointermove', move);
+        el.addEventListener('pointerup', up);
+        el.addEventListener('pointercancel', up);
+      });
+    });
+
+    if (reduce) { light(); return; }
+
+    // ---------- Build the page: copy first, then each piece is placed and taped down ----------
+    const swatches = [...document.querySelectorAll('.swatch')];
+    swatches.forEach(s => s.querySelectorAll('path').forEach(p => { const l = p.getTotalLength(); gsap.set(p, { strokeDasharray: l, strokeDashoffset: l }); }));
+    gsap.set('.tape', { '--ts': 0 });
+    root.classList.remove('will-place');
+    gsap.set(pieces, { opacity: 0 });
+    gsap.set(swatches, { opacity: 0 });
+
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.from('.copy > *', { y: 22, opacity: 0, duration: 0.7, stagger: 0.07 }, 0)
+      .add(light, 0.55);
+
+    pieces.forEach((el, i) => {
+      const t = 0.45 + i * 0.2;
+      const swatch = el.closest('.cluster').querySelector('.swatch');
+      if (swatch && !swatch.dataset.drawn) {
+        swatch.dataset.drawn = 1;
+        tl.set(swatch, { opacity: 1 }, t - 0.15)
+          .to(swatch.querySelectorAll('path'), { strokeDashoffset: 0, duration: 0.9, ease: 'power2.inOut' }, t - 0.15);
+      }
+      tl.fromTo(el,
+        { opacity: 0, y: -46, x: rand(-24, 24), rotation: el._r + rand(-12, 12), scale: 1.22, '--lift': 1.4 },
+        { opacity: 1, y: 0, x: 0, rotation: el._r, scale: 1, '--lift': 0, duration: 0.62 }, t);
+      const tapes = el.querySelectorAll('.tape');
+      if (tapes.length) tl.to(tapes, { '--ts': 1, duration: 0.24, ease: 'power2.out', stagger: 0.08 }, t + 0.5);
+    });
+  })();
+  </script>
+</body>
+</html>

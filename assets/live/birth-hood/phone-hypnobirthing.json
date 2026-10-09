@@ -1,0 +1,18 @@
+{
+  "name": "birth-hood: Hypnobirthing",
+  "mobile": {
+    "label": "Hypnobirthing",
+    "page": "index.html",
+    "width": 390,
+    "touch": true,
+    "start": { "to": ".services-grid", "offset": 120 },
+    "actions": [
+      { "wait": 1200 },
+      { "scroll": 200, "ms": 1400, "after": 700 },
+      { "tap": ".services-grid a.service-cell", "nth": 0, "after": 300 },
+      { "wait": 1200 },
+      { "scroll": 700, "ms": 2300, "after": 900 },
+      { "scroll": 800, "ms": 2400, "after": 1200 }
+    ]
+  }
+}

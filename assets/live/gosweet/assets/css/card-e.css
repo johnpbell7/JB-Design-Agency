@@ -1,0 +1,139 @@
+/* GoSweet redesign — the product card, one stylesheet (lead's round-2 pass, 2 Oct 2026). Rendered by GS.card() in app.js.
+   John: the live card "is clearer", "i like the images like this with the roundels", "bottom needs to look as it is",
+   "match te font for these". So: top = lilac blob + cut-out product + tilted SAVE roundel (concept B); bottom = the live
+   card's structure (PACK SIZE | PER PIECE row, then price + "Buy now" on a light band).
+   One type system, three roles: Plus Jakarta Sans for words and labels, neue-haas-grotesk-display (GoSweet's own Adobe kit)
+   for numbers, no Lilita on the card. One hairline colour (--line), one card radius, one button shape.
+   Earlier versions: superseded/round1-card-e-before-lead-pass/. */
+/* card shadow: a soft, natural drop (the solid offset "Shades" drop was tried and dropped: John, "these cards drop shadows still dont
+   look rigght"); pale hairline, lifts on hover */
+.es{position:relative;display:flex;flex-direction:column;min-width:0;height:100%;container-type:inline-size;background:#fff;border-radius:20px;overflow:hidden;
+  font-family:var(--f-ui);color:var(--ink);text-align:left;border:1px solid var(--line);
+  box-shadow:0 1px 2px rgba(26,18,48,.04),0 12px 24px -14px rgba(92,42,157,.25);transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out)}
+.es:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(26,18,48,.05),0 22px 36px -16px rgba(92,42,157,.35)}
+.sec--band .es{border-color:transparent;box-shadow:0 14px 30px -14px rgba(20,8,48,.55)}
+.es p,.es h3{margin:0}
+.es button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.es button:focus-visible{outline:2.5px solid var(--purple);outline-offset:2px}
+.es .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---- picture: the product photo on its solid pinky-purple tile (product-images-tile; no cut-outs, John 5 Oct). On hover the whole
+   tile grows and tilts slightly. ---- */
+.es__stage{position:relative;padding:10px 10px 0}
+.es__tile{display:block;position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:var(--tile);transition:transform .45s var(--ease-pop),box-shadow .45s var(--ease-out)}
+.es__img{display:block;width:100%;height:100%;object-fit:cover}
+.es:hover .es__tile{transform:scale(1.045) rotate(-2deg);box-shadow:0 14px 26px -14px rgba(92,42,157,.45)}
+.es.is-out .es__img{opacity:.55;filter:grayscale(1)}
+.es__save{position:absolute;left:4px;top:4px;z-index:2;display:grid;place-content:center;width:54px;height:54px;border-radius:50%;background:var(--pink);color:#fff;text-align:center;
+  font:800 16px/1 var(--f-ui);font-variant-numeric:tabular-nums;letter-spacing:-.02em;transform:rotate(-12deg);box-shadow:0 0 0 3px #fff,0 6px 12px -4px rgba(231,62,128,.5)}
+.es__save small{display:block;margin-bottom:2px;font:800 8px/1 var(--f-ui);letter-spacing:.12em;text-transform:uppercase}
+.es__status{position:absolute;right:18px;top:18px;z-index:2;display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;background:var(--purple);color:#fff;
+  font:700 10px/1 var(--f-ui);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.es__status--out{background:var(--ink)}
+.es__diet{position:absolute;left:18px;bottom:8px;z-index:2;display:flex;gap:4px}
+.es__chip,.es__rating{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);
+  font:700 10.5px/1 var(--f-ui);color:var(--body);white-space:nowrap}
+.es__chip svg,.es__rating svg{color:var(--purple)}
+.es__rating{color:var(--ink);font-variant-numeric:tabular-nums}
+.es__rating small{font-weight:600;color:var(--muted)}
+/* quick view: in the tile's bottom-right corner, always visible, white with a soft shadow and a light-weight purple eye, no ring (John 5 Oct: "remove stroke i cont like it"; earlier, 5 Oct: "closer to the bottom
+   right and abit easier to see, maybe a thin purple stroke"); fills purple on hover */
+.es__quick{position:absolute;right:16px;bottom:6px;z-index:3;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:0;background:#fff;color:var(--purple);
+  box-shadow:0 4px 12px rgba(26,18,48,.16);cursor:pointer;transition:background .15s,color .15s,transform .2s var(--ease-pop)}
+.es__quick:hover,.es__quick:focus-visible{background:var(--purple);color:#fff;transform:scale(1.06)}
+.es__quick .ico{width:18px;height:18px}
+
+/* ---- brand + name: tight under the picture, name always two lines high ---- */
+.es__words{padding:14px 16px 14px}
+.es__brand{font:700 11px/15px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.es__name{margin-top:3px;font:700 15.5px/1.32 var(--f-ui);color:var(--ink);height:2.64em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.es__name a{color:inherit;text-decoration:none}
+.es__name a::after{content:"";position:absolute;inset:0;z-index:1;border-radius:20px}
+.es__name a:focus-visible{outline:none}
+.es__name a:focus-visible::after{outline:2.5px solid var(--purple);outline-offset:3px}
+
+/* ---- the live card's bottom: PACK SIZE | PER PIECE ---- */
+.es__info{display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);align-items:center;gap:14px;padding:12px 16px;border-top:1px solid var(--line)}
+.es__divider{width:1px;height:30px;background:var(--line)}
+.es__cell{display:flex;flex-direction:column;gap:4px;min-width:0}
+.es__cell--right{align-items:flex-end;text-align:right}
+.es__label{font:700 10.5px/1 var(--f-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.es__value{font:700 17px/1.1 var(--f-price);color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.es__value--sale{color:var(--sale)}
+.es__vrow{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:flex-end;column-gap:6px;row-gap:1px}
+.es__cmp{font:500 12px/1.1 var(--f-ui);color:var(--strike);text-decoration:line-through;text-decoration-thickness:1.5px;white-space:nowrap}
+.es__vrow a{position:relative;z-index:2;display:inline-flex;align-items:baseline;gap:4px;color:var(--purple);text-decoration:none}
+.es__vrow a .es__value{color:var(--purple)}
+.es__each{font:700 12px/1 var(--f-ui)}
+.es__vrow a:hover .es__each{text-decoration:underline}
+
+/* ---- price + Buy now on the light band ---- */
+.es__buy{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;margin-top:auto;padding:14px 16px 16px;background:#faf8fc;border-top:1px solid var(--line)}
+.es__price{display:flex;flex-direction:column;gap:3px;min-width:0}
+.es__price strong{font:700 23px/1 var(--f-price);color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.es.is-sale .es__price strong{color:var(--sale)}
+.es.is-out .es__price strong{color:var(--strike)}
+.es__price s{font:500 12.5px/1.1 var(--f-ui);color:var(--strike);text-decoration-thickness:1.5px}
+.es__price:not(:has(s))::after{content:"\00a0";font:500 12.5px/1.1 var(--f-ui)}
+.es__act{position:relative;z-index:2;justify-self:end}
+.es__add,.es__notify,.es__qty{display:inline-flex;align-items:center;justify-content:center;min-width:104px;height:42px;margin:0 3px 3px 0;border-radius:12px;font:700 14px/1 var(--f-ui);white-space:nowrap;box-sizing:border-box}
+/* 3D push buttons, as on the rest of the site (shadesbyniko.com style): a solid deep-purple shadow, no outline (John: the stroke
+   "doesnt look right"), lift on hover, sink on press */
+.es__add,.es__notify,.es__qty{border:0;box-shadow:3px 3px 0 var(--edge);transition:transform .12s cubic-bezier(.215,.61,.355,1),box-shadow .12s cubic-bezier(.215,.61,.355,1),background .15s}
+.es__add{padding:0 16px;background:var(--purple);color:#fff}
+.es__add:hover{background:var(--purple-hover);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--edge)}
+.es__add:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--edge)}
+.es__notify{gap:6px;padding:0 12px;background:#fff;color:var(--purple);box-shadow:inset 0 0 0 1.5px var(--line-2),3px 3px 0 var(--lilac-3)}
+.es__notify:hover{background:var(--lilac);transform:translate(-1px,-1px);box-shadow:inset 0 0 0 1.5px var(--purple),4px 4px 0 var(--lilac-3)}
+.es__notify:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--edge)}
+.es__notify[aria-pressed="true"]{background:var(--lilac);color:var(--ink)}
+.es__qty{display:none;justify-content:space-between;padding:0 3px;background:var(--purple);color:#fff}
+.es.is-added .es__add{display:none}
+.es.is-added .es__qty{display:flex}
+.es.is-pop .es__qty{animation:es-pop .3s var(--ease-pop)}
+.es__step{display:grid;place-items:center;width:34px;height:36px;padding:0;border:0;border-radius:9px;background:transparent;color:inherit}
+.es__step svg{width:15px;height:15px}
+.es__step:hover{background:rgba(255,255,255,.16)}
+.es__n{min-width:22px;text-align:center;font:700 16px/1 var(--f-price);font-variant-numeric:tabular-nums}
+@keyframes es-pop{from{transform:scale(.88);opacity:.5}to{transform:none;opacity:1}}
+
+/* rail cards on desktop (about 216-240px): a little smaller price and button so they never touch */
+@container (min-width:216px) and (max-width:244px){
+  .es__buy{gap:8px;padding:14px 14px 16px}
+  .es__price strong{font-size:21px}
+  .es__add,.es__notify,.es__qty{min-width:92px;padding:0 13px;font-size:13.5px}
+}
+/* ---- narrow cards (phones, 2 across: about 170-200px): everything a step smaller, Buy now goes full width ---- */
+@container (max-width:215px){
+  .es{border-radius:16px}
+  .es__name a::after{border-radius:16px}
+  .es__stage{padding:8px 8px 0}.es__tile{border-radius:11px}
+  .es__save{left:2px;top:2px;width:44px;height:44px;font-size:13.5px}
+  .es__quick{right:12px;bottom:4px;width:34px;height:34px}
+  .es__save small{font-size:7px}
+  .es__status{right:14px;top:14px;height:21px;padding:0 8px;font-size:9px;letter-spacing:.06em}
+  .es__diet{left:14px}
+  .es__chip,.es__rating{height:20px;padding:0 6px;font-size:10px}
+  .es__chip svg,.es__rating small{display:none}
+  .es__words{padding:10px 12px 12px}
+  .es__brand{font-size:10px;letter-spacing:.06em}
+  .es__name{font-size:14.5px}
+  .es__info{gap:10px;padding:10px 12px}
+  .es__label{font-size:9.5px;letter-spacing:.06em}
+  .es__value{font-size:15px}
+  .es__cmp{font-size:11px}
+  .es__each{font-size:11px}
+  .es__buy{grid-template-columns:1fr;gap:10px;padding:12px}
+  .es__price{flex-direction:row;align-items:baseline;gap:6px}
+  .es__price strong{font-size:20px}
+  .es__price s{font-size:12px}
+  .es__act{justify-self:stretch}
+  .es__add,.es__notify,.es__qty{width:calc(100% - 3px);min-width:0;height:40px;font-size:13.5px}
+}
+@container (max-width:150px){
+  .es__info{grid-template-columns:1fr;gap:8px}
+  .es__divider{display:none}
+  .es__cell--right{align-items:flex-start;text-align:left}
+  .es__vrow{justify-content:flex-start}
+}
+@media (prefers-reduced-motion:reduce){.es,.es__tile,.es__add{transition:none}.es:hover,.es:hover .es__tile{transform:none}.es.is-pop .es__qty{animation:none}}

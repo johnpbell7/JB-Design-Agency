@@ -1,0 +1,391 @@
+<!doctype html>
+<!--
+  HERO 04 · "Hi, I'm John"
+  Idea: a personal, trust-first intro. A big friendly hello and a one-line pitch
+  on the left; on the right a framed portrait over a thick highlighter scribble,
+  ringed by small pieces of real proof (a product card, PATCH, a phone, a count).
+  A calm marquee of every project sits underneath.
+-->
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hi, I'm John · John Bell Design</title>
+  <meta name="description" content="I design and build websites for small businesses, from window cleaners to letting agents.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <script src="../assets/js/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <style>
+    /* ---------- Option tokens ---------- */
+    :root {
+      --mat: #ffffff;
+      --photo-a: #f1f1ef; --photo-b: #e4e4e1; --sil: #d2d2cf;
+      --chip-shadow: 0 1px 2px rgb(24 24 26 / 0.06), 0 22px 44px -20px rgb(24 24 26 / 0.35);
+      --frame-shadow: 0 2px 4px rgb(24 24 26 / 0.05), 0 40px 80px -36px rgb(24 24 26 / 0.45);
+      --scribble-blend: multiply; --scribble-op: 0.72;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --mat: #222226;
+        --photo-a: #2b2b30; --photo-b: #1c1c20; --sil: #3c3c42;
+        --chip-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 22px 44px -18px rgb(0 0 0 / 0.8);
+        --frame-shadow: 0 2px 4px rgb(0 0 0 / 0.4), 0 40px 80px -30px rgb(0 0 0 / 0.9);
+        --scribble-blend: normal; --scribble-op: 0.8;
+      }
+    }
+    :root[data-theme="dark"] {
+      --mat: #222226;
+      --photo-a: #2b2b30; --photo-b: #1c1c20; --sil: #3c3c42;
+      --chip-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 22px 44px -18px rgb(0 0 0 / 0.8);
+      --frame-shadow: 0 2px 4px rgb(0 0 0 / 0.4), 0 40px 80px -30px rgb(0 0 0 / 0.9);
+      --scribble-blend: normal; --scribble-op: 0.8;
+    }
+
+    /* Nav extras (from home.css) */
+    .site-nav__links .theme-switch { margin-inline: 6px; }
+    @media (max-width: 900px) { .site-nav__links a:not(.is-cta) { display: none; } }
+    @media (max-width: 760px) { .site-nav__links .theme-switch { margin: 0; } .site-nav__links .theme-switch button { padding: 5px 8px; } }
+
+    /* ===================== Hero ===================== */
+    .hero { position: relative; min-height: 100dvh; display: flex; align-items: center; overflow: clip; }
+    .hero__inner {
+      width: 100%; max-width: var(--max); margin-inline: auto; padding: 116px var(--gutter) 64px;
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 72px); align-items: center;
+    }
+
+    .avail { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px 7px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--grey-1); font-size: 13px; font-weight: 500; }
+    .avail i { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #34c759; }
+    .avail i::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #34c759; animation: pulse 2s var(--ease-out) infinite; }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 0.7; } 80%, 100% { transform: scale(3.2); opacity: 0; } }
+
+    .hello { margin-top: 26px; font-size: clamp(64px, 9vw, 140px); font-weight: 700; letter-spacing: -0.06em; line-height: 0.95; }
+    .hello .w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.04em 0.1em; margin: 0 -0.04em -0.1em; }
+    .hello .w > span { display: inline-block; }
+    .hello mark { padding-inline: 0.08em; }
+    .hello mark .w { overflow: visible; }
+
+    .pitch { margin-top: 26px; max-width: 26ch; font-size: clamp(19px, 1.75vw, 25px); line-height: 1.45; font-weight: 400; color: var(--grey-7); letter-spacing: -0.01em; }
+    .pitch b { color: var(--ink); font-weight: 600; }
+    .ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 34px; }
+    .btn--big { padding: 17px 28px; font-size: 16px; }
+    .btn--big span { transition: translate 0.3s var(--ease-spring); }
+    .btn--big:hover span { translate: 4px 0; }
+    .promise { display: flex; align-items: center; gap: 10px; margin-top: 26px; font-size: 14px; color: var(--grey-5); }
+    .promise svg { width: 18px; height: 18px; flex: none; color: var(--ink); }
+
+    /* ---------- Portrait stage ---------- */
+    .stage { position: relative; width: min(100%, 600px); aspect-ratio: 1 / 1.04; margin-left: auto; container-type: inline-size; }
+
+    .scribble { position: absolute; left: -2%; top: 22%; width: 82%; overflow: visible; mix-blend-mode: var(--scribble-blend); pointer-events: none; }
+    .scribble path { opacity: var(--scribble-op); }
+    .scribble path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .scribble--pink { left: auto; right: 2%; top: 6%; width: 30%; }
+
+    .frame { position: absolute; left: 21%; top: 11%; width: 55%; z-index: 2; rotate: 2deg; }
+    .frame__mat { padding: 3.2cqw 3.2cqw 0; border-radius: 4.6cqw; background: var(--mat); box-shadow: var(--frame-shadow), inset 0 0 0 1px var(--line); }
+    .frame__photo {
+      position: relative; aspect-ratio: 4 / 5; border-radius: 2.6cqw; overflow: hidden;
+      background: radial-gradient(120% 90% at 30% 10%, var(--photo-a), var(--photo-b));
+      display: grid; place-items: end center;
+    }
+    .frame__photo svg { width: 78%; color: var(--sil); }
+    .frame__label {
+      position: absolute; left: 50%; top: 13%; translate: -50% 0;
+      display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: 999px; white-space: nowrap;
+      background: var(--mat); color: var(--grey-7); font-size: max(11px, 2.1cqw); font-weight: 500; box-shadow: 0 8px 20px -10px rgb(24 24 26 / 0.3);
+    }
+    .frame__label svg { width: 1.2em; height: 1.2em; color: var(--grey-5); }
+    .frame__caption { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 2.6cqw 0.6cqw 3cqw; font-size: max(11px, 2.1cqw); line-height: 1.3; }
+    .frame__caption b { white-space: nowrap; font-weight: 600; letter-spacing: -0.01em; }
+    .frame__caption span { color: var(--grey-5); }
+
+    /* Floating proof */
+    .float { position: absolute; z-index: 3; will-change: transform; }
+    .float__in { display: block; transition: scale 0.5s var(--ease-spring); }
+    .float a { color: inherit; text-decoration: none; display: block; }
+    .float:hover .float__in { scale: 1.05; }
+    .float a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 16px; }
+
+    .f-card { left: 0; top: 13%; width: 25%; }
+    .f-card .float__in { rotate: -8deg; }
+    .f-card img { border-radius: 2.4cqw; box-shadow: var(--chip-shadow); }
+
+    .f-patch { right: -5%; top: 3%; }
+    .f-patch .float__in { rotate: 4deg; }
+    .float .patch-card { display: flex; align-items: center; gap: 2.4cqw; padding: 2.2cqw 2.6cqw 2.2cqw 2.2cqw; border-radius: 3.4cqw; background: #111318; color: #fff; box-shadow: var(--chip-shadow), inset 0 0 0 1px rgb(255 255 255 / 0.08); }
+    .patch-card__disc { flex: none; width: 10.5cqw; aspect-ratio: 1; border-radius: 50%; background: #b3dd03; display: grid; place-items: center; box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.12); }
+    .patch-card__disc img { width: 52%; }
+    .patch-card__txt { min-width: 0; line-height: 1.25; white-space: nowrap; }
+    .patch-card__txt b { display: block; font-size: max(13px, 3cqw); font-weight: 800; letter-spacing: 0.04em; }
+    .patch-card__txt span { display: block; font-size: max(10px, 1.9cqw); color: rgb(255 255 255 / 0.6); }
+    .patch-card__go { margin-left: auto; flex: none; width: 6cqw; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: rgb(179 221 3 / 0.14); color: #b3dd03; font-size: max(11px, 2.2cqw); }
+
+    .f-count { left: -5%; bottom: 7%; }
+    .f-count .float__in { rotate: -3deg; }
+    .float .count { display: flex; align-items: center; gap: 2.2cqw; padding: 1.6cqw 3.2cqw 1.6cqw 1.6cqw; border-radius: 999px; background: var(--mat); box-shadow: var(--chip-shadow), inset 0 0 0 1px var(--line); white-space: nowrap; }
+    .count__faces { display: flex; }
+    .count__faces img { width: 7cqw; height: 7cqw; border-radius: 50%; object-fit: cover; border: 2px solid var(--mat); }
+    .count__faces img + img { margin-left: -2.4cqw; }
+    .count__txt { line-height: 1.2; }
+    .count__txt b { display: block; font-size: max(14px, 3.1cqw); font-weight: 700; letter-spacing: -0.03em; }
+    .count__txt span { display: block; font-size: max(10px, 1.9cqw); color: var(--grey-5); }
+
+    .f-phone { right: -2%; bottom: -3%; width: 20%; }
+    .f-phone .float__in { rotate: 7deg; }
+    .phone { display: block; padding: 1.1cqw; border-radius: 4.2cqw; background: #0f0f11; box-shadow: var(--chip-shadow), inset 0 0 0 1px rgb(255 255 255 / 0.1); position: relative; }
+    .phone::before { content: ""; position: absolute; left: 50%; top: 2.1cqw; z-index: 2; width: 30%; height: 1.6cqw; translate: -50% 0; border-radius: 999px; background: #0f0f11; }
+    .phone__screen { aspect-ratio: 9 / 19.5; overflow: hidden; border-radius: 3.2cqw; background: #fff; }
+    .phone__screen img { width: 100%; animation: phone-scroll 36s ease-in-out infinite alternate; }
+    @keyframes phone-scroll { 0%, 8% { transform: translateY(0); } 92%, 100% { transform: translateY(-62%); } }
+
+    /* Little label that appears on hover */
+    .float [data-tip]::after {
+      content: attr(data-tip); position: absolute; left: 50%; top: calc(100% + 10px); translate: -50% 4px;
+      padding: 5px 10px; border-radius: 999px; background: var(--ink); color: var(--white); font-size: 12px; font-weight: 500; white-space: nowrap;
+      opacity: 0; transition: opacity 0.3s, translate 0.4s var(--ease-out); pointer-events: none;
+    }
+    .float:hover [data-tip]::after, .float a:focus-visible::after { opacity: 1; translate: -50% 0; }
+
+    /* ---------- Project marquee ---------- */
+    .marquee { border-block: 1px solid var(--line); background: var(--white); }
+    .marquee__inner { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); display: flex; align-items: center; gap: 28px; }
+    .marquee__label { flex: none; display: inline-flex; align-items: center; gap: 10px; padding-right: 24px; border-right: 1px solid var(--line); font-size: 13px; font-weight: 500; color: var(--grey-5); white-space: nowrap; }
+    .marquee__label::before { content: ""; width: 18px; height: 1px; background: currentColor; }
+    .marquee__view { flex: 1; min-width: 0; overflow: hidden; padding-block: 20px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .marquee__track { display: flex; width: max-content; animation: marquee 48s linear infinite; }
+    .marquee__view:hover .marquee__track, .marquee__view:focus-within .marquee__track { animation-play-state: paused; }
+    .marquee__set { display: flex; align-items: center; margin: 0; padding: 0; list-style: none; }
+    .marquee__set li { display: flex; align-items: center; }
+    .marquee__set li::after { content: ""; width: 6px; height: 6px; margin-inline: 26px; border-radius: 50%; background: var(--grey-3); }
+    .marquee__set a { font-size: clamp(16px, 1.4vw, 19px); font-weight: 500; letter-spacing: -0.015em; color: var(--grey-7); text-decoration: none; white-space: nowrap; transition: color 0.2s; }
+    .marquee__set a:hover { color: var(--ink); }
+    .marquee__set a:hover .hl { background-size: 100% 72%; }
+    .marquee__set .hl { color: inherit; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ---------- Tablet + phone ---------- */
+    @media (max-width: 960px) {
+      .hero { display: block; min-height: 0; }
+      .hero__inner { grid-template-columns: 1fr; padding-top: 104px; padding-bottom: 40px; gap: 28px; }
+      .stage { margin-inline: auto; width: min(100%, 520px); }
+    }
+    @media (max-width: 560px) {
+      .hello { font-size: clamp(56px, 17vw, 76px); margin-top: 20px; }
+      .pitch { margin-top: 18px; font-size: 19px; }
+      .ctas { margin-top: 26px; }
+      .ctas .btn--big { padding: 15px 22px; font-size: 15px; }
+      .promise { margin-top: 18px; font-size: 13px; }
+      .stage { aspect-ratio: 1 / 1.12; }
+      .frame { left: 22%; width: 56%; top: 9%; }
+      .f-card { width: 24%; left: 0; top: 16%; }
+      .f-patch { right: -1%; top: 1%; }
+      .f-count { left: 0; bottom: 1%; }
+      .f-phone { width: 21%; right: 1%; bottom: 4%; }
+      .float [data-tip]::after { display: none; }
+      .frame__caption { white-space: nowrap; }
+      .frame__caption span { display: none; }
+      .marquee__label { display: none; }
+      .marquee__view { padding-block: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .phone__screen img { animation: none; }
+      .marquee__track { animation: none; }
+      .marquee__view { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-nav">
+    <a class="site-nav__mark" href="../index.html">John Bell <span>Design</span></a>
+    <nav class="site-nav__links" aria-label="Main">
+      <a href="../index.html#skills">Services</a>
+      <a href="../index.html#process">Process</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../projects/property.html">Print</a>
+      <a href="../index.html#faq">FAQs</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
+      <a class="is-cta" href="../index.html#contact">Start a project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hello">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <span class="avail" data-in><i aria-hidden="true"></i>Available for new projects</span>
+          <h1 class="hello" id="hello" data-split>Hi, I'm <mark class="hl">John.</mark></h1>
+          <p class="pitch" data-in>I design and build websites for small businesses — from <b>window cleaners</b> to <b>letting agents.</b></p>
+          <div class="ctas" data-in>
+            <a class="btn btn--big" href="../index.html#contact">Start a project <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost btn--big" href="../index.html#work">See my work</a>
+          </div>
+          <p class="promise" data-in>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.5L16 9.5"/></svg>
+            You deal with me from first sketch to live site.
+          </p>
+        </div>
+
+        <div class="stage" data-stage>
+          <!-- Thick see-through highlighter scribble behind the portrait -->
+          <svg class="scribble" viewBox="0 0 500 560" aria-hidden="true">
+            <path data-draw stroke="var(--hl-yellow)" stroke-width="62" d="M70 150 C169 124 284 52 400 12"/>
+            <path data-draw stroke="var(--hl-yellow)" stroke-width="62" d="M28 196 C148 164 288 76 428 28"/>
+            <path data-draw stroke="var(--hl-yellow)" stroke-width="62" d="M56 236 C164 207 290 128 416 85"/>
+            <path data-draw stroke="var(--hl-yellow)" stroke-width="62" d="M18 282 C147 248 298 154 448 102"/>
+            <path data-draw stroke="var(--hl-yellow)" stroke-width="62" d="M64 320 C181 289 318 204 454 157"/>
+            <path data-draw stroke="var(--hl-yellow)" stroke-width="62" d="M30 364 C165 328 322 229 480 175"/>
+            <path data-draw stroke="var(--hl-yellow)" stroke-width="62" d="M84 404 C207 371 350 281 494 232"/>
+            <path data-draw stroke="var(--hl-yellow)" stroke-width="62" d="M46 446 C178 411 332 315 486 262"/>
+            <path data-draw stroke="var(--hl-yellow)" stroke-width="62" d="M120 486 C246 452 393 360 540 310"/>
+          </svg>
+          <svg class="scribble scribble--pink" viewBox="0 0 220 200" aria-hidden="true">
+            <path data-draw stroke="var(--hl-pink)" stroke-width="34" d="M40 110 C80 80 120 55 160 36"/>
+            <path data-draw stroke="var(--hl-pink)" stroke-width="34" d="M50 170 C100 130 150 100 196 80"/>
+          </svg>
+
+          <figure class="frame" data-frame>
+            <div class="frame__mat">
+              <div class="frame__photo">
+                <svg viewBox="0 0 200 180" aria-hidden="true"><circle cx="100" cy="66" r="38" fill="currentColor"/><path d="M22 180c4-46 38-70 78-70s74 24 78 70z" fill="currentColor"/></svg>
+                <span class="frame__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Your photo here</span>
+              </div>
+              <p class="frame__caption"><b>John Bell</b><span>Designer &amp; developer</span></p>
+            </div>
+          </figure>
+
+          <div class="float f-card" data-depth="26">
+            <span class="float__in"><a href="../projects/gosweet.html" data-tip="GoSweet · online shop">
+              <img src="../assets/captures/gosweet/card-desktop.webp" alt="GoSweet product card, from the GoSweet shop I designed">
+            </a></span>
+          </div>
+
+          <div class="float f-patch" data-depth="18">
+            <span class="float__in"><a class="patch-card" href="../projects/patch.html" data-tip="Case study">
+              <span class="patch-card__disc"><img src="../assets/projects/patch/patch-a.svg" alt=""></span>
+              <span class="patch-card__txt"><b>PATCH</b><span>Brand + website</span></span>
+              <span class="patch-card__go" aria-hidden="true">↗</span>
+            </a></span>
+          </div>
+
+          <div class="float f-count" data-depth="34">
+            <span class="float__in"><a class="count" href="../index.html#work" data-tip="See them all">
+              <span class="count__faces" aria-hidden="true">
+                <img src="../assets/projects/patch/polo.jpg" alt="">
+                <img src="../assets/projects/birth-hood/parent-baby-150.jpg" alt="">
+                <img src="../assets/projects/beetle-eyes/be-sign.jpg" alt="">
+                <img src="../assets/projects/property/covers/darley.jpg" alt="">
+              </span>
+              <span class="count__txt"><b>8 sites</b><span>designed &amp; built</span></span>
+            </a></span>
+          </div>
+
+          <div class="float f-phone" data-depth="22">
+            <span class="float__in"><a href="../projects/birth-hood.html" data-tip="Birth-hood · website">
+              <span class="phone"><span class="phone__screen" style="display:block"><img src="../assets/captures/birth-hood/home-mobile.webp" alt="The Birth-hood website on a phone"></span></span>
+            </a></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slim strip: every project, as a calm marquee -->
+    <section class="marquee" aria-label="Projects">
+      <div class="marquee__inner">
+        <span class="marquee__label">Sites I've designed &amp; built</span>
+        <div class="marquee__view">
+          <div class="marquee__track">
+            <ul class="marquee__set">
+              <li><a href="../projects/patch.html">PATCH</a></li>
+              <li><a href="../projects/birth-hood.html">Birth-hood</a></li>
+              <li><a href="../projects/gosweet.html">GoSweet</a></li>
+              <li><a href="../projects/nic-pouches.html">Nic Pouches</a></li>
+              <li><a href="../projects/vsl-trade.html">VSL Trade</a></li>
+              <li><a href="../projects/birdie-blooms.html">Birdie Blooms</a></li>
+              <li><a href="../projects/sccc-heritage.html">SCCC Heritage</a></li>
+              <li><a href="../projects/beetle-eyes.html">Beetle Eyes</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+  (() => {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const marks = document.querySelectorAll('.hello .hl');
+
+    // Marquee: duplicate the list (twice gives a seamless -50% loop on wide screens)
+    const track = document.querySelector('.marquee__track');
+    const set = track.querySelector('.marquee__set');
+    const copy = set.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    copy.querySelectorAll('a').forEach(a => a.tabIndex = -1);
+    track.appendChild(copy);
+
+    if (!window.gsap || reduce) { marks.forEach(m => m.classList.add('is-lit')); return; }
+
+    // Split the hello into words
+    const title = document.querySelector('[data-split]');
+    const wrapWords = node => {
+      [...node.childNodes].forEach(n => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            const w = document.createElement('span'); w.className = 'w';
+            const i = document.createElement('span'); i.textContent = part; w.appendChild(i); frag.appendChild(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) wrapWords(n);
+      });
+    };
+    wrapWords(title);
+
+    // Scribble strokes draw on like a marker
+    const strokes = [...document.querySelectorAll('[data-draw]')];
+    strokes.forEach(p => { const L = p.getTotalLength(); gsap.set(p, { strokeDasharray: L, strokeDashoffset: L }); });
+
+    const floats = gsap.utils.toArray('.float');
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    tl.from(title.querySelectorAll('.w > span'), { yPercent: 115, duration: 1.1, stagger: 0.08 }, 0.1)
+      .from('[data-in]', { y: 18, autoAlpha: 0, duration: 0.9, stagger: 0.08 }, 0.3)
+      .add(() => marks.forEach(m => m.classList.add('is-lit')), 0.75)
+      .from('[data-frame]', { y: 40, rotate: -4, scale: 0.94, autoAlpha: 0, duration: 1.4, ease: 'expo.out' }, 0.2)
+      .to(strokes.filter(p => p.closest('.scribble:not(.scribble--pink)')), { strokeDashoffset: 0, duration: 0.42, stagger: 0.22, ease: 'power1.inOut' }, 0.5)
+      .to(strokes.filter(p => p.closest('.scribble--pink')), { strokeDashoffset: 0, duration: 0.4, stagger: 0.2, ease: 'power1.inOut' }, 1.6)
+      .from(floats, { scale: 0.6, autoAlpha: 0, duration: 1, stagger: 0.12, ease: 'back.out(1.7)' }, 0.9);
+
+    // Gentle bob, each piece on its own rhythm
+    gsap.utils.toArray('.float__in').forEach((el, i) => {
+      gsap.to(el, { y: i % 2 ? 9 : -9, duration: 2.8 + i * 0.55, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1.6 + i * 0.2 });
+    });
+
+    // Pointer parallax: nearer pieces move more
+    if (fine) {
+      const movers = floats.map(el => ({ d: +el.dataset.depth || 20, x: gsap.quickTo(el, 'x', { duration: 1.2, ease: 'power3.out' }), y: gsap.quickTo(el, 'y', { duration: 1.2, ease: 'power3.out' }) }));
+      const frame = document.querySelector('[data-frame]');
+      const fx = gsap.quickTo(frame, 'x', { duration: 1.4, ease: 'power3.out' });
+      const fy = gsap.quickTo(frame, 'y', { duration: 1.4, ease: 'power3.out' });
+      addEventListener('pointermove', e => {
+        const x = e.clientX / innerWidth - 0.5, y = e.clientY / innerHeight - 0.5;
+        movers.forEach(m => { m.x(x * m.d); m.y(y * m.d); });
+        fx(x * -6); fy(y * -6);
+      }, { passive: true });
+    }
+  })();
+  </script>
+</body>
+</html>

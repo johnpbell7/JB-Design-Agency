@@ -1,0 +1,11 @@
+/* GoSweet redesign type. Headlines: Rubik 800 (John, 5 Oct 2026, on Lilita One: "dont lie this font"; Lilita moved to superseded/fonts-round2/).
+   Earlier (2 Oct): Lilita One only for big display text (24px and up); Plus Jakarta Sans for
+   everything else (John: "you need to find a nice clean body font" — Nunito retired, superseded/fonts-round1/).
+   Self-hosted Google Fonts, SIL Open Font License 1.1 (Working files/reference/fonts/), latin subset.
+   The "… Fallback" faces are Arial sized to each font's metrics (size-adjust, ascent/descent from the fonts' own
+   tables), so text keeps its size and line breaks while the webfont loads. */
+@font-face{font-family:"Rubik";font-style:normal;font-weight:300 900;font-display:swap;src:url(../fonts/Rubik.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:200 800;font-display:swap;src:url(../fonts/PlusJakartaSans.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Plus Jakarta Sans";font-style:italic;font-weight:200 800;font-display:swap;src:url(../fonts/PlusJakartaSans-Italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Rubik Fallback";src:local("Arial");size-adjust:106%;ascent-override:88%;descent-override:24%;line-gap-override:0%}
+@font-face{font-family:"Plus Jakarta Sans Fallback";src:local("Arial");size-adjust:104.6%;ascent-override:99.2%;descent-override:21.2%;line-gap-override:0%}

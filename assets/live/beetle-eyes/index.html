@@ -1,0 +1,2878 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beetle Eyes Clothing — Pre-loved & Vintage, Mountsorrel</title>
+<meta name="description" content="A curated rail of pre-loved and vintage clothing inside Curious Magpie, Mountsorrel. Picked by stylist Corrine Kaenzig — come and have a rummage at 9 Market Place." />
+<meta property="og:title" content="Beetle Eyes Clothing — Pre-loved & Vintage" />
+<meta property="og:description" content="A curated rail of pre-loved and vintage finds inside Curious Magpie, Mountsorrel. Picked by stylist Corrine Kaenzig." />
+<meta property="og:image:alt" content="The mustard-yellow Curious Magpie shopfront at 9 Market Place, Mountsorrel" />
+<meta property="og:url" content="https://beetleeyesclothing.co.uk/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Beetle Eyes Clothing" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Beetle Eyes Clothing — Pre-loved & Vintage" />
+<meta name="twitter:description" content="A curated rail of pre-loved and vintage finds inside Curious Magpie, Mountsorrel. Picked by stylist Corrine Kaenzig." />
+<link rel="canonical" href="https://beetleeyesclothing.co.uk/" />
+
+<script>
+  // Always start at the top on reload/back-forward so the curtain plays in context
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('pageshow', function () { window.scrollTo(0, 0); });
+</script>
+
+<link href="fonts/fonts.css" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-3: #e0d4bf;
+    --ink: #1c1d18;
+    --ink-2: #3a3a32;
+    --ink-3: #6b6a5e;
+    --mustard: #d4a04a;       /* shopfront sign yellow - kept for No.9 stamp */
+    --mustard-2: #b8862f;
+    --maroon: #5a3a32;        /* deep warm brown */
+    --maroon-2: #3d2622;
+    --beetle: #1f3a2e;
+    --beetle-2: #2d5240;
+    --rose: #b87a82;          /* dusty rose - readable on cream, soft on dark */
+    --rose-2: #9d626b;        /* deeper rose for hover/pressed states */
+    --rose-soft: #e0c4c7;     /* very soft tint for backgrounds/underlines only */
+    --gold: #b89150;
+    --shadow-warm: 0 24px 60px -28px rgba(28, 29, 24, 0.35);
+    --shadow-card: 0 8px 30px -10px rgba(28, 29, 24, 0.18);
+  }
+
+  @keyframes wobble-no9 {
+    0%, 100% { transform: rotate(6deg); }
+    18%      { transform: rotate(9deg); }
+    42%      { transform: rotate(3deg); }
+    66%      { transform: rotate(8deg); }
+    85%      { transform: rotate(4.5deg); }
+  }
+  @keyframes wobble-no9-mobile {
+    0%, 100% { transform: rotate(-4deg); }
+    18%      { transform: rotate(-1deg); }
+    42%      { transform: rotate(-7deg); }
+    66%      { transform: rotate(-2deg); }
+    85%      { transform: rotate(-5.5deg); }
+  }
+  @keyframes wobble-magpie {
+    0%, 100% { transform: rotate(-3deg); }
+    20%      { transform: rotate(0deg); }
+    44%      { transform: rotate(-6deg); }
+    68%      { transform: rotate(-1.5deg); }
+    88%      { transform: rotate(-4.5deg); }
+  }
+  @keyframes wobble-magpie-mobile {
+    0%, 100% { transform: rotate(-4deg); }
+    20%      { transform: rotate(-1deg); }
+    44%      { transform: rotate(-7deg); }
+    68%      { transform: rotate(-2.5deg); }
+    88%      { transform: rotate(-5.5deg); }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 90% 60% at 15% 0%, rgba(184, 122, 130, 0.08), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 85% 100%, rgba(31, 58, 46, 0.10), transparent 60%);
+  }
+
+  .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 0.92;
+    text-wrap: balance;
+    font-variation-settings: "opsz" 144;
+  }
+
+  /* ---------- Floating Instagram button ---------- */
+  .float-ig {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 80;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--maroon);
+    color: var(--paper);
+    box-shadow: 0 10px 28px -10px rgba(28, 29, 24, 0.45);
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    pointer-events: none;
+    transition: opacity 0.45s ease,
+                transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+  .float-ig.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  .float-ig:hover {
+    background: var(--rose);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 16px 32px -10px rgba(184, 122, 130, 0.55);
+  }
+  .float-ig svg {
+    width: 26px;
+    height: 26px;
+    fill: currentColor;
+    display: block;
+  }
+  .float-ig::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 1.5px dashed rgba(184, 122, 130, 0.5);
+    border-radius: 999px;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+  }
+  .float-ig:hover::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+  @media (max-width: 600px) {
+    .float-ig { bottom: 1.1rem; right: 1.1rem; width: 50px; height: 50px; }
+    .float-ig svg { width: 22px; height: 22px; }
+  }
+
+  /* ---------- Page-load curtains (sketched doodle) ---------- */
+  .page-curtain {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    pointer-events: auto;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  body:has(.page-curtain) {
+    overflow: hidden;
+  }
+  .page-curtain .curtain {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 52%;
+    background: var(--paper);
+    will-change: transform;
+  }
+  .page-curtain .curtain-left {
+    left: 0;
+    animation: curtain-open-left 1.05s cubic-bezier(0.76, 0, 0.24, 1) 1.2s forwards;
+  }
+  .page-curtain .curtain-right {
+    right: 0;
+    animation: curtain-open-right 1.05s cubic-bezier(0.76, 0, 0.24, 1) 1.2s forwards;
+  }
+  .page-curtain .curtain-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: var(--rose-2);
+    opacity: 0.5;
+    transform-origin: center top;
+    animation: fabric-sway-left 2.8s ease-in-out infinite;
+  }
+  /* Thinner strokes — reads more like fabric, less like a sketch on desktop */
+  .page-curtain .curtain-svg line {
+    stroke-width: 0.6;
+  }
+  .page-curtain .curtain-svg circle {
+    r: 3;
+    stroke-width: 0.5;
+  }
+  .page-curtain .curtain-svg path {
+    stroke-width: 0.32;
+  }
+  .page-curtain .curtain-svg path:last-of-type {
+    /* the scalloped hem at the bottom */
+    stroke-width: 0.5;
+  }
+  .page-curtain .curtain-right .curtain-svg {
+    animation: fabric-sway-right 3.1s ease-in-out infinite;
+  }
+  @keyframes fabric-sway-left {
+    0%, 100% { transform: translateX(0px) skewY(0deg); }
+    50%      { transform: translateX(-3px) skewY(0.5deg); }
+  }
+  @keyframes fabric-sway-right {
+    0%, 100% { transform: scaleX(-1) translateX(0px) skewY(0deg); }
+    50%      { transform: scaleX(-1) translateX(3px) skewY(0.5deg); }
+  }
+
+  /* Rings rattle as the drapes pull open */
+  .page-curtain .curtain-svg circle {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: ring-rattle 0.45s cubic-bezier(0.4, 0, 0.6, 1) 1.2s 2 forwards;
+  }
+  .page-curtain .curtain-svg circle:nth-of-type(1) { animation-delay: 1.18s; }
+  .page-curtain .curtain-svg circle:nth-of-type(2) { animation-delay: 1.21s; }
+  .page-curtain .curtain-svg circle:nth-of-type(3) { animation-delay: 1.16s; }
+  .page-curtain .curtain-svg circle:nth-of-type(4) { animation-delay: 1.20s; }
+  .page-curtain .curtain-svg circle:nth-of-type(5) { animation-delay: 1.17s; }
+  .page-curtain .curtain-svg circle:nth-of-type(6) { animation-delay: 1.19s; }
+  .page-curtain .curtain-svg circle:nth-of-type(7) { animation-delay: 1.20s; }
+  .page-curtain .curtain-svg circle:nth-of-type(8) { animation-delay: 1.16s; }
+  .page-curtain .curtain-svg circle:nth-of-type(9) { animation-delay: 1.18s; }
+  .page-curtain .curtain-svg circle:nth-of-type(10) { animation-delay: 1.21s; }
+
+  @keyframes ring-rattle {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    20%      { transform: translateY(-2.5px) rotate(5deg); }
+    40%      { transform: translateY(0) rotate(-3deg); }
+    60%      { transform: translateY(-1.5px) rotate(2deg); }
+    80%      { transform: translateY(0) rotate(-1deg); }
+  }
+
+  /* Pleats stretch as the curtain is pulled */
+  .page-curtain .curtain-svg path:nth-of-type(-n+10) {
+    transform-origin: top center;
+    animation: pleat-stretch 1.05s cubic-bezier(0.65, 0, 0.35, 1) 1.2s forwards;
+  }
+  @keyframes pleat-stretch {
+    0%   { transform: scaleY(1) skewX(0deg); }
+    50%  { transform: scaleY(1.04) skewX(-1.6deg); }
+    100% { transform: scaleY(1) skewX(0deg); }
+  }
+  .page-curtain .curtain-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    text-align: center;
+    pointer-events: none;
+    opacity: 1;
+    animation: curtain-center-out 0.4s ease 1.15s forwards;
+  }
+  .page-curtain .curtain-center img {
+    width: 240px;
+    max-width: 60vw;
+    height: auto;
+    display: block;
+    margin: 0 auto 0.9rem;
+  }
+  .page-curtain .curtain-center p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    color: var(--maroon);
+    margin: 0;
+  }
+  .page-curtain .curtain-center p .dot {
+    color: var(--rose);
+    margin: 0 0.4em;
+  }
+  .page-curtain.done {
+    display: none;
+  }
+
+  @keyframes curtain-open-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-110%); }
+  }
+  @keyframes curtain-open-right {
+    from { transform: translateX(0); }
+    to { transform: translateX(110%); }
+  }
+  @keyframes curtain-center-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes curtain-center-out {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+  }
+
+  @media (max-width: 600px) {
+    .page-curtain .curtain-center img { width: 180px; }
+    .page-curtain .curtain-center p { font-size: 0.92rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .page-curtain { display: none; }
+  }
+
+  .label {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-3);
+  }
+
+  ::selection { background: var(--beetle); color: var(--paper); }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Navigation ---------- */
+  nav.top {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 1.1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(12px) saturate(1.15);
+    -webkit-backdrop-filter: blur(12px) saturate(1.15);
+    background: rgba(244, 237, 224, 0.82);
+    border-bottom: 1px solid rgba(28, 29, 24, 0.06);
+    transition: padding 0.3s ease, background 0.3s ease;
+  }
+
+  nav.top.scrolled {
+    padding: 0.7rem 2.5rem;
+    background: rgba(244, 237, 224, 0.94);
+  }
+
+  nav.top .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  nav.top .logo-mark img {
+    height: 44px;
+    width: auto;
+    transition: height 0.3s ease;
+    display: block;
+  }
+
+  nav.top.scrolled .logo-mark img {
+    height: 36px;
+  }
+
+  nav.top ul {
+    display: flex;
+    gap: 2.4rem;
+    list-style: none;
+  }
+
+  nav.top ul a {
+    font-size: 0.85rem;
+    color: var(--ink-2);
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  nav.top ul a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -3px;
+    height: 1px;
+    background: var(--rose);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  nav.top ul a:hover::after { transform: scaleX(1); }
+  nav.top ul a:hover { color: var(--rose); }
+
+  nav.top .visit-btn {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--paper);
+    background: var(--rose);
+    padding: 0.7rem 1.2rem;
+    border-radius: 999px;
+    position: relative;
+    overflow: hidden;
+    transform: translate(var(--mx, 0px), var(--my, 0px));
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s ease;
+  }
+  nav.top .visit-btn .ripple {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(244, 237, 224, 0.55);
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    animation: visit-btn-ripple 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes visit-btn-ripple {
+    0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.65; }
+    100% { transform: translate(-50%, -50%) scale(45); opacity: 0; }
+  }
+  nav.top .visit-btn:hover {
+    background: var(--rose-2);
+    transform: translate(var(--mx, 0px), calc(var(--my, 0px) - 1px));
+  }
+
+  /* Burger button - hidden on desktop */
+  .burger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 65;
+  }
+  .burger span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: var(--ink);
+    margin: 5px 0;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease;
+    transform-origin: center;
+  }
+  .burger.open span:nth-child(1) {
+    background: var(--paper);
+    animation: burger-1-open 0.45s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+  .burger.open span:nth-child(2) {
+    background: var(--paper);
+    animation: burger-2-open 0.45s ease forwards;
+  }
+  .burger.open span:nth-child(3) {
+    background: var(--paper);
+    animation: burger-3-open 0.45s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+  @keyframes burger-1-open {
+    0%   { transform: translateY(0) rotate(0) scaleX(1); }
+    40%  { transform: translateY(7px) rotate(0) scaleX(0.18); }
+    55%  { transform: translateY(7px) rotate(0) scaleX(0.18); }
+    100% { transform: translateY(7px) rotate(45deg) scaleX(1); }
+  }
+  @keyframes burger-2-open {
+    0%   { opacity: 1; transform: scaleX(1); }
+    40%  { opacity: 1; transform: scaleX(0.18); }
+    60%  { opacity: 0; transform: scaleX(0.18); }
+    100% { opacity: 0; transform: scaleX(0.18); }
+  }
+  @keyframes burger-3-open {
+    0%   { transform: translateY(0) rotate(0) scaleX(1); }
+    40%  { transform: translateY(-7px) rotate(0) scaleX(0.18); }
+    55%  { transform: translateY(-7px) rotate(0) scaleX(0.18); }
+    100% { transform: translateY(-7px) rotate(-45deg) scaleX(1); }
+  }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background: var(--beetle);
+    color: var(--paper);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 2.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.65, 0, 0.35, 1), visibility 0.4s;
+    overflow: hidden;
+  }
+
+  /* Close X — sits inside the overlay, top-right */
+  .mobile-menu-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 70;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.15s, transform 0.3s ease;
+  }
+  .mobile-menu.open .mobile-menu-close {
+    opacity: 1;
+  }
+  .mobile-menu-close:hover { transform: rotate(90deg); }
+  .mobile-menu-close::before,
+  .mobile-menu-close::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 22px;
+    height: 1.5px;
+    background: var(--paper);
+    transform-origin: center;
+  }
+  .mobile-menu-close::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .mobile-menu-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  .mobile-menu::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 100% 0%, rgba(184, 122, 130, 0.18), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 0% 100%, rgba(184, 122, 130, 0.12), transparent 60%);
+    pointer-events: none;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .mobile-menu ul {
+    list-style: none;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  .mobile-menu li {
+    overflow: hidden;
+    border-bottom: 1px solid rgba(244, 237, 224, 0.12);
+  }
+  .mobile-menu li:first-child {
+    border-top: 1px solid rgba(244, 237, 224, 0.12);
+  }
+  .mobile-menu li a {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 1.4rem 0;
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+    transform: translateY(30px);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease, color 0.2s ease;
+  }
+  .mobile-menu li a .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--rose);
+    font-weight: 300;
+  }
+  .mobile-menu.open li:nth-child(1) a { transition-delay: 0.15s; }
+  .mobile-menu.open li:nth-child(2) a { transition-delay: 0.22s; }
+  .mobile-menu.open li:nth-child(3) a { transition-delay: 0.29s; }
+  .mobile-menu.open li:nth-child(4) a { transition-delay: 0.36s; }
+  .mobile-menu.open li:nth-child(5) a { transition-delay: 0.43s; }
+  .mobile-menu.open li a {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .mobile-menu li a:active,
+  .mobile-menu li a:hover { color: var(--rose); }
+
+  .mobile-menu-foot {
+    margin-top: 3rem;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease 0.55s, transform 0.5s ease 0.55s;
+  }
+  .mobile-menu.open .mobile-menu-foot {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .mobile-menu-foot p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: rgba(244, 237, 224, 0.6);
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+  .mobile-menu-foot a {
+    color: var(--rose);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    display: block;
+    margin-top: 0.6rem;
+  }
+
+  /* Lock body scroll when menu open */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  @media (max-width: 800px) {
+    nav.top { padding: 0.85rem 1.25rem; }
+    nav.top ul { display: none; }
+    nav.top .visit-btn { display: none; }
+    nav.top .logo-mark img { height: 34px; }
+    .burger { display: block; }
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    min-height: 100dvh;
+    padding: 9rem 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-text { position: relative; z-index: 2; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-eyebrow .dot {
+    width: 7px; height: 7px;
+    background: var(--rose);
+    border-radius: 999px;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  h1.hero-title {
+    font-size: clamp(2.7rem, 7vw, 7.2rem);
+    margin-bottom: 1.6rem;
+  }
+
+  h1 .hand {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--beetle);
+    display: inline-block;
+  }
+
+  .underline {
+    position: relative;
+    display: inline-block;
+    isolation: isolate;
+  }
+
+  .underline::after {
+    content: '';
+    position: absolute;
+    left: -2%; right: -2%; bottom: 4%;
+    height: 18%;
+    background: var(--rose-soft);
+    opacity: 0.85;
+    z-index: -1;
+    transform: skewX(-6deg);
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.7s cubic-bezier(0.65, 0, 0.35, 1) 0.35s;
+  }
+
+  /* Reveal-driven titles: draw underline when their h2 enters view */
+  .reveal.in .underline::after {
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* Hero h1 isn't a reveal element — animate its underline against the heroIn timing */
+  .hero-text h1 .underline::after {
+    animation: underline-draw 0.5s cubic-bezier(0.65, 0, 0.35, 1) 1.55s forwards;
+  }
+
+  @keyframes underline-draw {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+  }
+
+  .hero-sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 30ch;
+    margin-bottom: 2.6rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem 1.6rem;
+    background: var(--maroon);
+    color: var(--paper);
+    border-radius: 999px;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease;
+  }
+  .btn-primary:hover { background: var(--rose); transform: translateY(-2px); }
+  .btn-primary svg { transition: transform 0.3s ease; }
+  .btn-primary:hover svg { transform: translateX(3px); }
+
+  .btn-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-2);
+    border-bottom: 1px solid var(--ink-3);
+    padding-bottom: 2px;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .btn-text:hover { color: var(--beetle); border-color: var(--beetle); }
+
+  .hero-visual {
+    position: relative;
+    height: 75vh;
+    min-height: 500px;
+    perspective: 1400px;
+    perspective-origin: center;
+  }
+
+  .frame {
+    position: absolute;
+    background: var(--paper-2);
+    border: 1px solid rgba(28, 29, 24, 0.08);
+    box-shadow: var(--shadow-warm);
+    overflow: hidden;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .frame img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: saturate(0.85) contrast(1.02);
+  }
+
+  .frame.f1 {
+    width: 62%;
+    aspect-ratio: 3/4;
+    top: 5%;
+    left: 8%;
+    transform: rotate(-3deg);
+    z-index: 3;
+  }
+  .frame.f2 {
+    width: 48%;
+    aspect-ratio: 4/5;
+    top: 38%;
+    right: 2%;
+    transform: rotate(4deg);
+    z-index: 2;
+  }
+  .frame.f3 {
+    width: 30%;
+    aspect-ratio: 3/4;
+    bottom: 0;
+    left: -3%;
+    transform: rotate(-7deg);
+    z-index: 4;
+  }
+  .frame:hover { transform: rotate(0) scale(1.02); z-index: 5; }
+
+  /* Address stamp — dusty rose square in top-right corner */
+  .address-stamp {
+    position: absolute;
+    top: -2%;
+    right: -3%;
+    background: var(--rose-soft);
+    color: var(--maroon);
+    padding: 1.1rem 1.4rem 1rem;
+    transform: rotate(6deg);
+    z-index: 5;
+    box-shadow: var(--shadow-warm);
+    border: 1px solid rgba(184, 122, 130, 0.35);
+    text-align: center;
+    min-width: 150px;
+  }
+  .address-stamp strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.55rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.45rem;
+    color: var(--maroon);
+  }
+  .address-stamp span {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.85rem;
+    line-height: 1.35;
+    color: var(--maroon-2);
+  }
+
+  @media (max-width: 900px) {
+    header.hero {
+      grid-template-columns: 1fr;
+      padding: 6rem 1.25rem 3rem;
+      min-height: auto;
+      gap: 2rem;
+    }
+    .hero-visual {
+      height: 55vh;
+      min-height: 380px;
+      max-height: 520px;
+      order: 2;
+    }
+    .hero-text { order: 1; }
+
+    h1.hero-title {
+      font-size: clamp(3rem, 12.5vw, 4.6rem);
+      letter-spacing: -0.025em;
+    }
+
+    .hero-eyebrow {
+      margin-bottom: 1.4rem;
+    }
+    .hero-eyebrow .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      max-width: 100%;
+    }
+
+    /* Mobile photo collage - simpler, bigger */
+    .frame.f1 {
+      width: 70%;
+      top: 0;
+      left: 8%;
+      transform: rotate(-2deg);
+    }
+    .frame.f2 {
+      width: 50%;
+      top: auto;
+      bottom: 10%;
+      right: 2%;
+      transform: rotate(3deg);
+    }
+    .frame.f3 {
+      width: 38%;
+      bottom: 14%;
+      left: 2%;
+      transform: rotate(-6deg);
+      z-index: 4;
+    }
+
+    .address-stamp {
+      top: auto;
+      bottom: -8%;
+      right: 4%;
+      left: auto;
+      padding: 0.85rem 1rem 0.75rem;
+      min-width: 120px;
+      transform: rotate(-4deg);
+      animation: frameIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.85s forwards,
+                 wobble-no9-mobile 5s ease-in-out 2s infinite;
+    }
+    .address-stamp strong {
+      font-size: 1.25rem;
+      margin-bottom: 0.3rem;
+    }
+    .address-stamp span {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    header.hero { padding: 5.5rem 1.1rem 2.5rem; }
+    .hero-visual {
+      height: 58vh;
+      min-height: 380px;
+    }
+    h1.hero-title {
+      font-size: clamp(2.8rem, 13.5vw, 3.8rem);
+    }
+    .hero-sub { font-size: 1.1rem; }
+  }
+
+  /* ---------- Marquee ---------- */
+  .marquee {
+    border-top: 2px solid var(--rose);
+    border-bottom: 1px solid rgba(28, 29, 24, 0.12);
+    background: var(--paper-2);
+    padding: 1.4rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-flex;
+    gap: 3rem;
+    animation: scroll 38s linear infinite;
+    padding-right: 3rem;
+  }
+  .marquee-track span {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--ink-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  .marquee-track span::after {
+    content: '✦';
+    color: var(--rose);
+    font-style: normal;
+    display: inline-block;
+    animation: twinkle 1.8s ease-in-out infinite;
+  }
+  .marquee-track span:nth-child(2n)::after { animation-delay: 0.4s; }
+  .marquee-track span:nth-child(3n)::after { animation-delay: 0.8s; }
+  .marquee-track span:nth-child(5n)::after { animation-delay: 1.2s; }
+  .marquee-track span:nth-child(7n)::after { animation-delay: 0.6s; }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.18); }
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ---------- Section base ---------- */
+  section {
+    padding: 7rem 2.5rem;
+    position: relative;
+  }
+
+  @media (max-width: 800px) {
+    section { padding: 4rem 1.25rem; }
+    .section-head { margin-bottom: 2.5rem; }
+    .section-head .num { font-size: 0.9rem; }
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    padding-top: 1.5rem;
+    position: relative;
+  }
+
+  .section-head::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 56px;
+    height: 2px;
+    background: var(--rose);
+  }
+
+  .wares .section-head::before {
+    background: var(--rose);
+  }
+
+  .section-head .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--rose);
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-22px) rotate(-3deg);
+    transition: opacity 0.5s ease 0.2s,
+                transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+  }
+  .section-head.in .num {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+
+  /* ---------- About ---------- */
+  .about {
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-portrait {
+    position: relative;
+    aspect-ratio: 4/5;
+    background: var(--paper-3);
+    overflow: hidden;
+    box-shadow: var(--shadow-warm);
+  }
+  /* Slight polaroid-style tilt — composes with .reveal so the entrance still animates */
+  .about-portrait.reveal {
+    transform: translateY(28px) rotate(-2.5deg);
+  }
+  .about-portrait.reveal.in {
+    transform: translateY(0) rotate(-2.5deg);
+  }
+  .about-portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(0.9) contrast(1.05) sepia(0.08);
+  }
+
+  .about-portrait::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(31, 58, 46, 0.25));
+    pointer-events: none;
+  }
+
+  .portrait-caption {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    z-index: 2;
+  }
+  .portrait-caption strong {
+    display: block;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .about-body h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    margin-bottom: 2rem;
+  }
+
+  .about-body p {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: var(--ink-2);
+    margin-bottom: 1.4rem;
+    max-width: 56ch;
+  }
+
+  .about-body p.lead {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    line-height: 1.55;
+    color: var(--ink);
+    font-weight: 400;
+    margin-bottom: 2rem;
+    max-width: 32ch;
+  }
+
+  .about-body p.lead em {
+    color: var(--beetle);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .about-meta {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(28, 29, 24, 0.12);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .about-meta div .label { display: block; margin-bottom: 0.4rem; }
+  .about-meta div span {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+
+  @media (max-width: 800px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-portrait { max-width: 480px; margin: 0 auto; }
+    .about-body h2 { font-size: clamp(2.7rem, 10.5vw, 3.4rem); line-height: 1.05; margin-bottom: 1.4rem; }
+    .about-body p.lead { font-size: 1.25rem; }
+    .about-body p { font-size: 1.02rem; }
+    .about-meta { grid-template-columns: 1fr; gap: 1rem; padding-top: 1.5rem; }
+  }
+
+  /* ---------- Wares ---------- */
+  .wares {
+    background:
+      radial-gradient(ellipse 80% 60% at 80% 0%, rgba(184, 122, 130, 0.18), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 10% 100%, rgba(184, 122, 130, 0.08), transparent 55%),
+      var(--beetle);
+    color: var(--paper);
+    overflow: hidden;
+    position: relative;
+  }
+  .wares::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.1 0 0 0 0 0.07 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .wares > * { position: relative; z-index: 1; }
+
+  .wares h2 {
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    color: var(--paper);
+    margin-bottom: 1rem;
+  }
+
+  .wares h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--rose);
+  }
+
+  .wares-intro {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: rgba(244, 237, 224, 0.7);
+    max-width: 38ch;
+    margin-bottom: 5rem;
+  }
+
+  .wares-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+
+  .ware {
+    position: relative;
+    background: rgba(244, 237, 224, 0.05);
+    border: 1px solid rgba(244, 237, 224, 0.10);
+    padding: 2rem;
+    overflow: hidden;
+    transition: background 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+  }
+  .ware:hover {
+    background: rgba(244, 237, 224, 0.08);
+    border-color: rgba(184, 122, 130, 0.4);
+    transform: translateY(-4px);
+  }
+
+  .ware:nth-child(1) { grid-column: span 7; min-height: 380px; }
+  .ware:nth-child(2) { grid-column: span 5; min-height: 380px; }
+  .ware:nth-child(3) { grid-column: span 4; min-height: 320px; }
+  .ware:nth-child(4) { grid-column: span 4; min-height: 320px; }
+  .ware:nth-child(5) { grid-column: span 4; min-height: 320px; }
+
+  .ware .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--rose);
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    display: block;
+    letter-spacing: 0.02em;
+  }
+
+  .ware h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+    color: var(--paper);
+  }
+
+  .ware h3 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .ware p {
+    color: rgba(244, 237, 224, 0.65);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    max-width: 38ch;
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (max-width: 900px) {
+    .wares-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+    .ware:nth-child(n) { grid-column: span 1; min-height: auto; padding: 1.4rem 1.2rem 1.6rem; }
+    .ware:nth-child(1), .ware:nth-child(5) { grid-column: span 2; }
+    .ware h3 { font-size: clamp(1.75rem, 5.5vw, 2rem); margin-bottom: 0.7rem; line-height: 1.1; }
+    .ware p { font-size: 0.92rem; }
+    .ware .num { font-size: 0.85rem; margin-bottom: 0.7rem; }
+    .wares h2 { font-size: clamp(2.9rem, 11vw, 3.8rem); line-height: 1.05; }
+    .wares-intro { font-size: 1.15rem; margin-bottom: 3rem; }
+  }
+
+  @media (max-width: 480px) {
+    .wares-grid { grid-template-columns: 1fr; }
+    .ware:nth-child(n) { grid-column: span 1; }
+  }
+
+  /* ---------- Gallery / Inside the shop ---------- */
+  .gallery {
+    background: var(--paper);
+    padding: 7rem 2.5rem;
+    position: relative;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 120px;
+    gap: 1.2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .gallery-grid figure {
+    margin: 0;
+    overflow: hidden;
+    background: var(--paper-3);
+    box-shadow: var(--shadow-card);
+    position: relative;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  }
+  .gallery-grid figure:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: var(--shadow-warm);
+  }
+
+  .gallery-grid figure img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .gallery-grid figure:hover img {
+    transform: scale(1.06);
+  }
+
+  .gallery-grid figcaption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.6rem 1.2rem 1rem;
+    background: linear-gradient(180deg, transparent, rgba(28, 29, 24, 0.7) 60%);
+    color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .gallery-grid figure:hover figcaption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Sticky tape — corners on hover, like the photos are pinned to a corkboard */
+  .gallery-grid figure::before,
+  .gallery-grid figure::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    width: 78px;
+    height: 22px;
+    background:
+      repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0 2px, transparent 2px 5px),
+      linear-gradient(90deg, rgba(224, 196, 199, 0.32) 0%, rgba(224, 196, 199, 0.82) 14%, rgba(224, 196, 199, 0.82) 86%, rgba(224, 196, 199, 0.32) 100%);
+    box-shadow: 0 3px 6px rgba(28, 29, 24, 0.18);
+    opacity: 0;
+    z-index: 4;
+    pointer-events: none;
+    transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .gallery-grid figure::before {
+    left: -14px;
+    transform: rotate(-22deg) translateY(-4px);
+  }
+  .gallery-grid figure::after {
+    right: -14px;
+    transform: rotate(22deg) translateY(-4px);
+  }
+  .gallery-grid figure:hover::before {
+    opacity: 1;
+    transform: rotate(-22deg) translateY(0);
+  }
+  .gallery-grid figure:hover::after {
+    opacity: 1;
+    transform: rotate(22deg) translateY(0);
+  }
+
+  /* Touch devices: tape always visible (no hover state) */
+  @media (hover: none) {
+    .gallery-grid figure::before {
+      opacity: 0.95;
+      transform: rotate(-22deg) translateY(0);
+    }
+    .gallery-grid figure::after {
+      opacity: 0.95;
+      transform: rotate(22deg) translateY(0);
+    }
+  }
+
+  /* Asymmetric layout — 6 photos, 3 rows of alternating wide/narrow */
+  .gallery-grid figure:nth-child(1) { grid-column: span 7; grid-row: span 4; }
+  .gallery-grid figure:nth-child(2) { grid-column: span 5; grid-row: span 4; }
+  .gallery-grid figure:nth-child(3) { grid-column: span 5; grid-row: span 4; }
+  .gallery-grid figure:nth-child(4) { grid-column: span 7; grid-row: span 4; }
+  .gallery-grid figure:nth-child(5) { grid-column: span 4; grid-row: span 3; }
+  .gallery-grid figure:nth-child(6) { grid-column: span 8; grid-row: span 3; }
+
+  @media (max-width: 800px) {
+    .gallery { padding: 4.5rem 1.25rem; }
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 140px;
+      gap: 0.7rem;
+    }
+    .gallery-grid figure:nth-child(n) { grid-column: span 1; grid-row: span 2; }
+    .gallery-grid figure:nth-child(1) { grid-column: span 2; grid-row: span 3; }
+    .gallery-grid figure:nth-child(6) { grid-column: span 2; grid-row: span 2; }
+    .gallery-grid figcaption {
+      opacity: 1;
+      transform: translateY(0);
+      font-size: 0.78rem;
+      padding: 1.2rem 0.9rem 0.7rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid { grid-auto-rows: 110px; }
+  }
+
+  /* ---------- Curious Magpie (the host shop) ---------- */
+  .magpie {
+    background:
+      radial-gradient(ellipse 60% 50% at 90% 10%, rgba(184, 122, 130, 0.10), transparent 60%),
+      var(--paper-2);
+    padding: 7rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .magpie-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .magpie-visual {
+    position: relative;
+    aspect-ratio: 4/5;
+    width: 100%;
+  }
+
+  .magpie-visual .magpie-front,
+  .magpie-visual .magpie-mid,
+  .magpie-visual .magpie-int {
+    position: absolute;
+    overflow: hidden;
+    box-shadow: var(--shadow-warm);
+    background: var(--paper-3);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    border: 6px solid var(--paper);
+  }
+  .magpie-visual .magpie-front img,
+  .magpie-visual .magpie-mid img,
+  .magpie-visual .magpie-int img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .magpie-visual .magpie-front {
+    width: 64%;
+    aspect-ratio: 4/3.6;
+    top: 0;
+    left: 0;
+    transform: rotate(-2deg);
+    z-index: 2;
+  }
+  .magpie-visual .magpie-mid {
+    width: 50%;
+    aspect-ratio: 3/4;
+    top: 22%;
+    right: 0;
+    transform: rotate(3deg);
+    z-index: 3;
+  }
+  .magpie-visual .magpie-int {
+    width: 50%;
+    aspect-ratio: 4/5;
+    bottom: 0;
+    left: 14%;
+    transform: rotate(-3deg);
+    z-index: 4;
+  }
+
+  .magpie-visual:hover .magpie-front { transform: rotate(0); }
+  .magpie-visual:hover .magpie-mid { transform: rotate(0); }
+  .magpie-visual:hover .magpie-int { transform: rotate(0); }
+
+  .magpie-tag {
+    position: absolute;
+    bottom: 8%;
+    right: 4%;
+    background: var(--rose-soft);
+    color: var(--maroon);
+    padding: 0.6rem 1rem;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    transform: rotate(-3deg);
+    z-index: 4;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(184, 122, 130, 0.35);
+    animation: wobble-magpie 6s ease-in-out 1s infinite;
+  }
+  .magpie-tag strong {
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    opacity: 0.7;
+    margin-bottom: 0.15rem;
+  }
+
+  .magpie-body h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    margin-bottom: 1.6rem;
+  }
+  .magpie-body h2 em {
+    font-style: italic;
+    color: var(--rose);
+    font-weight: 300;
+  }
+
+  .magpie-body .lead {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 1.6rem;
+    max-width: 36ch;
+  }
+
+  .magpie-body p {
+    font-size: 1.04rem;
+    line-height: 1.75;
+    color: var(--ink-2);
+    margin-bottom: 1.2rem;
+    max-width: 48ch;
+  }
+
+  .magpie-list {
+    list-style: none;
+    margin-top: 1.8rem;
+    padding-top: 1.6rem;
+    border-top: 1px dotted rgba(28, 29, 24, 0.18);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1.5rem;
+  }
+  .magpie-list li {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--maroon);
+    font-size: 1rem;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .magpie-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--rose);
+    font-style: normal;
+  }
+
+  .magpie-link {
+    display: inline-block;
+    margin-top: 1.6rem;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--rose-2);
+    border-bottom: 1px solid var(--rose-soft);
+    padding-bottom: 1px;
+    transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+  .magpie-link:hover {
+    color: var(--maroon);
+    border-color: var(--maroon);
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 800px) {
+    .magpie { padding: 4.5rem 1.25rem; }
+    .magpie-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .magpie-visual {
+      aspect-ratio: 1/1;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .magpie-visual .magpie-front {
+      width: 72%;
+      top: 0;
+      left: 0;
+      transform: rotate(-2deg);
+    }
+    .magpie-visual .magpie-mid {
+      width: 54%;
+      top: 26%;
+      right: 0;
+      transform: rotate(3deg);
+    }
+    .magpie-visual .magpie-int {
+      width: 50%;
+      bottom: 0;
+      left: 16%;
+      transform: rotate(-3deg);
+    }
+    .magpie-tag {
+      font-size: 0.8rem;
+      padding: 0.45rem 0.75rem;
+      bottom: -3%;
+      left: 38%;
+      right: auto;
+      transform: rotate(-4deg);
+      animation: wobble-magpie-mobile 6s ease-in-out 1s infinite;
+    }
+    .magpie-list { grid-template-columns: 1fr 1fr; gap: 0.5rem 1rem; }
+    .magpie-list li { font-size: 0.92rem; }
+    .magpie-body h2 { font-size: clamp(2.7rem, 10.5vw, 3.4rem); line-height: 1.05; }
+    .magpie-body .lead { font-size: 1.18rem; }
+    .magpie-body p { font-size: 1rem; }
+  }
+
+  @media (max-width: 480px) {
+    .magpie-list { grid-template-columns: 1fr 1fr; gap: 0.4rem 0.7rem; }
+    .magpie-list li { font-size: 0.86rem; padding-left: 0.85rem; }
+  }
+
+  /* ---------- Visit ---------- */
+  .visit {
+    background: var(--paper);
+    position: relative;
+  }
+
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .visit-content h2 {
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    margin-bottom: 2rem;
+  }
+  .visit-content h2 em {
+    font-style: italic;
+    color: var(--rose);
+    font-weight: 300;
+  }
+
+  .address-card {
+    background: var(--paper-2);
+    border: 1px solid rgba(28, 29, 24, 0.08);
+    padding: 2rem 2.2rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow-card);
+    position: relative;
+  }
+  .address-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 24px;
+    width: 80px; height: 4px;
+    background: var(--rose);
+  }
+  .address-card .label { display: block; margin-bottom: 0.8rem; }
+  .address-card address {
+    font-family: 'Fraunces', serif;
+    font-style: normal;
+    font-size: 1.6rem;
+    line-height: 1.35;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .address-card address span {
+    display: block;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-3);
+    font-size: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .hours-list {
+    list-style: none;
+    margin-top: 1.5rem;
+  }
+  .hours-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 0;
+    border-bottom: 1px dotted rgba(28, 29, 24, 0.18);
+    font-size: 0.95rem;
+  }
+  .hours-list li:last-child { border-bottom: none; }
+  .hours-list li .day { color: var(--ink-2); }
+  .hours-list li .time {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--rose-2);
+  }
+  .hours-list li.closed .time { color: var(--ink-3); }
+
+  .map-frame {
+    aspect-ratio: 4/5;
+    background: var(--beetle);
+    box-shadow: var(--shadow-warm);
+    overflow: hidden;
+    position: relative;
+  }
+  .map-frame iframe {
+    width: 100%; height: 100%; border: 0;
+    filter: grayscale(0.4) sepia(0.15) saturate(0.85);
+    pointer-events: none;
+  }
+
+  .map-frame .map-link {
+    position: absolute;
+    bottom: 0.9rem;
+    right: 0.9rem;
+    z-index: 6;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    box-shadow: var(--shadow-card);
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  }
+  .map-frame .map-link:hover {
+    background: var(--rose);
+    color: var(--paper);
+    transform: translateY(-1px);
+  }
+
+  /* Visit section — hand-painted door times polaroid */
+  .door-polaroid {
+    max-width: 260px;
+    background: var(--paper);
+    border: 6px solid var(--paper);
+    padding-bottom: 0.9rem;
+    box-shadow: var(--shadow-warm);
+    margin: 2.2rem 0 0;
+  }
+  .door-polaroid img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+  .door-polaroid figcaption {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-3);
+    margin: 0.7rem 0.6rem 0;
+    text-align: center;
+    line-height: 1.4;
+  }
+  /* Reveal-aware tilt — composes translateY with rotation so entrance animates */
+  .door-polaroid.reveal {
+    transform: translateY(28px) rotate(-2.5deg);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease;
+  }
+  .door-polaroid.reveal.in {
+    transform: translateY(0) rotate(-2.5deg);
+  }
+  .door-polaroid.reveal.in:hover {
+    transform: translateY(0) rotate(0);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @media (max-width: 768px) {
+    .door-polaroid { display: none; }
+  }
+
+  .map-frame::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(31, 58, 46, 0.15));
+    pointer-events: none;
+  }
+
+  .map-pin {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -100%);
+    color: var(--rose);
+    font-size: 2rem;
+    z-index: 5;
+    pointer-events: none;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .map-sonar {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 22px;
+    height: 22px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 4;
+  }
+  .map-sonar::before,
+  .map-sonar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--rose);
+    border-radius: 50%;
+    opacity: 0;
+    animation: pin-sonar 2.6s ease-out infinite;
+  }
+  .map-sonar::after { animation-delay: 1.3s; }
+
+  @keyframes pin-sonar {
+    0%   { transform: scale(0.3); opacity: 0.7; }
+    100% { transform: scale(4.2); opacity: 0; }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translate(-50%, -100%); }
+    50% { transform: translate(-50%, -110%); }
+  }
+
+  @media (max-width: 900px) {
+    .visit-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .map-frame { aspect-ratio: 4/3; }
+    .visit-content h2 { font-size: clamp(2.7rem, 10.5vw, 3.4rem); line-height: 1.05; }
+    .address-card { padding: 1.5rem 1.6rem; }
+    .address-card address { font-size: 1.4rem; }
+    .hours-list li { font-size: 0.9rem; padding: 0.55rem 0; }
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq {
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+    position: relative;
+  }
+  .faq h2 {
+    font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+    margin-bottom: 3rem;
+    max-width: 22ch;
+  }
+  .faq h2 em {
+    font-style: italic;
+    color: var(--rose);
+    font-weight: 300;
+  }
+  .faq-list {
+    max-width: 820px;
+  }
+  .faq-list details {
+    border-top: 1px dotted rgba(28, 29, 24, 0.22);
+    padding: 1.5rem 0;
+  }
+  .faq-list details:last-child {
+    border-bottom: 1px dotted rgba(28, 29, 24, 0.22);
+  }
+  .faq-list summary {
+    list-style: none;
+    cursor: pointer;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transform: translate(var(--mx, 0px), var(--my, 0px));
+    transition: color 0.25s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+  .faq-list summary:focus-visible {
+    outline: 2px solid var(--rose);
+    outline-offset: 6px;
+    border-radius: 2px;
+  }
+  .faq-list details {
+    -webkit-tap-highlight-color: transparent;
+  }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list summary::after {
+    content: '';
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: var(--rose-soft);
+    border: 1px solid rgba(184, 122, 130, 0.4);
+    background-image:
+      linear-gradient(currentColor, currentColor),
+      linear-gradient(currentColor, currentColor);
+    background-size: 10px 1.5px, 1.5px 10px;
+    background-position: center, center;
+    background-repeat: no-repeat;
+    color: var(--maroon);
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), background-size 0.3s ease;
+  }
+  .faq-list details[open] summary::after {
+    background-size: 10px 1.5px, 1.5px 0px;
+    transform: rotate(180deg);
+  }
+  .faq-list summary:hover { color: var(--rose); }
+  .faq-list details p {
+    font-size: 1.04rem;
+    line-height: 1.7;
+    color: var(--ink-2);
+    max-width: 60ch;
+    padding-top: 1rem;
+    font-family: 'Inter Tight', sans-serif;
+    overflow: hidden;
+    transition: height 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+  }
+  .faq-list details p em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--maroon);
+    font-weight: 500;
+  }
+  .faq-foot {
+    margin-top: 2.5rem;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-3);
+    max-width: 60ch;
+  }
+  .faq-foot a {
+    color: var(--rose-2);
+    border-bottom: 1px solid var(--rose-soft);
+    padding-bottom: 1px;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+  .faq-foot a:hover { color: var(--maroon); border-color: var(--maroon); }
+
+  @media (max-width: 800px) {
+    .faq h2 { font-size: clamp(2.4rem, 9.5vw, 3rem); line-height: 1.05; margin-bottom: 2rem; }
+    .faq-list summary { font-size: 1.15rem; }
+    .faq-list details { padding: 1.25rem 0; }
+    .faq-list details p { font-size: 0.96rem; }
+  }
+
+  /* ---------- Story ---------- */
+  .story {
+    padding: 8rem 2.5rem;
+    background: linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (max-width: 800px) {
+    .story { padding: 5rem 1.5rem; }
+    .story-decor { width: 14rem; height: 14rem; left: -1rem; top: -1rem; }
+    .story blockquote p { font-size: clamp(2rem, 7vw, 2.6rem); line-height: 1.22; }
+  }
+
+  .story-decor {
+    position: absolute;
+    width: 22rem;
+    height: 22rem;
+    top: -2rem;
+    left: 1rem;
+    color: var(--beetle);
+    opacity: 0.18;
+    pointer-events: none;
+    user-select: none;
+    display: block;
+  }
+  .story-decor svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+  }
+  .story-decor svg path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .story-decor svg path:nth-of-type(2) {
+    transition-delay: 0.3s;
+  }
+  .story-decor.drawn svg path {
+    stroke-dashoffset: 0;
+  }
+
+  .story blockquote {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .story blockquote p {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 3.6vw, 3rem);
+    line-height: 1.25;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .story blockquote p em {
+    font-style: italic;
+    color: var(--beetle);
+    font-weight: 500;
+  }
+
+  .story blockquote cite {
+    display: block;
+    margin-top: 2rem;
+    font-style: normal;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-3);
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background:
+      radial-gradient(ellipse 70% 50% at 0% 0%, rgba(184, 122, 130, 0.12), transparent 60%),
+      linear-gradient(180deg, var(--beetle) 0%, #16291f 100%);
+    color: var(--paper);
+    padding: 6rem 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--rose);
+    opacity: 0.6;
+  }
+
+  .footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .footer-brand-img {
+    display: block;
+    height: auto;
+    width: 280px;
+    max-width: 100%;
+    margin-bottom: 1.4rem;
+  }
+
+  .footer-tag {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(244, 237, 224, 0.7);
+    max-width: 32ch;
+  }
+
+  .footer-col h4 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(244, 237, 224, 0.5);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col a, .footer-col p {
+    display: block;
+    color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-col a {
+    transition: color 0.25s ease, transform 0.25s ease;
+    width: fit-content;
+  }
+  .footer-col a:hover { color: var(--rose); transform: translateX(4px); }
+
+  .footer-bar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(244, 237, 224, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(244, 237, 224, 0.5);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bar a:hover { color: var(--rose); }
+
+  @media (max-width: 800px) {
+    footer { padding: 4.5rem 1.25rem 1.5rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2.2rem; margin-bottom: 2.5rem; }
+    .footer-brand-img { width: 220px; }
+    .footer-tag { font-size: 1rem; }
+    .footer-bar { font-size: 0.72rem; flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal.delay-1 { transition-delay: 0.1s; }
+  .reveal.delay-2 { transition-delay: 0.2s; }
+  .reveal.delay-3 { transition-delay: 0.3s; }
+
+  /* Hero entry */
+  .hero-text > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .hero-text > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-text > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-text > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-text > *:nth-child(4) { animation-delay: 0.55s; }
+
+  .hero-visual .frame, .hero-visual .address-stamp {
+    opacity: 0;
+    animation: frameIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .frame.f1 { animation-delay: 0.45s; }
+  .frame.f2 { animation-delay: 0.6s; }
+  .address-stamp {
+    animation: frameIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.85s forwards,
+               wobble-no9 5s ease-in-out 2s infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .address-stamp, .magpie-tag { animation: none; }
+  }
+
+  @keyframes heroIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes frameIn {
+    to { opacity: 1; }
+  }
+</style>
+
+<!-- live portfolio copy: one gallery photo is left out, so the grid is laid out for five -->
+<style>
+  @media (min-width: 801px) { .gallery-grid figure:nth-child(5) { grid-column: span 12; } }
+</style>
+<script src="../driver.js" defer></script>
+</head>
+<body>
+
+<a class="float-ig" id="floatIg" href="https://www.instagram.com/beetleeyesclothing/" target="_blank" rel="noopener" aria-label="Follow Beetle Eyes Clothing on Instagram">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </svg>
+</a>
+
+<div class="page-curtain" id="pageCurtain" aria-hidden="true">
+  <div class="curtain curtain-left">
+    <svg class="curtain-svg" viewBox="0 0 200 800" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="0" y1="10" x2="200" y2="10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="12" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="32" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="52" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="72" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="92" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="112" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="132" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="152" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="172" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="192" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M12 22 Q 14 140 10 270 Q 14 400 10 540 Q 10 680 14 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M32 22 Q 30 140 34 270 Q 30 400 34 540 Q 34 680 30 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M52 22 Q 54 140 50 270 Q 54 400 50 540 Q 50 680 54 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M72 22 Q 70 140 74 270 Q 70 400 74 540 Q 74 680 70 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M92 22 Q 94 140 90 270 Q 94 400 90 540 Q 90 680 94 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M112 22 Q 110 140 114 270 Q 110 400 114 540 Q 114 680 110 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M132 22 Q 134 140 130 270 Q 134 400 130 540 Q 130 680 134 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M152 22 Q 150 140 154 270 Q 150 400 154 540 Q 154 680 150 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M172 22 Q 174 140 170 270 Q 174 400 170 540 Q 170 680 174 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M192 22 Q 190 140 194 270 Q 190 400 194 540 Q 194 680 190 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M0 795 Q 12 805 25 795 T 50 795 T 75 795 T 100 795 T 125 795 T 150 795 T 175 795 T 200 795" stroke="currentColor" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="curtain curtain-right">
+    <svg class="curtain-svg" viewBox="0 0 200 800" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="0" y1="10" x2="200" y2="10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="12" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="32" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="52" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="72" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="92" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="112" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="132" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="152" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="172" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="192" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M12 22 Q 14 140 10 270 Q 14 400 10 540 Q 10 680 14 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M32 22 Q 30 140 34 270 Q 30 400 34 540 Q 34 680 30 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M52 22 Q 54 140 50 270 Q 54 400 50 540 Q 50 680 54 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M72 22 Q 70 140 74 270 Q 70 400 74 540 Q 74 680 70 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M92 22 Q 94 140 90 270 Q 94 400 90 540 Q 90 680 94 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M112 22 Q 110 140 114 270 Q 110 400 114 540 Q 114 680 110 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M132 22 Q 134 140 130 270 Q 134 400 130 540 Q 130 680 134 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M152 22 Q 150 140 154 270 Q 150 400 154 540 Q 154 680 150 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M172 22 Q 174 140 170 270 Q 174 400 170 540 Q 170 680 174 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M192 22 Q 190 140 194 270 Q 190 400 194 540 Q 194 680 190 798" stroke="currentColor" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+      <path d="M0 795 Q 12 805 25 795 T 50 795 T 75 795 T 100 795 T 125 795 T 150 795 T 175 795 T 200 795" stroke="currentColor" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="curtain-center">
+    <img src="img/logo-maroon.webp" alt="Beetle Eyes Clothing" loading="eager" fetchpriority="high" decoding="sync" />
+    <p>Pre-loved &amp; Vintage <span class="dot">·</span> Mountsorrel</p>
+  </div>
+</div>
+
+<nav class="top" id="topNav">
+  <a href="#" class="logo-mark" aria-label="Beetle Eyes Clothing — home">
+    <img src="img/logo.webp" alt="Beetle Eyes Clothing" />
+  </a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#wares">Wares</a></li>
+    <li><a href="#inside">Inside</a></li>
+    <li><a href="#magpie">The shop</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="#visit" class="visit-btn">Find us</a>
+  <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mobile-menu-close" id="closeBtn" aria-label="Close menu"></button>
+  <ul>
+    <li><a href="#about" data-close><span>About</span><span class="num">01</span></a></li>
+    <li><a href="#wares" data-close><span>Wares</span><span class="num">02</span></a></li>
+    <li><a href="#inside" data-close><span>Inside</span><span class="num">03</span></a></li>
+    <li><a href="#magpie" data-close><span>The shop</span><span class="num">04</span></a></li>
+    <li><a href="#visit" data-close><span>Visit</span><span class="num">05</span></a></li>
+  </ul>
+  <div class="mobile-menu-foot">
+    <p>9 Market Place, Mountsorrel</p>
+    <a href="https://www.instagram.com/beetleeyesclothing/" target="_blank" rel="noopener">@beetleeyesclothing →</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      <span class="label">Mountsorrel · Pre-loved & Vintage</span>
+    </div>
+
+    <h1 class="display hero-title">
+      Come and <span class="hand">rummage</span>.<br><span class="underline">Beautiful</span> things, kept and curated.
+    </h1>
+
+    <p class="hero-sub">A curated rail of pre-loved finds and vintage beauts inside <em>Curious Magpie</em> — picked one piece at a time by stylist Corrine Kaenzig.</p>
+  </div>
+
+  <div class="hero-visual" aria-hidden="true">
+    <div class="frame f3"><img src="img/be-sign.webp" alt="Hand-painted Beetle Eyes Clothing wooden sign reading 'New, vintage and pre-loved clothes'" /></div>
+    <div class="frame f1"><img src="img/be-rail-desk.webp" alt="Beetle Eyes — two clothing rails flanking a central desk with bags, scarves and red ankle boots" /></div>
+    <div class="frame f2"><img src="img/rail.webp" alt="Beetle Eyes clothing rail with knitwear and walking boots" /></div>
+    <div class="address-stamp">
+      <strong>No. 9</strong>
+      <span>Market Place<br>Mountsorrel</span>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>pre-loved</span>
+    <span>true vintage</span>
+    <span>denim & leather</span>
+    <span>knits & coats</span>
+    <span>one-of-a-kind</span>
+    <span>have a rummage</span>
+    <span>pre-loved</span>
+    <span>true vintage</span>
+    <span>denim & leather</span>
+    <span>knits & coats</span>
+    <span>one-of-a-kind</span>
+    <span>have a rummage</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">01 / Behind the shop</span>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-portrait reveal">
+        <img src="img/corrine.webp" alt="Corrine Kaenzig, stylist and owner of Beetle Eyes Clothing" />
+        <div class="portrait-caption">
+          <strong>Corrine Kaenzig</strong>
+          stylist · curator · finder of things
+        </div>
+      </div>
+
+      <div class="about-body">
+        <h2 class="display reveal delay-1">A stylist's eye, <span class="underline">a magpie's heart</span>.</h2>
+
+        <p class="lead reveal delay-1">Beetle Eyes is a curated rail tucked <em>inside Curious Magpie</em> in Mountsorrel — the place Corrine's pre-loved and vintage finds come to live, kept on a few rails at the heart of Curious Magpie.</p>
+
+        <p class="reveal delay-2">Corrine has spent years working as a stylist — pulling pieces, building wardrobes, knowing what works on whom. The rail is where that eye comes to live: pre-loved womenswear and proper vintage, picked one piece at a time, kept honest on price, and re-styled into something you'd actually want to wear.</p>
+
+        <p class="reveal delay-2">Nothing is mass. Nothing is fast. Pieces are turned over often, so the rail you rummage through next week is rarely the one you found today. That's the bit that keeps it interesting.</p>
+
+        <div class="about-meta reveal delay-3">
+          <div>
+            <span class="label">Curated by</span>
+            <span>Corrine Kaenzig, stylist</span>
+          </div>
+          <div>
+            <span class="label">Mostly</span>
+            <span>Pre-loved womenswear & vintage</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wares" id="wares">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num" style="color: var(--rose);">02 / What's inside</span>
+    </div>
+
+    <h2 class="display reveal"><span class="underline">Rails</span> worth <em>rummaging</em>.</h2>
+    <p class="wares-intro reveal delay-1">Stock changes weekly. This is the gist of what tends to live on the rails — but the fun is in turning up and finding the thing you didn't know you wanted.</p>
+
+    <div class="wares-grid">
+      <article class="ware reveal">
+        <span class="num">— 01</span>
+        <h3>Pre-loved <em>womenswear</em></h3>
+        <p>The bulk of the rail. High-street through to designer, all secondhand, all picked because it earns its place. Sizes vary — that's the nature of it.</p>
+      </article>
+
+      <article class="ware reveal delay-1">
+        <span class="num">— 02</span>
+        <h3>True <em>vintage</em></h3>
+        <p>Proper old pieces. 70s knits, 80s leathers, the occasional 90s denim moment. Things with a history, kept in good nick.</p>
+      </article>
+
+      <article class="ware reveal">
+        <span class="num">— 03</span>
+        <h3>Coats & <em>outerwear</em></h3>
+        <p>The thing the British weather demands. Sheepskin, wool, oversized blazers, the odd showstopper.</p>
+      </article>
+
+      <article class="ware reveal delay-1">
+        <span class="num">— 04</span>
+        <h3>Bags, belts & <em>bits</em></h3>
+        <p>Small things that finish an outfit. Leather bags, scarves, jewellery, the occasional very specific pair of sunglasses.</p>
+      </article>
+
+      <article class="ware reveal delay-2">
+        <span class="num">— 05</span>
+        <h3>One-offs &<br><em>oddities</em></h3>
+        <p>Things that don't fit anywhere else but had to come home anyway. Reader, you'll know it when you see it.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="inside">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">03 / Inside</span>
+    </div>
+
+    <div class="gallery-grid">
+      <figure class="reveal">
+        <img src="img/be-rail-desk.webp" alt="Two clothing rails flanking a central desk with bags, scarves and a pair of red ankle boots" />
+        <figcaption>Where things land</figcaption>
+      </figure>
+      <figure class="reveal delay-2">
+        <img src="img/be-prints.webp" alt="Close-up of the rail — tiger print, blue, florals and a red eyelet blouse" />
+        <figcaption>Prints, properly chosen</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="img/be-cream.webp" alt="Cream and ivory dresses on the rail with a fringed black leather bag" />
+        <figcaption>Whites &amp; creams</figcaption>
+      </figure>
+      <figure class="reveal delay-1">
+        <img src="img/be-shoes.webp" alt="Wire baskets holding green sandals, denim hanging below, and an open window onto the garden" />
+        <figcaption>Sandals, baskets &amp; daylight</figcaption>
+      </figure>
+      <figure class="reveal delay-2">
+        <img src="img/be-basquiat.webp" alt="A Basquiat hoodie hung on the wall, with knits, leather jackets and oddities on the rails behind" />
+        <figcaption>Knits, leathers &amp; oddities</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="magpie" id="magpie">
+  <div class="magpie-grid">
+    <div class="magpie-visual reveal" aria-hidden="true">
+      <div class="magpie-front"><img src="img/shopfront.webp" alt="The Curious Magpie shopfront — mustard yellow facade at 9 Market Place" /></div>
+      <div class="magpie-mid"><img src="img/window-display.webp" alt="Curious Magpie window display — orange dress, red cowboy boots, vintage ceramics and origami cranes" /></div>
+      <div class="magpie-int"><img src="img/interior-2.webp" alt="Inside Curious Magpie — candles, ceramics, tulips" /></div>
+      <div class="magpie-tag">
+        <strong>The shop</strong>
+        Curious Magpie
+      </div>
+    </div>
+
+    <div class="magpie-body">
+      <div class="section-head reveal">
+        <span class="num">04 / The shop</span>
+      </div>
+
+      <h2 class="display reveal"><span class="underline">Beetle Eyes</span> lives inside <em>Curious Magpie</em>.</h2>
+
+      <p class="lead reveal delay-1">A wider, stranger, lovelier shop full of one-off finds — and Corrine's rails sit happily at the heart of it.</p>
+
+      <p class="reveal delay-2">Curious Magpie is the mustard-yellow shop on Market Place. It's a thoughtfully-curated mix of vintage and pre-loved treasures, gifts and cards, artwork from local makers, flowers and plants, and bits brought home because someone fell in love with them. Everything has a story; nothing is in fives. You come in for one thing and leave with three.</p>
+
+      <p class="reveal delay-2">When you visit Beetle Eyes, you're walking into Curious Magpie too — so set aside an hour, not ten minutes.</p>
+
+      <ul class="magpie-list reveal delay-3">
+        <li>Vintage &amp; pre-loved</li>
+        <li>Old furniture, kept</li>
+        <li>Gifts &amp; cards</li>
+        <li>Artwork &amp; prints</li>
+        <li>Flowers &amp; plants</li>
+        <li>Local makers</li>
+        <li>One-off finds</li>
+      </ul>
+
+      <a class="magpie-link reveal delay-3" href="https://www.curiousmagpie.co.uk/" target="_blank" rel="noopener">Visit Curious Magpie online <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">05 / Questions</span>
+    </div>
+
+    <h2 class="display reveal"><span class="underline">Obvious</span> questions, <em>answered</em>.</h2>
+
+    <div class="faq-list reveal delay-1">
+      <details>
+        <summary>Do you take pieces in?</summary>
+        <p>Sometimes — I'm fussy on purpose. DM <em>@beetleeyesclothing</em> with a few photos and I'll let you know if it's the right fit for the rail. Nothing makes the cut that I wouldn't put on a stylist's client.</p>
+      </details>
+
+      <details>
+        <summary>Do you do refunds?</summary>
+        <p>Exchange or store credit within 7 days, with the tag still on. Sale and clearance pieces are final, sorry. Bring the receipt where you can.</p>
+      </details>
+
+      <details>
+        <summary>Can I reserve something I saw on Instagram?</summary>
+        <p>Yes — drop a DM to <em>@beetleeyesclothing</em> and I'll hold it for 24 hours. Anything longer needs a small deposit so it's fair on the next person eyeing it up.</p>
+      </details>
+
+      <details>
+        <summary>Is there parking?</summary>
+        <p>Little Lane Car Park is your nearest spot — about a four-minute walk up to Market Place via Loughborough Road.</p>
+      </details>
+
+      <details>
+        <summary>Are you dog-friendly?</summary>
+        <p>Always. Well-behaved dogs are very welcome — there's water by the door and Curious Magpie keeps biscuits behind the counter.</p>
+      </details>
+    </div>
+
+    <p class="faq-foot reveal delay-2">Still wondering something? <a href="https://www.instagram.com/beetleeyesclothing/" target="_blank" rel="noopener">DM us on Instagram →</a></p>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <span class="story-decor" aria-hidden="true">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 152 Q 14 100 32 68 Q 52 38 78 32" />
+      <path d="M112 152 Q 98 100 116 68 Q 136 38 162 32" />
+    </svg>
+  </span>
+  <blockquote>
+    <p class="display reveal">Buy <em>less</em>, choose well, and rummage often. Every piece in here belonged to someone before you — and looked good on them too.</p>
+    <cite class="reveal delay-1">— the Beetle Eyes way</cite>
+  </blockquote>
+</section>
+
+<section class="visit" id="visit">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="num">06 / Where</span>
+    </div>
+
+    <div class="visit-grid">
+      <div class="visit-content">
+        <h2 class="display reveal">Come and <em>see us</em>.</h2>
+
+        <div class="address-card reveal delay-1">
+          <span class="label">Find us inside Curious Magpie</span>
+          <address>
+            9 Market Place
+            <span>Mountsorrel · Leicestershire</span>
+          </address>
+        </div>
+
+        <ul class="hours-list reveal delay-2">
+          <li class="closed"><span class="day">Monday</span><span class="time">closed</span></li>
+          <li><span class="day">Tuesday — Saturday</span><span class="time">10am — 5pm</span></li>
+          <li><span class="day">Sunday</span><span class="time">11am — 4pm</span></li>
+        </ul>
+
+        <p style="margin-top: 1.5rem; font-style: italic; font-family: 'Fraunces', serif; color: var(--ink-3); font-size: 0.95rem;" class="reveal delay-2">
+          Hours can flex — best to check Instagram before a longer journey.
+        </p>
+
+        <figure class="door-polaroid reveal delay-3">
+          <img src="img/door-times.webp" alt="Hand-painted opening times on the Curious Magpie front door" />
+        </figure>
+      </div>
+
+      <div class="map-frame reveal delay-1">
+        <span class="map-sonar" aria-hidden="true"></span>
+        <span class="map-pin" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </span>
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-1.1500%2C52.7250%2C-1.1340%2C52.7340&amp;layer=mapnik&amp;marker=52.7295%2C-1.1420"
+          loading="lazy"
+          title="Map showing 9 Market Place, Mountsorrel"></iframe>
+        <a class="map-link" href="https://www.openstreetmap.org/?mlat=52.7295&amp;mlon=-1.1420#map=17/52.7295/-1.1420" target="_blank" rel="noopener">View larger map →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="img/logo-cream.webp" alt="Beetle Eyes Clothing" class="footer-brand-img" />
+      <p class="footer-tag">A curated rail of pre-loved &amp; vintage inside Curious Magpie, Mountsorrel. Pieces picked by stylist Corrine Kaenzig.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Find us</h4>
+      <p>9 Market Place</p>
+      <p>Mountsorrel</p>
+      <p>Leicestershire</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow</h4>
+      <a href="https://www.instagram.com/beetleeyesclothing/" target="_blank" rel="noopener">@beetleeyesclothing</a>
+      <a href="https://www.instagram.com/corrinekaenzigstylist/" target="_blank" rel="noopener">@corrinekaenzigstylist</a>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <span>© <span id="year"></span> Beetle Eyes Clothing · Mountsorrel</span>
+    <span style="font-family: 'Fraunces', serif; font-style: italic;">Made with care for things worth keeping.</span>
+  </div>
+</footer>
+
+<script>
+  // Page-load curtain — remove from DOM once the open animation finishes
+  (function () {
+    const curtain = document.getElementById('pageCurtain');
+    if (!curtain) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) { curtain.remove(); return; }
+    const removeCurtain = () => { if (curtain.parentNode) curtain.remove(); };
+    const left = curtain.querySelector('.curtain-left');
+    if (left) {
+      left.addEventListener('animationend', (e) => {
+        if (e.animationName === 'curtain-open-left') removeCurtain();
+      });
+    }
+    // Failsafe: nuke after 4s no matter what
+    setTimeout(removeCurtain, 4000);
+    // Click to skip
+    curtain.addEventListener('click', removeCurtain);
+  })();
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Floating Instagram button — appears once you scroll past the hero
+  (function () {
+    const btn = document.getElementById('floatIg');
+    if (!btn) return;
+    const onScroll = () => {
+      if (window.scrollY > 280) btn.classList.add('visible');
+      else btn.classList.remove('visible');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // Click ripple on the Find us pill
+  (function () {
+    const btn = document.querySelector('.visit-btn');
+    if (!btn) return;
+    btn.addEventListener('click', (e) => {
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      const rect = btn.getBoundingClientRect();
+      ripple.style.left = (e.clientX - rect.left) + 'px';
+      ripple.style.top = (e.clientY - rect.top) + 'px';
+      btn.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+    });
+  })();
+
+  // Magnetic buttons — Find us pill + FAQ summaries drift toward cursor as it nears
+  (function () {
+    const els = document.querySelectorAll('.visit-btn, .faq-list summary');
+    if (!els.length) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const RADIUS = 90;
+    const MAX_PULL = 10;
+    const STRENGTH = 0.32;
+    let raf = null, mx = 0, my = 0;
+
+    const update = () => {
+      raf = null;
+      els.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.width === 0) return; // hidden (mobile nav)
+        const dx = Math.max(r.left - mx, 0, mx - r.right);
+        const dy = Math.max(r.top - my, 0, my - r.bottom);
+        const dist = Math.hypot(dx, dy);
+        if (dist < RADIUS) {
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const factor = 1 - dist / RADIUS;
+          const pullX = Math.max(-MAX_PULL, Math.min(MAX_PULL, (mx - cx) * STRENGTH));
+          const pullY = Math.max(-MAX_PULL, Math.min(MAX_PULL, (my - cy) * STRENGTH));
+          el.style.setProperty('--mx', (pullX * factor).toFixed(2) + 'px');
+          el.style.setProperty('--my', (pullY * factor).toFixed(2) + 'px');
+        } else if (el.style.getPropertyValue('--mx') !== '0px') {
+          el.style.setProperty('--mx', '0px');
+          el.style.setProperty('--my', '0px');
+        }
+      });
+    };
+
+    document.addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      if (raf === null) raf = requestAnimationFrame(update);
+    }, { passive: true });
+  })();
+
+  // Smooth FAQ accordion — hijack the toggle, animate height
+  document.querySelectorAll('.faq-list details').forEach((details) => {
+    const summary = details.querySelector('summary');
+    const content = details.querySelector('p');
+    if (!summary || !content) return;
+
+    const animate = (from, to, opening) => {
+      content.style.height = from + 'px';
+      content.style.opacity = opening ? '0' : '1';
+      // force a reflow so the starting state is committed
+      void content.offsetHeight;
+      content.style.height = to + 'px';
+      content.style.opacity = opening ? '1' : '0';
+      const cleanup = (e) => {
+        if (e.propertyName !== 'height') return;
+        content.removeEventListener('transitionend', cleanup);
+        if (!opening) details.open = false;
+        content.style.height = '';
+        content.style.opacity = '';
+      };
+      content.addEventListener('transitionend', cleanup);
+    };
+
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (details.open) {
+        animate(content.scrollHeight, 0, false);
+      } else {
+        details.open = true;
+        animate(0, content.scrollHeight, true);
+      }
+    });
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Story decoration — draw the quote-mark strokes when section enters view
+  const storyDecor = document.querySelector('.story-decor');
+  if (storyDecor) {
+    const drawIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('drawn');
+          drawIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    drawIO.observe(storyDecor);
+  }
+
+  // Burger menu
+  const burger = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenu = () => {
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    burger.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  };
+  const openMenu = () => {
+    burger.classList.add('open');
+    mobileMenu.classList.add('open');
+    document.body.classList.add('menu-open');
+    burger.setAttribute('aria-expanded', 'true');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  };
+  burger.addEventListener('click', () => {
+    if (mobileMenu.classList.contains('open')) closeMenu();
+    else openMenu();
+  });
+  document.getElementById('closeBtn').addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('[data-close]').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+  });
+
+  // Nav shrink on scroll
+  const nav = document.getElementById('topNav');
+  const onScroll = () => {
+    if (window.scrollY > 60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const frames = document.querySelectorAll('.hero-visual .frame');
+  const heroVisual = document.querySelector('.hero-visual');
+  if (heroVisual && window.matchMedia('(min-width: 900px)').matches) {
+    heroVisual.addEventListener('mousemove', (e) => {
+      const rect = heroVisual.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      frames.forEach((f, i) => {
+        const depth = (i + 1) * 6;
+        const baseRot = f.classList.contains('f1') ? -3 : f.classList.contains('f2') ? 4 : f.classList.contains('f3') ? -7 : -6;
+        const tiltX = -y * 8; // tilt up/down based on cursor Y
+        const tiltY = x * 8;  // tilt left/right based on cursor X
+        f.style.transform = `translate(${x * depth}px, ${y * depth}px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) rotate(${baseRot}deg)`;
+      });
+    });
+    heroVisual.addEventListener('mouseleave', () => {
+      frames.forEach(f => f.style.transform = '');
+    });
+  }
+</script>
+
+
+<!-- live portfolio copy: the hand-drawn page-load curtain plays on camera.
+     When framed by the portfolio's live film (or with ?hold), the curtain waits closed (its own CSS
+     animations paused) until the film starts step 1 or the phone journey, then opens; each loop back
+     to step 1 replays it. Jumping to a later step clears it. window.liveCurtain() replays it by hand. -->
+<style>.live-hold, .live-hold * { animation-play-state: paused !important; }</style>
+<script>
+(function () {
+  var c = document.getElementById('pageCurtain');
+  if (!c) return;
+  var tpl = c.cloneNode(true); tpl.removeAttribute('id');
+  var framed = false;
+  try { framed = window.parent !== window && parent.location.origin === location.origin; } catch (e) {}
+  var hold = framed || /[?&]hold\b/.test(location.search);
+  var cur = c, heard = false;
+  function clear() { if (cur && cur.parentNode) cur.remove(); }
+  function mount(paused) {
+    clear();
+    var n = tpl.cloneNode(true);
+    if (paused) n.classList.add('live-hold');
+    document.body.appendChild(n);
+    cur = n;
+    return n;
+  }
+  function open(n) {
+    var gone = function () { if (n.parentNode) n.remove(); };
+    n.classList.remove('live-hold');
+    n.querySelector('.curtain-left').addEventListener('animationend', function (e) { if (e.animationName === 'curtain-open-left') gone(); });
+    n.addEventListener('click', gone);
+    setTimeout(gone, 4200);
+  }
+  function held() { return cur && cur.parentNode && cur.classList.contains('live-hold') ? cur : null; }
+  if (hold) {
+    mount(true);
+    // nothing driving the page after a while: open anyway so it never sits closed
+    setTimeout(function () { if (!heard && held()) open(cur); }, framed ? 9000 : 6000);
+  }
+  window.liveCurtain = function () { window.scrollTo(0, 0); open(held() || mount(false)); };
+  window.addEventListener('message', function (e) {
+    var m = e.data;
+    if (e.origin !== location.origin || !m || typeof m.live !== 'string') return;
+    if (m.live === 'goto') {
+      heard = true;
+      var first = (m.i | 0) === 0 && !(m.at | 0);
+      if (!first) { clear(); return; }
+      if (m.play === false) { if (!held()) mount(true); return; }   // still frame: the closed curtain
+      window.liveCurtain();
+    } else if (m.live === 'play') {
+      heard = true;
+      if (held()) open(cur);
+    }
+  });
+})();
+</script>
+</body>
+</html>

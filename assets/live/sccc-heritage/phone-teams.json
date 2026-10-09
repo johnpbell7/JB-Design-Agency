@@ -1,0 +1,43 @@
+{
+  "name": "SCCC Heritage: Team photos",
+  "mobile": {
+    "label": "Team photos",
+    "page": "index.html?p=/teams",
+    "width": 390,
+    "touch": true,
+    "start": {
+      "to": "button[aria-label^='Enlarge']",
+      "offset": 120
+    },
+    "actions": [
+      {
+        "wait": 1500
+      },
+      {
+        "tap": "button[aria-label^='Enlarge']",
+        "after": 2600
+      },
+      {
+        "tap": "button[aria-label='Close']",
+        "after": 1300
+      },
+      {
+        "scrollTo": "button",
+        "text": "View Player Names",
+        "offset": 220,
+        "ms": 2700,
+        "after": 900
+      },
+      {
+        "tap": "button",
+        "text": "View Player Names",
+        "after": 2200
+      },
+      {
+        "tap": "button",
+        "text": "Hide Player Names",
+        "after": 1600
+      }
+    ]
+  }
+}

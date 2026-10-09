@@ -1,0 +1,429 @@
+<!doctype html>
+<!--
+  HERO 03 · "Wall of work"
+  Idea: a plain, confident pitch on the left; on the right three columns of real
+  projects drift past (phones, laptops, product cards, polaroids, print), every
+  tile opening its case study. The proof is the backdrop.
+-->
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>John Bell · Websites for small businesses</title>
+  <meta name="description" content="John Bell designs and builds websites, online shops and brands for small businesses.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <script src="../assets/js/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <style>
+    /* ---------- Option tokens ---------- */
+    :root {
+      --tile-r: 18px;
+      --tile-gap: clamp(12px, 1.3vw, 18px);
+      --tile-shadow: 0 1px 2px rgb(24 24 26 / 0.05), 0 18px 36px -18px rgb(24 24 26 / 0.28);
+      --tile-shadow-up: 0 2px 4px rgb(24 24 26 / 0.06), 0 34px 60px -22px rgb(24 24 26 / 0.42);
+      --tint-amt: 100%;
+      --polaroid: #fbfaf7;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --tile-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 18px 40px -16px rgb(0 0 0 / 0.75);
+        --tile-shadow-up: 0 2px 4px rgb(0 0 0 / 0.5), 0 34px 64px -20px rgb(0 0 0 / 0.9);
+        --tint-amt: 16%;
+        --polaroid: #ecebe6;
+      }
+    }
+    :root[data-theme="dark"] {
+      --tile-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 18px 40px -16px rgb(0 0 0 / 0.75);
+      --tile-shadow-up: 0 2px 4px rgb(0 0 0 / 0.5), 0 34px 64px -20px rgb(0 0 0 / 0.9);
+      --tint-amt: 16%;
+      --polaroid: #ecebe6;
+    }
+
+    /* Nav extras (from home.css) */
+    .site-nav__links .theme-switch { margin-inline: 6px; }
+    @media (max-width: 900px) { .site-nav__links a:not(.is-cta) { display: none; } }
+    @media (max-width: 760px) { .site-nav__links .theme-switch { margin: 0; } .site-nav__links .theme-switch button { padding: 5px 8px; } }
+
+    /* ===================== Hero ===================== */
+    .hero { position: relative; min-height: 100dvh; display: flex; align-items: center; overflow: clip; }
+    .hero__inner { position: relative; z-index: 2; width: 100%; max-width: var(--max); margin-inline: auto; padding: 120px var(--gutter) 72px; pointer-events: none; }
+    .hero__copy { width: min(41%, 540px); pointer-events: auto; }
+
+    .avail { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px 7px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--grey-1); font-size: 13px; font-weight: 500; }
+    .avail i { width: 8px; height: 8px; border-radius: 50%; background: #34c759; animation: ping 2.2s infinite; }
+    @keyframes ping { 0% { box-shadow: 0 0 0 0 rgb(52 199 89 / 0.55); } 70%, 100% { box-shadow: 0 0 0 9px rgb(52 199 89 / 0); } }
+
+    .hero__title { margin-top: 24px; font-size: clamp(44px, 5.1vw, 78px); font-weight: 600; letter-spacing: -0.05em; line-height: 1; }
+    .hero__title .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+    .hero__title .w > span { display: inline-block; }
+    .hero__title mark .w { overflow: visible; }
+
+    .hero__lede { margin-top: 22px; max-width: 40ch; font-size: clamp(16px, 1.3vw, 19px); color: var(--grey-7); }
+    .hero__ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .btn--big { padding: 17px 28px; font-size: 16px; }
+    .btn--big span { transition: translate 0.3s var(--ease-spring); }
+    .btn--big:hover span { translate: 4px 0; }
+    .hero__hint { display: flex; align-items: center; gap: 10px; margin-top: 30px; font-size: 13px; color: var(--grey-5); }
+    .hero__hint svg { width: 18px; height: 18px; flex: none; }
+    .hero__hint .touch { display: none; }
+    @media (hover: none) { .hero__hint .mouse { display: none; } .hero__hint .touch { display: inline; } }
+
+    /* ---------- The wall ---------- */
+    .wall {
+      position: absolute; top: 0; bottom: 0; z-index: 1;
+      left: max(45%, calc(50% - 660px + 600px));
+      right: max(0px, calc(50% - 820px));
+      perspective: 1900px; perspective-origin: 50% 50%;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 17%, #000 83%, transparent 100%);
+              mask-image: linear-gradient(to bottom, transparent 0, #000 17%, #000 83%, transparent 100%);
+    }
+    .wall__plane {
+      position: absolute; inset: -10% clamp(28px, 3.6vw, 56px) -10% clamp(8px, 1vw, 16px);
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--tile-gap);
+      transform-style: preserve-3d; will-change: transform;
+    }
+    .col { position: relative; min-width: 0; }
+    .col__track { display: flex; flex-direction: column; will-change: transform; }
+    .col__set { display: flex; flex-direction: column; }
+
+    /* Every tile: same radius, gap and shadow. The content varies, the frame doesn't. */
+    .tile {
+      --tint: #ebebea;
+      position: relative; display: block; flex: none; margin-bottom: var(--tile-gap); container-type: inline-size;
+      border-radius: var(--tile-r); overflow: hidden; isolation: isolate;
+      background: color-mix(in oklab, var(--tint) var(--tint-amt), var(--grey-1));
+      box-shadow: var(--tile-shadow); color: inherit; text-decoration: none;
+      transition: transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tile::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px var(--line); pointer-events: none; z-index: 3; }
+    .tile:hover, .tile:focus-visible { transform: translate3d(0, -8px, 30px) scale(1.025); box-shadow: var(--tile-shadow-up); z-index: 5; }
+    .tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+    .tile img { pointer-events: none; user-select: none; -webkit-user-drag: none; }
+
+    /* Hover name tag */
+    .tile__tag {
+      position: absolute; left: 10px; bottom: 10px; z-index: 4;
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px 7px 13px; border-radius: 999px;
+      background: rgb(24 24 26 / 0.9); color: #fff; font-size: 12.5px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      opacity: 0; translate: 0 8px; transition: opacity 0.35s var(--ease-out), translate 0.45s var(--ease-out);
+    }
+    .tile__tag small { font-size: 11px; font-weight: 400; color: rgb(255 255 255 / 0.62); }
+    .tile__tag i { font-style: normal; display: grid; place-items: center; width: 18px; height: 18px; margin-right: -4px; border-radius: 50%; background: var(--hl-yellow); color: #18181a; font-size: 11px; }
+    .tile:hover .tile__tag, .tile:focus-visible .tile__tag { opacity: 1; translate: 0 0; }
+
+    /* Phone on a tinted stage, rising out of the bottom edge */
+    .tile--phone { aspect-ratio: 4 / 5; }
+    .phone { position: absolute; left: 20%; right: 20%; top: 12%; padding: 2.2cqw 2.2cqw 0; border-radius: 11cqw 11cqw 0 0; background: #0f0f11; box-shadow: 0 24px 40px -14px rgb(0 0 0 / 0.5), inset 0 0 0 1px rgb(255 255 255 / 0.08); }
+    .phone::before { content: ""; position: absolute; left: 50%; top: 4.6cqw; z-index: 2; width: 30%; height: 3.8cqw; translate: -50% 0; border-radius: 999px; background: #0f0f11; }
+    .phone__screen { aspect-ratio: 9 / 17; overflow: hidden; border-radius: 9cqw 9cqw 0 0; background: #fff; }
+    .phone__screen img { width: 100%; transition: transform 7s cubic-bezier(0.45, 0, 0.2, 1); }
+    .tile--phone:hover .phone__screen img { transform: translateY(-14%); }
+
+    /* Laptop crop: a big screen bleeding off the right and bottom edges */
+    .tile--laptop { aspect-ratio: 1 / 0.86; }
+    .laptop { position: absolute; left: 11%; top: 13%; width: 150%; padding: 3cqw; border-radius: 6cqw; background: #0f0f11; box-shadow: 0 24px 40px -14px rgb(0 0 0 / 0.5), inset 0 0 0 1px rgb(255 255 255 / 0.08); }
+    .laptop img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: left top; border-radius: 3cqw; transition: transform 1.2s var(--ease-out); transform-origin: left top; }
+    .tile--laptop:hover .laptop img { transform: scale(1.04); }
+
+    /* Product card from a shop, sitting on its brand tint */
+    .tile--card { padding: 12% 12% 14%; }
+    .tile--card img { width: 100%; border-radius: 6cqw; box-shadow: 0 18px 34px -16px rgb(24 24 26 / 0.35); transition: transform 0.8s var(--ease-out); }
+    .tile--card:hover img { transform: rotate(-2deg) scale(1.03); }
+
+    /* Loyalty wallet */
+    .tile--wallet { padding: 16% 8%; }
+    .tile--wallet img { width: 100%; transition: transform 0.8s var(--ease-out); }
+    .tile--wallet:hover img { transform: scale(1.05); }
+
+    /* Polaroid */
+    .tile--polaroid { --tint: var(--polaroid); background: var(--polaroid); padding: 4% 4% 0; }
+    .tile--polaroid img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 2.6cqw; }
+    .tile--polaroid figcaption, .tile--polaroid .cap { display: block; padding: 3.4cqw 2cqw 5cqw; font-family: "Caveat", var(--font); font-size: max(13px, 9.6cqw); line-height: 1; color: #2a2a2c; }
+    .tile--polaroid .tile__tag { bottom: 46px; }
+
+    /* PATCH sticker */
+    .tile--sticker { --tint: #111318; background: #111318; aspect-ratio: 1; display: grid; place-items: center; }
+    .sticker { position: relative; width: 66%; aspect-ratio: 1; border-radius: 50%; background: #b3dd03; color: #111318; display: grid; place-items: center; box-shadow: inset 0 -6px 0 rgb(0 0 0 / 0.1), 0 20px 40px -12px rgb(179 221 3 / 0.35); transition: transform 0.8s var(--ease-spring); }
+    .sticker__ring { position: absolute; inset: 7%; animation: spin 22s linear infinite; }
+    .sticker__ring text { font-family: var(--font); font-weight: 700; font-size: 12px; letter-spacing: 0.3em; fill: currentColor; }
+    .sticker img { width: 40%; }
+    .tile--sticker:hover .sticker { transform: rotate(-12deg) scale(1.06); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Property print: two brochure covers stacked */
+    .tile--print { aspect-ratio: 1 / 1.08; }
+    .tile--print img { position: absolute; width: 50%; border-radius: 3px; box-shadow: 0 2px 3px rgb(0 0 0 / 0.12), 0 20px 34px -14px rgb(0 0 0 / 0.45); transition: transform 0.8s var(--ease-out); }
+    .tile--print img:nth-of-type(1) { left: 14%; top: 14%; rotate: -7deg; }
+    .tile--print img:nth-of-type(2) { right: 13%; top: 20%; rotate: 5deg; }
+    .tile--print:hover img:nth-of-type(1) { transform: translate(-6%, -3%) rotate(-3deg); }
+    .tile--print:hover img:nth-of-type(2) { transform: translate(6%, -3%) rotate(3deg); }
+
+    /* ---------- Strip under the hero ---------- */
+    .strip { border-top: 1px solid var(--line); background: var(--white); position: relative; z-index: 3; }
+    .strip__inner { max-width: var(--max); margin-inline: auto; padding: 22px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 18px 32px; flex-wrap: wrap; font-size: 14px; }
+    .strip__list { display: flex; flex-wrap: wrap; gap: 8px 26px; margin: 0; padding: 0; list-style: none; color: var(--grey-7); font-weight: 500; }
+    .strip__list li { display: inline-flex; align-items: center; gap: 10px; }
+    .strip__list li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--pen, var(--hl-yellow)); }
+    .strip__list li:nth-child(2) { --pen: var(--hl-pink); }
+    .strip__list li:nth-child(3) { --pen: var(--hl-blue); }
+    .strip__list li:nth-child(4) { --pen: var(--hl-orange); }
+    .strip__more { color: var(--grey-5); text-decoration: none; display: inline-flex; gap: 8px; align-items: center; }
+    .strip__more:hover { color: var(--ink); }
+
+    /* ---------- Tablet + phone ---------- */
+    @media (max-width: 1080px) {
+      .hero__copy { width: min(46%, 520px); }
+      .wall { left: 50%; }
+      .wall__plane { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .col--c { display: none; }
+    }
+    @media (max-width: 760px) {
+      .hero { display: block; min-height: 0; }
+      .hero__inner { padding: 104px var(--gutter) 0; }
+      .hero__copy { width: 100%; }
+      .hero__title { font-size: clamp(40px, 11.4vw, 56px); margin-top: 20px; }
+      .hero__lede { margin-top: 16px; }
+      .hero__ctas { margin-top: 24px; }
+      .hero__ctas .btn--big { padding: 15px 22px; font-size: 15px; }
+      .hero__hint { margin-top: 20px; }
+      .wall { position: relative; left: auto; right: auto; height: 400px; margin-top: 8px; perspective: 1200px;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 22%, #000 78%, transparent 100%);
+                mask-image: linear-gradient(to bottom, transparent 0, #000 22%, #000 78%, transparent 100%); }
+      .wall__plane { inset: -14% var(--gutter); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .col--c { display: block; }
+      :root { --tile-r: 12px; --tile-gap: 10px; }
+      .tile__tag { font-size: 11.5px; padding: 6px 10px; left: 8px; bottom: 8px; }
+      .tile__tag small { display: none; }
+      .strip__inner { padding-block: 18px; font-size: 13px; }
+      .strip__list { gap: 6px 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sticker__ring { animation: none; }
+      .tile:hover, .tile:focus-visible { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-nav">
+    <a class="site-nav__mark" href="../index.html">John Bell <span>Design</span></a>
+    <nav class="site-nav__links" aria-label="Main">
+      <a href="../index.html#skills">Services</a>
+      <a href="../index.html#process">Process</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../projects/property.html">Print</a>
+      <a href="../index.html#faq">FAQs</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme"><button type="button" data-set="light" aria-pressed="true">Light</button><button type="button" data-set="dark" aria-pressed="false">Dark</button></div>
+      <a class="is-cta" href="../index.html#contact">Start a project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <span class="avail" data-in><i aria-hidden="true"></i>Available for new projects</span>
+          <h1 class="hero__title" id="hero-title" data-split>I design and build websites for <mark class="hl">small businesses.</mark></h1>
+          <p class="hero__lede" data-in>Shops, cafés, salons, trades and property. Sites that look the part, work on every phone and bring in customers. Everything on this wall is real work.</p>
+          <div class="hero__ctas" data-in>
+            <a class="btn btn--big" href="../index.html#contact">Start a project <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost btn--big" href="../index.html#work">See the work</a>
+          </div>
+          <p class="hero__hint" data-in>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3.5v10.2l2.6-2.4 2 4.6 2.3-1-2-4.5h3.6z"/></svg>
+            <span class="mouse">Hover a tile to see the project. Click to open the case study.</span>
+            <span class="touch">Tap any tile to open the case study.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- The wall: three columns, each holds one set of tiles; JS clones the set for a seamless loop -->
+      <div class="wall" data-wall>
+        <div class="wall__plane" data-plane>
+          <div class="col col--a"><div class="col__track"><div class="col__set">
+            <a class="tile tile--phone" href="../projects/patch.html" style="--tint:#e6f2bd">
+              <div class="phone"><div class="phone__screen"><img src="../assets/captures/patch-agency/home-mobile.webp" alt="PATCH website on a phone" decoding="async"></div></div>
+              <span class="tile__tag">PATCH <small>Brand + website</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--card" href="../projects/gosweet.html" style="--tint:#ece4ff">
+              <img src="../assets/captures/gosweet/card-desktop.webp" alt="GoSweet product card" decoding="async">
+              <span class="tile__tag">GoSweet <small>Online shop</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--polaroid" href="../projects/birth-hood.html">
+              <img src="../assets/projects/birth-hood/parent-baby-150.jpg" alt="Parent and baby at a Birth-hood class" decoding="async">
+              <span class="cap">Birth-hood</span>
+              <span class="tile__tag">Birth-hood <small>Website</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--laptop" href="../projects/birdie-blooms.html" style="--tint:#f8e3d3">
+              <div class="laptop"><img src="../assets/captures/birdie-blooms/fold-desktop.webp" alt="Birdie Blooms website on a laptop" decoding="async"></div>
+              <span class="tile__tag">Birdie Blooms <small>Website + brand</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--print" href="../projects/property.html" style="--tint:#e7e4dd">
+              <img src="../assets/projects/property/covers/stableford.jpg" alt="Stableford property brochure cover" decoding="async">
+              <img src="../assets/projects/property/covers/darley.jpg" alt="Darley House property brochure cover" decoding="async">
+              <span class="tile__tag">Property <small>Brochures</small><i aria-hidden="true">↗</i></span>
+            </a>
+          </div></div></div>
+
+          <div class="col col--b"><div class="col__track"><div class="col__set">
+            <a class="tile tile--laptop" href="../projects/sccc-heritage.html" style="--tint:#dfe9df">
+              <div class="laptop"><img src="../assets/captures/sccc-heritage/fold-desktop.webp" alt="SCCC Heritage website on a laptop" decoding="async"></div>
+              <span class="tile__tag">SCCC Heritage <small>Website</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--phone" href="../projects/birth-hood.html" style="--tint:#f8dcea">
+              <div class="phone"><div class="phone__screen"><img src="../assets/captures/birth-hood/home-mobile.webp" alt="Birth-hood website on a phone" decoding="async"></div></div>
+              <span class="tile__tag">Birth-hood <small>Website</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--card" href="../projects/nic-pouches.html" style="--tint:#d9f1ea">
+              <img src="../assets/captures/nic-pouches/card-desktop.webp" alt="Nic Pouches product card" decoding="async">
+              <span class="tile__tag">Nic Pouches <small>Shopify concept</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--wallet" href="../projects/gosweet.html" style="--tint:#f3eefc">
+              <img src="../assets/captures/gosweet/wallet-desktop.webp" alt="GoSweet loyalty cards" decoding="async">
+              <span class="tile__tag">GoSweet <small>Loyalty</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--polaroid" href="../projects/beetle-eyes.html">
+              <img src="../assets/projects/beetle-eyes/window-display.jpg" alt="Beetle Eyes Clothing shop window" decoding="async">
+              <span class="cap">Beetle Eyes</span>
+              <span class="tile__tag">Beetle Eyes <small>Website</small><i aria-hidden="true">↗</i></span>
+            </a>
+          </div></div></div>
+
+          <div class="col col--c"><div class="col__track"><div class="col__set">
+            <a class="tile tile--sticker" href="../projects/patch.html">
+              <div class="sticker">
+                <svg class="sticker__ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring" d="M100 100m-80 0a80 80 0 1 1 160 0a80 80 0 1 1 -160 0"/></defs><text><textPath href="#ring">EVERY PATCH COVERED · EVERY PATCH COVERED ·</textPath></text></svg>
+                <img src="../assets/projects/patch/patch-a.svg" alt="PATCH sticker">
+              </div>
+              <span class="tile__tag">PATCH <small>Brand identity</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--laptop" href="../projects/vsl-trade.html" style="--tint:#e0e9f5">
+              <div class="laptop"><img src="../assets/captures/vsl-trade/fold-desktop.webp" alt="VSL Trade website on a laptop" decoding="async"></div>
+              <span class="tile__tag">VSL Trade <small>B2B website</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--phone" href="../projects/gosweet.html" style="--tint:#fde6f1">
+              <div class="phone"><div class="phone__screen"><img src="../assets/captures/gosweet/home-mobile.webp" alt="GoSweet shop on a phone" decoding="async"></div></div>
+              <span class="tile__tag">GoSweet <small>Online shop</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--polaroid" href="../projects/birth-hood.html">
+              <img src="../assets/projects/birth-hood/yoga-class-189.jpg" alt="Pregnancy yoga class" decoding="async">
+              <span class="cap">Pregnancy yoga</span>
+              <span class="tile__tag">Birth-hood <small>Photography</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--laptop" href="../projects/nic-pouches.html" style="--tint:#e3f3ee">
+              <div class="laptop"><img src="../assets/captures/nic-pouches/fold-desktop.webp" alt="Nic Pouches shop on a laptop" decoding="async"></div>
+              <span class="tile__tag">Nic Pouches <small>Shopify concept</small><i aria-hidden="true">↗</i></span>
+            </a>
+            <a class="tile tile--phone" href="../projects/sccc-heritage.html" style="--tint:#e2ebe2">
+              <div class="phone"><div class="phone__screen"><img src="../assets/captures/sccc-heritage/home-mobile.webp" alt="SCCC Heritage website on a phone" decoding="async"></div></div>
+              <span class="tile__tag">SCCC Heritage <small>Website</small><i aria-hidden="true">↗</i></span>
+            </a>
+          </div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="strip__inner">
+        <ul class="strip__list" aria-label="What I do">
+          <li>Website design</li>
+          <li>Website build</li>
+          <li>Online shops</li>
+          <li>Branding &amp; print</li>
+        </ul>
+        <a class="strip__more" href="../index.html#work">All case studies <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+  (() => {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const marks = document.querySelectorAll('.hl');
+    const wall = document.querySelector('[data-wall]');
+    const plane = document.querySelector('[data-plane]');
+    const tracks = [...document.querySelectorAll('.col__track')];
+
+    // Clone each column's set once, so translating by -50% loops seamlessly.
+    // Clones are hidden from assistive tech and the tab order.
+    tracks.forEach(track => {
+      const set = track.querySelector('.col__set');
+      const copy = set.cloneNode(true);
+      copy.setAttribute('aria-hidden', 'true');
+      copy.querySelectorAll('a').forEach(a => a.tabIndex = -1);
+      copy.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+      track.appendChild(copy);
+    });
+
+    if (!window.gsap || reduce) { marks.forEach(m => m.classList.add('is-lit')); return; }
+
+    // Split the headline into words for the rise-in
+    const title = document.querySelector('[data-split]');
+    const wrapWords = node => {
+      [...node.childNodes].forEach(n => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            const w = document.createElement('span'); w.className = 'w';
+            const i = document.createElement('span'); i.textContent = part; w.appendChild(i); frag.appendChild(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) wrapWords(n);
+      });
+    };
+    wrapWords(title);
+
+    // Columns: different speeds and directions, never in step
+    const cfg = [{ dur: 64, dir: -1, at: 0 }, { dur: 82, dir: 1, at: 0.42 }, { dur: 56, dir: -1, at: 0.7 }];
+    const drift = tracks.map((t, i) => {
+      const { dur, dir, at } = cfg[i];
+      const tw = dir < 0
+        ? gsap.fromTo(t, { yPercent: 0 }, { yPercent: -50, duration: dur, ease: 'none', repeat: -1 })
+        : gsap.fromTo(t, { yPercent: -50 }, { yPercent: 0, duration: dur, ease: 'none', repeat: -1 });
+      tw.progress(at);
+      return tw;
+    });
+
+    // Intro
+    const small = matchMedia('(max-width: 760px)').matches;
+    gsap.set(plane, small ? { rotationX: 7, rotationY: 0 } : { rotationX: 4, rotationY: -7 });
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    tl.from(title.querySelectorAll('.w > span'), { yPercent: 110, duration: 1.1, stagger: 0.05 }, 0.1)
+      .from('[data-in]', { y: 18, autoAlpha: 0, duration: 0.9, stagger: 0.08 }, 0.35)
+      .add(() => marks.forEach(m => m.classList.add('is-lit')), 0.85)
+      .from('.col', { y: (i) => (i % 2 ? -90 : 90), autoAlpha: 0, duration: 1.6, stagger: 0.12, ease: 'expo.out' }, 0.15)
+      .from(plane, small ? { rotationX: 20, scale: 0.94, duration: 2.2, ease: 'expo.out' } : { rotationX: 16, rotationY: -18, scale: 0.94, duration: 2.2, ease: 'expo.out' }, 0.15);
+    drift.forEach(tw => { tw.timeScale(5); gsap.to(tw, { timeScale: 1, duration: 2.4, ease: 'power3.out', delay: 0.15 }); });
+
+    // Slow the wall right down while the pointer is over it, so tiles are easy to pick
+    wall.addEventListener('pointerenter', () => gsap.to(drift, { timeScale: 0.18, duration: 0.8, ease: 'power2.out', overwrite: true }));
+    wall.addEventListener('pointerleave', () => gsap.to(drift, { timeScale: 1, duration: 1.2, ease: 'power2.inOut', overwrite: true }));
+    wall.addEventListener('focusin', () => gsap.to(drift, { timeScale: 0, duration: 0.4, overwrite: true }));
+    wall.addEventListener('focusout', () => gsap.to(drift, { timeScale: 1, duration: 1, overwrite: true }));
+
+    // Tilt the whole wall a touch toward the pointer
+    if (fine) {
+      const rx = gsap.quickTo(plane, 'rotationX', { duration: 1.4, ease: 'power3.out' });
+      const ry = gsap.quickTo(plane, 'rotationY', { duration: 1.4, ease: 'power3.out' });
+      addEventListener('pointermove', e => {
+        const x = e.clientX / innerWidth - 0.5, y = e.clientY / innerHeight - 0.5;
+        rx(4 - y * 9);
+        ry(-7 + x * 12);
+      }, { passive: true });
+    }
+  })();
+  </script>
+</body>
+</html>
