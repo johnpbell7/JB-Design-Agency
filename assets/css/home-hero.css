@@ -587,10 +587,18 @@
   .bt-hero .bt-ghost {
     top: calc(100% - 470px); translate: 0 0; opacity: 0.46;
     /* soft top edge: it fades up into the page behind the button instead of starting on a line */
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 34%), radial-gradient(130% 95% at 60% 40%, #000 40%, transparent 80%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 34%), radial-gradient(130% 95% at 60% 40%, #000 40%, transparent 80%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 2%, #000 24%, #000 32%, transparent 52%), radial-gradient(120% 90% at 55% 42%, #000 38%, transparent 76%);
+    mask-image: linear-gradient(to bottom, transparent 2%, #000 24%, #000 32%, transparent 52%), radial-gradient(120% 90% at 55% 42%, #000 38%, transparent 76%);
     -webkit-mask-composite: source-in; mask-composite: intersect;
   }
 }
 /* desktop: the scrolling site behind the headline a little stronger */
 @media (min-width: 561px) { .bt-hero .bt-ghost { opacity: 0.28; } }
+/* phones: no laptop frame behind the hero (its lid edge and base read as hard grey lines),
+   just the scrolling site itself, feathered out on every side */
+@media (max-width: 560px) {
+  .bt-hero .bt-ghost .laptop__base, .bt-hero .bt-ghost .laptop__lid::before { display: none; }
+  .bt-hero .bt-ghost .laptop__lid { background: none; box-shadow: none; padding: 0; border: 0; }
+  .bt-hero .bt-ghost .screen { border-radius: 0; box-shadow: none; }
+  .bt-hero .bt-ghost__glow { display: none; }
+}
