@@ -583,4 +583,4 @@
 }
 @media (max-width: 680px) { .pf-hero__ctas { display: none; } }
 /* phones: the faded laptop sits up under the button, filling the space, rather than mostly off the bottom */
-@media (max-width: 560px) { .bt-hero .bt-ghost { top: calc(100% - 330px); translate: 0 0; opacity: 0.22; } }
+@media (max-width: 560px) { .bt-hero .bt-ghost { top: calc(100% - 420px); translate: 0 0; opacity: 0.3; } }

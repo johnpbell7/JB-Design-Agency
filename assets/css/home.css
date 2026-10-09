@@ -1477,3 +1477,10 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
   .who-card .mini__phone { width: 54cqw; top: 7cqw; }
   .who-card .mini__laptop { width: 92cqw; top: 10cqw; }
 }
+/* phones: the tapes cross in a steeper X with more room, so both read instead of one hiding the other */
+@media (max-width: 700px) {
+  .tapes { height: 250px; }
+  .tape { left: -20%; right: -20%; padding: 13px 0; }
+  .tape--a { rotate: -9deg; translate: 0 -50%; }
+  .tape--b { rotate: 9deg; translate: 0 -50%; }
+}
