@@ -20,7 +20,8 @@
    Runs first so the options' markup is in place before the hero animates.
    Delete this, the unused templates and their ghostN() blocks once one is chosen. ===== */
 (() => {
-  const n = new URLSearchParams(location.search).get('ghost');
+  // phones default to the work wall (columns of phone screens): a faded desktop site reads as mush that small
+  const n = new URLSearchParams(location.search).get('ghost') || (matchMedia('(max-width: 560px)').matches ? '1' : null);
   const hero = document.querySelector('[data-bt]');
   const tpl = hero && n && hero.querySelector(`template[data-ghost="${n}"]`);
   if (!tpl) return;
@@ -287,7 +288,7 @@
 (() => {
   const root = document.querySelector('.bt-g1');
   if (!root) return;
-  const shots = [...document.querySelectorAll('.pf-card .pf-screen__page img')].map(i => (i.dataset.src || i.getAttribute('src')).replace('-top.webp', '.webp'));
+  const shots = [...document.querySelectorAll('.pf-card .pf-screen__page img')].map(i => i.dataset.src || i.getAttribute('src')); // the trimmed (-top) captures: lighter, and the wall only shows their upper half
   const depth = [0, 0.3, 0.12, 0.5];
   const cols = [...root.querySelectorAll('[data-g1-col]')];
   cols.forEach((col, c) => {
