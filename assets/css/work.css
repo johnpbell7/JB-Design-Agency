@@ -375,3 +375,35 @@
 @media (prefers-reduced-motion: reduce) {
   .wk-group, .wk-lay { transition: none; }
 }
+
+/* ---------- Websites: the stacked brand cards from the home page (copied from home.css) ---------- */
+.work-stack { display: grid; gap: 24px; }
+.feature {
+  position: sticky; top: calc(96px + var(--k, 0) * 14px);
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(20px, 4vw, 56px); align-items: center;
+  min-height: min(620px, 78vh); padding: clamp(28px, 4vw, 56px); border-radius: var(--radius-l); overflow: hidden;
+  background: var(--brand); color: var(--brand-ink); text-decoration: none; isolation: isolate;
+  box-shadow: 0 -20px 60px -30px rgb(24 24 26 / 0.35), inset 0 0 0 1px rgb(255 255 255 / 0.06);
+  transform-origin: 50% 0;
+}
+.feature__tag { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; opacity: 0.8; }
+.feature__tag b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--pen); color: #18181a; font-size: 11px; }
+.feature h3 { font-size: clamp(44px, 6vw, 92px); letter-spacing: -0.055em; margin-top: 10px; }
+.feature p { margin-top: 12px; font-size: 17px; opacity: 0.8; max-width: 38ch; }
+.feature__link { display: inline-flex; gap: 8px; margin-top: 26px; padding: 13px 22px; border-radius: 999px; background: var(--pen); color: #18181a; font-weight: 600; font-size: 15px; transition: gap 0.3s var(--ease-spring); }
+.feature:hover .feature__link { gap: 14px; }
+.feature__visual { position: relative; aspect-ratio: 16 / 11; }
+.feature__glow { position: absolute; inset: 0 4% -6%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--pen) 55%, transparent), transparent); filter: blur(14px); }
+.feature__laptop { position: absolute; left: 0; top: 8%; width: 84%; transition: translate 0.7s var(--ease-out), rotate 0.7s var(--ease-out); }
+.feature__laptop .screen img { height: 100%; object-fit: cover; object-position: top; }
+.feature__phone { position: absolute !important; right: 2%; bottom: 0; width: 22% !important; transition: translate 0.7s var(--ease-out), rotate 0.7s var(--ease-out); }
+.feature:hover .feature__laptop { translate: -8px -8px; rotate: -1.5deg; }
+.feature:hover .feature__phone { translate: 10px -14px; rotate: 3deg; }
+@media (max-width: 860px) {
+  .feature { position: sticky; top: calc(84px + var(--k, 0) * 10px); grid-template-columns: 1fr; min-height: 0; gap: 18px; padding: 24px 22px; }
+  .feature h3 { font-size: clamp(40px, 12vw, 60px); margin-top: 6px; }
+  .feature p { font-size: 15px; margin-top: 8px; }
+  .feature__link { margin-top: 16px; padding: 11px 18px; font-size: 14px; }
+  .feature__visual { aspect-ratio: 16 / 10.5; }
+}
+
