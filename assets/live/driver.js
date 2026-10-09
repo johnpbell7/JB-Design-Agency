@@ -27,6 +27,17 @@
     el.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = 'eager'; });
   };
   eager(document.documentElement);
+
+  // Never focus a text box: on a phone that opens the visitor's keyboard. The journey types by
+  // setting values, so the demos still work; inputmode="none" covers anything that slips through
+  const field = el => el && el.matches && el.matches('input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]), textarea, select, [contenteditable]');
+  const nativeFocus = HTMLElement.prototype.focus;
+  HTMLElement.prototype.focus = function (o) { if (!field(this)) nativeFocus.call(this, o); };
+  const quiet = el => { if (field(el)) el.setAttribute('inputmode', 'none'); el.querySelectorAll?.('input, textarea, [contenteditable]').forEach(f => f.setAttribute('inputmode', 'none')); };
+  quiet(document.documentElement);
+  new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1) quiet(n); })))
+    .observe(document.documentElement, { childList: true, subtree: true });
+  document.addEventListener('focusin', e => { if (field(e.target)) e.target.blur(); }, true);
   new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1) eager(n); })))
     .observe(document.documentElement, { childList: true, subtree: true });
 
