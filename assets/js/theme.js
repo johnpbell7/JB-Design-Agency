@@ -20,12 +20,12 @@
       return `<a href="${a.getAttribute('href')}">${a.textContent}</a>`;
     }).join('');
     const PROJ = [
-      ['patch.html', 'PATCH', '#c7f016', 'captures/patch-agency/home-mobile-top.webp'], ['birth-hood.html', 'Birth-hood', '#fe7fcc', 'captures/birth-hood/home-mobile-top.webp'],
-      ['gosweet.html', 'GoSweet', '#7b3fc4', 'captures/gosweet/home-mobile.webp'], ['nic-pouches.html', 'Nic Pouches', '#0070d5', 'captures/nic-pouches/home-mobile-top.webp'],
-      ['vsl-trade.html', 'VSL Trade', '#b8a9e8', 'captures/vsl-trade/home-mobile-top.webp'], ['birdie-blooms.html', 'Birdie Blooms', '#e8879f', 'captures/birdie-blooms/home-mobile-top.webp'],
-      ['sccc-heritage.html', 'SCCC Heritage', '#8b1538', 'captures/sccc-heritage/home-mobile.webp'], ['beetle-eyes.html', 'Beetle Eyes', '#c97b84', 'captures/beetle-eyes/home-mobile-top.webp'],
-      ['print.html', 'Print + brand', '#fff04d', ['projects/print/hospital/covers/impact.jpg', 'projects/print/gowling/cover-flat.jpg']],
-      ['property.html', 'Property', '#9fbf8f', ['projects/property/covers/darley.jpg', 'projects/property/covers/swilley.jpg']]];
+      ['patch.html', 'PATCH', '#c7f016', 'menu/patch.webp'], ['birth-hood.html', 'Birth-hood', '#fe7fcc', 'menu/birth-hood.webp'],
+      ['gosweet.html', 'GoSweet', '#7b3fc4', 'menu/gosweet.webp'], ['nic-pouches.html', 'Nic Pouches', '#0070d5', 'menu/nic-pouches.webp'],
+      ['vsl-trade.html', 'VSL Trade', '#b8a9e8', 'menu/vsl-trade.webp'], ['birdie-blooms.html', 'Birdie Blooms', '#e8879f', 'menu/birdie-blooms.webp'],
+      ['sccc-heritage.html', 'SCCC Heritage', '#8b1538', 'menu/sccc-heritage.webp'], ['beetle-eyes.html', 'Beetle Eyes', '#c97b84', 'menu/beetle-eyes.webp'],
+      ['print.html', 'Print + brand', '#fff04d', ['menu/print-1.webp', 'menu/print-2.webp']],
+      ['property.html', 'Property', '#9fbf8f', ['menu/property-1.webp', 'menu/property-2.webp']]];
     // websites show a little phone; print shows two fanned covers
     const thumb = src => Array.isArray(src)
       ? `<span class="nm-thumb nm-thumb--print">${src.map(x => `<img data-src="${img}${x}" alt="">`).join('')}</span>`
@@ -46,6 +46,7 @@
       if (open) {
         panel.querySelectorAll('img[data-src]').forEach(im => { im.src = im.dataset.src; im.removeAttribute('data-src'); });
         const r = btn.getBoundingClientRect(); panel.style.setProperty('--ox', `${r.left + r.width / 2}px`); panel.style.setProperty('--oy', `${r.top + r.height / 2}px`);
+        panel.style.setProperty('--k', Math.ceil(Math.hypot(innerWidth, innerHeight) / 10) + 2); // circle radius 10px -> past the far corner
         panel.hidden = false; requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add('is-in')));
       } else { panel.classList.remove('is-in'); setTimeout(() => { if (!nav.classList.contains('is-open')) panel.hidden = true; }, 600); }
     };
