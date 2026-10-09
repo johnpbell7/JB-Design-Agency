@@ -16,45 +16,6 @@
     }, { threshold: 0.35 }).observe(video);
   };
 
-  // ---------- Scroll-driven film (1024px and wider, motion allowed) ----------
-  // The film's grid pins and the page's scroll drives it: the step cards slide sideways (a
-  // scrubbed translate of .cp-steps) and each step plays as it becomes current, held there
-  // until the next. About 70vh of scroll per step; after the last (the phone) the pin lets go.
-  // Phones and tablets don't pin (it held the page up): the film plays by itself, with arrows.
-  // S (filled here): S.on while the mode runs, S.go(k) scrolls the page to step k, and the
-  // caller's S.activate(k) plays step k.
-  const scrollFilm = (film, S) => {
-    if (!hasGsap || reduce) return;
-    const grid = film.querySelector('.cp-film__grid'), list = film.querySelector('.cp-steps');
-    if (!grid || !list) return;
-    gsap.matchMedia().add('(min-width: 1024px)', () => {
-      const lis = () => $$('li', list), n = () => lis().length;
-      film.classList.add('is-scrolly'); S.on = true; list.scrollLeft = 0;
-      const shift = () => { const l = lis().at(-1); return Math.max(0, l.offsetLeft + l.offsetWidth - list.clientWidth); };
-      let k = -1, timer = 0;
-      const pick = (j, now) => { // settle first, so a fast scroll doesn't fire every step on the way
-        if (j === k) return;
-        k = j; clearTimeout(timer);
-        timer = setTimeout(() => S.activate?.(j), now ? 0 : 200);
-      };
-      const tl = gsap.timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: {
-          trigger: grid, pin: true, anticipatePin: 1, invalidateOnRefresh: true, scrub: 0.6,
-          start: () => (grid.offsetHeight <= innerHeight - 24 ? 'center center' : 'bottom bottom-=12'),
-          end: () => `+=${Math.round(n() * innerHeight * 0.7)}`,
-          onUpdate: self => { if (self.isActive) pick(Math.min(n() - 1, Math.floor(self.progress * n())), false); },
-          onEnter: () => pick(0, true),
-          onEnterBack: () => pick(n() - 1, true),
-        },
-      });
-      // card k reaches its place in the row at the middle of its stretch of scroll
-      tl.to(list, { x: () => -shift(), duration: Math.max(1, n() - 1) }, 0.5).to({}, { duration: 0.5 });
-      S.go = j => { const st = tl.scrollTrigger; scrollTo({ top: st.start + ((j + 0.5) / n()) * (st.end - st.start) + 1, behavior: 'smooth' }); };
-      return () => { clearTimeout(timer); S.on = false; S.go = null; film.classList.remove('is-scrolly'); gsap.set(list, { clearProps: 'x' }); };
-    });
-  };
-
   // ---------- Film: steps light up as the recording reaches them; click one to jump ----------
   // ---------- Live film: the real site running in the browser frame (data-live) ----------
   // The page named in data-live is a trimmed copy of the site (assets/live/<site>/) that
@@ -80,7 +41,7 @@
 
     let active = null, incoming = null, mframe = null, mReady = false;
     let seen = false, phone = false, phoneAt = false, on = -1, tl = null, refreshed = false;
-    const S = { on: false, armed: false }; // scroll-driven mode (scrollFilm)
+    const S = { on: false, armed: false }; // S.on: scroll-driven mode (no longer used; the film plays by itself)
     const resume = new Map(); // frame -> where its driver should pick up once it is ready
     const send = (f, m) => f?.contentWindow?.postMessage(m, location.origin);
     const live = () => seen && !document.hidden && !reduce;
@@ -229,7 +190,6 @@
       if (k >= items.length) { if (incoming) { incoming.remove(); incoming = null; } enterPhone(); return; }
       if (phone) leavePhone(() => jump(k)); else jump(k);
     };
-    scrollFilm(film, S);
     let lastW = innerWidth; // only a change of width rebuilds (phone toolbars change the height)
     addEventListener('resize', () => { if (innerWidth === lastW) return; lastW = innerWidth; if (phone) { tl.progress(0).kill(); reset(); jump(0, true); } });
   }
@@ -362,7 +322,7 @@
     });
   };
 
-  // ---------- Film arrows (phones and tablets): step back and forward beside the caption pill ----------
+  // ---------- Film arrows: step back and forward beside the caption pill ----------
   const filmArrows = film => {
     const list = film.querySelector('.cp-steps'), grid = film.querySelector('.cp-film__grid');
     if (!list || !grid) return;
@@ -468,7 +428,6 @@
       addEventListener('resize', () => { if (mobile) { tl.progress(0).kill(); mobile = false; gsap.set(browser, { clearProps: 'width,height,borderRadius,--ring' }); gsap.set([bar, layer, island, img], { clearProps: 'all' }); stage.style.minHeight = ''; mItem.classList.remove('is-on'); } });
     }
 
-    scrollFilm(film, S); // after the "Mobile responsive" card exists
     if (S.on) holdEnd = times[1] ?? Infinity; // before the pin picks a step, play only the first
     tilt(film, browser);
   });

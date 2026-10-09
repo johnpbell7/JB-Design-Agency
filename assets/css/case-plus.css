@@ -256,10 +256,9 @@ body[data-pen] .contact .hl, .contact .hl { --pen: #fff; color: #18181a; }
 [data-cp-film] .cp-film__grid { padding-bottom: 30px; }
 [data-cp-film] .cp-steps li.is-on button { opacity: 1 !important; }
 @media (max-width: 760px) { [data-cp-film] .cp-steps, [data-cp-film].is-scrolly .cp-steps { bottom: -18px; } }
-/* arrows either side of the caption pill (phones and tablets, where the film plays by itself) */
-.cp-film__nav { display: none; }
-@media (max-width: 1023px) {
-  [data-cp-film]:not(.is-scrolly) .cp-film__nav {
+/* arrows either side of the caption pill: the film plays by itself, these step through it */
+@media all {
+  [data-cp-film] .cp-film__nav {
     position: absolute; bottom: -24px; z-index: 21; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%;
     background: #fff; color: #18181a; cursor: pointer; box-shadow: 0 10px 24px -12px rgb(24 24 40 / 0.5), 0 0 0 1px var(--line); -webkit-tap-highlight-color: transparent; transition: scale 0.2s var(--ease-out);
   }
