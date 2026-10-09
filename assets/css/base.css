@@ -136,14 +136,14 @@ html { scroll-padding-top: 48px; }
 @media (max-width: 560px) {
   .site-nav { inset: 10px 10px auto; padding: 7px 7px 7px 12px; gap: 8px; }
   .site-nav__links a:not(.is-cta) { display: none; }
-  .site-nav__mark { font-size: 16px; column-gap: 7px; }
-  .site-nav__mark .jb-mark { width: 32px; height: 32px; }
+  .site-nav__mark { font-size: 18px; column-gap: 9px; }
+  .site-nav__mark .jb-mark { width: 40px; height: 40px; }
   .site-nav__links { gap: 6px; }
   .site-nav__links .is-cta { padding: 8px 12px; font-size: 13px; white-space: nowrap; }
 }
 @media (max-width: 400px) {
-  .site-nav__mark { font-size: 14.5px; letter-spacing: -0.03em; }
-  .site-nav__mark .jb-mark { width: 30px; height: 30px; }
+  .site-nav__mark { font-size: 17px; letter-spacing: -0.03em; }
+  .site-nav__mark .jb-mark { width: 38px; height: 38px; }
   .site-nav__links { gap: 5px; }
   .site-nav__links .is-cta { padding: 8px 10px; font-size: 12.5px; }
 }
