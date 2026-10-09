@@ -47,7 +47,7 @@
     const tl = gsap.timeline({ delay: 0.15 });
     tl.from('.bt-title .bt-ln > span', { yPercent: 110, duration: 1.1, ease: 'expo.out', stagger: 0.1 }, 0)
       .from('[data-in]', { y: 14, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.12 }, 0.35);
-    marks.forEach((m, i) => tl.to(m, { backgroundSize: '100% 62%', duration: 0.55, ease: 'power2.inOut' }, 0.75 + i * 0.32));
+    marks.forEach((m, i) => tl.to(m, { backgroundSize: '100% 62%', duration: 0.45, ease: 'power2.inOut' }, 0.5 + i * 0.26));
     if (pieces.length) tl.from(pieces.map(p => p.querySelector('.bt-fl')), {
         opacity: 0, scale: 0.55, y: 60, rotation: (i) => (i % 2 ? 18 : -18),
         duration: 1, ease: 'back.out(1.7)', stagger: { each: 0.1, from: 'random' }
