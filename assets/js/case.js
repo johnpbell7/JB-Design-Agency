@@ -307,14 +307,17 @@
       const go = (k, dir) => {
         k = (k + phones.length) % phones.length;
         if (k === cur) return;
-        const a = phones[cur], b = phones[k], blur = 'blur(14px)';
+        // both phones move together on one curve, transform + opacity only (GPU), so it stays smooth
+        // over live sites; a light blur rides on the phone that's leaving
+        const a = phones[cur], b = phones[k], T = 0.75, ease = 'power3.inOut';
         cur = k;
         a.classList.remove('is-on'); a.classList.add('is-leaving'); b.classList.add('is-on');
         gsap.killTweensOf([a, b]);
-        gsap.to(a, { xPercent: -75 * dir, rotation: -7 * dir, scale: 0.88, opacity: 0, filter: blur, duration: 0.55, ease: 'power3.in',
-          onComplete: () => { a.classList.remove('is-leaving'); gsap.set(a, { clearProps: 'transform,opacity,filter' }); } });
-        gsap.fromTo(b, { xPercent: 75 * dir, rotation: 7 * dir, scale: 0.88, opacity: 0, filter: blur },
-          { xPercent: 0, rotation: 0, scale: 1, opacity: 1, filter: 'blur(0px)', duration: 0.8, delay: 0.12, ease: 'expo.out', clearProps: 'transform,filter' });
+        gsap.set([a, b], { willChange: 'transform, opacity', force3D: true });
+        gsap.to(a, { xPercent: -105 * dir, rotation: -5 * dir, scale: 0.9, opacity: 0, filter: 'blur(4px)', duration: T, ease,
+          onComplete: () => { a.classList.remove('is-leaving'); gsap.set(a, { clearProps: 'transform,opacity,filter,willChange' }); } });
+        gsap.fromTo(b, { xPercent: 105 * dir, rotation: 5 * dir, scale: 0.9, opacity: 0 },
+          { xPercent: 0, rotation: 0, scale: 1, opacity: 1, duration: T, ease, clearProps: 'transform,opacity,willChange' });
         label(); tick();
       };
       deck.addEventListener('click', e => { const n = e.target.closest('.parade__nav'); if (n) go(cur + +n.dataset.d, +n.dataset.d); });
