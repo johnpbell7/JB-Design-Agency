@@ -13,8 +13,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Brand fonts for the concept mini sites in #who -->
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Great+Vibes&family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500;600&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+  <!-- Brand fonts for the concept mini sites in #who and the pop-out pieces on the work cards.
+       Both sit below the first screen, so they load without holding up the first paint -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Great+Vibes&family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500;600&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Josefin+Sans:wght@600;700&family=Montserrat:wght@500;700;800&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Great+Vibes&family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500;600&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Josefin+Sans:wght@600;700&family=Montserrat:wght@500;700;800&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/case.css">
   <link rel="stylesheet" href="assets/css/home.css">
@@ -150,7 +153,7 @@
     <section id="top" data-chapter="00" data-chapter-label="Hello" class="bt-hero bt-bt" data-bt aria-label="Introduction">
       <div class="bt-ghost__glow" aria-hidden="true"></div>
       <div class="bt-ghost" aria-hidden="true">
-        <div class="laptop bt-ghost__laptop"><div class="laptop__lid"><div class="screen bt-ghost__screen"><img src="assets/captures/birth-hood/home-desktop.webp" alt="" data-name="Birth‑hood" data-href="projects/birth-hood.html" data-col="#ff9ed2" class="is-on" loading="eager"><img src="assets/captures/gosweet/home-desktop.webp" alt="" data-name="GoSweet" data-href="projects/gosweet.html" data-col="#b48cff" loading="lazy"><img src="assets/captures/patch-agency/home-desktop.webp" alt="" data-name="PATCH" data-href="projects/patch.html" data-col="#c7f016" loading="lazy"><img src="assets/captures/nic-pouches/home-desktop.webp" alt="" data-name="Nic Pouches" data-href="projects/nic-pouches.html" data-col="#7fc4ff" loading="lazy"><img src="assets/captures/birdie-blooms/home-desktop.webp" alt="" data-name="Birdie Blooms" data-href="projects/birdie-blooms.html" data-col="#ffb27a" loading="lazy"><img src="assets/captures/vsl-trade/home-desktop.webp" alt="" data-name="VSL Trade" data-href="projects/vsl-trade.html" data-col="#9fe58a" loading="lazy"></div></div><div class="laptop__base"></div></div>
+        <div class="laptop bt-ghost__laptop"><div class="laptop__lid"><div class="screen bt-ghost__screen"><img src="assets/captures/birth-hood/home-desktop.webp" alt="" data-name="Birth‑hood" data-href="projects/birth-hood.html" data-col="#ff9ed2" class="is-on" fetchpriority="high"><img data-src="assets/captures/gosweet/home-desktop.webp" alt="" data-name="GoSweet" data-href="projects/gosweet.html" data-col="#b48cff"><img data-src="assets/captures/patch-agency/home-desktop.webp" alt="" data-name="PATCH" data-href="projects/patch.html" data-col="#c7f016"><img data-src="assets/captures/nic-pouches/home-desktop.webp" alt="" data-name="Nic Pouches" data-href="projects/nic-pouches.html" data-col="#7fc4ff"><img data-src="assets/captures/birdie-blooms/home-desktop.webp" alt="" data-name="Birdie Blooms" data-href="projects/birdie-blooms.html" data-col="#ffb27a"><img data-src="assets/captures/vsl-trade/home-desktop.webp" alt="" data-name="VSL Trade" data-href="projects/vsl-trade.html" data-col="#9fe58a"></div></div><div class="laptop__base"></div></div>
       </div>
 
       <!-- ===== Hero backdrop options: ?ghost=1..4 swaps the faded laptop for one of these.
@@ -271,7 +274,7 @@
                 <span class="pf-phone"><span class="pf-screen" style="--sb:#141414;--sbt:#fff;--hb:rgb(0 0 0 / 0.8)">
                   <span class="pf-sb"><span>9:41</span><span class="pf-sb__icons" data-pf-icons></span></span>
                   <span class="pf-island"></span>
-                  <span class="pf-screen__page"><img src="assets/captures/birth-hood/home-mobile.webp" width="780" height="16000" alt="" data-h="16000" decoding="async"></span>
+                  <span class="pf-screen__page"><img data-src="assets/captures/birth-hood/home-mobile-top.webp" width="780" height="9000" alt="" data-h="9000" decoding="async"></span>
                   <span class="pf-homebar"></span>
                 </span></span>
               </span>
@@ -282,7 +285,7 @@
                 <span class="pf-phone"><span class="pf-screen" style="--sb:#07080e;--sbt:#fff;--hb:rgb(255 255 255 / 0.85)">
                   <span class="pf-sb"><span>9:41</span><span class="pf-sb__icons" data-pf-icons></span></span>
                   <span class="pf-island"></span>
-                  <span class="pf-screen__page"><img src="assets/captures/patch-agency/home-mobile.webp" width="780" height="16000" alt="" data-h="16000" decoding="async"></span>
+                  <span class="pf-screen__page"><img data-src="assets/captures/patch-agency/home-mobile-top.webp" width="780" height="9000" alt="" data-h="9000" decoding="async"></span>
                   <span class="pf-homebar"></span>
                 </span></span>
               </span>
@@ -293,7 +296,7 @@
                 <span class="pf-phone"><span class="pf-screen" style="--sb:#faf6fe;--sbt:#18181a">
                   <span class="pf-sb"><span>9:41</span><span class="pf-sb__icons" data-pf-icons></span></span>
                   <span class="pf-island"></span>
-                  <span class="pf-screen__page"><img src="assets/captures/gosweet/home-mobile.webp" width="780" height="10032" alt="" data-h="10032" decoding="async"></span>
+                  <span class="pf-screen__page"><img data-src="assets/captures/gosweet/home-mobile.webp" width="780" height="10032" alt="" data-h="10032" decoding="async"></span>
                   <span class="pf-homebar"></span>
                 </span></span>
               </span>
@@ -304,7 +307,7 @@
                 <span class="pf-phone"><span class="pf-screen" style="--sb:#f9f9f9;--sbt:#18181a">
                   <span class="pf-sb"><span>9:41</span><span class="pf-sb__icons" data-pf-icons></span></span>
                   <span class="pf-island"></span>
-                  <span class="pf-screen__page"><img src="assets/captures/nic-pouches/home-mobile.webp" width="780" height="13530" alt="" data-h="13530" decoding="async"></span>
+                  <span class="pf-screen__page"><img data-src="assets/captures/nic-pouches/home-mobile-top.webp" width="780" height="9000" alt="" data-h="9000" decoding="async"></span>
                   <span class="pf-homebar"></span>
                 </span></span>
               </span>
@@ -315,7 +318,7 @@
                 <span class="pf-phone"><span class="pf-screen" style="--sb:#5f5246;--sbt:#fff;--hb:rgb(255 255 255 / 0.85)">
                   <span class="pf-sb"><span>9:41</span><span class="pf-sb__icons" data-pf-icons></span></span>
                   <span class="pf-island"></span>
-                  <span class="pf-screen__page"><img src="assets/captures/birdie-blooms/home-mobile.webp" width="780" height="16000" alt="" data-h="16000" decoding="async"></span>
+                  <span class="pf-screen__page"><img data-src="assets/captures/birdie-blooms/home-mobile-top.webp" width="780" height="9000" alt="" data-h="9000" decoding="async"></span>
                   <span class="pf-homebar"></span>
                 </span></span>
               </span>

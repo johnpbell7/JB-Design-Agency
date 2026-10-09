@@ -19,10 +19,10 @@
       return `<a href="${a.getAttribute('href')}">${a.textContent}</a>`;
     }).join('');
     const PROJ = [
-      ['patch.html', 'PATCH', '#c7f016', 'captures/patch-agency/home-mobile.webp'], ['birth-hood.html', 'Birth-hood', '#fe7fcc', 'captures/birth-hood/home-mobile.webp'],
-      ['gosweet.html', 'GoSweet', '#7b3fc4', 'captures/gosweet/home-mobile.webp'], ['nic-pouches.html', 'Nic Pouches', '#0070d5', 'captures/nic-pouches/home-mobile.webp'],
-      ['vsl-trade.html', 'VSL Trade', '#b8a9e8', 'captures/vsl-trade/home-mobile.webp'], ['birdie-blooms.html', 'Birdie Blooms', '#e8879f', 'captures/birdie-blooms/home-mobile.webp'],
-      ['sccc-heritage.html', 'SCCC Heritage', '#8b1538', 'captures/sccc-heritage/home-mobile.webp'], ['beetle-eyes.html', 'Beetle Eyes', '#c97b84', 'captures/beetle-eyes/home-mobile.webp'],
+      ['patch.html', 'PATCH', '#c7f016', 'captures/patch-agency/home-mobile-top.webp'], ['birth-hood.html', 'Birth-hood', '#fe7fcc', 'captures/birth-hood/home-mobile-top.webp'],
+      ['gosweet.html', 'GoSweet', '#7b3fc4', 'captures/gosweet/home-mobile.webp'], ['nic-pouches.html', 'Nic Pouches', '#0070d5', 'captures/nic-pouches/home-mobile-top.webp'],
+      ['vsl-trade.html', 'VSL Trade', '#b8a9e8', 'captures/vsl-trade/home-mobile-top.webp'], ['birdie-blooms.html', 'Birdie Blooms', '#e8879f', 'captures/birdie-blooms/home-mobile-top.webp'],
+      ['sccc-heritage.html', 'SCCC Heritage', '#8b1538', 'captures/sccc-heritage/home-mobile.webp'], ['beetle-eyes.html', 'Beetle Eyes', '#c97b84', 'captures/beetle-eyes/home-mobile-top.webp'],
       ['print.html', 'Print + brand', '#fff04d', ['projects/print/hospital/covers/impact.jpg', 'projects/print/gowling/cover-flat.jpg']],
       ['property.html', 'Property', '#9fbf8f', ['projects/property/covers/darley.jpg', 'projects/property/covers/swilley.jpg']]];
     // websites show a little phone; print shows two fanned covers

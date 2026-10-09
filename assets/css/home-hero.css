@@ -281,16 +281,16 @@
     .pf-strip__list span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--dot); }
     .pf-strip a { color: var(--ink); font-weight: 500; text-underline-offset: 4px; }
 
-    /* ---------- Phone width: a smaller, tighter fan with one phone lifted ---------- */
+    /* ---------- Phone width: a tighter fan of big phones (the outer ones bleed off the edges), one lifted ---------- */
     @media (max-width: 860px) {
       .pf-hero { padding-top: 92px; align-items: start; }
       .pf-hero__grid { grid-template-columns: 1fr; gap: 8px; }
       .pf-hero__note { display: none; }
-      .pf-fan { --pw: min(25vw, 170px); height: auto; aspect-ratio: auto; padding-top: 18px; }
+      .pf-fan { --pw: min(38vw, 230px); height: auto; aspect-ratio: auto; padding-top: 18px; }
       .pf-fan__stage { position: relative; height: calc(var(--pw) * 2.06 + var(--pw) * 0.62 + 34px); }
       .pf-card { bottom: calc(var(--pw) * 0.5); transform-origin: 50% 150%; }
       .pf-tag { display: none; }
-      .pf-scribble { top: 48%; width: 140%; }
+      .pf-scribble { top: 50%; width: 200%; }
       .pf-deck-cap { display: flex; justify-content: center; margin-top: 6px; }
       .pf-deck-cap__name {
         display: inline-flex; align-items: baseline; gap: 6px;

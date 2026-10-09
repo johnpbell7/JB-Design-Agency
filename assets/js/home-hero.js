@@ -1,5 +1,20 @@
 // Home hero (big type) + phone-fan section. Ported from heroes/hero-02 and hero-07 by tools/port_hero.py
 
+/* Phone-fan screens sit below the first screen: they start loading once the hero's
+   laptop site has arrived (so they don't slow it down), or sooner if the fan nears view */
+(() => {
+  const imgs = [...document.querySelectorAll('.pf-card img[data-src]')];
+  if (!imgs.length) return;
+  let done = false;
+  const go = () => { if (done) return; done = true; imgs.forEach(x => { x.src = x.dataset.src; x.removeAttribute('data-src'); }); };
+  const first = document.querySelector('.bt-ghost__screen img.is-on');
+  if (!first || (first.complete && first.naturalWidth)) return go();
+  first.addEventListener('load', go, { once: true });
+  first.addEventListener('error', go, { once: true });
+  setTimeout(go, 4000);
+  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => e.isIntersecting && go(), { rootMargin: '50% 0px' }).observe(imgs[0].closest('.pf-fan') || imgs[0]);
+})();
+
 /* ===== Hero backdrop picker: ?ghost=1..4 swaps the faded laptop for one of the
    options kept as <template data-ghost="N"> in index.html. No query = laptop.
    Runs first so the options' markup is in place before the hero animates.
@@ -245,9 +260,12 @@
 (() => {
   const imgs = [...document.querySelectorAll('.bt-ghost__screen img')];
   if (!imgs.length || !window.gsap || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // only the first site loads with the page; each next one loads while the current one scrolls
+  const fetch = x => { if (x.dataset.src) { x.src = x.dataset.src; x.removeAttribute('data-src'); } };
   let i = 0;
   const show = () => {
     const img = imgs[i], view = img.parentElement;
+    fetch(imgs[(i + 1) % imgs.length]);
     imgs.forEach(x => x.classList.toggle('is-on', x === img));
     const hero = document.querySelector('.bt-hero'), chip = document.querySelector('[data-now-chip]'), nm = document.querySelector('[data-now-name]');
     if (hero && img.dataset.col) hero.style.setProperty('--glow', img.dataset.col);
@@ -269,7 +287,7 @@
 (() => {
   const root = document.querySelector('.bt-g1');
   if (!root) return;
-  const shots = [...document.querySelectorAll('.pf-card .pf-screen__page img')].map(i => i.getAttribute('src'));
+  const shots = [...document.querySelectorAll('.pf-card .pf-screen__page img')].map(i => (i.dataset.src || i.getAttribute('src')).replace('-top.webp', '.webp'));
   const depth = [0, 0.3, 0.12, 0.5];
   const cols = [...root.querySelectorAll('[data-g1-col]')];
   cols.forEach((col, c) => {
