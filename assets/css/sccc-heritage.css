@@ -302,3 +302,18 @@ body {
   .sc-break__panel, .sc-break--cards .sc-break__panel, .sc-break--slider .sc-break__panel, .sc-break--roll .sc-break__panel { height: 68%; }
   .sc-break__stack, .sc-break__photos { align-self: end; }
 }
+
+/* Team photos as an archive contact sheet: a straight, tidy grid on a dark card, set apart from
+   the tilted decade cards beside it. Each print opens full screen (data-zoom, case.js). */
+.sc-break--archive .sc-break__panel { display: none; }
+.sc-sheet { grid-area: 1 / 1; align-self: start; display: grid; gap: 14px; padding: clamp(16px, 2.2vw, 26px); border-radius: var(--radius-l); background: #15241b; color: #f3efe6;
+  box-shadow: 0 2px 4px rgb(10 20 14 / 0.12), 0 34px 60px -30px rgb(10 20 14 / 0.6); }
+.sc-sheet__head { display: flex; justify-content: space-between; gap: 12px; margin: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(243 239 230 / 0.6); }
+.sc-sheet__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(8px, 1vw, 12px); }
+.sc-sheet__shot { display: grid; gap: 7px; padding: 0; border: 0; background: none; color: inherit; text-align: left; cursor: zoom-in; font: inherit; }
+.sc-sheet__shot img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; filter: grayscale(0.25) sepia(0.15); transition: filter 0.4s, scale 0.4s var(--ease-out); }
+.sc-sheet__shot:hover img, .sc-sheet__shot:focus-visible img { filter: none; scale: 1.03; }
+.sc-sheet__shot:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 4px; }
+.sc-sheet__shot span { display: grid; gap: 1px; font-size: 11.5px; line-height: 1.3; color: rgb(243 239 230 / 0.7); }
+.sc-sheet__shot b { font-size: 13px; font-weight: 700; color: #f3efe6; letter-spacing: 0.02em; }
+@media (max-width: 560px) { .sc-sheet__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
