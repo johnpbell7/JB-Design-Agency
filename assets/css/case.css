@@ -385,7 +385,7 @@ body {
   .parade.is-deck .phone:not(.is-on):not(.is-leaving) { visibility: hidden; }
   .parade.is-deck .phone.is-on { z-index: 2; }
   .parade.is-deck .pop { display: none; }
-  .parade.is-deck .parade__deck { position: relative; z-index: 6; display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 22px; }
+  .parade.is-deck .parade__deck { font-family: var(--font); letter-spacing: -0.01em; position: relative; z-index: 6; display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 22px; }
   .parade__nav { display: grid; place-items: center; flex: none; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: #fff; color: #18181a; cursor: pointer;
     box-shadow: 0 10px 24px -12px rgb(24 24 40 / 0.5), 0 0 0 1px rgb(0 0 0 / 0.06); -webkit-tap-highlight-color: transparent; transition: scale 0.2s var(--ease-out); }
   .parade__nav:active { scale: 0.9; }
