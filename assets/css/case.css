@@ -371,6 +371,7 @@ body {
   .parade .phone:nth-child(even) { margin-top: 0; }
   .parade__caption { display: none; }
   .pop { zoom: 0.66; } /* zoom, not scale: GSAP resets the scale property when it animates the pop in */
+  .pop { left: var(--x-sm, var(--x)); top: var(--y-sm, var(--y)); } /* a pop can sit elsewhere on phones (--x-sm / --y-sm) */
   .pop[data-pop-sm="hide"] { display: none; }
 }
 
