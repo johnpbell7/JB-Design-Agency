@@ -296,7 +296,7 @@
 (() => {
   const root = document.querySelector('.bt-g1');
   if (!root) return;
-  const shots = [...document.querySelectorAll('.pf-card .pf-screen__page img')].map(i => (i.dataset.src || i.getAttribute('src')).replace(/captures\/([^/]+)\/home-mobile(-top)?\.webp$/, 'wall/$1.webp')); // small 360px copies of each site's top four screens
+  const shots = [...document.querySelectorAll('.pf-card .pf-screen__page img')].map(i => (i.dataset.src || i.getAttribute('src')).replace(/captures\/([^/]+)\/home-mobile(-top)?\.webp$/, 'wall/$1.webp')).filter(src => !src.includes('birth-hood')); // small 360px copies of each site's top four screens (no Birth-hood: it shows a person's face)
   const depth = [0, 0.3, 0.12, 0.5];
   const cols = [...root.querySelectorAll('[data-g1-col]')];
   cols.forEach((col, c) => {
