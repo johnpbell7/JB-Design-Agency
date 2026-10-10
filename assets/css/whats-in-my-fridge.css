@@ -1069,3 +1069,67 @@ body { --project-pen: #f1d9c7; }
   .wf-tl__head > :not(.wf-node) { padding-inline: 0; }
   .wf-tl .wf-cook__ph.phone { width: min(58vw, 240px); }
 }
+.wf-tl__head .wf-node { top: 28px; }
+.wf-tl__head { padding-top: clamp(84px, 8vw, 110px); }
+.wf-recipe .wf-steps--sm li { font-size: 14.5px; }
+.wf-recipe .wf-m-time { margin-bottom: 4px; }
+/* Dinner on phones: one screen. A smaller phone on the left, this act's cards
+   overlapping it on the right, so both are in view together */
+@media (max-width: 760px) {
+  .wf-tl .wf-cook__stage { display: grid; grid-template-columns: 40% 16% minmax(0, 1fr); grid-template-rows: auto auto; gap: 8px 0; align-items: center; }
+  .wf-tl .wf-cook__mid { grid-column: 1 / span 2; grid-row: 1 / span 2; padding: 10px 0; z-index: 1; }
+  .wf-tl .wf-cook__mid .wf-panel { inset: 0 -10px 0 -10px; }
+  .wf-tl .wf-cook__ph.phone { width: 100%; }
+  .wf-tl .wf-cook__col--l { grid-column: 2 / span 2; grid-row: 1; align-self: end; z-index: 3; }
+  .wf-tl .wf-cook__col--r { grid-column: 2 / span 2; grid-row: 2; align-self: start; z-index: 3; }
+  .wf-tl .wf-ccard { padding: 10px 10px 8px; border-radius: 15px; font-size: 13px; }
+  .wf-tl .wf-ccard .wf-card__k { margin-bottom: 6px; font-size: 9.5px; }
+  .wf-tl .wf-hrow { gap: 6px; padding: 5px 0; }
+  .wf-tl .wf-hrow b { font-size: 12.5px; margin-bottom: 1px; }
+  .wf-tl .wf-hrow .fa-meta { font-size: 10.5px; gap: 4px; }
+  .wf-tl .wf-hrow .fa-tag { display: none; }
+  .wf-tl .wf-tickbox { width: 18px; height: 18px; }
+  .wf-tl .wf-tickbox svg { width: 11px; height: 11px; }
+  .wf-tl .wf-usesup { font-size: 9.5px; padding: 3px 6px; }
+  .wf-tl .wf-hused { padding: 4px 6px; font-size: 9.5px; }
+  .wf-tl .wf-hused svg { width: 12px; height: 12px; }
+  .wf-tl .wf-ccard .fa-buy { font-size: 11px; margin-bottom: 8px !important; }
+  .wf-tl .wf-ccard .fa-buy-chip { font-size: 11px; padding: 4px 8px; }
+  .wf-tl .wf-minilist { padding: 8px; gap: 5px; }
+  .wf-tl .wf-minilist h4 { font-size: 14px; }
+  .wf-tl .wf-minilist .fa-shop { padding: 5px 7px; }
+  .wf-tl .wf-minilist .fa-shop b { font-size: 12px; }
+  .wf-tl .wf-ing { margin: 0; }
+  .wf-tl .wf-ing li, .wf-tl .wf-ing--lg li { font-size: 12.5px; padding: 4px 6px; margin: 0 -6px; }
+  .wf-tl .wf-stepnum b { font-size: 30px; }
+  .wf-tl .wf-stepnum span { font-size: 11.5px; }
+  .wf-tl .wf-stepnum .wf-steptime { font-size: 10.5px; padding: 3px 7px; }
+  .wf-tl .wf-stepbar { margin: 7px 0 8px; gap: 3px; }
+  .wf-tl .wf-stepbar i { height: 4px; }
+  .wf-tl .wf-steptext { min-height: 4.2em; }
+  .wf-tl .wf-steptext p { font-size: 15px; line-height: 1.3; }
+  .wf-tl .wf-done { padding-bottom: 8px; gap: 5px; }
+  .wf-tl .wf-done b { font-size: 14px; }
+  .wf-tl .wf-leftover { font-size: 11.5px; padding: 7px 9px; }
+  .wf-tl .wf-cook__col--l .wf-ccard { rotate: -1deg; }
+  .wf-tl .wf-cook__col--r .wf-ccard { rotate: 1deg; }
+}
+/* Offline: a real phone (the site's .phone frame), the chips tucked beside it */
+.wf-off__ph.phone { position: relative; width: 260px; box-shadow: none; filter: drop-shadow(0 30px 40px rgb(30 20 20 / 0.28)); grid-row: 1 / span 2; }
+.wf-off__body { display: block; min-height: 0; padding: 8px 18px 0; }
+.wf-off__body .wf-sync { margin-bottom: 4px; font-size: 13px; }
+.wf-off__body .fa-shop { padding: 12px 14px; margin-bottom: 8px; }
+.wf-off__body .fa-shop + .fa-shop { margin-top: 0; }
+.wf-tl .wf-off__ph.phone { width: 240px; grid-row: auto; }
+.wf-tl .wf-off { grid-template-columns: auto auto; grid-template-rows: auto auto; justify-content: center; justify-items: start; column-gap: 0; }
+.wf-tl .wf-off__ph.phone { grid-column: 1; grid-row: 1 / span 2; }
+.wf-tl .wf-off > .wf-net { grid-column: 2; grid-row: 1; justify-self: start; align-self: end; margin: 0 0 14px -44px; position: relative; z-index: 3; }
+.wf-tl .wf-off > .wf-a2hs { grid-column: 2; grid-row: 2; justify-self: start; align-self: start; width: 210px; margin-left: -60px; position: relative; z-index: 3; }
+.wf-tl .wf-a2hs .wf-sheet__row { font-size: 13.5px; padding: 10px 11px; }
+@media (max-width: 760px) {
+  .wf-tl .wf-off__ph.phone { width: 52vw; max-width: 220px; }
+  .wf-tl .wf-off > .wf-a2hs { width: 46vw; max-width: 200px; margin-left: -40px; }
+  .wf-tl .wf-off > .wf-net { margin-left: -30px; }
+  .wf-tl .wf-off .wf-net > span { font-size: 12px; padding: 8px 12px; }
+  .wf-tl .wf-a2hs .wf-sheet__row { font-size: 12px; padding: 8px 9px; }
+}

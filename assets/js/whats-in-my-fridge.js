@@ -847,14 +847,14 @@
       const sig = $('[data-sig]', dof), sync = $('[data-sync]', dof), rows = $$('[data-oshop]', dof);
       const on = $('[data-neton]', dof), off = $('[data-netoff]', dof), a2hs = $('[data-a2hs]', dof), sheet = $('.wf-a2hs', dof);
       const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.6, paused: true });
-      tl.call(() => { sig.classList.remove('is-off'); rows.forEach(r => r.classList.remove('done')); a2hs.classList.remove('hot'); }, null, 0)
+      tl.call(() => { sig?.classList.remove('is-off'); rows.forEach(r => r.classList.remove('done')); a2hs.classList.remove('hot'); }, null, 0)
         .set(sync, { autoAlpha: 0, height: 'auto' }, 0).set([on, off], { autoAlpha: 0 }, 0).set(sheet, { autoAlpha: 0, y: 30 }, 0);
       callsIn(tl, dof, 0.3);
-      tl.call(() => sig.classList.add('is-off'), null, 0.8)
+      tl.call(() => sig?.classList.add('is-off'), null, 0.8)
         .fromTo(off, { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2.4)' }, 0.8)
         .fromTo(sync, { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'back.out(1.8)' }, 1.2);
       rows.slice(0, 2).forEach((r, i) => tl.call(() => { r.classList.add('done'); bump($('.fa-box', r)); }, null, 2.2 + i * 0.9));
-      tl.call(() => sig.classList.remove('is-off'), null, 4.4)
+      tl.call(() => sig?.classList.remove('is-off'), null, 4.4)
         .to(off, { autoAlpha: 0, duration: 0.25 }, 4.4)
         .fromTo(on, { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2.4)' }, 4.5)
         .to(sync, { autoAlpha: 0, y: -8, duration: 0.35 }, 4.6)

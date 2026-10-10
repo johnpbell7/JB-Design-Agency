@@ -30,10 +30,10 @@
     }).join('');
     const PROJ = [
       ['patch.html', 'PATCH', '#c7f016', 'menu/patch.webp'], ['birth-hood.html', 'Birth-hood', '#fe7fcc', 'menu/birth-hood.webp'],
-      ['gosweet.html', 'GoSweet', '#7b3fc4', 'menu/gosweet.webp'], ['nic-pouches.html', 'Nic Pouches', '#0070d5', 'menu/nic-pouches.webp'],
+      ['gosweet.html', 'GoSweet', '#7b3fc4', 'menu/gosweet.webp'], ['whats-in-my-fridge.html', 'What’s in my Fridge', '#2f7d5a', 'menu/whats-in-my-fridge.webp'],
+      ['nic-pouches.html', 'Nic Pouches', '#0070d5', 'menu/nic-pouches.webp'],
       ['vsl-trade.html', 'VSL Trade', '#b8a9e8', 'menu/vsl-trade.webp'], ['birdie-blooms.html', 'Birdie Blooms', '#e8879f', 'menu/birdie-blooms.webp'],
       ['sccc-heritage.html', 'SCCC Heritage', '#8b1538', 'menu/sccc-heritage.webp'], ['beetle-eyes.html', 'Beetle Eyes', '#c97b84', 'menu/beetle-eyes.webp'],
-      ['whats-in-my-fridge.html', 'What’s in my Fridge', '#2f7d5a', 'menu/whats-in-my-fridge.webp'],
       ['print.html', 'Print + brand', '#fff04d', ['menu/print-1.webp', 'menu/print-2.webp']],
       ['property.html', 'Property', '#9fbf8f', ['menu/property-1.webp', 'menu/property-2.webp']]];
     // websites show a little phone; print shows two fanned covers
