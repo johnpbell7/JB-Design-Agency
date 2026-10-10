@@ -45,7 +45,7 @@
     document.body.insertAdjacentHTML('beforeend', `<div class="nav-menu" id="nav-menu" hidden><div class="nav-menu__in">
       <nav class="nm-pages" aria-label="Menu">${items}</nav>
       <div class="nm-work"><span class="nm-k">Projects</span><nav aria-label="Projects">${projects}</nav></div>
-      <div class="nm-foot">${cta ? `<a class="nm-cta" href="${cta}">Start a project <span aria-hidden="true">→</span></a>` : ''}</div>
+      <div class="nm-foot">${cta ? `<a class="nm-cta" href="${cta}">Start a project <span aria-hidden="true">→</span></a>` : ''}<span class="nm-call"><a href="tel:+447428728780" aria-label="Call 07428 728780">Call</a><a href="https://wa.me/447428728780" target="_blank" rel="noopener">WhatsApp</a></span></div>
     </div></div>`);
     const btn = nav.querySelector('.nav-burger'), panel = document.getElementById('nav-menu');
     [...panel.querySelectorAll('.nm-pages a, .nm-work a, .nm-foot > *')].forEach((el, i) => el.style.setProperty('--i', i));

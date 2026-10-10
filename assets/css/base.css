@@ -199,6 +199,8 @@ html.nav-locked { overflow: hidden; }
 .nm-work a:active .nm-thumb { translate: 0 -4px; }
 .nm-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .nm-cta { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px; background: var(--ink); color: var(--white); font-size: 16px; font-weight: 600; text-decoration: none; }
+.nm-call { display: flex; gap: 8px; }
+.nm-call a { padding: 12px 16px; border-radius: 999px; box-shadow: inset 0 0 0 1.5px var(--ink); color: var(--ink); font-size: 15px; font-weight: 600; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .nav-menu, .nav-menu.is-in { transition: none; }
   .nm-pages a, .nm-work a, .nm-foot > *, .nav-menu.is-in .nm-pages a, .nav-menu.is-in .nm-work a, .nav-menu.is-in .nm-foot > * { transition: none; }

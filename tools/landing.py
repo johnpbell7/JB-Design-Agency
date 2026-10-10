@@ -1,9 +1,12 @@
-"""Builds the location landing pages in projects/ (web/graphic design in Birmingham, web design in Leicester).
+"""Builds the landing pages in projects/ (web/graphic design in Birmingham, web design in Leicester,
+and the UK-wide freelance page).
 Run from the repo root:  python3 tools/landing.py
 The price cards are copied from the home page (index.html): change prices there, then re-run this. WEB / GFX below only feed the structured data for Google, so keep them in step."""
 import json, html
 BASE = 'https://johnpbell7.github.io/JB-Design-Agency/'
 EMAIL = 'jb.designagency89@gmail.com'
+PHONE = '07428 728780'          # shown on the page
+PHONE_INTL = '+447428728780'    # for tel:/sms:/WhatsApp links
 NAV = open('tools/landing-nav.html').read()
 
 # ===== PRICES (placeholders, to be confirmed by John) =====
@@ -41,7 +44,7 @@ W = lambda h, img, alt, n, k: (h, img, alt, n, k)
 WORK = {'birth-hood': W('birth-hood.html', 'captures/birth-hood/fold-desktop.webp', 'Birth-hood website', 'Birth-hood', 'Website for a hypnobirthing and doula business in Leicestershire'),
         'patch': W('patch.html', 'captures/patch-agency/fold-desktop.webp', 'PATCH website', 'PATCH', 'Brand and website for a field-marketing agency'),
         'vsl': W('vsl-trade.html', 'captures/vsl-trade/fold-desktop.webp', 'VSL Trade website', 'VSL Trade', 'Trade website for a wholesaler'),
-        'gosweet': W('gosweet.html', 'captures/gosweet/fold-desktop.webp', 'GoSweet online shop', 'GoSweet', 'Online shop redesign'),
+        'gosweet': W('gosweet.html', 'captures/gosweet/fold-desktop.webp', 'GoSweet online shop', 'GoSweet', 'Online shop design'),
         'birdie': W('birdie-blooms.html', 'captures/birdie-blooms/fold-desktop.webp', 'Birdie Blooms website', 'Birdie Blooms', 'Website and brand for a flower studio in Ravenstone and Kibworth'),
         'beetle': W('beetle-eyes.html', 'captures/beetle-eyes/fold-desktop.webp', 'Beetle Eyes Clothing website', 'Beetle Eyes Clothing', 'One-page site for a vintage rail in Mountsorrel'),
         'sccc': W('sccc-heritage.html', 'captures/sccc-heritage/fold-desktop.webp', 'Sutton Coldfield Cricket Club history website', 'SCCC Heritage', 'History website for Sutton Coldfield Cricket Club'),
@@ -67,13 +70,13 @@ def page(p):
     name = p['h1'].replace('<mark class="hl">', '').replace('<mark class="hl hl--pink">', '').replace('<mark class="hl hl--blue">', '').replace('</mark>', '')
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Service", "name": name, "serviceType": p['svc'], "url": url, "description": p['desc'],
-         "provider": {"@type": "ProfessionalService", "@id": BASE + "#business", "name": "John Bell · Graphic & Web Designer", "url": BASE},
-         "areaServed": [{"@type": "City", "name": a} for a in AREAS] + [{"@type": "Country", "name": "United Kingdom"}],
+         "provider": {"@id": BASE + "#business"},
+         "areaServed": p.get('area_ld') or [{"@type": "City", "name": a} for a in AREAS] + [{"@type": "Country", "name": "United Kingdom"}],
          "offers": [{"@type": "Offer", "name": n, "priceCurrency": "GBP", "priceSpecification": {"@type": "PriceSpecification", "minPrice": pr.split('/')[0].replace('£', '').replace(',', ''), "priceCurrency": "GBP"}} for n, pr, _, _ in p['prices']]},
         {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in p['faqs']]},
         {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": BASE}, {"@type": "ListItem", "position": 2, "name": name.rstrip('.'), "item": url}]}]}
     work = ''.join(f'<a class="lp-card" href="{h}"><img src="../assets/{im}" alt="{alt}" loading="lazy" width="1440" height="900"><span><b>{n}</b>{k}</span></a>' for h, im, alt, n, k in (WORK[k] for k in p['work']))
-    areas = ''.join(f'<li>{a}</li>' for a in AREAS)
+    areas = ''.join(f'<li>{a}</li>' for a in p.get('areas', AREAS))
     return f'''<!doctype html>
 <html lang="en-GB" class="no-js">
 <head>
@@ -149,8 +152,8 @@ def page(p):
     </section>
 
     <section class="lp-sec wrap lp-areas">
-      <h2>Areas I cover</h2>
-      <div><p>{p["areas_line"]}</p><ul class="lp-areas__list">{areas}</ul></div>
+      <h2>{p.get("areas_h", "Areas I cover")}</h2>
+      <div><p>{p["areas_line"]}</p><ul class="lp-areas__list">{areas}</ul>{f'<p>{p["areas_after"]}</p>' if p.get("areas_after") else ''}</div>
     </section>
 
     <section class="lp-sec wrap lp-faq">
@@ -162,6 +165,7 @@ def page(p):
       <h2>{p["cta_h"]}</h2>
       <p>Tell me a bit about your business and what you need. I usually reply within a working day.</p>
       <div class="lp-hero__ctas"><a class="btn btn--big btn--keep" href="../index.html#contact">Start a project <span aria-hidden="true">→</span></a><a class="btn btn--ghost btn--big" href="mailto:{EMAIL}">Email me</a></div>
+      <p class="lp-phone">Or call or text <a href="tel:{PHONE_INTL}">{PHONE}</a> · <a href="https://wa.me/{PHONE_INTL[1:]}" target="_blank" rel="noopener">WhatsApp me</a></p>
       <p class="lp-other">{p["other"]}</p>
     </section>
   </main>
@@ -170,7 +174,7 @@ def page(p):
     <div class="wrap">
       <div class="site-foot__row">
         <span>© 2026 John Bell · Designed and built by me</span>
-        <nav aria-label="Footer"><a href="work.html">Work</a><a href="about.html">About</a><a href="../index.html#faq">FAQs</a><a href="mailto:{EMAIL}">Email</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="web-designer-birmingham.html">Web design Birmingham</a><a href="graphic-designer-birmingham.html">Graphic design Birmingham</a><a href="web-designer-leicester.html">Web design Leicester</a></nav>
+        <nav aria-label="Footer"><a href="work.html">Work</a><a href="about.html">About</a><a href="../index.html#faq">FAQs</a><a href="mailto:{EMAIL}">Email</a><a href="tel:{PHONE_INTL}">{PHONE}</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="web-designer-birmingham.html">Web design Birmingham</a><a href="graphic-designer-birmingham.html">Graphic design Birmingham</a><a href="web-designer-leicester.html">Web design Leicester</a><a href="freelance-web-designer-uk.html">Freelance designer UK</a></nav>
       </div>
     </div>
   </footer>
@@ -181,24 +185,24 @@ def page(p):
 PAGES = [
  dict(slug='web-designer-birmingham', share='web-designer-birmingham', svc='Web design',
   title='Web Designer in Birmingham · John Bell, Freelance Web Design',
-  desc='Freelance web designer in Birmingham. Fast, mobile-friendly websites and Shopify shops for small businesses, designed and built by John Bell, with fixed quotes from £500.',
+  desc='Freelance web designer in Birmingham. Fast, mobile-friendly websites and Shopify shops for small businesses, designed and built by John Bell. Quotes from £500.',
   h1='Web designer <mark class="hl">in Birmingham.</mark>',
   lede='I design and build websites for independents and small businesses, here in Birmingham and across the UK. Fast sites that work properly on a phone, show up on Google and make it straightforward for people to get in touch.',
   fact='Based in Birmingham, working UK-wide',
   intro_h='A website that earns its keep',
   intro='<p>Most people will find you on their phone, often while they’re in the middle of something else. So I design every site for phones first, keep the pages quick to load and make the next step obvious: call, book, buy or send a message.</p><p>I’ve spent 14 years designing for agencies and in-house teams, and now I work directly with business owners. The person you speak to on day one is the same person who designs, builds and launches your site, and who’s still there after launch.</p>',
   svcs=WEB_SVCS, steps=WEB_STEPS, price_h='Web design prices', prices=WEB, work_h='A few of my websites', work=['birth-hood', 'patch', 'vsl', 'sccc'],
-  areas_line='I’m based in Birmingham and work with businesses across the West and East Midlands, from Brum and Sutton Coldfield up to Leicester. Further afield is fine too, as most projects run on video calls and email anyway.',
+  areas_line='I’m based in Birmingham and work with businesses across the West and East Midlands, from Brum and Sutton Coldfield up to Leicester. I also work with businesses anywhere in the UK, by video call and email.',
   faqs=[('How much does a website cost in Birmingham?', 'A one-page website starts from £500, a small business site from £1,200 and a small online shop from £1,800. After a quick chat I send you a fixed quote, so you know the full price before we start.'),
         ('How long does a website take?', 'A small business site usually takes a few weeks from our first chat to going live. Shops and bigger sites take a little longer, and you’ll get a timeline with your quote.'),
         ('Do I need to be in Birmingham?', 'No. I’m happy to meet in person if you’re local, but most of my work happens over video calls and email, so I work with businesses all over the UK.'),
         ('Can I update the website myself?', 'It depends on the site. A one-page site is a shop window with no back end, which keeps it cheaper, faster and more secure. When you need a change, I make it for you, from £35 or from £40 a month on a care plan. If you’d rather do it yourself, I can add an editor to a one-page site for £150. Bigger sites and shops come with one included.'),
         ('Will my website show up on Google?', 'Every site is built to load quickly, work well on phones and include the setup Google looks for. I’ll also help you set up Google Search Console and your Google Business Profile, so you’re not left to work them out alone.')],
   cta_h='Got a website in mind? <mark class="hl">Let’s talk.</mark>',
-  other='Need a logo, brand or print as well? See <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>. In Leicestershire? See <a href="web-designer-leicester.html">web design in Leicester</a>.'),
+  other='Need a logo, brand or print as well? See <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>. In Leicestershire? See <a href="web-designer-leicester.html">web design in Leicester</a>. Elsewhere? See <a href="freelance-web-designer-uk.html">freelance web design across the UK</a>.'),
  dict(slug='graphic-designer-birmingham', share='graphic-designer-birmingham', svc='Graphic design',
   title='Graphic Designer in Birmingham · John Bell, Logos, Branding &amp; Print',
-  desc='Freelance graphic designer in Birmingham. Logo design, brand identity, brochures, flyers and packaging for small businesses, by John Bell, with 14 years’ agency and in-house experience.',
+  desc='Freelance graphic designer in Birmingham. Logos, brand identity, brochures, flyers and packaging for small businesses, with 14 years’ agency and in-house experience.',
   h1='Graphic designer <mark class="hl hl--pink">in Birmingham.</mark>',
   lede='Logos, brand identities and print for independents and small businesses in Birmingham and across the UK. Design that holds up wherever it ends up, from the side of a van or a shop sign to a brochure or your website.',
   fact='Based in Birmingham, working UK-wide',
@@ -212,10 +216,10 @@ PAGES = [
         ('Can you arrange printing?', 'Yes. I send print-ready files and can recommend a printer, or deal with the printers for you.'),
         ('Do you work outside Birmingham?', 'Yes. I’m based in Birmingham, but I work with businesses all over the UK by video call and email.')],
   cta_h='Need a logo or a brochure? <mark class="hl">Let’s talk.</mark>',
-  other='Need a website too? See <a href="web-designer-birmingham.html">web design in Birmingham</a>, or <a href="web-designer-leicester.html">web design in Leicester</a>.'),
+  other='Need a website too? See <a href="web-designer-birmingham.html">web design in Birmingham</a>, or <a href="web-designer-leicester.html">web design in Leicester</a>. Elsewhere in the UK? See <a href="freelance-web-designer-uk.html">working with me remotely</a>.'),
  dict(slug='web-designer-leicester', share='web-designer-leicester', svc='Web design',
   title='Web Designer in Leicester &amp; Leicestershire · John Bell',
-  desc='Freelance web designer for Leicester and Leicestershire businesses. Websites, online shops and branding for independents, from Loughborough and Coalville to Hinckley and Market Harborough. Fixed quotes from £500.',
+  desc='Freelance web designer for Leicester and Leicestershire. Websites, online shops and branding for independents, from Loughborough to Market Harborough. From £500.',
   h1='Web designer for <mark class="hl hl--blue">Leicester and Leicestershire.</mark>',
   lede='Websites, online shops and branding for independents and small businesses across Leicestershire. I’ve designed sites for a hypnobirthing practice, a flower studio in Ravenstone and Kibworth and a vintage rail in Mountsorrel, so I know the area and the sort of businesses that make it what it is.',
   fact='Working across Leicestershire, from Birmingham',
@@ -223,13 +227,40 @@ PAGES = [
   intro='<p>Most of my favourite projects are small Leicestershire businesses run by one or two people: a doula and yoga teacher, a one-woman flower studio, a pre-loved clothing rail tucked inside a village shop. Each one needed a site that felt like them, worked properly on a phone and let people book, buy or get in touch without hunting around.</p><p>I’m based in Birmingham, about an hour away, and happy to meet in person around Leicestershire. The rest of the work happens over video calls and email, and it’s me you deal with the whole way through.</p>',
   svcs=LEI_SVCS, steps=LEI_STEPS, price_h='Web design prices', prices=WEB, work_h='Some of my Leicestershire work', work=['birth-hood', 'birdie', 'beetle', 'patch'],
   areas_line='I work with businesses all over Leicestershire and back down the road to Birmingham, including:',
+  areas_after='I also work with businesses anywhere in the UK, by video call and email.',
   faqs=[('Do you work with businesses in Leicester?', 'Yes. Several of my clients are Leicestershire businesses, including Birth-hood, Birdie Blooms in Ravenstone and Kibworth, and Beetle Eyes Clothing in Mountsorrel. I’m based in Birmingham and happy to come and meet you in person.'),
         ('How much does a website cost?', 'One-page websites start from £500, small business sites from £1,200 and small online shops from £1,800. Once we’ve talked it through, I send a fixed quote, so you know where you stand before anything starts.'),
         ('Can you help my business show up on Google locally?', 'Yes. Every site loads quickly and has the setup Google looks for, and I’ll help you set up your Google Business Profile so you appear in local searches and on Maps.'),
         ('Can I update the website myself?', 'Yes, if you want to. One-page sites are kept lean with no back end, which makes them cheaper, quicker and more secure, so normally I make the changes for you: from £35, or from £40 a month on a care plan. If you’d prefer to do it yourself, I can add an editor for £150. Bigger sites and shops have one built in.'),
         ('Do you design logos too?', 'I do. I can design your logo and brand, then build the website to match. For Birdie Blooms I drew eight logo ideas alongside the site.')],
   cta_h='Leicestershire business? <mark class="hl">Let’s have a chat.</mark>',
-  other='Looking for design in Birmingham? See <a href="web-designer-birmingham.html">web design</a> and <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>.'),
+  other='Looking for design in Birmingham? See <a href="web-designer-birmingham.html">web design</a> and <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>. Elsewhere in the UK? See <a href="freelance-web-designer-uk.html">freelance web design across the UK</a>.'),
+ dict(slug='freelance-web-designer-uk', share='home', svc='Web design and graphic design',
+  title='Freelance Web Designer UK · Web &amp; Graphic Design · John Bell',
+  desc='Freelance web and graphic designer working with businesses across the UK. Websites, Shopify shops, logos and print, run remotely by video call. Quotes from £500.',
+  h1='Freelance web designer, <mark class="hl">working across the UK.</mark>',
+  lede='I’m John, a freelance web and graphic designer based in Birmingham. I design websites, online shops, logos and print for small businesses anywhere in the UK, with the whole project run over video calls, email and shared screens.',
+  fact='Based in Birmingham, working UK-wide',
+  intro_h='A remote web designer who’s easy to reach',
+  intro='<p>You don’t need a designer down the road. We talk on a video call, I share the designs on screen so you can see them on a laptop and a phone, and everything else happens by email. It’s quick, and it means you can work with me wherever your business is.</p><p>I’ve spent 14 years designing for agencies and in-house teams. Now I work as a freelance web designer and freelance graphic designer, directly with business owners, so the person on the first call is the one who designs, builds and launches your site, and who’s still there after launch.</p>',
+  svcs=[('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and services, designed for phones first.'), ('Online shops', 'Small Shopify shops for independents. For bigger stores, I design every page and hand the designs to your developer.'),
+        ('Logos and branding', 'A logo, colours and fonts that make everything you put out look like it comes from the same business.'), ('Print and brochures', 'Brochures, flyers, business cards and signage, sent print-ready, with printing arranged if you like.'),
+        ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup (SEO) that Google looks for.'), ('Care and updates', 'Changes, new pages and help after launch, by email whenever you need it.')],
+  steps=[('A video call', 'We talk it through on a video call at a time that suits you, and I send you a fixed quote.'), ('Designs on your screen', 'I share the designs on screen and send you a link, so you can see them on your own laptop and phone.'),
+         ('Built and checked', 'I build it, test it on phones and computers and set it up for Google, with updates by email as I go.'), ('Live, and looked after', 'It goes live, and I’m a message away when you need something changing.')],
+  price_h='Web and graphic design prices', prices=WEB + GFX, work_h='A few of my projects', work=['patch', 'sccc', 'birdie', 'gosweet'],
+  areas_h='Where I work',
+  areas_line='I’m based in Birmingham and work remotely with businesses all over the UK, including:',
+  areas=['London', 'Manchester', 'Leeds', 'Bristol', 'Liverpool', 'Sheffield', 'Nottingham', 'Leicester', 'Birmingham', 'Glasgow', 'Edinburgh', 'Cardiff', 'Newcastle', 'Belfast', 'Southampton', 'Norwich'],
+  areas_after='…and everywhere in between.',
+  area_ld=[{"@type": "Country", "name": "United Kingdom"}],
+  faqs=[('Can you work with me if I’m not in Birmingham?', 'Yes. I’m based in Birmingham, but my projects run over video calls and email, so it makes no difference where in the UK your business is.'),
+        ('How do remote projects work?', 'We start with a video call, then I send you a fixed quote. I share the designs on screen and by link so you can see them on your own laptop and phone, and we keep in touch by email while I build. Nothing goes live until you’re happy with it.'),
+        ('Do we ever meet in person?', 'Usually there’s no need, as video calls and shared screens cover everything from the first chat to the final checks. If you’re within reach of Birmingham and would like to meet, I’m happy to.'),
+        ('How much does it cost?', 'One-page websites start from £500, small business sites from £1,200 and small online shops from £1,800. Logos start from £300, brand identities from £750 and print from £45 a page. You get a fixed quote before we start.'),
+        ('How long does it take?', 'Most small business sites take a few weeks from our first call to going live. Shops and bigger sites take longer, and you’ll get a timeline with your quote.')],
+  cta_h='Wherever you are, <mark class="hl">let’s talk.</mark>',
+  other='Local to the Midlands? See <a href="web-designer-birmingham.html">web design in Birmingham</a>, <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a> or <a href="web-designer-leicester.html">web design in Leicester</a>.'),
 ]
 
 if __name__ == '__main__':

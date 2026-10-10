@@ -49,6 +49,8 @@
 .lp-cta p { margin-top: 14px; max-width: 52ch; color: var(--grey-7); }
 .lp-cta .lp-other { margin-top: 30px; font-size: 15px; }
 .lp-cta .lp-other a { color: var(--ink); font-weight: 600; }
+.lp-cta .lp-phone { margin-top: 22px; font-size: 15px; }
+.lp-cta .lp-phone a { color: var(--ink); font-weight: 600; white-space: nowrap; }
 @media (max-width: 900px) {
   .lp-intro, .lp-faq { grid-template-columns: 1fr; }
   .lp-svcs, .lp-prices { grid-template-columns: 1fr; }
@@ -62,6 +64,7 @@
 .lp-areas { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(20px, 5vw, 80px); }
 .lp-areas p { font-size: 17px; line-height: 1.7; color: var(--grey-7); }
 .lp-areas__list { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
+.lp-areas__list + p { margin-top: 16px; }
 .lp-areas__list li { padding: 8px 14px; border-radius: 999px; background: var(--grey-1); font-size: 14.5px; font-weight: 500; }
 @media (max-width: 900px) { .lp-areas { grid-template-columns: 1fr; } }
 .lp-price__from em { font-style: normal; font-size: 16px; font-weight: 600; letter-spacing: 0; color: var(--grey-7); margin-left: 2px; }
