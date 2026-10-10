@@ -65,7 +65,7 @@ def prices(items):
             '<p class="hp-extras"><span>Two rounds of changes included</span><span>All prices are starting points</span><span>Pay in stages</span><span>Hosting from £10 a month</span><span>Website care from £40 a month</span></p>')
 
 def page(p):
-    url = f'{BASE}projects/{p["slug"]}.html'; img = f'{BASE}assets/share/{p["share"]}.jpg'
+    url = f'{BASE}projects/{p["slug"]}.html'; img = f'{BASE}assets/share/john-bell-websites.jpg'
     t = html.unescape(p['title']); e = lambda x: html.escape(x, quote=True)
     name = p['h1'].replace('<mark class="hl">', '').replace('<mark class="hl hl--pink">', '').replace('<mark class="hl hl--blue">', '').replace('</mark>', '')
     ld = {"@context": "https://schema.org", "@graph": [
