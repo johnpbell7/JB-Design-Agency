@@ -42,8 +42,8 @@
     list.innerHTML = MENU[state.tab].map((it, i) => {
       const q = state.bag[it.id] || 0;
       return `<li class="item" data-id="${it.id}">
-        <img class="thumb" src="img/t-${it.img}.webp" alt="" width="54" height="54">
-        <span class="item-text"><span class="item-line"><span class="item-name">${it.name}</span><i class="leader"></i><span class="item-price">${fmt(it.price)}</span></span><span class="item-desc">${it.desc}</span></span>
+        <img class="thumb" src="img/t-${it.img}.webp" alt="" width="64" height="64">
+        <span class="item-text"><span class="item-name">${it.name}</span><span class="item-desc">${it.desc}</span><span class="item-price">${fmt(it.price)}</span></span>
         <button class="add${q ? ' in' : ''}" data-add="${it.id}" aria-label="Add ${it.name}">${q ? q : plus}</button>
       </li>`;
     }).join('');
@@ -54,7 +54,7 @@
     const b = $(`[data-tab="${state.tab}"]`, tabs);
     if (!b) return;
     thumbEl.style.width = b.offsetWidth + 'px';
-    thumbEl.style.transform = `translateX(${b.offsetLeft - 18}px)`;
+    thumbEl.style.transform = `translateX(${b.offsetLeft - thumbEl.offsetLeft}px)`;
   }
   function setTab(t, animate = true) {
     if (t === state.tab && list.children.length) return;
