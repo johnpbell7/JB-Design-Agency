@@ -271,8 +271,8 @@
     const wake = () => { if (!ticking && near && !reduce) { ticking = true; requestAnimationFrame(tick); } };
 
     // Which phones keep a live page loaded: none until the parade is near the viewport; in the
-    // phone deck only the phone on show and the one after it (so it's ready when it slides in);
-    // otherwise every phone. A phone without a page shows its poster (the start screen).
+    // phone deck only the phone on show (the rest show their poster, the start screen, and load
+    // when they slide in); otherwise every phone.
     // Pages load one at a time, the phone on show (or the earliest phase) first, so they
     // don't all load at once; a page that's no longer wanted is unloaded, so off-screen
     // sites don't keep running their own animations on the page's main thread.
@@ -281,7 +281,7 @@
       if (!near) return false;
       if (!deckOn()) return true;
       const k = P.findIndex(q => q.ph.classList.contains('is-on'));
-      return k < 0 ? p.i === 0 : p === P[k] || p === P[(k + 1) % P.length];
+      return k < 0 ? p.i === 0 : p === P[k];
     };
     const unload = p => {
       clearTimeout(p.rewind); clearTimeout(p.bootNext); clearTimeout(p.drop); p.drop = 0; p.bootNext = 0; p.loading = false;
@@ -348,7 +348,7 @@
     const look = p => {
       const was = p.seen;
       p.seen = p.inView && shown(p); playOrPause(p);
-      boot(); // the deck moved on: load the phone on show / the next one, let go of the rest
+      boot(); // the deck moved on: load the phone on show, let go of the rest
       if (was && !p.seen && !shown(p) && p.frame && p.state === 'run' && wanted(p)) {
         // a moment later, so the reload doesn't slow the phone that has just come in
         clearTimeout(p.rewind);
