@@ -253,7 +253,8 @@ body { --project-pen: #b9e4c9; }
 .wf-stage .stage__glow { inset: 6% 2% 0; }
 .wf-pop-row { width: 100%; }
 .wf-pop-row .fa-item { box-shadow: 0 2px 4px rgb(60 40 10 / 0.06); }
-.wf-pop-icon { width: 100%; }
+.wf-pop-logo { width: 100%; padding: 10px 14px 8px; border-radius: 16px; background: #fffdf9; border: 1px solid #e7e0d3; }
+.wf-pop-logo img { display: block; width: 100%; height: auto; }
 .wf-pop-toast { position: static !important; translate: none !important; }
 @media (max-width: 900px) {
   .wf-stage { aspect-ratio: 1 / 1.02; margin-top: 8px; }
@@ -532,22 +533,6 @@ body { --project-pen: #b9e4c9; }
   .wf-dinner .wf-pull--meal { left: 1%; top: 2%; }
   .wf-home-demo .wf-pull--steps { right: 1%; top: 5%; }
   .wf-receipt-demo { height: clamp(540px, 136vw, 660px); }
-  /* 04: no phone here, so the two cards share the panel: the usuals top left,
-     the list overlapping it lower right, the panel cut to fit them */
-  .wf-list-demo { height: clamp(470px, 122vw, 600px); }
-  .wf-list-demo .wf-panel { top: 7%; }
-  .wf-list-demo .wf-pull { zoom: 0.74; --w: 316px; }
-  .wf-list-demo .wf-pull--staples { left: 2%; top: 0; --r: -2.5deg; }
-  .wf-list-demo .wf-pull--list { left: auto; right: 2%; top: 38%; bottom: auto; --r: 1.5deg; }
-  .wf-list-demo .wf-tickhead { white-space: nowrap; font-size: 14px; }
-  .wf-list-demo .wf-tickhead small { font-size: 10.5px; }
-  .wf-list-demo .fa-toast { left: 50% !important; bottom: 5% !important; font-size: 13px; }
-  /* Up close: the panel wraps the whole piece, and the fan of rows fits inside it */
-  .wf-break__stage { height: 320px; }
-  .wf-break__stage > .wf-panel { top: 4%; }
-  .wf-fan { zoom: 0.86; }
-  .wf-fan .fa-item:nth-child(1) { translate: 0 -104%; }
-  .wf-fan .fa-item:nth-child(3) { translate: 0 104%; }
 }
 
 /* Reduced motion: everything sits in its finished state (the JS skips the timelines) */
@@ -575,3 +560,60 @@ body { --project-pen: #f1d9c7; }
 .wf-get__btn:hover { background: #28694c; }
 .wf-qr__code { box-shadow: 0 0 0 1px #e7e0d3; }
 .wf-guide { box-shadow: 0 30px 50px -30px rgb(60 40 20 / 0.3); }
+
+/* ---------- Visual-first pass: bold titles, live phones, compact details ---------- */
+/* Feature run: a step number, a big title, a tiny label, then the demo does the talking */
+.wf-feat { padding-block: clamp(40px, 6vw, 96px); }
+.wf-feat__copy { gap: 14px; }
+.wf-feat__copy h2 { font-size: clamp(42px, 5.4vw, 80px); letter-spacing: -0.045em; line-height: 1; }
+.wf-sub { margin: 0; font-size: 15px; font-weight: 500; color: var(--grey-7); }
+.wf-run-head h2 { font-size: clamp(40px, 6vw, 84px); }
+@media (max-width: 900px) {
+  .wf-feat, .wf-feat--flip { gap: 20px; padding-block: 36px 44px; }
+}
+
+/* Carousel phones: always crisp here (no blur on the phone that's leaving) */
+.parade .phone { filter: none !important; }
+/* A walkthrough over each screenshot: a flick that scrolls and bounces, then a tap */
+.wf-live { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.wf-live__body { position: absolute; inset: 0; overflow: hidden; clip-path: inset(9.5% 0 9.5% 0); background: #faf7f2; }
+.wf-live__body img { display: block; width: 100%; height: 100%; will-change: transform; }
+.wf-live__ring { position: absolute; border: 0.7cqw solid #2f7d5a; border-radius: 3cqw; background: rgb(47 125 90 / 0.08); box-shadow: 0 0 0 1.4cqw rgb(47 125 90 / 0.14); }
+.wf-live__ripple { position: absolute; width: 22cqw; height: 22cqw; margin: -11cqw 0 0 -11cqw; border-radius: 50%; background: rgb(47 125 90 / 0.35); }
+.wf-live__finger { position: absolute; width: 10cqw; height: 10cqw; border-radius: 50%; background: rgb(24 24 26 / 0.22); border: 0.6cqw solid rgb(255 255 255 / 0.9); box-shadow: 0 1cqw 3cqw rgb(0 0 0 / 0.2); }
+.wf-live__toast { position: absolute; left: 50%; bottom: 13%; translate: -50% 0; display: flex; align-items: center; gap: 1.6cqw; white-space: nowrap; padding: 2.4cqw 4cqw; border-radius: 99px; background: #1f1b16; color: #fff; font: 600 3.6cqw/1 var(--fa-sans); box-shadow: 0 2cqw 5cqw -1cqw rgb(0 0 0 / 0.35); }
+.wf-live__toast svg { width: 3.8cqw; height: 3.8cqw; color: #b9e4c9; }
+
+/* Get the app: the copy, and the QR code on its own beside it */
+.wf-get-band { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); }
+.wf-qr--big { flex-direction: column; align-items: center; justify-self: center; text-align: center; gap: 16px; }
+.wf-qr--big .wf-qr__code { width: clamp(150px, 14vw, 196px); box-shadow: 0 30px 50px -28px rgb(60 40 20 / 0.45), 0 0 0 1px #e7e0d3; }
+.wf-qr--big p { max-width: 22ch; }
+
+/* The small details: square tiles, a title each */
+.wf-close { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 0; }
+.wf-break { gap: 14px; }
+.wf-break__stage { height: auto; aspect-ratio: 1; }
+.wf-break__stage > .wf-panel { top: 0; }
+.wf-break figcaption b { font-size: 18px; }
+.wf-navbox { zoom: 1; }
+.wf-fan.is-cycle .fa-item { translate: none; rotate: 0deg; }
+@media (max-width: 760px) {
+  .wf-close { display: flex; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 4px 16px 12px; scrollbar-width: none; }
+  .wf-close::-webkit-scrollbar { display: none; }
+  .wf-break { flex: 0 0 75%; scroll-snap-align: center; }
+  .wf-break .wf-fan { zoom: 0.74; }
+  .wf-break .wf-navbox { zoom: 0.78; width: 96%; }
+  .wf-break .wf-cats { zoom: 0.74; }
+
+  /* 04 The usuals: the two cards stacked and centred, a slight overlap, the panel
+     cut to fit, and the toast below them */
+  .wf-list-demo { height: auto; display: flex; flex-direction: column; align-items: center; padding: 0 0 64px; }
+  .wf-list-demo .wf-panel { top: 30px; }
+  .wf-list-demo .wf-pull { position: relative; inset: auto; zoom: 0.8; --w: 330px; }
+  .wf-list-demo .wf-pull--staples { --r: -2deg; }
+  .wf-list-demo .wf-pull--list { margin-top: -18px; --r: 1.5deg; }
+  .wf-list-demo .wf-tickhead { white-space: nowrap; font-size: 14px; }
+  .wf-list-demo .wf-tickhead small { font-size: 10.5px; }
+  .wf-list-demo .fa-toast { left: 50% !important; bottom: 16px !important; font-size: 13px; }
+}

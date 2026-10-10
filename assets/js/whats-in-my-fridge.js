@@ -567,4 +567,51 @@
       }, { threshold: 0.6 }).observe(navbox);
     }
   }
+
+  // ---------- Motion that starts as each part enters view ----------
+  if (hasGsap && !reduce) {
+    const whileSeen = (el, tl, threshold = 0.35) => new IntersectionObserver(([e]) => (e.isIntersecting ? tl.play() : tl.pause()), { threshold }).observe(el);
+
+    // Hero: the phones rise (case.js) and fan out from behind the centre one, like a hand of cards
+    if (stage) {
+      const st = { trigger: stage, start: 'top 92%', once: true };
+      gsap.from($('.wf-ph--l', stage), { xPercent: 72, rotation: 7, duration: 1.5, ease: 'expo.out', delay: 0.45, scrollTrigger: st });
+      gsap.from($('.wf-ph--r', stage), { xPercent: -72, rotation: -7, duration: 1.5, ease: 'expo.out', delay: 0.5, scrollTrigger: st });
+      gsap.from($('.wf-ph--c', stage), { scale: 0.9, duration: 1.3, ease: 'expo.out', delay: 0.35, scrollTrigger: st });
+    }
+
+    // Small details: one item row ages through its three states, calm, amber, red
+    const fanEl = $('.wf-fan');
+    if (fanEl) {
+      const rows = $$('.fa-item', fanEl);
+      fanEl.classList.add('is-cycle');
+      gsap.set(rows, { autoAlpha: 0 }); gsap.set(rows[0], { autoAlpha: 1 });
+      const tl = gsap.timeline({ repeat: -1, paused: true });
+      rows.forEach((r, i) => {
+        const n = rows[(i + 1) % rows.length], at = i * 2.2 + 1.6;
+        tl.to(r, { autoAlpha: 0, y: -18, rotation: -2, duration: 0.45, ease: 'power2.in' }, at)
+          .fromTo(n, { autoAlpha: 0, y: 22, rotation: 2 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.6, ease: 'back.out(2)' }, at + 0.3);
+      });
+      whileSeen(fanEl, tl);
+    }
+    // ...and the food groups pop in, aisle by aisle
+    const cats = $$('.wf-cats .fa-cat');
+    if (cats.length) {
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.4, paused: true });
+      tl.fromTo(cats, { autoAlpha: 0, y: 18, scale: 0.86 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.55, ease: 'back.out(2.2)', stagger: 0.13 })
+        .to(cats[0], { scale: 1.07, duration: 0.25, yoyo: true, repeat: 1, ease: 'power1.inOut' }, '+=0.4')
+        .to(cats, { autoAlpha: 0, y: -10, duration: 0.3, stagger: 0.05, ease: 'power2.in' }, '+=2.2');
+      whileSeen(cats[0].parentElement, tl);
+    }
+
+    // Colour swatches drop in one after another
+    const sw = $$('.palette .swatch');
+    if (sw.length && window.ScrollTrigger) gsap.from(sw, { y: 28, autoAlpha: 0, duration: 0.6, ease: 'back.out(1.8)', stagger: 0.06, scrollTrigger: { trigger: sw[0].parentElement, start: 'top 88%', once: true } });
+
+    // The pieces around each demo drift at their own pace as the page scrolls (transform only)
+    if (window.ScrollTrigger) $$('.wf-demo .wf-pull, .wf-demo .wf-note, .wf-found, .wf-receipt').forEach((el, i) => {
+      const d = i % 2 ? 1 : -1;
+      gsap.fromTo(el, { y: 20 * d }, { y: -20 * d, ease: 'none', scrollTrigger: { trigger: el.closest('.wf-demo'), start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
+    });
+  }
 })();
