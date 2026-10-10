@@ -345,7 +345,7 @@
     const bar = $('em', pill);
     const cues = Object.fromEntries($$('[data-cue]', cueBox).map(el => [el.dataset.cue, el]));
     const pops = $$('.pop > .fa', stage);
-    const icon = pops.find(p => p.classList.contains('wf-pop-icon'));
+    const icon = pops.find(p => p.classList.contains('wf-pop-logo'));
     const row = pops.find(p => p.classList.contains('wf-pop-row'));
     const used = row && $('.fa-used', row);
     const n = HERO.length, at = k => (k + n) % n;
@@ -457,10 +457,11 @@
     const playing = () => walks.forEach((w, i) => {
       if (!w) return;
       const on = inView && (!deck || phones[i].classList.contains('is-on'));
-      if (on && !w.tl.isActive()) {
-        if (deck) w.tl.restart(); else if (!w.started) { w.started = true; w.tl.restart(true); w.tl.delay?.(w.delay); gsap.delayedCall(w.delay, () => inView && w.tl.play()); w.tl.pause(); }
-        else w.tl.play();
-      } else if (!on) { w.tl.pause(); if (deck) { w.tl.progress(0).pause(); } }
+      if (deck) { if (!on) w.tl.pause(0); else if (!w.tl.isActive()) w.tl.restart(); return; }
+      // side by side: each phone starts a little after the last, so they're out of step
+      if (!on) { w.tl.pause(); w.wait?.pause(); return; }
+      if (!w.wait) w.wait = gsap.delayedCall(w.delay, () => w.tl.play());
+      else if (w.wait.progress() < 1) w.wait.resume(); else w.tl.play();
     });
     new IntersectionObserver(([e]) => { inView = e.isIntersecting; playing(); }, { threshold: 0.25 }).observe(parade);
     const mo = new MutationObserver(() => { deck = parade.classList.contains('is-deck'); playing(); });
