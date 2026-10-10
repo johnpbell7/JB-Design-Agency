@@ -12,7 +12,7 @@ WEB = [('One-page website', '£500', 'A single scrolling page with everything a 
        ('Online shop', '£2,500', 'A Shopify shop with clear product pages and a quick checkout, or full page designs for your developer.', ['Shopify set-up', 'Product and collection pages', 'Payments and shipping'])]
 GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with a few routes to choose from.', ['Three first ideas', 'Colour and mono versions', 'All file types']),
        ('Brand identity', '£900', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
-       ('Print design', '£150', 'Brochures, flyers, reports, signage and packaging, laid out and sent to print ready.', ['Print-ready files', 'Help with printers', 'Quoted per job'])]
+       ('Print design', '£45/page', 'Brochures, flyers, reports, signage and packaging, laid out and sent to print ready. Priced per page, so you only pay for what you need.', ['Print-ready files', 'Help with printers', 'Brochures from £45 a page'])]
 CARE = 'Website care from £50 a month: changes, new pages and help when you need it.'
 
 # Towns covered, Leicester down to Birmingham (one honest list, shown on every location page)
@@ -41,7 +41,7 @@ WORK = {'birth-hood': W('birth-hood.html', 'captures/birth-hood/fold-desktop.web
         'property': W('property.html', 'projects/property/spreads/sloane-1.jpg', 'Property brochure spread', 'Property marketing', 'Brochures, boards and development identities')}
 
 def prices(items):
-    cards = ''.join(f'<article class="lp-price"><h3>{n}</h3><p class="lp-price__from"><span>from</span> {p}</p><p>{d}</p><ul>{"".join(f"<li>{x}</li>" for x in l)}</ul></article>' for n, p, d, l in items)
+    cards = ''.join(f'<article class="lp-price"><h3>{n}</h3><p class="lp-price__from"><span>from</span> {p.split('/')[0]}{'<em>/' + p.split('/')[1] + '</em>' if '/' in p else ''}</p><p>{d}</p><ul>{"".join(f"<li>{x}</li>" for x in l)}</ul></article>' for n, p, d, l in items)
     return f'<div class="lp-prices">{cards}</div><p class="lp-prices__note">{CARE}</p>'
 
 def page(p):
@@ -52,7 +52,7 @@ def page(p):
         {"@type": "Service", "name": name, "serviceType": p['svc'], "url": url, "description": p['desc'],
          "provider": {"@type": "ProfessionalService", "@id": BASE + "#business", "name": "John Bell · Graphic & Web Designer", "url": BASE},
          "areaServed": [{"@type": "City", "name": a} for a in AREAS] + [{"@type": "Country", "name": "United Kingdom"}],
-         "offers": [{"@type": "Offer", "name": n, "priceCurrency": "GBP", "priceSpecification": {"@type": "PriceSpecification", "minPrice": pr.replace('£', '').replace(',', ''), "priceCurrency": "GBP"}} for n, pr, _, _ in p['prices']]},
+         "offers": [{"@type": "Offer", "name": n, "priceCurrency": "GBP", "priceSpecification": {"@type": "PriceSpecification", "minPrice": pr.split('/')[0].replace('£', '').replace(',', ''), "priceCurrency": "GBP"}} for n, pr, _, _ in p['prices']]},
         {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in p['faqs']]},
         {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": BASE}, {"@type": "ListItem", "position": 2, "name": name.rstrip('.'), "item": url}]}]}
     work = ''.join(f'<a class="lp-card" href="{h}"><img src="../assets/{im}" alt="{alt}" loading="lazy" width="1440" height="900"><span><b>{n}</b>{k}</span></a>' for h, im, alt, n, k in (WORK[k] for k in p['work']))
@@ -187,7 +187,7 @@ PAGES = [
   intro='<p>People decide quickly whether a business looks trustworthy. A clear logo, a consistent look and well-made print do a lot of that work for you, before anyone has read a word.</p><p>I’ve spent 14 years designing brands, reports, brochures and campaigns for agencies and in-house teams, for charities, law firms, housebuilders and local trades. Now you can work with me directly.</p>',
   svcs=GFX_SVCS, price_h='Graphic design prices', prices=GFX, work_h='Some of my design work', work=['print', 'property', 'patch', 'birdie'],
   areas_line='I’m based in Birmingham and work with businesses across the West Midlands and the East Midlands, from Birmingham and Sutton Coldfield up to Leicester, and all over the UK by video call and email.',
-  faqs=[('How much does a logo cost in Birmingham?', 'Logo design starts from £300, and a full brand identity from £900. Print is quoted per job, from £150. You get a fixed quote before we start.'),
+  faqs=[('How much does a logo cost in Birmingham?', 'Logo design starts from £300, and a full brand identity from £900. Print is priced per page, with brochures from £45 a page. You get a fixed quote before we start.'),
         ('How many logo ideas will I see?', 'Usually three first ideas, then we refine your favourite together until it’s right.'),
         ('What files will I get?', 'Everything you need for print and screen: colour, black and white and reversed versions in vector and image formats.'),
         ('Can you arrange printing?', 'Yes. I send print-ready files and can recommend printers or deal with them for you.'),
