@@ -24,9 +24,9 @@ AREAS = ['Birmingham', 'Sutton Coldfield', 'Solihull', 'Lichfield', 'Tamworth', 
 
 # "How it works" steps: one set per page, so the pages don't repeat each other
 WEB_STEPS = [('A quick chat', 'You tell me about your business and what the site needs to do, and I send you a fixed quote.'), ('Designs first', 'You see the designs on a laptop and a phone before anything gets built.'),
-             ('Built and checked', 'Built, tested on phones and computers, and set up for Google.'), ('Live, and looked after', 'It goes live, with help on hand whenever you need something changing.')]
+             ('Built and checked', 'Built, polished and tested on phones and computers.'), ('Live, and looked after', 'It goes live, with help on hand whenever you need something changing.')]
 LEI_STEPS = [('Let’s talk', 'On a call, or in person if you’re nearby. Afterwards you get a fixed quote.'), ('See it before it’s built', 'You see the designs on both a laptop and a phone, so nothing gets built until you’ve had a proper look.'),
-             ('Built and tested', 'The site is built, checked on phones and computers, and given the setup Google looks for.'), ('Launch, then support', 'Support carries on once it’s live. If something needs changing, send me a message.')]
+             ('Built and tested', 'The site is built, polished and tested on phones and computers.'), ('Launch, then support', 'Support carries on once it’s live. If something needs changing, send me a message.')]
 GFX_STEPS = [('A quick chat', 'You tell me about your business and who you want to reach, and I send you a fixed quote.'), ('First ideas', 'Usually three different directions to choose from.'),
              ('Refine it together', 'We take your favourite and work on it until it feels right. Two rounds of changes are included.'), ('Files and print', 'You get every file you need for print and screen, with printing arranged if you want it.')]
 
@@ -113,6 +113,7 @@ def page(p):
   <script type="application/ld+json" data-seo>
 {json.dumps(ld, ensure_ascii=False, indent=1)}
   </script>
+  <link rel="stylesheet" href="../assets/css/type.css?v=4">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -194,7 +195,7 @@ PAGES = [
   title='Web Designer in Birmingham · John Bell, Freelance Web Design',
   desc='Freelance web designer in Birmingham. Fast, mobile-friendly websites and Shopify shops for small businesses, designed and built by John Bell. Quotes from £500.',
   h1='Web designer <mark class="hl">in Birmingham.</mark>',
-  lede='I design and build websites for independents and small businesses, here in Birmingham and across the UK. Fast sites that work properly on a phone, show up on Google and make it straightforward for people to get in touch.',
+  lede='I design and build websites for independents and small businesses, here in Birmingham and across the UK. Modern, engaging sites that look great on a phone and make it easy for people to get in touch.',
   fact='Based in Birmingham, working UK-wide',
   intro_h='A website that earns its keep',
   intro='<p>Most people will find you on their phone, often while they’re in the middle of something else. So every site is designed for phones first, with quick pages and an obvious next step: call, book, buy or send a message.</p><p>I’ve spent 14 years designing for agencies and in-house teams, and now I work directly with business owners. The person you speak to on day one is the same person who designs, builds and launches your site, and who’s still there after launch.</p>',
@@ -254,7 +255,7 @@ PAGES = [
         ('Logos and branding', 'A logo, colours and fonts that make everything you put out look like it comes from the same business.'), ('Print and brochures', 'Brochures, flyers, business cards and signage, sent print-ready, with printing arranged if you like.'),
         ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup (SEO) that Google looks for.'), ('Care and updates', 'Changes, new pages and help after launch, by email whenever you need it.')],
   steps=[('A video call', 'We talk it through on a video call at a time that suits you, and I send you a fixed quote.'), ('Designs on your screen', 'You see the designs on a shared screen, then get a link to try them on your own laptop and phone.'),
-         ('Built and checked', 'Built, tested on phones and computers and set up for Google, with updates by email along the way.'), ('Live, and looked after', 'It goes live, with help a message away whenever you need something changing.')],
+         ('Built and checked', 'Built, polished and tested on phones and computers, with updates by email along the way.'), ('Live, and looked after', 'It goes live, with help a message away whenever you need something changing.')],
   price_h='Web and graphic design prices', prices=WEB + GFX, work_h='A few of my projects', work=['patch', 'sccc', 'birdie', 'gosweet'],
   areas_h='Where I work',
   areas_line='I’m based in Birmingham and work remotely with businesses all over the UK, including:',
