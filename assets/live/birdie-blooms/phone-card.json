@@ -5,6 +5,7 @@
     "page": "index.html",
     "width": 390,
     "touch": true,
+    "css": "html{scroll-behavior:auto!important}",
     "start": {
       "to": "#card",
       "offset": 900

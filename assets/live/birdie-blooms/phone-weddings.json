@@ -5,6 +5,7 @@
     "page": "weddings.html",
     "width": 390,
     "touch": true,
+    "css": "html{scroll-behavior:auto!important}",
     "start": 0,
     "actions": [
       {

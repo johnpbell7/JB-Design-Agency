@@ -10,6 +10,7 @@
     620
   ],
   "startOffset": 70,
+  "css": "html{scroll-behavior:auto!important}",
   "steps": [
     {
       "label": "Flowers for big days, and Tuesdays",

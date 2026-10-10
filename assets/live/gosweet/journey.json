@@ -79,7 +79,7 @@
       "actions": [
         {
           "click": ".es__quick",
-          "nth": 3,
+          "nth": 1,
           "ms": 900,
           "after": 1200
         },

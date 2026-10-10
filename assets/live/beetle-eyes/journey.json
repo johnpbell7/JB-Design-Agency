@@ -41,30 +41,30 @@
       },
       "actions": [
         {
-          "wait": 900
+          "wait": 700
         },
         {
           "hover": ".ware",
           "nth": 0,
-          "ms": 1000,
-          "after": 1000
+          "ms": 900,
+          "after": 900
         },
         {
           "hover": ".ware",
           "nth": 1,
-          "ms": 800,
-          "after": 900
+          "ms": 700,
+          "after": 800
         },
         {
           "scroll": 420,
-          "ms": 1600,
+          "ms": 1500,
           "after": 200
         },
         {
           "hover": ".ware",
           "nth": 3,
-          "ms": 900,
-          "after": 1300
+          "ms": 800,
+          "after": 1200
         }
       ]
     },
