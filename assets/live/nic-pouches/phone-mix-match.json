@@ -8,12 +8,10 @@
     "touch": true,
     "start": 0,
     "actions": [
-      {"wait": 1300},
-      {"scroll": 700, "ms": 2200, "after": 700},
-      {"scrollTo": "#mm0", "offset": 160, "ms": 2600, "after": 800},
-      {"tap": "#mm0 .pc__add", "nth": 0, "after": 1400},
-      {"tap": ".qa [role=radio]", "nth": 1, "after": 1000, "scroll": false},
-      {"tap": "[data-qadd]", "after": 2600, "scroll": false}
+      {"wait": 1800},
+      {"scrollTo": ".mmt", "offset": 70, "ms": 3000, "after": 2400},
+      {"scrollTo": ".mmphone", "offset": 110, "ms": 3000, "after": 2000},
+      {"scrollTo": ".mmphone", "nth": 1, "offset": 110, "ms": 3000, "after": 2400}
     ]
   }
 }

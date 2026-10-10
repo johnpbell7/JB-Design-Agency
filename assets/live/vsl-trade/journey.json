@@ -14,8 +14,8 @@
       "actions": [
         { "wait": 1200 },
         { "move": ".ce-h1", "ms": 1200, "after": 1000 },
-        { "hover": ".ce-hero-act .ce-btn", "ms": 1000, "after": 1200 },
-        { "scrollTo": ".ce-wall", "offset": 60, "ms": 2600, "after": 2400, "visible": false }
+        { "hover": ".ce-hero-act .ce-btn", "ms": 1000, "after": 1800 },
+        { "scrollTo": ".ce-wall", "offset": 60, "ms": 2600, "after": 3600, "visible": false }
       ]
     },
     {

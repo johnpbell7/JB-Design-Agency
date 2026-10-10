@@ -1,0 +1,18 @@
+{
+  "name": "Nic Pouches: Offers and deals",
+  "css": ".proto-note,.fo,#fo{display:none!important}",
+  "mobile": {
+    "label": "Offers",
+    "page": "index.html",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      {"wait": 1800},
+      {"scroll": 368, "x": true, "within": "#hero", "ms": 1500, "after": 1600},
+      {"scroll": 368, "x": true, "within": "#hero", "ms": 1500, "after": 1400},
+      {"scrollTo": "#h-deals", "offset": 70, "ms": 3200, "after": 1600},
+      {"scroll": 415, "x": true, "within": "#railDeals", "ms": 1700, "after": 2400}
+    ]
+  }
+}

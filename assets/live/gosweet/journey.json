@@ -251,19 +251,19 @@
       "width": 390,
       "actions": [
         {
-          "wait": 1800
+          "wait": 2400
         },
         {
           "tap": ".buyrow [data-pq=\"1\"]",
-          "after": 1600
-        },
-        {
-          "tap": ".buyrow [data-padd]",
           "after": 1800
         },
         {
+          "tap": ".buyrow [data-padd]",
+          "after": 2000
+        },
+        {
           "tap": "#toast [data-open-drawer]",
-          "after": 3400
+          "after": 4200
         }
       ]
     },
@@ -351,7 +351,7 @@
         },
         {
           "scrollTo": ".lhero .fan",
-          "offset": 120,
+          "offset": 150,
           "ms": 2800,
           "after": 1800
         },

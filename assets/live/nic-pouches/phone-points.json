@@ -1,18 +1,17 @@
 {
-  "name": "Nic Pouches: Nic Points",
-  "css": ".proto-note,.fo,#fo,.nphow__model{display:none!important}",
+  "name": "Nic Points",
+  "css": ".proto-note,.fo,#fo{display:none!important}",
   "mobile": {
     "label": "Nic Points",
-    "page": "index.html",
+    "page": "page-nic-pouches-loyalty-points.html",
     "width": 390,
     "touch": true,
-    "start": {"to": "#promos", "offset": 160},
+    "start": 0,
     "actions": [
-      {"wait": 1300},
-      {"tap": "#promos .promo--blue", "after": 500},
-      {"wait": 1400},
-      {"scrollTo": ".nptiers__head", "offset": 110, "ms": 2600, "after": 1000},
-      {"scroll": 450, "ms": 2100, "after": 1500}
+      {"wait": 2600},
+      {"scrollTo": ".nptiers__head", "offset": 80, "ms": 3400, "after": 1600},
+      {"scrollTo": ".nptl__step--silver", "offset": 110, "ms": 2600, "after": 1600},
+      {"scrollTo": ".nptl__step--gold", "offset": 110, "ms": 2600, "after": 2400}
     ]
   }
 }
