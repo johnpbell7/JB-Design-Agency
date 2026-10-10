@@ -201,6 +201,8 @@
       const add = e.target.closest('[data-add]');
       if (add && !add.classList.contains('done')) {
         add.classList.add('done'); $('span', add).textContent = 'On list';
+        // never list the same thing twice (a tap and the loop can land together)
+        if ($$('.fa-shop b', usuals).some(b => b.textContent === add.dataset.add)) return;
         const r = row(add.dataset.add);
         shop.prepend(r);
         if (hasGsap && !reduce) gsap.from(r, { opacity: 0, y: -12, duration: 0.45, ease: 'back.out(2)' });
@@ -377,7 +379,7 @@
         cur = k;
       }
       // the screen drifts up and in a touch while it's showing, as if being read
-      gsap.fromTo(C[k], { scale: 1, yPercent: 0 }, { scale: 1.06, yPercent: -5.5, duration: STEP - 0.4, delay: 0.7, ease: 'sine.inOut', transformOrigin: '50% 0%' });
+      gsap.fromTo(C[k], { scale: 1, yPercent: 0 }, { scale: 1.05, yPercent: -4, duration: STEP - 0.4, delay: 0.7, ease: 'sine.inOut', transformOrigin: '50% 0%' });
       label(k); react(k);
     };
     const tl = gsap.timeline({ repeat: -1, paused: true });
@@ -421,7 +423,7 @@
       gsap.killTweensOf(img, 'scale,yPercent,autoAlpha');
       gsap.timeline()
         .fromTo(img, { scale: 1.16, yPercent: 0, autoAlpha: 0.2 }, { scale: 1.04, autoAlpha: 1, duration: 0.9, ease: 'expo.out', transformOrigin: '50% 0%' }, 0.15)
-        .to(img, { scale: 1.07, yPercent: -6, duration: HOLD - 1.2, ease: 'sine.inOut' }, 1.05);
+        .to(img, { scale: 1.06, yPercent: -4, duration: HOLD - 1.2, ease: 'sine.inOut' }, 1.05);
       line.textContent = spans[k]?.dataset.line || '';
       gsap.fromTo(line, { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, delay: 0.15, ease: 'expo.out', overwrite: true });
       dots.forEach((d, i) => d.classList.toggle('on', i === k));

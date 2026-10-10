@@ -524,6 +524,32 @@ body { --project-pen: #b9e4c9; }
   .wf-found { zoom: 0.72; }
 }
 
+/* Phones: each demo composed for a 390 screen. Cards overlap the phone on purpose and
+   overhang the panel by a few pixels at most; nothing runs off the screen. */
+@media (max-width: 760px) {
+  .wf-scan .wf-pull--flag { right: 1%; top: 17%; }
+  .wf-soon .wf-pull--rows { right: 1%; top: 1%; }
+  .wf-dinner .wf-pull--meal { left: 1%; top: 2%; }
+  .wf-home-demo .wf-pull--steps { right: 1%; top: 5%; }
+  .wf-receipt-demo { height: clamp(540px, 136vw, 660px); }
+  /* 04: no phone here, so the two cards share the panel: the usuals top left,
+     the list overlapping it lower right, the panel cut to fit them */
+  .wf-list-demo { height: clamp(470px, 122vw, 600px); }
+  .wf-list-demo .wf-panel { top: 7%; }
+  .wf-list-demo .wf-pull { zoom: 0.74; --w: 316px; }
+  .wf-list-demo .wf-pull--staples { left: 2%; top: 0; --r: -2.5deg; }
+  .wf-list-demo .wf-pull--list { left: auto; right: 2%; top: 38%; bottom: auto; --r: 1.5deg; }
+  .wf-list-demo .wf-tickhead { white-space: nowrap; font-size: 14px; }
+  .wf-list-demo .wf-tickhead small { font-size: 10.5px; }
+  .wf-list-demo .fa-toast { left: 50% !important; bottom: 5% !important; font-size: 13px; }
+  /* Up close: the panel wraps the whole piece, and the fan of rows fits inside it */
+  .wf-break__stage { height: 320px; }
+  .wf-break__stage > .wf-panel { top: 4%; }
+  .wf-fan { zoom: 0.86; }
+  .wf-fan .fa-item:nth-child(1) { translate: 0 -104%; }
+  .wf-fan .fa-item:nth-child(3) { translate: 0 104%; }
+}
+
 /* Reduced motion: everything sits in its finished state (the JS skips the timelines) */
 @media (prefers-reduced-motion: reduce) {
   .fa-spin, .fa-typing span, .fa-caret, .fa-nav i.pulse { animation: none !important; }

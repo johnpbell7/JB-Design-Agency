@@ -116,10 +116,21 @@
       else if (phone) leavePhone(() => jump(i)); else jump(i);
     }));
 
-    // play only while on screen; load a little before it gets there
+    // play only while on screen; load a little before it gets there, and unload the live
+    // site once the film is well off screen (its poster shows), so it stops using the main thread
+    let drop = 0;
     new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !active) active = frame(src, box, 'cp-live__frame is-in');
-    }, { rootMargin: '600px 0px' }).observe(stage);
+      clearTimeout(drop);
+      if (e.isIntersecting) { if (!active) { on = -1; active = frame(src, box, 'cp-live__frame is-in'); } }
+      else if (active) drop = setTimeout(unloadFilm, 1200);
+    }, { rootMargin: '300px 0px' }).observe(stage);
+    function unloadFilm() {
+      if (phone && tl) { tl.progress(0).kill(); tl = null; resetPhone?.(); }
+      [active, incoming, mframe].forEach(f => f?.remove());
+      active = incoming = mframe = null; mReady = false; phone = phoneAt = false;
+      resume.clear(); on = -1;
+    }
+    let resetPhone = null;
     const playPause = () => {
       [active, mframe].forEach(f => send(f, { live: 'pause' }));
       if (live() && (!S.on || S.armed)) send(phone ? (phoneAt ? mframe : null) : active, { live: 'play' });
@@ -162,6 +173,7 @@
       mframe?.remove(); mframe = null; mReady = false; phone = false; phoneAt = false;
       autoLeave?.kill(); autoLeave = null; leaving = false;
     };
+    resetPhone = reset;
     function enterPhone() {
       if (phone) return;
       phone = true; phoneAt = false;
@@ -258,12 +270,36 @@
     };
     const wake = () => { if (!ticking && near && !reduce) { ticking = true; requestAnimationFrame(tick); } };
 
-    // start the frames one at a time, earliest phase first, so four pages don't load at once
-    const queue = [...P].sort((a, b) => a.at - b.at);
+    // Which phones keep a live page loaded: none until the parade is near the viewport; in the
+    // phone deck only the phone on show and the one after it (so it's ready when it slides in);
+    // otherwise every phone. A phone without a page shows its poster (the start screen).
+    // Pages load one at a time, the phone on show (or the earliest phase) first, so they
+    // don't all load at once; a page that's no longer wanted is unloaded, so off-screen
+    // sites don't keep running their own animations on the page's main thread.
+    const deckOn = () => parade.classList.contains('is-deck');
+    const wanted = p => {
+      if (!near) return false;
+      if (!deckOn()) return true;
+      const k = P.findIndex(q => q.ph.classList.contains('is-on'));
+      return k < 0 ? p.i === 0 : p === P[k] || p === P[(k + 1) % P.length];
+    };
+    const unload = p => {
+      clearTimeout(p.rewind); clearTimeout(p.bootNext); clearTimeout(p.drop); p.drop = 0; p.bootNext = 0; p.loading = false;
+      p.frame?.remove(); p.incoming?.remove(); p.frame = p.incoming = null;
+      p.resume.clear(); p.state = 'idle';
+      try { delete window.__liveStores?.[p.store]; } catch (err) {}
+    };
     const boot = () => {
-      const p = queue.shift(); if (!p) return;
+      P.forEach(p => {
+        if (wanted(p)) { clearTimeout(p.drop); p.drop = 0; }
+        else if (p.frame && !p.drop) p.drop = setTimeout(() => { p.drop = 0; if (!wanted(p)) { unload(p); } }, 1200); // after the slide/scroll settles
+      });
+      if (P.some(p => p.loading)) return;
+      const p = P.filter(q => wanted(q) && !q.frame).sort((a, b) => (shown(b) - shown(a)) || (a.at - b.at))[0];
+      if (!p) return;
+      p.loading = true; p.state = 'loading';
       p.frame = frame(p, p.src);
-      p.bootNext = setTimeout(boot, 2500); // don't wait forever on a slow page
+      p.bootNext = setTimeout(() => { p.loading = false; boot(); }, 2500); // don't wait forever on a slow page
     };
 
     addEventListener('message', e => {
@@ -274,7 +310,7 @@
       if (!p) return;
       if (m.live === 'ready') {
         f.dataset.ready = '1';
-        if (p.bootNext) { clearTimeout(p.bootNext); p.bootNext = 0; setTimeout(boot, 300); }
+        if (p.loading) { clearTimeout(p.bootNext); p.bootNext = 0; p.loading = false; setTimeout(boot, 300); }
         const r = p.resume.get(f) || { i: 0, at: 0 }; p.resume.delete(f);
         if (f === p.incoming) { // the new page fades in over the old one
           const old = p.frame; p.frame = f; p.incoming = null;
@@ -300,9 +336,9 @@
     });
 
     new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !near) { near = true; if (!P.some(p => p.frame)) boot(); wake(); }
-      else if (!e.isIntersecting) near = false;
-    }, { rootMargin: '600px 0px' }).observe(parade);
+      if (e.isIntersecting && !near) { near = true; boot(); wake(); }
+      else if (!e.isIntersecting && near) { near = false; boot(); } // unloads them (after a moment)
+    }, { rootMargin: '300px 0px' }).observe(parade);
     new IntersectionObserver(([e]) => { seen = e.isIntersecting; P.forEach(playOrPause); wake(); }, { threshold: 0.15 }).observe(parade);
     // On phone widths case.js stacks the phones into a deck (.is-deck) and hides all but the
     // current one, which an IntersectionObserver can't see. A hidden deck phone doesn't play,
@@ -312,7 +348,8 @@
     const look = p => {
       const was = p.seen;
       p.seen = p.inView && shown(p); playOrPause(p);
-      if (was && !p.seen && !shown(p) && p.frame && p.state === 'run') {
+      boot(); // the deck moved on: load the phone on show / the next one, let go of the rest
+      if (was && !p.seen && !shown(p) && p.frame && p.state === 'run' && wanted(p)) {
         // a moment later, so the reload doesn't slow the phone that has just come in
         clearTimeout(p.rewind);
         p.rewind = setTimeout(() => {
