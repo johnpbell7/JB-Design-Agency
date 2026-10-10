@@ -412,7 +412,7 @@
     home: { tap: [72, 50], ring: [51, 42.5, 44, 14.5] },
     fridge: { tap: [64, 37], ring: [4, 33.4, 92, 7], toast: 'Added to your shopping list' },
     'scan-check': { tap: [9, 69.5], ring: [4, 65.6, 92, 8.4] },
-    tonight: { tap: [19, 42.5], ring: [11.5, 40.6, 15, 4], toast: 'Garlic is on your list' },
+    tonight: { tap: [30, 42.6], ring: [20.5, 40.6, 20, 4.2], toast: 'Garlic is on your list' },
   };
   const parade = $('[data-parade]');
   if (parade && hasGsap && !reduce) {
