@@ -804,13 +804,13 @@
       const milk = $('[data-milk]', du), used = $('[data-usedbtn]', milk), low = $('[data-low]', du), add = $('[data-ladd]', du);
       const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.6, paused: true });
       tl.call(() => { cells.forEach(c => c.classList.remove('on')); seen.textContent = '0'; used.classList.remove('on'); add.classList.remove('done'); $('span', add).textContent = 'Add'; }, null, 0)
-        .set(usual, { autoAlpha: 0, scale: 0.5 }, 0).set(low, { autoAlpha: 0, y: 20 }, 0).set(milk, { autoAlpha: 1, y: 0 }, 0);
+        .set(usual, { autoAlpha: 0, scale: 0.5 }, 0).set(low, { autoAlpha: 0.4, scale: 0.96 }, 0).set(milk, { autoAlpha: 1, y: 0 }, 0);
       callsIn(tl, du, 0.4);
       [1, 5, 10].forEach((d, i) => tl.call(() => { cells[d].classList.add('on'); flip(seen, String(i + 1)); }, null, 0.8 + i * 1.1).fromTo(cells[d], { scale: 0.6 }, { scale: 1, duration: 0.45, ease: 'back.out(3)' }, 0.8 + i * 1.1));
       tl.to(usual, { autoAlpha: 1, scale: 1, duration: 0.5, ease: 'back.out(2.5)' }, 4.2)
         .call(() => { used.classList.add('on'); bump(used); }, null, 5.2)
         .to(milk, { autoAlpha: 0.35, y: -6, duration: 0.4 }, 5.6)
-        .to(low, { autoAlpha: 1, y: 0, duration: 0.55, ease: 'back.out(1.8)' }, 6.0)
+        .to(low, { autoAlpha: 1, scale: 1, duration: 0.55, ease: 'back.out(1.8)' }, 6.0)
         .call(() => { add.classList.add('done'); $('span', add).textContent = 'On list'; bump(add); }, null, 7.4)
         .to({}, { duration: 2.2 }, 7.6);
       whileSeen(du, tl, 0.25);

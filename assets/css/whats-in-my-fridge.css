@@ -1159,9 +1159,7 @@ body { --project-pen: #f1d9c7; }
 /* the step card hugs its text */
 .wf-steptext, .wf-tl .wf-steptext { min-height: 0; }
 /* Usuals: "Running low" takes the Milk card's place instead of needing room below it */
-.wf-learn__stack { display: grid; }
-.wf-learn__stack > * { grid-area: 1 / 1; align-self: start; }
-.wf-learn__stack > [data-low] { z-index: 2; }
+.wf-learn__stack > [data-low] { transform-origin: 50% 0; }
 /* Offline on phones: a proper phone, the chips overlapping its edges, nothing reserved */
 @media (max-width: 760px) {
   .wf-tl .wf-off { position: relative; display: block; width: fit-content; margin-inline: auto; padding: 6px 0 4px; }
