@@ -155,29 +155,25 @@
       </ul></div>
     </div></section>
 
-    <!-- Mobile parade: one page, so one phone and one continuous journey -->
+    <!-- Mobile parade: three phones, each opening on a different part of the one page -->
     <section class="section--tight wrap">
       <div class="section-head" data-reveal>
         <span class="label">On a phone</span>
         <h2>One long page, <mark class="hl">like browsing the rail.</mark></h2>
         <p>The curtains open, then the whole shop is laid out down one page.</p>
       </div>
-      <div class="panel parade parade--solo be-parade" data-parade>
-        <ol class="parade__side be-route" data-route>
-          <li data-t="0"><b>01</b>The curtains</li>
-          <li data-t="3.2" data-poster><b>02</b>Meet Corrine</li>
-          <li data-t="6.1"><b>03</b>The rails</li>
-          <li data-t="8.9"><b>04</b>Curious Magpie</li>
-          <li data-t="10.9"><b>05</b>Come and visit</li>
-        </ol>
+      <div class="panel parade be-parade" data-parade>
         <div class="parade__row">
-          <div class="phone" data-live="../assets/live/beetle-eyes/index.html" data-live-journey="journey.json#0"><div class="screen"><video src="../assets/clips/beetle-eyes/tour.mp4" poster="../assets/clips/beetle-eyes/tour.jpg" muted playsinline loop preload="none" aria-label="Beetle Eyes on mobile: the curtains open, then About and Corrine, the rails, Curious Magpie, and the menu to Visit and the map"></video></div></div>
+          <div class="phone" data-live="../assets/live/beetle-eyes/index.html" data-live-journey="journey.json#curtains"><div class="screen"><video poster="../assets/clips/beetle-eyes/tour.jpg" muted playsinline aria-label="Beetle Eyes on mobile: the hand-drawn curtains open on Come and rummage, then the photo collage and Meet Corrine"></video></div></div>
+          <div class="phone" data-live="../assets/live/beetle-eyes/index.html" data-live-journey="journey.json#rails"><div class="screen"><video poster="../assets/clips/beetle-eyes/wares.jpg" muted playsinline aria-label="Beetle Eyes on mobile: Rails worth rummaging, the five kinds of stock from pre-loved womenswear to one-offs and oddities, then the shop photos"></video></div></div>
+          <div class="phone" data-live="../assets/live/beetle-eyes/index.html" data-live-journey="journey.json#visit"><div class="screen"><video poster="../assets/clips/beetle-eyes/faq.jpg" muted playsinline aria-label="Beetle Eyes on mobile: the questions list opens Is there parking?, then Come and see us with the address, opening hours and map"></video></div></div>
         </div>
+        <div class="parade__caption" aria-hidden="true"><span>The curtains open</span><span>What's on the rails</span><span>Questions and finding us</span></div>
 
-        <div class="pop" style="--x:64%;--y:8%;--w:clamp(128px,11.5vw,168px);--r:7deg" data-from-x="-120">
+        <div class="pop" style="--x:2%;--y:6%;--w:clamp(120px,11vw,160px);--r:-7deg" data-from-x="120">
           <figure class="be-polaroid"><img src="../assets/projects/beetle-eyes/window-display.jpg" alt=""><span>The window</span></figure>
         </div>
-        <div class="pop" style="--x:66%;--y:70%;--r:-4deg" data-from-x="-100" data-from-y="-40" data-pop-sm="hide">
+        <div class="pop" style="--x:80%;--y:68%;--r:-4deg" data-from-x="-100" data-from-y="-40" data-pop-sm="hide">
           <div class="be-tag"><strong>The shop</strong>Curious Magpie</div>
         </div>
       </div>
@@ -198,9 +194,12 @@
           </div>
         </div>
         <ol class="cp-steps">
-          <li data-t="0.5"><button type="button"><b>01</b><strong>The curtains open</strong></button><i></i></li>
-          <li data-t="4"><button type="button"><b>02</b><strong>The photo collage</strong></button><i></i></li>
-          <li data-t="8"><button type="button"><b>03</b><strong>The gallery</strong></button><i></i></li>
+          <li data-t="0"><button type="button"><b>01</b><strong>The curtains open</strong></button><i></i></li>
+          <li data-t="0"><button type="button"><b>02</b><strong>What's on the rails</strong></button><i></i></li>
+          <li data-t="0"><button type="button"><b>03</b><strong>The photo gallery</strong></button><i></i></li>
+          <li data-t="0"><button type="button"><b>04</b><strong>Inside Curious Magpie</strong></button><i></i></li>
+          <li data-t="0"><button type="button"><b>05</b><strong>Questions, answered</strong></button><i></i></li>
+          <li data-t="0"><button type="button"><b>06</b><strong>Come and see us</strong></button><i></i></li>
         </ol>
       </div>
     </section>

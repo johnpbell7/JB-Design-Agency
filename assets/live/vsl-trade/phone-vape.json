@@ -1,0 +1,17 @@
+{
+  "name": "VSL Trade: Vape and nicotine",
+  "steps": [],
+  "mobile": {
+    "label": "Vape and nicotine range",
+    "page": "vape-nicotine.html",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      { "wait": 1800 },
+      { "scrollTo": ".vn-sqgrid", "offset": 70, "ms": 3000, "after": 2000 },
+      { "scroll": 560, "ms": 2800, "after": 1600 },
+      { "scrollTo": ".vn-brands", "offset": 60, "ms": 2800, "after": 2600 }
+    ]
+  }
+}

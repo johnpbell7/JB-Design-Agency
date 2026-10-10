@@ -1,8 +1,14 @@
 {
   "name": "Beetle Eyes",
-  "viewport": { "width": 1440, "height": 900 },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
   "pace": 1.05,
-  "start": [1060, 620],
+  "start": [
+    1060,
+    620
+  ],
   "startOffset": 20,
   "steps": [
     {
@@ -11,30 +17,192 @@
       "start": 0,
       "reload": true,
       "actions": [
-        { "wait": 3200 },
-        { "move": [1000, 560], "ms": 1400, "after": 900 }
+        {
+          "wait": 3300
+        },
+        {
+          "hover": ".hero-visual .frame.f1",
+          "ms": 1400,
+          "after": 900
+        },
+        {
+          "hover": ".hero-visual .frame.f2",
+          "ms": 1100,
+          "after": 900
+        },
+        {
+          "move": [
+            1000,
+            560
+          ],
+          "ms": 1200,
+          "after": 700
+        }
       ]
     },
     {
-      "label": "The photo collage",
+      "label": "What's on the rails",
       "page": "index.html",
-      "start": 0,
+      "start": {
+        "to": "#wares",
+        "offset": 0
+      },
       "actions": [
-        { "hover": ".hero-visual .frame.f1", "ms": 1400, "after": 600 },
-        { "move": [1260, 330], "ms": 2000, "after": 500 },
-        { "move": [960, 720], "ms": 2000, "after": 500 },
-        { "move": [1180, 520], "ms": 1600, "after": 1400 }
+        {
+          "wait": 700
+        },
+        {
+          "hover": ".ware",
+          "nth": 0,
+          "ms": 1100,
+          "after": 1200
+        },
+        {
+          "hover": ".ware",
+          "nth": 1,
+          "ms": 900,
+          "after": 1000
+        },
+        {
+          "scroll": 420,
+          "ms": 1800,
+          "after": 300
+        },
+        {
+          "hover": ".ware",
+          "nth": 3,
+          "ms": 1000,
+          "after": 1400
+        }
       ]
     },
     {
-      "label": "The gallery",
+      "label": "The photo gallery",
       "page": "index.html",
-      "start": { "to": "#inside", "offset": 20 },
+      "start": {
+        "to": "#inside",
+        "offset": 20
+      },
       "actions": [
-        { "hover": ".gallery-grid figure", "nth": 0, "ms": 1200, "after": 1300 },
-        { "hover": ".gallery-grid figure", "nth": 1, "ms": 1200, "after": 1300 },
-        { "scroll": 540, "ms": 1600, "after": 200 },
-        { "hover": ".gallery-grid figure", "nth": 3, "ms": 1200, "after": 1500 }
+        {
+          "hover": ".gallery-grid figure",
+          "nth": 0,
+          "ms": 1200,
+          "after": 1300
+        },
+        {
+          "hover": ".gallery-grid figure",
+          "nth": 1,
+          "ms": 1000,
+          "after": 1200
+        },
+        {
+          "scroll": 560,
+          "ms": 1800,
+          "after": 200
+        },
+        {
+          "hover": ".gallery-grid figure",
+          "nth": 3,
+          "ms": 1100,
+          "after": 1500
+        }
+      ]
+    },
+    {
+      "label": "Inside Curious Magpie",
+      "page": "index.html",
+      "start": {
+        "to": "#magpie",
+        "offset": 0
+      },
+      "actions": [
+        {
+          "wait": 600
+        },
+        {
+          "hover": ".magpie-visual",
+          "at": [
+            0.5,
+            0.45
+          ],
+          "ms": 1300,
+          "after": 1800
+        },
+        {
+          "scroll": 240,
+          "ms": 1500,
+          "after": 500
+        },
+        {
+          "hover": ".magpie-list li",
+          "nth": 2,
+          "ms": 1100,
+          "after": 1000
+        },
+        {
+          "hover": ".magpie-link",
+          "ms": 900,
+          "after": 1300
+        }
+      ]
+    },
+    {
+      "label": "Questions, answered",
+      "page": "index.html",
+      "start": {
+        "to": "#faq",
+        "offset": 0
+      },
+      "actions": [
+        {
+          "wait": 600
+        },
+        {
+          "click": ".faq-list summary",
+          "nth": 0,
+          "ms": 1100,
+          "after": 2000
+        },
+        {
+          "click": ".faq-list summary",
+          "nth": 4,
+          "ms": 1000,
+          "after": 2200
+        }
+      ]
+    },
+    {
+      "label": "Come and see us",
+      "page": "index.html",
+      "start": {
+        "to": "#visit",
+        "offset": 0
+      },
+      "actions": [
+        {
+          "wait": 600
+        },
+        {
+          "hover": ".hours-list li",
+          "nth": 1,
+          "ms": 1100,
+          "after": 1300
+        },
+        {
+          "scroll": 220,
+          "ms": 1400,
+          "after": 300
+        },
+        {
+          "hover": ".map-frame",
+          "at": [
+            0.5,
+            0.45
+          ],
+          "ms": 1200,
+          "after": 1600
+        }
       ]
     }
   ],
@@ -45,36 +213,131 @@
     "touch": true,
     "pace": 1.1,
     "actions": [
-      { "wait": 3000 },
-      { "scrollTo": "#about", "offset": 40, "ms": 2200, "after": 1100 },
-      { "scrollTo": "#wares", "offset": 40, "ms": 2200, "after": 1100 },
-      { "scrollTo": "#magpie", "offset": 30, "ms": 2200, "after": 1100 },
-      { "tap": "#burgerBtn", "after": 1100 },
-      { "tap": ".mobile-menu a[href='#visit']", "after": 900 },
-      { "scroll": 420, "ms": 1800, "after": 1600 }
+      {
+        "wait": 3000
+      },
+      {
+        "scrollTo": "#about",
+        "offset": 40,
+        "ms": 2200,
+        "after": 1100
+      },
+      {
+        "scrollTo": "#wares",
+        "offset": 40,
+        "ms": 2200,
+        "after": 1100
+      },
+      {
+        "scrollTo": "#magpie",
+        "offset": 30,
+        "ms": 2200,
+        "after": 1100
+      },
+      {
+        "tap": "#burgerBtn",
+        "after": 1100
+      },
+      {
+        "tap": ".mobile-menu a[href='#visit']",
+        "after": 900
+      },
+      {
+        "scroll": 420,
+        "ms": 1800,
+        "after": 1600
+      }
     ]
   },
   "phones": [
     {
-      "label": "One long scroll",
+      "id": "curtains",
+      "label": "The curtains open",
       "page": "index.html",
       "start": 0,
+      "reload": true,
       "touch": true,
-      "route": [
-        { "label": "The curtains", "at": 0 },
-        { "label": "Meet Corrine", "at": 1 },
-        { "label": "The rails", "at": 2 },
-        { "label": "Curious Magpie", "at": 3 },
-        { "label": "Come and visit", "at": 4 }
-      ],
       "actions": [
-        { "wait": 3000 },
-        { "scrollTo": "#about", "offset": 40, "ms": 2200, "after": 1100 },
-        { "scrollTo": "#wares", "offset": 40, "ms": 2200, "after": 1100 },
-        { "scrollTo": "#magpie", "offset": 30, "ms": 2200, "after": 1100 },
-        { "tap": "#burgerBtn", "after": 1100 },
-        { "tap": ".mobile-menu a[href='#visit']", "after": 900 },
-        { "scroll": 420, "ms": 1800, "after": 1600 }
+        {
+          "wait": 3800
+        },
+        {
+          "scroll": 560,
+          "ms": 3000,
+          "after": 1800
+        },
+        {
+          "scrollTo": "#about",
+          "offset": 20,
+          "ms": 3200,
+          "after": 2400
+        }
+      ]
+    },
+    {
+      "id": "rails",
+      "label": "What's on the rails",
+      "page": "index.html",
+      "start": {
+        "to": "#wares",
+        "offset": 0
+      },
+      "reload": true,
+      "touch": true,
+      "css": ".page-curtain{display:none!important}body:has(.page-curtain){overflow:auto!important}",
+      "actions": [
+        {
+          "wait": 2000
+        },
+        {
+          "scroll": 640,
+          "ms": 3000,
+          "after": 1800
+        },
+        {
+          "scroll": 700,
+          "ms": 3000,
+          "after": 1600
+        },
+        {
+          "scrollTo": "#inside",
+          "offset": 0,
+          "ms": 3000,
+          "after": 2200
+        }
+      ]
+    },
+    {
+      "id": "visit",
+      "label": "Questions and finding us",
+      "page": "index.html",
+      "start": {
+        "to": "#faq",
+        "offset": 0
+      },
+      "reload": true,
+      "touch": true,
+      "css": ".page-curtain{display:none!important}body:has(.page-curtain){overflow:auto!important}",
+      "actions": [
+        {
+          "wait": 1800
+        },
+        {
+          "tap": ".faq-list summary",
+          "nth": 3,
+          "after": 2400
+        },
+        {
+          "scrollTo": "#visit",
+          "offset": 0,
+          "ms": 3200,
+          "after": 1400
+        },
+        {
+          "scroll": 420,
+          "ms": 2800,
+          "after": 2400
+        }
       ]
     }
   ]

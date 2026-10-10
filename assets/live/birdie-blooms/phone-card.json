@@ -1,0 +1,29 @@
+{
+  "name": "Birdie Blooms: The Birdie Card",
+  "mobile": {
+    "label": "The Birdie Card",
+    "page": "index.html",
+    "width": 390,
+    "touch": true,
+    "start": {
+      "to": "#card",
+      "offset": 900
+    },
+    "actions": [
+      {
+        "wait": 1800
+      },
+      {
+        "scrollTo": ".bcard",
+        "offset": 150,
+        "ms": 3000,
+        "after": 4400
+      },
+      {
+        "scroll": 420,
+        "ms": 2700,
+        "after": 2600
+      }
+    ]
+  }
+}

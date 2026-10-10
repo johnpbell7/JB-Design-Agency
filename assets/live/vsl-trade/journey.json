@@ -1,28 +1,27 @@
 {
   "name": "VSL Trade",
-  "viewport": {
-    "width": 1440,
-    "height": 900
-  },
+  "viewport": { "width": 1440, "height": 900 },
   "pace": 1,
   "start": [960, 640],
+  "startOffset": 100,
+  "cursor": { "size": 22 },
+  "reset": { "localStorage": ["vsl-consultation-v1", "vsl-consultation-sent-v1"] },
   "steps": [
     {
       "label": "One supplier, the whole shop",
       "page": "index.html",
       "start": 0,
       "actions": [
-        { "wait": 1400 },
-        { "hover": ".ce-hero-act .ce-btn", "ms": 1400, "after": 2200 }
+        { "wait": 1200 },
+        { "move": ".ce-h1", "ms": 1200, "after": 1000 },
+        { "hover": ".ce-hero-act .ce-btn", "ms": 1000, "after": 1200 },
+        { "scrollTo": ".ce-wall", "offset": 60, "ms": 2600, "after": 2400 }
       ]
     },
     {
       "label": "Two ranges, one account",
       "page": "index.html",
-      "start": {
-        "to": ".ce-cats",
-        "offset": 150
-      },
+      "start": { "to": ".ce-cats", "offset": 150 },
       "actions": [
         { "wait": 700 },
         { "hover": ".ce-cat-b", "ms": 1200, "after": 1500, "visible": false },
@@ -31,72 +30,69 @@
       ]
     },
     {
-      "label": "Every vape category",
+      "label": "Every vape category and brand",
       "page": "vape-nicotine.html",
-      "start": {
-        "to": ".vn-sqgrid",
-        "offset": 150
-      },
+      "start": { "to": ".vn-sqgrid", "offset": 150 },
       "actions": [
         { "wait": 900 },
-        { "hover": ".vn-sq", "nth": 0, "ms": 1100, "after": 1000, "visible": false },
-        { "hover": ".vn-sq", "nth": 2, "ms": 900, "after": 1000, "visible": false },
-        { "hover": ".vn-sq", "nth": 4, "ms": 900, "after": 1300, "visible": false }
-      ]
-    },
-    {
-      "label": "The brands they ask for",
-      "page": "vape-nicotine.html",
-      "start": {
-        "to": ".vn-brands",
-        "offset": 170
-      },
-      "actions": [
-        { "wait": 800 },
-        { "hover": ".vn-brands-tiles img", "nth": 2, "ms": 1100, "after": 1000, "visible": false },
-        { "hover": ".vn-brands-tiles img", "nth": 7, "ms": 1000, "after": 1500, "visible": false },
+        { "hover": ".vn-sq", "nth": 0, "ms": 1100, "after": 900, "visible": false },
+        { "hover": ".vn-sq", "nth": 2, "ms": 900, "after": 900, "visible": false },
+        { "hover": ".vn-sq", "nth": 4, "ms": 900, "after": 900, "visible": false },
+        { "scrollTo": ".vn-brands", "offset": 170, "ms": 2200, "after": 700 },
+        { "hover": ".vn-brands-tiles img", "nth": 2, "ms": 1000, "after": 900, "visible": false },
+        { "hover": ".vn-brands-tiles img", "nth": 7, "ms": 1000, "after": 1200, "visible": false },
         { "click": ".nav-links a", "text": "The App", "ms": 1300, "after": 300 }
       ]
     },
     {
-      "label": "The App, from the till",
+      "label": "Order in the App, earn credit",
       "page": "app.html",
       "start": 0,
       "actions": [
-        { "wait": 1500 },
-        { "scrollTo": ".ap-slide.t1", "offset": 0, "ms": 1800, "after": 2600 },
+        { "wait": 1400 },
+        { "scrollTo": ".ap-slide.t1", "offset": 0, "ms": 1800, "after": 2400 },
         { "scrollTo": ".ap-slide.t2", "offset": 0, "ms": 1900, "after": 2400 },
-        { "click": ".nav-right .btn-primary", "ms": 1300, "after": 300 }
+        { "scrollTo": ".ap-slide.t3", "offset": 0, "ms": 1900, "after": 3000 }
+      ]
+    },
+    {
+      "label": "A 55-page form, made simple",
+      "page": "consultation.html",
+      "start": 0,
+      "reload": true,
+      "actions": [
+        { "wait": 1400 },
+        { "type": ["#storeName", "Sam's Shop"], "ms": 1100, "after": 400 },
+        { "type": ["#contactEmail", "sam@example.com"], "ms": 800, "after": 600 },
+        { "click": "#cfStart button[type=submit]", "ms": 900, "after": 1600 },
+        { "click": ".cf-opt", "nth": 1, "ms": 1000, "after": 700 },
+        { "click": ".cf-opt", "nth": 4, "ms": 900, "after": 900 },
+        { "click": "[data-act=next]", "ms": 900, "after": 1800 }
       ]
     },
     {
       "label": "Register in a minute",
       "page": "register.html",
-      "start": {
-        "to": "#store-name",
-        "offset": 300
-      },
+      "start": { "to": "#store-name", "offset": 300 },
       "actions": [
         { "wait": 900 },
-        { "type": [ "#store-name", "Sam's Shop" ], "ms": 1100, "after": 600 },
-        { "type": [ "#contact-name", "Sam Patel" ], "ms": 900, "after": 2600 }
+        { "type": ["#store-name", "Sam's Shop"], "ms": 1100, "after": 500 },
+        { "type": ["#contact-name", "Sam Patel"], "ms": 900, "after": 500 },
+        { "type": ["#email", "sam@samsshop.co.uk"], "ms": 900, "after": 2400 }
       ]
     }
   ],
   "mobile": {
-    "label": "Vape & nicotine",
+    "label": "Home and top brands",
     "page": "index.html",
     "width": 390,
     "touch": true,
     "start": 0,
     "actions": [
-      { "wait": 1200 },
-      { "scroll": 620, "ms": 2000, "after": 600 },
-      { "scrollTo": ".ce-cat-a", "offset": 160, "ms": 1800, "after": 800, "visible": false },
-      { "tap": ".ce-cat-a", "after": 600, "visible": false },
-      { "wait": 900 },
-      { "scroll": 650, "ms": 2000, "after": 700 },
-      { "scroll": 900, "ms": 2300, "after": 1400 }
+      { "wait": 1800 },
+      { "scrollTo": ".ce-wall", "offset": 40, "ms": 3000, "after": 2400 },
+      { "scrollTo": ".ce-cats", "offset": 70, "ms": 3000, "after": 2400 },
+      { "scroll": 760, "ms": 3000, "after": 1800 }
     ]
   }
 }

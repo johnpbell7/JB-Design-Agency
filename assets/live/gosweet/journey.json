@@ -17,7 +17,7 @@
   },
   "steps": [
     {
-      "label": "The menu",
+      "label": "A menu for each aisle",
       "page": "index.html",
       "start": 0,
       "actions": [
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "label": "Searching",
+      "label": "Search as you type",
       "page": "index.html",
       "start": 0,
       "actions": [
@@ -102,30 +102,104 @@
       ]
     },
     {
-      "label": "Adding to the basket",
-      "page": "collection.html?c=chocolate",
-      "start": {
-        "to": ".es",
-        "offset": 150
-      },
+      "label": "Buy from the product page",
+      "page": "product.html?p=monster-rehab-green-tea-458ml-box",
+      "start": 0,
+      "reload": true,
       "actions": [
         {
-          "click": ".es__add",
-          "nth": 1,
-          "ms": 900,
+          "hover": ".gal__main",
+          "ms": 1000,
           "after": 900
         },
         {
-          "click": ".es.is-added [data-inc]",
-          "nth": 0,
-          "ms": 500,
-          "after": 700
+          "click": ".buyrow [data-pq='1']",
+          "ms": 900,
+          "after": 1100
+        },
+        {
+          "click": ".buyrow [data-padd]",
+          "ms": 700,
+          "after": 900
         },
         {
           "click": "#toast [data-open-drawer]",
           "scroll": false,
           "ms": 900,
           "after": 2600
+        },
+        {
+          "click": ".drawer__head [data-drawer-close]",
+          "scroll": false,
+          "ms": 800,
+          "after": 300
+        }
+      ]
+    },
+    {
+      "label": "Points on every order",
+      "page": "product.html?p=monster-rehab-green-tea-458ml-box",
+      "start": 0,
+      "actions": [
+        {
+          "hover": ".pdp__facts li",
+          "nth": 2,
+          "at": [
+            0.3,
+            0.5
+          ],
+          "ms": 900,
+          "after": 1200
+        },
+        {
+          "click": ".pdp__facts a[href='loyalty.html']",
+          "ms": 700,
+          "after": 900
+        },
+        {
+          "hover": ".lhero .fan",
+          "ms": 1000,
+          "after": 2600
+        }
+      ]
+    },
+    {
+      "label": "Three reward tiers",
+      "page": "loyalty.html",
+      "start": {
+        "to": ".tiers",
+        "offset": 150
+      },
+      "actions": [
+        {
+          "hover": ".tier",
+          "nth": 0,
+          "at": [
+            0.5,
+            0.3
+          ],
+          "ms": 900,
+          "after": 1300
+        },
+        {
+          "hover": ".tier",
+          "nth": 1,
+          "at": [
+            0.5,
+            0.3
+          ],
+          "ms": 700,
+          "after": 1300
+        },
+        {
+          "hover": ".tier",
+          "nth": 2,
+          "at": [
+            0.5,
+            0.3
+          ],
+          "ms": 700,
+          "after": 1800
         }
       ]
     }
@@ -162,8 +236,8 @@
   },
   "phones": [
     {
-      "id": "shop",
-      "label": "Shop",
+      "id": "product",
+      "label": "Product page",
       "page": "product.html?p=monster-rehab-green-tea-458ml-box",
       "start": 0,
       "reload": true,
@@ -171,90 +245,91 @@
       "width": 390,
       "actions": [
         {
-          "wait": 1600
-        },
-        {
-          "scroll": 330,
-          "ms": 2900,
-          "after": 1500
+          "wait": 1800
         },
         {
           "tap": ".buyrow [data-pq=\"1\"]",
-          "after": 1700
+          "after": 1600
         },
         {
-          "tap": ".buyrow .btn",
-          "text": "Add to basket",
-          "after": 2800
+          "tap": ".buyrow [data-padd]",
+          "after": 1800
+        },
+        {
+          "tap": "#toast [data-open-drawer]",
+          "after": 3400
         }
       ]
     },
     {
-      "id": "home",
-      "label": "Home",
+      "id": "deals",
+      "label": "Hottest deals",
       "page": "index.html",
-      "start": 0,
+      "start": {
+        "to": ".sec--band",
+        "offset": 60
+      },
       "reload": true,
       "touch": true,
       "width": 390,
       "actions": [
         {
-          "wait": 1700
-        },
-        {
-          "scrollTo": ".rail",
-          "offset": 190,
-          "ms": 3400,
-          "after": 1300
+          "wait": 2000
         },
         {
           "scroll": 354,
           "x": true,
-          "within": ".rail",
+          "within": ".sec--band .rail",
           "ms": 2700,
-          "after": 1300
+          "after": 1400
         },
         {
-          "tap": ".es__add",
-          "nth": 2,
+          "scroll": 354,
+          "x": true,
+          "within": ".sec--band .rail",
+          "ms": 2700,
+          "after": 1400
+        },
+        {
+          "tap": ".sec--band .es__add",
+          "nth": 3,
           "after": 2800
         }
       ]
     },
     {
-      "id": "search",
-      "label": "Search",
-      "page": "collection.html?c=drinks",
-      "start": 0,
+      "id": "chocolate",
+      "label": "Chocolate",
+      "page": "collection.html?c=chocolate",
+      "start": {
+        "to": ".cbrands",
+        "offset": 60
+      },
       "reload": true,
       "touch": true,
       "width": 390,
       "actions": [
         {
-          "wait": 1500
+          "wait": 1800
         },
         {
-          "tap": "[data-search-open]",
-          "after": 1000
+          "scroll": 300,
+          "x": true,
+          "within": ".cbrands__row",
+          "ms": 2400,
+          "after": 900
         },
         {
-          "type": [
-            "[data-srch-in]",
-            "cola"
-          ],
-          "charMs": 300,
-          "jitter": 0.5,
-          "after": 1700
+          "scroll": 420,
+          "ms": 2800,
+          "after": 1200
         },
         {
-          "tap": ".sprod[href*=\"coca-cola-330ml-zero-sugar-box\"]",
-          "after": 200
-        },
-        {
-          "wait": 2600
+          "tap": ".es__quick",
+          "nth": 3,
+          "after": 3600
         }
-      ],
-      "css": "input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display:none}"
+      ]
     },
     {
       "id": "rewards",
@@ -266,22 +341,25 @@
       "width": 390,
       "actions": [
         {
-          "wait": 1700
+          "wait": 1800
         },
         {
-          "scroll": 580,
-          "ms": 3400,
-          "after": 1700
+          "scrollTo": ".lhero .fan",
+          "offset": 120,
+          "ms": 2800,
+          "after": 1800
         },
         {
-          "scroll": 640,
-          "ms": 3400,
-          "after": 1700
+          "scrollTo": ".tier--gold",
+          "offset": 110,
+          "ms": 3200,
+          "after": 1800
         },
         {
-          "scroll": 640,
-          "ms": 3400,
-          "after": 2100
+          "scrollTo": ".tier--black",
+          "offset": 110,
+          "ms": 2800,
+          "after": 2000
         }
       ]
     }

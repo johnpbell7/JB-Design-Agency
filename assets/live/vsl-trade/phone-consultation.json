@@ -1,19 +1,19 @@
 {
-  "name": "VSL Trade: Consultation",
+  "name": "VSL Trade: Have your say",
   "steps": [],
   "mobile": {
-    "label": "Consultation",
+    "label": "Have your say",
     "page": "consultation.html",
     "width": 390,
     "touch": true,
-    "start": 0,
+    "start": { "to": "#cfStart", "offset": 70 },
     "actions": [
-      { "wait": 1200 },
-      { "scrollTo": "#cfStart", "offset": 160, "ms": 1900, "after": 700 },
-      { "type": ["#storeName", "Sam's Shop"], "after": 500 },
-      { "type": ["#contactEmail", "sam@example.com"], "after": 700 },
-      { "tap": "#cfStart button[type=submit]", "after": 1500 },
-      { "tap": ".cf-opt", "nth": 0, "after": 2000 }
+      { "wait": 1600 },
+      { "type": ["#storeName", "Sam's Shop"], "after": 400 },
+      { "type": ["#contactEmail", "sam@example.com"], "after": 600 },
+      { "tap": "#cfStart button[type=submit]", "after": 1800 },
+      { "tap": ".cf-opt", "nth": 1, "after": 900 },
+      { "tap": ".cf-opt", "nth": 4, "after": 2400 }
     ]
   }
 }

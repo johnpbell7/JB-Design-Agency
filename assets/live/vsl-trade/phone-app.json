@@ -2,17 +2,16 @@
   "name": "VSL Trade: The App",
   "steps": [],
   "mobile": {
-    "label": "The App",
-    "page": "phone-app.html",
+    "label": "The ordering app",
+    "page": "app.html",
     "width": 390,
     "touch": true,
-    "start": 0,
+    "start": { "to": ".ap-slide.t1", "offset": 60 },
     "actions": [
-      { "wait": 1300 },
-      { "scrollTo": ".ap-slide.t1", "offset": 60, "ms": 2000, "after": 1800 },
-      { "scroll": 700, "ms": 2200, "after": 1600 },
-      { "scrollTo": ".ap-slide.t2", "offset": 60, "ms": 2000, "after": 1800 },
-      { "scroll": 700, "ms": 2200, "after": 1600 }
+      { "wait": 1800 },
+      { "scrollTo": ".ap-slide.t2", "offset": 60, "ms": 3000, "after": 2200 },
+      { "scrollTo": ".ap-slide.t3", "offset": 60, "ms": 3000, "after": 1200 },
+      { "scroll": 330, "ms": 2600, "after": 2600 }
     ]
   }
 }

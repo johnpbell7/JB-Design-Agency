@@ -4,58 +4,89 @@
   "pace": 1,
   "start": [1010, 640],
   "startOffset": 100,
-  "css": ".proto-note,.fo,#fo,.nphow__model{display:none!important}body:not(.cart-open) .drawer{box-shadow:none}",
+  "css": ".proto-note,.fo,#fo{display:none!important}body:not(.cart-open) .drawer{box-shadow:none}",
   "reset": {"localStorage": ["np-redesign-basket-v1", "np-recent-searches"]},
   "escapeOnJump": true,
   "closeOnJump": [".dr__head [data-close-cart]"],
   "steps": [
     {
-      "label": "The menu",
+      "label": "Offers on the home page",
       "page": "index.html",
       "start": 0,
       "actions": [
-        {"wait": 500},
-        {"hover": "[data-mega-link]", "ms": 900, "after": 1000},
-        {"hover": "#mega .mega__list a", "nth": 2, "ms": 900, "after": 700},
-        {"click": "#mega [data-pgdir='1']", "ms": 900, "after": 1300, "scroll": false},
-        {"hover": "#mega .mega__flav", "nth": 4, "ms": 900, "after": 1200}
+        {"wait": 700},
+        {"hover": ".hero__tile", "nth": 1, "ms": 1000, "after": 1100},
+        {"hover": "#promos .promo--mint", "ms": 900, "after": 900},
+        {"scrollTo": "#h-top", "offset": 110, "ms": 2200, "after": 700},
+        {"hover": "#finder .fband", "nth": 2, "ms": 1000, "after": 1300}
       ]
     },
     {
-      "label": "Adding to the basket",
+      "label": "Shop by brand, strength or flavour",
+      "page": "index.html",
+      "start": 0,
+      "actions": [
+        {"wait": 400},
+        {"hover": "[data-mega-link]", "ms": 900, "after": 1000},
+        {"click": "#mega [data-pgdir='1']", "ms": 1000, "after": 1100, "scroll": false},
+        {"hover": "#mega .mega__flav", "nth": 4, "ms": 900, "after": 900},
+        {"hover": "#mega .mega__list a", "nth": 2, "ms": 900, "after": 700},
+        {"click": "#mega .mega__list a", "nth": 2, "ms": 300, "after": 300, "scroll": false},
+        {"wait": 1200}
+      ]
+    },
+    {
+      "label": "Quick add from a card",
       "page": "collection-high-strength-nicotine-pouches.html",
       "start": 300,
       "actions": [
         {"wait": 400},
         {"click": ".pc[data-h=velo-tropical-mango-10mg] .pc__add", "ms": 900, "after": 1200},
         {"click": ".qa__packs [role=radio]", "nth": 2, "ms": 800, "after": 900, "scroll": false},
-        {"click": "[data-qadd]", "ms": 800, "after": 2400, "scroll": false}
+        {"click": "[data-qadd]", "ms": 800, "after": 2600, "scroll": false}
       ]
     },
     {
-      "label": "Picking a strength",
+      "label": "Pick a strength and pack",
       "page": "product.html?p=velo-bright-spearmint",
       "start": 0,
       "actions": [
-        {"wait": 500},
+        {"wait": 600},
         {"click": ".pdp__chips .mgc", "nth": 2, "ms": 900, "after": 900},
         {"click": ".pdp__chips .mgc", "nth": 3, "ms": 600, "after": 1200},
-        {"click": ".packs .pack", "nth": 2, "ms": 900, "after": 1500}
+        {"click": ".packs .pack", "nth": 2, "ms": 900, "after": 900},
+        {"click": ".packs .pack", "nth": 3, "ms": 600, "after": 1600}
       ]
     },
     {
-      "label": "Nic Points",
-      "page": "product.html?p=velo-bright-spearmint",
+      "label": "Mix & Match savings",
+      "page": "page-mix-match.html",
       "start": 0,
       "actions": [
-        {"wait": 400},
-        {"click": ".points-btn", "ms": 1000, "after": 1700},
-        {"scrollTo": ".nptiers", "offset": 60, "ms": 1800, "after": 1800}
+        {"wait": 900},
+        {"scrollTo": ".mmt", "offset": 200, "ms": 1600, "after": 500},
+        {"hover": ".mmt__card", "nth": 1, "ms": 900, "after": 700},
+        {"hover": ".mmt__card", "nth": 3, "ms": 900, "after": 1200},
+        {"scrollTo": ".mms", "offset": 40, "ms": 2000, "after": 600},
+        {"hover": ".mmphone", "nth": 1, "ms": 1000, "after": 1700}
+      ]
+    },
+    {
+      "label": "Nic Points tiers",
+      "page": "page-mix-match.html",
+      "start": 0,
+      "actions": [
+        {"wait": 300},
+        {"click": ".points-btn", "ms": 1000, "after": 300},
+        {"wait": 1200},
+        {"hover": ".npm--tier", "nth": 2, "at": [0.6, 0.6], "ms": 1000, "after": 1200},
+        {"scrollTo": ".nptiers", "offset": 90, "ms": 2000, "after": 700},
+        {"hover": ".nptl__step--gold .nptc", "ms": 1000, "after": 1800}
       ]
     }
   ],
   "mobile": {
-    "label": "Quick-add on a phone",
+    "label": "Quick add on a phone",
     "page": "index.html",
     "width": 390,
     "touch": true,

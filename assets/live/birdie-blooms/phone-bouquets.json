@@ -1,0 +1,48 @@
+{
+  "name": "Birdie Blooms: Bouquets",
+  "mobile": {
+    "label": "Bouquets",
+    "page": "shop.html",
+    "width": 390,
+    "touch": true,
+    "start": {
+      "to": "#bouquets",
+      "offset": 60
+    },
+    "actions": [
+      {
+        "wait": 1800
+      },
+      {
+        "scrollTo": ".product",
+        "nth": 1,
+        "offset": 90,
+        "ms": 3000,
+        "after": 1800
+      },
+      {
+        "tap": ".product a.btn",
+        "nth": 1,
+        "after": 300
+      },
+      {
+        "wait": 1400
+      },
+      {
+        "type": [
+          "#c-name",
+          "Sam"
+        ],
+        "charMs": 220,
+        "jitter": 0.5,
+        "after": 700
+      },
+      {
+        "scrollTo": "#c-bouquet",
+        "offset": 260,
+        "ms": 2200,
+        "after": 2600
+      }
+    ]
+  }
+}
