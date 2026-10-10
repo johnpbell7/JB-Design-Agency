@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What’s in my Fridge: a web app I designed and built · John Bell</title>
+  <meta name="description" content="What’s in my Fridge is John Bell’s own web app. Photograph your shopping or a till receipt, see what needs using first, keep the usuals stocked and get dinner ideas from what’s already in. Designed and built by John in React.">
+  <link rel="canonical" href="https://johnpbell7.github.io/JB-Design-Agency/projects/whats-in-my-fridge.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="John Bell · Web Designer">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://johnpbell7.github.io/JB-Design-Agency/projects/whats-in-my-fridge.html">
+  <meta property="og:title" content="What’s in my Fridge: a web app I designed and built · John Bell">
+  <meta property="og:description" content="What’s in my Fridge is John Bell’s own web app. Photograph your shopping or a till receipt, see what needs using first, keep the usuals stocked and get dinner ideas from what’s already in. Designed and built by John in React.">
+  <meta property="og:image" content="https://johnpbell7.github.io/JB-Design-Agency/assets/share/whats-in-my-fridge.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What’s in my Fridge: a web app I designed and built · John Bell">
+  <meta name="twitter:description" content="What’s in my Fridge is John Bell’s own web app. Photograph your shopping or a till receipt, see what needs using first, keep the usuals stocked and get dinner ideas from what’s already in. Designed and built by John in React.">
+  <meta name="twitter:image" content="https://johnpbell7.github.io/JB-Design-Agency/assets/share/whats-in-my-fridge.jpg">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme.js"></script>
+  <!-- Instant page changes: Chrome starts loading a page as you press (or hover) its link -->
+  <script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/*/assets/*"}},{"not":{"href_matches":"/assets/*"}}]},"eagerness":"moderate"}]}</script>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preload" href="../assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/fonts.css">
+  <link rel="preload" href="../assets/projects/whats-in-my-fridge/fonts/plusjakartasans-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/projects/whats-in-my-fridge/fonts/fraunces-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/case.css">
+  <link rel="stylesheet" href="../assets/css/case-plus.css">
+  <link rel="stylesheet" href="../assets/css/whats-in-my-fridge.css">
+  <script type="application/ld+json" data-seo>
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "CreativeWork",
+   "name": "What’s in my Fridge: a web app I designed and built",
+   "description": "What’s in my Fridge is John Bell’s own web app. Photograph your shopping or a till receipt, see what needs using first, keep the usuals stocked and get dinner ideas from what’s already in. Designed and built by John in React.",
+   "url": "https://johnpbell7.github.io/JB-Design-Agency/projects/whats-in-my-fridge.html",
+   "image": "https://johnpbell7.github.io/JB-Design-Agency/assets/share/whats-in-my-fridge.jpg",
+   "inLanguage": "en-GB",
+   "creator": {
+    "@type": "Person",
+    "@id": "https://johnpbell7.github.io/JB-Design-Agency/#john",
+    "name": "John Bell",
+    "jobTitle": "Freelance graphic and web designer",
+    "url": "https://johnpbell7.github.io/JB-Design-Agency/projects/about.html",
+    "email": "mailto:jb.designagency89@gmail.com"
+   }
+  },
+  {
+   "@type": "WebApplication",
+   "name": "What’s in my Fridge",
+   "url": "https://app.whatsinmyfridge.co.uk",
+   "applicationCategory": "LifestyleApplication",
+   "operatingSystem": "iOS, Android (web app)",
+   "author": { "@id": "https://johnpbell7.github.io/JB-Design-Agency/#john" }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://johnpbell7.github.io/JB-Design-Agency/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Work",
+     "item": "https://johnpbell7.github.io/JB-Design-Agency/projects/work.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "What’s in my Fridge",
+     "item": "https://johnpbell7.github.io/JB-Design-Agency/projects/whats-in-my-fridge.html"
+    }
+   ]
+  }
+ ]
+}
+  </script>
+</head>
+<body data-pen>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- The app's own icon set (src/icons.jsx), stroke icons on a 24 grid -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="fa-fridge" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.6"/><path d="M6 9h12"/><path d="M15 5.4v2.2M15 11.6v3.4"/></symbol>
+    <symbol id="fa-snow" viewBox="0 0 24 24"><path d="M12 2.5v19"/><path d="M3.8 7.25l16.4 9.5"/><path d="M20.2 7.25L3.8 16.75"/><path d="M9.6 4.4L12 5.8l2.4-1.4"/><path d="M9.6 19.6L12 18.2l2.4 1.4"/></symbol>
+    <symbol id="fa-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="fa-camera" viewBox="0 0 24 24"><path d="M3 8.5A2 2 0 0 1 5 6.5h1.6l1-1.6a1 1 0 0 1 .85-.48h7.1a1 1 0 0 1 .85.48l1 1.6H19a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.4"/></symbol>
+    <symbol id="fa-chat" viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H9l-4 4z"/><path d="M8.5 9h7M8.5 12h4"/></symbol>
+    <symbol id="fa-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></symbol>
+    <symbol id="fa-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="fa-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="fa-warning" viewBox="0 0 24 24"><path d="M12 4l9 15.5H3z"/><path d="M12 10v4M12 17h.01"/></symbol>
+    <symbol id="fa-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.7h.01"/></symbol>
+    <symbol id="fa-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5h14V10"/></symbol>
+    <symbol id="fa-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.2 11.2a1.5 1.5 0 0 0 1.5 1.2h8.1a1.5 1.5 0 0 0 1.470-1.18L20.5 7.5H6"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17.5" cy="20" r="1.3"/></symbol>
+    <symbol id="fa-receipt" viewBox="0 0 24 24"><path d="M6 3.5h12v17l-2-1.3-2 1.3-2-1.3-2 1.3-2-1.3-2 1.3z"/><path d="M9 8h6M9 11.5h6M9 15h4"/></symbol>
+    <symbol id="fa-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6z"/></symbol>
+    <symbol id="fa-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/></symbol>
+    <symbol id="fa-bookmark" viewBox="0 0 24 24"><path d="M6 4.5h12v16l-6-4-6 4z"/></symbol>
+    <symbol id="fa-pin" viewBox="0 0 24 24"><path d="M12 21v-7"/><path d="M8.5 3.5h7l-1 5.2 2.5 2.4a1 1 0 0 1-.7 1.7H6.7a1 1 0 0 1-.7-1.7l2.5-2.4z"/></symbol>
+    <symbol id="fa-milk" viewBox="0 0 24 24"><path d="M7 22V9l2-5h6l2 5v13z"/><path d="M7 9h10"/><path d="M10.5 4.2h3"/></symbol>
+    <symbol id="fa-produce" viewBox="0 0 24 24"><path d="M20 4S8 4 6 12c-1 4 1.5 6.5 5.5 5.5C19.5 15.5 20 4 20 4z"/><path d="M11 13c2-3 5-5 8-6.5"/></symbol>
+    <symbol id="fa-fish" viewBox="0 0 24 24"><path d="M4 12c3-5 10-5 13 0-3 5-10 5-13 0z"/><path d="M17 12l3-2.5v5z"/><path d="M8 11h.01"/></symbol>
+    <symbol id="fa-bread" viewBox="0 0 24 24"><path d="M4.5 12.5c0-2.8 3.3-4.5 7.5-4.5s7.5 1.7 7.5 4.5v.4a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2z"/><path d="M9 11.2l.7-1.5M12 11.2l.7-1.5M15 11.2l.7-1.5"/></symbol>
+    <symbol id="fa-send" viewBox="0 0 24 24"><path d="M5 12l15-7-6 15-3-6-6-2z"/></symbol>
+    <symbol id="fa-share" viewBox="0 0 24 24"><path d="M12 15V4"/><path d="M8.5 7.5 12 4l3.5 3.5"/><path d="M7 11H5.5A1.5 1.5 0 0 0 4 12.5v6A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5v-6A1.5 1.5 0 0 0 18.5 11H17"/></symbol>
+    <symbol id="fa-dots" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.8" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.8" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="fa-plussq" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></symbol>
+    <symbol id="fa-leafmark" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M20 4C11 4 5 9 5 17c0 1 .2 2 .5 3C9 14 14 11 19 10c-4 2-8 5-11 11 1 .3 2 .5 3 .5 8 0 13-6 13-15 0-1 0-2-.2-2.5H20z"/></symbol>
+    <symbol id="fa-icon" viewBox="0 0 512 512"><rect width="512" height="512" rx="116" fill="#2f7d5a"/><rect x="168" y="96" width="176" height="320" rx="40" fill="#fff"/><rect x="168" y="198" width="176" height="8" fill="#dfe7e1"/><rect x="304" y="120" width="13" height="50" rx="6.5" fill="#cfe0d6"/><path d="M256 305 C304 335 304 377 256 407 C208 377 208 335 256 305 Z" fill="#2f7d5a"/><path d="M256 317 L256 399 M256 351 L282 337 M256 367 L232 353" stroke="#8fc7a8" stroke-width="6" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="wf-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+    <symbol id="wf-replay" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></symbol>
+  </svg>
+
+  <header class="site-nav">
+    <a class="site-nav__mark" href="../index.html"><span class="jb-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><defs><linearGradient id="jbT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff58a"/><stop offset="1" stop-color="#ffe94a"/></linearGradient><linearGradient id="jbS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5c400"/><stop offset="1" stop-color="#e2a400"/></linearGradient></defs><rect x="1.5" y="1.5" width="45" height="45" rx="10.5" fill="url(#jbS)" stroke="#18181a" stroke-width="1.6"/><g class="jb-mark__cap"><rect x="5" y="3.6" width="38" height="36.4" rx="8" fill="url(#jbT)" stroke="#e9b400" stroke-width="0.8"/><path d="M37.9 29.29Q37.9 32.2 35.87 33.9Q33.830 35.61 30.2 35.61H17.4Q13.73 35.61 11.52 33.64Q9.3 31.67 9.3 27.84H14.92Q14.92 29.29 15.52 30.03Q16.11 30.78 17.24 30.78Q18.26 30.78 18.82 30.12Q19.38 29.46 19.38 28.2V12.39H29.83Q33.37 12.39 35.37 14.01Q37.37 15.63 37.37 18.41Q37.37 20.46 36.3 21.82Q35.22 23.17 33.44 23.7Q35.45 24.13 36.68 25.7Q37.9 27.27 37.9 29.29ZM25.04 21.78H28.74Q30.13 21.78 30.87 21.17Q31.62 20.56 31.62 19.37Q31.62 18.18 30.87 17.55Q30.13 16.92 28.74 16.92H25.04ZM32.18 28.53Q32.18 27.31 31.37 26.61Q30.56 25.92 29.14 25.92H25.04V31.04H29.2Q30.63 31.04 31.4 30.4Q32.18 29.75 32.18 28.53Z" fill="#18181a" transform="translate(24 21.8) scale(0.92) translate(-23.6 -24)"/></g></svg></span>John Bell</a>
+    <nav class="site-nav__links" aria-label="Main">
+      <a href="../index.html#skills">Services</a>
+      <a href="../index.html#process">Process</a>
+      <a href="work.html">Work</a>
+      <a href="print.html">Print</a>
+      <a href="about.html">About</a>
+      <a href="../index.html#faq">FAQs</a>
+      <a class="is-cta" href="../index.html#contact">Start a project</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wf">
+    <!-- Hero -->
+    <section class="cs-hero wf-hero wrap">
+      <div class="cs-hero__grid">
+        <div class="cs-hero__intro">
+          <div class="wf-tags"><span>Personal project</span><span>Web app</span><span>Design and build</span></div>
+          <h1>I built an app that knows <mark class="hl">what’s in the fridge.</mark></h1>
+          <p class="cs-hero__lede">What’s in my Fridge is my own web app. You photograph your shopping or the receipt, it keeps track of what you’ve got and what needs using first, and it suggests dinners from what’s already there. I designed it and built it, from the logo to the code.</p>
+          <div class="wf-ctas">
+            <a class="btn wf-get" href="https://app.whatsinmyfridge.co.uk" target="_blank" rel="noopener">Get the app <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wf-arrow"/></svg></a>
+            <a class="btn btn--ghost" href="#how">See how it works</a>
+          </div>
+        </div>
+        <div class="stage wf-stage" data-stage style="--stage-hl:#b9e4c9">
+          <div class="stage__glow" aria-hidden="true"></div>
+          <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/fridge.webp" alt="My food: items that need using soon at the top, and the usuals that have run out" width="511" height="1080"></div></div>
+          <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/home.webp" alt="The home screen of What’s in my Fridge, with Tonight, Ask, Saved meals, Scan, Fridge and List" width="511" height="1080"></div></div>
+          <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/tonight.webp" alt="Tonight: three dinner ideas made from what’s in the fridge" width="511" height="1080"></div></div>
+          <div class="pop" style="--x:-7%;--y:66%;--w:clamp(220px,19vw,290px);--r:-5deg;--x-sm:-2%;--y-sm:72%" data-from-x="60" aria-hidden="true">
+            <div class="fa wf-pop-row">
+              <div class="fa-item soon"><div class="fa-item__main"><span class="fa-item__name">Chicken thighs <small>· 6</small></span><span class="fa-meta"><span class="fa-tag meat">Meat &amp; fish</span><span class="fa-dot"></span><span class="fa-exp soon"><svg width="13" height="13"><use href="#fa-clock"/></svg>Use by Tomorrow</span></span></div><span class="fa-used"><svg class="fa-ring" width="17" height="17"><use href="#fa-circle"/></svg>Used</span></div>
+            </div>
+          </div>
+          <div class="pop" style="--x:70%;--y:-4%;--w:clamp(64px,6vw,86px);--r:8deg" data-from-x="-60" aria-hidden="true">
+            <div class="fa wf-pop-icon"><span class="fa-tile"><svg viewBox="0 0 512 512"><use href="#fa-icon"/></svg></span></div>
+          </div>
+          <div class="pop" style="--x:58%;--y:86%;--r:-2deg" data-from-y="-40" data-pop-sm="hide" aria-hidden="true">
+            <div class="fa"><span class="fa-buy-chip on"><svg class="fa-tick" width="13" height="13"><use href="#fa-check"/></svg>Garlic · on your list</span></div>
+          </div>
+        </div>
+      </div>
+      <dl class="meta">
+        <div><dt>Project</dt><dd>My own product, start to finish</dd></div>
+        <div><dt>Works on</dt><dd>iPhone and Android, from the home screen</dd></div>
+        <div><dt>Built with</dt><dd>React, Vite, Claude, Supabase, Stripe</dd></div>
+        <div><dt>My role</dt><dd>Brand, design and build</dd></div>
+      </dl>
+    </section>
+
+    <!-- Brief -->
+    <section class="cs-brief wrap"><div class="cs-brief__grid">
+      <div data-reveal><span class="label">The idea</span><p class="cs-brief__text">I kept buying things I already had and throwing away food I’d forgotten about. I wanted one place that knew what was in the fridge, the freezer and the cupboards, without me typing it all in, and that could tell me what to cook from it.</p></div>
+      <div data-reveal><span class="label">What I did</span><ul class="cs-brief__list">
+        <li>Designed it for one hand on a phone, with a tab bar and sheets that slide up</li>
+        <li>Made the camera the main way in, so a photo or a receipt fills the list</li>
+        <li>Put whatever needs using first at the top, in amber and red</li>
+        <li>Built it in React as a web app you add to your home screen</li>
+        <li>Used Claude to read photos and receipts and suggest meals, Supabase for accounts and Stripe for payments</li>
+        <li>Drew the logo, the icons and the opening animation</li>
+      </ul></div>
+    </div></section>
+
+    <!-- Phone parade: real screens from the app -->
+    <section class="section--tight wrap">
+      <div class="section-head" data-reveal>
+        <span class="label">Phone first</span>
+        <h2>Made for <mark class="hl">a quick look.</mark></h2>
+        <p>Most of the time you open it for a few seconds, in a shop or with the fridge door open, so I gave each screen one job and kept the main button within reach of your thumb.</p>
+      </div>
+      <div class="panel parade" data-parade style="--p-bg:#faf7f2">
+        <div class="parade__row">
+          <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/home.webp" alt="Home: six big buttons, one for each part of the app" width="511" height="1080" loading="lazy"></div></div>
+          <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/fridge.webp" alt="My food: what needs using soon, then the usuals that have run out" width="511" height="1080" loading="lazy"></div></div>
+          <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/scan-check.webp" alt="Scan: the items found in a photo, ready to check before they’re added" width="511" height="1080" loading="lazy"></div></div>
+          <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/tonight.webp" alt="Tonight: dinner ideas, each with what it uses and what to buy" width="511" height="1080" loading="lazy"></div></div>
+        </div>
+        <div class="parade__caption" aria-hidden="true"><span>Home</span><span>My food</span><span>Check the scan</span><span>Tonight</span></div>
+        <div class="pop" style="--x:3%;--y:8%;--w:clamp(210px,18vw,250px);--r:-6deg" data-from-x="100" aria-hidden="true">
+          <div class="fa"><div class="fa-banner"><svg width="18" height="18"><use href="#fa-warning"/></svg><span>3 items need using soon. They’re at the top of the list.</span></div></div>
+        </div>
+        <div class="pop" style="--x:76%;--y:72%;--r:4deg" data-from-x="-100" data-from-y="-40" data-pop-sm="hide" aria-hidden="true">
+          <div class="fa"><span class="fa-toast wf-pop-toast"><svg width="16" height="16"><use href="#fa-fridge"/></svg>Added to your shopping list</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The feature run -->
+    <section class="section wrap" id="how" style="padding-bottom:0">
+      <header class="wf-run-head" data-reveal>
+        <span class="label">How it works</span>
+        <h2>Six things it does, <mark class="hl">and how I designed them.</mark></h2>
+        <p>Each one is rebuilt below from the app’s own code, its fonts, colours and icons, so you can tap the buttons and watch it work.</p>
+        <nav class="wf-jump" aria-label="Features">
+          <a href="#snap"><b>01</b>Scan</a><a href="#receipt"><b>02</b>Receipts</a><a href="#use-soon"><b>03</b>Use it up</a><a href="#usuals"><b>04</b>The usuals</a><a href="#dinner"><b>05</b>Dinner</a><a href="#home-screen"><b>06</b>Home screen</a>
+        </nav>
+      </header>
+    </section>
+
+    <!-- 01 Scan -->
+    <section class="wf-feat wrap" id="snap">
+      <div class="wf-feat__copy" data-reveal>
+        <span class="wf-step"><b>01</b>Scan your shopping</span>
+        <h2>A photo does <mark class="hl">the typing.</mark></h2>
+        <p>Nobody wants to type in a weekly shop, so I made the camera the main way to add food. You photograph the shopping on the worktop, or the shelves of the fridge, and the app lists what it can see.</p>
+        <ul class="wf-points">
+          <li>Everything comes back as a suggestion. You tick, rename or change it before anything is saved.</li>
+          <li>If it isn’t sure about something, it says so with a small “not sure” flag.</li>
+          <li>Auto files each item where it usually lives: milk in the fridge, peas in the freezer, rice in the cupboard.</li>
+        </ul>
+        <button type="button" class="wf-replay" data-replay="scan"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wf-replay"/></svg>Play it again</button>
+      </div>
+      <div class="wf-demo wf-scan" data-demo="scan">
+        <div class="wf-panel" aria-hidden="true"></div>
+        <div class="phone at-l" role="img" aria-label="The Scan screen: a photo is read, then seven items appear with a tick, a category and a quantity, Halloumi flagged as not sure, and Add 7 items files them into the fridge">
+          <div class="screen"><div class="fa fa-app" data-fit aria-hidden="true">
+            <div class="fa-head"><span class="fa-brand"><svg class="fa-leaf" viewBox="0 0 24 24"><use href="#fa-leafmark"/></svg><span class="fa-bt"><small>What’s in my</small><b>Fridge</b></span></span><span class="fa-head__r"><span class="fa-round"><svg width="18" height="18"><use href="#fa-home"/></svg></span><span class="fa-round"><svg width="18" height="18"><use href="#fa-info"/></svg></span></span></div>
+            <div class="fa-body">
+              <h1 class="fa-title">Scan</h1>
+              <p class="fa-sub" data-s="sub">A photo proposes items. You decide.</p>
+              <div data-s="idle">
+                <div class="fa-seg"><span class="on">Shopping / fridge</span><span>Receipt</span></div>
+                <div class="fa-drop">
+                  <span class="fa-art"><svg width="32" height="32"><use href="#fa-camera"/></svg></span>
+                  <h3>Photograph your shopping</h3>
+                  <p>Lay your shopping out so everything’s visible, then snap. That reads best.</p>
+                  <span class="fa-btn fa-btn--primary" data-s="shutter"><svg width="19" height="19"><use href="#fa-camera"/></svg>Take or choose a photo</span>
+                </div>
+              </div>
+              <div data-s="reading" hidden>
+                <div class="fa-photo">
+                  <i style="left:-8%;top:8%;width:46%;height:40%;background:#7aa65a"></i>
+                  <i style="left:40%;top:-6%;width:44%;height:36%;background:#f2efe6"></i>
+                  <i style="left:58%;top:40%;width:40%;height:34%;background:#e98f5a"></i>
+                  <i style="left:8%;top:52%;width:42%;height:34%;background:#f3d36b"></i>
+                  <i style="left:34%;top:70%;width:38%;height:30%;background:#c6463c"></i>
+                  <span class="fa-sweep"></span>
+                  <div class="fa-photo__busy"><span class="fa-spin"></span>Reading the photo…</div>
+                </div>
+              </div>
+              <div data-s="confirm" hidden>
+                <p class="fa-label">Where to file these</p>
+                <div class="fa-chips"><span class="fa-chip on">Auto</span><span class="fa-chip">Fridge</span><span class="fa-chip">Freezer</span><span class="fa-chip">Pantry</span></div>
+                <div class="fa-confirm">
+                  <div class="fa-crow"><span class="fa-check"><svg width="15" height="15"><use href="#fa-check"/></svg></span><span><b>Whole milk</b><small>Dairy</small></span><span class="fa-qty">1</span></div>
+                  <div class="fa-crow"><span class="fa-check"><svg width="15" height="15"><use href="#fa-check"/></svg></span><span><b>Salmon fillets</b><small>Meat &amp; fish</small></span><span class="fa-qty">2</span></div>
+                  <div class="fa-crow"><span class="fa-check"><svg width="15" height="15"><use href="#fa-check"/></svg></span><span><b>Broccoli</b><small>Produce</small></span><span class="fa-qty">1</span></div>
+                  <div class="fa-crow"><span class="fa-check"><svg width="15" height="15"><use href="#fa-check"/></svg></span><span><b>Halloumi</b><small>Dairy <span class="fa-flag"><svg width="13" height="13"><use href="#fa-warning"/></svg>not sure</span></small></span><span class="fa-qty">1</span></div>
+                  <div class="fa-crow"><span class="fa-check"><svg width="15" height="15"><use href="#fa-check"/></svg></span><span><b>Bananas</b><small>Produce</small></span><span class="fa-qty">5</span></div>
+                  <div class="fa-crow"><span class="fa-check"><svg width="15" height="15"><use href="#fa-check"/></svg></span><span><b>Frozen berries</b><small>Produce</small></span><span class="fa-qty">1</span></div>
+                  <div class="fa-crow"><span class="fa-check"><svg width="15" height="15"><use href="#fa-check"/></svg></span><span><b>Pasta</b><small>Other</small></span><span class="fa-qty">1</span></div>
+                </div>
+              </div>
+              <div data-s="filed" hidden>
+                <div class="fa-cat new"><svg width="18" height="18"><use href="#fa-sparkle"/></svg>New<b>7</b></div>
+                <ul class="fa-list" style="margin-top:12px">
+                  <li class="fa-item"><div class="fa-item__main"><span class="fa-item__name">Whole milk</span><span class="fa-meta"><span class="fa-tag dairy">Dairy</span><span class="fa-dot"></span>Fridge<span class="fa-dot"></span><span class="fa-exp"><svg width="13" height="13"><use href="#fa-clock"/></svg>Added today</span></span></div><span class="fa-new">New</span></li>
+                  <li class="fa-item"><div class="fa-item__main"><span class="fa-item__name">Salmon fillets <small>· 2</small></span><span class="fa-meta"><span class="fa-tag meat">Meat &amp; fish</span><span class="fa-dot"></span>Fridge</span></div><span class="fa-new">New</span></li>
+                  <li class="fa-item"><div class="fa-item__main"><span class="fa-item__name">Frozen berries</span><span class="fa-meta"><span class="fa-tag produce">Produce</span><span class="fa-dot"></span>Freezer</span></div><span class="fa-new">New</span></li>
+                  <li class="fa-item"><div class="fa-item__main"><span class="fa-item__name">Pasta</span><span class="fa-meta"><span class="fa-tag">Other</span><span class="fa-dot"></span>Pantry<span class="fa-dot"></span><span class="fa-exp">In stock</span></span></div><span class="fa-new">New</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="fa-dock" data-s="dock" hidden><span class="fa-btn fa-btn--ghost">Cancel</span><span class="fa-btn fa-btn--primary fa-btn--block" data-s="add">Add 7 items</span></div>
+            <div class="fa-nav"><span><i><svg width="23" height="23"><use href="#fa-sparkle"/></svg></i>Tonight</span><span><i><svg width="23" height="23"><use href="#fa-chat"/></svg></i>Ask</span><span class="on"><i><svg width="23" height="23"><use href="#fa-camera"/></svg></i>Scan</span><span><i data-s="fridgetab"><svg width="23" height="23"><use href="#fa-fridge"/></svg></i>Fridge</span><span><i><svg width="23" height="23"><use href="#fa-cart"/></svg></i>List</span></div>
+          </div></div>
+        </div>
+        <div class="wf-pull wf-pull--flag fa">
+          <div class="wf-card">
+            <p class="wf-card__k"><svg width="14" height="14"><use href="#fa-sparkle"/></svg>Where to file these</p>
+            <div class="fa-chips" role="radiogroup" aria-label="Where to file the scanned items">
+              <button type="button" class="fa-chip on" role="radio" aria-checked="true" data-file="auto">Auto</button>
+              <button type="button" class="fa-chip" role="radio" aria-checked="false" data-file="fridge">Fridge</button>
+              <button type="button" class="fa-chip" role="radio" aria-checked="false" data-file="freezer">Freezer</button>
+              <button type="button" class="fa-chip" role="radio" aria-checked="false" data-file="pantry">Pantry</button>
+            </div>
+            <p class="fa-hint" data-file-hint aria-live="polite">Each item is filed where it usually lives: fridge, freezer or pantry.</p>
+          </div>
+        </div>
+        <span class="wf-note wf-note--a" aria-hidden="true"><i>!</i>Flagged when it isn’t sure</span>
+      </div>
+    </section>
+
+    <!-- 02 Receipt -->
+    <section class="wf-feat wf-feat--flip wrap" id="receipt">
+      <div class="wf-feat__copy" data-reveal>
+        <span class="wf-step"><b>02</b>Or the receipt</span>
+        <h2>Till receipts, <mark class="hl">read line by line.</mark></h2>
+        <p>Receipts are printed in shorthand, so I had the app turn each line back into a proper name. It works through the whole receipt and leaves out anything you can’t put in a cupboard.</p>
+        <ul class="wf-points">
+          <li>“WHL MILK 4PT” becomes Whole milk, and “FF CHKN THIGHS” becomes Chicken thighs.</li>
+          <li>Carrier bags, totals and payment lines are skipped.</li>
+          <li>It reads the date off the receipt, so freshness counts from the day you shopped, not the day you scanned it.</li>
+        </ul>
+        <button type="button" class="wf-replay" data-replay="receipt"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wf-replay"/></svg>Play it again</button>
+      </div>
+      <div class="wf-demo wf-receipt-demo" data-demo="receipt">
+        <div class="wf-panel wf-panel--warm" aria-hidden="true"></div>
+        <div class="wf-receipt" aria-hidden="true">
+          <span class="wf-beam" data-r="beam"></span>
+          <div class="wf-receipt__top"><b>SUPERSTORE</b>08/10/26 &nbsp;18:42</div>
+          <ol data-r="lines">
+            <li data-to="0"><span>WHL MILK 4PT</span><span>1.65</span></li>
+            <li data-to="1"><span>FF CHKN THIGHS</span><span>4.25</span></li>
+            <li data-to="2"><span>BROCCOLI</span><span>0.79</span></li>
+            <li data-to="3"><span>MAT CHED 400G</span><span>3.20</span></li>
+            <li data-to="4"><span>FR EGGS 6PK</span><span>1.89</span></li>
+            <li data-to="5"><span>BABY SPIN 240G</span><span>1.35</span></li>
+            <li data-skip><span>CARRIER BAG</span><span>0.10</span></li>
+          </ol>
+          <div class="wf-receipt__foot" data-skip><span>TOTAL</span><span>13.23</span></div>
+          <div class="wf-receipt__foot" data-skip><span>CARD</span><span>13.23</span></div>
+        </div>
+        <div class="wf-found fa" role="img" aria-label="Found on the receipt: Whole milk, Chicken thighs, Broccoli, Mature cheddar, Free range eggs and Baby spinach, bought 8 October. The carrier bag and total were skipped.">
+          <div class="wf-card" aria-hidden="true">
+            <p class="wf-card__k"><svg width="14" height="14"><use href="#fa-receipt"/></svg>Found on the receipt</p>
+            <p class="wf-found__date"><svg width="15" height="15"><use href="#fa-clock"/></svg>Bought 8 Oct. Freshness counts from then.</p>
+            <div data-r="rows">
+              <div class="wf-frow"><span><small>WHL MILK 4PT</small><b>Whole milk</b></span><span class="fa-tag dairy">Dairy</span></div>
+              <div class="wf-frow"><span><small>FF CHKN THIGHS</small><b>Chicken thighs</b></span><span class="fa-tag meat">Meat &amp; fish</span></div>
+              <div class="wf-frow"><span><small>BROCCOLI</small><b>Broccoli</b></span><span class="fa-tag produce">Produce</span></div>
+              <div class="wf-frow"><span><small>MAT CHED 400G</small><b>Mature cheddar</b></span><span class="fa-tag dairy">Dairy</span></div>
+              <div class="wf-frow"><span><small>FR EGGS 6PK</small><b>Free range eggs</b></span><span class="fa-tag dairy">Dairy</span></div>
+              <div class="wf-frow"><span><small>BABY SPIN 240G</small><b>Baby spinach</b></span><span class="fa-tag produce">Produce</span></div>
+              <div class="wf-frow wf-frow--skip" data-skiprow><span><b>Carrier bag and total skipped</b></span><svg width="16" height="16" style="color:var(--fa-ink-faint)"><use href="#fa-close"/></svg></div>
+            </div>
+          </div>
+        </div>
+        <span class="wf-note wf-note--a" aria-hidden="true"><i>02</i>Shorthand in, real names out</span>
+      </div>
+    </section>
+
+    <!-- 03 Use it up -->
+    <section class="wf-feat wrap" id="use-soon">
+      <div class="wf-feat__copy" data-reveal>
+        <span class="wf-step"><b>03</b>Use it up</span>
+        <h2>What’s going off <mark class="hl">comes first.</mark></h2>
+        <p>The list is sorted by what needs eating soonest. I used amber for anything with a couple of days left and red for anything past its date, and kept everything else calm so the warnings stand out.</p>
+        <ul class="wf-points">
+          <li>You don’t have to type a date. Freshness is counted from the day it went in, using a typical shelf life for that kind of food.</li>
+          <li>Tap Used and it leaves the list. The snowflake moves it to the freezer instead.</li>
+          <li>Tins, jars and spices just say In stock, so they never nag.</li>
+        </ul>
+      </div>
+      <div class="wf-demo wf-soon" data-demo="soon">
+        <div class="wf-panel" aria-hidden="true"></div>
+        <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/fridge.webp" alt="My food in the app: a banner saying items need using soon, then the usuals that have run out" width="511" height="1080" loading="lazy"></div></div>
+        <div class="wf-pull wf-pull--rows fa">
+          <div class="fa-banner" data-soon-banner><svg width="18" height="18" aria-hidden="true"><use href="#fa-warning"/></svg><span><span data-soon-count>3</span> items need using soon. They’re at the top of the list.</span></div>
+          <ul class="fa-list" data-soon-list>
+            <li class="fa-item expired"><div class="fa-item__main"><span class="fa-item__name">Mushrooms</span><span class="fa-meta"><span class="fa-tag produce">Produce</span><span class="fa-dot"></span><span data-where>Fridge</span><span class="fa-dot"></span><span class="fa-exp expired"><svg width="13" height="13" aria-hidden="true"><use href="#fa-clock"/></svg>Expired Yesterday</span></span></div><div class="fa-acts"><button type="button" class="fa-ibtn" data-freeze aria-label="Move Mushrooms to the freezer"><svg class="fa-snow" width="18" height="18"><use href="#fa-snow"/></svg><svg class="fa-tick" width="18" height="18"><use href="#fa-check"/></svg></button><button type="button" class="fa-used" data-used aria-pressed="false" aria-label="Mark Mushrooms as used"><svg class="fa-ring" width="17" height="17"><use href="#fa-circle"/></svg><svg class="fa-tick" width="17" height="17"><use href="#fa-check"/></svg>Used</button></div></li>
+            <li class="fa-item soon"><div class="fa-item__main"><span class="fa-item__name">Spinach</span><span class="fa-meta"><span class="fa-tag produce">Produce</span><span class="fa-dot"></span><span data-where>Fridge</span><span class="fa-dot"></span><span class="fa-exp soon"><svg width="13" height="13" aria-hidden="true"><use href="#fa-clock"/></svg>Use by Today</span></span></div><div class="fa-acts"><button type="button" class="fa-ibtn" data-freeze aria-label="Move Spinach to the freezer"><svg class="fa-snow" width="18" height="18"><use href="#fa-snow"/></svg><svg class="fa-tick" width="18" height="18"><use href="#fa-check"/></svg></button><button type="button" class="fa-used" data-used aria-pressed="false" aria-label="Mark Spinach as used"><svg class="fa-ring" width="17" height="17"><use href="#fa-circle"/></svg><svg class="fa-tick" width="17" height="17"><use href="#fa-check"/></svg>Used</button></div></li>
+            <li class="fa-item soon"><div class="fa-item__main"><span class="fa-item__name">Chicken thighs <small>· 6</small></span><span class="fa-meta"><span class="fa-tag meat">Meat &amp; fish</span><span class="fa-dot"></span><span data-where>Fridge</span><span class="fa-dot"></span><span class="fa-exp soon"><svg width="13" height="13" aria-hidden="true"><use href="#fa-clock"/></svg>Use by Tomorrow</span></span></div><div class="fa-acts"><button type="button" class="fa-ibtn" data-freeze aria-label="Move Chicken thighs to the freezer"><svg class="fa-snow" width="18" height="18"><use href="#fa-snow"/></svg><svg class="fa-tick" width="18" height="18"><use href="#fa-check"/></svg></button><button type="button" class="fa-used" data-used aria-pressed="false" aria-label="Mark Chicken thighs as used"><svg class="fa-ring" width="17" height="17"><use href="#fa-circle"/></svg><svg class="fa-tick" width="17" height="17"><use href="#fa-check"/></svg>Used</button></div></li>
+            <li class="fa-item"><div class="fa-item__main"><span class="fa-item__name">Cheddar</span><span class="fa-meta"><span class="fa-tag dairy">Dairy</span><span class="fa-dot"></span><span data-where>Fridge</span><span class="fa-dot"></span><span class="fa-exp"><svg width="13" height="13" aria-hidden="true"><use href="#fa-clock"/></svg>Use by 22 Oct</span></span></div><div class="fa-acts"><button type="button" class="fa-ibtn" data-freeze aria-label="Move Cheddar to the freezer"><svg class="fa-snow" width="18" height="18"><use href="#fa-snow"/></svg><svg class="fa-tick" width="18" height="18"><use href="#fa-check"/></svg></button><button type="button" class="fa-used" data-used aria-pressed="false" aria-label="Mark Cheddar as used"><svg class="fa-ring" width="17" height="17"><use href="#fa-circle"/></svg><svg class="fa-tick" width="17" height="17"><use href="#fa-check"/></svg>Used</button></div></li>
+          </ul>
+        </div>
+        <span class="wf-note wf-note--a" aria-hidden="true"><i>☝</i>Tap Used or the snowflake</span>
+      </div>
+    </section>
+
+    <!-- 04 The usuals + list -->
+    <section class="wf-feat wf-feat--flip wrap" id="usuals">
+      <div class="wf-feat__copy" data-reveal>
+        <span class="wf-step"><b>04</b>The usuals</span>
+        <h2>It notices <mark class="hl">what you always buy.</mark></h2>
+        <p>Once something has turned up on three separate days, the app treats it as one of your usuals. When you run out, it tells you, and one tap puts it on the shopping list.</p>
+        <ul class="wf-points">
+          <li>“Running low on the usuals” sits at the top of My food, with Add and a cross to dismiss.</li>
+          <li>Ticking something off the list files it straight back into the fridge, so there’s no second step to forget.</li>
+          <li>You can pin anything you always want in stock, or tell it something isn’t a usual.</li>
+        </ul>
+        <button type="button" class="wf-replay" data-replay="usuals"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wf-replay"/></svg>Play it again</button>
+      </div>
+      <div class="wf-demo wf-list-demo" data-demo="usuals">
+        <div class="wf-panel" aria-hidden="true"></div>
+        <div class="wf-pull wf-pull--staples fa">
+          <div class="fa-staples">
+            <div class="fa-staples__head"><svg width="17" height="17" aria-hidden="true"><use href="#fa-sparkle"/></svg><div><strong>Running low on the usuals</strong><p>You normally keep these, but none are in stock.</p></div></div>
+            <div data-staples>
+              <div class="fa-staple"><span class="fa-staple__i"><b>Bread</b><small>Usually in the pantry</small></span><button type="button" class="fa-staple-add" data-add="Bread"><svg width="15" height="15" aria-hidden="true"><use href="#fa-cart"/></svg><span>Add</span></button><span class="fa-x" aria-hidden="true"><svg width="15" height="15"><use href="#fa-close"/></svg></span></div>
+              <div class="fa-staple"><span class="fa-staple__i"><b>Butter</b><small>Usually in the fridge</small></span><button type="button" class="fa-staple-add" data-add="Butter"><svg width="15" height="15" aria-hidden="true"><use href="#fa-cart"/></svg><span>Add</span></button><span class="fa-x" aria-hidden="true"><svg width="15" height="15"><use href="#fa-close"/></svg></span></div>
+              <div class="fa-staple"><span class="fa-staple__i"><b>Milk</b><small>Usually in the fridge</small></span><button type="button" class="fa-staple-add" data-add="Milk"><svg width="15" height="15" aria-hidden="true"><use href="#fa-cart"/></svg><span>Add</span></button><span class="fa-x" aria-hidden="true"><svg width="15" height="15"><use href="#fa-close"/></svg></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="wf-pull wf-pull--list fa">
+          <div class="wf-card">
+            <h3 class="fa-title">My list</h3>
+            <p class="fa-sub" style="margin-bottom:12px"><span data-ticked>0</span> ticked off</p>
+            <div data-shop>
+              <div class="fa-shop"><button type="button" class="fa-box" aria-label="Tick off Lemons" aria-pressed="false"><svg width="15" height="15"><use href="#fa-check"/></svg></button><b>Lemons</b><i><svg width="17" height="17" aria-hidden="true"><use href="#fa-pin"/></svg></i></div>
+              <div class="fa-shop"><button type="button" class="fa-box" aria-label="Tick off Garlic" aria-pressed="false"><svg width="15" height="15"><use href="#fa-check"/></svg></button><b>Garlic</b><i><svg width="17" height="17" aria-hidden="true"><use href="#fa-pin"/></svg></i></div>
+            </div>
+            <div class="wf-tickhead" data-tickhead hidden><svg width="16" height="16" aria-hidden="true"><use href="#fa-check"/></svg>Ticked off<small>Added to New in My food</small></div>
+            <div data-done></div>
+          </div>
+        </div>
+        <span class="wf-note wf-note--a" aria-hidden="true"><i>☝</i>Tap Add, then tick it off</span>
+        <span class="fa"><span class="fa-toast" data-usuals-toast style="opacity:0;bottom:44%"><svg width="16" height="16" aria-hidden="true"><use href="#fa-fridge"/></svg>Added to your shopping list</span></span>
+      </div>
+    </section>
+
+    <!-- 05 Dinner -->
+    <section class="wf-feat wrap" id="dinner">
+      <div class="wf-feat__copy" data-reveal>
+        <span class="wf-step"><b>05</b>What’s for dinner?</span>
+        <h2>Dinner ideas from <mark class="hl">what you’ve already got.</mark></h2>
+        <p>Ask what you can make and you get a few real meals built around what’s in stock, starting with whatever needs using. Each one shows what it uses and the one or two things you’d still need to buy.</p>
+        <ul class="wf-points">
+          <li>Tap a missing ingredient to put it on the shopping list.</li>
+          <li>Save the meals you like, or open a step-by-step method.</li>
+          <li>Tonight works the same way from a photo of whatever’s on the worktop.</li>
+        </ul>
+        <button type="button" class="wf-replay" data-replay="dinner"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wf-replay"/></svg>Play it again</button>
+      </div>
+      <div class="wf-demo wf-dinner" data-demo="dinner">
+        <div class="wf-panel" aria-hidden="true"></div>
+        <div class="phone" role="img" aria-label="The Ask screen: the question What can I make for dinner? is typed, the app thinks, then three meal ideas appear, each with what it uses and what to buy">
+          <div class="screen"><div class="fa fa-app" data-fit aria-hidden="true">
+            <div class="fa-head"><span class="fa-brand"><svg class="fa-leaf" viewBox="0 0 24 24"><use href="#fa-leafmark"/></svg><span class="fa-bt"><small>What’s in my</small><b>Fridge</b></span></span><span class="fa-head__r"><span class="fa-round"><svg width="18" height="18"><use href="#fa-home"/></svg></span><span class="fa-round"><svg width="18" height="18"><use href="#fa-info"/></svg></span></span></div>
+            <div class="fa-body">
+              <div data-d="scroll">
+                <h1 class="fa-title">Ask</h1>
+                <p class="fa-sub">12 items in the fridge right now.</p>
+                <div class="fa-nudge"><svg width="18" height="18"><use href="#fa-warning"/></svg><span><strong>3 items</strong> to use up soon. Pick what to cook with</span></div>
+                <div class="fa-chat" style="margin-top:14px">
+                  <div class="fa-bubble me" data-d="q" hidden><span data-d="qtext"></span></div>
+                  <div class="fa-bubble ai" data-d="typing" hidden><span class="fa-typing"><span></span><span></span><span></span></span></div>
+                  <div data-d="meals" hidden>
+                    <p class="fa-meals-intro">Here’s what you could make:</p>
+                    <div class="fa-meal" style="margin-top:8px"><div class="fa-meal__head"><h4>Creamy chicken and spinach</h4><span class="fa-meal__acts"><span class="fa-mini">How to</span><span class="fa-mini"><svg width="13" height="13"><use href="#fa-bookmark"/></svg>Save</span></span></div><p>Pan-fried thighs in a yoghurt and garlic sauce, with the spinach wilted in at the end.</p><p class="fa-uses">Uses: Chicken thighs, Spinach, Greek yoghurt</p><div class="fa-buy">To buy:<span class="fa-buy-chip" data-d="garlic"><svg class="fa-plus" width="13" height="13"><use href="#fa-plus"/></svg><svg class="fa-tick" width="13" height="13"><use href="#fa-check"/></svg>Garlic</span></div></div>
+                    <div class="fa-meal" style="margin-top:10px"><div class="fa-meal__head"><h4>Mushroom and pepper omelette</h4><span class="fa-meal__acts"><span class="fa-mini">How to</span><span class="fa-mini"><svg width="13" height="13"><use href="#fa-bookmark"/></svg>Save</span></span></div><p>A quick one for the mushrooms, with cheddar folded through.</p><p class="fa-uses">Uses: Eggs, Mushrooms, Peppers, Cheddar</p></div>
+                    <div class="fa-meal" style="margin-top:10px"><div class="fa-meal__head"><h4>Chicken and pepper rice</h4><span class="fa-meal__acts"><span class="fa-mini">How to</span><span class="fa-mini"><svg width="13" height="13"><use href="#fa-bookmark"/></svg>Save</span></span></div><p>One pan, with the tinned tomatoes and the peas from the freezer.</p><p class="fa-uses">Uses: Chicken thighs, Peppers, Basmati rice, Chopped tomatoes</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fa-input"><span>Ask about your fridge…</span><b><svg width="18" height="18"><use href="#fa-send"/></svg></b></div>
+            <div class="fa-nav"><span><i><svg width="23" height="23"><use href="#fa-sparkle"/></svg></i>Tonight</span><span class="on"><i><svg width="23" height="23"><use href="#fa-chat"/></svg></i>Ask</span><span><i><svg width="23" height="23"><use href="#fa-camera"/></svg></i>Scan</span><span><i><svg width="23" height="23"><use href="#fa-fridge"/></svg></i>Fridge</span><span><i data-d="listtab"><svg width="23" height="23"><use href="#fa-cart"/></svg></i>List</span></div>
+          </div></div>
+        </div>
+        <div class="wf-pull wf-pull--meal fa">
+          <div class="fa-meal" style="padding:16px 16px 14px;border-radius:18px">
+            <div class="fa-meal__head"><h4 style="font-size:18px">Creamy chicken and spinach</h4><span class="fa-meal__acts"><button type="button" class="fa-mini" data-save aria-pressed="false"><svg class="fa-off" width="13" height="13" aria-hidden="true"><use href="#fa-bookmark"/></svg><svg class="fa-tick" width="13" height="13" aria-hidden="true"><use href="#fa-check"/></svg><span>Save</span></button></span></div>
+            <p>Pan-fried thighs in a yoghurt and garlic sauce, with the spinach wilted in at the end. On the table in 30 minutes.</p>
+            <p class="fa-uses">Uses: Chicken thighs, Spinach, Greek yoghurt</p>
+            <div class="fa-buy">To buy:<button type="button" class="fa-buy-chip" data-buy aria-pressed="false"><svg class="fa-plus" width="13" height="13" aria-hidden="true"><use href="#fa-plus"/></svg><svg class="fa-tick" width="13" height="13" aria-hidden="true"><use href="#fa-check"/></svg>Garlic</button></div>
+          </div>
+        </div>
+        <span class="wf-note wf-note--a" aria-hidden="true"><i>☝</i>Tap Garlic to add it to the list</span>
+      </div>
+    </section>
+
+    <!-- 06 Home screen -->
+    <section class="wf-feat wf-feat--flip wrap" id="home-screen">
+      <div class="wf-feat__copy" data-reveal>
+        <span class="wf-step"><b>06</b>On your home screen</span>
+        <h2>A web app that <mark class="hl">opens like an app.</mark></h2>
+        <p>I built it as a web app rather than for the app stores, so there’s nothing to download. You add it to your home screen from the browser and it opens full screen, with its own icon and a short opening animation while your food loads.</p>
+        <ul class="wf-points">
+          <li>Your food is saved on the phone first, so the list still opens in a shop with no signal.</li>
+          <li>With an account, it syncs between your devices.</li>
+          <li>The first time you open it on a phone, the app shows you how to add it, step by step.</li>
+        </ul>
+        <button type="button" class="wf-replay" data-replay="home"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wf-replay"/></svg>Play it again</button>
+      </div>
+      <div class="wf-demo wf-home-demo" data-demo="home">
+        <div class="wf-panel wf-panel--deep" aria-hidden="true"></div>
+        <div class="phone" role="img" aria-label="Adding the app on an iPhone: the Share button, then Add to Home Screen, then the Fridge icon on the home screen">
+          <div class="screen"><div class="fa fa-app" data-fit aria-hidden="true" style="background:#faf7f2">
+            <div class="wf-browser" data-h="browser">
+              <img src="../assets/projects/whats-in-my-fridge/home.webp" alt="" width="511" height="1080" loading="lazy" style="width:100%;height:auto">
+              <div class="wf-browser__bar"><span><svg width="22" height="22"><use href="#fa-chat"/></svg></span><span style="position:relative;color:var(--fa-accent)" data-h="share"><svg width="24" height="24"><use href="#fa-share"/></svg><i class="wf-ring" data-h="ring" style="opacity:0"></i></span><span><svg width="22" height="22"><use href="#fa-bookmark"/></svg></span></div>
+              <div class="wf-sheet" data-h="sheet" style="visibility:hidden">
+                <div class="wf-sheet__grip"></div>
+                <div class="wf-sheet__row">Copy</div>
+                <div class="wf-sheet__row" data-h="add">Add to Home Screen<svg width="20" height="20"><use href="#fa-plussq"/></svg></div>
+                <div class="wf-sheet__row">Add to Reading List</div>
+              </div>
+            </div>
+            <div class="wf-hs" data-h="hs" style="visibility:hidden">
+              <div class="wf-hs__grid">
+                <span class="wf-hs__app"><span class="wf-hs__ghost"></span>&nbsp;</span><span class="wf-hs__app"><span class="wf-hs__ghost"></span>&nbsp;</span><span class="wf-hs__app"><span class="wf-hs__ghost"></span>&nbsp;</span><span class="wf-hs__app"><span class="wf-hs__ghost"></span>&nbsp;</span>
+                <span class="wf-hs__app"><span class="wf-hs__ghost"></span>&nbsp;</span><span class="wf-hs__app"><span class="wf-hs__ghost"></span>&nbsp;</span><span class="wf-hs__app"><span class="wf-hs__ghost"></span>&nbsp;</span>
+                <span class="wf-hs__app" data-h="icon"><span class="fa-tile"><svg viewBox="0 0 512 512"><use href="#fa-icon"/></svg></span>Fridge</span>
+              </div>
+            </div>
+          </div></div>
+        </div>
+        <div class="wf-pull wf-pull--steps fa">
+          <div class="wf-card">
+            <p class="wf-card__k"><svg width="14" height="14"><use href="#fa-home"/></svg>Add to your home screen</p>
+            <ol class="fa-steps" data-h="steps">
+              <li class="now"><span class="n">1</span><span class="t">In <b>Safari</b>, tap the <b>Share</b> button <span class="fa-inl"><svg width="15" height="15"><use href="#fa-share"/></svg></span> at the bottom.</span></li>
+              <li><span class="n">2</span><span class="t">Scroll down and tap <b>Add to Home Screen</b>.</span></li>
+              <li><span class="n">3</span><span class="t">Tap <b>Add</b>. Open it from your home screen like any app.</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get the app -->
+    <section class="section wrap" id="get-the-app">
+      <div class="wf-get-band" data-reveal>
+        <div class="wf-get__copy">
+          <span class="label">Try it</span>
+          <h2>Get the app <mark class="hl">on your phone.</mark></h2>
+          <p>Open it on your phone, then add it to your home screen in three taps. It works in Safari or Chrome on iPhone, and Chrome on Android.</p>
+          <div class="wf-get__row">
+            <a class="btn wf-get__btn" href="https://app.whatsinmyfridge.co.uk" target="_blank" rel="noopener">Open the app <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wf-arrow"/></svg></a>
+            <div class="wf-qr">
+              <img class="wf-qr__code" src="../assets/projects/whats-in-my-fridge/app-qr.svg" alt="QR code that opens What’s in my Fridge on your phone" width="112" height="112" loading="lazy">
+              <p><b>On a computer?</b> Point your phone’s camera at the code to open it there.</p>
+            </div>
+          </div>
+        </div>
+        <div class="wf-guide fa" data-guide>
+          <h3>Add it to your home screen</h3>
+          <p>The same steps the app shows you the first time you open it.</p>
+          <div class="fa-seg" role="tablist" aria-label="Your phone">
+            <button type="button" role="tab" id="wf-tab-ios" aria-selected="true" aria-controls="wf-steps-ios">iPhone</button>
+            <button type="button" role="tab" id="wf-tab-android" aria-selected="false" aria-controls="wf-steps-android" tabindex="-1">Android</button>
+          </div>
+          <ol class="fa-steps" id="wf-steps-ios" role="tabpanel" aria-labelledby="wf-tab-ios">
+            <li><span class="n">1</span><span class="t">In <b>Safari</b>, tap the <b>Share</b> button <span class="fa-inl"><svg width="15" height="15" aria-hidden="true"><use href="#fa-share"/></svg></span> at the bottom. In Chrome it’s in the toolbar or the <b>⋯</b> menu.</span></li>
+            <li><span class="n">2</span><span class="t">Scroll down and tap <b>Add to Home Screen</b>.</span></li>
+            <li><span class="n">3</span><span class="t">Tap <b>Add</b>. Open it from your home screen like any app.</span></li>
+          </ol>
+          <ol class="fa-steps" id="wf-steps-android" role="tabpanel" aria-labelledby="wf-tab-android" hidden>
+            <li><span class="n">1</span><span class="t">In <b>Chrome</b>, tap the <b>⋮ menu</b> <span class="fa-inl"><svg width="15" height="15" aria-hidden="true"><use href="#fa-dots"/></svg></span> at the top right.</span></li>
+            <li><span class="n">2</span><span class="t">Tap <b>Add to Home screen</b> (or <b>Install app</b>).</span></li>
+            <li><span class="n">3</span><span class="t">Tap <b>Add</b>. It lands on your home screen like any app.</span></li>
+          </ol>
+          <p class="wf-guide__note">Some Android phones say “Install app” instead.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Up close -->
+    <section class="section--tight wrap">
+      <header class="cp-head" data-reveal>
+        <span class="label">Up close</span>
+        <h2>The small details <mark class="hl">that hold it together.</mark></h2>
+      </header>
+      <div class="wf-close">
+        <figure class="wf-break">
+          <div class="wf-break__stage">
+            <div class="wf-panel wf-panel--deep" aria-hidden="true"></div>
+            <button type="button" class="wf-mark" data-mark aria-label="Play the opening animation again">
+              <svg viewBox="0 0 512 512" aria-hidden="true">
+                <rect width="512" height="512" rx="116" fill="#2f7d5a"/>
+                <rect data-m="draw" x="168" y="96" width="176" height="320" rx="40" fill="none" stroke="#fff" stroke-width="10" stroke-linejoin="round"/>
+                <rect data-m="fill" x="168" y="96" width="176" height="320" rx="40" fill="#fff"/>
+                <rect data-m="door" x="168" y="198" width="176" height="8" fill="#dfe7e1"/>
+                <rect data-m="handle" x="304" y="120" width="13" height="50" rx="6.5" fill="#cfe0d6"/>
+                <path data-m="leaf" d="M256 305 C304 335 304 377 256 407 C208 377 208 335 256 305 Z" fill="#2f7d5a"/>
+                <path data-m="vein" d="M256 317 L256 399 M256 351 L282 337 M256 367 L232 353" stroke="#8fc7a8" stroke-width="6" stroke-linecap="round" fill="none"/>
+              </svg>
+            </button>
+          </div>
+          <figcaption><b>The opening</b><span>The icon draws itself while your food loads: the fridge outline, then the door, then the leaf. Tap it to play it again.</span></figcaption>
+        </figure>
+        <figure class="wf-break">
+          <div class="wf-break__stage">
+            <div class="wf-panel" aria-hidden="true"></div>
+            <div class="wf-fan fa" aria-hidden="true">
+              <div class="fa-item"><div class="fa-item__main"><span class="fa-item__name">Cheddar</span><span class="fa-meta"><span class="fa-tag dairy">Dairy</span><span class="fa-dot"></span>Fridge<span class="fa-dot"></span><span class="fa-exp"><svg width="13" height="13"><use href="#fa-clock"/></svg>Use by 22 Oct</span></span></div><span class="fa-used"><svg class="fa-ring" width="17" height="17"><use href="#fa-circle"/></svg>Used</span></div>
+              <div class="fa-item soon"><div class="fa-item__main"><span class="fa-item__name">Greek yoghurt</span><span class="fa-meta"><span class="fa-tag dairy">Dairy</span><span class="fa-dot"></span>Fridge<span class="fa-dot"></span><span class="fa-exp soon"><svg width="13" height="13"><use href="#fa-clock"/></svg>5 days old</span></span></div><span class="fa-used"><svg class="fa-ring" width="17" height="17"><use href="#fa-circle"/></svg>Used</span></div>
+              <div class="fa-item expired"><div class="fa-item__main"><span class="fa-item__name">Mushrooms</span><span class="fa-meta"><span class="fa-tag produce">Produce</span><span class="fa-dot"></span>Fridge<span class="fa-dot"></span><span class="fa-exp expired"><svg width="13" height="13"><use href="#fa-clock"/></svg>Expired Yesterday</span></span></div><span class="fa-used"><svg class="fa-ring" width="17" height="17"><use href="#fa-circle"/></svg>Used</span></div>
+            </div>
+          </div>
+          <figcaption><b>One row, three states</b><span>Every item uses the same row. Only the colour and the wording change as it gets older, from calm, to amber, to red.</span></figcaption>
+        </figure>
+        <figure class="wf-break">
+          <div class="wf-break__stage">
+            <div class="wf-panel" aria-hidden="true"></div>
+            <div class="wf-navbox fa" data-navbox>
+              <div class="fa-nav" role="group" aria-label="The app’s tab bar">
+                <span role="button" tabindex="0" data-tab><i><svg width="23" height="23" aria-hidden="true"><use href="#fa-sparkle"/></svg></i>Tonight</span>
+                <span role="button" tabindex="0" data-tab class="on"><i><svg width="23" height="23" aria-hidden="true"><use href="#fa-chat"/></svg></i>Ask</span>
+                <span role="button" tabindex="0" data-tab><i><svg width="23" height="23" aria-hidden="true"><use href="#fa-camera"/></svg></i>Scan</span>
+                <span role="button" tabindex="0" data-tab><i><svg width="23" height="23" aria-hidden="true"><use href="#fa-fridge"/></svg></i>Fridge</span>
+                <span role="button" tabindex="0" data-tab><i data-pulse><svg width="23" height="23" aria-hidden="true"><use href="#fa-cart"/></svg></i>List</span>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>The tab bar</b><span>When something lands on another screen, like an ingredient going on the list, that tab gives a small pulse so you know where it went.</span></figcaption>
+        </figure>
+        <figure class="wf-break">
+          <div class="wf-break__stage">
+            <div class="wf-panel wf-panel--warm" aria-hidden="true"></div>
+            <div class="wf-cats fa" aria-hidden="true">
+              <div class="fa-cat new"><svg><use href="#fa-sparkle"/></svg>New<b>7</b></div>
+              <div class="fa-cat dairy"><svg><use href="#fa-milk"/></svg>Dairy<b>4</b></div>
+              <div class="fa-cat produce"><svg><use href="#fa-produce"/></svg>Produce<b>4</b></div>
+              <div class="fa-cat meat"><svg><use href="#fa-fish"/></svg>Meat &amp; fish<b>1</b></div>
+              <div class="fa-cat freezer"><svg><use href="#fa-snow"/></svg>Freezer<b>1</b></div>
+            </div>
+          </div>
+          <figcaption><b>Food by aisle</b><span>My food is grouped the way a shop is, each group in its own soft colour, with new arrivals in green at the top until they’re filed.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Colour + type -->
+    <section class="section wrap">
+      <div class="section-head" data-reveal>
+        <span class="label">Colour + type</span>
+        <h2>Warm paper and <mark class="hl">a fresh green.</mark></h2>
+        <p>I wanted it to feel like a tidy kitchen rather than a spreadsheet. Green is for anything you can do, amber is for use soon and red is for past its date, so the colours mean the same thing on every screen.</p>
+      </div>
+      <div class="palette" data-reveal>
+        <button class="swatch" style="--c:#2f7d5a;--share:2"><b>Fresh green</b><code>#2F7D5A</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#276848;--share:1.1"><b>Deep green</b><code>#276848</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#7bb497;--on:#1f1b16;--share:1"><b>Leaf</b><code>#7BB497</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#fffdf9;--on:#1f1b16;--share:1"><b>Paper</b><code>#FFFDF9</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#f3eee4;--on:#1f1b16;--share:1"><b>Oat</b><code>#F3EEE4</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#bf6432;--share:1"><b>Amber</b><code>#BF6432</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#b1433a;--share:1"><b>Red</b><code>#B1433A</code><span class="copied">Copied</span></button>
+        <button class="swatch" style="--c:#1f1b16;--share:1"><b>Ink</b><code>#1F1B16</code><span class="copied">Copied</span></button>
+      </div>
+      <div class="wf-specimen" data-reveal>
+        <div>
+          <span class="aa">Aa</span>
+          <h3>What’s for <em>dinner?</em></h3>
+          <p>Fraunces for headings and the logo, with its italic for the small words.</p>
+          <small>Fraunces · 500 italic, 600</small>
+        </div>
+        <div>
+          <span class="aa aa--sans">Aa</span>
+          <h3 style="font-family:var(--fa-sans);font-weight:700;letter-spacing:-0.03em">Use by Tomorrow</h3>
+          <p>Plus Jakarta Sans for everything you read and tap, with numbers that line up in the counts.</p>
+          <small>Plus Jakarta Sans · 400 to 700</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- cp:end -->
+    <section class="section wrap" id="more">
+      <header class="cp-head"><span class="label">More work</span><h2>Other projects <mark class="hl">you might like.</mark></h2></header>
+      <div class="cp-more">
+        <a class="cp-card cp-card--next" href="patch.html" style="--brand:#111318">
+          <div class="cp-card__art"><span class="cp-card__label">Next project</span><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/patch-agency/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/patch-agency/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>PATCH</b><span>Brand + website</span></div>
+        </a>
+        <a class="cp-card" href="birth-hood.html" style="--brand:#fe7fcc">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/birth-hood/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/birth-hood/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Birth-hood</b><span>Website</span></div>
+        </a>
+        <a class="cp-card" href="gosweet.html" style="--brand:#5c2a9d">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/gosweet/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/gosweet/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>GoSweet</b><span>Online shop redesign</span></div>
+        </a>
+        <a class="cp-card" href="nic-pouches.html" style="--brand:#0070d5">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/nic-pouches/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/nic-pouches/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Nic Pouches</b><span>Online shop</span></div>
+        </a>
+        <a class="cp-card" href="vsl-trade.html" style="--brand:#0d1110">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/vsl-trade/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/vsl-trade/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>VSL Trade</b><span>Wholesale website</span></div>
+        </a>
+        <a class="cp-card" href="birdie-blooms.html" style="--brand:#e8879f">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/birdie-blooms/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/birdie-blooms/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Birdie Blooms</b><span>Brand + website</span></div>
+        </a>
+        <a class="cp-card" href="sccc-heritage.html" style="--brand:#8b1538">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/sccc-heritage/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/sccc-heritage/journey-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>SCCC Heritage</b><span>Club history website</span></div>
+        </a>
+        <a class="cp-card" href="beetle-eyes.html" style="--brand:#1f3a2e">
+          <div class="cp-card__art"><i class="cp-card__glow" aria-hidden="true"></i><div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/beetle-eyes/fold-desktop.webp" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div><div class="phone cp-card__phone"><div class="screen"><img src="../assets/projects/beetle-eyes/home-mobile.webp" alt="" loading="lazy"></div></div></div>
+          <div class="cp-card__name"><b>Beetle Eyes</b><span>One-page website</span></div>
+        </a>
+        <a class="cp-card cp-card--print" href="print.html">
+          <div class="cp-card__art"><img src="../assets/projects/print/hospital/covers/impact.jpg" alt="" loading="lazy"><img src="../assets/projects/property/covers/swilley.jpg" alt="" loading="lazy"><img src="../assets/projects/print/gowling/cover-flat.jpg" alt="" loading="lazy"></div>
+          <div class="cp-card__name"><b>Print, brand and motion</b><span>Brochures · logos · film</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="contact wrap">
+        <div class="contact__intro">
+          <span class="label">Your turn</span>
+          <h2>Let’s make something people <mark class="hl">like to use.</mark></h2>
+          <p>Tell me a bit about your business and what you need. I usually reply within a working day.</p>
+          <a class="contact__email" href="mailto:jb.designagency89@gmail.com">jb.designagency89@gmail.com</a>
+        </div>
+        <form class="contact__form" data-contact data-to="jb.designagency89@gmail.com" novalidate>
+          <fieldset class="chips">
+            <legend>What do you need?</legend>
+            <label><input type="checkbox" name="need" value="New website"><span>New website</span></label>
+            <label><input type="checkbox" name="need" value="Redesign"><span>Redesign</span></label>
+            <label><input type="checkbox" name="need" value="Online shop"><span>Online shop</span></label>
+            <label><input type="checkbox" name="need" value="Logo and brand"><span>Logo &amp; brand</span></label>
+            <label><input type="checkbox" name="need" value="Print"><span>Print</span></label>
+          </fieldset>
+          <div class="field-row">
+            <label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label>
+            <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <label class="field"><span>Tell me about it</span><textarea name="message" rows="4" required></textarea></label>
+          <p class="contact__error" role="alert" data-contact-error></p>
+          <button class="btn btn--big" type="submit">Send it over <span aria-hidden="true">→</span></button>
+          <p class="contact__note">This opens your email app with everything filled in, ready to send.</p>
+        </form>
+      </div>
+    </section>
+    <!-- /cp:end -->
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <p class="site-foot__big"><a href="#contact">Got a project? <mark class="hl hl--orange">Let’s talk.</mark></a></p>
+      <div class="site-foot__row">
+        <span>© 2026 John Bell · Designed and built by me</span>
+        <nav aria-label="Footer"><a href="work.html">Work</a><a href="../index.html#faq">FAQs</a><a href="mailto:jb.designagency89@gmail.com">Email</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="web-designer-birmingham.html">Web design Birmingham</a><a href="graphic-designer-birmingham.html">Graphic design Birmingham</a><a href="web-designer-leicester.html">Web design Leicester</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/case.js"></script>
+  <script src="../assets/js/case-plus.js"></script>
+  <script src="../assets/js/whats-in-my-fridge.js"></script>
+</body>
+</html>
