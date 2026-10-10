@@ -723,18 +723,22 @@
     cards.forEach((c, k) => c.style.setProperty('--k', k));
 
     // Phones: the sticky cards stack, but only the last few stay painted. Once a card is three
-    // deep behind the one on top it is hidden, so the phone never composites a tall pile of layers.
-    if ('IntersectionObserver' in window) {
-      const bury = (k, on) => { const c = cards[k]; if (c) c.classList.toggle('is-buried', on); };
-      cards.forEach((c, k) => {
-        if (k < 3) return;
-        new IntersectionObserver(([e]) => {
-          const small = innerWidth <= 860;
-          // card k has reached the top of the stack when its top is above ~40% of the screen
-          const above = e.boundingClientRect.top < innerHeight * 0.4;
-          bury(k - 3, small && above);
-        }, { threshold: [0, 0.25, 0.5, 0.75, 1] }).observe(c);
-      });
+    // deep behind the one on top it is hidden, and it comes straight back when you scroll up.
+    {
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        const small = innerWidth <= 860;
+        const tops = cards.map(c => c.getBoundingClientRect().top);
+        cards.forEach((c, k) => {
+          const over = cards[k + 3];
+          // buried once the card three places on has slid up over it (well into the top half)
+          c.classList.toggle('is-buried', small && !!over && tops[k + 3] < innerHeight * 0.35);
+        });
+      };
+      addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      addEventListener('resize', update);
+      update();
     }
     // The card images are lazy; once the stack is a screen or so away, load and decode them all,
     // so nothing pops in (or leaves an unpainted hole) during a fast flick through the cards
