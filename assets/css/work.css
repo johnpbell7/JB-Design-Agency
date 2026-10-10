@@ -415,3 +415,9 @@
   .feature { box-shadow: 0 -10px 24px -18px rgb(24 24 26 / 0.45), inset 0 0 0 1px rgb(255 255 255 / 0.06); contain: paint; }
   .feature__glow { filter: none; }
 }
+
+/* Phones: no sticky stacking for the work cards (it tore on fast flicks); a plain list */
+@media (max-width: 860px) {
+  .work-stack .feature { position: relative !important; top: auto !important; transform: none !important; scale: none !important; filter: none !important; will-change: auto !important; }
+  .work-stack .feature::after { display: none !important; }
+}
