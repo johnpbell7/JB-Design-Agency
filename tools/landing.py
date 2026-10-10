@@ -13,7 +13,7 @@ WEB = [('One-page website', '£500', 'A shop window for your business: who you a
 GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with a few routes to choose from.', ['Three first ideas', 'Colour and mono versions', 'All file types']),
        ('Brand identity', '£750', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
        ('Print design', '£45/page', 'Brochures, business cards, flyers, signage and large format, designed and sent to print ready. Brochures are priced per page, so you only pay for what you need.', ['Brochures from £45 a page', 'Business cards, flyers and leaflets', 'Banners, signs and site boards', 'Printing arranged for you'])]
-CARE = 'Website care from £40 a month: changes, updates and help when you need it.'
+CARE = 'Hosting from £10 a month. Website care from £40 a month, with hosting, changes, updates and help when you need it.'
 
 # Towns covered, Leicester down to Birmingham (one honest list, shown on every location page)
 AREAS = ['Birmingham', 'Sutton Coldfield', 'Solihull', 'Lichfield', 'Tamworth', 'Atherstone', 'Nuneaton', 'Hinckley',
@@ -59,7 +59,7 @@ def prices(items):
     order = ['Logos &amp; branding', 'Print', 'Websites', 'Online shops'] if items is GFX else ['Websites', 'Online shops', 'Logos &amp; branding', 'Print']
     out = '\n'.join(cards[k] for k in order).replace('href="projects/', 'href="')
     return (f'<div class="hp-cards">\n{out}\n</div>'
-            '<p class="hp-extras"><span>All prices are starting points</span><span>Pay in stages</span><span>Website care from £40 a month</span></p>')
+            '<p class="hp-extras"><span>All prices are starting points</span><span>Pay in stages</span><span>Hosting from £10 a month</span><span>Website care from £40 a month</span></p>')
 
 def page(p):
     url = f'{BASE}projects/{p["slug"]}.html'; img = f'{BASE}assets/share/{p["share"]}.jpg'
