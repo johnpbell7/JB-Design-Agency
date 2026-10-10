@@ -14,7 +14,7 @@ WEB = [('One-page website', '£500', 'A shop window for your business: who you a
        ('Small business website', '£1,200', 'Separate pages for your services, about, work and contact, with a layout that grows with your business.', ['Up to 5 pages', 'Extra pages from £100', 'Set up for Google']),
        ('Small online shop', '£1,800', 'A Shopify shop for independents, with clear product pages and a quick checkout. For bigger stores I design every page for your developer to build.', ['Shopify set-up', 'Product and collection pages', 'Big stores: designs for your developer'])]
 GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with a few routes to choose from.', ['Three first ideas', 'Colour and mono versions', 'All file types']),
-       ('Brand identity', '£750', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
+       ('Brand identity', '£500', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
        ('Print design', '£45/page', 'Brochures, business cards, flyers, signage and large format, designed and sent to print ready. Brochures are priced per page, so you only pay for what you need.', ['Brochures from £45 a page', 'Business cards, flyers and leaflets', 'Banners, signs and site boards', 'Printing arranged for you'])]
 CARE = 'Hosting from £10 a month. Website care from £40 a month, with hosting, changes, updates and help when you need it.'
 
@@ -217,7 +217,7 @@ PAGES = [
   intro='<p>People make up their minds about a business quickly, usually before they’ve read a word. A strong logo, a consistent look and well-made print do a lot of that work for you.</p><p>I’ve spent 14 years designing brands, reports, brochures and campaigns for agencies and in-house teams, for charities, law firms, housebuilders and local trades. Now you can work with me directly, without an agency in between.</p>',
   svcs=GFX_SVCS, steps=GFX_STEPS, price_h='Graphic design prices', prices=GFX, work_h='Some of my design work', work=['print', 'property', 'patch', 'birdie'],
   areas_line='I’m based in Birmingham and work with businesses across the West and East Midlands, from Sutton Coldfield up to Leicester. Anywhere else in the UK works too, by video call and email.',
-  faqs=[('How much does a logo cost in Birmingham?', 'Logo design starts from £300 and a full brand identity from £750. Print is priced per page, with brochures from £45 a page. Whatever you need, you get a fixed quote before we start.'),
+  faqs=[('How much does a logo cost in Birmingham?', 'Logo design starts from £300 and a full brand identity from £500. Print is priced per page, with brochures from £45 a page. Whatever you need, you get a fixed quote before we start.'),
         ('How many logo ideas will I see?', 'Usually three first ideas. We then take your favourite and refine it together until it’s right, with two rounds of changes included.'),
         ('What files will I get?', 'Everything you need for print and screen: colour, black and white and reversed versions, in vector and image formats, ready for whoever needs them.'),
         ('Can you arrange printing?', 'Yes. I send print-ready files and can recommend a printer, or deal with the printers for you.'),
@@ -264,7 +264,7 @@ PAGES = [
   faqs=[('Can you work with me if I’m not in Birmingham?', 'Yes. I’m based in Birmingham, but my projects run over video calls and email, so it makes no difference where in the UK your business is.'),
         ('How do remote projects work?', 'We start with a video call, then I send you a fixed quote. I share the designs on screen and by link so you can see them on your own laptop and phone, and we keep in touch by email while I build. Nothing goes live until you’re happy with it.'),
         ('Do we ever meet in person?', 'Usually there’s no need, as video calls and shared screens cover everything from the first chat to the final checks. If you’re within reach of Birmingham and would like to meet, I’m happy to.'),
-        ('How much does it cost?', 'One-page websites start from £500, small business sites from £1,200 and small online shops from £1,800. Logos start from £300, brand identities from £750 and print from £45 a page. You get a fixed quote before we start.'),
+        ('How much does it cost?', 'One-page websites start from £500, small business sites from £1,200 and small online shops from £1,800. Logos start from £300, brand identities from £500 and print from £45 a page. You get a fixed quote before we start.'),
         ('How long does it take?', 'Most small business sites take a few weeks from our first call to going live. Shops and bigger sites take longer, and you’ll get a timeline with your quote.')],
   cta_h='Wherever you are, <mark class="hl">let’s talk.</mark>',
   other='Local to the Midlands? See <a href="web-designer-birmingham.html">web design in Birmingham</a>, <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a> or <a href="web-designer-leicester.html">web design in Leicester</a>.'),
