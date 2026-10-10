@@ -77,5 +77,14 @@
     setTimeout(() => { past = true; show(); }, 900); // it's the only call to action on phones, so it shows from the start
     if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { near = e.isIntersecting; show(); }, { rootMargin: '0px 0px 25% 0px' }).observe(contact);
   };
-  document.addEventListener('DOMContentLoaded', () => { mark(); menu(); bar(); });
+  // Enquiry tracking, ready for Google Analytics: calls, texts, WhatsApp, email and "Start a project"
+  // clicks are sent as events once gtag is on the page (does nothing until then)
+  const track = () => document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]'); if (!a || typeof window.gtag !== 'function') return;
+    const h = a.getAttribute('href');
+    const ev = h.startsWith('tel:') ? 'phone_click' : h.startsWith('sms:') ? 'text_click' : h.includes('wa.me/') ? 'whatsapp_click'
+      : h.startsWith('mailto:') ? 'email_click' : /#contact$/.test(h) ? 'start_project_click' : null;
+    if (ev) window.gtag('event', ev, { link_text: a.textContent.trim().slice(0, 60), page: location.pathname });
+  });
+  document.addEventListener('DOMContentLoaded', () => { mark(); menu(); bar(); track(); });
 })();
