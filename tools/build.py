@@ -2,44 +2,14 @@
 
     python3 tools/build.py
 
-- Splices inline SVGs into projects/*.src.html ({{TOKENS}}) -> projects/*.html
 - Lists the files in assets/illustrations/ in manifest.js, so the home page
   only loads illustrations that exist (the rest keep their doodle placeholder).
   Run it again after adding illustrations.
 """
-import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-
-def svg_inner(svg: str) -> str:
-    return svg[svg.index('>', svg.index('<svg')) + 1: svg.rindex('</svg>')]
-
-
-def patch_tokens() -> dict:
-    logo = (ROOT / 'assets/projects/patch/patch-logo.svg').read_text().strip()
-    a_tag = re.search(r'<path[^>]*id="patch-a"[^>]*>', logo).group(0)
-    a_d = re.search(r'\sd="([^"]+)"', a_tag).group(1)
-    # Symbol copy must not repeat the hero's id
-    symbol_inner = svg_inner(logo).replace('id="patch-a" ', '')
-    hero = logo.replace('<svg ', '<svg class="patch-hero-logo" ', 1)
-    return {'LOGO_SVG': hero, 'LOGO_SYMBOL_INNER': symbol_inner, 'A_PATH_D': a_d}
-
-
-TOKENS = {'patch': patch_tokens}
-
-for src in sorted((ROOT / 'projects').glob('*.src.html')):
-    name = src.name.replace('.src.html', '')
-    html = src.read_text()
-    tokens = TOKENS.get(name, dict)()
-    for key, value in tokens.items():
-        html = html.replace('{{' + key + '}}', value)
-    leftover = re.findall(r'{{[A-Z_]+}}', html)
-    if leftover:
-        raise SystemExit(f'{src.name}: unfilled tokens {leftover}')
-    (ROOT / 'projects' / f'{name}.html').write_text(html)
-    print(f'built projects/{name}.html')
 
 ILLOS = ROOT / 'assets/illustrations'
 ILLOS.mkdir(parents=True, exist_ok=True)
