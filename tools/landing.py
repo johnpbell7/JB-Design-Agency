@@ -19,15 +19,23 @@ CARE = 'Website care from £40 a month: changes, updates and help when you need 
 AREAS = ['Birmingham', 'Sutton Coldfield', 'Solihull', 'Lichfield', 'Tamworth', 'Atherstone', 'Nuneaton', 'Hinckley',
          'Coalville', 'Ashby-de-la-Zouch', 'Loughborough', 'Leicester', 'Mountsorrel', 'Kibworth', 'Market Harborough', 'Melton Mowbray']
 
-STEPS = [('A quick chat', 'We talk about your business, then I send you a fixed quote.'), ('Design first', 'You see the designs on a computer and a phone before anything is built.'),
-         ('Built and checked', 'I build it, test it on phones and computers, and set it up for Google.'), ('Live, and looked after', 'It goes live, and I’m still around if you need anything after.')]
+# "How it works" steps: one set per page, so the pages don't repeat each other
+WEB_STEPS = [('A quick chat', 'You tell me about your business and what the site needs to do, and I send you a fixed quote.'), ('Designs first', 'You see the designs on a laptop and a phone before anything gets built.'),
+             ('Built and checked', 'I build it, test it on phones and computers, and set it up for Google.'), ('Live, and looked after', 'It goes live, and I’m still around when you need something changing.')]
+LEI_STEPS = [('Let’s talk', 'On a call, or in person if you’re nearby. Afterwards I send you a fixed quote.'), ('See it before it’s built', 'I show you the designs on both a laptop and a phone, so nothing gets built until you’ve had a proper look.'),
+             ('Built and tested', 'I build the site, check it on phones and computers, and do the setup Google looks for.'), ('Launch, then support', 'Once it’s live I don’t disappear. If something needs changing, send me a message.')]
+GFX_STEPS = [('A quick chat', 'You tell me about your business and who you want to reach, and I send you a fixed quote.'), ('First ideas', 'Usually three different directions, so you have a real choice to react to.'),
+             ('Refine it together', 'We take your favourite and work on it until it feels right. Two rounds of changes are included.'), ('Files and print', 'You get every file you need for print and screen, and I can arrange the printing too.')]
 
-WEB_SVCS = [('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and local services.'), ('Online shops', 'Small Shopify shops for independents. For bigger stores, I design every page and hand it to your developer.'),
-            ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup Google looks for (SEO).'), ('Easy to update', 'One-page sites need no upkeep: I make changes for you, or add an editor for £150. Bigger sites come with an editor included.'),
-            ('Redesigns', 'A fresh, faster version of the site you have, keeping what works.'), ('Care and updates', 'Changes, new pages and help whenever you need it after launch.')]
-GFX_SVCS = [('Logo design', 'Logos that work small and large, in colour and black and white, on screen and in print.'), ('Brand identity', 'Colours, fonts and simple rules that keep everything looking like you.'),
-            ('Brochures and reports', 'Clear, well-organised layouts for brochures, annual reports and newsletters.'), ('Business cards and flyers', 'Business cards, flyers and leaflets for promotions, events and door-to-door.'),
-            ('Large format and signage', 'Shop signs, banners, roller banners, vehicle graphics, site boards and packaging.'), ('Packaging and labels', 'Boxes, labels and tins that stand out on the shelf.')]
+WEB_SVCS = [('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and local services.'), ('Online shops', 'Small Shopify shops for independents. For bigger stores, I design every page and hand the designs to your developer.'),
+            ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup (SEO) that Google looks for.'), ('Changes without the hassle', 'A one-page site needs no upkeep: I make changes for you, or add your own editor for £150. Bigger sites come with an editor included.'),
+            ('Redesigns', 'If your current site is looking tired, I’ll make a fresher, faster version and keep the parts that work.'), ('Care and updates', 'Changes, new pages and help after launch, whenever you need it.')]
+LEI_SVCS = [('Websites for local businesses', 'For the cafés, salons, clinics, trades and village shops around Leicestershire, from a single page to a full site.'), ('Shopify shops', 'Online shops for independents, set up on Shopify. For a bigger operation, I design the pages and your developer builds them.'),
+            ('Found on Google', 'Quick pages and the right setup behind the scenes, so people searching locally for what you do can find you.'), ('Updating your site', 'On a one-pager I make the changes for you, or add your own editor for £150. Bigger sites have an editor built in.'),
+            ('Redesigns', 'A fresher, faster version of the site you already have, keeping whatever is working.'), ('Support after launch', 'I’m on hand for changes and new pages once you’re live.')]
+GFX_SVCS = [('Logo design', 'Logos that work tiny on a phone screen and large on a banner, in colour and in black and white.'), ('Brand identity', 'Colours, fonts and a few simple rules, so everything you put out looks like it comes from the same business.'),
+            ('Brochures and reports', 'Well-organised layouts for brochures, annual reports and newsletters that lead the reader to the parts that matter.'), ('Business cards and flyers', 'Business cards, flyers and leaflets for promotions, events and letterbox drops.'),
+            ('Large format and signage', 'Shop signs, banners and roller banners, vehicle graphics, site boards and packaging.'), ('Packaging and labels', 'Boxes, labels and tins that get noticed on a crowded shelf.')]
 
 W = lambda h, img, alt, n, k: (h, img, alt, n, k)
 WORK = {'birth-hood': W('birth-hood.html', 'captures/birth-hood/fold-desktop.webp', 'Birth-hood website', 'Birth-hood', 'Website for a hypnobirthing and doula business in Leicestershire'),
@@ -137,7 +145,7 @@ def page(p):
 
     <section class="lp-sec wrap">
       <h2>How it works</h2>
-      <ol class="lp-steps">{"".join(f"<li><h3>{a}</h3><p>{b}</p></li>" for a, b in STEPS)}</ol>
+      <ol class="lp-steps">{"".join(f"<li><h3>{a}</h3><p>{b}</p></li>" for a, b in p["steps"])}</ol>
     </section>
 
     <section class="lp-sec wrap lp-areas">
@@ -151,7 +159,7 @@ def page(p):
     </section>
 
     <section class="lp-cta wrap" id="contact">
-      <h2>Let’s make something <mark class="hl">people like to use.</mark></h2>
+      <h2>{p["cta_h"]}</h2>
       <p>Tell me a bit about your business and what you need. I usually reply within a working day.</p>
       <div class="lp-hero__ctas"><a class="btn btn--big btn--keep" href="../index.html#contact">Start a project <span aria-hidden="true">→</span></a><a class="btn btn--ghost btn--big" href="mailto:{EMAIL}">Email me</a></div>
       <p class="lp-other">{p["other"]}</p>
@@ -175,49 +183,52 @@ PAGES = [
   title='Web Designer in Birmingham · John Bell, Freelance Web Design',
   desc='Freelance web designer in Birmingham. Fast, mobile-friendly websites and Shopify shops for small businesses, designed and built by John Bell, with fixed quotes from £500.',
   h1='Web designer <mark class="hl">in Birmingham.</mark>',
-  lede='I design and build websites for independents and small businesses in Birmingham and across the UK. Clear, fast sites that work well on a phone, show up on Google and make it easy for people to get in touch.',
+  lede='I design and build websites for independents and small businesses, here in Birmingham and across the UK. Fast sites that work properly on a phone, show up on Google and make it straightforward for people to get in touch.',
   fact='Based in Birmingham, working UK-wide',
-  intro_h='A website that does its job',
-  intro='<p>Most people will find you on their phone, often in a hurry. So I design every site for phones first, keep pages quick to load, and make the next step obvious: call, book, buy or send a message.</p><p>I’ve spent 14 years designing for agencies and in-house teams, and now I work directly with business owners. You talk to the person designing and building your site, from the first chat to launch day and after.</p>',
-  svcs=WEB_SVCS, price_h='Web design prices', prices=WEB, work_h='Some of my websites', work=['birth-hood', 'patch', 'vsl', 'sccc'],
-  areas_line='I’m based in Birmingham and work with businesses across the West Midlands and the East Midlands, from Birmingham and Sutton Coldfield up to Leicester. Further afield is no problem: most projects run on video calls and email.',
-  faqs=[('How much does a website cost in Birmingham?', 'A one-page website starts from £500, a small business site from £1,200 and a small online shop from £1,800. After a quick chat I send a fixed quote, so you know the full price before we start.'),
-        ('How long does a website take?', 'A small business site usually takes a few weeks from our first chat to going live. Shops and bigger sites take longer. You’ll get a timeline with your quote.'),
-        ('Do I need to be in Birmingham?', 'No. I’m based in Birmingham and happy to meet locally, but most of my work happens over video calls and email, so I work with businesses all over the UK.'),
-        ('Can I update the website myself?', 'It depends on the site. A one-page site is a shop window with no back end, which keeps it cheaper, faster and more secure; when you need a change, I make it for you, from £35 or from £40 a month on a care plan. Rather do it yourself? I can add an easy editor to a one-page site for £150. Bigger sites and shops come with one included.'),
-        ('Will my website show up on Google?', 'Every site is built to load quickly, work well on phones and include the setup Google looks for. I’ll also help you set up Google Search Console and your Google Business Profile.')],
+  intro_h='A website that earns its keep',
+  intro='<p>Most people will find you on their phone, often while they’re in the middle of something else. So I design every site for phones first, keep the pages quick to load and make the next step obvious: call, book, buy or send a message.</p><p>I’ve spent 14 years designing for agencies and in-house teams, and now I work directly with business owners. The person you speak to on day one is the same person who designs, builds and launches your site, and who’s still there after launch.</p>',
+  svcs=WEB_SVCS, steps=WEB_STEPS, price_h='Web design prices', prices=WEB, work_h='A few of my websites', work=['birth-hood', 'patch', 'vsl', 'sccc'],
+  areas_line='I’m based in Birmingham and work with businesses across the West and East Midlands, from Brum and Sutton Coldfield up to Leicester. Further afield is fine too, as most projects run on video calls and email anyway.',
+  faqs=[('How much does a website cost in Birmingham?', 'A one-page website starts from £500, a small business site from £1,200 and a small online shop from £1,800. After a quick chat I send you a fixed quote, so you know the full price before we start.'),
+        ('How long does a website take?', 'A small business site usually takes a few weeks from our first chat to going live. Shops and bigger sites take a little longer, and you’ll get a timeline with your quote.'),
+        ('Do I need to be in Birmingham?', 'No. I’m happy to meet in person if you’re local, but most of my work happens over video calls and email, so I work with businesses all over the UK.'),
+        ('Can I update the website myself?', 'It depends on the site. A one-page site is a shop window with no back end, which keeps it cheaper, faster and more secure. When you need a change, I make it for you, from £35 or from £40 a month on a care plan. If you’d rather do it yourself, I can add an editor to a one-page site for £150. Bigger sites and shops come with one included.'),
+        ('Will my website show up on Google?', 'Every site is built to load quickly, work well on phones and include the setup Google looks for. I’ll also help you set up Google Search Console and your Google Business Profile, so you’re not left to work them out alone.')],
+  cta_h='Got a website in mind? <mark class="hl">Let’s talk.</mark>',
   other='Need a logo, brand or print as well? See <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>. In Leicestershire? See <a href="web-designer-leicester.html">web design in Leicester</a>.'),
  dict(slug='graphic-designer-birmingham', share='graphic-designer-birmingham', svc='Graphic design',
   title='Graphic Designer in Birmingham · John Bell, Logos, Branding &amp; Print',
   desc='Freelance graphic designer in Birmingham. Logo design, brand identity, brochures, flyers and packaging for small businesses, by John Bell, with 14 years’ agency and in-house experience.',
   h1='Graphic designer <mark class="hl hl--pink">in Birmingham.</mark>',
-  lede='Logos, brand identities and print for independents and small businesses in Birmingham and across the UK. Design that looks right everywhere it goes, from a van and a shop sign to a brochure and your website.',
+  lede='Logos, brand identities and print for independents and small businesses in Birmingham and across the UK. Design that holds up wherever it ends up, from the side of a van or a shop sign to a brochure or your website.',
   fact='Based in Birmingham, working UK-wide',
   intro_h='Design that makes you look the part',
-  intro='<p>People decide quickly whether a business looks trustworthy. A clear logo, a consistent look and well-made print do a lot of that work for you, before anyone has read a word.</p><p>I’ve spent 14 years designing brands, reports, brochures and campaigns for agencies and in-house teams, for charities, law firms, housebuilders and local trades. Now you can work with me directly.</p>',
-  svcs=GFX_SVCS, price_h='Graphic design prices', prices=GFX, work_h='Some of my design work', work=['print', 'property', 'patch', 'birdie'],
-  areas_line='I’m based in Birmingham and work with businesses across the West Midlands and the East Midlands, from Birmingham and Sutton Coldfield up to Leicester, and all over the UK by video call and email.',
-  faqs=[('How much does a logo cost in Birmingham?', 'Logo design starts from £300, and a full brand identity from £750. Print is priced per page, with brochures from £45 a page. You get a fixed quote before we start.'),
-        ('How many logo ideas will I see?', 'Usually three first ideas, then we refine your favourite together until it’s right.'),
-        ('What files will I get?', 'Everything you need for print and screen: colour, black and white and reversed versions in vector and image formats.'),
-        ('Can you arrange printing?', 'Yes. I send print-ready files and can recommend printers or deal with them for you.'),
+  intro='<p>People make up their minds about a business quickly, usually before they’ve read a word. A strong logo, a consistent look and well-made print do a lot of that work for you.</p><p>I’ve spent 14 years designing brands, reports, brochures and campaigns for agencies and in-house teams, for charities, law firms, housebuilders and local trades. Now you can work with me directly, without an agency in between.</p>',
+  svcs=GFX_SVCS, steps=GFX_STEPS, price_h='Graphic design prices', prices=GFX, work_h='Some of my design work', work=['print', 'property', 'patch', 'birdie'],
+  areas_line='I’m based in Birmingham and work with businesses across the West and East Midlands, from Sutton Coldfield up to Leicester. Anywhere else in the UK works too, by video call and email.',
+  faqs=[('How much does a logo cost in Birmingham?', 'Logo design starts from £300 and a full brand identity from £750. Print is priced per page, with brochures from £45 a page. Whatever you need, you get a fixed quote before we start.'),
+        ('How many logo ideas will I see?', 'Usually three first ideas. We then take your favourite and refine it together until it’s right, with two rounds of changes included.'),
+        ('What files will I get?', 'Everything you need for print and screen: colour, black and white and reversed versions, in vector and image formats, ready for whoever needs them.'),
+        ('Can you arrange printing?', 'Yes. I send print-ready files and can recommend a printer, or deal with the printers for you.'),
         ('Do you work outside Birmingham?', 'Yes. I’m based in Birmingham, but I work with businesses all over the UK by video call and email.')],
+  cta_h='Need a logo or a brochure? <mark class="hl">Let’s talk.</mark>',
   other='Need a website too? See <a href="web-designer-birmingham.html">web design in Birmingham</a>, or <a href="web-designer-leicester.html">web design in Leicester</a>.'),
  dict(slug='web-designer-leicester', share='web-designer-leicester', svc='Web design',
   title='Web Designer in Leicester &amp; Leicestershire · John Bell',
   desc='Freelance web designer for Leicester and Leicestershire businesses. Websites, online shops and branding for independents, from Loughborough and Coalville to Hinckley and Market Harborough. Fixed quotes from £500.',
   h1='Web designer for <mark class="hl hl--blue">Leicester and Leicestershire.</mark>',
-  lede='Websites, online shops and branding for independents and small businesses across Leicestershire. I’ve designed sites for a hypnobirthing practice, a flower studio in Ravenstone and Kibworth and a vintage rail in Mountsorrel, so I know the area and the kind of businesses that make it.',
+  lede='Websites, online shops and branding for independents and small businesses across Leicestershire. I’ve designed sites for a hypnobirthing practice, a flower studio in Ravenstone and Kibworth and a vintage rail in Mountsorrel, so I know the area and the sort of businesses that make it what it is.',
   fact='Working across Leicestershire, from Birmingham',
-  intro_h='Local businesses, sites that work hard',
-  intro='<p>Most of my favourite projects are small Leicestershire businesses run by one or two people: a doula and yoga teacher, a one-woman flower studio, a pre-loved clothing rail inside a village shop. Each needed a site that looked like them, worked well on a phone and made it easy to book, buy or get in touch.</p><p>I’m based in Birmingham, about an hour away, and happy to meet in person around Leicestershire. The rest of the work happens over video calls and email, and you deal with me the whole way through.</p>',
-  svcs=WEB_SVCS, price_h='Web design prices', prices=WEB, work_h='Some of my Leicestershire work', work=['birth-hood', 'birdie', 'beetle', 'patch'],
-  areas_line='I work with businesses right across Leicestershire and down to Birmingham, including:',
-  faqs=[('Do you work with businesses in Leicester?', 'Yes. Several of my clients are in Leicestershire, including Birth-hood, Birdie Blooms in Ravenstone and Kibworth, and Beetle Eyes Clothing in Mountsorrel. I’m based in Birmingham and happy to meet in person.'),
-        ('How much does a website cost?', 'A one-page website starts from £500, a small business site from £1,200 and a small online shop from £1,800. After a quick chat I send a fixed quote, so you know the full price before we start.'),
-        ('Can you help my business show up on Google locally?', 'Yes. Every site is built to load quickly and include the setup Google looks for, and I’ll help you set up your Google Business Profile so you show up in local searches and on Maps.'),
-        ('Can I update the website myself?', 'It depends on the site. A one-page site is a shop window with no back end, which keeps it cheaper, faster and more secure; when you need a change, I make it for you, from £35 or from £40 a month on a care plan. Rather do it yourself? I can add an easy editor to a one-page site for £150. Bigger sites and shops come with one included.'),
-        ('Do you design logos too?', 'Yes. I can design your logo and brand, then build the site to match. For Birdie Blooms I drew eight logo ideas alongside the website.')],
+  intro_h='Small local businesses, sites that pull their weight',
+  intro='<p>Most of my favourite projects are small Leicestershire businesses run by one or two people: a doula and yoga teacher, a one-woman flower studio, a pre-loved clothing rail tucked inside a village shop. Each one needed a site that felt like them, worked properly on a phone and let people book, buy or get in touch without hunting around.</p><p>I’m based in Birmingham, about an hour away, and happy to meet in person around Leicestershire. The rest of the work happens over video calls and email, and it’s me you deal with the whole way through.</p>',
+  svcs=LEI_SVCS, steps=LEI_STEPS, price_h='Web design prices', prices=WEB, work_h='Some of my Leicestershire work', work=['birth-hood', 'birdie', 'beetle', 'patch'],
+  areas_line='I work with businesses all over Leicestershire and back down the road to Birmingham, including:',
+  faqs=[('Do you work with businesses in Leicester?', 'Yes. Several of my clients are Leicestershire businesses, including Birth-hood, Birdie Blooms in Ravenstone and Kibworth, and Beetle Eyes Clothing in Mountsorrel. I’m based in Birmingham and happy to come and meet you in person.'),
+        ('How much does a website cost?', 'One-page websites start from £500, small business sites from £1,200 and small online shops from £1,800. Once we’ve talked it through, I send a fixed quote, so you know where you stand before anything starts.'),
+        ('Can you help my business show up on Google locally?', 'Yes. Every site loads quickly and has the setup Google looks for, and I’ll help you set up your Google Business Profile so you appear in local searches and on Maps.'),
+        ('Can I update the website myself?', 'Yes, if you want to. One-page sites are kept lean with no back end, which makes them cheaper, quicker and more secure, so normally I make the changes for you: from £35, or from £40 a month on a care plan. If you’d prefer to do it yourself, I can add an editor for £150. Bigger sites and shops have one built in.'),
+        ('Do you design logos too?', 'I do. I can design your logo and brand, then build the website to match. For Birdie Blooms I drew eight logo ideas alongside the site.')],
+  cta_h='Leicestershire business? <mark class="hl">Let’s have a chat.</mark>',
   other='Looking for design in Birmingham? See <a href="web-designer-birmingham.html">web design</a> and <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>.'),
 ]
 
