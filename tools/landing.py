@@ -9,7 +9,7 @@ NAV = open('tools/landing-nav.html').read()
 # ===== PRICES (placeholders, to be confirmed by John) =====
 WEB = [('One-page website', '£500', 'A single scrolling page with everything a small business needs: who you are, what you do, and an easy way to get in touch.', ['Designed for phones first', 'Contact form or booking link', 'Set up for Google']),
        ('Multi-page website', '£1,500', 'Separate pages for your services, about, work and contact, with a layout that grows with your business.', ['Up to 6 pages', 'Edit it yourself', 'Set up for Google']),
-       ('Online shop', '£2,500', 'A Shopify shop with clear product pages and a quick checkout, or full page designs for your developer.', ['Shopify set-up', 'Product and collection pages', 'Payments and shipping'])]
+       ('Small online shop', '£2,500', 'A Shopify shop for independents, with clear product pages and a quick checkout. For bigger stores I design every page for your developer to build.', ['Shopify set-up', 'Product and collection pages', 'Big stores: designs for your developer'])]
 GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with a few routes to choose from.', ['Three first ideas', 'Colour and mono versions', 'All file types']),
        ('Brand identity', '£900', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
        ('Print design', '£45/page', 'Brochures, business cards, flyers, signage and large format, designed and sent to print ready. Brochures are priced per page, so you only pay for what you need.', ['Brochures from £45 a page', 'Business cards, flyers and leaflets', 'Banners, signs and site boards', 'Printing arranged for you'])]
@@ -22,7 +22,7 @@ AREAS = ['Birmingham', 'Sutton Coldfield', 'Solihull', 'Lichfield', 'Tamworth', 
 STEPS = [('A quick chat', 'We talk about your business, then I send you a fixed quote.'), ('Design first', 'You see the designs on a computer and a phone before anything is built.'),
          ('Built and checked', 'I build it, test it on phones and computers, and set it up for Google.'), ('Live, and looked after', 'It goes live, and I’m still around if you need anything after.')]
 
-WEB_SVCS = [('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and local services.'), ('Online shops', 'Shopify websites and small shops, or full page designs for your developer on bigger stores.'),
+WEB_SVCS = [('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and local services.'), ('Online shops', 'Small Shopify shops for independents. For bigger stores, I design every page and hand it to your developer.'),
             ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup Google looks for (SEO).'), ('Easy to update', 'Change your words, photos and products yourself, without touching any code.'),
             ('Redesigns', 'A fresh, faster version of the site you have, keeping what works.'), ('Care and updates', 'Changes, new pages and help whenever you need it after launch.')]
 GFX_SVCS = [('Logo design', 'Logos that work small and large, in colour and black and white, on screen and in print.'), ('Brand identity', 'Colours, fonts and simple rules that keep everything looking like you.'),
