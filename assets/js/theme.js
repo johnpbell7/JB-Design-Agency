@@ -2,6 +2,15 @@
 // The site is light only (no dark mode)
 (() => {
   try { localStorage.removeItem('jb-theme'); } catch {} // old saved Light/Dark choice
+  // Open at the top on a fresh visit or a refresh (browsers otherwise jump back to where you
+  // were, landing mid-hero with the intro already played); Back keeps your place, links to #anchors still work
+  try {
+    const nav = performance.getEntriesByType('navigation')[0];
+    if ('scrollRestoration' in history && (!nav || nav.type !== 'back_forward')) {
+      history.scrollRestoration = 'manual';
+      if (!location.hash) { scrollTo(0, 0); addEventListener('load', () => scrollTo(0, 0), { once: true }); }
+    }
+  } catch {}
   // The JB mark beside the wordmark in the nav: inlined in every page's HTML so it shows from the first
   // paint; this only fills it in on pages that don't have it. A yellow keyboard key
   // with the Poppins Bold JB ligature (the J shares the B's stem) on its top face
