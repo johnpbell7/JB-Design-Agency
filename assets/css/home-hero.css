@@ -532,3 +532,4 @@
   .bt-g1 { height: calc(24svh + 230px);
     mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 55%, transparent 88%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 55%, transparent 88%); }
 }
+.pf-hi + .pf-hero__title { margin-top: 0; }
