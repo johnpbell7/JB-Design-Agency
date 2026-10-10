@@ -104,3 +104,8 @@
   .hp-card__go { margin: 14px 14px 14px; padding: 11px 16px; font-size: 14px; }
   .hp-incl { margin-bottom: 0; }
 }
+/* Phones: drop the tick list so each card fits on one screen (the full detail is on the prices pages) */
+@media (max-width: 700px) {
+  .hp-incl { display: none; }
+  .hp-card__go { margin-top: 12px; }
+}
