@@ -104,8 +104,8 @@ def page(p):
   <link rel="preload" href="../assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/css/fonts.css">
   <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/landing.css">
-  <link rel="stylesheet" href="../assets/css/prices.css">
+  <link rel="stylesheet" href="../assets/css/landing.css?v=2">
+  <link rel="stylesheet" href="../assets/css/prices.css?v=2">
   <script type="application/ld+json" data-seo>
 {json.dumps(ld, ensure_ascii=False, indent=1)}
   </script>
@@ -165,7 +165,7 @@ def page(p):
       <h2>{p["cta_h"]}</h2>
       <p>Tell me a bit about your business and what you need. I usually reply within a working day.</p>
       <div class="lp-hero__ctas"><a class="btn btn--big btn--keep" href="../index.html#contact">Start a project <span aria-hidden="true">→</span></a><a class="btn btn--ghost btn--big" href="mailto:{EMAIL}">Email me</a></div>
-      <p class="lp-phone">Or call or text <a href="tel:{PHONE_INTL}">{PHONE}</a> · <a href="https://wa.me/{PHONE_INTL[1:]}" target="_blank" rel="noopener">WhatsApp me</a></p>
+      <div class="contact__reach"><a class="contact__pill" href="tel:{PHONE_INTL}">Call or text {PHONE}</a><a class="contact__pill" href="sms:{PHONE_INTL}">Send a text</a><a class="contact__pill" href="https://wa.me/{PHONE_INTL[1:]}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 20.4l1.2-4.1a8.4 8.4 0 1 1 3.3 3.2z"/><path d="M9.2 8.6c-.2 2.9 3.1 6.3 6.2 6.2l.9-1.4-1.9-1-1 .7a4.2 4.2 0 0 1-2.1-2.1l.7-1-1-1.9z" fill="currentColor" stroke="none"/></svg>WhatsApp me</a></div>
       <p class="lp-other">{p["other"]}</p>
     </section>
   </main>

@@ -68,3 +68,8 @@
 .lp-areas__list li { padding: 8px 14px; border-radius: 999px; background: var(--grey-1); font-size: 14.5px; font-weight: 500; }
 @media (max-width: 900px) { .lp-areas { grid-template-columns: 1fr; } }
 .lp-price__from em { font-style: normal; font-size: 16px; font-weight: 600; letter-spacing: 0; color: var(--grey-7); margin-left: 2px; }
+.contact__reach { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.contact__pill { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 16px; border-radius: 999px; box-shadow: inset 0 0 0 1.5px currentColor; color: #18181a; text-decoration: none; font-weight: 600; font-size: 14.5px; }
+.contact__pill:hover { background: #fff; }
+@media (max-width: 560px) { .contact__reach { display: grid; grid-template-columns: 1fr 1fr; } .contact__reach .contact__pill:first-child { grid-column: 1 / -1; } }
+.lp-cta .contact__reach { margin-top: 22px; }

@@ -132,7 +132,6 @@
 
 /* prices: the shared cards, made quiet on this page */
 .sv .hp-cards { margin-top: var(--sp-5); }
-.sv .hp-extras { justify-content: start; margin-top: var(--sp-4); font-size: 14px; color: var(--grey-5); }
 
 /* steps: four open columns */
 .sv-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(28px, 3vw, 48px); margin: var(--sp-5) 0 0; padding: 0; list-style: none; }
@@ -220,8 +219,6 @@
   .sv-steps { grid-template-columns: 1fr; gap: 0; }
   .sv-step { grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; row-gap: 6px; padding: 24px 0 28px; }
   .sv-step .ring { grid-row: span 3; margin: 0; }
-  .sv .hp-extras { gap: 8px 20px; }
-  .sv .hp-extras span + span::before { content: none; }
   .work-row { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
     margin-inline: calc(-1 * var(--gutter)); padding: 4px var(--gutter) 8px; scroll-padding-inline: var(--gutter); }
   .work-row::-webkit-scrollbar { display: none; }
