@@ -1158,3 +1158,14 @@ body { --project-pen: #f1d9c7; }
 .wf-tl__head::after { content: ""; position: relative; z-index: 2; display: block; width: 64px; height: 3px; margin-top: 18px; border-radius: 3px; background: #18181a; }
 /* the step card hugs its text */
 .wf-steptext, .wf-tl .wf-steptext { min-height: 0; }
+/* Usuals: "Running low" takes the Milk card's place instead of needing room below it */
+.wf-learn__stack { display: grid; }
+.wf-learn__stack > * { grid-area: 1 / 1; align-self: start; }
+.wf-learn__stack > [data-low] { z-index: 2; }
+/* Offline on phones: a proper phone, the chips overlapping its edges, nothing reserved */
+@media (max-width: 760px) {
+  .wf-tl .wf-off { position: relative; display: block; width: fit-content; margin-inline: auto; padding: 6px 0 4px; }
+  .wf-tl .wf-off__ph.phone { width: 60vw; max-width: 236px; }
+  .wf-tl .wf-off > .wf-net { position: absolute; z-index: 3; right: -26%; top: 20%; margin: 0; }
+  .wf-tl .wf-off > .wf-a2hs { position: absolute; z-index: 3; right: -30%; bottom: 8%; margin: 0; width: 58vw; max-width: 210px; }
+}
