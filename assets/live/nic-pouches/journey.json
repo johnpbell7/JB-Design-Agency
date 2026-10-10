@@ -29,10 +29,10 @@
         {"wait": 400},
         {"hover": "[data-mega-link]", "ms": 900, "after": 1000},
         {"click": "#mega [data-pgdir='1']", "ms": 1000, "after": 1100, "scroll": false},
-        {"hover": "#mega .mega__flav", "nth": 4, "ms": 900, "after": 900},
+        {"hover": "#mega .mega__flav", "nth": 4, "ms": 900, "after": 700},
         {"hover": "#mega .mega__list a", "nth": 2, "ms": 900, "after": 700},
         {"click": "#mega .mega__list a", "nth": 2, "ms": 300, "after": 300, "scroll": false},
-        {"wait": 1200}
+        {"wait": 900}
       ]
     },
     {

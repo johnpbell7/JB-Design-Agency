@@ -56,7 +56,7 @@
           "after": 800
         },
         {
-          "scroll": 420,
+          "scroll": 300,
           "ms": 1500,
           "after": 200
         },
@@ -158,9 +158,9 @@
         },
         {
           "click": ".faq-list summary",
-          "nth": 4,
-          "ms": 1000,
-          "after": 2200
+          "nth": 2,
+          "ms": 900,
+          "after": 2400
         }
       ]
     },

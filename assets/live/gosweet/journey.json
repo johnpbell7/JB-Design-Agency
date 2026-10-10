@@ -152,7 +152,7 @@
             0.5
           ],
           "ms": 900,
-          "after": 900,
+          "after": 1500,
           "scroll": false
         },
         {
@@ -164,7 +164,7 @@
         {
           "hover": ".lhero .fan",
           "ms": 1000,
-          "after": 2600
+          "after": 3400
         }
       ],
       "reload": true
