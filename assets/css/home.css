@@ -1543,5 +1543,5 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
   .print-bar__pile { height: 84px; justify-content: flex-start; }
   .print-bar__pile img { height: 78px; margin-left: -22px; }
   .print-bar__go { justify-self: start; }
-  .print-bar__pile img:nth-child(n+6) { display: none; }
+  .print-bar__pile img:nth-child(n+5) { display: none; }
 }
