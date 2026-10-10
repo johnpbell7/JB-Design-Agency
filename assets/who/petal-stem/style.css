@@ -61,7 +61,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -.03
   z-index: 20;
 }
 .brand { display: block; width: max-content; }
-.brand__logo { width: 180px; height: 35px; color: var(--ink); }
+.brand__logo { width: 220px; height: 43px; color: var(--ink); }
 .head__nav { display: flex; justify-content: center; gap: 4px; white-space: nowrap; font-size: 15px; font-weight: 500; }
 .head__nav a { padding: 9px 15px; border-radius: 999px; color: var(--ink-2); transition: color .2s, background .2s; }
 .head__nav a:hover { color: var(--ink); background: var(--soft); }
@@ -144,7 +144,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -.03
 .pager i { width: 8px; height: 8px; border-radius: 4px; background: rgba(255,255,255,.55); transition: background .3s, width .3s; }
 .pager i.on { background: #fff; width: 24px; }
 
-.buy { padding: 26px 40px 0 48px; display: flex; flex-direction: column; }
+.buy { padding: 0 40px 10px 48px; display: flex; flex-direction: column; justify-content: center; }
 .chip { align-self: flex-start; height: 30px; padding: 0 12px; border-radius: 999px; display: inline-flex; align-items: center; background: var(--pink); color: var(--berry-deep); font-size: 13.5px; font-weight: 600; }
 .chip--leaf { background: var(--leaf); color: #fff; }
 .buy__title { margin-top: 14px; font-size: 76px; line-height: .95; letter-spacing: -.05em; }
@@ -156,7 +156,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -.03
 .stars { display: flex; gap: 1px; }
 .stars svg { width: 16px; height: 16px; fill: var(--berry); }
 
-.field { margin-top: 20px; }
+.field { margin-top: 22px; }
 .field__label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; font-size: 15px; font-weight: 600; }
 .field__val { font-size: 14px; font-weight: 400; color: var(--ink-2); }
 
