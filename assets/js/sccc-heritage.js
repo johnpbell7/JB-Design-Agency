@@ -57,7 +57,7 @@
     const buttons = [...roll.querySelectorAll('[data-filter]')];
     grid.innerHTML = MEN.map(([name, ini, service, fate]) => `
       <article class="sc-man${fate ? ' is-fallen' : ''}">
-        <header><h4>${esc(name)}</h4><span>${esc(ini)}</span></header>
+        <header><h4 role="presentation">${esc(name)}</h4><span>${esc(ini)}</span></header>
         <p><b>Service:</b> ${esc(service)}</p>
         ${fate ? `<p class="sc-man__fate">${esc(fate)}</p>` : ''}
       </article>`).join('');

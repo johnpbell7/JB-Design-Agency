@@ -83,7 +83,7 @@
         <div class="qa__img"><img src="${v.img}" alt=""></div>
         <div class="qa__id">
           <span class="qa__brand">${p.brand}</span>
-          <h3 id="${tid}">${p.name}</h3>
+          <h3 role="presentation" id="${tid}">${p.name}</h3>
           <div class="qa__meta"><span class="np-tag np-tag--mm">Mix &amp; Match</span></div>
           <div class="qa__price"><b>${fm(p.price)}</b><span>per can</span></div>
         </div>
@@ -275,7 +275,7 @@
       }).join('');
       bbEl.innerHTML = `<div class="bb__head">
           <div class="bb__img"><img src="${v.img}" alt="${p.brand} ${p.name} ${v.mg}mg can"><span class="pouch" data-b="${v.b}" role="img" aria-label="${v.mg}mg nicotine per pouch"><svg class="pouch__shape" viewBox="0 0 48 26" preserveAspectRatio="none" aria-hidden="true"><path d="M7 1.8C15 .4 33 .4 41 1.8c4.2.8 5.8 3.6 5.8 11.2S45.2 23.4 41 24.2c-8 1.4-26 1.4-34 0C2.8 23.4 1.2 20.6 1.2 13S2.8 2.6 7 1.8z"/></svg><span class="pouch__t"><span class="pouch__l1"><b>${v.mg}</b><small>mg</small></span><small class="pouch__l2">p/pouch</small></span></span></div>
-          <div><span class="bb__brand">${p.brand}</span><h3 class="bb__name">${p.brand} ${p.name}</h3><span class="np-tag np-tag--mm">Mix &amp; Match</span>
+          <div><span class="bb__brand">${p.brand}</span><h3 role="presentation" class="bb__name">${p.brand} ${p.name}</h3><span class="np-tag np-tag--mm">Mix &amp; Match</span>
             <div class="bb__price"><b>${fm(t.p)}</b><span>per can</span><s>${fm(p.price)}</s></div></div>
         </div>
         <div class="bb__l">Strength (mg)<span>${v.mg}mg · ${BANDS[v.b].name}</span></div>

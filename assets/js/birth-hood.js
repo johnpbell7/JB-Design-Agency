@@ -133,7 +133,7 @@
       ask.innerHTML = `<div class="quiz-progress"><div class="quiz-progress-bar" style="width:100%"></div></div>
         <div class="quiz-anim quiz-finished">
           <div class="quiz-step-count">All five answered</div>
-          <h3 class="quiz-q">Your best match is ${r.name}.</h3>
+          <h3 role="presentation" class="quiz-q">Your best match is ${r.name}.</h3>
           <p class="quiz-done">A friendly guide, confirmed together on a free call.</p>
           <button type="button" class="quiz-restart">↻ Retake the quiz</button>
         </div>`;
@@ -144,7 +144,7 @@
     ask.innerHTML = `<div class="quiz-progress"><div class="quiz-progress-bar" style="width:${(step / QUESTIONS.length) * 100}%"></div></div>
       <div class="quiz-anim">
         <div class="quiz-step-count">Question ${step + 1} of ${QUESTIONS.length}</div>
-        <h3 class="quiz-q">${esc(cur.q)}</h3>
+        <h3 role="presentation" class="quiz-q">${esc(cur.q)}</h3>
         ${cur.help ? `<p class="quiz-help">${esc(cur.help)}</p>` : ''}
         <div class="quiz-options">${cur.options.map(([label], i) => `<button type="button" class="quiz-option" data-i="${i}"><span>${esc(label)}</span><span class="quiz-option-arrow">→</span></button>`).join('')}</div>
         ${step > 0 ? '<button type="button" class="quiz-back">← Back</button>' : ''}
