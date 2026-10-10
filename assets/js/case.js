@@ -289,7 +289,7 @@
     // Auto-advances while on screen; arrows and a swipe step through it.
     const names = [...parade.querySelectorAll('.parade__caption span')].map(s => s.textContent);
     if (row && phones.length > 1) gsap.matchMedia().add('(max-width: 800px)', () => {
-      const HOLD = 6.5;
+      const HOLD = +parade.dataset.hold || 6.5; // seconds per screen; a page can set data-hold
       let cur = 0, timer = null, live = false;
       parade.classList.add('is-deck');
       phones.forEach((p, i) => p.classList.toggle('is-on', i === 0));
