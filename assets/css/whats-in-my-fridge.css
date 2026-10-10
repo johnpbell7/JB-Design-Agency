@@ -1145,3 +1145,16 @@ body { --project-pen: #f1d9c7; }
 .wf-ovphoto { aspect-ratio: 640 / 464; }
 .fa-photo { background: #efe7da; }
 .wf-box em { left: 3px; top: 3px; translate: none; border-radius: 5px; font-size: 9px; padding: 1px 5px; }
+
+/* ---------- Hierarchy: section headings stay big; titles inside the timeline are
+   smaller, with a thin underline in their colour instead of the marker ---------- */
+.wf-tl .wf-feat__copy h2, .wf-tl .wf-deep__copy h2 { font-size: clamp(28px, 3.3vw, 48px); letter-spacing: -0.035em; line-height: 1.05; }
+.wf-tl .wf-cook .wf-feat__copy h2 { font-size: clamp(30px, 3.6vw, 52px); }
+.wf-tl .wf-feat__copy .hl, .wf-tl .wf-deep__copy .hl { padding: 0; margin: 0; border-radius: 0; background-position: 0 96%; background-size: 0% 0.2em; }
+.wf-tl .wf-feat__copy .hl.is-lit, .wf-tl .wf-deep__copy .hl.is-lit, .no-js .wf-tl .wf-feat__copy .hl, .no-js .wf-tl .wf-deep__copy .hl { background-size: 100% 0.2em; }
+.wf-tl .wf-feat__copy .wf-sub, .wf-tl .wf-deep__copy .wf-sub { font-size: 14.5px; }
+/* the standout heading: room around it and a short rule before the first item */
+.wf-tl__head { padding-bottom: clamp(28px, 3vw, 44px); }
+.wf-tl__head::after { content: ""; position: relative; z-index: 2; display: block; width: 64px; height: 3px; margin-top: 18px; border-radius: 3px; background: #18181a; }
+/* the step card hugs its text */
+.wf-steptext, .wf-tl .wf-steptext { min-height: 0; }
