@@ -7,8 +7,8 @@
 <meta name="description" content="Independent estate and letting agents in Chapel Allerton, Roundhay and Headingley since 1998. Period homes for sale and to let across North Leeds.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22%3E%3Crect width=%2240%22 height=%2240%22 fill=%22%2313213a%22/%3E%3Cpath d=%22M11 33V19a9 9 0 0 1 18 0v14%22 fill=%22none%22 stroke=%22%23b4925a%22 stroke-width=%222.4%22/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-6 -2 44 44%22%3E%3Crect x=%22-6%22 y=%22-2%22 width=%2244%22 height=%2244%22 fill=%22%2313213a%22/%3E%3Cpath d=%22M1 40V16a15 15 0 0 1 30 0v24z%22 fill=%22%23cdb07a%22/%3E%3Cpath d=%22M1 17h30M16 17v23M16 17V6M16 17L8.6 9.6M16 17l7.4-7.4%22 stroke=%22%2313213a%22 stroke-width=%222.4%22/%3E%3C/svg%3E">
 <link rel="preload" as="image" href="img/hero-terrace.webp">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -16,12 +16,17 @@
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="i-mark" viewBox="0 0 40 40">
-      <rect x="1" y="1" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.6"/>
-      <path d="M11 33V19a9 9 0 0 1 18 0v14" fill="none" stroke="currentColor" stroke-width="1.6"/>
-      <path d="M11 19h18M20 10v9M14.2 12.6l5.8 6.4 5.8-6.4" fill="none" stroke="currentColor" stroke-width="1.1"/>
-      <path d="M15 33V23h10v10" fill="none" stroke="currentColor" stroke-width="1.1"/>
-      <circle cx="23" cy="28.5" r=".9" fill="currentColor"/>
+    <!-- Logo mark: a Georgian front door with a sunburst fanlight -->
+    <mask id="m-door" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="40">
+      <path d="M1 40V16a15 15 0 0 1 30 0v24z" fill="#fff"/>
+      <g fill="none" stroke="#000">
+        <path d="M0 17h32M16 17v18M0 35.5h32" stroke-width="2.2"/>
+        <path d="M16 13V3M13.2 14.2L6 7M18.8 14.2L26 7" stroke-width="1.9"/>
+      </g>
+      <path d="M11.5 17a4.5 4.5 0 0 1 9 0z" fill="#000"/>
+    </mask>
+    <symbol id="i-mark" viewBox="0 0 32 40">
+      <rect width="32" height="40" fill="currentColor" mask="url(#m-door)"/>
     </symbol>
     <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.3s-7.6-4.6-9.2-9.4C1.7 7.5 3.8 4.4 7.1 4.4c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.3 0 5.4 3.1 4.3 6.5-1.6 4.8-9.2 9.4-9.2 9.4z"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h3l1.5 4.2-2 1.5a11.5 11.5 0 0 0 5.7 5.7l1.5-2 4.2 1.5v3c0 1.1-.9 2-2 2C10.8 19.4 4.6 13.2 4.6 5.5c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
@@ -66,7 +71,7 @@
   <header class="site-header">
     <div class="wrap hdr-in">
       <a href="#" class="logo" aria-label="Harbour Lettings and Sales home">
-        <svg width="40" height="40"><use href="#i-mark"/></svg>
+        <svg class="mark" width="30" height="38" viewBox="0 0 32 40"><use href="#i-mark"/></svg>
         <span class="logo-word"><b>Harbour</b><small>Lettings &amp; Sales</small></span>
       </a>
       <nav class="nav">
@@ -241,7 +246,7 @@
 <footer class="foot">
   <div class="wrap foot-in">
     <div class="fcol brand">
-      <a href="#" class="logo dark"><svg width="34" height="34"><use href="#i-mark"/></svg><span class="logo-word"><b>Harbour</b><small>Lettings &amp; Sales</small></span></a>
+      <a href="#" class="logo dark"><svg class="mark" width="26" height="33" viewBox="0 0 32 40"><use href="#i-mark"/></svg><span class="logo-word"><b>Harbour</b><small>Lettings &amp; Sales</small></span></a>
       <p>Harbour Lettings &amp; Sales Ltd. Member of Propertymark. Client money protected. Redress through The Property Ombudsman.</p>
     </div>
     <div class="fcol"><h4>Chapel Allerton</h4><p>112 Harrogate Road, LS7 4NZ<br>0113 496 0412</p></div>

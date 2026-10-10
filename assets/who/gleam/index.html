@@ -7,7 +7,7 @@
 <meta name="description" content="Pure-water window cleaning for homes across Leeds. Fixed prices, no contract, fully insured.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="data:,">
 <link rel="preload" as="image" href="img/hero-pole.webp">
 <link rel="stylesheet" href="style.css">
@@ -19,25 +19,28 @@
     <symbol id="star" viewBox="0 0 20 20"><path d="M10 1.4l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.7l-5.4 2.9 1.2-5.9L1.4 7.6l6-.7z"/></symbol>
     <symbol id="tick" viewBox="0 0 20 20"><path d="M3.5 10.5l4.2 4.2 8.8-9.2" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></symbol>
     <symbol id="arrow" viewBox="0 0 20 20"><path d="M3 10h13M11 4.5l5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></symbol>
+    <symbol id="gleam-mark" viewBox="0 0 36 36">
+      <rect width="36" height="36" rx="10" fill="var(--m-bg, #1748E8)"/>
+      <rect x="8" y="9.5" width="19" height="18.5" rx="2.6" fill="none" stroke="var(--m-fg, #fff)" stroke-width="2.4"/>
+      <path d="M17.5 9.5V28M8 18.75h19" stroke="var(--m-fg, #fff)" stroke-width="2.4"/>
+      <path d="M11.2 16l3.4-3.4" stroke="var(--m-hi, #8FD3FF)" stroke-width="1.9" stroke-linecap="round"/>
+      <circle cx="27" cy="9.5" r="6.4" fill="var(--m-bg, #1748E8)"/>
+      <path d="M27 3.6c.5 3.3 2.6 5.4 5.9 5.9-3.3.5-5.4 2.6-5.9 5.9-.5-3.3-2.6-5.4-5.9-5.9 3.3-.5 5.4-2.6 5.9-5.9Z" fill="var(--m-hi, #8FD3FF)"/>
+    </symbol>
   </defs>
 </svg>
 
 <header class="top">
   <a class="brand" href="#" aria-label="Gleam Window Cleaning, home">
-    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
-      <rect width="32" height="32" fill="#1748E8"/>
-      <path d="M7 7h18v18H7z" fill="none" stroke="#fff" stroke-width="2.6"/>
-      <path d="M16 7v18M7 16h18" stroke="#fff" stroke-width="2.6"/>
-      <path d="M10 22.5 22.5 10" stroke="#8FD3FF" stroke-width="2.6"/>
-    </svg>
-    <span class="word">GLEAM</span>
+    <svg class="mark" aria-hidden="true"><use href="#gleam-mark"/></svg>
+    <span class="word">gleam<small>Window cleaning</small></span>
   </a>
   <nav class="top-r">
     <a class="call" href="tel:01134960412">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.4a11.5 11.5 0 0 0 6.5 6.5l1.4-2 4 1.4v2.6a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="currentColor"/></svg>
       0113 496 0412
     </a>
-    <button class="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="menu" aria-label="Menu"><span></span><span></span></button>
   </nav>
 </header>
 
@@ -188,8 +191,8 @@
 
 <footer class="foot">
   <div class="f-brand">
-    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#fff"/><path d="M7 7h18v18H7z" fill="none" stroke="#0B1B3A" stroke-width="2.6"/><path d="M16 7v18M7 16h18" stroke="#0B1B3A" stroke-width="2.6"/><path d="M10 22.5 22.5 10" stroke="#1748E8" stroke-width="2.6"/></svg>
-    <span class="word">GLEAM</span>
+    <svg class="mark" aria-hidden="true"><use href="#gleam-mark"/></svg>
+    <span class="word">gleam<small>Window cleaning</small></span>
   </div>
   <div class="f-cols">
     <div><h4>Call</h4><p>0113 496 0412</p><p>rounds@example.co.uk</p></div>

@@ -54,7 +54,7 @@
     const b = $(`[data-tab="${state.tab}"]`, tabs);
     if (!b) return;
     thumbEl.style.width = b.offsetWidth + 'px';
-    thumbEl.style.transform = `translateX(${b.offsetLeft - 14}px)`;
+    thumbEl.style.transform = `translateX(${b.offsetLeft - 18}px)`;
   }
   function setTab(t, animate = true) {
     if (t === state.tab && list.children.length) return;

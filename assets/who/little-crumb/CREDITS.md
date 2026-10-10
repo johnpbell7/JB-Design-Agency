@@ -17,4 +17,4 @@ All photographs are from Unsplash and used under the Unsplash License (free for 
 | img/t-toastie.webp | Toasted sandwich | Abbie Newton | https://unsplash.com/photos/a-sandwich-on-a-plate-being-held-by-a-person-zfrKIPc1-Nw |
 | img/t-focaccia.webp | Rosemary focaccia | Diego Arenas de Rodrigo | https://unsplash.com/photos/freshly-baked-focaccia-bread-with-herbs-kOU7kMox_2Y |
 
-Logo (wheat mark) and icons are original inline SVG.
+Logo (bitten-loaf mark) and icons are original inline SVG.
