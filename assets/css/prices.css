@@ -143,3 +143,5 @@
 .hp-card .hp-card__price em { grid-column: 2; grid-row: 2; align-self: end; margin: 0 0 4px 4px; }
 .hp-card__lead { text-wrap: wrap; max-width: none; }
 @media (max-width: 700px) { .hp-card .hp-card__price { margin-top: 14px; } .hp-card__lead { margin-top: 10px; } }
+/* the one-page + logo block a paler shade than the coloured header, so it reads as its own section */
+.hp-tiers li.is-combo { background: color-mix(in srgb, var(--pen) 18%, var(--white)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pen) 55%, transparent); }
