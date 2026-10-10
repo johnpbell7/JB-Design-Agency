@@ -935,3 +935,45 @@ body { --project-pen: #f1d9c7; }
   .wf .section { padding-block: 32px; }
   .wf .section--tight { padding-block: 22px; }
 }
+
+/* ---------- In detail, take two: each band is one card, title ~38%, demo ~62% ---------- */
+.wf-deepw { padding-block: clamp(8px, 1vw, 14px); }
+.wf-deep, .wf-deep--flip { position: relative; isolation: isolate; grid-template-columns: minmax(0, 38fr) minmax(0, 62fr); gap: clamp(20px, 3vw, 48px); align-items: center; padding: clamp(28px, 3.4vw, 52px); min-height: 560px; border-radius: var(--radius-l); overflow: hidden; }
+.wf-deep--flip { grid-template-columns: minmax(0, 62fr) minmax(0, 38fr); }
+.wf-deep::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0.5; background-image: radial-gradient(circle, #fff 1.5px, transparent 2px); background-size: 24px 24px; pointer-events: none; }
+.wf-deep--sky { background: radial-gradient(110% 120% at 85% 0%, #f6f8fd 0%, #eef2fa 60%, #dfe7f5 100%); }
+.wf-deep--sage { background: radial-gradient(110% 120% at 15% 0%, #f5f9f3 0%, #eaf3e8 60%, #dcead9 100%); }
+.wf-deep--sand { background: radial-gradient(110% 120% at 85% 0%, #faf5ec 0%, #f4ecdd 60%, #ece1cc 100%); }
+.wf-deep--blush { background: radial-gradient(110% 120% at 15% 0%, #fcf4f2 0%, #f7ebe9 60%, #f0dcd8 100%); }
+.wf-deep__copy { padding-inline: clamp(0px, 1vw, 12px); }
+.wf-deep__stage { padding: 64px 0; }
+.wf-deephead { padding-bottom: clamp(14px, 2vw, 24px); }
+/* annotation chips with a leader line to the detail they mean (placed by the script) */
+.wf-call { left: 0; top: 0; font-size: 14.5px; padding: 10px 16px 10px 11px; gap: 9px; }
+.wf-call i { width: 20px; height: 20px; }
+.wf-lead { position: absolute; left: var(--lx, 50%); top: var(--ly, 0); width: var(--ll, 0); height: 2px; background: #18181a; transform-origin: 0 50%; rotate: var(--la, 0deg); pointer-events: none; }
+.wf-lead::after { content: ""; position: absolute; right: -6px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: #18181a; box-shadow: 0 0 0 4px rgb(255 255 255 / 0.85); }
+/* demos scaled up to fill their card */
+.wf-off__phone { width: 330px; }
+.wf-off__body { min-height: 430px; }
+.wf-off__body .fa-shop { padding: 13px 14px; }
+.wf-off .wf-net > span { font-size: 15px; padding: 12px 18px; }
+.wf-a2hs { max-width: 330px; }
+.wf-a2hs .wf-sheet__row { font-size: 16px; }
+.wf-off { column-gap: 28px; }
+.wf-learn__stack .fa-item, .wf-learn__stack .fa-staples { font-size: 1.04em; }
+.wf-cal__d small { font-size: 11px; }
+@media (max-width: 1100px) {
+  .wf-fresh { grid-template-columns: minmax(0, 1fr); }
+  .wf-fresh__side { display: none; }
+  .wf-off__phone { width: 290px; }
+  .wf-deep h2 { font-size: clamp(36px, 4.2vw, 56px); }
+}
+@media (max-width: 900px) {
+  .wf-deep, .wf-deep--flip { grid-template-columns: minmax(0, 1fr); min-height: 0; padding: 22px 14px 18px; gap: 10px; }
+  .wf-deep__stage { padding: 6px 0 0; }
+  .wf-call { font-size: 12.5px; padding: 8px 13px 8px 9px; }
+  .wf-lead { display: none; }
+  .wf-off__phone { width: min(100%, 290px); }
+  .wf-off__body { min-height: 330px; }
+}

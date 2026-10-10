@@ -199,6 +199,9 @@
     </section>
 
 
+    <!-- The flow and the standout features, as one timeline down the middle -->
+    <div class="wf-tl" data-tl>
+      <span class="wf-tl__line" aria-hidden="true"><i></i></span>
     <!-- 01 Scan -->
     <section class="wf-feat wrap" id="snap">
       <div class="wf-feat__copy" data-reveal>
@@ -470,7 +473,7 @@
     </section>
 
     <!-- Standout features, in detail -->
-    <section class="wf-deephead wrap">
+    <section class="wf-deephead wrap wf-tl__head">
       <span class="label">In detail</span>
       <h2>The standout <mark class="hl" style="--pen:#f1d9c7">features.</mark></h2>
     </section>
@@ -503,9 +506,9 @@
               </ul>
             </div>
           </div>
-          <span class="wf-call" data-call="a" style="--x:4%;--y:6%;--xs:2%;--ys:-3%"><i></i>Counts from the day it went in</span>
-          <span class="wf-call" data-call="b" style="--x:40%;--y:86%;--xs:30%;--ys:92%"><i></i>Amber at 2 days left</span>
-          <span class="wf-call" data-call="c" style="--x:62%;--y:4%;--xs:40%;--ys:52%"><i></i>Freezer: 60 days or more</span>
+          <span class="wf-call" data-call="a" data-at='.wf-track__ends span'><i></i>Counts from the day it went in</span>
+          <span class="wf-call" data-call="b" data-at='.wf-track i:nth-of-type(6)'><i></i>Amber at 2 days left</span>
+          <span class="wf-call" data-call="c" data-at='[data-life="freezer"]'><i></i>Freezer: 60 days or more</span>
         </div>
       </div>
     </section>
@@ -532,9 +535,9 @@
               </div>
             </div>
           </div>
-          <span class="wf-call" data-call="a" style="--x:6%;--y:4%;--xs:2%;--ys:-3%"><i></i>3 separate days makes a usual</span>
-          <span class="wf-call" data-call="b" style="--x:58%;--y:90%;--xs:24%;--ys:95%"><i></i>Pin it, or dismiss it with ×</span>
-          <span class="wf-call" data-call="c" style="--x:64%;--y:30%;--xs:46%;--ys:58%"><i></i>One tap puts it on the list</span>
+          <span class="wf-call" data-call="a" data-at='[data-usual]'><i></i>3 separate days makes a usual</span>
+          <span class="wf-call" data-call="b" data-at='.fa-staple .fa-x'><i></i>Pin it, or dismiss it with ×</span>
+          <span class="wf-call" data-call="c" data-at='[data-ladd]'><i></i>One tap puts it on the list</span>
         </div>
       </div>
     </section>
@@ -550,9 +553,9 @@
             <div class="wf-card wf-file__list" aria-hidden="true"><h3 class="fa-title">My list</h3><p class="fa-sub" style="margin-bottom:12px"><span data-fticked>0</span> ticked off</p><div class="fa-shop" data-to="fridge"><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Milk</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div><div class="fa-shop" data-to="freezer"><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Frozen peas</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div><div class="fa-shop" data-to="pantry"><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Basmati rice</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div><div class="fa-shop" data-to="pantry"><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Tinned tomatoes</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div><div class="fa-shop" data-to="fridge"><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Spinach</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div></div>
             <div class="wf-file__dest" aria-hidden="true"><p class="wf-card__k"><svg width="14" height="14"><use href="#fa-sparkle"/></svg>Filed into My food</p><div class="fa-cat dairy wf-dest" data-dest="fridge"><svg width="19" height="19"><use href="#fa-fridge"/></svg>Fridge<b data-n="9">9</b></div><div class="fa-cat freezer wf-dest" data-dest="freezer"><svg width="19" height="19"><use href="#fa-snow"/></svg>Freezer<b data-n="1">1</b></div><div class="fa-cat bakery wf-dest" data-dest="pantry"><svg width="19" height="19"><use href="#fa-bread"/></svg>Pantry<b data-n="4">4</b></div><div class="wf-tickhead2"><svg width="15" height="15"><use href="#fa-check"/></svg>Added to New in My food</div></div>
           </div>
-          <span class="wf-call" data-call="a" style="--x:52%;--y:4%;--xs:30%;--ys:-3%"><i></i>Frozen peas go in the freezer</span>
-          <span class="wf-call" data-call="b" style="--x:56%;--y:88%;--xs:20%;--ys:95%"><i></i>Tins and rice go in the pantry</span>
-          <span class="wf-call" data-call="c" style="--x:4%;--y:90%;--xs:2%;--ys:52%"><i></i>No typing it in twice</span>
+          <span class="wf-call" data-call="a" data-at='[data-dest="freezer"]'><i></i>Frozen peas go in the freezer</span>
+          <span class="wf-call" data-call="b" data-at='[data-dest="pantry"]'><i></i>Tins and rice go in the pantry</span>
+          <span class="wf-call" data-call="c" data-at='.wf-tickhead2'><i></i>No typing it in twice</span>
         </div>
       </div>
     </section>
@@ -578,12 +581,14 @@
             <div class="wf-net" data-net><span data-neton><svg width="14" height="14"><use href="#fa-check"/></svg>Back online · synced</span><span data-netoff><i></i>No signal</span></div>
             <div class="wf-a2hs"><div class="wf-sheet__grip"></div><div class="wf-sheet__row"><svg width="20" height="20"><use href="#fa-share"/></svg>Share</div><div class="wf-sheet__row hot" data-a2hs>Add to Home Screen<svg width="20" height="20"><use href="#fa-plussq"/></svg></div></div>
           </div>
-          <span class="wf-call" data-call="a" style="--x:2%;--y:6%;--xs:2%;--ys:-3%"><i></i>Saved on the phone first</span>
-          <span class="wf-call" data-call="b" style="--x:58%;--y:2%;--xs:44%;--ys:40%"><i></i>Syncs when you’re back</span>
-          <span class="wf-call" data-call="c" style="--x:52%;--y:92%;--xs:18%;--ys:96%"><i></i>Opens full screen, like an app</span>
+          <span class="wf-call" data-call="a" data-at='[data-sync]'><i></i>Saved on the phone first</span>
+          <span class="wf-call" data-call="b" data-at='[data-net]'><i></i>Syncs when you’re back</span>
+          <span class="wf-call" data-call="c" data-at='[data-a2hs]'><i></i>Opens full screen, like an app</span>
         </div>
       </div>
     </section>
+
+    </div>
 
     <!-- The clever bits -->
     <section class="section--tight wrap">
