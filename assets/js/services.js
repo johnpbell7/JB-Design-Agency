@@ -1,36 +1,32 @@
-// Services page: the work in each service's visual pops in when it scrolls into view, the hero tiles
-// rise in, and the price-card dots follow the phone swipe row. case.js does the nav, highlighter
-// marks and [data-reveal] fades. Transforms and opacity only; nothing moves for reduced motion.
+// Services page: each service drawing fades and rises as it scrolls into view while the highlighter
+// squiggle behind it draws itself in; the price-card dots follow the phone swipe row. case.js does the
+// nav, highlighter marks and [data-reveal] fades. Transforms, opacity and stroke-dashoffset only;
+// nothing moves for reduced motion (everything simply shows).
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+  const boards = [...document.querySelectorAll('[data-draw]')];
 
-  if (hasGsap && !reduce) {
-    gsap.registerPlugin(ScrollTrigger);
-    // hero tiles: a quick stagger on load
-    gsap.from('.svc-tile', { opacity: 0, y: 26, scale: 0.94, duration: 0.8, ease: 'back.out(1.6)', stagger: 0.06, delay: 0.15, clearProps: 'opacity,transform' });
-
-    // each service visual: the board scales up a touch, then its pieces drop in one after another
-    document.querySelectorAll('.svc__media').forEach(media => {
-      const flip = !!media.closest('.svc--flip');
-      const bits = media.querySelectorAll('[data-pop], .svc__spark, .m-tea, .m-rocket');
-      gsap.set(media, { opacity: 0, x: flip ? 40 : -40 });
-      gsap.set(bits, { opacity: 0, y: 40, scale: 0.92 });
-      ScrollTrigger.create({
-        trigger: media, start: 'top 85%', once: true,
-        onEnter: () => {
-          gsap.to(media, { opacity: 1, x: 0, duration: 0.9, ease: 'expo.out' });
-          gsap.to(bits, { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: 'back.out(1.4)', stagger: 0.1, delay: 0.15 });
-        },
+  if (!reduce && 'IntersectionObserver' in window) {
+    boards.forEach(board => {
+      board.classList.add('is-pending');
+      board.querySelectorAll('.squig path').forEach(p => {
+        const len = p.getTotalLength();
+        // dash parked past the start, so the round cap doesn't show before it draws
+        p.style.strokeDasharray = `${len} ${len + 200}`;
+        p.style.strokeDashoffset = `${len + 100}`;
       });
     });
-
-    // ticks slide in after their list fades up
-    document.querySelectorAll('.svc__ticks').forEach(list => {
-      const items = list.children;
-      gsap.set(items, { opacity: 0, x: -14 });
-      ScrollTrigger.create({ trigger: list, start: 'top 88%', once: true, onEnter: () => gsap.to(items, { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out', stagger: 0.07, delay: 0.2 }) });
-    });
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const board = e.target;
+      board.classList.remove('is-pending');
+      board.querySelectorAll('.squig path').forEach(p => {
+        p.classList.add('is-drawing');
+        requestAnimationFrame(() => { p.style.strokeDashoffset = '0'; });
+      });
+      io.unobserve(board);
+    }), { rootMargin: '0px 0px -15% 0px' });
+    boards.forEach(b => io.observe(b));
   }
 
   // price cards on phones: dots follow the swipe row
