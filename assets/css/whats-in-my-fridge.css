@@ -497,3 +497,4 @@ body { --project-pen: #b9e4c9; }
 @media (prefers-reduced-motion: reduce) {
   .fa-spin, .fa-typing span, .fa-caret, .fa-nav i.pulse { animation: none !important; }
 }
+.wf-replay[hidden] { display: none; }
