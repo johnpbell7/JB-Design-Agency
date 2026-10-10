@@ -8,6 +8,36 @@
   const hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
   if (hasGsap) gsap.registerPlugin(ScrollTrigger);
 
+  // ---------- Endless loops only run while they can be seen ----------
+  // Floating pops, screens that loop-scroll their capture, drifting blobs... every
+  // repeat:-1 tween made with gsap.to/fromTo (on any page that loads this file first)
+  // is paused while its element is well off screen and picks up where it left off when
+  // it comes back, so a long page isn't animating dozens of things nobody can see.
+  if (hasGsap && 'IntersectionObserver' in window && !gsap.__jbLoops) {
+    gsap.__jbLoops = true;
+    const loops = new Map(); // element -> Set of tweens
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      const set = loops.get(e.target); if (!set) return;
+      set.forEach(t => {
+        if (!t.parent) { set.delete(t); return; } // killed
+        if (e.isIntersecting) { if (t.__off) { t.__off = false; t.resume(); } }
+        else if (!t.paused()) { t.__off = true; t.pause(); }
+      });
+    }), { rootMargin: '150px 0px' });
+    const watch = (t, v) => {
+      if (!v || v.repeat !== -1 || v.paused || v.scrollTrigger) return t;
+      t.targets().forEach(el => {
+        if (!(el instanceof Element)) return;
+        if (!loops.has(el)) { loops.set(el, new Set()); io.observe(el); }
+        loops.get(el).add(t);
+      });
+      return t;
+    };
+    const to = gsap.to, fromTo = gsap.fromTo;
+    gsap.to = function (targets, vars) { return watch(to.apply(this, arguments), vars); };
+    gsap.fromTo = function (targets, from, vars) { return watch(fromTo.apply(this, arguments), vars); };
+  }
+
   // ---------- Nav hides on scroll down, returns on scroll up ----------
   const nav = document.querySelector('.site-nav');
   let lastY = scrollY;
@@ -110,12 +140,21 @@
     const video = phone.querySelector('.screen video');
     let img = phone.querySelector('.screen img');
     if (video?.poster) { img = new Image(); img.src = video.poster; }
+    // Only the top two rows of the capture are needed: createImageBitmap crops (and decodes) them
+    // off the main thread, instead of drawImage forcing a sync decode of a whole tall page capture
     const tint = () => {
+      if ('createImageBitmap' in window) {
+        createImageBitmap(img, 0, 0, img.naturalWidth, 2).then(paint, () => paint(img)); return;
+      }
+      paint(img);
+    };
+    const paint = src => {
       try {
         const c = document.createElement('canvas');
         c.width = 8; c.height = 1;
         const ctx = c.getContext('2d', { willReadFrequently: true });
-        ctx.drawImage(img, 0, 0, img.naturalWidth, 2, 0, 0, 8, 1);
+        if (src === img) ctx.drawImage(img, 0, 0, img.naturalWidth, 2, 0, 0, 8, 1);
+        else { ctx.drawImage(src, 0, 0, src.width, src.height, 0, 0, 8, 1); src.close?.(); }
         const [r, g, b] = ctx.getImageData(4, 0, 1, 1).data;
         display.style.setProperty('--status-bg', `rgb(${r} ${g} ${b})`);
         display.style.setProperty('--status-fg', (r * 299 + g * 587 + b * 114) / 1000 > 150 ? '#111' : '#fff');
