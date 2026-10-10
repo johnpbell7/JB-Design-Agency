@@ -1509,3 +1509,10 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
   .feature::after { content: none; }
   .feature__glow { filter: none; animation: none; inset: -24% -12% 10% -2%; opacity: 0.85; }
 }
+
+/* Phones: no sticky stacking for the work cards. Overlapping sticky layers tore and
+   showed through each other on fast flicks, so on small screens they're a plain list. */
+@media (max-width: 860px) {
+  .work-stack .feature { position: relative !important; top: auto !important; transform: none !important; scale: none !important; filter: none !important; will-change: auto !important; box-shadow: none; }
+  .work-stack .feature::after { display: none !important; }
+}
