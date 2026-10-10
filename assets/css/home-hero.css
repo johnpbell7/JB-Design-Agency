@@ -623,3 +623,9 @@
 /* Headline a touch smaller (about 8%) on every screen */
 .bt-hero .bt-stage { font-size: var(--fit, min(calc(100cqi / 9.1), 18.4vh, 184px)); }
 @media (max-width: 560px) { .bt-hero .bt-stage { font-size: min(17.1vw, 81px) !important; } }
+/* phones: the intro and button sit on clean white; the work wall only starts below the button */
+@media (max-width: 560px) {
+  .bt-hero { padding-top: 84px; }
+  .bt-g1 { height: calc(24svh + 230px);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 55%, transparent 88%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 55%, transparent 88%); }
+}
