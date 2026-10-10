@@ -10,11 +10,10 @@
     heart: $('heart'), saved: $('saved'), savedN: $('savedN'),
     book: $('book'), next: $('next'), rail: $('railTrack')
   };
-  const SLIDE_W = 452;
   const PHOTO_NUMS = [1, 7, 12];
   const BOOK_HTML = el.book.innerHTML;
   const NEXT_HTML = el.next.innerHTML;
-  const CARD_SHIFT = 306 + 24;
+  const cardShift = () => { const c = el.rail.children[0]; return c.offsetWidth + (parseFloat(getComputedStyle(el.rail).columnGap) || 0); };
   let slideNow = 0;
 
   /* ---------- state helpers ---------- */
@@ -31,7 +30,7 @@
   }
   function slide(i) {
     slideNow = (i + 3) % 3;
-    el.track.style.transform = `translateX(${-SLIDE_W * slideNow}px)`;
+    el.track.style.transform = `translateX(${-el.track.parentNode.clientWidth * slideNow}px)`;
     el.dots.forEach((d, k) => d.classList.toggle('on', k === slideNow));
     el.pnum.textContent = PHOTO_NUMS[slideNow];
   }
@@ -59,7 +58,7 @@
   }
   function setRail(showNew, instant) {
     el.rail.classList.toggle('instant', !!instant);
-    el.rail.style.transform = showNew ? 'translateX(0)' : `translateX(${-CARD_SHIFT}px)`;
+    el.rail.style.transform = showNew ? 'translateX(0)' : `translateX(${-cardShift()}px)`;
   }
   function focus(field) {
     [el.fLoc, el.fBeds, el.fPrice].forEach(f => f.classList.toggle('focus', f === field));

@@ -85,7 +85,7 @@ h1 {
 .call__ico svg { width: 22px; height: 22px; transition: transform .3s; }
 .call__txt { display: flex; flex-direction: column; justify-content: center; line-height: 1.05; }
 .call__txt b { font-weight: 800; font-size: 22px; letter-spacing: -0.035em; }
-.call__txt small { font-weight: 500; font-size: 13.5px; margin-top: 3px; font-variant-numeric: tabular-nums; opacity: .78; }
+.call__txt small { font-weight: 500; font-size: 13.5px; margin-top: 3px; opacity: .78; }
 .call__go { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: rgb(18 20 23 / 0.1); justify-self: end; }
 .call__go svg { width: 20px; height: 20px; transition: transform .3s var(--ease); }
 .call__pulse { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; }
@@ -111,7 +111,7 @@ h1 {
 .st i { position: absolute; inset: 0; width: 0; overflow: hidden; transition: width .28s var(--ease); }
 .st i svg { width: 16px; height: 16px; fill: var(--hivis); display: block; }
 .rv__txt { margin-top: 2px; font-size: 13.5px; color: rgb(255 255 255 / 0.72); }
-.rv__txt b { color: #fff; font-weight: 700; font-variant-numeric: tabular-nums; }
+.rv__txt b { color: #fff; font-weight: 700; }
 .rv__badge { margin-left: auto; padding-left: 12px; border-left: 1px solid rgb(255 255 255 / 0.16); font-size: 11.5px; font-weight: 700; line-height: 1.2; color: rgb(255 255 255 / 0.85); }
 
 /* ---------- instant quote ---------- */
@@ -130,7 +130,7 @@ h1 {
 }
 .job__i { position: absolute; top: 12px; left: 11px; width: 24px; height: 24px; color: var(--ink); }
 .job b { font-weight: 700; font-size: 15px; white-space: nowrap; line-height: 1.1; letter-spacing: -0.02em; }
-.job small { font-size: 12px; color: var(--mute); line-height: 1.2; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.job small { font-size: 12px; color: var(--mute); line-height: 1.2; margin-top: 2px; }
 .job:hover { background: #e8eae6; }
 .job.on { background: var(--hivis); box-shadow: inset 0 0 0 2px var(--ink); }
 .job.on small { color: var(--ink); }
@@ -142,7 +142,7 @@ h1 {
 .qt__foot { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
 .est { display: flex; flex-direction: column; justify-content: center; line-height: 1; padding-left: 4px; }
 .est small { font-size: 12.5px; color: var(--mute); white-space: nowrap; }
-.est b { font-weight: 800; font-size: 32px; letter-spacing: -0.045em; margin-top: 5px; font-variant-numeric: tabular-nums; }
+.est b { font-weight: 800; font-size: 32px; letter-spacing: -0.045em; margin-top: 5px; }
 .est b::before { content: "from "; font-size: 14px; font-weight: 600; letter-spacing: 0; color: var(--mute); }
 .est.empty b { color: #c3c7cc; }
 .est.empty b::before { content: none; }
@@ -235,7 +235,7 @@ h1 {
 .cta-band { margin: 40px 12px 12px; padding: 26px 20px 20px; border-radius: 28px; background: var(--hivis); color: var(--ink); }
 .cta-band h2 { font-size: 32px; line-height: 1; }
 .cta-band p { margin-top: 10px; font-weight: 500; font-size: 15px; text-wrap: balance; }
-.cta-band__btn { margin-top: 18px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 60px; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 800; font-size: 22px; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.cta-band__btn { margin-top: 18px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 60px; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 800; font-size: 22px; letter-spacing: -0.03em; }
 .cta-band__btn svg { width: 20px; height: 20px; color: var(--hivis); }
 
 /* ---------- footer ---------- */
