@@ -220,7 +220,7 @@ html.nav-locked { overflow: hidden; }
   border-top: 1px solid var(--line);
   font-size: 14px; color: var(--grey-5);
 }
-.site-foot__row nav { display: flex; gap: 20px; }
+.site-foot__row nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 .site-foot__row a { text-decoration: none; }
 .site-foot__row a:hover { color: var(--ink); }
 
@@ -302,3 +302,6 @@ html.nav-locked .cta-bar { translate: 0 calc(100% + 30px); }
 .service__n, .step2__no, .qa__n, .job__n, .cp-steps b, .parade__now b { display: none !important; }
 .parade__now { padding-left: 18px !important; }
 [data-cp-film] .cp-steps button { padding-left: 20px !important; }
+.site-foot__row { flex-wrap: wrap; row-gap: 12px; min-width: 0; }
+/* a contact button that should stay on phones (pages without their own contact form) */
+@media (max-width: 680px) { a.btn.btn--keep[href$="#contact"] { display: inline-flex !important; } }

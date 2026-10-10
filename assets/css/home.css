@@ -1490,3 +1490,14 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
 .qa__inner { padding-left: 0; }
 @media (max-width: 760px) { .qa__btn { grid-template-columns: minmax(0, 1fr) 32px; } .qa__inner { padding-left: 0; } }
 @media (min-width: 901px) { .service { grid-template-columns: 96px minmax(0, 1fr) auto; } }
+
+/* Prices: six "from" tiles, each linking to its landing page */
+.home-prices__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: clamp(26px, 3vw, 40px); }
+.home-price { display: flex; justify-content: space-between; align-items: end; gap: 12px; padding: 22px 24px; border-radius: var(--radius-m); background: var(--grey-1); color: var(--ink); text-decoration: none; transition: background 0.3s, translate 0.3s var(--ease-out); }
+.home-price:hover { background: var(--grey-2); translate: 0 -3px; }
+.home-price span { font-weight: 600; font-size: 16px; letter-spacing: -0.02em; }
+.home-price b { text-align: right; font-size: clamp(26px, 2.4vw, 34px); font-weight: 700; letter-spacing: -0.05em; line-height: 1; white-space: nowrap; }
+.home-price small { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0; color: var(--grey-5); margin-bottom: 3px; }
+.home-price em { font-style: normal; font-size: 14px; font-weight: 600; letter-spacing: 0; color: var(--grey-7); }
+@media (max-width: 900px) { .home-prices__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .home-prices__grid { grid-template-columns: 1fr; } .home-price { padding: 18px 20px; } }
