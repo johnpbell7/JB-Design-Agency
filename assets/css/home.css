@@ -1499,3 +1499,10 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
 /* Work stack: the card behind dims with a cheap overlay (a scrubbed CSS filter was janky and painted black on phones) */
 .feature { --dim: 0; will-change: transform; }
 .feature::after { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: inherit; background: #000; opacity: var(--dim); pointer-events: none; }
+
+/* Phones: no sticky stacking for the work cards. Overlapping sticky layers tore and
+   showed through each other on fast flicks, so on small screens they're a plain list. */
+@media (max-width: 860px) {
+  .work-stack .feature { position: relative !important; top: auto !important; transform: none !important; scale: none !important; filter: none !important; will-change: auto !important; box-shadow: none; }
+  .work-stack .feature::after { display: none !important; }
+}
