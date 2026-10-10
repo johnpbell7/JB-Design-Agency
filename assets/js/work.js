@@ -13,6 +13,21 @@
   const stack = document.querySelector('[data-stack]');
   if (stack) {
     const cards = $$('.feature', stack);
+
+    // Phones: the sticky cards stack, but only the last few stay painted. Once a card is three
+    // deep behind the one on top it is hidden, so the phone never composites a tall pile of layers.
+    if ('IntersectionObserver' in window) {
+      const bury = (k, on) => { const c = cards[k]; if (c) c.classList.toggle('is-buried', on); };
+      cards.forEach((c, k) => {
+        if (k < 3) return;
+        new IntersectionObserver(([e]) => {
+          const small = innerWidth <= 860;
+          // card k has reached the top of the stack when its top is above ~40% of the screen
+          const above = e.boundingClientRect.top < innerHeight * 0.4;
+          bury(k - 3, small && above);
+        }, { threshold: [0, 0.25, 0.5, 0.75, 1] }).observe(c);
+      });
+    }
     cards.forEach((c, k) => c.style.setProperty('--k', k));
     if (motion) {
       cards.forEach((c, k) => {

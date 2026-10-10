@@ -590,21 +590,7 @@ body { --project-pen: #f1d9c7; }
 .wf-qr--big .wf-qr__code { width: clamp(150px, 14vw, 196px); box-shadow: 0 30px 50px -28px rgb(60 40 20 / 0.45), 0 0 0 1px #e7e0d3; }
 .wf-qr--big p { max-width: 22ch; }
 
-/* The small details: square tiles, a title each */
-.wf-close { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 0; }
-.wf-break { gap: 14px; }
-.wf-break__stage { height: auto; aspect-ratio: 1; }
-.wf-break__stage > .wf-panel { top: 0; }
-.wf-break figcaption b { font-size: 18px; }
-.wf-navbox { zoom: 1; }
-.wf-fan.is-cycle .fa-item { translate: none; rotate: 0deg; }
 @media (max-width: 760px) {
-  .wf-close { display: flex; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 4px 16px 12px; scrollbar-width: none; }
-  .wf-close::-webkit-scrollbar { display: none; }
-  .wf-break { flex: 0 0 75%; scroll-snap-align: center; }
-  .wf-break .wf-fan { zoom: 0.74; }
-  .wf-break .wf-navbox { zoom: 0.78; width: 96%; }
-  .wf-break .wf-cats { zoom: 0.74; }
 
   /* 04 The usuals: the two cards stacked and centred, a slight overlap, the panel
      cut to fit, and the toast below them */
@@ -617,3 +603,78 @@ body { --project-pen: #f1d9c7; }
   .wf-list-demo .wf-tickhead small { font-size: 10.5px; }
   .wf-list-demo .fa-toast { left: 50% !important; bottom: 16px !important; font-size: 13px; }
 }
+
+/* ---------- The clever bits: four tiles, each a piece of the app at its own size,
+   scaled to fill the tile (data-fit), playing on a loop ---------- */
+.wf-close { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 22px); }
+.wf-break { gap: 12px; }
+.wf-break figcaption b { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; }
+.wf-tile { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 26px; background: var(--fa-bg); box-shadow: inset 0 0 0 1px #e7e0d3, 0 30px 50px -34px rgb(60 40 20 / 0.45); isolation: isolate; }
+.wf-tile__ui { position: absolute; left: 0; top: 0; width: 390px; transform-origin: 0 0; overflow: hidden; }
+.wf-tile__ui .fa-title { margin: 6px 18px 12px; font-size: 32px; }
+.wf-tile__ui .fa-seg { margin: 0 18px 14px; }
+.wf-ttoast { bottom: 22px; }
+@media (max-width: 1100px) { .wf-close { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .wf-close { display: flex; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 4px 16px 14px; scrollbar-width: none; }
+  .wf-close::-webkit-scrollbar { display: none; }
+  .wf-break { flex: 0 0 80%; scroll-snap-align: center; }
+}
+/* Step-by-step: the method sheet */
+.wf-method { padding: 6px 22px 0; background: var(--fa-surface); }
+.wf-grip { width: 44px; height: 5px; border-radius: 9px; background: var(--fa-line-strong); margin: 6px auto 14px; }
+.wf-m-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.wf-m-head h4 { margin: 0; font: 600 25px/1.15 var(--fa-display); letter-spacing: -0.02em; }
+.wf-serves { display: flex; align-items: center; gap: 10px; margin: 14px 0 6px; font-size: 14px; color: var(--fa-ink-soft); }
+.wf-stepper { display: inline-flex; align-items: center; gap: 12px; }
+.wf-stepper i { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--fa-line-strong); background: var(--fa-surface); color: var(--fa-accent-press); display: grid; place-items: center; font: 400 20px/1 var(--fa-sans); font-style: normal; }
+.wf-stepper b { display: inline-block; min-width: 18px; text-align: center; font-size: 18px; color: var(--fa-ink); font-variant-numeric: tabular-nums; }
+.wf-m-time { margin: 0 0 12px; font-size: 13.5px; color: var(--fa-ink-faint); }
+.wf-method h5 { margin: 0 0 8px; font: 600 18px/1.2 var(--fa-display); }
+.wf-steps { margin: 0; padding: 0; list-style: none; counter-reset: st; display: grid; gap: 7px; }
+.wf-steps li { counter-increment: st; position: relative; padding: 10px 12px 10px 46px; border-radius: 14px; font-size: 14.5px; line-height: 1.4; color: var(--fa-ink-soft); background: var(--fa-surface-2); transition: background 0.35s, color 0.35s; }
+.wf-steps li::before { content: counter(st); position: absolute; left: 12px; top: 9px; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--fa-surface); color: var(--fa-ink-soft); font: 700 12px/1 var(--fa-sans); transition: background 0.35s, color 0.35s; }
+.wf-steps li.on { background: var(--fa-accent-soft); color: var(--fa-ink); box-shadow: inset 3px 0 0 var(--fa-accent); }
+.wf-steps li.on::before, .wf-steps li.done::before { background: var(--fa-accent); color: var(--fa-on-accent); }
+.wf-steps li.done { color: var(--fa-ink-faint); }
+.wf-safety { display: flex; gap: 6px; margin: 12px 0 0; font-size: 11.5px; line-height: 1.45; color: var(--fa-ink-faint); }
+.wf-safety svg { flex: none; margin-top: 2px; color: var(--fa-warn); }
+/* Saved meals: a stack of cards */
+.wf-mstack { position: relative; margin: 0 18px; height: 290px; }
+.wf-mcard { position: absolute; left: 0; right: 0; top: 0; padding: 14px 15px 12px; border-radius: 18px; background: var(--fa-surface); border: 1px solid var(--fa-line); box-shadow: 0 2px 4px rgb(60 40 10 / 0.05), 0 18px 30px -18px rgb(60 40 10 / 0.35); transform-origin: 50% 0; }
+.wf-mcard__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.wf-mcard h4 { margin: 0 0 4px; font: 600 17px/1.25 var(--fa-display); }
+.wf-mcard p { margin: 0 0 5px; font-size: 13.5px; line-height: 1.4; }
+.wf-mcard .fa-uses { font-size: 12px; color: var(--fa-ink-faint); }
+.wf-mcard__foot { display: flex; align-items: center; gap: 7px; margin-top: 11px; padding-top: 10px; border-top: 1px solid var(--fa-line); }
+.wf-cooked { display: inline-flex; align-items: center; gap: 5px; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--fa-line-strong); font-size: 12.5px; font-weight: 600; color: var(--fa-ink-soft); transition: background 0.2s, color 0.2s; }
+.wf-cooked.on { background: var(--fa-accent); color: var(--fa-on-accent); border-color: var(--fa-accent); }
+.wf-mcard__foot small { margin-left: auto; font-size: 11.5px; color: var(--fa-ink-faint); white-space: nowrap; }
+/* Freeze it */
+.wf-freeze .fa-cat, .wf-fz-list { margin-inline: 16px; }
+.wf-fz-cat { margin-top: 6px; font-size: 16px; padding: 9px 13px; }
+.wf-fz-list { display: grid; gap: 8px; margin-block: 8px 10px; }
+.wf-fz-list .fa-item { box-shadow: 0 1px 2px rgb(60 40 10 / 0.05); }
+.wf-fz-slot { height: 0; }
+.fa-tag.freezer-t { background: #e7f0f8; color: #3d6f99; }
+.wf-freeze .fa-exp em { font-style: normal; }
+/* Coach tips */
+.wf-coachbox { position: relative; margin: 0 16px; height: 128px; }
+.wf-coachbox .coach-tip { position: absolute; inset: 0 0 auto; display: flex; gap: 10px; align-items: flex-start; background: var(--fa-accent-soft); border: 1px solid #cfe5d6; border-left: 3px solid var(--fa-accent); border-radius: 14px; padding: 12px 12px 12px 13px; box-shadow: 0 10px 24px -14px rgb(30 60 40 / 0.45); }
+.coach-ico { font-size: 19px; line-height: 1.25; flex: none; }
+.coach-body { flex: 1; min-width: 0; }
+.coach-title { display: block; font-size: 14.5px; font-weight: 700; color: var(--fa-ink); }
+.coach-text { margin: 2px 0 0; font-size: 13px; line-height: 1.45; color: var(--fa-accent-press); }
+.coach-x { flex: none; color: var(--fa-accent-press); opacity: 0.6; }
+.wf-ghost { display: grid; gap: 9px; margin: 14px 16px 0; }
+.wf-ghost i { height: 54px; border-radius: 14px; background: var(--fa-surface); border: 1px solid var(--fa-line); }
+.wf-cdots { position: absolute; left: 0; right: 0; bottom: 86px; display: flex; justify-content: center; gap: 6px; }
+.wf-cdots i { width: 7px; height: 7px; border-radius: 50%; background: var(--fa-line-strong); transition: background-color 0.3s, transform 0.3s; }
+.wf-cdots i.on { background: var(--fa-accent); transform: scale(1.3); }
+.wf-tnav span { transition: color 0.3s; }
+/* Static fallbacks (reduced motion / no JS): the stack and the first tip */
+.wf-mcard:nth-child(1) { z-index: 3; }
+.wf-mcard:nth-child(2) { z-index: 2; transform: translateY(26px) scale(0.94); }
+.wf-mcard:nth-child(3) { z-index: 1; transform: translateY(52px) scale(0.88); }
+.wf-coachbox .coach-tip:not(:first-child) { visibility: hidden; }
+.wf-freeze .fa-toast { font-size: 13px; }
