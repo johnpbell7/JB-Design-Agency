@@ -402,51 +402,107 @@
     };
   });
 
-  // ---------- Phones: the screen deck (case.js) gets a walkthrough feel ----------
-  // Each screen settles in and drifts as it's read, a line says what it does, dots
-  // show where you are, and a touch holds it still for a moment.
+  // ---------- Phones: the screen parade comes alive ----------
+  // Each phone plays a short walkthrough over its real screenshot, as if someone were
+  // using it: a flick that scrolls the list and bounces back, then a tap on the thing that
+  // matters there (a ripple, the row or chip lighting up, a toast). In the phone deck
+  // (case.js, phones) the showing phone plays; on desktop they all play, out of step.
+  // Positions are percentages of the screenshot.
+  const WALK = {
+    home: { tap: [72, 50], ring: [51, 42.5, 44, 14.5] },
+    fridge: { tap: [64, 37], ring: [4, 33.4, 92, 7], toast: 'Added to your shopping list' },
+    'scan-check': { tap: [9, 69.5], ring: [4, 65.6, 92, 8.4] },
+    tonight: { tap: [19, 42.5], ring: [11.5, 40.6, 15, 4], toast: 'Garlic is on your list' },
+  };
   const parade = $('[data-parade]');
+  if (parade && hasGsap && !reduce) {
+    const phones = $$('.parade__row > .phone', parade);
+    const walks = phones.map((phone, i) => {
+      const shot = $('.screen img', phone);
+      const key = (shot?.getAttribute('src') || '').replace(/^.*\/|\.webp$/g, '');
+      const w = WALK[key];
+      if (!w) return null;
+      const live = document.createElement('div');
+      live.className = 'wf-live fa'; live.setAttribute('aria-hidden', 'true');
+      live.innerHTML = `<div class="wf-live__body"><img src="${shot.getAttribute('src')}" alt="" width="511" height="1080" decoding="async"></div>
+        <i class="wf-live__ring" style="left:${w.ring[0]}%;top:${w.ring[1]}%;width:${w.ring[2]}%;height:${w.ring[3]}%"></i>
+        <i class="wf-live__ripple" style="left:${w.tap[0]}%;top:${w.tap[1]}%"></i>
+        <i class="wf-live__finger"></i>
+        ${w.toast ? `<span class="wf-live__toast"><svg width="14" height="14"><use href="#fa-check"/></svg>${w.toast}</span>` : ''}`;
+      $('.screen', phone).append(live);
+      const body = $('.wf-live__body img', live), finger = $('.wf-live__finger', live);
+      const ring = $('.wf-live__ring', live), ripple = $('.wf-live__ripple', live), toast = $('.wf-live__toast', live);
+      gsap.set([ring, ripple, finger, toast].filter(Boolean), { autoAlpha: 0 });
+      const tl = gsap.timeline({ paused: true, repeat: -1, repeatDelay: 0.5 });
+      // a flick up the screen: the list scrolls and rubber-bands back
+      tl.set(finger, { left: '52%', top: '78%', xPercent: -50, yPercent: -50, scale: 1 }, 0)
+        .to(finger, { autoAlpha: 1, duration: 0.2 }, 0.3)
+        .to(finger, { top: '46%', duration: 0.55, ease: 'power2.out' }, 0.5)
+        .to(body, { yPercent: -7, duration: 0.55, ease: 'power2.out' }, 0.5)
+        .to(finger, { autoAlpha: 0, duration: 0.2 }, 1.0)
+        .to(body, { yPercent: 0, duration: 0.8, ease: 'back.out(1.6)' }, 1.15)
+        // then a tap on the thing that matters on this screen
+        .set(finger, { left: `${w.tap[0] + 6}%`, top: `${w.tap[1] + 10}%` }, 1.9)
+        .to(finger, { autoAlpha: 1, left: `${w.tap[0]}%`, top: `${w.tap[1]}%`, duration: 0.5, ease: 'power3.out' }, 1.9)
+        .to(finger, { scale: 0.78, duration: 0.12, yoyo: true, repeat: 1 }, 2.45)
+        .fromTo(ripple, { autoAlpha: 0.55, scale: 0.2 }, { autoAlpha: 0, scale: 1, duration: 0.6, ease: 'power2.out' }, 2.5)
+        .fromTo(ring, { autoAlpha: 0, scale: 1.08 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2)' }, 2.55)
+        .to(finger, { autoAlpha: 0, duration: 0.25 }, 2.8);
+      if (toast) tl.fromTo(toast, { autoAlpha: 0, yPercent: 60 }, { autoAlpha: 1, yPercent: 0, duration: 0.4, ease: 'back.out(2)' }, 2.9)
+        .to(toast, { autoAlpha: 0, yPercent: 30, duration: 0.3 }, 4.5);
+      tl.to(ring, { autoAlpha: 0, duration: 0.35 }, 4.6).to({}, { duration: 0.2 }, 4.95);
+      return { tl, delay: i * 1.3 };
+    });
+    let inView = false, deck = false;
+    const playing = () => walks.forEach((w, i) => {
+      if (!w) return;
+      const on = inView && (!deck || phones[i].classList.contains('is-on'));
+      if (on && !w.tl.isActive()) {
+        if (deck) w.tl.restart(); else if (!w.started) { w.started = true; w.tl.restart(true); w.tl.delay?.(w.delay); gsap.delayedCall(w.delay, () => inView && w.tl.play()); w.tl.pause(); }
+        else w.tl.play();
+      } else if (!on) { w.tl.pause(); if (deck) { w.tl.progress(0).pause(); } }
+    });
+    new IntersectionObserver(([e]) => { inView = e.isIntersecting; playing(); }, { threshold: 0.25 }).observe(parade);
+    const mo = new MutationObserver(() => { deck = parade.classList.contains('is-deck'); playing(); });
+    mo.observe(parade, { attributes: true, attributeFilter: ['class'] });
+    phones.forEach(p => mo.observe(p, { attributes: true, attributeFilter: ['class'] }));
+    deck = parade.classList.contains('is-deck');
+  }
+
+  // Phones: under the deck, a line on what the screen does and dots for where you are;
+  // a touch holds the deck still, and it carries on a moment after letting go
   if (parade && hasGsap && !reduce) gsap.matchMedia().add(MOBILE, () => {
     const phones = $$('.parade__row > .phone', parade);
     const spans = $$('.parade__caption span', parade);
-    const deck = $('.parade__deck', parade);
-    if (!deck || phones.length < 2) return;
-    const HOLD = +parade.dataset.hold || 6.5;
+    const deckEl = $('.parade__deck', parade);
+    if (!deckEl || phones.length < 2) return;
     const info = document.createElement('div');
     info.className = 'wf-deck-info'; info.setAttribute('aria-hidden', 'true');
     info.innerHTML = `<p></p><span class="wf-dots">${phones.map(() => '<i></i>').join('')}</span>`;
-    deck.after(info);
-    const line = $('p', info), dots = $$('.wf-dots i', info), bar = $('.parade__now em', deck);
+    deckEl.after(info);
+    const line = $('p', info), dots = $$('.wf-dots i', info), bar = $('.parade__now em', deckEl);
     let cur = -1;
-    const enter = k => {
-      const img = $('.screen img', phones[k]);
-      gsap.killTweensOf(img, 'scale,yPercent,autoAlpha');
-      gsap.timeline()
-        .fromTo(img, { scale: 1.16, yPercent: 0, autoAlpha: 0.2 }, { scale: 1.04, autoAlpha: 1, duration: 0.9, ease: 'expo.out', transformOrigin: '50% 0%' }, 0.15)
-        .to(img, { scale: 1.06, yPercent: -4, duration: HOLD - 1.2, ease: 'sine.inOut' }, 1.05);
+    const look = () => {
+      const k = phones.findIndex(p => p.classList.contains('is-on') && !p.classList.contains('is-leaving'));
+      if (k < 0 || k === cur) return;
+      cur = k;
       line.textContent = spans[k]?.dataset.line || '';
       gsap.fromTo(line, { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, delay: 0.15, ease: 'expo.out', overwrite: true });
       dots.forEach((d, i) => d.classList.toggle('on', i === k));
     };
-    const look = () => {
-      const k = phones.findIndex(p => p.classList.contains('is-on') && !p.classList.contains('is-leaving'));
-      if (k > -1 && k !== cur) { cur = k; enter(k); }
-    };
     const mo = new MutationObserver(look);
     phones.forEach(p => mo.observe(p, { attributes: true, attributeFilter: ['class'] }));
     look();
-    // a swipe or a held finger pauses the clock; it carries on a moment after letting go
     const row = $('.parade__row', parade);
     let resume = null;
     const clock = () => gsap.getTweensOf(bar)[0];
     const hold = () => { resume?.kill(); clock()?.pause(); };
-    const release = () => { resume?.kill(); clock()?.pause(); resume = gsap.delayedCall(1.6, () => { const t = clock(); if (t && row.getBoundingClientRect().bottom > 0 && row.getBoundingClientRect().top < innerHeight) t.play(); }); };
+    const release = () => { resume?.kill(); clock()?.pause(); resume = gsap.delayedCall(1.6, () => { const r = row.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) clock()?.play(); }); };
     row.addEventListener('touchstart', hold, { passive: true });
     row.addEventListener('touchend', release, { passive: true });
     return () => {
       mo.disconnect(); resume?.kill(); info.remove();
       row.removeEventListener('touchstart', hold); row.removeEventListener('touchend', release);
-      phones.forEach(p => gsap.set($('.screen img', p), { clearProps: 'scale,yPercent,opacity,visibility' }));
     };
   });
 
