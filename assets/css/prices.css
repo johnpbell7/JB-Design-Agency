@@ -74,9 +74,12 @@
 .hp-incl { margin-bottom: 22px; }
 @media (max-width: 700px) { .hp-card__lead { min-height: 0; } }
 
-/* the slim "need a logo too?" bar under the one-page site */
-.hp-tiers li.is-bar { margin: 0 -4px 8px; padding: 10px 12px; align-items: center; border-radius: 12px; border-top: 0; background: color-mix(in srgb, var(--pen) 70%, var(--white)); box-shadow: inset 0 0 0 1px rgb(24 24 26 / 0.08); }
-.hp-tiers li.is-bar + li { border-top: 0; }
-.hp-tiers li.is-bar span { font-size: 13.5px; }
-.hp-tiers li.is-bar small { font-size: 12px; opacity: 0.7; }
-.hp-tiers li.is-bar b { font-size: 15px; padding-top: 0; }
+/* one-page site with its logo bundle, as one block */
+.hp-tiers li.is-combo { display: grid; gap: 0; margin: 4px -6px 8px; padding: 0; border-radius: 14px; border-top: 0; overflow: hidden; background: color-mix(in srgb, var(--pen) 45%, var(--white)); box-shadow: inset 0 0 0 1px rgb(24 24 26 / 0.08); }
+.hp-tiers li.is-combo + li { border-top: 0; }
+.hp-tiers li.is-combo > div { display: flex; justify-content: space-between; align-items: start; gap: 12px; padding: 13px 12px; }
+.hp-tiers li.is-combo > .is-deal { margin: 0 6px 6px; border-radius: 10px; background: #18181a; color: #fff; }
+.hp-tiers li.is-combo > .is-deal small { opacity: 0.7; }
+.hp-tiers li.is-combo > .is-deal em { justify-self: start; margin-bottom: 4px; padding: 3px 9px; border-radius: 999px; background: var(--hl-yellow); color: #18181a; font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: 0.02em; }
+.hp-tiers li.is-combo > .is-deal b { display: grid; justify-items: end; line-height: 1.05; }
+.hp-tiers li.is-combo > .is-deal s { font-size: 13px; font-weight: 600; opacity: 0.55; letter-spacing: 0; }
