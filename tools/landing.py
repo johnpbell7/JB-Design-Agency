@@ -24,18 +24,18 @@ AREAS = ['Birmingham', 'Sutton Coldfield', 'Solihull', 'Lichfield', 'Tamworth', 
 
 # "How it works" steps: one set per page, so the pages don't repeat each other
 WEB_STEPS = [('A quick chat', 'You tell me about your business and what the site needs to do, and I send you a fixed quote.'), ('Designs first', 'You see the designs on a laptop and a phone before anything gets built.'),
-             ('Built and checked', 'I build it, test it on phones and computers, and set it up for Google.'), ('Live, and looked after', 'It goes live, and I’m still around when you need something changing.')]
-LEI_STEPS = [('Let’s talk', 'On a call, or in person if you’re nearby. Afterwards I send you a fixed quote.'), ('See it before it’s built', 'I show you the designs on both a laptop and a phone, so nothing gets built until you’ve had a proper look.'),
-             ('Built and tested', 'I build the site, check it on phones and computers, and do the setup Google looks for.'), ('Launch, then support', 'Once it’s live I don’t disappear. If something needs changing, send me a message.')]
+             ('Built and checked', 'Built, tested on phones and computers, and set up for Google.'), ('Live, and looked after', 'It goes live, with help on hand whenever you need something changing.')]
+LEI_STEPS = [('Let’s talk', 'On a call, or in person if you’re nearby. Afterwards you get a fixed quote.'), ('See it before it’s built', 'You see the designs on both a laptop and a phone, so nothing gets built until you’ve had a proper look.'),
+             ('Built and tested', 'The site is built, checked on phones and computers, and given the setup Google looks for.'), ('Launch, then support', 'Support carries on once it’s live. If something needs changing, send me a message.')]
 GFX_STEPS = [('A quick chat', 'You tell me about your business and who you want to reach, and I send you a fixed quote.'), ('First ideas', 'Usually three different directions, so you have a real choice to react to.'),
-             ('Refine it together', 'We take your favourite and work on it until it feels right. Two rounds of changes are included.'), ('Files and print', 'You get every file you need for print and screen, and I can arrange the printing too.')]
+             ('Refine it together', 'We take your favourite and work on it until it feels right. Two rounds of changes are included.'), ('Files and print', 'You get every file you need for print and screen, with printing arranged if you want it.')]
 
-WEB_SVCS = [('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and local services.'), ('Online shops', 'Small Shopify shops for independents. For bigger stores, I design every page and hand the designs to your developer.'),
-            ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup (SEO) that Google looks for.'), ('Changes without the hassle', 'A one-page site needs no upkeep: I make changes for you, or add your own editor for £150. Bigger sites come with an editor included.'),
-            ('Redesigns', 'If your current site is looking tired, I’ll make a fresher, faster version and keep the parts that work.'), ('Care and updates', 'Changes, new pages and help after launch, whenever you need it.')]
-LEI_SVCS = [('Websites for local businesses', 'For the cafés, salons, clinics, trades and village shops around Leicestershire, from a single page to a full site.'), ('Shopify shops', 'Online shops for independents, set up on Shopify. For a bigger operation, I design the pages and your developer builds them.'),
-            ('Found on Google', 'Quick pages and the right setup behind the scenes, so people searching locally for what you do can find you.'), ('Updating your site', 'On a one-pager I make the changes for you, or add your own editor for £150. Bigger sites have an editor built in.'),
-            ('Redesigns', 'A fresher, faster version of the site you already have, keeping whatever is working.'), ('Support after launch', 'I’m on hand for changes and new pages once you’re live.')]
+WEB_SVCS = [('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and local services.'), ('Online shops', 'Small Shopify shops for independents. For bigger stores, every page designed and ready for your developer.'),
+            ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup (SEO) that Google looks for.'), ('Changes without the hassle', 'A one-page site needs no upkeep: changes are made for you, or add your own editor for £150. Bigger sites come with an editor included.'),
+            ('Redesigns', 'If your current site is looking tired, you get a fresher, faster version that keeps the parts that work.'), ('Care and updates', 'Changes, new pages and help after launch, whenever you need it.')]
+LEI_SVCS = [('Websites for local businesses', 'For the cafés, salons, clinics, trades and village shops around Leicestershire, from a single page to a full site.'), ('Shopify shops', 'Online shops for independents, set up on Shopify. For a bigger operation, the pages are designed for your developer to build.'),
+            ('Found on Google', 'Quick pages and the right setup behind the scenes, so people searching locally for what you do can find you.'), ('Updating your site', 'On a one-pager, changes are made for you, or add your own editor for £150. Bigger sites have an editor built in.'),
+            ('Redesigns', 'A fresher, faster version of the site you already have, keeping whatever is working.'), ('Support after launch', 'Help with changes and new pages once you’re live.')]
 GFX_SVCS = [('Logo design', 'Logos that work tiny on a phone screen and large on a banner, in colour and in black and white.'), ('Brand identity', 'Colours, fonts and a few simple rules, so everything you put out looks like it comes from the same business.'),
             ('Brochures and reports', 'Well-organised layouts for brochures, annual reports and newsletters that lead the reader to the parts that matter.'), ('Business cards and flyers', 'Business cards, flyers and leaflets for promotions, events and letterbox drops.'),
             ('Large format and signage', 'Shop signs, banners and roller banners, vehicle graphics and site boards.'), ('Packaging and labels', 'Boxes, labels and tins that get noticed on a crowded shelf.')]
@@ -152,7 +152,7 @@ def page(p):
     </section>
 
     <section class="lp-sec wrap lp-areas">
-      <h2>{p.get("areas_h", "Areas I cover")}</h2>
+      <h2>{p.get("areas_h", "Areas covered")}</h2>
       <div><p>{p["areas_line"]}</p><ul class="lp-areas__list">{areas}</ul>{f'<p>{p["areas_after"]}</p>' if p.get("areas_after") else ''}</div>
     </section>
 
@@ -193,7 +193,7 @@ PAGES = [
   lede='I design and build websites for independents and small businesses, here in Birmingham and across the UK. Fast sites that work properly on a phone, show up on Google and make it straightforward for people to get in touch.',
   fact='Based in Birmingham, working UK-wide',
   intro_h='A website that earns its keep',
-  intro='<p>Most people will find you on their phone, often while they’re in the middle of something else. So I design every site for phones first, keep the pages quick to load and make the next step obvious: call, book, buy or send a message.</p><p>I’ve spent 14 years designing for agencies and in-house teams, and now I work directly with business owners. The person you speak to on day one is the same person who designs, builds and launches your site, and who’s still there after launch.</p>',
+  intro='<p>Most people will find you on their phone, often while they’re in the middle of something else. So every site is designed for phones first, with quick pages and an obvious next step: call, book, buy or send a message.</p><p>I’ve spent 14 years designing for agencies and in-house teams, and now I work directly with business owners. The person you speak to on day one is the same person who designs, builds and launches your site, and who’s still there after launch.</p>',
   svcs=WEB_SVCS, steps=WEB_STEPS, price_h='Web design prices', prices=WEB, work_h='A few of my websites', work=['birth-hood', 'patch', 'vsl', 'sccc'],
   areas_line='I’m based in Birmingham and work with businesses across the West and East Midlands, from Brum and Sutton Coldfield up to Leicester. I also work with businesses anywhere in the UK, by video call and email.',
   faqs=[('How much does a website cost in Birmingham?', 'A one-page website starts from £500, a small business site from £1,200 and a small online shop from £1,800. After a quick chat I send you a fixed quote, so you know the full price before we start.'),
@@ -245,12 +245,12 @@ PAGES = [
   lede='I’m John, a freelance web and graphic designer based in Birmingham. I design websites, online shops, logos and print for small businesses anywhere in the UK, with the whole project run over video calls, email and shared screens.',
   fact='Based in Birmingham, working UK-wide',
   intro_h='A remote web designer who’s easy to reach',
-  intro='<p>You don’t need a designer down the road. We talk on a video call, I share the designs on screen so you can see them on a laptop and a phone, and everything else happens by email. It’s quick, and it means you can work with me wherever your business is.</p><p>I’ve spent 14 years designing for agencies and in-house teams. Now I work as a freelance web designer and freelance graphic designer, directly with business owners, so the person on the first call is the one who designs, builds and launches your site, and who’s still there after launch.</p>',
-  svcs=[('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and services, designed for phones first.'), ('Online shops', 'Small Shopify shops for independents. For bigger stores, I design every page and hand the designs to your developer.'),
+  intro='<p>You don’t need a designer down the road. We talk on a video call, I share the designs on screen so you can see them on a laptop and a phone, and everything else happens by email. It’s quick, and it works wherever your business is.</p><p>I’ve spent 14 years designing for agencies and in-house teams. Now I work as a freelance web designer and freelance graphic designer, directly with business owners, so the person on the first call is the one who designs, builds and launches your site, and who’s still there after launch.</p>',
+  svcs=[('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and services, designed for phones first.'), ('Online shops', 'Small Shopify shops for independents. For bigger stores, every page designed and ready for your developer.'),
         ('Logos and branding', 'A logo, colours and fonts that make everything you put out look like it comes from the same business.'), ('Print and brochures', 'Brochures, flyers, business cards and signage, sent print-ready, with printing arranged if you like.'),
         ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup (SEO) that Google looks for.'), ('Care and updates', 'Changes, new pages and help after launch, by email whenever you need it.')],
-  steps=[('A video call', 'We talk it through on a video call at a time that suits you, and I send you a fixed quote.'), ('Designs on your screen', 'I share the designs on screen and send you a link, so you can see them on your own laptop and phone.'),
-         ('Built and checked', 'I build it, test it on phones and computers and set it up for Google, with updates by email as I go.'), ('Live, and looked after', 'It goes live, and I’m a message away when you need something changing.')],
+  steps=[('A video call', 'We talk it through on a video call at a time that suits you, and I send you a fixed quote.'), ('Designs on your screen', 'You see the designs on a shared screen, then get a link to try them on your own laptop and phone.'),
+         ('Built and checked', 'Built, tested on phones and computers and set up for Google, with updates by email along the way.'), ('Live, and looked after', 'It goes live, with help a message away whenever you need something changing.')],
   price_h='Web and graphic design prices', prices=WEB + GFX, work_h='A few of my projects', work=['patch', 'sccc', 'birdie', 'gosweet'],
   areas_h='Where I work',
   areas_line='I’m based in Birmingham and work remotely with businesses all over the UK, including:',
