@@ -218,7 +218,7 @@ h2 { font-size: 52px; line-height: 1; margin: 0; color: var(--navy); }
 @media (max-width: 600px) {
   body { font-size: 16px; }
   .wrap { width: auto; padding: 0 20px; }
-  h2 { font-size: 36px; line-height: 1.02; }
+  h2 { font-size: 36px; line-height: 1.02; text-wrap: balance; }
 
   /* utility bar */
   .util, .util-in { height: 38px; }
@@ -232,7 +232,7 @@ h2 { font-size: 52px; line-height: 1; margin: 0; color: var(--navy); }
   .hero-bg img { object-position: 62% 50%; }
   .hero-bg::after {
     background:
-      linear-gradient(180deg, rgba(10,18,36,.55) 0%, rgba(10,18,36,.2) 22%, rgba(10,18,36,.45) 55%, var(--navy) 100%);
+      linear-gradient(180deg, rgba(10,18,36,.55) 0%, rgba(10,18,36,.18) 20%, rgba(10,18,36,.62) 50%, var(--navy) 92%);
   }
   .site-header { height: 68px; padding: 0 12px 0 18px; }
   .wordmark { width: 118px; height: 26px; }
