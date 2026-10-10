@@ -97,24 +97,14 @@
 .art .wht { fill: #fff; }
 .art .wst { fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; }
 .art .hair { fill: none; stroke: var(--grey-3); stroke-width: 1.5; }
+.art .thick { stroke-width: 3; }
+.art .nss { vector-effect: non-scaling-stroke; }
 .art .type { font-family: var(--font); font-weight: 700; font-size: 96px; letter-spacing: -5px; fill: var(--ink); }
 
-/* hosting: a small status card instead of a drawing */
-.svc__media--care { display: grid; place-items: center; aspect-ratio: 5 / 4; }
-.care-card { width: min(78%, 400px); padding: 26px 28px 22px; border-radius: var(--radius-m); background: var(--white); color: var(--ink);
-  box-shadow: 0 0 0 1px var(--line), 0 30px 50px -28px rgb(24 24 26 / 0.25); }
-.care-card__h { display: flex; align-items: center; gap: 12px; padding-bottom: 14px; font-size: 16px; font-weight: 600; letter-spacing: -0.02em; }
-.care-card ul { margin: 0; padding: 0; list-style: none; }
-.care-card li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; font-size: 14.5px; border-top: 1px solid var(--line); }
-.care-card li span { color: var(--grey-7); }
-.care-card li b { font-weight: 600; white-space: nowrap; }
-.care-card li small { font-size: 12px; font-weight: 500; color: var(--grey-5); }
-.care-card__f { display: flex; align-items: center; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--grey-5); }
-.care-card__f i { width: 8px; height: 8px; border-radius: 50%; background: var(--pen); box-shadow: 0 0 0 1px rgb(24 24 26 / 0.25); }
 
 /* reveal: the drawing fades and rises, the squiggle draws itself (services.js) */
-.svc__media.is-pending .art, .svc__media.is-pending .care-card { opacity: 0; transform: translateY(24px); }
-.svc__media .art, .svc__media .care-card { transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+.svc__media.is-pending .art { opacity: 0; transform: translateY(24px); }
+.svc__media .art { transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
 .squig path.is-drawing { transition: stroke-dashoffset 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.15s; }
 
 /* ---------- Pull quote ---------- */
@@ -244,8 +234,6 @@
   .svc__body { gap: 24px; }
   .svc h2 { font-size: clamp(32px, 9vw, 40px); }
   .svc__lede { font-size: 16px; }
-  .svc__media--care { aspect-ratio: 6 / 5; }
-  .care-card { width: 86%; padding: 20px 20px 16px; }
 
   .sv-quote p { font-size: clamp(26px, 7.4vw, 34px); }
   .who-list { grid-template-columns: 1fr; }
@@ -256,7 +244,8 @@
   .sv-step .ring { grid-row: span 3; margin: 0; }
   .sv .hp-card { flex: 0 0 84%; }
   .sv .hp-card__top { padding: 18px 0 14px; }
-  .sv .hp-extras { gap: 8px 0; }
+  .sv .hp-extras { gap: 8px 20px; }
+  .sv .hp-extras span + span::before { content: none; }
   .work-row { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
     margin-inline: calc(-1 * var(--gutter)); padding: 4px var(--gutter) 8px; scroll-padding-inline: var(--gutter); }
   .work-row::-webkit-scrollbar { display: none; }
@@ -268,5 +257,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .svc__media .art, .svc__media .care-card, .squig path.is-drawing, .svc-row .i--go, .work-item__img img, .sv-link span { transition: none; }
+  .svc__media .art, .squig path.is-drawing, .svc-row .i--go, .work-item__img img, .sv-link span { transition: none; }
 }
