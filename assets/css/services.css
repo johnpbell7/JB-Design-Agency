@@ -330,3 +330,4 @@
 /* the small print, once, under all the services */
 .sv-notes { padding-block: 8px clamp(40px, 6vw, 80px); }
 .sv-notes .hp-extras { margin-top: 0; }
+.sv .site-foot__grid { margin-top: 0; border-top: 0; padding-top: 24px; }
