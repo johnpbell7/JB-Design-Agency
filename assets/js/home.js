@@ -211,9 +211,15 @@
     const tracks = $$('.tape__track, .foot-marquee__track');
     let boost = 0;
     ScrollTrigger.create({ onUpdate: self => { boost = Math.min(4, Math.abs(self.getVelocity()) / 600); } });
+    // Only touch the animations while the rate is actually changing: setting playbackRate on a
+    // running CSS animation every frame re-syncs it with the compositor, which isn't free.
+    let rate = 1;
     gsap.ticker.add(() => {
       boost *= 0.92;
-      tracks.forEach(t => t.getAnimations().forEach(a => { a.playbackRate = 1 + boost; }));
+      const r = boost < 0.01 ? 1 : Math.round((1 + boost) * 50) / 50;
+      if (r === rate) return;
+      rate = r;
+      tracks.forEach(t => t.getAnimations().forEach(a => { a.playbackRate = r; }));
     });
   }
 
@@ -691,12 +697,26 @@
   if (stack) {
     const cards = $$('.feature', stack);
     cards.forEach((c, k) => c.style.setProperty('--k', k));
-    if (hasGsap && !reduce) gsap.matchMedia().add('(min-width: 0px)', () => {
+    // The card images are lazy; once the stack is a screen or so away, load and decode them all,
+    // so nothing pops in (or leaves an unpainted hole) during a fast flick through the cards
+    const imgs = $$('img', stack);
+    const warm = () => imgs.forEach(i => { i.loading = 'eager'; i.decode?.().catch(() => {}); });
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); warm(); } }, { rootMargin: '150% 0px' });
+      io.observe(stack);
+    } else warm();
+    const mm = hasGsap && !reduce ? gsap.matchMedia() : null;
+    // Desktop: each card sinks back (scale + dim overlay) as the next slides over. Phones skip the
+    // scrub entirely and the sticky cards just stack: a scrubbed scale re-rasters a whole card
+    // every frame, and on a fast flick the GPU tiles couldn't keep up (torn, half-painted cards).
+    mm?.add('(min-width: 861px)', () => {
       cards.forEach((c, k) => {
         const next = cards[k + 1];
         if (!next) return;
         gsap.to(c, { scale: 0.95, '--dim': 0.18, ease: 'power1.in', scrollTrigger: { trigger: next, start: 'top 45%', end: 'top 110px', scrub: true } });
       });
+    });
+    mm?.add('(min-width: 0px)', () => {
       cards.forEach(c => {
         gsap.from($('.feature__laptop', c), { y: 60, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: c, start: 'top 80%', once: true } });
         gsap.from($('.feature__phone', c), { x: 60, rotation: -6, opacity: 0, duration: 1, delay: 0.15, ease: 'expo.out', scrollTrigger: { trigger: c, start: 'top 80%', once: true } });

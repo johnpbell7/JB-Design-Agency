@@ -266,11 +266,11 @@ body { --project-pen: #b9e4c9; }
    real screens; the centre one pushes between them, the pieces around it react. */
 .wf-reel, .wf-cue, .wf-hero-now, .wf-deck-info { display: none; }
 @media (max-width: 760px) {
-  .wf-stage.is-reel { margin-bottom: 30px; }
+  .wf-stage.is-reel { margin-bottom: 14px; }
   .wf-reel { display: block; position: absolute; inset: 0; overflow: hidden; background: #faf7f2; }
   .wf-reel img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; visibility: hidden; will-change: transform, opacity; }
   .wf-stage.is-reel .pop:has(.wf-pop-row) { --y-sm: 60% !important; }
-  .wf-hero-now.parade__now { display: flex; position: absolute; z-index: 6; left: 50%; top: calc(100% - 6px); translate: -50% 0; max-width: 78vw; box-shadow: 0 10px 24px -12px rgb(24 24 26 / 0.35), 0 0 0 1px rgb(24 24 26 / 0.06); visibility: hidden; }
+  .wf-hero-now.parade__now { display: flex; position: absolute; z-index: 6; left: 50%; top: calc(84% + 6px); translate: -50% 0; max-width: 78vw; box-shadow: 0 10px 24px -12px rgb(24 24 26 / 0.35), 0 0 0 1px rgb(24 24 26 / 0.06); visibility: hidden; }
   .wf-cue { display: block; position: absolute; z-index: 5; right: -1%; top: 47%; width: 0; height: 0; }
   .wf-cue > div { position: absolute; right: 0; top: 0; visibility: hidden; transform-origin: 100% 50%; filter: drop-shadow(0 14px 18px rgb(17 17 17 / 0.2)); }
   .wf-cue__chip { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; padding: 7px 12px; border-radius: 999px; background: var(--fa-surface); border: 1px solid var(--fa-line-strong); color: var(--fa-ink); font-size: 12.5px; font-weight: 700; }

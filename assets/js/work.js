@@ -17,7 +17,9 @@
     if (motion) {
       cards.forEach((c, k) => {
         const next = cards[k + 1];
-        if (next) gsap.to(c, { scale: 0.95, filter: 'brightness(0.9)', ease: 'power1.in', scrollTrigger: { trigger: next, start: 'top 45%', end: 'top 110px', scrub: true } });
+        // desktop only: on phones a scrubbed scale + filter re-rasters the whole card every frame
+        // (torn, half-painted cards on a fast flick), so there the sticky cards just stack
+        if (next) gsap.matchMedia().add('(min-width: 861px)', () => { gsap.to(c, { scale: 0.95, filter: 'brightness(0.9)', ease: 'power1.in', scrollTrigger: { trigger: next, start: 'top 45%', end: 'top 110px', scrub: true } }); });
         gsap.from(c.querySelector('.feature__laptop'), { y: 60, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: c, start: 'top 80%', once: true } });
         gsap.from(c.querySelector('.feature__phone'), { x: 60, rotation: -6, opacity: 0, duration: 1, delay: 0.15, ease: 'expo.out', scrollTrigger: { trigger: c, start: 'top 80%', once: true } });
         // brand pieces pop out with a bounce as the card settles into the stack (they float in CSS)

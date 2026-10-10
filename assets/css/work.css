@@ -408,3 +408,10 @@
   .feature__visual { aspect-ratio: 16 / 10.5; }
 }
 
+
+/* Phones: the sticky cards just stack (no scrub, see work.js); keep each card cheap to paint so a
+   fast flick never shows half-rastered tiles: one small static shadow, no blurred glow, paint contained */
+@media (max-width: 860px) {
+  .feature { box-shadow: 0 -10px 24px -18px rgb(24 24 26 / 0.45), inset 0 0 0 1px rgb(255 255 255 / 0.06); contain: paint; }
+  .feature__glow { filter: none; }
+}

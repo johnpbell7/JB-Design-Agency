@@ -1498,5 +1498,14 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
 .who-card .mini__phone .who-frame iframe { top: calc(-54 / 390 * 100cqw); }
 
 /* Work stack: the card behind dims with a cheap overlay (a scrubbed CSS filter was janky and painted black on phones) */
-.feature { --dim: 0; will-change: transform; }
+.feature { --dim: 0; }
+@media (min-width: 861px) { .feature { will-change: transform; } }
 .feature::after { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: inherit; background: #000; opacity: var(--dim); pointer-events: none; }
+/* Phones: the sticky cards just stack (no scrub, see home.js). Keep each card cheap to paint so a
+   fast flick never shows half-rastered tiles: one small static shadow, no big blurred or animated
+   glow, paint contained to the card, and no dim overlay layer. */
+@media (max-width: 860px) {
+  .feature { box-shadow: 0 -10px 24px -18px rgb(24 24 26 / 0.45), inset 0 0 0 1px rgb(255 255 255 / 0.06); contain: paint; }
+  .feature::after { content: none; }
+  .feature__glow { filter: none; animation: none; inset: -24% -12% 10% -2%; opacity: 0.85; }
+}
