@@ -176,19 +176,19 @@
     </section>
 
     <!-- Phone parade: real screens from the app -->
-    <section class="section--tight wrap">
+    <section class="section--tight wrap wf-parade-sec">
       <div class="section-head" data-reveal>
         <span class="label">Phone first</span>
         <h2>Made for <mark class="hl" style="--pen:#d9e4f3">a quick look.</mark></h2>
       </div>
-      <div class="panel parade" data-parade data-hold="5.6" style="--p-bg:#faf7f2">
+      <div class="panel parade wf-parade" data-parade data-desktop-only style="--p-bg:#faf7f2">
         <div class="parade__row">
           <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/home.webp" alt="Home: six big buttons, one for each part of the app" width="511" height="1080" loading="lazy"></div></div>
           <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/fridge.webp" alt="My food: what needs using soon, then the usuals that have run out" width="511" height="1080" loading="lazy"></div></div>
           <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/scan-check.webp" alt="Scan: the items found in a photo, ready to check before they’re added" width="511" height="1080" loading="lazy"></div></div>
           <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/tonight.webp" alt="Tonight: dinner ideas, each with what it uses and what to buy" width="511" height="1080" loading="lazy"></div></div>
         </div>
-        <div class="parade__caption" aria-hidden="true"><span data-line="Six big buttons, one for each job">Home</span><span data-line="What needs using first sits at the top">My food</span><span data-line="Tick what it found before it’s saved">Check the scan</span><span data-line="Dinner ideas from what’s already in">Tonight</span></div>
+        <div class="parade__caption" aria-hidden="true"><span>One tap for each job</span><span>Use it up first</span><span>Check what it found</span><span>Dinner from what’s in</span></div>
         <div class="pop" style="--x:3%;--y:8%;--w:clamp(210px,18vw,250px);--r:-6deg" data-from-x="100" aria-hidden="true">
           <div class="fa"><div class="fa-banner"><svg width="18" height="18"><use href="#fa-warning"/></svg><span>3 items need using soon. They’re at the top of the list.</span></div></div>
         </div>
@@ -198,13 +198,6 @@
       </div>
     </section>
 
-    <!-- The feature run -->
-    <section class="section wrap" id="how" style="padding-bottom:0">
-      <header class="wf-run-head" data-reveal>
-        <span class="label">How it works</span>
-        <h2>From the shop <mark class="hl" style="--pen:#f3d6d6">to dinner.</mark></h2>
-      </header>
-    </section>
 
     <!-- 01 Scan -->
     <section class="wf-feat wrap" id="snap">
@@ -215,6 +208,11 @@
       </div>
       <div class="wf-demo wf-scan" data-demo="scan">
         <div class="wf-panel wf-panel--sand" aria-hidden="true"></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:62%;--y:36%;--xs:58%;--ys:42%;--w:200px;--r:3deg"><div class="wf-ovphoto"><i style="left:-8%;top:8%;width:46%;height:40%;background:#7aa65a"></i><i style="left:40%;top:-6%;width:44%;height:36%;background:#f2efe6"></i><i style="left:58%;top:40%;width:40%;height:34%;background:#e98f5a"></i><i style="left:8%;top:52%;width:42%;height:34%;background:#f3d36b"></i><i style="left:34%;top:70%;width:38%;height:30%;background:#c6463c"></i>
+<b class="wf-box" style="left:8%;top:12%;width:36%;height:34%"><em>Broccoli</em></b><b class="wf-box" style="left:46%;top:6%;width:40%;height:30%"><em>Whole milk</em></b><b class="wf-box" style="left:56%;top:46%;width:38%;height:30%"><em>Salmon</em></b><b class="wf-box is-unsure" style="left:12%;top:58%;width:36%;height:30%"><em>Halloumi?</em></b></div></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:58%;--y:66%;--xs:50%;--ys:62%;--w:230px;--r:-2deg"><div class="fa-item"><div class="fa-item__main"><span class="fa-item__name">Salmon fillets <small>· 2</small></span><span class="fa-meta"><span class="fa-tag meat">Meat &amp; fish</span><span class="fa-dot"></span>Fridge</span></div></div></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:66%;--y:86%;--xs:48%;--ys:80%;--w:auto;--r:2deg"><span class="wf-ovchip is-blue"><svg width="15" height="15"><use href="#fa-snow"/></svg>Frozen berries → Freezer</span></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:4%;--y:2%;--xs:46%;--ys:2%;--w:auto;--r:-3deg"><span class="wf-ovchip is-green"><svg width="15" height="15"><use href="#fa-check"/></svg>7 items added</span></div>
         <div class="phone at-l" role="img" aria-label="The Scan screen: a photo is read, then seven items appear with a tick, a category and a quantity, Halloumi flagged as not sure, and Add 7 items files them into the fridge">
           <div class="screen"><div class="fa fa-app" data-fit aria-hidden="true">
             <div class="fa-head"><span class="fa-brand"><svg class="fa-leaf" viewBox="0 0 24 24"><use href="#fa-leafmark"/></svg><span class="fa-bt"><small>What’s in my</small><b>Fridge</b></span></span><span class="fa-head__r"><span class="fa-round"><svg width="18" height="18"><use href="#fa-home"/></svg></span><span class="fa-round"><svg width="18" height="18"><use href="#fa-info"/></svg></span></span></div>
@@ -293,6 +291,9 @@
       </div>
       <div class="wf-demo wf-receipt-demo" data-demo="receipt">
         <div class="wf-panel wf-panel--blush" aria-hidden="true"></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:40%;--y:0%;--xs:34%;--ys:-2%;--w:auto;--r:-2deg"><span class="wf-ovchip is-green"><svg width="15" height="15"><use href="#fa-clock"/></svg>Dated 8 Oct, not today</span></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:4%;--y:80%;--xs:2%;--ys:86%;--w:auto;--r:2deg"><span class="wf-ovchip "><svg width="15" height="15"><use href="#fa-close"/></svg>Carrier bag skipped</span></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:56%;--y:84%;--xs:2%;--ys:70%;--w:220px;--r:-3deg"><div class="fa-item"><div class="fa-item__main"><span class="fa-item__name">Baby spinach</span><span class="fa-meta"><span class="fa-tag produce">Produce</span><span class="fa-dot"></span>Use by 15 Oct</span></div></div></div>
         <div class="wf-receipt" aria-hidden="true">
           <span class="wf-beam" data-r="beam"></span>
           <div class="wf-receipt__top"><b>SUPERSTORE</b>08/10/26 &nbsp;18:42</div>
@@ -336,6 +337,9 @@
       </div>
       <div class="wf-demo wf-soon" data-demo="soon">
         <div class="wf-panel wf-panel--sky" aria-hidden="true"></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:58%;--y:62%;--xs:50%;--ys:58%;--w:auto;--r:-2deg"><span class="wf-ovchip is-blue"><svg width="15" height="15"><use href="#fa-snow"/></svg>Moved to the freezer</span></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:56%;--y:76%;--xs:46%;--ys:70%;--w:auto;--r:2deg"><span class="wf-ovchip is-green"><svg width="15" height="15"><use href="#fa-sparkle"/></svg>Tonight: uses the spinach</span></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:4%;--y:2%;--xs:2%;--ys:2%;--w:auto;--r:-3deg"><span class="wf-ovchip is-warn"><svg width="15" height="15"><use href="#fa-warning"/></svg>Use by Today</span></div>
         <div class="phone"><div class="screen"><img src="../assets/projects/whats-in-my-fridge/fridge.webp" alt="My food in the app: a banner saying items need using soon, then the usuals that have run out" width="511" height="1080" loading="lazy"></div></div>
         <div class="wf-pull wf-pull--rows fa">
           <div class="fa-banner" data-soon-banner><svg width="18" height="18" aria-hidden="true"><use href="#fa-warning"/></svg><span><span data-soon-count>3</span> items need using soon. They’re at the top of the list.</span></div>
@@ -359,6 +363,9 @@
       </div>
       <div class="wf-demo wf-list-demo" data-demo="usuals">
         <div class="wf-panel wf-panel--sage" aria-hidden="true"></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:62%;--y:8%;--xs:62%;--ys:-1%;--w:auto;--r:3deg"><span class="wf-ovchip "><svg width="15" height="15"><use href="#fa-pin"/></svg>Pinned: Eggs</span></div>
+        <div class="wf-ov fa " aria-hidden="true" style="--x:6%;--y:74%;--xs:2%;--ys:95%;--w:auto;--r:-2deg"><span class="wf-ovchip is-green"><svg width="15" height="15"><use href="#fa-cart"/></svg>Seen on 3 separate days</span></div>
+        <div class="wf-ov fa wf-ov--desk" aria-hidden="true" style="--x:56%;--y:24%;--xs:56%;--ys:30%;--w:210px;--r:2deg"><div class="fa-item"><div class="fa-item__main"><span class="fa-item__name">Bread</span><span class="fa-meta"><span class="fa-tag bakery">Bakery</span><span class="fa-dot"></span>Usually in the pantry</span></div></div></div>
         <div class="wf-pull wf-pull--staples fa">
           <div class="fa-staples">
             <div class="fa-staples__head"><svg width="17" height="17" aria-hidden="true"><use href="#fa-sparkle"/></svg><div><strong>Running low on the usuals</strong><p>You normally keep these, but none are in stock.</p></div></div>
@@ -386,70 +393,195 @@
       </div>
     </section>
 
-    <!-- 05 Dinner -->
-    <section class="wf-feat wrap" id="dinner">
+    <!-- 05 Dinner: the centrepiece, from the idea to the plate -->
+    <section class="wf-feat wf-cook wrap" id="dinner">
       <div class="wf-feat__copy" data-reveal>
         <span class="wf-step"><b>05</b>Dinner</span>
         <h2>Dinner from <mark class="hl" style="--pen:#f3d6d6">what’s there.</mark></h2>
-        <p class="wf-sub">Real meals from what’s in</p>
+        <p class="wf-sub">From the fridge to the plate</p>
       </div>
-      <div class="wf-demo wf-dinner" data-demo="dinner">
-        <div class="wf-panel wf-panel--teal" aria-hidden="true"></div>
-        <div class="phone" role="img" aria-label="The Ask screen: the question What can I make for dinner? is typed, the app thinks, then three meal ideas appear, each with what it uses and what to buy">
-          <div class="screen"><div class="fa fa-app" data-fit aria-hidden="true">
+      <div class="wf-acts" aria-hidden="true"><span data-actpill="1"><b>1</b>Pick a dinner<i><em></em></i></span><span data-actpill="2"><b>2</b>How to make it<i><em></em></i></span><span data-actpill="3"><b>3</b>Cooked<i><em></em></i></span></div>
+      <div class="wf-cook__stage" data-cook>
+        <div class="wf-cook__mid"><div class="wf-panel wf-panel--teal" aria-hidden="true"></div><div class="phone wf-cook__ph" role="img" aria-label="In the app: a meal idea with what it uses and what to buy, then the step-by-step recipe for four people, then the meal marked as cooked and the leftovers saved to the freezer">
+          <div class="screen"><div class="fa fa-app wf-cook__app" data-fit aria-hidden="true">
             <div class="fa-head"><span class="fa-brand"><svg class="fa-leaf" viewBox="0 0 24 24"><use href="#fa-leafmark"/></svg><span class="fa-bt"><small>What’s in my</small><b>Fridge</b></span></span><span class="fa-head__r"><span class="fa-round"><svg width="18" height="18"><use href="#fa-home"/></svg></span><span class="fa-round"><svg width="18" height="18"><use href="#fa-info"/></svg></span></span></div>
             <div class="fa-body">
-              <div data-d="scroll">
+              <div data-k="ask">
                 <h1 class="fa-title">Ask</h1>
                 <p class="fa-sub">12 items in the fridge right now.</p>
-                <div class="fa-nudge"><svg width="18" height="18"><use href="#fa-warning"/></svg><span><strong>3 items</strong> to use up soon. Pick what to cook with</span></div>
-                <div class="fa-chat" style="margin-top:14px">
-                  <div class="fa-bubble me" data-d="q" hidden><span data-d="qtext"></span></div>
-                  <div class="fa-bubble ai" data-d="typing" hidden><span class="fa-typing"><span></span><span></span><span></span></span></div>
-                  <div data-d="meals" hidden>
-                    <p class="fa-meals-intro">Here’s what you could make:</p>
-                    <div class="fa-meal" style="margin-top:8px"><div class="fa-meal__head"><h4>Creamy chicken and spinach</h4><span class="fa-meal__acts"><span class="fa-mini">How to</span><span class="fa-mini"><svg width="13" height="13"><use href="#fa-bookmark"/></svg>Save</span></span></div><p>Pan-fried thighs in a yoghurt and garlic sauce, with the spinach wilted in at the end.</p><p class="fa-uses">Uses: Chicken thighs, Spinach, Greek yoghurt</p><div class="fa-buy">To buy:<span class="fa-buy-chip" data-d="garlic"><svg class="fa-plus" width="13" height="13"><use href="#fa-plus"/></svg><svg class="fa-tick" width="13" height="13"><use href="#fa-check"/></svg>Garlic</span></div></div>
-                    <div class="fa-meal" style="margin-top:10px"><div class="fa-meal__head"><h4>Mushroom and pepper omelette</h4><span class="fa-meal__acts"><span class="fa-mini">How to</span><span class="fa-mini"><svg width="13" height="13"><use href="#fa-bookmark"/></svg>Save</span></span></div><p>A quick one for the mushrooms, with cheddar folded through.</p><p class="fa-uses">Uses: Eggs, Mushrooms, Peppers, Cheddar</p></div>
-                    <div class="fa-meal" style="margin-top:10px"><div class="fa-meal__head"><h4>Chicken and pepper rice</h4><span class="fa-meal__acts"><span class="fa-mini">How to</span><span class="fa-mini"><svg width="13" height="13"><use href="#fa-bookmark"/></svg>Save</span></span></div><p>One pan, with the tinned tomatoes and the peas from the freezer.</p><p class="fa-uses">Uses: Chicken thighs, Peppers, Basmati rice, Chopped tomatoes</p></div>
-                  </div>
+                <div class="fa-nudge" style="margin-top:12px"><svg width="18" height="18"><use href="#fa-warning"/></svg><span><strong>2 items</strong> to use up soon. Pick what to cook with</span></div>
+                <div class="fa-chat" style="margin-top:12px">
+                  <div class="fa-bubble me" data-k="q">What can I make for dinner?</div>
+                  <div class="fa-meal" data-k="meal" style="margin-top:4px"><div class="fa-meal__head"><h4>Creamy chicken and spinach</h4><span class="fa-meal__acts"><span class="fa-mini" data-k="howto">How to</span><span class="fa-mini"><svg width="13" height="13"><use href="#fa-bookmark"/></svg>Save</span></span></div><p>Pan-fried thighs in a yoghurt and garlic sauce, with the spinach wilted in at the end.</p><p class="fa-uses">Uses: Chicken thighs, Spinach, Greek yoghurt</p><div class="fa-buy">To buy:<span class="fa-buy-chip" data-k="buy"><svg class="fa-plus" width="13" height="13"><use href="#fa-plus"/></svg><svg class="fa-tick" width="13" height="13"><use href="#fa-check"/></svg><em>Garlic · 1 bulb</em></span></div></div>
+                  <div class="fa-meal" data-k="meal2"><div class="fa-meal__head"><h4>Mushroom and pepper omelette</h4><span class="fa-meal__acts"><span class="fa-mini">How to</span><span class="fa-mini"><svg width="13" height="13"><use href="#fa-bookmark"/></svg>Save</span></span></div><p>A quick one for the mushrooms, with cheddar folded through.</p><p class="fa-uses">Uses: Eggs, Mushrooms, Peppers, Cheddar</p></div>
+                </div>
+              </div>
+              <div data-k="saved" hidden>
+                <h1 class="fa-title">My food</h1>
+                <div class="fa-seg"><span>In stock</span><span>Used</span><span class="on">Meals</span></div>
+                <div class="wf-mcard wf-cook__saved"><div class="wf-mcard__head"><h4>Creamy chicken and spinach</h4><span class="fa-mini">How to</span></div><p>Pan-fried thighs in a yoghurt and garlic sauce, with the spinach wilted in at the end.</p><p class="fa-uses">Uses: Chicken thighs, Spinach, Greek yoghurt</p>
+                  <div class="wf-mcard__foot" data-k="foot"><span class="wf-cooked" data-k="cooked"><svg width="13" height="13"><use href="#fa-check"/></svg>Cooked</span><span class="wf-cooked" data-k="left"><svg width="13" height="13"><use href="#fa-fridge"/></svg>Leftovers</span><small data-k="made">Saved today</small></div>
+                  <div class="wf-mcard__foot" data-k="choose" hidden><small style="margin:0">Save leftovers to…</small><span class="wf-cooked">Fridge</span><span class="wf-cooked" data-k="frz">Freezer</span></div>
                 </div>
               </div>
             </div>
-            <div class="fa-input"><span>Ask about your fridge…</span><b><svg width="18" height="18"><use href="#fa-send"/></svg></b></div>
-            <div class="fa-nav"><span><i><svg width="23" height="23"><use href="#fa-sparkle"/></svg></i>Tonight</span><span class="on"><i><svg width="23" height="23"><use href="#fa-chat"/></svg></i>Ask</span><span><i><svg width="23" height="23"><use href="#fa-camera"/></svg></i>Scan</span><span><i><svg width="23" height="23"><use href="#fa-fridge"/></svg></i>Fridge</span><span><i data-d="listtab"><svg width="23" height="23"><use href="#fa-cart"/></svg></i>List</span></div>
+            <div class="wf-msheet" data-k="sheet">
+              <div class="wf-grip"></div>
+              <div class="wf-m-head"><h4>Creamy chicken and spinach</h4><span class="fa-round"><svg width="18" height="18"><use href="#fa-close"/></svg></span></div>
+              <div class="wf-serves">Cooking for <span class="wf-stepper"><i>−</i><b data-k="serves">2</b><i data-k="plus">+</i></span><span>people</span></div>
+              <span class="fa-btn fa-btn--primary fa-btn--block wf-update" data-k="update"><svg width="17" height="17"><use href="#fa-sparkle"/></svg>Update recipe for 4 people</span>
+              <div class="wf-writing" data-k="writing"><span class="fa-typing"><span></span><span></span><span></span></span>Writing your recipe for 4…</div>
+              <div class="wf-recipe" data-k="recipe">
+                <div data-k="rscroll">
+                  <p class="wf-m-time">⏱ 30 min · serves <span data-k="serves2">2</span></p>
+                  <h5>Ingredients</h5>
+                  <ul class="wf-ing"><li data-ing="chicken"><span>Chicken thighs</span><b data-q2="4" data-q4="8">4</b></li><li data-ing="oil"><span>Olive oil</span><b data-q2="1 tbsp" data-q4="2 tbsp">1 tbsp</b></li><li data-ing="garlic"><span>Garlic</span><b data-q2="2 cloves" data-q4="4 cloves">2 cloves</b></li><li data-ing="yoghurt"><span>Greek yoghurt</span><b data-q2="150g" data-q4="300g">150g</b></li><li data-ing="spinach"><span>Spinach</span><b data-q2="120g" data-q4="240g">120g</b></li></ul>
+                  <h5>Method</h5>
+                  <ol class="wf-steps wf-steps--sm"><li data-uses="chicken oil">Season the chicken thighs and brown them in the olive oil, skin side down.</li><li data-uses="garlic">Turn them over, add the sliced garlic and cook for a minute.</li><li data-uses="yoghurt">Take the pan off the heat and stir in the Greek yoghurt.</li><li data-uses="chicken">Simmer gently until the chicken is cooked through.</li><li data-uses="spinach">Wilt in the spinach and serve.</li></ol>
+                  <p class="wf-m-tip"><svg width="13" height="13"><use href="#fa-check"/></svg>Take the pan off the heat first, so the yoghurt doesn’t split.</p>
+                </div>
+              </div>
+            </div>
+            <span class="fa-toast wf-cook__toast" data-k="toast"><svg width="15" height="15"><use href="#fa-snow"/></svg>Saved “Creamy chicken and spinach” to your freezer</span>
+            <div class="fa-nav" data-k="nav"><span data-tab="Tonight"><i><svg width="23" height="23"><use href="#fa-sparkle"/></svg></i>Tonight</span><span data-tab="Ask" class="on"><i><svg width="23" height="23"><use href="#fa-chat"/></svg></i>Ask</span><span data-tab="Scan"><i><svg width="23" height="23"><use href="#fa-camera"/></svg></i>Scan</span><span data-tab="Fridge"><i><svg width="23" height="23"><use href="#fa-fridge"/></svg></i>Fridge</span><span data-tab="List"><i><svg width="23" height="23"><use href="#fa-cart"/></svg></i>List</span></div>
           </div></div>
-        </div>
-        <div class="wf-pull wf-pull--meal fa">
-          <div class="fa-meal" style="padding:16px 16px 14px;border-radius:18px">
-            <div class="fa-meal__head"><h4 style="font-size:18px">Creamy chicken and spinach</h4><span class="fa-meal__acts"><button type="button" class="fa-mini" data-save aria-pressed="false"><svg class="fa-off" width="13" height="13" aria-hidden="true"><use href="#fa-bookmark"/></svg><svg class="fa-tick" width="13" height="13" aria-hidden="true"><use href="#fa-check"/></svg><span>Save</span></button></span></div>
-            <p>Pan-fried thighs in a yoghurt and garlic sauce, with the spinach wilted in at the end. On the table in 30 minutes.</p>
-            <p class="fa-uses">Uses: Chicken thighs, Spinach, Greek yoghurt</p>
-            <div class="fa-buy">To buy:<button type="button" class="fa-buy-chip" data-buy aria-pressed="false"><svg class="fa-plus" width="13" height="13" aria-hidden="true"><use href="#fa-plus"/></svg><svg class="fa-tick" width="13" height="13" aria-hidden="true"><use href="#fa-check"/></svg>Garlic</button></div>
+        </div></div>
+          <div class="wf-cook__col wf-cook__col--l">
+            <div class="wf-ccard fa" data-act="1"><p class="wf-card__k"><svg width="14" height="14"><use href="#fa-fridge"/></svg>You have</p><div class="wf-hrow" data-have="chicken"><span class="wf-tickbox"><svg width="14" height="14"><use href="#fa-check"/></svg></span><div><b>Chicken thighs · 6</b><span class="fa-meta"><span class="fa-tag meat">Meat &amp; fish</span><span class="fa-exp soon"><svg width="12" height="12"><use href="#fa-clock"/></svg>Use by Tomorrow</span></span></div><span class="wf-usesup">Uses it up</span><span class="fa-used wf-hused"><svg class="fa-ring" width="15" height="15"><use href="#fa-circle"/></svg><svg class="fa-tick" width="15" height="15"><use href="#fa-check"/></svg>Used</span></div><div class="wf-hrow" data-have="spinach"><span class="wf-tickbox"><svg width="14" height="14"><use href="#fa-check"/></svg></span><div><b>Spinach</b><span class="fa-meta"><span class="fa-tag produce">Produce</span><span class="fa-exp soon"><svg width="12" height="12"><use href="#fa-clock"/></svg>Use by Today</span></span></div><span class="wf-usesup">Uses it up</span><span class="fa-used wf-hused"><svg class="fa-ring" width="15" height="15"><use href="#fa-circle"/></svg><svg class="fa-tick" width="15" height="15"><use href="#fa-check"/></svg>Used</span></div><div class="wf-hrow" data-have="yoghurt"><span class="wf-tickbox"><svg width="14" height="14"><use href="#fa-check"/></svg></span><div><b>Greek yoghurt</b><span class="fa-meta"><span class="fa-tag dairy">Dairy</span><span class="fa-exp "><svg width="12" height="12"><use href="#fa-clock"/></svg>Use by 15 Oct</span></span></div><span class="fa-used wf-hused"><svg class="fa-ring" width="15" height="15"><use href="#fa-circle"/></svg><svg class="fa-tick" width="15" height="15"><use href="#fa-check"/></svg>Used</span></div><div class="wf-hrow" data-have="oil"><span class="wf-tickbox"><svg width="14" height="14"><use href="#fa-check"/></svg></span><div><b>Olive oil</b><span class="fa-meta"><span class="fa-tag bakery">Condiments</span><span class="fa-exp "><svg width="12" height="12"><use href="#fa-clock"/></svg>In stock</span></span></div><span class="fa-used wf-hused"><svg class="fa-ring" width="15" height="15"><use href="#fa-circle"/></svg><svg class="fa-tick" width="15" height="15"><use href="#fa-check"/></svg>Used</span></div></div>
+            <div class="wf-ccard fa" data-act="2"><p class="wf-card__k"><svg width="14" height="14"><use href="#fa-receipt"/></svg>Ingredients · for <b data-k="for">2</b></p><ul class="wf-ing wf-ing--lg"><li data-ing="chicken"><span>Chicken thighs</span><b data-q2="4" data-q4="8">4</b></li><li data-ing="oil"><span>Olive oil</span><b data-q2="1 tbsp" data-q4="2 tbsp">1 tbsp</b></li><li data-ing="garlic"><span>Garlic</span><b data-q2="2 cloves" data-q4="4 cloves">2 cloves</b></li><li data-ing="yoghurt"><span>Greek yoghurt</span><b data-q2="150g" data-q4="300g">150g</b></li><li data-ing="spinach"><span>Spinach</span><b data-q2="120g" data-q4="240g">120g</b></li></ul></div>
+            <div class="wf-ccard fa" data-act="3"><p class="wf-card__k"><svg width="14" height="14"><use href="#fa-fridge"/></svg>Used up</p><div class="wf-hrow" data-used="chicken"><span class="wf-tickbox"><svg width="14" height="14"><use href="#fa-check"/></svg></span><div><b>Chicken thighs · 6</b><span class="fa-meta"><span class="fa-tag meat">Meat &amp; fish</span><span class="fa-exp soon"><svg width="12" height="12"><use href="#fa-clock"/></svg>Use by Tomorrow</span></span></div><span class="wf-usesup">Uses it up</span><span class="fa-used wf-hused"><svg class="fa-ring" width="15" height="15"><use href="#fa-circle"/></svg><svg class="fa-tick" width="15" height="15"><use href="#fa-check"/></svg>Used</span></div><div class="wf-hrow" data-used="spinach"><span class="wf-tickbox"><svg width="14" height="14"><use href="#fa-check"/></svg></span><div><b>Spinach</b><span class="fa-meta"><span class="fa-tag produce">Produce</span><span class="fa-exp soon"><svg width="12" height="12"><use href="#fa-clock"/></svg>Use by Today</span></span></div><span class="wf-usesup">Uses it up</span><span class="fa-used wf-hused"><svg class="fa-ring" width="15" height="15"><use href="#fa-circle"/></svg><svg class="fa-tick" width="15" height="15"><use href="#fa-check"/></svg>Used</span></div><div class="wf-hrow" data-used="yoghurt"><span class="wf-tickbox"><svg width="14" height="14"><use href="#fa-check"/></svg></span><div><b>Greek yoghurt</b><span class="fa-meta"><span class="fa-tag dairy">Dairy</span><span class="fa-exp "><svg width="12" height="12"><use href="#fa-clock"/></svg>Use by 15 Oct</span></span></div><span class="fa-used wf-hused"><svg class="fa-ring" width="15" height="15"><use href="#fa-circle"/></svg><svg class="fa-tick" width="15" height="15"><use href="#fa-check"/></svg>Used</span></div><div class="wf-hrow" data-used="oil"><span class="wf-tickbox"><svg width="14" height="14"><use href="#fa-check"/></svg></span><div><b>Olive oil</b><span class="fa-meta"><span class="fa-tag bakery">Condiments</span><span class="fa-exp "><svg width="12" height="12"><use href="#fa-clock"/></svg>In stock</span></span></div><span class="fa-used wf-hused"><svg class="fa-ring" width="15" height="15"><use href="#fa-circle"/></svg><svg class="fa-tick" width="15" height="15"><use href="#fa-check"/></svg>Used</span></div></div>
           </div>
-        </div>
-        <span class="wf-note wf-note--a wf-note--tap" aria-hidden="true"><i></i>Tap Garlic to add it to the list</span>
+          <div class="wf-cook__col wf-cook__col--r">
+            <div class="wf-ccard fa" data-act="1"><p class="wf-card__k"><svg width="14" height="14"><use href="#fa-cart"/></svg>You need</p>
+              <div class="fa-buy" style="margin:0 0 12px">To buy:<span class="fa-buy-chip" data-k="cbuy"><svg class="fa-plus" width="13" height="13"><use href="#fa-plus"/></svg><svg class="fa-tick" width="13" height="13"><use href="#fa-check"/></svg><em>Garlic · 1 bulb</em></span></div>
+              <div class="wf-minilist"><h4>My list</h4><div class="fa-shop"><span class="fa-box"></span><b>Lemons</b></div><div class="fa-shop" data-k="lgarlic"><span class="fa-box"></span><b>Garlic · 1 bulb</b></div></div>
+            </div>
+            <div class="wf-ccard fa wf-stepcard" data-act="2"><p class="wf-card__k"><svg width="14" height="14"><use href="#fa-sparkle"/></svg>How to make it</p>
+              <div class="wf-stepnum"><b data-k="sn">1</b><span>of 5</span><span class="wf-steptime">⏱ 30 min</span></div>
+              <div class="wf-stepbar"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="wf-steptext"><p data-step="0" data-uses="chicken oil">Season the <mark>chicken thighs</mark> and brown them in the <mark>olive oil</mark>, skin side down.</p><p data-step="1" data-uses="garlic">Turn them over, add the sliced <mark>garlic</mark> and cook for a minute.</p><p data-step="2" data-uses="yoghurt">Take the pan off the heat and stir in the <mark>Greek yoghurt</mark>.</p><p data-step="3" data-uses="chicken">Simmer gently until the <mark>chicken</mark> is cooked through.</p><p data-step="4" data-uses="spinach">Wilt in the <mark>spinach</mark> and serve.</p></div>
+            </div>
+            <div class="wf-ccard fa" data-act="3"><p class="wf-card__k"><svg width="14" height="14"><use href="#fa-bookmark"/></svg>Saved meals</p>
+              <div class="wf-done"><b>Creamy chicken and spinach</b><span class="wf-cooked on"><svg width="13" height="13"><use href="#fa-check"/></svg>Cooked</span><small data-k="cmade">Made 1× · last 10 Oct</small></div>
+              <div class="wf-leftover" data-k="cleft"><svg width="16" height="16"><use href="#fa-snow"/></svg>Leftovers saved to the freezer</div>
+            </div>
+          </div>
       </div>
     </section>
 
-    <!-- Get the app -->
-    <section class="section wrap" id="get-the-app">
-      <div class="wf-get-band" data-reveal>
-        <div class="wf-get__copy">
-          <span class="label">Try it</span>
-          <h2>Get the app <mark class="hl" style="--pen:#efe2bf">on your phone.</mark></h2>
-          <p>Open it on your phone, then add it to your home screen in three taps. It works in Safari or Chrome on iPhone, and Chrome on Android.</p>
-          <div class="wf-get__row">
-            <a class="btn wf-get__btn" href="https://app.whatsinmyfridge.co.uk" target="_blank" rel="noopener">Open the app <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wf-arrow"/></svg></a>
+    <!-- Standout features, in detail -->
+    <section class="wf-deephead wrap">
+      <span class="label">In detail</span>
+      <h2>The standout <mark class="hl" style="--pen:#f1d9c7">features.</mark></h2>
+    </section>
+    <section class="wf-deep wrap" id="detail-fresh">
+      <div class="wf-deep__copy" data-reveal>
+        <span class="wf-step wf-step--in"><b><svg width="13" height="13"><use href="#fa-sparkle"/></svg></b>In detail</span>
+        <h2>Freshness, <mark class="hl" style="--pen:#d9e4f3">worked out.</mark></h2>
+        <p class="wf-sub">No dates to type</p>
+      </div>
+      <div class="wf-deep__stage" data-deep="fresh">
+        <div class="wf-panel wf-panel--sky" aria-hidden="true"></div>
+        <div class="wf-fresh fa" role="img" aria-label="Greek yoghurt, added on 8 October: the app counts its seven days as dairy, turns amber with two days left and red when it's past its date; moved to the freezer, its window becomes at least sixty days">
+          <div class="wf-card wf-fresh__main" aria-hidden="true">
+            <p class="wf-card__k"><svg width="14" height="14"><use href="#fa-clock"/></svg>Freshness</p>
+            <div class="fa-item" data-fitem><div class="fa-item__main"><span class="fa-item__name">Greek yoghurt</span><span class="fa-meta"><span class="fa-tag dairy">Dairy</span><span class="fa-dot"></span><span data-where>Fridge</span><span class="fa-dot"></span><span class="fa-exp" data-exp><svg width="13" height="13"><use href="#fa-clock"/></svg><em>Use by 15 Oct</em></span></span></div><div class="fa-acts"><span class="fa-ibtn" data-snow><svg class="fa-snow" width="18" height="18"><use href="#fa-snow"/></svg><svg class="fa-tick" width="18" height="18"><use href="#fa-check"/></svg></span><span class="fa-used" data-usedbtn><svg class="fa-ring" width="17" height="17"><use href="#fa-circle"/></svg><svg class="fa-tick" width="17" height="17"><use href="#fa-check"/></svg>Used</span></div></div>
+            <div class="wf-fresh__now"><b data-day>Day 0</b><span class="wf-fpill" data-fpill>Fresh</span></div>
+            <div class="wf-track" data-track><span class="wf-track__fill" data-fill></span><span class="wf-track__dot" data-dot></span><i style="left:0.00%"><b>0</b></i><i style="left:11.11%"><b>1</b></i><i style="left:22.22%"><b>2</b></i><i style="left:33.33%"><b>3</b></i><i style="left:44.44%"><b>4</b></i><i style="left:55.56%"><b>5</b></i><i style="left:66.67%"><b>6</b></i><i style="left:77.78%"><b>7</b></i><i style="left:88.89%"><b>8</b></i><i style="left:100.00%"><b>9</b></i></div>
+            <div class="wf-track__ends"><span><svg width="12" height="12"><use href="#fa-plus"/></svg>Added 8 Oct</span><span data-endlabel>Dairy · 7 days</span></div>
+          </div>
+          <div class="wf-card wf-fresh__side" aria-hidden="true">
+            <p class="wf-card__k"><svg width="14" height="14"><use href="#fa-sparkle"/></svg>Shelf life by food</p>
+            <ul class="wf-life">
+              <li data-life="dairy"><span class="fa-tag dairy">Dairy</span><b>7 days</b></li>
+              <li><span class="fa-tag meat">Meat &amp; fish</span><b>7 days</b></li>
+              <li><span class="fa-tag produce">Produce</span><b>7 days</b></li>
+              <li><span class="fa-tag bakery">Bakery</span><b>5 days</b></li>
+              <li><span class="fa-tag drinks">Drinks</span><b>14 days</b></li>
+              <li data-life="freezer"><span class="fa-tag freezer-t">Freezer</span><b>60+ days</b></li>
+              <li><span class="fa-tag">Tins and jars</span><b>No countdown</b></li>
+            </ul>
           </div>
         </div>
-        <div class="wf-qr wf-qr--big">
-          <img class="wf-qr__code" src="../assets/projects/whats-in-my-fridge/app-qr.svg" alt="QR code that opens What’s in my Fridge on your phone" width="112" height="112" loading="lazy">
-          <p><b>On a computer?</b> Point your phone’s camera at the code to open it there.</p>
+        <span class="wf-call" data-call="a" style="--x:4%;--y:6%;--xs:2%;--ys:-3%"><i></i>Counts from the day it went in</span>
+        <span class="wf-call" data-call="b" style="--x:40%;--y:86%;--xs:30%;--ys:92%"><i></i>Amber at 2 days left</span>
+        <span class="wf-call" data-call="c" style="--x:62%;--y:4%;--xs:40%;--ys:52%"><i></i>Freezer: 60 days or more</span>
+      </div>
+    </section>
+    <section class="wf-deep wrap wf-deep--flip" id="detail-usuals">
+      <div class="wf-deep__copy" data-reveal>
+        <span class="wf-step wf-step--in"><b><svg width="13" height="13"><use href="#fa-sparkle"/></svg></b>In detail</span>
+        <h2>It learns <mark class="hl" style="--pen:#d3e7d9">your usuals.</mark></h2>
+        <p class="wf-sub">Three separate days</p>
+      </div>
+      <div class="wf-deep__stage" data-deep="usuals">
+        <div class="wf-panel wf-panel--sage" aria-hidden="true"></div>
+        <div class="wf-learn fa" role="img" aria-label="Milk turns up on three separate days, so the app marks it as a usual; when it's used up, Running low on the usuals offers to add it to the list">
+          <div class="wf-card wf-cal" aria-hidden="true">
+            <p class="wf-card__k"><svg width="14" height="14"><use href="#fa-milk"/></svg>Milk, over two weeks</p>
+            <div class="wf-cal__grid"><span class="wf-cal__d" data-d="0"><small>M</small></span><span class="wf-cal__d" data-d="1"><small>T</small></span><span class="wf-cal__d" data-d="2"><small>W</small></span><span class="wf-cal__d" data-d="3"><small>T</small></span><span class="wf-cal__d" data-d="4"><small>F</small></span><span class="wf-cal__d" data-d="5"><small>S</small></span><span class="wf-cal__d" data-d="6"><small>S</small></span><span class="wf-cal__d" data-d="7"><small>M</small></span><span class="wf-cal__d" data-d="8"><small>T</small></span><span class="wf-cal__d" data-d="9"><small>W</small></span><span class="wf-cal__d" data-d="10"><small>T</small></span><span class="wf-cal__d" data-d="11"><small>F</small></span><span class="wf-cal__d" data-d="12"><small>S</small></span><span class="wf-cal__d" data-d="13"><small>S</small></span></div>
+            <div class="wf-cal__count"><b data-seen>0</b><span>separate days</span><span class="wf-usual" data-usual><svg width="13" height="13"><use href="#fa-pin"/></svg>A usual</span></div>
+          </div>
+          <div class="wf-learn__stack" aria-hidden="true">
+            <div class="fa-item" data-milk><div class="fa-item__main"><span class="fa-item__name">Milk</span><span class="fa-meta"><span class="fa-tag dairy">Dairy</span><span class="fa-dot"></span><span data-where>Fridge</span><span class="fa-dot"></span><span class="fa-exp" data-exp><svg width="13" height="13"><use href="#fa-clock"/></svg><em>Use by 14 Oct</em></span></span></div><div class="fa-acts"><span class="fa-ibtn" data-snow><svg class="fa-snow" width="18" height="18"><use href="#fa-snow"/></svg><svg class="fa-tick" width="18" height="18"><use href="#fa-check"/></svg></span><span class="fa-used" data-usedbtn><svg class="fa-ring" width="17" height="17"><use href="#fa-circle"/></svg><svg class="fa-tick" width="17" height="17"><use href="#fa-check"/></svg>Used</span></div></div>
+            <div class="fa-staples" data-low>
+              <div class="fa-staples__head"><svg width="17" height="17"><use href="#fa-sparkle"/></svg><div><strong>Running low on the usuals</strong><p>You normally keep these, but none are in stock.</p></div></div>
+              <div class="fa-staple"><span class="fa-staple__i"><b>Milk</b><small>Usually in the fridge</small></span><span class="fa-staple-add" data-ladd><svg width="15" height="15"><use href="#fa-cart"/></svg><span>Add</span></span><span class="fa-x"><svg width="15" height="15"><use href="#fa-close"/></svg></span></div>
+              <div class="fa-staple"><span class="fa-staple__i"><b>Bread</b><small>Usually in the pantry</small></span><span class="fa-staple-add"><svg width="15" height="15"><use href="#fa-cart"/></svg><span>Add</span></span><span class="fa-x"><svg width="15" height="15"><use href="#fa-close"/></svg></span></div>
+            </div>
+          </div>
         </div>
+        <span class="wf-call" data-call="a" style="--x:6%;--y:4%;--xs:2%;--ys:-3%"><i></i>3 separate days makes a usual</span>
+        <span class="wf-call" data-call="b" style="--x:58%;--y:90%;--xs:24%;--ys:95%"><i></i>Pin it, or dismiss it with ×</span>
+        <span class="wf-call" data-call="c" style="--x:64%;--y:30%;--xs:46%;--ys:58%"><i></i>One tap puts it on the list</span>
+      </div>
+    </section>
+    <section class="wf-deep wrap" id="detail-file">
+      <div class="wf-deep__copy" data-reveal>
+        <span class="wf-step wf-step--in"><b><svg width="13" height="13"><use href="#fa-sparkle"/></svg></b>In detail</span>
+        <h2>The list <mark class="hl" style="--pen:#efe2bf">puts it away.</mark></h2>
+        <p class="wf-sub">Tick it off, it’s filed</p>
+      </div>
+      <div class="wf-deep__stage" data-deep="file">
+        <div class="wf-panel wf-panel--sand" aria-hidden="true"></div>
+        <div class="wf-file fa" role="img" aria-label="Ticking items off the shopping list files each one into the right place: milk and spinach into the fridge, frozen peas into the freezer, rice and tinned tomatoes into the pantry">
+          <div class="wf-card wf-file__list" aria-hidden="true"><h3 class="fa-title">My list</h3><p class="fa-sub" style="margin-bottom:12px"><span data-fticked>0</span> ticked off</p><div class="fa-shop" data-to="fridge"><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Milk</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div><div class="fa-shop" data-to="freezer"><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Frozen peas</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div><div class="fa-shop" data-to="pantry"><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Basmati rice</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div><div class="fa-shop" data-to="pantry"><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Tinned tomatoes</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div><div class="fa-shop" data-to="fridge"><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Spinach</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div></div>
+          <div class="wf-file__dest" aria-hidden="true"><p class="wf-card__k"><svg width="14" height="14"><use href="#fa-sparkle"/></svg>Filed into My food</p><div class="fa-cat dairy wf-dest" data-dest="fridge"><svg width="19" height="19"><use href="#fa-fridge"/></svg>Fridge<b data-n="9">9</b></div><div class="fa-cat freezer wf-dest" data-dest="freezer"><svg width="19" height="19"><use href="#fa-snow"/></svg>Freezer<b data-n="1">1</b></div><div class="fa-cat bakery wf-dest" data-dest="pantry"><svg width="19" height="19"><use href="#fa-bread"/></svg>Pantry<b data-n="4">4</b></div><div class="wf-tickhead2"><svg width="15" height="15"><use href="#fa-check"/></svg>Added to New in My food</div></div>
+        </div>
+        <span class="wf-call" data-call="a" style="--x:52%;--y:4%;--xs:30%;--ys:-3%"><i></i>Frozen peas go in the freezer</span>
+        <span class="wf-call" data-call="b" style="--x:56%;--y:88%;--xs:20%;--ys:95%"><i></i>Tins and rice go in the pantry</span>
+        <span class="wf-call" data-call="c" style="--x:4%;--y:90%;--xs:2%;--ys:52%"><i></i>No typing it in twice</span>
+      </div>
+    </section>
+    <section class="wf-deep wrap wf-deep--flip" id="detail-offline">
+      <div class="wf-deep__copy" data-reveal>
+        <span class="wf-step wf-step--in"><b><svg width="13" height="13"><use href="#fa-sparkle"/></svg></b>In detail</span>
+        <h2>Works offline. <mark class="hl" style="--pen:#f3d6d6">Installs like an app.</mark></h2>
+        <p class="wf-sub">Saved on the phone first</p>
+      </div>
+      <div class="wf-deep__stage" data-deep="offline">
+        <div class="wf-panel wf-panel--blush" aria-hidden="true"></div>
+        <div class="wf-off fa" aria-hidden="true">
+          <div class="wf-off__phone">
+            <div class="wf-off__bar"><b>9:41</b><span class="wf-sig" data-sig><i></i><i></i><i></i><i></i></span></div>
+            <div class="wf-off__body">
+              <div class="wf-sync" data-sync><svg width="16" height="16"><use href="#fa-warning"/></svg><span>You’re offline — changes are saved on this device and will sync when you’re back.</span></div>
+              <h3 class="fa-title">My list</h3>
+              <div class="fa-shop" data-oshop><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Lemons</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div>
+              <div class="fa-shop" data-oshop><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Garlic</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div>
+              <div class="fa-shop" data-oshop><span class="fa-box"><svg width="15" height="15"><use href="#fa-check"/></svg></span><b>Bread</b><i><svg width="17" height="17"><use href="#fa-pin"/></svg></i></div>
+            </div>
+          </div>
+          <div class="wf-net" data-net><span data-neton><svg width="14" height="14"><use href="#fa-check"/></svg>Back online · synced</span><span data-netoff><i></i>No signal</span></div>
+          <div class="wf-a2hs"><div class="wf-sheet__grip"></div><div class="wf-sheet__row"><svg width="20" height="20"><use href="#fa-share"/></svg>Share</div><div class="wf-sheet__row hot" data-a2hs>Add to Home Screen<svg width="20" height="20"><use href="#fa-plussq"/></svg></div></div>
+        </div>
+        <span class="wf-call" data-call="a" style="--x:2%;--y:6%;--xs:2%;--ys:-3%"><i></i>Saved on the phone first</span>
+        <span class="wf-call" data-call="b" style="--x:58%;--y:2%;--xs:44%;--ys:40%"><i></i>Syncs when you’re back</span>
+        <span class="wf-call" data-call="c" style="--x:52%;--y:92%;--xs:18%;--ys:96%"><i></i>Opens full screen, like an app</span>
       </div>
     </section>
 
-    <!-- Up close -->
+    <!-- The clever bits -->
     <section class="section--tight wrap">
       <header class="cp-head" data-reveal>
         <span class="label">Up close</span>
@@ -523,6 +655,25 @@
         </figure>
       </div>
     </section>
+
+    <!-- Get the app -->
+    <section class="section wrap" id="get-the-app">
+      <div class="wf-get-band" data-reveal>
+        <div class="wf-get__copy">
+          <span class="label">Try it</span>
+          <h2>Get the app <mark class="hl" style="--pen:#efe2bf">on your phone.</mark></h2>
+          <p>Open it on your phone and add it to your home screen.</p>
+          <div class="wf-get__row">
+            <a class="btn wf-get__btn" href="https://app.whatsinmyfridge.co.uk" target="_blank" rel="noopener">Open the app <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wf-arrow"/></svg></a>
+          </div>
+        </div>
+        <div class="wf-qr wf-qr--big">
+          <img class="wf-qr__code" src="../assets/projects/whats-in-my-fridge/app-qr.svg" alt="QR code that opens What’s in my Fridge on your phone" width="112" height="112" loading="lazy">
+          <p><b>On a computer?</b> Point your phone’s camera at the code to open it there.</p>
+        </div>
+      </div>
+    </section>
+
 
     <!-- Colour + type -->
     <section class="section wrap">

@@ -238,41 +238,119 @@
     });
   }
 
-  // 05 Dinner: the question types out, a pause, then the meals
-  watch($('[data-demo="dinner"]'), tl => {
-    const r = $('[data-demo="dinner"]');
-    const d = k => $(`[data-d="${k}"]`, r);
-    const Q = 'What can I make for dinner?';
-    const meals = $$('.fa-meal', d('meals'));
-    const scroll = d('scroll');
-    if (!tl) { show(d('q'), true); d('qtext').textContent = Q; show(d('meals'), true); return; }
-    const typed = { n: 0 };
-    tl.call(() => {
-      show(d('q'), false); show(d('typing'), false); show(d('meals'), false);
-      d('qtext').textContent = ''; d('garlic').classList.remove('on'); typed.n = 0;
-    }, null, 0)
-      .set(scroll, { y: 0 }, 0)
-      .call(() => show(d('q'), true), null, 0.8)
-      .fromTo(d('q'), { opacity: 0, y: 10, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: 'back.out(2)', transformOrigin: '100% 100%' }, 0.8)
-      .to(typed, { n: Q.length, duration: 1.4, ease: 'none', onUpdate: () => { d('qtext').innerHTML = `${Q.slice(0, Math.round(typed.n))}<span class="fa-caret"></span>`; } }, 0.9)
-      .call(() => { d('qtext').textContent = Q; show(d('typing'), true); }, null, 2.5)
-      .fromTo(d('typing'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3 }, 2.5)
-      .call(() => { show(d('typing'), false); show(d('meals'), true); }, null, 4.1)
-      .fromTo(meals, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.55, ease: 'back.out(1.6)', stagger: 0.18 }, 4.1)
-      .to(scroll, { y: () => -Math.max(0, scroll.offsetHeight - (r.querySelector('.fa-body').offsetHeight - 150)), duration: 2.2, ease: 'power2.inOut' }, 5.2)
-      .to(scroll, { y: 0, duration: 1.2, ease: 'power2.inOut' }, 8)
-      .call(() => d('garlic').classList.add('on'), null, 9.4)
-      .fromTo(d('garlic'), { scale: 1 }, { scale: 1.12, duration: 0.18, yoyo: true, repeat: 1 }, 9.4)
-      .call(() => { const i = d('listtab'); i.classList.remove('pulse'); void i.offsetWidth; i.classList.add('pulse'); }, null, 9.6)
-      .to({}, { duration: 2.4 }, 10);
-    return tl;
-  });
-  // Dinner pull-out: save it, add the missing ingredient
-  $$('[data-save], [data-buy]').forEach(b => b.addEventListener('click', () => {
-    const on = !b.classList.contains('on');
-    b.classList.toggle('on', on); b.setAttribute('aria-pressed', on);
-    if (b.hasAttribute('data-save')) $('span', b).textContent = on ? 'Saved' : 'Save';
-  }));
+  // 05 Dinner, the centrepiece: pick a dinner, make it step by step, then it's cooked.
+  // The phone plays the app; the cards either side follow the same story.
+  const cook = $('[data-cook]');
+  if (cook) {
+    const k = n => $(`[data-k="${n}"]`, cook);
+    const acts = $$('[data-actpill]', cook.parentElement);
+    const cardsFor = n => $$(`.wf-ccard[data-act="${n}"]`, cook);
+    const haveRows = $$('[data-have]', cook), usedRows = $$('[data-used]', cook);
+    const steps = $$('.wf-steps li', cook), stepTexts = $$('[data-step]', cook), segs = $$('.wf-stepbar i', cook);
+    const ingRows = $$('.wf-ing li', cook);
+    const qtys = $$('[data-q2]', cook);
+    const press = (el, at, tl) => tl.call(() => { el.classList.add('is-press'); setTimeout(() => el.classList.remove('is-press'), 260); }, null, at);
+    const flipTo = (el, text) => gsap.timeline().to(el, { yPercent: -50, autoAlpha: 0, duration: 0.15 }).call(() => { el.textContent = text; }).fromTo(el, { yPercent: 50 }, { yPercent: 0, autoAlpha: 1, duration: 0.22, ease: 'back.out(2)' });
+    const showAct = n => {
+      acts.forEach(p => p.classList.toggle('on', +p.dataset.actpill === n));
+      [1, 2, 3].forEach(a => cardsFor(a).forEach(c => {
+        if (a === n) gsap.fromTo(c, { autoAlpha: 0, y: 24, scale: 0.97 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.55, ease: 'back.out(1.6)', delay: c.closest('.wf-cook__col--r') ? 0.12 : 0 });
+        else gsap.to(c, { autoAlpha: 0, y: -12, duration: 0.25 });
+      }));
+    };
+    const setStep = i => {
+      steps.forEach((li, j) => { li.classList.toggle('on', j === i); li.classList.toggle('done', j < i); });
+      segs.forEach((sg, j) => sg.style.setProperty('--f', j < i ? 1 : 0));
+      const uses = (steps[i]?.dataset.uses || '').split(' ');
+      ingRows.forEach(li => li.classList.toggle('hl', uses.includes(li.dataset.ing)));
+      stepTexts.forEach((p, j) => { if (j === i) gsap.fromTo(p, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'expo.out' }); else gsap.set(p, { autoAlpha: 0 }); });
+      const sn = k('sn'); if (sn) flipTo(sn, String(i + 1));
+    };
+    const reset = () => {
+      showAct(1);
+      ['saved', 'choose'].forEach(n => { k(n).hidden = true; }); k('ask').hidden = false; k('foot').hidden = false;
+      gsap.set(k('sheet'), { yPercent: 105, autoAlpha: 1 });
+      gsap.set([k('update'), k('writing'), k('recipe'), k('toast')], { autoAlpha: 0 });
+      gsap.set([k('q'), k('meal')], { autoAlpha: 0 });
+      gsap.set(k('rscroll'), { y: 0 });
+      k('serves').textContent = '2'; k('serves2').textContent = '2'; k('for').textContent = '2';
+      qtys.forEach(q => { q.textContent = q.dataset.q2; });
+      [k('buy'), k('cbuy')].forEach(c => c.classList.remove('on'));
+      $('em', k('buy')).textContent = 'Garlic · 1 bulb'; $('em', k('cbuy')).textContent = 'Garlic · 1 bulb';
+      gsap.set(k('lgarlic'), { autoAlpha: 0 });
+      $$('.wf-tickbox', cook).forEach(t => t.classList.remove('on'));
+      $$('.wf-usesup', cook).forEach(u => gsap.set(u, { autoAlpha: 0 }));
+      usedRows.forEach(r => { gsap.set(r, { autoAlpha: 1, x: 0 }); $('.fa-used', r).classList.remove('on'); });
+      steps.forEach(li => li.classList.remove('on', 'done')); segs.forEach(sg => sg.style.setProperty('--f', 0));
+      ingRows.forEach(li => li.classList.remove('hl'));
+      gsap.set(stepTexts, { autoAlpha: 0 }); gsap.set(stepTexts[0], { autoAlpha: 1 }); k('sn').textContent = '1';
+      k('cooked').classList.remove('on'); k('made').textContent = 'Saved today';
+      gsap.set([k('cmade'), k('cleft')], { autoAlpha: 0 });
+      $$('[data-tab]', k('nav')).forEach(t => t.classList.toggle('on', t.dataset.tab === 'Ask'));
+    };
+    if (!hasGsap || reduce) {
+      // Static: act one, what you have and what to buy, beside the meal idea
+      acts[0]?.classList.add('on');
+    } else {
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.6, paused: true });
+      const bar = n => $('em', acts[n - 1]);
+      tl.call(reset, null, 0).set(acts.map(a => $('em', a)), { scaleX: 0 }, 0)
+        .fromTo(bar(1), { scaleX: 0 }, { scaleX: 1, duration: 6.2, ease: 'none' }, 0)
+        // Act 1: what you have, what to buy
+        .fromTo(k('q'), { autoAlpha: 0, y: 10, scale: 0.95 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: 'back.out(2)', transformOrigin: '100% 100%' }, 0.5)
+        .fromTo(k('meal'), { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: 'back.out(1.6)' }, 1.2);
+      haveRows.forEach((r, i) => tl.call(() => $('.wf-tickbox', r).classList.add('on'), null, 1.0 + i * 0.3));
+      tl.fromTo($$('[data-have] .wf-usesup', cook), { autoAlpha: 0, scale: 0.5 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: 'back.out(2.5)', stagger: 0.2 }, 2.4);
+      press(k('buy'), 3.4, tl);
+      press(k('cbuy'), 3.4, tl);
+      tl.call(() => { [k('buy'), k('cbuy')].forEach(c => { c.classList.add('on'); $('em', c).textContent = 'Added'; }); }, null, 3.6)
+        .fromTo(k('lgarlic'), { autoAlpha: 0, y: -26, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.55, ease: 'back.out(2)' }, 3.75);
+      press(k('howto'), 5.3, tl);
+      // Act 2: the recipe, for four, step by step
+      tl.call(() => showAct(2), null, 6.2)
+        .fromTo(bar(2), { scaleX: 0 }, { scaleX: 1, duration: 12, ease: 'none' }, 6.2)
+        .to(k('sheet'), { yPercent: 0, duration: 0.6, ease: 'expo.out' }, 6.2);
+      press(k('plus'), 7.0, tl); tl.call(() => flipTo(k('serves'), '3'), null, 7.05);
+      press(k('plus'), 7.5, tl); tl.call(() => flipTo(k('serves'), '4'), null, 7.55)
+        .to(k('update'), { autoAlpha: 1, duration: 0.3 }, 7.8);
+      press(k('update'), 8.5, tl);
+      tl.to(k('update'), { autoAlpha: 0, duration: 0.2 }, 8.75)
+        .to(k('writing'), { autoAlpha: 1, duration: 0.2 }, 8.8)
+        .to(k('writing'), { autoAlpha: 0, duration: 0.2 }, 9.9)
+        .call(() => { k('serves2').textContent = '4'; qtys.forEach(q => flipTo(q, q.dataset.q4)); flipTo(k('for'), '4'); }, null, 10.0)
+        .fromTo(k('recipe'), { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'expo.out' }, 10.0);
+      steps.forEach((li, i) => {
+        const at = 10.8 + i * 1.45;
+        tl.call(() => setStep(i), null, at)
+          .to(k('rscroll'), { y: () => -Math.max(0, li.offsetTop - 210), duration: 0.6, ease: 'power2.inOut' }, at);
+      });
+      tl.call(() => { steps.forEach(li => { li.classList.remove('on'); li.classList.add('done'); }); segs.forEach(sg => sg.style.setProperty('--f', 1)); }, null, 18.0)
+        // Act 3: cooked, used up, leftovers in the freezer
+        .call(() => showAct(3), null, 18.6)
+        .fromTo(bar(3), { scaleX: 0 }, { scaleX: 1, duration: 7, ease: 'none' }, 18.6)
+        .to(k('sheet'), { yPercent: 105, duration: 0.45, ease: 'power2.in' }, 18.6)
+        .call(() => { k('ask').hidden = true; k('saved').hidden = false; $$('[data-tab]', k('nav')).forEach(t => t.classList.toggle('on', t.dataset.tab === 'Fridge')); }, null, 19.05)
+        .fromTo(k('saved'), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 19.05);
+      press(k('cooked'), 19.8, tl);
+      tl.call(() => { k('cooked').classList.add('on'); flipTo(k('made'), 'Made 1× · last 10 Oct'); }, null, 20.0)
+        .fromTo(k('cmade'), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 20.1);
+      usedRows.slice(0, 3).forEach((r, i) => {
+        const at = 20.4 + i * 0.5;
+        tl.call(() => $('.fa-used', r).classList.add('on'), null, at)
+          .to(r, { autoAlpha: 0.35, x: 14, duration: 0.4, ease: 'power2.in' }, at + 0.3);
+      });
+      press(k('left'), 22.2, tl);
+      tl.call(() => { k('foot').hidden = true; k('choose').hidden = false; }, null, 22.4);
+      press(k('frz'), 23.2, tl);
+      tl.call(() => { k('choose').hidden = true; k('foot').hidden = false; }, null, 23.5)
+        .fromTo(k('toast'), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: 'back.out(2)' }, 23.5)
+        .fromTo(k('cleft'), { autoAlpha: 0, scale: 0.9 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: 'back.out(2)' }, 23.6)
+        .to(k('toast'), { autoAlpha: 0, duration: 0.3 }, 25.2)
+        .to({}, { duration: 0.2 }, 25.4);
+      const phoneNow = matchMedia('(max-width: 760px)').matches;
+      new IntersectionObserver(([e]) => (e.isIntersecting ? tl.play() : tl.pause()), phoneNow ? { threshold: 0.05 } : { threshold: 0.25 }).observe(cook);
+    }
+  }
 
   // 06 Home screen: Share, Add to Home Screen, the icon lands
   watch($('[data-demo="home"]'), tl => {
@@ -415,7 +493,8 @@
     tonight: { tap: [30, 42.6], ring: [20.5, 40.6, 20, 4.2], toast: 'Garlic is on your list' },
   };
   const parade = $('[data-parade]');
-  if (parade && hasGsap && !reduce) {
+  // (desktop only: the parade is hidden on phones)
+  if (parade && hasGsap && !reduce && !matchMedia(MOBILE).matches) {
     const phones = $$('.parade__row > .phone', parade);
     const walks = phones.map((phone, i) => {
       const shot = $('.screen img', phone);
@@ -469,43 +548,6 @@
     phones.forEach(p => mo.observe(p, { attributes: true, attributeFilter: ['class'] }));
     deck = parade.classList.contains('is-deck');
   }
-
-  // Phones: under the deck, a line on what the screen does and dots for where you are;
-  // a touch holds the deck still, and it carries on a moment after letting go
-  if (parade && hasGsap && !reduce) gsap.matchMedia().add(MOBILE, () => {
-    const phones = $$('.parade__row > .phone', parade);
-    const spans = $$('.parade__caption span', parade);
-    const deckEl = $('.parade__deck', parade);
-    if (!deckEl || phones.length < 2) return;
-    const info = document.createElement('div');
-    info.className = 'wf-deck-info'; info.setAttribute('aria-hidden', 'true');
-    info.innerHTML = `<p></p><span class="wf-dots">${phones.map(() => '<i></i>').join('')}</span>`;
-    deckEl.after(info);
-    const line = $('p', info), dots = $$('.wf-dots i', info), bar = $('.parade__now em', deckEl);
-    let cur = -1;
-    const look = () => {
-      const k = phones.findIndex(p => p.classList.contains('is-on') && !p.classList.contains('is-leaving'));
-      if (k < 0 || k === cur) return;
-      cur = k;
-      line.textContent = spans[k]?.dataset.line || '';
-      gsap.fromTo(line, { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, delay: 0.15, ease: 'expo.out', overwrite: true });
-      dots.forEach((d, i) => d.classList.toggle('on', i === k));
-    };
-    const mo = new MutationObserver(look);
-    phones.forEach(p => mo.observe(p, { attributes: true, attributeFilter: ['class'] }));
-    look();
-    const row = $('.parade__row', parade);
-    let resume = null;
-    const clock = () => gsap.getTweensOf(bar)[0];
-    const hold = () => { resume?.kill(); clock()?.pause(); };
-    const release = () => { resume?.kill(); clock()?.pause(); resume = gsap.delayedCall(1.6, () => { const r = row.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) clock()?.play(); }); };
-    row.addEventListener('touchstart', hold, { passive: true });
-    row.addEventListener('touchend', release, { passive: true });
-    return () => {
-      mo.disconnect(); resume?.kill(); info.remove();
-      row.removeEventListener('touchstart', hold); row.removeEventListener('touchend', release);
-    };
-  });
 
   // ---------- Get the app: iPhone / Android steps ----------
   const guide = $('[data-guide]');
@@ -687,6 +729,139 @@
           .to(tip, { autoAlpha: 0, y: -8, duration: 0.25 }, at + 2.45);
       });
       whileSeen(tc, tl, 0.3);
+    }
+
+    // Overlays: they drop in one after another as their demo arrives, then float on their own
+    $$('.wf-demo').forEach(demo => {
+      const ovs = $$('.wf-ov', demo);
+      if (!ovs.length) return;
+      gsap.set(ovs, { autoAlpha: 0, y: 24, scale: 0.85 });
+      const floats = [];
+      let started = false;
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && !started) {
+          started = true;
+          gsap.to(ovs, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, ease: 'back.out(1.8)', stagger: 0.18, delay: 0.3,
+            onComplete: () => ovs.forEach((o, i) => floats.push(gsap.to(o, { y: i % 2 ? -7 : 7, duration: 2.4 + i * 0.45, ease: 'sine.inOut', repeat: -1, yoyo: true }))) });
+        }
+        floats.forEach(f => (e.isIntersecting ? f.play() : f.pause()));
+      }, { threshold: 0.1 }).observe(demo);
+    });
+
+    // ---------- In detail: each band runs its own story on a loop ----------
+    const deep = k => $(`[data-deep="${k}"]`);
+    const callsIn = (tl, root, at) => tl.fromTo($$('.wf-call', root), { autoAlpha: 0, scale: 0.7, y: 10 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.45, ease: 'back.out(2.2)', stagger: 0.5 }, at);
+
+    // Freshness: day by day along the dairy window, amber, red, then the freezer stops the clock
+    const df = deep('fresh');
+    if (df) {
+      const track = $('[data-track]', df), fill = $('[data-fill]', df), dot = $('[data-dot]', df), day = $('[data-day]', df), pill = $('[data-fpill]', df);
+      const it = $('[data-fitem]', df), exp = $('[data-exp]', it), snow = $('[data-snow]', it), where = $('[data-where]', it), endl = $('[data-endlabel]', df);
+      const lifeD = $('[data-life="dairy"]', df), lifeF = $('[data-life="freezer"]', df);
+      const W = () => track.offsetWidth;
+      const state = (cls, label) => { ['is-soon', 'is-past', 'is-frozen'].forEach(c => { track.classList.toggle(c, c === cls); pill.classList.toggle(c, c === cls); }); pill.textContent = label; };
+      const LABELS = ['Use by 15 Oct', 'Use by 15 Oct', 'Use by 15 Oct', 'Use by 15 Oct', 'Use by 15 Oct', 'Use by 2 days', 'Use by Tomorrow', 'Use by Today', 'Expired Yesterday', 'Expired 2 days ago'];
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.6, paused: true });
+      tl.call(() => {
+        state(null, 'Fresh'); day.textContent = 'Day 0'; it.className = 'fa-item'; exp.className = 'fa-exp'; $('em', exp).textContent = 'Use by 15 Oct';
+        snow.classList.remove('on'); where.textContent = 'Fridge'; endl.textContent = 'Dairy · 7 days';
+        lifeD.classList.add('on'); lifeF.classList.remove('on'); gsap.set($$('i', track), { autoAlpha: 1 });
+      }, null, 0).set(fill, { scaleX: 0 }, 0).set(dot, { x: 0 }, 0);
+      callsIn(tl, df, 0.4);
+      for (let d = 1; d <= 9; d++) {
+        const at = 0.6 + d * 0.75;
+        tl.to(fill, { scaleX: d / 9, duration: 0.5, ease: 'power2.out' }, at)
+          .to(dot, { x: () => W() * d / 9, duration: 0.5, ease: 'power2.out' }, at)
+          .call(() => {
+            day.textContent = `Day ${d}`;
+            const cls = d >= 8 ? 'is-past' : d >= 5 ? 'is-soon' : null;
+            state(cls, d >= 8 ? 'Past its date' : d >= 5 ? 'Use soon' : 'Fresh');
+            it.className = 'fa-item' + (d >= 8 ? ' expired' : d >= 5 ? ' soon' : '');
+            exp.className = 'fa-exp' + (d >= 8 ? ' expired' : d >= 5 ? ' soon' : '');
+            $('em', exp).textContent = LABELS[d];
+          }, null, at);
+      }
+      // back to day 6, and freeze it instead
+      tl.call(() => { day.textContent = 'Day 6'; state('is-soon', 'Use soon'); it.className = 'fa-item soon'; exp.className = 'fa-exp soon'; $('em', exp).textContent = 'Use by Tomorrow'; }, null, 8.4)
+        .to(fill, { scaleX: 6 / 9, duration: 0.5 }, 8.4).to(dot, { x: () => W() * 6 / 9, duration: 0.5 }, 8.4)
+        .call(() => { snow.classList.add('on'); bump(snow); }, null, 9.3)
+        .call(() => {
+          where.textContent = 'Freezer'; it.className = 'fa-item'; exp.className = 'fa-exp'; flip($('em', exp), 'Use by 7 Dec');
+          state('is-frozen', 'Frozen'); endl.textContent = 'Freezer · 60 days'; day.textContent = 'Day 6 of 60';
+          lifeD.classList.remove('on'); lifeF.classList.add('on');
+        }, null, 9.8)
+        .to($$('i', track), { autoAlpha: 0.15, duration: 0.3 }, 9.8)
+        .to(fill, { scaleX: 6 / 60, duration: 0.8, ease: 'power3.inOut' }, 9.8)
+        .to(dot, { x: () => W() * 6 / 60, duration: 0.8, ease: 'power3.inOut' }, 9.8)
+        .to({}, { duration: 2.4 }, 10.6);
+      whileSeen(df, tl, 0.25);
+    }
+
+    // Usuals: Milk turns up on three separate days, becomes a usual, runs out, back on the list
+    const du = deep('usuals');
+    if (du) {
+      const cells = $$('.wf-cal__d', du), seen = $('[data-seen]', du), usual = $('[data-usual]', du);
+      const milk = $('[data-milk]', du), used = $('[data-usedbtn]', milk), low = $('[data-low]', du), add = $('[data-ladd]', du);
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.6, paused: true });
+      tl.call(() => { cells.forEach(c => c.classList.remove('on')); seen.textContent = '0'; used.classList.remove('on'); add.classList.remove('done'); $('span', add).textContent = 'Add'; }, null, 0)
+        .set(usual, { autoAlpha: 0, scale: 0.5 }, 0).set(low, { autoAlpha: 0, y: 20 }, 0).set(milk, { autoAlpha: 1, y: 0 }, 0);
+      callsIn(tl, du, 0.4);
+      [1, 5, 10].forEach((d, i) => tl.call(() => { cells[d].classList.add('on'); flip(seen, String(i + 1)); }, null, 0.8 + i * 1.1).fromTo(cells[d], { scale: 0.6 }, { scale: 1, duration: 0.45, ease: 'back.out(3)' }, 0.8 + i * 1.1));
+      tl.to(usual, { autoAlpha: 1, scale: 1, duration: 0.5, ease: 'back.out(2.5)' }, 4.2)
+        .call(() => { used.classList.add('on'); bump(used); }, null, 5.2)
+        .to(milk, { autoAlpha: 0.35, y: -6, duration: 0.4 }, 5.6)
+        .to(low, { autoAlpha: 1, y: 0, duration: 0.55, ease: 'back.out(1.8)' }, 6.0)
+        .call(() => { add.classList.add('done'); $('span', add).textContent = 'On list'; bump(add); }, null, 7.4)
+        .to({}, { duration: 2.2 }, 7.6);
+      whileSeen(du, tl, 0.25);
+    }
+
+    // The list puts it away: tick each item and it flies to the fridge, freezer or pantry
+    const dfl = deep('file');
+    if (dfl) {
+      const box = $('.wf-file', dfl), rows = $$('[data-to]', dfl), ticked = $('[data-fticked]', dfl);
+      const dests = Object.fromEntries($$('[data-dest]', dfl).map(d => [d.dataset.dest, d]));
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.8, paused: true });
+      tl.call(() => { rows.forEach(r => r.classList.remove('done')); ticked.textContent = '0'; Object.values(dests).forEach(d => { const b = $('b', d); b.textContent = b.dataset.n; }); }, null, 0);
+      callsIn(tl, dfl, 0.4);
+      rows.forEach((r, i) => {
+        const at = 0.8 + i * 1.15;
+        tl.call(() => {
+          r.classList.add('done'); flip(ticked, String(i + 1));
+          const d = dests[r.dataset.to], br = box.getBoundingClientRect(), rr = $('b', r).getBoundingClientRect(), dr = d.getBoundingClientRect();
+          const chip = document.createElement('span');
+          chip.className = 'wf-fly'; chip.textContent = $('b', r).textContent; box.append(chip);
+          const k = br.width / box.offsetWidth || 1;
+          gsap.fromTo(chip, { x: (rr.left - br.left) / k, y: (rr.top - br.top) / k, scale: 1, autoAlpha: 1 },
+            { x: (dr.left - br.left) / k + (dr.width / k) * 0.55, y: (dr.top - br.top) / k + 8, scale: 0.6, duration: 0.75, ease: 'power2.inOut',
+              onComplete: () => { gsap.to(chip, { autoAlpha: 0, duration: 0.2, onComplete: () => chip.remove() }); const b = $('b', d); b.textContent = String(+b.textContent + 1); bump(d); } });
+        }, null, at);
+      });
+      tl.to({}, { duration: 1.8 }, 0.8 + rows.length * 1.15);
+      whileSeen(dfl, tl, 0.25);
+    }
+
+    // Offline: the signal drops, the list still works and says so, then it syncs; and it installs
+    const dof = deep('offline');
+    if (dof) {
+      const sig = $('[data-sig]', dof), sync = $('[data-sync]', dof), rows = $$('[data-oshop]', dof);
+      const on = $('[data-neton]', dof), off = $('[data-netoff]', dof), a2hs = $('[data-a2hs]', dof), sheet = $('.wf-a2hs', dof);
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.6, paused: true });
+      tl.call(() => { sig.classList.remove('is-off'); rows.forEach(r => r.classList.remove('done')); a2hs.classList.remove('hot'); }, null, 0)
+        .set(sync, { autoAlpha: 0, height: 'auto' }, 0).set([on, off], { autoAlpha: 0 }, 0).set(sheet, { autoAlpha: 0, y: 30 }, 0);
+      callsIn(tl, dof, 0.3);
+      tl.call(() => sig.classList.add('is-off'), null, 0.8)
+        .fromTo(off, { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2.4)' }, 0.8)
+        .fromTo(sync, { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'back.out(1.8)' }, 1.2);
+      rows.slice(0, 2).forEach((r, i) => tl.call(() => { r.classList.add('done'); bump($('.fa-box', r)); }, null, 2.2 + i * 0.9));
+      tl.call(() => sig.classList.remove('is-off'), null, 4.4)
+        .to(off, { autoAlpha: 0, duration: 0.25 }, 4.4)
+        .fromTo(on, { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2.4)' }, 4.5)
+        .to(sync, { autoAlpha: 0, y: -8, duration: 0.35 }, 4.6)
+        .to(sheet, { autoAlpha: 1, y: 0, duration: 0.55, ease: 'expo.out' }, 5.6)
+        .call(() => a2hs.classList.add('hot'), null, 6.5)
+        .to({}, { duration: 2 }, 6.8);
+      whileSeen(dof, tl, 0.25);
     }
 
     // Colour swatches drop in one after another
