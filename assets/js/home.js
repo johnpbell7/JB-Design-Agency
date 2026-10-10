@@ -213,13 +213,15 @@
     ScrollTrigger.create({ onUpdate: self => { boost = Math.min(4, Math.abs(self.getVelocity()) / 600); } });
     // Only touch the animations while the rate is actually changing: setting playbackRate on a
     // running CSS animation every frame re-syncs it with the compositor, which isn't free.
-    let rate = 1;
+    // The (infinite) animations are looked up once: getAnimations() flushes style every call.
+    let rate = 1, anims = null;
     gsap.ticker.add(() => {
       boost *= 0.92;
-      const r = boost < 0.01 ? 1 : Math.round((1 + boost) * 50) / 50;
+      const r = boost < 0.01 ? 1 : Math.round((1 + boost) * 20) / 20;
       if (r === rate) return;
       rate = r;
-      tracks.forEach(t => t.getAnimations().forEach(a => { a.playbackRate = r; }));
+      if (!anims?.length) anims = tracks.flatMap(t => t.getAnimations());
+      anims.forEach(a => { a.playbackRate = r; });
     });
   }
 
