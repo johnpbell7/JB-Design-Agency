@@ -416,8 +416,6 @@
   .feature__glow { filter: none; }
 }
 
-/* Phones: no sticky stacking for the work cards (it tore on fast flicks); a plain list */
-@media (max-width: 860px) {
-  .work-stack .feature { position: relative !important; top: auto !important; transform: none !important; scale: none !important; filter: none !important; will-change: auto !important; }
-  .work-stack .feature::after { display: none !important; }
-}
+
+/* Phones: sticky stack is back; cards three deep behind the top one are hidden (see home.js / work.js) */
+@media (max-width: 860px) { .work-stack .feature.is-buried { visibility: hidden; } }
