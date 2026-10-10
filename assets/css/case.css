@@ -161,7 +161,14 @@ body {
 .swatch code { font-size: 13px; opacity: 0.75; font-family: inherit; }
 .swatch .copied { font-size: 12px; opacity: 0; transition: opacity 0.2s; }
 .swatch.is-copied .copied { opacity: 1; }
-@media (max-width: 700px) { .palette { flex-direction: column; height: auto; } .swatch { min-height: 76px; } }
+@media (max-width: 700px) {
+  /* Phones: a tidy two-column chip grid, the lead colour across the top */
+  .palette { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; height: auto; }
+  .swatch { min-height: 84px; padding: 14px 16px; }
+  .palette:not(.vsl-pastels):not(.np-accents):not(.bb-seasons) > .swatch:first-child { grid-column: 1 / -1; min-height: 132px; }
+  .palette:not(.vsl-pastels):not(.np-accents):not(.bb-seasons) > .swatch:last-child:nth-child(even),
+  .np-accents > .swatch:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
 
 /* ---------- Type specimen ---------- */
 .specimen { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 64px); align-items: end; padding: clamp(28px, 5vw, 64px); }
