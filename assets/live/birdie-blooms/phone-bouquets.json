@@ -5,7 +5,7 @@
     "page": "shop.html",
     "width": 390,
     "touch": true,
-    "css": "html{scroll-behavior:auto!important }",
+    "css": "html{scroll-behavior:auto!important}",
     "start": { "to": "#bouquets", "offset": 60 },
     "actions": [
       { "wait": 1800 },

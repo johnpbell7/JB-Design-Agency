@@ -4,7 +4,7 @@
   "pace": 1.2,
   "start": [960, 620],
   "startOffset": 70,
-  "css": "html{scroll-behavior:auto!important }",
+  "css": "html{scroll-behavior:auto!important}",
   "steps": [
     {
       "label": "Flowers for big days, and Tuesdays",
