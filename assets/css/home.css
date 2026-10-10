@@ -1485,11 +1485,6 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
   .tape--b { rotate: 9deg; translate: 0 -50%; }
 }
 @media (max-width: 560px) { .tapes { position: relative; z-index: 2; margin-top: -110px; } }
-/* numbers removed: the FAQ and services lose the column they sat in */
-.qa__btn { grid-template-columns: minmax(0, 1fr) 36px; }
-.qa__inner { padding-left: 0; }
-@media (max-width: 760px) { .qa__btn { grid-template-columns: minmax(0, 1fr) 32px; } .qa__inner { padding-left: 0; } }
-@media (min-width: 901px) { .service { grid-template-columns: 96px minmax(0, 1fr) auto; } }
 
 /* Prices: six "from" tiles, each linking to its landing page */
 .home-prices__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: clamp(26px, 3vw, 40px); }

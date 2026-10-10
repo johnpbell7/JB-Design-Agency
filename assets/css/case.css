@@ -553,6 +553,3 @@ body[data-pen] .hl { --pen: var(--project-pen); }
   .reel__label { margin-bottom: 14px; }
   .reel__fit { width: 100% !important; transform: none !important; }
 }
-/* no counting numbers in the "What I did" list */
-.cs-brief__list li { grid-template-columns: 1fr; }
-.cs-brief__list li::before { content: none; }
