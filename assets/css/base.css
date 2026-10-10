@@ -299,7 +299,7 @@ html.nav-locked .cta-bar { translate: 0 calc(100% + 30px); }
    Small labels above headings, chapter numbers and step numbers are hidden site-wide.
    The two headings inside a case page's brief stay (they name its columns). */
 .chapter-no, .chapter-pill, .label:not(.cs-brief .label), .cp-card__label, .yalla__kicker,
-.service__n, .step2__no, .qa__n, .job__n, .cp-steps b, .parade__now b { display: none !important; }
+.service__n, .qa__n, .job__n, .cp-steps b, .parade__now b { display: none !important; }
 .parade__now { padding-left: 18px !important; }
 [data-cp-film] .cp-steps button { padding-left: 20px !important; }
 .site-foot__row { flex-wrap: wrap; row-gap: 12px; min-width: 0; }
