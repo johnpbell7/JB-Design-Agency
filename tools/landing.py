@@ -35,7 +35,7 @@ LEI_SVCS = [('Websites for local businesses', 'For the cafés, salons, clinics, 
             ('Redesigns', 'A fresher, faster version of the site you already have, keeping whatever is working.'), ('Support after launch', 'I’m on hand for changes and new pages once you’re live.')]
 GFX_SVCS = [('Logo design', 'Logos that work tiny on a phone screen and large on a banner, in colour and in black and white.'), ('Brand identity', 'Colours, fonts and a few simple rules, so everything you put out looks like it comes from the same business.'),
             ('Brochures and reports', 'Well-organised layouts for brochures, annual reports and newsletters that lead the reader to the parts that matter.'), ('Business cards and flyers', 'Business cards, flyers and leaflets for promotions, events and letterbox drops.'),
-            ('Large format and signage', 'Shop signs, banners and roller banners, vehicle graphics, site boards and packaging.'), ('Packaging and labels', 'Boxes, labels and tins that get noticed on a crowded shelf.')]
+            ('Large format and signage', 'Shop signs, banners and roller banners, vehicle graphics and site boards.'), ('Packaging and labels', 'Boxes, labels and tins that get noticed on a crowded shelf.')]
 
 W = lambda h, img, alt, n, k: (h, img, alt, n, k)
 WORK = {'birth-hood': W('birth-hood.html', 'captures/birth-hood/fold-desktop.webp', 'Birth-hood website', 'Birth-hood', 'Website for a hypnobirthing and doula business in Leicestershire'),
