@@ -6,9 +6,10 @@
     "page": "consultation.html",
     "width": 390,
     "touch": true,
-    "start": { "to": "#cfStart", "offset": 70 },
+    "start": 0,
     "actions": [
-      { "wait": 1600 },
+      { "wait": 1800 },
+      { "scrollTo": "#cfStart", "offset": 80, "ms": 3000, "after": 900 },
       { "type": ["#storeName", "Sam's Shop"], "after": 400 },
       { "type": ["#contactEmail", "sam@example.com"], "after": 600 },
       { "tap": "#cfStart button[type=submit]", "after": 1800 },

@@ -477,7 +477,7 @@ body {
   .gs-logo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gs-logo__hero, .gs-logo__main { grid-column: 1 / -1; }
   .gs-logo__hero { aspect-ratio: 16 / 9; padding: 0 10%; }
-  .gs-logo__main { aspect-ratio: 16 / 7; }
+  .gs-logo__main { aspect-ratio: 16 / 7; order: 1; }
   .gs-logo__app, .gs-logo__sweet { grid-column: auto; aspect-ratio: 1; }
   .gs-app { width: 52%; }
 }
