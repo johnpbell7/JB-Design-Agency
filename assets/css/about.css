@@ -57,6 +57,7 @@ a.ab-piece:hover, a.ab-piece:focus-visible { rotate: 0deg; scale: 1.05; z-index:
   padding: 0 0.08em; border-radius: 0.12em 0.2em 0.14em 0.22em;
   background: linear-gradient(100deg, transparent 2%, var(--hl-pink) 6%, var(--hl-pink) 94%, transparent 98%) 0 62% / 100% 70% no-repeat;
 }
+.ab-portrait__img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: cover; object-position: 50% 18%; }
 .ab-portrait figcaption { display: grid; gap: 2px; padding: 14px 18px 16px; border-top: 1px dashed rgb(24 24 26 / 0.14); }
 .ab-portrait figcaption b { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; }
 .ab-portrait figcaption span { font-size: 12.5px; color: #6b6b70; }
