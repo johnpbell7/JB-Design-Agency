@@ -246,7 +246,7 @@ h1 em { font-style: normal; color: var(--hivis); }
 .cta-band { position: relative; background: var(--hivis); padding: 34px 20px 30px; color: var(--ink); }
 .cta-band::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: repeating-linear-gradient(-45deg, var(--hivis) 0 10px, var(--char) 10px 20px); }
 .cta-band h2 { margin-top: 6px; font-weight: 900; font-size: 42px; line-height: 0.92; text-transform: uppercase; }
-.cta-band p { margin-top: 10px; font-weight: 500; }
+.cta-band p { margin-top: 10px; font-weight: 500; font-size: 14.5px; text-wrap: balance; }
 .cta-band__btn { margin-top: 18px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 60px; background: var(--ink); color: #fff; font-weight: 900; font-size: 30px; }
 .cta-band__btn svg { width: 22px; height: 22px; color: var(--hivis); }
 .cta-band__btn { letter-spacing: 0.01em; }
