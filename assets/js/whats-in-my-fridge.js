@@ -580,28 +580,113 @@
       gsap.from($('.wf-ph--c', stage), { scale: 0.9, duration: 1.3, ease: 'expo.out', delay: 0.35, scrollTrigger: st });
     }
 
-    // Small details: one item row ages through its three states, calm, amber, red
-    const fanEl = $('.wf-fan');
-    if (fanEl) {
-      const rows = $$('.fa-item', fanEl);
-      fanEl.classList.add('is-cycle');
-      gsap.set(rows, { autoAlpha: 0 }); gsap.set(rows[0], { autoAlpha: 1 });
-      const tl = gsap.timeline({ repeat: -1, paused: true });
-      rows.forEach((r, i) => {
-        const n = rows[(i + 1) % rows.length], at = i * 2.2 + 1.6;
-        tl.to(r, { autoAlpha: 0, y: -18, rotation: -2, duration: 0.45, ease: 'power2.in' }, at)
-          .fromTo(n, { autoAlpha: 0, y: 22, rotation: 2 }, { autoAlpha: 1, y: 0, rotation: 0, duration: 0.6, ease: 'back.out(2)' }, at + 0.3);
-      });
-      whileSeen(fanEl, tl);
-    }
-    // ...and the food groups pop in, aisle by aisle
-    const cats = $$('.wf-cats .fa-cat');
-    if (cats.length) {
+    // ---------- The clever bits: each tile plays a piece of the app on a loop ----------
+    const tile = k => $(`[data-tile="${k}"]`);
+    const bump = el => gsap.fromTo(el, { scale: 1 }, { scale: 1.14, duration: 0.14, yoyo: true, repeat: 1, ease: 'power1.inOut' });
+    const flip = (el, text) => gsap.timeline().to(el, { yPercent: -60, autoAlpha: 0, duration: 0.16 }).call(() => { el.textContent = text; }).fromTo(el, { yPercent: 60 }, { yPercent: 0, autoAlpha: 1, duration: 0.22, ease: 'back.out(2)' });
+    const toastIn = (tl, el, at, out) => tl.fromTo(el, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: 'back.out(2)' }, at).to(el, { autoAlpha: 0, y: 10, duration: 0.25 }, out);
+
+    // Step-by-step: one more person, then the method lights up a step at a time
+    const tm = tile('method');
+    if (tm) {
+      const steps = $$('.wf-steps li', tm), serves = $('[data-serves]', tm), serves2 = $('[data-serves2]', tm), plus = $('[data-plus]', tm);
       const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.4, paused: true });
-      tl.fromTo(cats, { autoAlpha: 0, y: 18, scale: 0.86 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.55, ease: 'back.out(2.2)', stagger: 0.13 })
-        .to(cats[0], { scale: 1.07, duration: 0.25, yoyo: true, repeat: 1, ease: 'power1.inOut' }, '+=0.4')
-        .to(cats, { autoAlpha: 0, y: -10, duration: 0.3, stagger: 0.05, ease: 'power2.in' }, '+=2.2');
-      whileSeen(cats[0].parentElement, tl);
+      tl.call(() => { serves.textContent = '2'; serves2.textContent = '2'; steps.forEach(li => li.classList.remove('on', 'done')); }, null, 0)
+        .call(() => { bump(plus); flip(serves, '3'); flip(serves2, '3'); }, null, 0.7);
+      steps.forEach((li, i) => {
+        tl.call(() => { steps.forEach((x, k) => { x.classList.toggle('on', k === i); x.classList.toggle('done', k < i); }); }, null, 1.5 + i * 1.4)
+          .fromTo(li, { x: 0 }, { x: 6, duration: 0.18, yoyo: true, repeat: 1, ease: 'power1.inOut' }, 1.5 + i * 1.4);
+      });
+      tl.call(() => steps.forEach(x => { x.classList.remove('on'); x.classList.add('done'); }), null, 1.5 + steps.length * 1.4)
+        .to({}, { duration: 1.2 }, 1.5 + steps.length * 1.4);
+      whileSeen(tm, tl, 0.3);
+    }
+
+    // Saved meals: tap Cooked on the top card (the count goes up), then it goes to the back
+    const ts = tile('saved');
+    if (ts) {
+      const cards = $$('[data-mcard]', ts);
+      let order = cards.map((c, i) => i);
+      const place = dur => order.forEach((c, p) => { gsap.set(cards[c], { zIndex: 3 - p }); gsap.to(cards[c], { x: 0, rotation: 0, y: p * 26, scale: 1 - p * 0.06, autoAlpha: 1, duration: dur, ease: 'power3.out' }); });
+      place(0);
+      const tl = gsap.timeline({ repeat: -1, paused: true });
+      cards.forEach((_, k) => {
+        const at = k * 3.6;
+        tl.call(() => {
+          const front = cards[order[0]], btn = $('[data-cooked]', front), made = $('[data-made]', front);
+          made.dataset.orig ??= made.textContent;
+          btn.classList.add('on'); bump(btn);
+          flip(made, made.dataset.orig.replace(/(\d+)×.*$/, (m, n) => `${+n + 1}× · last 10 Oct`));
+        }, null, at + 0.9)
+          .call(() => {
+            const front = cards[order[0]];
+            gsap.to(front, { x: '-115%', rotation: -9, autoAlpha: 0, duration: 0.5, ease: 'power2.in', onComplete: () => {
+              $('[data-cooked]', front).classList.remove('on');
+              const made = $('[data-made]', front); made.textContent = made.dataset.orig;
+              order.push(order.shift()); gsap.set(front, { x: 0, rotation: 0 }); place(0.6);
+            } });
+          }, null, at + 2.6);
+      });
+      tl.to({}, { duration: 0.01 }, cards.length * 3.6);
+      whileSeen(ts, tl, 0.3);
+    }
+
+    // Freeze it: the snowflake sends the chicken down into the freezer, and its date stops counting down
+    const tf = tile('freeze');
+    if (tf) {
+      const mover = $('[data-mover]', tf), snow = $('[data-snow]', mover), exp = $('[data-exp]', mover), where = $('[data-where]', mover);
+      const lists = $$('.wf-fz-list', tf), cats = $$('.wf-fz-cat', tf);
+      const above = [...$$('.fa-item', lists[0]).filter(r => r !== mover), cats[1]];
+      const peas = $('.fa-item', lists[1]);
+      const all = [mover, ...above, peas];
+      const reset = () => {
+        gsap.set(all, { y: 0, autoAlpha: 1 });
+        mover.classList.add('soon'); exp.classList.add('soon'); $('em', exp).textContent = 'Use by Tomorrow'; where.textContent = 'Fridge';
+        snow.classList.remove('on'); snow.style.visibility = '';
+        $('[data-nfr]', tf).textContent = '3'; $('[data-nfz]', tf).textContent = '1';
+      };
+      const tl = gsap.timeline({ repeat: -1, paused: true });
+      tl.call(reset, null, 0)
+        .call(() => { snow.classList.add('on'); bump(snow); }, null, 0.9)
+        .call(() => {
+          const k = tf.getBoundingClientRect().width / 390 || 1;
+          const step = (mover.offsetHeight + 8);
+          const dy = (peas.getBoundingClientRect().top - mover.getBoundingClientRect().top) / k - step;
+          gsap.to(above, { y: -step, duration: 0.7, ease: 'power3.inOut' });
+          gsap.to(mover, { y: dy, duration: 0.8, ease: 'power3.inOut', onComplete: () => {
+            mover.classList.remove('soon'); exp.classList.remove('soon'); snow.style.visibility = 'hidden';
+            where.textContent = 'Freezer'; flip($('em', exp), 'Use by 9 Dec');
+            flip($('[data-nfr]', tf), '2'); flip($('[data-nfz]', tf), '2');
+          } });
+        }, null, 1.4);
+      toastIn(tl, $('[data-ttoast]', tf), 2.5, 4.4);
+      tl.to(all, { autoAlpha: 0, duration: 0.3 }, 5.4).to({}, { duration: 0.1 }, 5.7);
+      whileSeen(tf, tl, 0.3);
+    }
+
+    // Coach tips: the tour walks from screen to screen, one friendly tip at a time
+    const tc = tile('coach');
+    if (tc) {
+      const tips = $$('.coach-tip', tc), title = $('[data-ctitle]', tc), dots = $$('.wf-cdots i', tc), navs = $$('.wf-tnav span', tc), ghosts = $$('.wf-ghost i', tc);
+      const NAME = { Scan: 'Scan', Fridge: 'My food', List: 'My list', Ask: 'Ask' };
+      gsap.set(tips, { autoAlpha: 0 });
+      const tl = gsap.timeline({ repeat: -1, paused: true });
+      tips.forEach((tip, i) => {
+        const at = i * 2.8, key = tip.dataset.tip;
+        tl.call(() => {
+          title.textContent = NAME[key];
+          dots.forEach((d, k) => d.classList.toggle('on', k === i));
+          navs.forEach(n => n.classList.toggle('on', n.dataset.tn === key));
+          const ic = navs.find(n => n.dataset.tn === key)?.querySelector('i');
+          if (ic) { ic.classList.remove('pulse'); void ic.offsetWidth; ic.classList.add('pulse'); }
+        }, null, at)
+          .fromTo(title, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35 }, at)
+          .fromTo(ghosts, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.08, ease: 'power2.out' }, at + 0.1)
+          .fromTo(tip, { autoAlpha: 0, y: -12, scale: 0.97 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: 'back.out(2)' }, at + 0.35)
+          .fromTo($('.coach-x', tip), { scale: 1 }, { scale: 0.7, duration: 0.12, yoyo: true, repeat: 1 }, at + 2.2)
+          .to(tip, { autoAlpha: 0, y: -8, duration: 0.25 }, at + 2.45);
+      });
+      whileSeen(tc, tl, 0.3);
     }
 
     // Colour swatches drop in one after another
