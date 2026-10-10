@@ -585,7 +585,7 @@ body { --project-pen: #f1d9c7; }
 .wf-live__toast svg { width: 3.8cqw; height: 3.8cqw; color: #b9e4c9; }
 
 /* Get the app: the copy, and the QR code on its own beside it */
-.wf-get-band { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); }
+@media (min-width: 901px) { .wf-get-band { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); } }
 .wf-qr--big { flex-direction: column; align-items: center; justify-self: center; text-align: center; gap: 16px; }
 .wf-qr--big .wf-qr__code { width: clamp(150px, 14vw, 196px); box-shadow: 0 30px 50px -28px rgb(60 40 20 / 0.45), 0 0 0 1px #e7e0d3; }
 .wf-qr--big p { max-width: 22ch; }
@@ -612,7 +612,7 @@ body { --project-pen: #f1d9c7; }
   .wf-list-demo .wf-panel { top: 30px; }
   .wf-list-demo .wf-pull { position: relative; inset: auto; zoom: 0.8; --w: 330px; }
   .wf-list-demo .wf-pull--staples { --r: -2deg; }
-  .wf-list-demo .wf-pull--list { margin-top: -18px; --r: 1.5deg; }
+  .wf-list-demo .wf-pull--list { margin-top: -4px; --r: 1.5deg; }
   .wf-list-demo .wf-tickhead { white-space: nowrap; font-size: 14px; }
   .wf-list-demo .wf-tickhead small { font-size: 10.5px; }
   .wf-list-demo .fa-toast { left: 50% !important; bottom: 16px !important; font-size: 13px; }

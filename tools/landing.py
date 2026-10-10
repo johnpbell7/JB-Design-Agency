@@ -59,7 +59,7 @@ def prices(items):
     order = ['Logos &amp; branding', 'Print', 'Websites', 'Online shops'] if items is GFX else ['Websites', 'Online shops', 'Logos &amp; branding', 'Print']
     out = '\n'.join(cards[k] for k in order).replace('href="projects/', 'href="')
     return (f'<div class="hp-cards">\n{out}\n</div>'
-            '<p class="hp-extras"><span>All prices are starting points</span><span>Pay in stages</span><span>Hosting from £10 a month</span><span>Website care from £40 a month</span></p>')
+            '<p class="hp-extras"><span>Two rounds of changes included</span><span>All prices are starting points</span><span>Pay in stages</span><span>Hosting from £10 a month</span><span>Website care from £40 a month</span></p>')
 
 def page(p):
     url = f'{BASE}projects/{p["slug"]}.html'; img = f'{BASE}assets/share/{p["share"]}.jpg'
