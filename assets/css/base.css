@@ -331,3 +331,7 @@ html.nav-locked .cta-bar { translate: 0 calc(100% + 30px); }
 .site-foot__base a:hover { color: var(--ink); }
 @media (max-width: 860px) { .site-foot__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sf-brand { grid-column: 1 / -1; } }
 @media (max-width: 380px) { .site-foot__grid { grid-template-columns: 1fr; } }
+/* footer: WhatsApp as a proper button */
+.sf-col a.sf-wa { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; padding: 10px 18px 10px 14px; border-radius: 999px; background: #25d366; color: #0b3d1f; font-weight: 600; text-decoration: none; }
+.sf-col a.sf-wa:hover { background: #1fbf5b; text-decoration: none; }
+@media (max-width: 860px) { .site-foot__grid nav[aria-label="Areas"] { grid-column: 1 / -1; } }
