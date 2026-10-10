@@ -1495,3 +1495,7 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
 
 /* Phone sites leave a 54px strip for a status bar; the phone frame draws its own, so slide the site up under it */
 .who-card .mini__phone .who-frame iframe { top: calc(-54 / 390 * 100cqw); }
+
+/* Work stack: the card behind dims with a cheap overlay (a scrubbed CSS filter was janky and painted black on phones) */
+.feature { --dim: 0; will-change: transform; }
+.feature::after { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: inherit; background: #000; opacity: var(--dim); pointer-events: none; }

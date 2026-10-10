@@ -689,7 +689,7 @@
       cards.forEach((c, k) => {
         const next = cards[k + 1];
         if (!next) return;
-        gsap.to(c, { scale: 0.95, filter: 'brightness(0.9)', ease: 'power1.in', scrollTrigger: { trigger: next, start: 'top 45%', end: 'top 110px', scrub: true } });
+        gsap.to(c, { scale: 0.95, '--dim': 0.18, ease: 'power1.in', scrollTrigger: { trigger: next, start: 'top 45%', end: 'top 110px', scrub: true } });
       });
       cards.forEach(c => {
         gsap.from($('.feature__laptop', c), { y: 60, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: c, start: 'top 80%', once: true } });
