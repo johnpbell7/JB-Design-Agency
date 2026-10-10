@@ -8,12 +8,12 @@ NAV = open('tools/landing-nav.html').read()
 
 # ===== PRICES (placeholders, to be confirmed by John) =====
 WEB = [('One-page website', '£500', 'A single scrolling page with everything a small business needs: who you are, what you do, and an easy way to get in touch.', ['Designed for phones first', 'Contact form or booking link', 'Set up for Google']),
-       ('Multi-page website', '£1,500', 'Separate pages for your services, about, work and contact, with a layout that grows with your business.', ['Up to 6 pages', 'Edit it yourself', 'Set up for Google']),
-       ('Small online shop', '£2,500', 'A Shopify shop for independents, with clear product pages and a quick checkout. For bigger stores I design every page for your developer to build.', ['Shopify set-up', 'Product and collection pages', 'Big stores: designs for your developer'])]
+       ('Small business website', '£1,200', 'Separate pages for your services, about, work and contact, with a layout that grows with your business.', ['Up to 5 pages', 'Extra pages from £100', 'Set up for Google']),
+       ('Small online shop', '£1,800', 'A Shopify shop for independents, with clear product pages and a quick checkout. For bigger stores I design every page for your developer to build.', ['Shopify set-up', 'Product and collection pages', 'Big stores: designs for your developer'])]
 GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with a few routes to choose from.', ['Three first ideas', 'Colour and mono versions', 'All file types']),
-       ('Brand identity', '£900', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
+       ('Brand identity', '£750', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
        ('Print design', '£45/page', 'Brochures, business cards, flyers, signage and large format, designed and sent to print ready. Brochures are priced per page, so you only pay for what you need.', ['Brochures from £45 a page', 'Business cards, flyers and leaflets', 'Banners, signs and site boards', 'Printing arranged for you'])]
-CARE = 'Website care from £50 a month: changes, new pages and help when you need it.'
+CARE = 'Website care from £40 a month: changes, updates and help when you need it. Small jobs £35 an hour.'
 
 # Towns covered, Leicester down to Birmingham (one honest list, shown on every location page)
 AREAS = ['Birmingham', 'Sutton Coldfield', 'Solihull', 'Lichfield', 'Tamworth', 'Atherstone', 'Nuneaton', 'Hinckley',
@@ -27,7 +27,7 @@ WEB_SVCS = [('Small business websites', 'One-page and multi-page sites for trade
             ('Redesigns', 'A fresh, faster version of the site you have, keeping what works.'), ('Care and updates', 'Changes, new pages and help whenever you need it after launch.')]
 GFX_SVCS = [('Logo design', 'Logos that work small and large, in colour and black and white, on screen and in print.'), ('Brand identity', 'Colours, fonts and simple rules that keep everything looking like you.'),
             ('Brochures and reports', 'Clear, well-organised layouts for brochures, annual reports and newsletters.'), ('Business cards and flyers', 'Business cards, flyers and leaflets for promotions, events and door-to-door.'),
-            ('Large format and signage', 'Shop signs, banners, roller banners, vehicle graphics, site boards and packaging.'), ('Social media graphics', 'Templates and graphics so your posts look as good as your print.')]
+            ('Large format and signage', 'Shop signs, banners, roller banners, vehicle graphics, site boards and packaging.'), ('Packaging and labels', 'Boxes, labels and tins that stand out on the shelf.')]
 
 W = lambda h, img, alt, n, k: (h, img, alt, n, k)
 WORK = {'birth-hood': W('birth-hood.html', 'captures/birth-hood/fold-desktop.webp', 'Birth-hood website', 'Birth-hood', 'Website for a hypnobirthing and doula business in Leicestershire'),
@@ -171,7 +171,7 @@ PAGES = [
   intro='<p>Most people will find you on their phone, often in a hurry. So I design every site for phones first, keep pages quick to load, and make the next step obvious: call, book, buy or send a message.</p><p>I’ve spent 14 years designing for agencies and in-house teams, and now I work directly with business owners. You talk to the person designing and building your site, from the first chat to launch day and after.</p>',
   svcs=WEB_SVCS, price_h='Web design prices', prices=WEB, work_h='Some of my websites', work=['birth-hood', 'patch', 'vsl', 'sccc'],
   areas_line='I’m based in Birmingham and work with businesses across the West Midlands and the East Midlands, from Birmingham and Sutton Coldfield up to Leicester. Further afield is no problem: most projects run on video calls and email.',
-  faqs=[('How much does a website cost in Birmingham?', 'A one-page website starts from £500, a multi-page site from £1,500 and an online shop from £2,500. After a quick chat I send a fixed quote, so you know the full price before we start.'),
+  faqs=[('How much does a website cost in Birmingham?', 'A one-page website starts from £500, a small business site from £1,200 and a small online shop from £1,800. After a quick chat I send a fixed quote, so you know the full price before we start.'),
         ('How long does a website take?', 'A small business site usually takes a few weeks from our first chat to going live. Shops and bigger sites take longer. You’ll get a timeline with your quote.'),
         ('Do I need to be in Birmingham?', 'No. I’m based in Birmingham and happy to meet locally, but most of my work happens over video calls and email, so I work with businesses all over the UK.'),
         ('Can I update the website myself?', 'Yes. You can change the words, photos and products yourself without touching any code. I’ll show you how before we go live.'),
@@ -187,7 +187,7 @@ PAGES = [
   intro='<p>People decide quickly whether a business looks trustworthy. A clear logo, a consistent look and well-made print do a lot of that work for you, before anyone has read a word.</p><p>I’ve spent 14 years designing brands, reports, brochures and campaigns for agencies and in-house teams, for charities, law firms, housebuilders and local trades. Now you can work with me directly.</p>',
   svcs=GFX_SVCS, price_h='Graphic design prices', prices=GFX, work_h='Some of my design work', work=['print', 'property', 'patch', 'birdie'],
   areas_line='I’m based in Birmingham and work with businesses across the West Midlands and the East Midlands, from Birmingham and Sutton Coldfield up to Leicester, and all over the UK by video call and email.',
-  faqs=[('How much does a logo cost in Birmingham?', 'Logo design starts from £300, and a full brand identity from £900. Print is priced per page, with brochures from £45 a page. You get a fixed quote before we start.'),
+  faqs=[('How much does a logo cost in Birmingham?', 'Logo design starts from £300, and a full brand identity from £750. Print is priced per page, with brochures from £45 a page. You get a fixed quote before we start.'),
         ('How many logo ideas will I see?', 'Usually three first ideas, then we refine your favourite together until it’s right.'),
         ('What files will I get?', 'Everything you need for print and screen: colour, black and white and reversed versions in vector and image formats.'),
         ('Can you arrange printing?', 'Yes. I send print-ready files and can recommend printers or deal with them for you.'),
@@ -204,7 +204,7 @@ PAGES = [
   svcs=WEB_SVCS, price_h='Web design prices', prices=WEB, work_h='Some of my Leicestershire work', work=['birth-hood', 'birdie', 'beetle', 'patch'],
   areas_line='I work with businesses right across Leicestershire and down to Birmingham, including:',
   faqs=[('Do you work with businesses in Leicester?', 'Yes. Several of my clients are in Leicestershire, including Birth-hood, Birdie Blooms in Ravenstone and Kibworth, and Beetle Eyes Clothing in Mountsorrel. I’m based in Birmingham and happy to meet in person.'),
-        ('How much does a website cost?', 'A one-page website starts from £500, a multi-page site from £1,500 and an online shop from £2,500. After a quick chat I send a fixed quote, so you know the full price before we start.'),
+        ('How much does a website cost?', 'A one-page website starts from £500, a small business site from £1,200 and a small online shop from £1,800. After a quick chat I send a fixed quote, so you know the full price before we start.'),
         ('Can you help my business show up on Google locally?', 'Yes. Every site is built to load quickly and include the setup Google looks for, and I’ll help you set up your Google Business Profile so you show up in local searches and on Maps.'),
         ('Can I update the website myself?', 'Yes. You can change the words, photos and products yourself without touching any code. I’ll show you how before we go live.'),
         ('Do you design logos too?', 'Yes. I can design your logo and brand, then build the site to match. For Birdie Blooms I drew eight logo ideas alongside the website.')],
