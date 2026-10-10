@@ -151,6 +151,7 @@
     if (!d || typeof d !== 'object') return;
     if (d.who === 'play') play();
     else if (d.who === 'pause') pause();
+    else if (d.who === 'restart') { pause(); demo.i = 0; play(); } // step 0 resets the form
   });
   window.addEventListener('hashchange', () => { if (location.hash === '#play') play(); });
   if (location.hash === '#play') {

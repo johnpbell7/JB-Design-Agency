@@ -85,11 +85,13 @@
   }
 
   /* ---------- pausable timeline ---------- */
-  let playing = false, running = false;
+  let playing = false, running = false, gen = 0; // gen: a restart abandons the run in progress
   function sleep(ms) {
+    const g = gen;
     return new Promise(res => {
       let last = performance.now(), acc = 0;
       (function tick() {
+        if (g !== gen) return; // restarted: this run stops here
         const now = performance.now();
         if (playing) acc += now - last;
         last = now;
@@ -164,6 +166,7 @@
     if (!d || typeof d !== 'object') return;
     if (d.who === 'play') play();
     else if (d.who === 'pause') pause();
+    else if (d.who === 'restart' && !reduce) { gen++; running = false; resetState(true); el.rail.style.opacity = 1; play(); } // drop the old run, start over
   });
   if (location.hash === '#play') play();
   window.addEventListener('hashchange', () => { if (location.hash === '#play') play(); });

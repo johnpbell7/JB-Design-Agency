@@ -135,6 +135,7 @@
     if (!d || typeof d !== 'object') return;
     if (d.who === 'play') play();
     else if (d.who === 'pause') pause();
+    else if (d.who === 'restart') { stop(); restState(); play(); } // from the top
   });
 
   if (reduced) endState(); else restState();

@@ -189,6 +189,7 @@
     if (!d || typeof d !== 'object') return;
     if (d.who === 'play') play();
     else if (d.who === 'pause') pause();
+    else if (d.who === 'restart') { pause(); play(); } // play() starts from initialState()
   });
 
   if (reduce) endState();

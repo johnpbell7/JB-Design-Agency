@@ -231,6 +231,7 @@
     if (!d || typeof d !== 'object') return;
     if (d.who === 'play') play();
     if (d.who === 'pause') pause();
+    if (d.who === 'restart' && !reduced && !userTook) { runId++; loopActive = false; pause(); play(); } // loop() starts with reset()
   });
 
   // Initial render: a settled, believable state

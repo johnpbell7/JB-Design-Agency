@@ -184,6 +184,7 @@
     if (!d || typeof d !== 'object') return;
     if (d.who === 'play') play();
     else if (d.who === 'pause') pause();
+    else if (d.who === 'restart') { pause(); play(); } // a new run starts from its reset state
   });
 
   if (reduce) endState();
