@@ -282,7 +282,7 @@ html.nav-locked { overflow: hidden; }
   }
   .cta-bar.is-on { translate: 0 0; rotate: 0deg; }
   .cta-bar p { margin: 0; display: grid; gap: 1px; line-height: 1.2; }
-  .cta-bar b { font-size: 18px; font-weight: 700; letter-spacing: -0.025em; }
+  .cta-bar b { font-size: clamp(15px, 4.3vw, 19px); font-weight: 700; letter-spacing: -0.025em; white-space: nowrap; }
   .cta-bar p span { font-size: 14px; color: rgb(24 24 26 / 0.7); }
   .cta-bar a { flex: none; padding: 11px 16px; border-radius: 999px; background: #18181a; color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
   .cta-bar a span { display: inline-block; transition: translate 0.3s var(--ease-out); }

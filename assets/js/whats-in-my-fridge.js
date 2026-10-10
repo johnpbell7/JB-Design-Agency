@@ -874,4 +874,40 @@
       gsap.fromTo(el, { y: 20 * d }, { y: -20 * d, ease: 'none', scrollTrigger: { trigger: el.closest('.wf-demo'), start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
     });
   }
+
+  // ---------- The timeline: a node per item, the line draws down as you scroll ----------
+  const tlEl = $('[data-tl]');
+  if (tlEl) {
+    const items = $$(':scope > section', tlEl);
+    items.forEach(sec => {
+      const node = document.createElement('span');
+      node.className = 'wf-node'; node.setAttribute('aria-hidden', 'true');
+      const num = $('.wf-step b', sec);
+      if (num && /^\d+$/.test(num.textContent.trim())) node.textContent = num.textContent.trim();
+      else node.innerHTML = '<svg viewBox="0 0 24 24"><use href="#fa-sparkle"/></svg>';
+      sec.append(node);
+    });
+    const fill = $('.wf-tl__line i', tlEl), nodes = $$('.wf-node', tlEl);
+    if (!hasGsap || reduce || !window.ScrollTrigger) {
+      if (fill) fill.style.transform = 'scaleY(1)';
+      nodes.forEach(n => n.classList.add('is-lit'));
+    } else {
+      gsap.fromTo(fill, { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: tlEl, start: 'top 60%', end: 'bottom 60%', scrub: 0.4 } });
+      nodes.forEach(n => {
+        ScrollTrigger.create({ trigger: n, start: 'top 60%', onEnter: () => { n.classList.add('is-lit'); gsap.fromTo(n, { scale: 0.6 }, { scale: 1, duration: 0.5, ease: 'back.out(3)' }); }, onLeaveBack: () => n.classList.remove('is-lit') });
+      });
+      // each side slides in from its own side (desktop); on phones everything rises from the right
+      const wide = matchMedia('(min-width: 761px)').matches;
+      items.forEach(sec => {
+        const row = sec.querySelector(':scope > .wf-deep') || sec;
+        const copy = row.querySelector('.wf-feat__copy, .wf-deep__copy');
+        const demo = row.querySelector('.wf-demo, .wf-deep__stage');
+        if (!copy || !demo || sec.classList.contains('wf-cook')) return;
+        const flip = row.classList.contains('wf-feat--flip') || row.classList.contains('wf-deep--flip');
+        const cs = wide ? (flip ? 1 : -1) : 1;
+        gsap.from(copy, { x: 46 * cs, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 82%', once: true } });
+        gsap.from(demo, { x: -46 * cs, autoAlpha: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 82%', once: true } });
+      });
+    }
+  }
 })();
