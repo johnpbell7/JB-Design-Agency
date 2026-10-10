@@ -619,3 +619,7 @@
 /* work wall: each column is one continuous page strip, rounded like a phone screen */
 .bt-g1__col { border-radius: calc(var(--cw) * 0.12); box-shadow: 0 0 0 1px var(--line); background: var(--grey-2); }
 .bt-g1__page { display: block; width: 100%; height: auto; }
+
+/* Headline a touch smaller (about 8%) on every screen */
+.bt-hero .bt-stage { font-size: var(--fit, min(calc(100cqi / 9.1), 18.4vh, 184px)); }
+@media (max-width: 560px) { .bt-hero .bt-stage { font-size: min(17.1vw, 81px) !important; } }

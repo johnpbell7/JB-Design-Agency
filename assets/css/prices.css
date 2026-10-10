@@ -137,3 +137,9 @@
   .hp-tiers b { font-weight: 600; opacity: 0.85; }
   .hp-tiers li.is-deal b, .hp-tiers li.is-combo > .is-deal b { opacity: 1; font-weight: 700; }
 }
+/* Header, tidied: the name, then "From" sitting small above the price, then one plain line about it */
+.hp-card .hp-card__price { display: grid; gap: 4px; justify-items: start; }
+.hp-card .hp-card__price small { text-transform: capitalize; letter-spacing: 0; font-size: 13px; font-weight: 500; opacity: 0.6; }
+.hp-card .hp-card__price em { grid-column: 2; grid-row: 2; align-self: end; margin: 0 0 4px 4px; }
+.hp-card__lead { text-wrap: wrap; max-width: none; }
+@media (max-width: 700px) { .hp-card .hp-card__price { margin-top: 14px; } .hp-card__lead { margin-top: 10px; } }

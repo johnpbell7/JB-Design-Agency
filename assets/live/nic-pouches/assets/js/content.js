@@ -77,10 +77,10 @@ window.NP_CONTENT={
   },
   loyalty:{eyebrow:'Save with Nic Points',title:'Save up to 8% on nicpouches for life with NIC Points – Loyalty that pays off every day!',cta:'How it works',img:I+'misc/loyalty-hero.webp'},
   guides:[
-    {tag:'News',title:'Best ZYN Flavours UK, Ranked',text:'We rank the best ZYN flavours in the UK, from Cool Mint and Spearmint to the strongest Menthol Ice, with taste notes and strengths.',date:'June 30, 2026',img:I+'guides/best-zyn-flavours.png'},
-    {tag:'News',title:'ZYN vs the World: UK vs USA',text:"ZYN leads everywhere, but the UK and US pouch markets look completely different. The real search data on who's biggest where, and why.",date:'September 08, 2026',img:I+'guides/zyn-vs-the-world.png'},
-    {tag:'News',title:'How Popular Are Nicotine Pouches in the UK?',text:'Nicotine pouch use in the UK has more than doubled among young adults since 2023. Here is what the latest 2026 ASH figures actually show.',date:'September 07, 2026',img:I+'guides/how-popular-uk.png'},
-    {tag:'News',title:'Best Nicotine Pouches UK, Ranked',text:'The best nicotine pouches in the UK, ranked. ZYN Cool Mint leads for all-round quality, with VELO Freezing Peppermint and Nordic Spirit close behind.',date:'June 30, 2026',img:I+'guides/best-nicotine-pouches.png'}
+    {tag:'News',title:'Best ZYN Flavours UK, Ranked',text:'We rank the best ZYN flavours in the UK, from Cool Mint and Spearmint to the strongest Menthol Ice, with taste notes and strengths.',date:'June 30, 2026',img:I+'banners/2-fumi-price-drop.webp'},
+    {tag:'News',title:'ZYN vs the World: UK vs USA',text:"ZYN leads everywhere, but the UK and US pouch markets look completely different. The real search data on who's biggest where, and why.",date:'September 08, 2026',img:I+'banners/1-pablo-5-pack-bundle.webp'},
+    {tag:'News',title:'How Popular Are Nicotine Pouches in the UK?',text:'Nicotine pouch use in the UK has more than doubled among young adults since 2023. Here is what the latest 2026 ASH figures actually show.',date:'September 07, 2026',img:I+'banners/3-koldnic-uk-launch.webp'},
+    {tag:'News',title:'Best Nicotine Pouches UK, Ranked',text:'The best nicotine pouches in the UK, ranked. ZYN Cool Mint leads for all-round quality, with VELO Freezing Peppermint and Nordic Spirit close behind.',date:'June 30, 2026',img:I+'banners/0-ubbs-collection.webp'}
   ],
   seoTitle:'Buy Nic Pouches UK',
   seoIntro:'NicPouches.com is the UK\'s largest dedicated nic pouch store, with more than 300 tobacco-free nic pouches from over 25 brands. Whether you already know your preferred brand and strength or you are switching from cigarettes and just starting out, everything is in one place, with next working day UK delivery. Nic pouches fit discreetly under your top lip, do not produce smoke or vapour, and require nothing to charge or refill. That is why so many UK adults have switched to them.',
