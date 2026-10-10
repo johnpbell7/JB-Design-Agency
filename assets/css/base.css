@@ -17,6 +17,8 @@
   --hl-orange: #ffb547;
   --hl-blue: #7fd0ff;
   --hl-pink: #ff9ed2;
+  --hl-green: #b6ee9a;
+  --hl-purple: #cbb8ff;
 
   --font: "Poppins", ui-sans-serif, system-ui, sans-serif;
 
@@ -99,6 +101,8 @@ p { margin: 0; text-wrap: pretty; }
 }
 .hl.is-lit, .no-js .hl { background-size: 100% 72%; }
 .hl--orange { --pen: var(--hl-orange); }
+.hl--green { --pen: var(--hl-green); }
+.hl--purple { --pen: var(--hl-purple); }
 .hl--blue { --pen: var(--hl-blue); }
 .hl--pink { --pen: var(--hl-pink); }
 

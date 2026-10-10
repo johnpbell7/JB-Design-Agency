@@ -714,7 +714,7 @@
 
 /* Rotating extra sectors under the intro */
 .sectors__more { font-size: 15px; color: var(--grey-7); }
-.flipword { display: inline-block; font-weight: 700; color: var(--ink); background: linear-gradient(var(--hl-pink), var(--hl-pink)) 0 70% / 100% 60% no-repeat; padding: 0 3px; }
+.flipword { display: inline-block; font-weight: 700; color: var(--ink); background: linear-gradient(var(--hl-orange), var(--hl-orange)) 0 70% / 100% 60% no-repeat; padding: 0 3px; }
 
 /* Contact as a full-bleed band */
 .contact-band { background: var(--hl-yellow); color: #18181a; padding-block: clamp(72px, 10vw, 140px); margin-top: clamp(60px, 8vw, 120px); }
