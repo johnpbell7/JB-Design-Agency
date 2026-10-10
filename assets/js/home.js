@@ -705,6 +705,13 @@
     });
   }
 
+  // ---------- Prices: the dots under the phone swipe row follow the card in view ----------
+  const hpRow = $('.hp-cards'), hpDots = $$('.hp-dots i');
+  if (hpRow && hpDots.length) hpRow.addEventListener('scroll', () => {
+    const cards = [...hpRow.children], k = cards.reduce((b, c, i) => Math.abs(c.offsetLeft - hpRow.scrollLeft - 18) < Math.abs(cards[b].offsetLeft - hpRow.scrollLeft - 18) ? i : b, 0);
+    hpDots.forEach((d, i) => d.classList.toggle('is-on', i === k));
+  }, { passive: true });
+
   // ---------- Contact: validate, confetti, then open the email app ----------
   const form = $('[data-contact]');
   if (form) {
