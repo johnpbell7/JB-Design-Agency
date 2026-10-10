@@ -380,21 +380,33 @@
   // and ends at that rest state: it plays on arrival, loops gently while the card is on
   // screen, replays on hover, and on touch whenever the card scrolls back into view.
   const whoCards = $$('#who .who-card');
-  // Each concept site only starts loading when its own card is about to scroll into view,
-  // one at a time, so they don't compete with the rest of the page (or run before anyone sees them)
-  const whoFrames = whoCards.map(c => $('iframe[data-src]', c)).filter(Boolean);
-  if (whoFrames.length) {
-    const load = f => { if (f.dataset.src) { f.src = f.dataset.src; f.removeAttribute('data-src'); } };
+  // The concept sites only load as they're about to be seen, one at a time, so they don't
+  // compete with the rest of the page (or run before anyone sees them). On phones the cards
+  // are a sideways swipe row (.who-grid scrolls): the first two load as the row nears the
+  // screen, then each card loads the one after it as it's swiped in, so the next demo is
+  // already there, paused at its start, when you reach it. Elsewhere each card loads as it
+  // nears the viewport.
+  const whoGrid = $('#who .who-grid');
+  const whoRow = () => !!whoGrid && getComputedStyle(whoGrid).overflowX === 'auto';
+  let whoQueue = Promise.resolve();
+  const loadWho = card => {
+    const f = card && $('iframe[data-src]', card);
+    if (!f || f.dataset.queued) return;
+    f.dataset.queued = '1';
+    whoQueue = whoQueue.then(() => new Promise(done => {
+      f.addEventListener('load', done, { once: true }); setTimeout(done, 1500);
+      f.src = f.dataset.src; f.removeAttribute('data-src');
+    }));
+  };
+  if (whoCards.some(c => $('iframe[data-src]', c))) {
     if ('IntersectionObserver' in window) {
-      let queue = Promise.resolve();
       const io = new IntersectionObserver(es => es.forEach(e => {
         if (!e.isIntersecting) return;
-        io.unobserve(e.target);
-        const f = $('iframe[data-src]', e.target);
-        if (f) queue = queue.then(() => new Promise(done => { f.addEventListener('load', done, { once: true }); setTimeout(done, 1500); load(f); }));
+        if (whoRow()) { loadWho(whoCards[0]); loadWho(whoCards[1]); } // the rest load as they're swiped to
+        else { io.unobserve(e.target); loadWho(e.target); }
       }), { rootMargin: '300px 0px' });
-      whoFrames.forEach(f => io.observe(f.closest('.who-card')));
-    } else whoFrames.forEach(load);
+      whoCards.forEach(c => io.observe(c));
+    } else whoCards.forEach(loadWho);
   }
 
   if (whoCards.length && hasGsap && !reduce) {
@@ -513,9 +525,19 @@
         const fit = () => { const k = box.clientWidth / vw; if (k) frame.style.setProperty('--vh', Math.round(box.clientHeight / k)); };
         fit(); new ResizeObserver(fit).observe(box);
         const send = msg => { try { frame.contentWindow?.postMessage({ who: msg }, '*'); } catch {} };
-        let vis = false;
-        frame.addEventListener('load', () => send(vis ? 'play' : 'pause'));
-        ScrollTrigger.create({ trigger: card, start: 'top 85%', end: 'bottom 10%', onToggle: self => { vis = self.isActive; send(vis ? 'play' : 'pause'); } });
+        // The demo starts from the beginning each time its card comes into view ('restart'),
+        // and pauses when it leaves. In the phone swipe row "in view" means at least 60% of the
+        // card is showing in the row, while the row itself is on screen; otherwise the card on screen.
+        let vis = false, inRow = false, onScreen = false;
+        const update = () => {
+          const v = whoRow() ? inRow && onScreen : onScreen;
+          if (v === vis) return;
+          vis = v; send(vis ? 'restart' : 'pause');
+          if (vis && whoRow()) loadWho(whoCards[k + 1]); // the next card gets ready, paused at its start
+        };
+        frame.addEventListener('load', () => send(vis ? 'restart' : 'pause'));
+        new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; update(); }, { threshold: 0.35 }).observe(card);
+        if (whoGrid) new IntersectionObserver(([e]) => { inRow = e.intersectionRatio >= 0.6; update(); }, { root: whoGrid, threshold: [0, 0.6, 1] }).observe(card);
         if (fine) {
           const layers = $$('[data-depth]', card).map(el => ({ el, d: +el.dataset.depth }));
           const tilt = gsap.quickTo(card, 'rotationY', { duration: 0.6, ease: 'power3.out' });
