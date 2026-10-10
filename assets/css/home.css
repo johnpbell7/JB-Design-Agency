@@ -1545,3 +1545,9 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
   .print-bar__go { justify-self: start; }
   .print-bar__pile img:nth-child(n+5) { display: none; }
 }
+.print-bar__pile img.is-cut { background: none; box-shadow: none; border-radius: 0; filter: drop-shadow(0 8px 10px rgb(24 24 26 / 0.3)); }
+/* the pile fans out as it comes into view (all sizes), and spreads a little more on hover */
+.print-bar__pile img { translate: calc((3 - var(--i)) * 14px) 0; rotate: 0deg; opacity: 0; transition: translate 0.7s var(--ease-out) calc(var(--i) * 60ms), rotate 0.7s var(--ease-out) calc(var(--i) * 60ms), opacity 0.4s calc(var(--i) * 60ms); }
+.print-bar.is-in .print-bar__pile img { translate: 0 0; rotate: calc((var(--i) - 3) * 3deg); opacity: 1; }
+.print-bar.is-in:hover .print-bar__pile img { translate: calc((var(--i) - 3) * 5px) -6px; }
+@media (prefers-reduced-motion: reduce) { .print-bar__pile img { opacity: 1; translate: none; transition: none; rotate: calc((var(--i) - 3) * 3deg); } }

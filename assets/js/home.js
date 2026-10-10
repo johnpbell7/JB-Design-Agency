@@ -774,6 +774,16 @@
     });
   }
 
+  // ---------- Print bar: the pile of print work fans out when it comes into view (phones too) ----------
+  const printBar = $('.print-bar');
+  if (printBar) {
+    if (reduce || !('IntersectionObserver' in window)) printBar.classList.add('is-in');
+    else {
+      const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { printBar.classList.add('is-in'); io.disconnect(); } }, { threshold: 0.35 });
+      io.observe(printBar);
+    }
+  }
+
   // ---------- Prices: the dots under the phone swipe row follow the card in view ----------
   const hpRow = $('.hp-cards'), hpDots = $$('.hp-dots i');
   if (hpRow && hpDots.length) hpRow.addEventListener('scroll', () => {
