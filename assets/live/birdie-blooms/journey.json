@@ -1,16 +1,10 @@
 {
   "name": "Birdie Blooms",
-  "viewport": {
-    "width": 1440,
-    "height": 900
-  },
+  "viewport": { "width": 1440, "height": 900 },
   "pace": 1.2,
-  "start": [
-    960,
-    620
-  ],
+  "start": [960, 620],
   "startOffset": 70,
-  "css": "html{scroll-behavior:auto!important}",
+  "css": "html{scroll-behavior:auto!important }",
   "steps": [
     {
       "label": "Flowers for big days, and Tuesdays",
@@ -18,140 +12,46 @@
       "start": 0,
       "reload": true,
       "actions": [
-        {
-          "wait": 3000
-        },
-        {
-          "hover": ".hero-center .btn",
-          "ms": 1100,
-          "after": 1800
-        },
-        {
-          "move": [
-            1080,
-            560
-          ],
-          "ms": 1000,
-          "after": 800
-        }
+        { "wait": 3000 },
+        { "hover": ".hero-center .btn", "ms": 1100, "after": 1800 },
+        { "move": [1080, 560], "ms": 1000, "after": 800 }
       ]
     },
     {
       "label": "The Birdie Card fills up",
       "page": "index.html",
-      "start": {
-        "to": "#card",
-        "offset": 760
-      },
+      "start": { "to": "#card", "offset": 760 },
       "reload": true,
       "actions": [
-        {
-          "scrollTo": "#card",
-          "offset": 40,
-          "ms": 1500,
-          "after": 4600
-        },
-        {
-          "hover": ".bcard",
-          "at": [
-            0.5,
-            0.4
-          ],
-          "ms": 1000,
-          "after": 1200
-        }
+        { "scrollTo": ".card-stage", "offset": 200, "ms": 1500, "after": 4600 },
+        { "hover": ".card-stage", "at": [0.45, 0.45], "ms": 1000, "after": 1200 }
       ]
     },
     {
       "label": "Every page in the menu",
       "page": "index.html",
-      "start": {
-        "to": "#card",
-        "offset": 40
-      },
+      "start": { "to": ".card-stage", "offset": 200 },
       "actions": [
-        {
-          "click": ".bar .menu-btn",
-          "ms": 900,
-          "after": 1400
-        },
-        {
-          "hover": ".menu-link",
-          "nth": 2,
-          "ms": 800,
-          "after": 700
-        },
-        {
-          "hover": ".menu-link",
-          "nth": 3,
-          "ms": 600,
-          "after": 700
-        },
-        {
-          "click": ".menu-link",
-          "text": "Flowers",
-          "ms": 700,
-          "after": 400
-        }
+        { "click": ".bar .menu-btn", "ms": 900, "after": 1400 },
+        { "hover": ".menu-link", "nth": 2, "ms": 800, "after": 700 },
+        { "hover": ".menu-link", "nth": 3, "ms": 600, "after": 700 },
+        { "click": ".menu-link", "text": "Flowers", "ms": 700, "after": 400 }
       ]
     },
     {
       "label": "Pick a bouquet, then enquire",
       "page": "shop.html",
-      "start": {
-        "to": "#bouquets",
-        "offset": 0
-      },
+      "start": { "to": "#bouquets", "offset": 0 },
       "actions": [
-        {
-          "wait": 600
-        },
-        {
-          "hover": ".product .p-img",
-          "nth": 0,
-          "ms": 900,
-          "after": 900
-        },
-        {
-          "hover": ".product .p-img",
-          "nth": 1,
-          "ms": 700,
-          "after": 900
-        },
-        {
-          "click": ".product a.btn",
-          "nth": 1,
-          "ms": 800,
-          "after": 300
-        },
-        {
-          "wait": 900
-        },
-        {
-          "scrollTo": "#enquire",
-          "offset": 40,
-          "ms": 1200,
-          "after": 300
-        },
-        {
-          "type": [
-            "#c-name",
-            "Sam"
-          ],
-          "charMs": 140,
-          "after": 500
-        },
-        {
-          "click": ".choice",
-          "text": "Collection",
-          "ms": 800,
-          "after": 600
-        },
-        {
-          "hover": "#c-bouquet",
-          "ms": 800,
-          "after": 1500
-        }
+        { "wait": 600 },
+        { "hover": ".product .p-img", "nth": 0, "ms": 900, "after": 900 },
+        { "hover": ".product .p-img", "nth": 1, "ms": 700, "after": 900 },
+        { "click": ".product a.btn", "nth": 1, "ms": 800, "after": 300 },
+        { "wait": 900 },
+        { "scrollTo": "#enquire", "offset": 40, "ms": 1200, "after": 300 },
+        { "type": ["#c-name", "Sam"], "charMs": 140, "after": 500 },
+        { "click": ".choice", "text": "Collection", "ms": 800, "after": 600 },
+        { "hover": "#c-bouquet", "ms": 800, "after": 1500 }
       ]
     },
     {
@@ -160,77 +60,25 @@
       "start": 0,
       "reload": true,
       "actions": [
-        {
-          "wait": 1600
-        },
-        {
-          "scrollTo": ".services",
-          "offset": 120,
-          "ms": 1500,
-          "after": 600
-        },
-        {
-          "hover": ".service",
-          "nth": 0,
-          "ms": 800,
-          "after": 500
-        },
-        {
-          "hover": ".service",
-          "nth": 2,
-          "ms": 700,
-          "after": 700
-        },
-        {
-          "scrollTo": "#enquire",
-          "offset": 0,
-          "ms": 1500,
-          "after": 500
-        },
-        {
-          "click": ".choice",
-          "text": "Bridal bouquet",
-          "ms": 900,
-          "after": 400
-        },
-        {
-          "click": ".choice",
-          "text": "Buttonholes",
-          "ms": 600,
-          "after": 1400
-        }
+        { "wait": 1600 },
+        { "scrollTo": ".services", "offset": 120, "ms": 1500, "after": 600 },
+        { "hover": ".service", "nth": 0, "ms": 800, "after": 500 },
+        { "hover": ".service", "nth": 2, "ms": 700, "after": 700 },
+        { "scrollTo": "#enquire", "offset": 0, "ms": 1500, "after": 500 },
+        { "click": ".choice", "text": "Bridal bouquet", "ms": 900, "after": 400 },
+        { "click": ".choice", "text": "Buttonholes", "ms": 600, "after": 1400 }
       ]
     },
     {
       "label": "Season by season",
       "page": "seasons.html",
-      "start": {
-        "to": "#winter",
-        "offset": 66
-      },
+      "start": { "to": "#winter", "offset": 66 },
       "reload": true,
       "actions": [
-        {
-          "wait": 1600
-        },
-        {
-          "scrollTo": "#spring",
-          "offset": 66,
-          "ms": 1400,
-          "after": 1100
-        },
-        {
-          "scrollTo": "#summer",
-          "offset": 66,
-          "ms": 1400,
-          "after": 1100
-        },
-        {
-          "scrollTo": "#autumn",
-          "offset": 66,
-          "ms": 1400,
-          "after": 1600
-        }
+        { "wait": 1600 },
+        { "scrollTo": "#spring", "offset": 66, "ms": 1400, "after": 1100 },
+        { "scrollTo": "#summer", "offset": 66, "ms": 1400, "after": 1100 },
+        { "scrollTo": "#autumn", "offset": 66, "ms": 1400, "after": 1600 }
       ]
     }
   ],
@@ -241,36 +89,12 @@
     "touch": true,
     "pace": 1.1,
     "actions": [
-      {
-        "wait": 1800
-      },
-      {
-        "scroll": 760,
-        "ms": 2200,
-        "after": 900
-      },
-      {
-        "scrollTo": "#bouquets",
-        "offset": 60,
-        "ms": 1800,
-        "after": 1100
-      },
-      {
-        "scroll": 620,
-        "ms": 2000,
-        "after": 900
-      },
-      {
-        "scrollTo": ".swatches",
-        "offset": 200,
-        "ms": 2000,
-        "after": 1100
-      },
-      {
-        "scroll": 760,
-        "ms": 2200,
-        "after": 1200
-      }
+      { "wait": 1800 },
+      { "scroll": 760, "ms": 2200, "after": 900 },
+      { "scrollTo": "#bouquets", "offset": 60, "ms": 1800, "after": 1100 },
+      { "scroll": 620, "ms": 2000, "after": 900 },
+      { "scrollTo": ".swatches", "offset": 200, "ms": 2000, "after": 1100 },
+      { "scroll": 760, "ms": 2200, "after": 1200 }
     ]
   }
 }

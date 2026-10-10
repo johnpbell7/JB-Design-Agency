@@ -5,26 +5,12 @@
     "page": "index.html",
     "width": 390,
     "touch": true,
-    "css": "html{scroll-behavior:auto!important}",
-    "start": {
-      "to": "#card",
-      "offset": 900
-    },
+    "css": "html{scroll-behavior:auto!important }",
+    "start": { "to": "#card", "offset": 900 },
     "actions": [
-      {
-        "wait": 1800
-      },
-      {
-        "scrollTo": ".bcard",
-        "offset": 150,
-        "ms": 3000,
-        "after": 4400
-      },
-      {
-        "scroll": 420,
-        "ms": 2700,
-        "after": 2600
-      }
+      { "wait": 1800 },
+      { "scrollTo": ".card-stage", "offset": 200, "ms": 3000, "after": 4400 },
+      { "scroll": 420, "ms": 2700, "after": 2600 }
     ]
   }
 }

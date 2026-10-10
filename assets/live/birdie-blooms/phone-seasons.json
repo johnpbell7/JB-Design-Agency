@@ -5,33 +5,13 @@
     "page": "seasons.html",
     "width": 390,
     "touch": true,
-    "css": "html{scroll-behavior:auto!important}",
-    "start": {
-      "to": "#winter",
-      "offset": 60
-    },
+    "css": "html{scroll-behavior:auto!important }",
+    "start": { "to": "#winter", "offset": 60 },
     "actions": [
-      {
-        "wait": 2000
-      },
-      {
-        "scrollTo": "#spring",
-        "offset": 60,
-        "ms": 2700,
-        "after": 1400
-      },
-      {
-        "scrollTo": "#summer",
-        "offset": 60,
-        "ms": 2700,
-        "after": 1400
-      },
-      {
-        "scrollTo": "#autumn",
-        "offset": 60,
-        "ms": 2700,
-        "after": 2000
-      }
+      { "wait": 2000 },
+      { "scrollTo": "#spring", "offset": 60, "ms": 2700, "after": 1400 },
+      { "scrollTo": "#summer", "offset": 60, "ms": 2700, "after": 1400 },
+      { "scrollTo": "#autumn", "offset": 60, "ms": 2700, "after": 2000 }
     ]
   }
 }

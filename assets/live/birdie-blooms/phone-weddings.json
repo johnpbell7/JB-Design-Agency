@@ -5,39 +5,15 @@
     "page": "weddings.html",
     "width": 390,
     "touch": true,
-    "css": "html{scroll-behavior:auto!important}",
+    "css": "html{scroll-behavior:auto!important }",
     "start": 0,
     "actions": [
-      {
-        "wait": 2000
-      },
-      {
-        "scrollTo": ".services",
-        "offset": 110,
-        "ms": 3000,
-        "after": 1800
-      },
-      {
-        "scrollTo": ".choices",
-        "offset": 260,
-        "ms": 3200,
-        "after": 900
-      },
-      {
-        "tap": ".choice",
-        "text": "Bridal bouquet",
-        "after": 700
-      },
-      {
-        "tap": ".choice",
-        "text": "Buttonholes",
-        "after": 700
-      },
-      {
-        "tap": ".choice",
-        "text": "Tables",
-        "after": 2200
-      }
+      { "wait": 2000 },
+      { "scrollTo": ".services", "offset": 110, "ms": 3000, "after": 1800 },
+      { "scrollTo": ".choices", "offset": 260, "ms": 3200, "after": 900 },
+      { "tap": ".choice", "text": "Bridal bouquet", "after": 700 },
+      { "tap": ".choice", "text": "Buttonholes", "after": 700 },
+      { "tap": ".choice", "text": "Tables", "after": 2200 }
     ]
   }
 }
