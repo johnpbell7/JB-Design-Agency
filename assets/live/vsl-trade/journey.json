@@ -15,7 +15,7 @@
         { "wait": 1200 },
         { "move": ".ce-h1", "ms": 1200, "after": 1000 },
         { "hover": ".ce-hero-act .ce-btn", "ms": 1000, "after": 1200 },
-        { "scrollTo": ".ce-wall", "offset": 60, "ms": 2600, "after": 2400 }
+        { "scrollTo": ".ce-wall", "offset": 60, "ms": 2600, "after": 2400, "visible": false }
       ]
     },
     {
@@ -38,7 +38,7 @@
         { "hover": ".vn-sq", "nth": 0, "ms": 1100, "after": 900, "visible": false },
         { "hover": ".vn-sq", "nth": 2, "ms": 900, "after": 900, "visible": false },
         { "hover": ".vn-sq", "nth": 4, "ms": 900, "after": 900, "visible": false },
-        { "scrollTo": ".vn-brands", "offset": 170, "ms": 2200, "after": 700 },
+        { "scrollTo": ".vn-brands", "offset": 170, "ms": 2200, "after": 700, "visible": false },
         { "hover": ".vn-brands-tiles img", "nth": 2, "ms": 1000, "after": 900, "visible": false },
         { "hover": ".vn-brands-tiles img", "nth": 7, "ms": 1000, "after": 1200, "visible": false },
         { "click": ".nav-links a", "text": "The App", "ms": 1300, "after": 300 }
@@ -50,9 +50,9 @@
       "start": 0,
       "actions": [
         { "wait": 1400 },
-        { "scrollTo": ".ap-slide.t1", "offset": 0, "ms": 1800, "after": 2400 },
-        { "scrollTo": ".ap-slide.t2", "offset": 0, "ms": 1900, "after": 2400 },
-        { "scrollTo": ".ap-slide.t3", "offset": 0, "ms": 1900, "after": 3000 }
+        { "scrollTo": ".ap-slide.t1", "offset": 0, "ms": 1800, "after": 2400, "visible": false },
+        { "scrollTo": ".ap-slide.t2", "offset": 0, "ms": 1900, "after": 2400, "visible": false },
+        { "scrollTo": ".ap-slide.t3", "offset": 0, "ms": 1900, "after": 3000, "visible": false }
       ]
     },
     {
@@ -66,7 +66,7 @@
         { "type": ["#contactEmail", "sam@example.com"], "ms": 800, "after": 600 },
         { "click": "#cfStart button[type=submit]", "ms": 900, "after": 1600 },
         { "click": ".cf-opt", "nth": 1, "ms": 1000, "after": 700 },
-        { "click": ".cf-opt", "nth": 4, "ms": 900, "after": 900 },
+        { "click": ".cf-opt", "text": "No", "ms": 900, "after": 900 },
         { "click": "[data-act=next]", "ms": 900, "after": 1800 }
       ]
     },
@@ -90,8 +90,8 @@
     "start": 0,
     "actions": [
       { "wait": 1800 },
-      { "scrollTo": ".ce-wall", "offset": 40, "ms": 3000, "after": 2400 },
-      { "scrollTo": ".ce-cats", "offset": 70, "ms": 3000, "after": 2400 },
+      { "scrollTo": ".ce-wall", "offset": 40, "ms": 3000, "after": 2400, "visible": false },
+      { "scrollTo": ".ce-cats", "offset": 70, "ms": 3000, "after": 2400, "visible": false },
       { "scroll": 760, "ms": 3000, "after": 1800 }
     ]
   }

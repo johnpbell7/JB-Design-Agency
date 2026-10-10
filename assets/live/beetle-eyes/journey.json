@@ -22,26 +22,18 @@
         },
         {
           "hover": ".hero-visual .frame.f1",
-          "ms": 1400,
-          "after": 900
+          "ms": 1300,
+          "after": 800
         },
         {
           "hover": ".hero-visual .frame.f2",
-          "ms": 1100,
-          "after": 900
-        },
-        {
-          "move": [
-            1000,
-            560
-          ],
-          "ms": 1200,
-          "after": 700
+          "ms": 1000,
+          "after": 1000
         }
       ]
     },
     {
-      "label": "What's on the rails",
+      "label": "What’s on the rails",
       "page": "index.html",
       "start": {
         "to": "#wares",
@@ -49,30 +41,30 @@
       },
       "actions": [
         {
-          "wait": 700
+          "wait": 900
         },
         {
           "hover": ".ware",
           "nth": 0,
-          "ms": 1100,
-          "after": 1200
+          "ms": 1000,
+          "after": 1000
         },
         {
           "hover": ".ware",
           "nth": 1,
-          "ms": 900,
-          "after": 1000
+          "ms": 800,
+          "after": 900
         },
         {
           "scroll": 420,
-          "ms": 1800,
-          "after": 300
+          "ms": 1600,
+          "after": 200
         },
         {
           "hover": ".ware",
           "nth": 3,
-          "ms": 1000,
-          "after": 1400
+          "ms": 900,
+          "after": 1300
         }
       ]
     },
@@ -276,7 +268,7 @@
     },
     {
       "id": "rails",
-      "label": "What's on the rails",
+      "label": "What’s on the rails",
       "page": "index.html",
       "start": {
         "to": "#wares",

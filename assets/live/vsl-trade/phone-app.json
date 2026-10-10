@@ -9,8 +9,8 @@
     "start": { "to": ".ap-slide.t1", "offset": 60 },
     "actions": [
       { "wait": 1800 },
-      { "scrollTo": ".ap-slide.t2", "offset": 60, "ms": 3000, "after": 2200 },
-      { "scrollTo": ".ap-slide.t3", "offset": 60, "ms": 3000, "after": 1200 },
+      { "scrollTo": ".ap-slide.t2", "offset": 60, "ms": 3000, "after": 2200, "visible": false },
+      { "scrollTo": ".ap-slide.t3", "offset": 60, "ms": 3000, "after": 1200, "visible": false },
       { "scroll": 330, "ms": 2600, "after": 2600 }
     ]
   }

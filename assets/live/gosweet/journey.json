@@ -110,17 +110,20 @@
         {
           "hover": ".gal__main",
           "ms": 1000,
-          "after": 900
+          "after": 900,
+          "scroll": false
         },
         {
           "click": ".buyrow [data-pq='1']",
           "ms": 900,
-          "after": 1100
+          "after": 1100,
+          "scroll": false
         },
         {
           "click": ".buyrow [data-padd]",
           "ms": 700,
-          "after": 900
+          "after": 900,
+          "scroll": false
         },
         {
           "click": "#toast [data-open-drawer]",
@@ -149,19 +152,22 @@
             0.5
           ],
           "ms": 900,
-          "after": 1200
+          "after": 900,
+          "scroll": false
         },
         {
           "click": ".pdp__facts a[href='loyalty.html']",
           "ms": 700,
-          "after": 900
+          "after": 900,
+          "scroll": false
         },
         {
           "hover": ".lhero .fan",
           "ms": 1000,
           "after": 2600
         }
-      ]
+      ],
+      "reload": true
     },
     {
       "label": "Three reward tiers",

@@ -13,7 +13,7 @@
       { "type": ["#contactEmail", "sam@example.com"], "after": 600 },
       { "tap": "#cfStart button[type=submit]", "after": 1800 },
       { "tap": ".cf-opt", "nth": 1, "after": 900 },
-      { "tap": ".cf-opt", "nth": 4, "after": 2400 }
+      { "tap": ".cf-opt", "text": "No", "after": 2400 }
     ]
   }
 }

@@ -9,9 +9,9 @@
     "start": 0,
     "actions": [
       { "wait": 1800 },
-      { "scrollTo": ".vn-sqgrid", "offset": 70, "ms": 3000, "after": 2000 },
+      { "scrollTo": ".vn-sqgrid", "offset": 70, "ms": 3000, "after": 2000, "visible": false },
       { "scroll": 560, "ms": 2800, "after": 1600 },
-      { "scrollTo": ".vn-brands", "offset": 60, "ms": 2800, "after": 2600 }
+      { "scrollTo": ".vn-brands", "offset": 60, "ms": 2800, "after": 2600, "visible": false }
     ]
   }
 }

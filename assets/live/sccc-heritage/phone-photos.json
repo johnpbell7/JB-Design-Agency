@@ -1,0 +1,17 @@
+{
+  "name": "SCCC Heritage: Photo wall",
+  "mobile": {
+    "label": "Photo wall",
+    "page": "index.html?p=/showreel",
+    "width": 390,
+    "touch": true,
+    "start": 0,
+    "actions": [
+      { "wait": 2000 },
+      { "tap": "button", "text": "Next photographs", "after": 2600 },
+      { "tap": "button[aria-label^='Enlarge']", "nth": 3, "scroll": false, "after": 3400 },
+      { "tap": "button", "text": "Put it back", "after": 1600 },
+      { "tap": "button", "text": "Next photographs", "after": 2400 }
+    ]
+  }
+}
