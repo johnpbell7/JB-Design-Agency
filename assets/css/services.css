@@ -318,3 +318,15 @@
 .who-card__chips span { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: color-mix(in srgb, var(--tint) 35%, var(--white)); }
 @media (max-width: 760px) { .who-card { flex-basis: 84%; } }
 @media (max-width: 700px) { .sv-who-more a { display: none; } }
+
+/* the deals inside each service's price list, styled like the Best deal panel on the price cards */
+.svc__opts li.is-deal { align-items: center; margin: 6px 0; padding: 13px 14px; border: 0; border-radius: 12px; background: var(--ink); color: #fff; }
+.svc__opts li.is-deal + li { border-top: 0; }
+.svc__opts li.is-deal span { display: grid; gap: 3px; color: #fff; font-weight: 600; }
+.svc__opts li.is-deal em { justify-self: start; margin-bottom: 3px; padding: 3px 9px; border-radius: 999px; background: var(--hl-yellow); color: var(--ink); font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: 0.02em; }
+.svc__opts li.is-deal small { font-size: 13px; font-weight: 500; opacity: 0.7; }
+.svc__opts li.is-deal b { display: grid; justify-items: end; line-height: 1.1; }
+.svc__opts li.is-deal s { margin: 0; color: rgb(255 255 255 / 0.55); font-size: 13px; }
+/* the small print, once, under all the services */
+.sv-notes { padding-block: 8px clamp(40px, 6vw, 80px); }
+.sv-notes .hp-extras { margin-top: 0; }
