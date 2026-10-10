@@ -490,7 +490,7 @@ body {
   .gs-drawer { rotate: 2deg; }
   .gs-break__fan { zoom: 0.78; }
   .gs-break--pack .gs-break__panel, .gs-break--drawer .gs-break__panel { height: 62%; }
-  .gs-break figcaption b { font-size: 16px; }
+  .gs-break figcaption b { font-size: 18px; }
   .gs-break figcaption span { font-size: 14px; }
 }
 

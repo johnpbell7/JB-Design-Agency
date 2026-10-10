@@ -196,7 +196,7 @@ body {
   .vs-usp__ic { width: 36px; height: 36px; padding-bottom: 12px; }
   .vs-usp b { font-size: 14.5px; letter-spacing: -0.03em; }
   .vs-usp__d { display: none; }
-  .vs-breakout--site figcaption b { font-size: 16px; }
+  .vs-breakout--site figcaption b { font-size: 18px; }
   .vs-breakout--site figcaption span { font-size: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {

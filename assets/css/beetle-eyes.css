@@ -421,7 +421,7 @@ body {
   .be-faq { width: 94%; rotate: -2deg; padding: 20px 20px 10px; }
   .be-visit { width: 92%; rotate: 2deg; }
   .be-breakout--two .be-break__panel { height: 58%; }
-  .be-break > figcaption b { font-size: 16px; }
+  .be-break > figcaption b { font-size: 18px; }
   .be-break > figcaption span { font-size: 14px; }
 }
 
