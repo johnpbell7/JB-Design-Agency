@@ -615,3 +615,7 @@
     mask-image: linear-gradient(to bottom, transparent 0%, #000 26%, #000 55%, transparent 88%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 26%, #000 55%, transparent 88%); }
 }
 .bt-ghost__screen picture { display: contents; }
+
+/* work wall: each column is one continuous page strip, rounded like a phone screen */
+.bt-g1__col { border-radius: calc(var(--cw) * 0.12); box-shadow: 0 0 0 1px var(--line); background: var(--grey-2); }
+.bt-g1__page { display: block; width: 100%; height: auto; }

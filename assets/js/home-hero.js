@@ -299,12 +299,11 @@
   const shots = [...document.querySelectorAll('.pf-card .pf-screen__page img')].map(i => (i.dataset.src || i.getAttribute('src')).replace(/captures\/([^/]+)\/home-mobile(-top)?\.webp$/, 'wall/$1.webp')).filter(src => !src.includes('birth-hood')); // small 360px copies of each site's top four screens (no Birth-hood: it shows a person's face)
   const depth = [0, 0.3, 0.12, 0.5];
   const cols = [...root.querySelectorAll('[data-g1-col]')];
+  // Each column is one site's page as one continuous strip, doubled for a seamless loop (no gaps between sites)
   cols.forEach((col, c) => {
-    const set = [0, 1, 2, 3].map(k => {
-      const src = shots[(c * 2 + k) % shots.length];
-      return `<span class="bt-g1__shot"><img src="${src}" alt="" decoding="async" style="object-position:50% ${depth[(k + c) % 4] * 100}%"></span>`;
-    }).join('');
-    col.innerHTML = `<div class="bt-g1__track">${set}${set}</div>`;
+    const src = shots[(c + 1) % shots.length];
+    const page = `<img class="bt-g1__page" src="${src}" alt="" decoding="async">`;
+    col.innerHTML = `<div class="bt-g1__track">${page}${page}</div>`;
   });
   if (!window.gsap || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   gsap.from(root, { autoAlpha: 0, duration: 1.6, delay: 0.5, ease: 'power2.out' });
