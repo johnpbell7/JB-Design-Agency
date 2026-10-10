@@ -1167,3 +1167,9 @@ body { --project-pen: #f1d9c7; }
   .wf-tl .wf-off > .wf-net { position: absolute; z-index: 3; right: -26%; top: 20%; margin: 0; }
   .wf-tl .wf-off > .wf-a2hs { position: absolute; z-index: 3; right: -30%; bottom: 8%; margin: 0; width: 58vw; max-width: 210px; }
 }
+@media (max-width: 760px) {
+  .wf-tl .wf-off { width: 100%; margin-inline: 0; }
+  .wf-tl .wf-off__ph.phone { width: 64%; max-width: 236px; margin-left: 2%; }
+  .wf-tl .wf-off > .wf-net { right: 0; top: 16%; }
+  .wf-tl .wf-off > .wf-a2hs { right: 0; bottom: 10%; width: 56%; }
+}
