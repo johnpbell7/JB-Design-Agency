@@ -343,3 +343,13 @@
   #shops .svc__media, #print .svc__media { margin-top: 0; }
   .svc__grid { row-gap: 24px; }
 }
+
+/* How it works on a light grey band, edge to edge, like the home page */
+.sv #process { position: relative; isolation: isolate; padding-block: clamp(56px, 8vw, 104px); margin-block: clamp(24px, 4vw, 48px); }
+.sv #process::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; translate: -50% 0; background: var(--grey-1); }
+.sv #process .steps2__line { background: var(--grey-3); }
+.sv #process .step2__no { -webkit-text-stroke-color: #c4c4c1; }
+@media (max-width: 800px) {
+  .sv #process .step2__card { background: var(--white); }
+  .sv #process .step2::before { background: var(--grey-3); }
+}
