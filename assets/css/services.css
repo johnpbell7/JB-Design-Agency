@@ -296,3 +296,4 @@
 .svc-tile__art svg { height: auto; aspect-ratio: 4 / 3; }
 .who-tile__art svg { height: auto; aspect-ratio: 1; }
 @media (max-width: 600px) { .svc-tile__art { aspect-ratio: 1; align-self: center; } .svc-tile__art svg { width: 80%; } }
+.sv main { overflow-x: clip; }
