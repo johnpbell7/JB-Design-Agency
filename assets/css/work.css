@@ -419,3 +419,12 @@
 
 /* Phones: sticky stack is back; cards three deep behind the top one are hidden (see home.js / work.js) */
 @media (max-width: 860px) { .work-stack .feature.is-buried { visibility: hidden; } }
+@media (max-width: 860px) { .work-stack .feature.is-buried { visibility: hidden; } }
+
+/* What's in my Fridge card: three phones in a tight fan; bigger on phones so they fill the card */
+@media (max-width: 860px) {
+  .feature__visual:has(.wf-fan) { aspect-ratio: 1 / 0.86; margin-inline: -6px; }
+  .wf-fan .phone:nth-child(1) { left: 1% !important; top: 14% !important; width: 35% !important; }
+  .wf-fan .phone:nth-child(2) { left: 64% !important; top: 14% !important; width: 35% !important; }
+  .wf-fan .phone:nth-child(3) { left: 27% !important; top: 0 !important; width: 46% !important; }
+}
