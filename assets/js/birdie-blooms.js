@@ -254,10 +254,7 @@
       t.addEventListener('pointerenter', () => preload(t.dataset.v), { once: true });
     });
   }
-  $$('.bb-logo').forEach(t => t.addEventListener('click', () => {
-    showLogo(t.dataset.logo);
-    viewer?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
-  }));
+  // the logo tiles are for looking at only (not clickable)
 
   // ---------- The final pick: set data-final="NN" on [data-brand] ----------
   if (brand && hasFinal) {

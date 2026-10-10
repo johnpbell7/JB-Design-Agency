@@ -485,3 +485,6 @@ body {
   .bb-pop-card .bb-pbtn { padding: 6px 8px 5px; font-size: 7.5px; gap: 5px; }
   .bb-pop-card .bb-pbtn svg { width: 10px; height: 10px; }
 }
+/* logo tiles are display only: no pointer, no lift */
+.bb-logo { cursor: default; }
+.bb-logo:hover .bb-logo__art { transform: none; }
