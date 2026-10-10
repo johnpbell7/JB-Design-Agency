@@ -151,3 +151,7 @@
   .hp-card__go { margin-top: auto; }
   .hp-tiers { margin-bottom: 12px; }
 }
+/* "From" on its own line, then the price with "/page" sitting beside it */
+.hp-card .hp-card__price { grid-template-columns: auto 1fr; align-items: baseline; }
+.hp-card .hp-card__price small { grid-column: 1 / -1; }
+.hp-card .hp-card__price em { grid-column: 2; grid-row: 2; align-self: baseline; margin: 0 0 0 4px; }

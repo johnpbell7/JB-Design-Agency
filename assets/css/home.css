@@ -1558,3 +1558,13 @@ html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, htm
 @media (max-width: 700px) { .who-more a { display: none; } }
 /* the line under "Need print?" a size up */
 .print-bar__copy > span { font-size: clamp(16px, 1.3vw, 18px); line-height: 1.5; }
+
+/* How it works on a light grey band, edge to edge, to separate it from the work above */
+.process2 { position: relative; isolation: isolate; padding-block: clamp(56px, 8vw, 104px); }
+.process2::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; translate: -50% 0; background: var(--grey-1); }
+.process2 .steps2__line { background: var(--grey-3); }
+.process2 .step2__no { -webkit-text-stroke-color: #c4c4c1; }
+@media (max-width: 800px) {
+  .process2 .step2__card { background: var(--white); }
+  .process2 .step2::before { background: var(--grey-3); }
+}
