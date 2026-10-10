@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="../assets/css/fonts.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/case.css">
+  <link rel="stylesheet" href="../assets/css/case-plus.css">
   <link rel="stylesheet" href="../assets/css/prices.css">
   <link rel="stylesheet" href="../assets/css/services.css">
   <script type="application/ld+json" data-seo>
@@ -495,16 +496,38 @@
       <div class="sv-faq__list" data-reveal><details class="sv-q"><summary>How much does a website cost?</summary><p>A one-page website starts from £500, a small business site from £1,200 and a small online shop from £1,800. After a quick chat I send you a fixed quote, so you know the full price before we start.</p></details><details class="sv-q"><summary>How long does it take?</summary><p>Most small business sites take a few weeks from our first chat to going live. Shops and bigger sites take longer, and you’ll get a timeline along with your quote.</p></details><details class="sv-q"><summary>Can I update it myself?</summary><p>It depends on the site. A one-page site works like a shop window, with no logins or back end to look after, which keeps it cheaper, faster and more secure. When you need a change, I make it for you, from £35, or from £40 a month on a care plan. If you’d rather do it yourself, I can add an editor to a one-page site for £150. Bigger sites and shops come with an editor included.</p></details><details class="sv-q"><summary>Do you host it and look after it?</summary><p>Yes, if you’d like me to. Hosting is £10 to £15 a month depending on the site, and keeps it online, secure and backed up. It’s included if you’re on a care plan (from £40 a month), which also covers updates and new pages. Your web address is registered in your name, usually £10 to £20 a year, so it’s always yours. Shopify shops are paid to Shopify directly.</p></details><details class="sv-q"><summary>What do you need from me to start?</summary><p>Just a conversation about your business and what you want the site to do. Your logo, photos and words all help, but if you don’t have them yet, we can sort them out together.</p></details></div>
     </section>
 
-    <section class="sv-cta" id="contact" aria-labelledby="contact-h">
-      <div class="wrap sv-cta__in">
-        <p class="sv-cta__where" data-reveal>Based in Birmingham, working with businesses across the UK.</p>
-        <h2 id="contact-h" data-reveal>Got a project in mind? <mark class="hl">Let’s talk.</mark></h2>
-        <p class="sv-cta__p" data-reveal>Tell me a bit about your business and what you need. I usually reply within a working day.</p>
-        <div class="sv-cta__btns" data-reveal>
-          <a class="btn btn--big btn--keep" href="../index.html#contact">Start a project <span aria-hidden="true">→</span></a>
-          <p class="sv-cta__quiet"><a href="tel:+447428728780">Call or text 07428 728780</a><a href="https://wa.me/447428728780" target="_blank" rel="noopener">WhatsApp me <span aria-hidden="true">↗</span></a><a href="mailto:jb.designagency89@gmail.com">Email me</a></p>
+    <section class="contact-band" id="contact">
+      <div class="contact wrap">
+        <div class="contact__intro">
+          <span class="label">Your turn</span>
+          <h2 id="contact-h">Got a project in mind? <mark class="hl">Let’s talk.</mark></h2>
+          <p>Tell me a bit about your business and what you’re after. I usually reply within a working day.</p>
+          <a class="contact__email" href="mailto:jb.designagency89@gmail.com">jb.designagency89@gmail.com</a>
+          <div class="contact__reach">
+            <a class="contact__pill" href="tel:+447428728780">Call or text 07428 728780</a>
+            <a class="contact__pill" href="sms:+447428728780">Send a text</a>
+            <a class="contact__pill" href="https://wa.me/447428728780" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 20.4l1.2-4.1a8.4 8.4 0 1 1 3.3 3.2z"/><path d="M9.2 8.6c-.2 2.9 3.1 6.3 6.2 6.2l.9-1.4-1.9-1-1 .7a4.2 4.2 0 0 1-2.1-2.1l.7-1-1-1.9z" fill="currentColor" stroke="none"/></svg>WhatsApp me</a>
+          </div>
+          <p class="contact__where">Based in Birmingham. Working with businesses across the UK.</p>
         </div>
-        <p class="sv-cta__links" data-reveal>Local? See <a href="web-designer-birmingham.html">web design in Birmingham</a>, <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a> or <a href="web-designer-leicester.html">web design in Leicester</a>. Or browse <a href="work.html">all my work</a>.</p>
+        <form class="contact__form" data-contact data-to="jb.designagency89@gmail.com" novalidate>
+          <fieldset class="chips">
+            <legend>What do you need?</legend>
+            <label><input type="checkbox" name="need" value="New website"><span>New website</span></label>
+            <label><input type="checkbox" name="need" value="Redesign"><span>Redesign</span></label>
+            <label><input type="checkbox" name="need" value="Online shop"><span>Online shop</span></label>
+            <label><input type="checkbox" name="need" value="Logo and brand"><span>Logo &amp; brand</span></label>
+            <label><input type="checkbox" name="need" value="Print"><span>Print</span></label>
+          </fieldset>
+          <div class="field-row">
+            <label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label>
+            <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <label class="field"><span>Tell me about it</span><textarea name="message" rows="4" required></textarea></label>
+          <p class="contact__error" role="alert" data-contact-error></p>
+          <button class="btn btn--big" type="submit">Send it over <span aria-hidden="true">→</span></button>
+          <p class="contact__note">This opens your email app with everything filled in, ready to send.</p>
+        </form>
       </div>
     </section>
   </main>
@@ -521,6 +544,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="../assets/js/case.js"></script>
+  <script src="../assets/js/case-plus.js"></script>
   <script src="../assets/js/services.js"></script>
 </body>
 </html>
