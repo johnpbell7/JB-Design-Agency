@@ -300,3 +300,7 @@ html.nav-locked .cta-bar { translate: 0 calc(100% + 30px); }
 .site-foot__row { flex-wrap: wrap; row-gap: 12px; min-width: 0; }
 /* a contact button that should stay on phones (pages without their own contact form) */
 @media (max-width: 680px) { a.btn.btn--keep[href$="#contact"] { display: inline-flex !important; } }
+/* the open phone menu and its bar sit above everything on the page (the fan phones use z-index up to 50) */
+.nav-menu { z-index: 900; }
+.site-nav { z-index: 901; }
+.site-nav.is-open { transform: none !important; }
