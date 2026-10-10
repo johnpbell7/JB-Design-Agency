@@ -29,12 +29,15 @@
     const name = root.dataset.demo;
     if (!hasGsap || reduce) { build(null); return; }
     let tl = null, seen = false;
-    const start = () => { tl?.kill(); tl = build(gsap.timeline({ repeat: -1, repeatDelay: 1.6 })); };
+    // On phones the demo sits under its copy, so it starts as soon as a sliver shows
+    // and loops with a shorter breath; desktop keeps its thresholds
+    const phone = matchMedia('(max-width: 760px)').matches;
+    const start = () => { tl?.kill(); tl = build(gsap.timeline({ repeat: -1, repeatDelay: phone ? 0.8 : 1.6 })); };
     demos[name] = () => { start(); seen = true; };
     new IntersectionObserver(([e]) => {
       if (e.isIntersecting) { if (!seen) { seen = true; start(); } else tl?.play(); }
       else tl?.pause();
-    }, { threshold: 0.3 }).observe(root);
+    }, phone ? { threshold: 0.08, rootMargin: '0px 0px -8% 0px' } : { threshold: 0.3 }).observe(root);
   };
   $$('[data-replay]').forEach(b => b.addEventListener('click', () => demos[b.dataset.replay]?.()));
   if (reduce || !hasGsap) $$('[data-replay]').forEach(b => { b.hidden = true; });
@@ -293,6 +296,156 @@
       .fromTo(h('icon'), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, ease: 'back.out(2.4)' }, 4.8)
       .to({}, { duration: 2.6 }, 5.6);
     return tl;
+  });
+
+  // ---------- Phones: the hero plays a walkthrough ----------
+  // The centre phone steps through the real screens (a push, like the app's own
+  // navigation), the side phones show the screens either side of it, and the pieces
+  // around them answer whatever is on screen. A caption pill names the feature.
+  const MOBILE = '(max-width: 760px)';
+  const stage = $('.wf-stage');
+  const HERO = [
+    { img: 'home', name: 'Home: one tap for each job', cue: 'icon' },
+    { img: 'scan', name: 'Snap your shopping', cue: 'snap' },
+    { img: 'scan-check', name: 'Check what it found', cue: 'found' },
+    { img: 'fridge', name: 'Use it up first', cue: 'soon' },
+    { img: 'list', name: 'Your shopping list', cue: 'garlic' },
+    { img: 'tonight', name: 'Dinner from what’s in', cue: 'meal' },
+  ];
+  const CUES = {
+    snap: '<span class="wf-cue__chip"><svg width="14" height="14"><use href="#fa-camera"/></svg>Snap the shopping</span>',
+    found: '<span class="wf-cue__chip is-on"><svg width="14" height="14"><use href="#fa-check"/></svg>7 items found</span>',
+    soon: '<span class="wf-cue__chip is-warn"><svg width="14" height="14"><use href="#fa-warning"/></svg>4 to use soon</span>',
+    garlic: '<span class="fa-buy-chip on"><svg class="fa-tick" width="13" height="13"><use href="#fa-check"/></svg>Garlic · on your list</span>',
+    meal: '<span class="wf-cue__meal"><b>Creamy chicken and spinach</b><small>Uses the spinach · 30 min</small></span>',
+  };
+  if (stage && hasGsap && !reduce) gsap.matchMedia().add(MOBILE, () => {
+    const STEP = 3.2;
+    const phoneC = $('.wf-ph--c', stage), phoneL = $('.wf-ph--l', stage), phoneR = $('.wf-ph--r', stage);
+    const base = $('.screen img', phoneC).getAttribute('src').replace(/[^/]+$/, '');
+    const reel = phone => {
+      const box = document.createElement('div');
+      box.className = 'wf-reel'; box.setAttribute('aria-hidden', 'true');
+      box.innerHTML = HERO.map(s => `<img src="${base}${s.img}.webp" alt="" width="511" height="1080" decoding="async">`).join('');
+      $('.screen', phone).append(box);
+      return $$('img', box);
+    };
+    const C = reel(phoneC), L = reel(phoneL), R = reel(phoneR);
+    stage.classList.add('is-reel');
+    const pill = document.createElement('div');
+    pill.className = 'parade__now wf-hero-now';
+    pill.setAttribute('aria-hidden', 'true');
+    pill.innerHTML = '<b></b><strong></strong><i><em></em></i>';
+    const cueBox = document.createElement('div');
+    cueBox.className = 'wf-cue fa'; cueBox.setAttribute('aria-hidden', 'true');
+    cueBox.innerHTML = Object.entries(CUES).map(([k, h]) => `<div data-cue="${k}">${h}</div>`).join('');
+    stage.append(pill, cueBox);
+    const bar = $('em', pill);
+    const cues = Object.fromEntries($$('[data-cue]', cueBox).map(el => [el.dataset.cue, el]));
+    const pops = $$('.pop > .fa', stage);
+    const icon = pops.find(p => p.classList.contains('wf-pop-icon'));
+    const row = pops.find(p => p.classList.contains('wf-pop-row'));
+    const used = row && $('.fa-used', row);
+    const n = HERO.length, at = k => (k + n) % n;
+    gsap.set([...C, ...L, ...R], { autoAlpha: 0 });
+    gsap.set([C[0], L[n - 1], R[1]], { autoAlpha: 1 });
+    gsap.set(Object.values(cues), { autoAlpha: 0, scale: 0.4, y: 16 });
+    let cur = 0, cue = null;
+    const side = (imgs, k) => imgs.forEach((im, i) => gsap.to(im, { autoAlpha: i === k ? 1 : 0, duration: 0.6, ease: 'power1.inOut', overwrite: 'auto' }));
+    const label = k => {
+      $('b', pill).textContent = String(k + 1).padStart(2, '0');
+      $('strong', pill).textContent = HERO[k].name;
+      gsap.fromTo(pill, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: 'back.out(2)', overwrite: true });
+    };
+    const react = k => {
+      const want = HERO[k].cue;
+      if (cue && cue !== cues[want]) gsap.to(cue, { autoAlpha: 0, scale: 0.6, y: -10, duration: 0.3, ease: 'power2.in', overwrite: true });
+      cue = cues[want] || null;
+      if (cue) gsap.fromTo(cue, { autoAlpha: 0, scale: 0.4, y: 16, rotation: -6 }, { autoAlpha: 1, scale: 1, y: 0, rotation: 0, duration: 0.7, delay: 0.45, ease: 'back.out(2.4)', overwrite: true });
+      if (want === 'icon' && icon) gsap.fromTo(icon, { scale: 1, rotation: 0 }, { keyframes: [{ scale: 1.22, rotation: -10, duration: 0.25 }, { scale: 0.96, rotation: 6, duration: 0.2 }, { scale: 1, rotation: 0, duration: 0.35 }], delay: 0.4, ease: 'power2.out', transformOrigin: '50% 50%' });
+      if (want === 'soon' && row) gsap.fromTo(row, { scale: 1 }, { scale: 1.08, duration: 0.28, yoyo: true, repeat: 3, delay: 0.4, ease: 'power1.inOut', transformOrigin: '30% 50%' });
+      // the spinach goes into tonight's dinner, so it's marked used
+      used?.classList.toggle('on', want === 'meal');
+    };
+    const show = k => {
+      if (k !== cur) {
+        const a = C[cur], b = C[k];
+        gsap.set(b, { zIndex: 2 }); gsap.set(a, { zIndex: 1 });
+        gsap.to(a, { xPercent: -32, autoAlpha: 0, duration: 0.75, ease: 'power3.inOut', overwrite: 'auto' });
+        gsap.fromTo(b, { xPercent: 100, autoAlpha: 1, scale: 1, yPercent: 0 }, { xPercent: 0, duration: 0.75, ease: 'power3.inOut', overwrite: 'auto' });
+        side(L, at(k - 1)); side(R, at(k + 1));
+        cur = k;
+      }
+      // the screen drifts up and in a touch while it's showing, as if being read
+      gsap.fromTo(C[k], { scale: 1, yPercent: 0 }, { scale: 1.06, yPercent: -5.5, duration: STEP - 0.4, delay: 0.7, ease: 'sine.inOut', transformOrigin: '50% 0%' });
+      label(k); react(k);
+    };
+    const tl = gsap.timeline({ repeat: -1, paused: true });
+    HERO.forEach((s, k) => {
+      tl.call(() => show(k), null, k * STEP + 0.001)
+        .fromTo(bar, { scaleX: 0 }, { scaleX: 1, duration: STEP, ease: 'none', immediateRender: false }, k * STEP);
+    });
+    // starts once the phones have stood up (case.js), and only runs while the hero is in view
+    let ready = false, inView = false;
+    const sync = () => (ready && inView ? tl.play() : tl.pause());
+    const wait = gsap.delayedCall(1.9, () => { ready = true; sync(); });
+    const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { threshold: 0.25 });
+    io.observe(stage);
+    return () => {
+      io.disconnect(); wait.kill(); tl.kill();
+      [pill, cueBox, ...$$('.wf-reel', stage)].forEach(el => el.remove());
+      stage.classList.remove('is-reel'); used?.classList.remove('on');
+      if (icon) gsap.set(icon, { clearProps: 'transform' });
+      if (row) gsap.set(row, { clearProps: 'transform' });
+    };
+  });
+
+  // ---------- Phones: the screen deck (case.js) gets a walkthrough feel ----------
+  // Each screen settles in and drifts as it's read, a line says what it does, dots
+  // show where you are, and a touch holds it still for a moment.
+  const parade = $('[data-parade]');
+  if (parade && hasGsap && !reduce) gsap.matchMedia().add(MOBILE, () => {
+    const phones = $$('.parade__row > .phone', parade);
+    const spans = $$('.parade__caption span', parade);
+    const deck = $('.parade__deck', parade);
+    if (!deck || phones.length < 2) return;
+    const HOLD = +parade.dataset.hold || 6.5;
+    const info = document.createElement('div');
+    info.className = 'wf-deck-info'; info.setAttribute('aria-hidden', 'true');
+    info.innerHTML = `<p></p><span class="wf-dots">${phones.map(() => '<i></i>').join('')}</span>`;
+    deck.after(info);
+    const line = $('p', info), dots = $$('.wf-dots i', info), bar = $('.parade__now em', deck);
+    let cur = -1;
+    const enter = k => {
+      const img = $('.screen img', phones[k]);
+      gsap.killTweensOf(img, 'scale,yPercent,autoAlpha');
+      gsap.timeline()
+        .fromTo(img, { scale: 1.16, yPercent: 0, autoAlpha: 0.2 }, { scale: 1.04, autoAlpha: 1, duration: 0.9, ease: 'expo.out', transformOrigin: '50% 0%' }, 0.15)
+        .to(img, { scale: 1.07, yPercent: -6, duration: HOLD - 1.2, ease: 'sine.inOut' }, 1.05);
+      line.textContent = spans[k]?.dataset.line || '';
+      gsap.fromTo(line, { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, delay: 0.15, ease: 'expo.out', overwrite: true });
+      dots.forEach((d, i) => d.classList.toggle('on', i === k));
+    };
+    const look = () => {
+      const k = phones.findIndex(p => p.classList.contains('is-on') && !p.classList.contains('is-leaving'));
+      if (k > -1 && k !== cur) { cur = k; enter(k); }
+    };
+    const mo = new MutationObserver(look);
+    phones.forEach(p => mo.observe(p, { attributes: true, attributeFilter: ['class'] }));
+    look();
+    // a swipe or a held finger pauses the clock; it carries on a moment after letting go
+    const row = $('.parade__row', parade);
+    let resume = null;
+    const clock = () => gsap.getTweensOf(bar)[0];
+    const hold = () => { resume?.kill(); clock()?.pause(); };
+    const release = () => { resume?.kill(); clock()?.pause(); resume = gsap.delayedCall(1.6, () => { const t = clock(); if (t && row.getBoundingClientRect().bottom > 0 && row.getBoundingClientRect().top < innerHeight) t.play(); }); };
+    row.addEventListener('touchstart', hold, { passive: true });
+    row.addEventListener('touchend', release, { passive: true });
+    return () => {
+      mo.disconnect(); resume?.kill(); info.remove();
+      row.removeEventListener('touchstart', hold); row.removeEventListener('touchend', release);
+      phones.forEach(p => gsap.set($('.screen img', p), { clearProps: 'scale,yPercent,opacity,visibility' }));
+    };
   });
 
   // ---------- Get the app: iPhone / Android steps ----------
