@@ -225,15 +225,18 @@
 
       // In view: copy rises, the scribble draws on stroke by stroke, the stack deals
       // out into the fan, then the highlight sweeps across "like to use."
+      // Phones: the copy sits a screen above the phones, so it rises on its own and the scribble
+      // and the deal wait until the phones themselves come into view (drawn a little slower)
       const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' }, onStart: () => { introDone = true; } });
-      tl.to('.pf-rv', { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.06 }, 0)
-        .to(strokes, { strokeDashoffset: 0, duration: 0.22, ease: 'power1.inOut', stagger: 0.14 }, 0.1)
+      if (desk) tl.to('.pf-rv', { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.06 }, 0);
+      else ScrollTrigger.create({ trigger: '.pf-hero', start: 'top 82%', once: true, onEnter: () => gsap.to('.pf-rv', { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.06, ease: 'power3.out' }) });
+      tl.to(strokes, { strokeDashoffset: 0, duration: desk ? 0.22 : 0.4, ease: 'power1.inOut', stagger: desk ? 0.14 : 0.22 }, 0.1)
         .to(cards, { y: 0, autoAlpha: 1, duration: 0.45, stagger: 0.03 }, 0.1)
         .to(cards, { rotation: i => A[i], duration: 0.6, ease: 'back.out(1.4)', stagger: { each: 0.04, from: 'center' } }, 0.35)
         .to(mark, { backgroundSize: '100% 72%', duration: 0.5, ease: 'power2.inOut' }, '-=0.3')
         .add(() => mark.classList.add('is-lit'));
       if (!desk) tl.add(() => fanLayout(0.6), '-=0.6').to('.pf-deck-cap', { autoAlpha: 1, y: 0, duration: 0.5 }, '-=0.2');
-      ScrollTrigger.create({ trigger: '.pf-hero', start: 'top 82%', once: true, onEnter: () => tl.play() });
+      ScrollTrigger.create({ trigger: desk ? '.pf-hero' : '[data-pf-fan]', start: desk ? 'top 82%' : 'top 72%', once: true, onEnter: () => tl.play() });
     });
   })();
   
