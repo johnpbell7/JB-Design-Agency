@@ -6,7 +6,7 @@
     "width": 390,
     "touch": true,
     "css": "html{scroll-behavior:auto!important}",
-    "start": { "to": "#card", "offset": 900 },
+    "start": { "to": "#card", "offset": 640 },
     "actions": [
       { "wait": 1800 },
       { "scrollTo": ".card-stage", "offset": 200, "ms": 3000, "after": 4400 },

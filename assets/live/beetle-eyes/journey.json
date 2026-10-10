@@ -47,13 +47,15 @@
           "hover": ".ware",
           "nth": 0,
           "ms": 900,
-          "after": 900
+          "after": 900,
+          "visible": false
         },
         {
           "hover": ".ware",
           "nth": 1,
           "ms": 700,
-          "after": 800
+          "after": 800,
+          "visible": false
         },
         {
           "scroll": 300,
@@ -64,7 +66,8 @@
           "hover": ".ware",
           "nth": 3,
           "ms": 800,
-          "after": 1200
+          "after": 1200,
+          "visible": false
         }
       ]
     },
@@ -80,13 +83,15 @@
           "hover": ".gallery-grid figure",
           "nth": 0,
           "ms": 1200,
-          "after": 1300
+          "after": 1300,
+          "visible": false
         },
         {
           "hover": ".gallery-grid figure",
           "nth": 1,
           "ms": 1000,
-          "after": 1200
+          "after": 1200,
+          "visible": false
         },
         {
           "scroll": 560,
@@ -97,7 +102,8 @@
           "hover": ".gallery-grid figure",
           "nth": 3,
           "ms": 1100,
-          "after": 1500
+          "after": 1500,
+          "visible": false
         }
       ]
     },
@@ -119,7 +125,8 @@
             0.45
           ],
           "ms": 1300,
-          "after": 1800
+          "after": 1800,
+          "visible": false
         },
         {
           "scroll": 240,
@@ -130,12 +137,14 @@
           "hover": ".magpie-list li",
           "nth": 2,
           "ms": 1100,
-          "after": 1000
+          "after": 1000,
+          "visible": false
         },
         {
           "hover": ".magpie-link",
           "ms": 900,
-          "after": 1300
+          "after": 1300,
+          "visible": false
         }
       ]
     },

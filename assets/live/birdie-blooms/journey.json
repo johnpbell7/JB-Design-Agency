@@ -12,8 +12,8 @@
       "start": 0,
       "reload": true,
       "actions": [
-        { "wait": 3000 },
-        { "hover": ".hero-center .btn", "ms": 1100, "after": 1800 },
+        { "wait": 4000 },
+        { "hover": ".hero-center .btn", "ms": 1100, "after": 2400 },
         { "move": [1080, 560], "ms": 1000, "after": 800 }
       ]
     },
@@ -32,10 +32,10 @@
       "page": "index.html",
       "start": { "to": "#card", "offset": -10 },
       "actions": [
-        { "click": ".bar .menu-btn", "ms": 900, "after": 1400 },
-        { "hover": ".menu-link", "nth": 2, "ms": 800, "after": 700 },
-        { "hover": ".menu-link", "nth": 3, "ms": 600, "after": 700 },
-        { "click": ".menu-link", "text": "Flowers", "ms": 700, "after": 400 }
+        { "click": ".bar .menu-btn", "scroll": false, "ms": 900, "after": 1800 },
+        { "hover": ".menu-link", "nth": 2, "visible": false, "ms": 800, "after": 1100 },
+        { "hover": ".menu-link", "nth": 3, "visible": false, "ms": 600, "after": 1100 },
+        { "click": ".menu-link", "text": "Flowers", "visible": false, "ms": 700, "after": 400 }
       ]
     },
     {
