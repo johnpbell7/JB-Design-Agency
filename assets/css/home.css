@@ -1541,3 +1541,28 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
 .hp-tiers li.is-deal b { display: grid; justify-items: end; line-height: 1.05; }
 .hp-tiers li.is-deal b::before { display: none; }
 .hp-tiers li.is-deal s { font-size: 13px; font-weight: 600; opacity: 0.55; letter-spacing: 0; }
+
+/* ---- Price cards, refined: coloured header with the headline price, white body, button footer ---- */
+.hp-card { gap: 0; padding: 0; overflow: hidden; background: var(--white); box-shadow: 0 0 0 1px var(--line), 0 18px 40px -28px rgb(24 24 26 / 0.35); }
+.hp-card:hover { box-shadow: 0 0 0 1px var(--line), 0 34px 60px -30px rgb(24 24 26 / 0.45); }
+.hp-card__top { display: grid; gap: 8px; padding: 24px 24px 22px; background: color-mix(in srgb, var(--pen) 45%, var(--white)); }
+.hp-card h3 { font-size: 18px; }
+.hp-card h3::before { width: 10px; height: 10px; background: var(--pen); }
+.hp-card .hp-card__price { display: flex; align-items: baseline; gap: 6px; margin: 4px 0 2px; font-size: clamp(38px, 3.2vw, 48px); font-weight: 700; letter-spacing: -0.055em; line-height: 1; }
+.hp-card .hp-card__price small { font-size: 13px; font-weight: 600; letter-spacing: 0; opacity: 0.6; }
+.hp-card .hp-card__price em { font-style: normal; font-size: 15px; font-weight: 600; letter-spacing: 0; opacity: 0.65; margin-left: -2px; }
+.hp-card__lead { font-size: 14.5px; opacity: 0.78; min-height: 4.6em; }
+.hp-tiers { margin: 8px 18px 0; border-radius: 0; background: none; }
+.hp-tiers li { padding: 14px 6px; align-items: start; }
+.hp-tiers li + li { border-top: 1px solid var(--line); }
+.hp-tiers span { font-size: 15px; }
+.hp-tiers small { font-size: 12.5px; }
+.hp-tiers b { font-size: 17px; padding-top: 1px; }
+.hp-tiers b::before { content: none; }
+.hp-tiers li.is-deal { margin: 6px -4px; padding: 14px 12px; }
+.hp-incl { margin: 6px 24px 0; padding: 16px 0 0; border-top: 1px dashed var(--grey-3); color: var(--grey-7); font-size: 13.5px; }
+.hp-incl li::before { color: var(--ink); }
+.hp-card__go { margin: auto 18px 18px; padding: 13px 18px; justify-content: center; border-radius: 999px; background: #18181a; color: #fff; font-size: 14.5px; }
+.hp-card:hover .hp-card__go { background: color-mix(in srgb, var(--pen) 100%, #18181a 0%); color: #18181a; }
+.hp-incl { margin-bottom: 22px; }
+@media (max-width: 700px) { .hp-card__lead { min-height: 0; } }
