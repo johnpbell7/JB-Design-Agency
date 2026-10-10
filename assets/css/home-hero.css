@@ -614,3 +614,4 @@
   .bt-g1 { bottom: -230px; height: calc(40svh + 230px);
     mask-image: linear-gradient(to bottom, transparent 0%, #000 26%, #000 55%, transparent 88%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 26%, #000 55%, transparent 88%); }
 }
+.bt-ghost__screen picture { display: contents; }

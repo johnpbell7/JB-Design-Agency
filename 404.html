@@ -2,19 +2,22 @@
 <html lang="en-GB" class="no-js">
 <head>
   <meta charset="utf-8">
+  <!-- GitHub Pages serves this page at any missing path, so links resolve from the site's folder.
+       Change to "/" if the site moves to its own domain. -->
+  <base href="/JB-Design-Agency/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found · John Bell</title>
   <meta name="robots" content="noindex">
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <script src="/assets/js/theme.js"></script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script src="assets/js/theme.js"></script>
   <!-- Instant page changes: Chrome starts loading a page as you press (or hover) its link -->
   <script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/*/assets/*"}},{"not":{"href_matches":"/assets/*"}}]},"eagerness":"moderate"}]}</script>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/base.css">
   <style>
     .nf { min-height: 100dvh; display: grid; place-items: center; text-align: center; padding: 120px var(--gutter) 60px; }
     .nf__num { font-size: clamp(120px, 26vw, 320px); font-weight: 800; letter-spacing: -0.07em; line-height: 0.85; color: transparent; -webkit-text-stroke: 2px var(--ink); }
@@ -30,14 +33,14 @@
 </head>
 <body>
   <header class="site-nav">
-    <a class="site-nav__mark" href="/index.html"><span class="jb-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><defs><linearGradient id="jbT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff58a"/><stop offset="1" stop-color="#ffe94a"/></linearGradient><linearGradient id="jbS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5c400"/><stop offset="1" stop-color="#e2a400"/></linearGradient></defs><rect x="1.5" y="1.5" width="45" height="45" rx="10.5" fill="url(#jbS)" stroke="#18181a" stroke-width="1.6"/><g class="jb-mark__cap"><rect x="5" y="3.6" width="38" height="36.4" rx="8" fill="url(#jbT)" stroke="#e9b400" stroke-width="0.8"/><path d="M37.9 29.29Q37.9 32.2 35.87 33.9Q33.83 35.61 30.2 35.61H17.4Q13.73 35.61 11.52 33.64Q9.3 31.67 9.3 27.84H14.92Q14.92 29.29 15.52 30.03Q16.11 30.78 17.24 30.78Q18.26 30.78 18.82 30.12Q19.38 29.46 19.38 28.2V12.39H29.83Q33.37 12.39 35.37 14.01Q37.37 15.63 37.37 18.41Q37.37 20.46 36.3 21.82Q35.22 23.17 33.44 23.7Q35.45 24.13 36.68 25.7Q37.9 27.27 37.9 29.29ZM25.04 21.78H28.74Q30.13 21.78 30.87 21.17Q31.62 20.56 31.62 19.37Q31.62 18.18 30.87 17.55Q30.13 16.92 28.74 16.92H25.04ZM32.18 28.53Q32.18 27.31 31.37 26.61Q30.56 25.92 29.14 25.92H25.04V31.04H29.2Q30.63 31.04 31.4 30.4Q32.18 29.75 32.18 28.53Z" fill="#18181a" transform="translate(24 21.8) scale(0.92) translate(-23.6 -24)"/></g></svg></span>John Bell</a>
+    <a class="site-nav__mark" href="index.html"><span class="jb-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><defs><linearGradient id="jbT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff58a"/><stop offset="1" stop-color="#ffe94a"/></linearGradient><linearGradient id="jbS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5c400"/><stop offset="1" stop-color="#e2a400"/></linearGradient></defs><rect x="1.5" y="1.5" width="45" height="45" rx="10.5" fill="url(#jbS)" stroke="#18181a" stroke-width="1.6"/><g class="jb-mark__cap"><rect x="5" y="3.6" width="38" height="36.4" rx="8" fill="url(#jbT)" stroke="#e9b400" stroke-width="0.8"/><path d="M37.9 29.29Q37.9 32.2 35.87 33.9Q33.83 35.61 30.2 35.61H17.4Q13.73 35.61 11.52 33.64Q9.3 31.67 9.3 27.84H14.92Q14.92 29.29 15.52 30.03Q16.11 30.78 17.24 30.78Q18.26 30.78 18.82 30.12Q19.38 29.46 19.38 28.2V12.39H29.83Q33.37 12.39 35.37 14.01Q37.37 15.63 37.37 18.41Q37.37 20.46 36.3 21.82Q35.22 23.17 33.44 23.7Q35.45 24.13 36.68 25.7Q37.9 27.27 37.9 29.29ZM25.04 21.78H28.74Q30.13 21.78 30.87 21.17Q31.62 20.56 31.62 19.37Q31.62 18.18 30.87 17.55Q30.13 16.92 28.74 16.92H25.04ZM32.18 28.53Q32.18 27.31 31.37 26.61Q30.56 25.92 29.14 25.92H25.04V31.04H29.2Q30.63 31.04 31.4 30.4Q32.18 29.75 32.18 28.53Z" fill="#18181a" transform="translate(24 21.8) scale(0.92) translate(-23.6 -24)"/></g></svg></span>John Bell</a>
     <nav class="site-nav__links" aria-label="Main">
-      <a href="/index.html#skills">Services</a>
-      <a href="/index.html#process">Process</a>
-      <a href="/projects/work.html">Work</a>
-      <a href="/projects/print.html">Print</a>
-      <a href="/projects/about.html">About</a>
-      <a class="is-cta" href="/index.html#contact">Start a project</a>
+      <a href="index.html#skills">Services</a>
+      <a href="index.html#process">Process</a>
+      <a href="projects/work.html">Work</a>
+      <a href="projects/print.html">Print</a>
+      <a href="projects/about.html">About</a>
+      <a class="is-cta" href="index.html#contact">Start a project</a>
     </nav>
   </header>
   <main class="nf">
@@ -45,8 +48,16 @@
       <p class="nf__num" aria-hidden="true"><span>4</span><span>0</span><span>4</span></p>
       <h1>This page has <mark class="hl is-lit">wandered off.</mark></h1>
       <p>The link might be old, or the page has moved.</p>
-      <div class="nf__ctas"><a class="btn" href="/index.html">Back to the start</a><a class="btn btn--ghost" href="/index.html#work">See the work</a></div>
+      <div class="nf__ctas"><a class="btn" href="index.html">Back to the start</a><a class="btn btn--ghost" href="index.html#work">See the work</a></div>
     </div>
   </main>
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="site-foot__row">
+        <span>© 2026 John Bell · Designed and built by me</span>
+        <nav aria-label="Footer"><a href="projects/work.html">Work</a><a href="projects/about.html">About</a><a href="index.html#faq">FAQs</a><a href="projects/privacy.html">Privacy</a><a href="projects/terms.html">Terms</a></nav>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

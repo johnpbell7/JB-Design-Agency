@@ -6,9 +6,11 @@
   const imgs = [...document.querySelectorAll('.pf-card img[data-src]')];
   if (!imgs.length) return;
   let done = false;
-  const go = () => { if (done) return; done = true; imgs.forEach(x => { x.src = x.dataset.src; x.removeAttribute('data-src'); }); };
+  const go = () => { if (done) return; done = true; imgs.forEach(x => { if (x.dataset.srcset) { x.srcset = x.dataset.srcset; x.removeAttribute('data-srcset'); } x.src = x.dataset.src; x.removeAttribute('data-src'); }); };
   const first = document.querySelector('.bt-ghost__screen img.is-on');
-  if (!first || (first.complete && first.naturalWidth)) return go();
+  const near = () => { if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => e.isIntersecting && go(), { rootMargin: '50% 0px' }).observe(imgs[0].closest('.pf-fan') || imgs[0]); else go(); };
+  if (!first) return near(); // phones (no laptop backdrop): load the fan as it nears view
+  if (first.complete && first.naturalWidth) return go();
   first.addEventListener('load', go, { once: true });
   first.addEventListener('error', go, { once: true });
   setTimeout(go, 4000);
@@ -265,7 +267,7 @@
   const fetch = x => { if (x.dataset.src) { x.src = x.dataset.src; x.removeAttribute('data-src'); } };
   let i = 0;
   const show = () => {
-    const img = imgs[i], view = img.parentElement;
+    const img = imgs[i], view = img.closest('.bt-ghost__screen');
     fetch(imgs[(i + 1) % imgs.length]);
     imgs.forEach(x => x.classList.toggle('is-on', x === img));
     const hero = document.querySelector('.bt-hero'), chip = document.querySelector('[data-now-chip]'), nm = document.querySelector('[data-now-name]');
@@ -288,7 +290,7 @@
 (() => {
   const root = document.querySelector('.bt-g1');
   if (!root) return;
-  const shots = [...document.querySelectorAll('.pf-card .pf-screen__page img')].map(i => i.dataset.src || i.getAttribute('src')); // the trimmed (-top) captures: lighter, and the wall only shows their upper half
+  const shots = [...document.querySelectorAll('.pf-card .pf-screen__page img')].map(i => (i.dataset.src || i.getAttribute('src')).replace(/captures\/([^/]+)\/home-mobile(-top)?\.webp$/, 'wall/$1.webp')); // small 360px copies of each site's top four screens
   const depth = [0, 0.3, 0.12, 0.5];
   const cols = [...root.querySelectorAll('[data-g1-col]')];
   cols.forEach((col, c) => {
