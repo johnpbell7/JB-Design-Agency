@@ -313,10 +313,15 @@
       const was = p.seen;
       p.seen = p.inView && shown(p); playOrPause(p);
       if (was && !p.seen && !shown(p) && p.frame && p.state === 'run') {
-        p.state = 'reset';
-        p.incoming?.remove();
-        p.incoming = frame(p, p.src);
-        p.resume.set(p.incoming, { i: 0, at: 0 });
+        // a moment later, so the reload doesn't slow the phone that has just come in
+        clearTimeout(p.rewind);
+        p.rewind = setTimeout(() => {
+          if (p.seen || p.state !== 'run') return;
+          p.state = 'reset';
+          p.incoming?.remove();
+          p.incoming = frame(p, p.src);
+          p.resume.set(p.incoming, { i: 0, at: 0 });
+        }, 2500);
       }
       wake();
     };

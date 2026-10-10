@@ -22,7 +22,8 @@
       "actions": [
         { "click": ".menu-btn", "ms": 900, "after": 1300 },
         { "hover": ".menu-link", "nth": 1, "ms": 800, "after": 700 },
-        { "hover": ".menu-link", "nth": 3, "ms": 700, "after": 1500 }
+        { "hover": ".menu-link", "nth": 3, "ms": 700, "after": 1500 },
+        { "click": ".menu-close", "ms": 700, "after": 400 }
       ]
     },
     {
