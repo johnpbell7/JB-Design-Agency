@@ -1551,3 +1551,6 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
 .print-bar.is-in .print-bar__pile img { translate: 0 0; rotate: calc((var(--i) - 3) * 3deg); opacity: 1; }
 .print-bar.is-in:hover .print-bar__pile img { translate: calc((var(--i) - 3) * 5px) -6px; }
 @media (prefers-reduced-motion: reduce) { .print-bar__pile img { opacity: 1; translate: none; transition: none; rotate: calc((var(--i) - 3) * 3deg); } }
+
+/* One size for lead/body copy under headings, hero included (matches .chapter-head p) */
+html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, html body .ha__story, html body .contact__intro > p:not(.contact__where) { font-size: clamp(16px, 1.4vw, 19px); line-height: 1.7; }
