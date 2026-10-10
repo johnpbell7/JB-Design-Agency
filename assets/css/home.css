@@ -1485,3 +1485,8 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
   .tape--b { rotate: 9deg; translate: 0 -50%; }
 }
 @media (max-width: 560px) { .tapes { position: relative; z-index: 2; margin-top: -110px; } }
+/* numbers removed: the FAQ and services lose the column they sat in */
+.qa__btn { grid-template-columns: minmax(0, 1fr) 36px; }
+.qa__inner { padding-left: 0; }
+@media (max-width: 760px) { .qa__btn { grid-template-columns: minmax(0, 1fr) 32px; } .qa__inner { padding-left: 0; } }
+@media (min-width: 901px) { .service { grid-template-columns: 96px minmax(0, 1fr) auto; } }

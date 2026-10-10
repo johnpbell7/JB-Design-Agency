@@ -294,3 +294,11 @@ html.nav-locked .cta-bar { translate: 0 calc(100% + 30px); }
 /* small "— Label" eyebrows above section headings are gone site-wide; labels that title a column (The brief, What I did) stay */
 .label:has(+ h1), .label:has(+ h2) { display: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---------- No eyebrows or counting numbers (the work cards keep theirs) ----------
+   Small labels above headings, chapter numbers and step numbers are hidden site-wide.
+   The two headings inside a case page's brief stay (they name its columns). */
+.chapter-no, .chapter-pill, .label:not(.cs-brief .label), .cp-card__label, .yalla__kicker,
+.service__n, .step2__no, .qa__n, .job__n, .cp-steps b, .parade__now b { display: none !important; }
+.parade__now { padding-left: 18px !important; }
+[data-cp-film] .cp-steps button { padding-left: 20px !important; }
