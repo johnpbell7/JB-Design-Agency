@@ -67,7 +67,14 @@
     ScrollTrigger.batch(revealEls, {
       start: 'top 88%',
       once: true,
-      onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, duration: 0.9, ease: 'expo.out', stagger: 0.08 }),
+      // a jump link (#prices, #print) passes lots at once: anything already scrolled past shows
+      // straight away, so what's on screen isn't left waiting at the back of a long stagger
+      onEnter: batch => {
+        const past = batch.filter(el => el.getBoundingClientRect().bottom < 0);
+        const now = batch.filter(el => !past.includes(el));
+        if (past.length) gsap.set(past, { opacity: 1, y: 0 });
+        if (now.length) gsap.to(now, { opacity: 1, y: 0, duration: 0.9, ease: 'expo.out', stagger: Math.min(0.08, 0.4 / now.length) });
+      },
     });
   }
 
