@@ -1568,3 +1568,9 @@ html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, htm
   .process2 .step2__card { background: var(--white); }
   .process2 .step2::before { background: var(--grey-3); }
 }
+/* phones: the print pile sized to the block, so the covers run edge to edge */
+@media (max-width: 860px) {
+  .print-bar__pile { --ph: calc((100vw - 2 * var(--gutter, 18px) - 40px + 54px) / 4.12); height: calc(var(--ph) + 10px); margin-inline: -4px; }
+  .print-bar__pile img { height: var(--ph); margin-left: -18px; }
+}
+@media (min-width: 481px) and (max-width: 860px) { .print-bar__pile { --ph: calc((100vw - 2 * var(--gutter, 18px) - 40px + 54px) / 4.5); } }
