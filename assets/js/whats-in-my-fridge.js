@@ -905,8 +905,11 @@
         if (!copy || !demo || sec.classList.contains('wf-cook')) return;
         const flip = row.classList.contains('wf-feat--flip') || row.classList.contains('wf-deep--flip');
         const cs = wide ? (flip ? 1 : -1) : 1;
-        gsap.from(copy, { x: 46 * cs, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 82%', once: true } });
-        gsap.from(demo, { x: -46 * cs, autoAlpha: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 82%', once: true } });
+        // phones: rise instead of sliding sideways, so nothing pokes past the screen edge
+        const from = wide ? { x: 46 * cs } : { y: 26 };
+        const fromD = wide ? { x: -46 * cs } : { y: 34 };
+        gsap.from(copy, { ...from, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 82%', once: true } });
+        gsap.from(demo, { ...fromD, autoAlpha: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 82%', once: true } });
       });
     }
   }
