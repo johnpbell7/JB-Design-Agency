@@ -23,14 +23,14 @@
       "start": { "to": "#card", "offset": 760 },
       "reload": true,
       "actions": [
-        { "scrollTo": ".card-stage", "offset": 200, "ms": 1500, "after": 4600 },
+        { "scrollTo": "#card", "offset": -10, "ms": 1500, "after": 4600 },
         { "hover": ".card-stage", "at": [0.45, 0.45], "ms": 1000, "after": 1200 }
       ]
     },
     {
       "label": "Every page in the menu",
       "page": "index.html",
-      "start": { "to": ".card-stage", "offset": 200 },
+      "start": { "to": "#card", "offset": -10 },
       "actions": [
         { "click": ".bar .menu-btn", "ms": 900, "after": 1400 },
         { "hover": ".menu-link", "nth": 2, "ms": 800, "after": 700 },

@@ -18,7 +18,7 @@
       "reload": true,
       "actions": [
         {
-          "wait": 3300
+          "wait": 5000
         },
         {
           "hover": ".hero-visual .frame.f1",
@@ -251,7 +251,7 @@
       "touch": true,
       "actions": [
         {
-          "wait": 3800
+          "wait": 5400
         },
         {
           "scroll": 560,
