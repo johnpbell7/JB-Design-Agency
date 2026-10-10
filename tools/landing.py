@@ -10,7 +10,7 @@ PHONE_INTL = '+447428728780'    # for tel:/sms:/WhatsApp links
 NAV = open('tools/landing-nav.html').read()
 
 # ===== PRICES (placeholders, to be confirmed by John) =====
-WEB = [('One-page website', '£500', 'A shop window for your business: who you are, what you do, and an easy way to get in touch. No logins or back end to look after.', ['Designed for phones first', 'Changes by me, from £35', 'Add your own editor, £150']),
+WEB = [('One-page website', '£500', 'A shop window for your business: who you are, what you do, and an easy way to get in touch. No logins or back end to look after.', ['Designed for phones first', 'Small changes, quoted up front', 'Add your own editor, £150']),
        ('Small business website', '£1,200', 'Separate pages for your services, about, work and contact, with a layout that grows with your business.', ['Up to 5 pages', 'Extra pages from £100', 'Set up for Google']),
        ('Small online shop', '£1,800', 'A Shopify shop for independents, with clear product pages and a quick checkout. For bigger stores I design every page for your developer to build.', ['Shopify set-up', 'Product and collection pages', 'Big stores: designs for your developer'])]
 GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with a few routes to choose from.', ['Three first ideas', 'Colour and mono versions', 'All file types']),
@@ -105,7 +105,7 @@ def page(p):
   <link rel="stylesheet" href="../assets/css/fonts.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/landing.css?v=2">
-  <link rel="stylesheet" href="../assets/css/prices.css?v=3">
+  <link rel="stylesheet" href="../assets/css/prices.css?v=4">
   <script type="application/ld+json" data-seo>
 {json.dumps(ld, ensure_ascii=False, indent=1)}
   </script>
@@ -196,7 +196,7 @@ PAGES = [
   faqs=[('How much does a website cost in Birmingham?', 'A one-page website starts from £500, a small business site from £1,200 and a small online shop from £1,800. After a quick chat I send you a fixed quote, so you know the full price before we start.'),
         ('How long does a website take?', 'A small business site usually takes a few weeks from our first chat to going live. Shops and bigger sites take a little longer, and you’ll get a timeline with your quote.'),
         ('Do I need to be in Birmingham?', 'No. I’m happy to meet in person if you’re local, but most of my work happens over video calls and email, so I work with businesses all over the UK.'),
-        ('Can I update the website myself?', 'It depends on the site. A one-page site is a shop window with no back end, which keeps it cheaper, faster and more secure. When you need a change, I make it for you, from £35 or from £40 a month on a care plan. If you’d rather do it yourself, I can add an editor to a one-page site for £150. Bigger sites and shops come with one included.'),
+        ('Can I update the website myself?', 'It depends on the site. A one-page site is a shop window with no back end, which keeps it cheaper, faster and more secure. When you need a change, I make it for you, quoted up front, or included on a care plan from £40 a month. If you’d rather do it yourself, I can add an editor to a one-page site for £150. Bigger sites and shops come with one included.'),
         ('Will my website show up on Google?', 'Every site is built to load quickly, work well on phones and include the setup Google looks for. I’ll also help you set up Google Search Console and your Google Business Profile, so you’re not left to work them out alone.')],
   cta_h='Got a website in mind? <mark class="hl">Let’s talk.</mark>',
   other='Need a logo, brand or print as well? See <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>. In Leicestershire? See <a href="web-designer-leicester.html">web design in Leicester</a>. Elsewhere? See <a href="freelance-web-designer-uk.html">freelance web design across the UK</a>.'),
@@ -231,7 +231,7 @@ PAGES = [
   faqs=[('Do you work with businesses in Leicester?', 'Yes. Several of my clients are Leicestershire businesses, including Birth-hood, Birdie Blooms in Ravenstone and Kibworth, and Beetle Eyes Clothing in Mountsorrel. I’m based in Birmingham and happy to come and meet you in person.'),
         ('How much does a website cost?', 'One-page websites start from £500, small business sites from £1,200 and small online shops from £1,800. Once we’ve talked it through, I send a fixed quote, so you know where you stand before anything starts.'),
         ('Can you help my business show up on Google locally?', 'Yes. Every site loads quickly and has the setup Google looks for, and I’ll help you set up your Google Business Profile so you appear in local searches and on Maps.'),
-        ('Can I update the website myself?', 'Yes, if you want to. One-page sites are kept lean with no back end, which makes them cheaper, quicker and more secure, so normally I make the changes for you: from £35, or from £40 a month on a care plan. If you’d prefer to do it yourself, I can add an editor for £150. Bigger sites and shops have one built in.'),
+        ('Can I update the website myself?', 'Yes, if you want to. One-page sites are kept lean with no back end, which makes them cheaper, quicker and more secure, so normally I make the changes for you, quoted up front, or included on a care plan from £40 a month. If you’d prefer to do it yourself, I can add an editor for £150. Bigger sites and shops have one built in.'),
         ('Do you design logos too?', 'I do. I can design your logo and brand, then build the website to match. For Birdie Blooms I drew eight logo ideas alongside the site.')],
   cta_h='Leicestershire business? <mark class="hl">Let’s have a chat.</mark>',
   other='Looking for design in Birmingham? See <a href="web-designer-birmingham.html">web design</a> and <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>. Elsewhere in the UK? See <a href="freelance-web-designer-uk.html">freelance web design across the UK</a>.'),

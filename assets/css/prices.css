@@ -126,3 +126,14 @@
   .hp-tiers b { font-weight: 600; opacity: 0.85; }
   .hp-tiers li.is-deal b, .hp-tiers li.is-combo > .is-deal b { opacity: 1; font-weight: 700; }
 }
+/* Desktop gets the same order: service name, then the price, then the line about it */
+@media (min-width: 701px) {
+  .hp-card__top { gap: 0; }
+  .hp-card h3 { font-size: clamp(22px, 1.9vw, 26px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; }
+  .hp-card h3::before { width: 11px; height: 11px; }
+  .hp-card .hp-card__price { margin: 14px 0 0; }
+  .hp-card .hp-card__price small { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .hp-card__lead { margin-top: 10px; opacity: 0.7; }
+  .hp-tiers b { font-weight: 600; opacity: 0.85; }
+  .hp-tiers li.is-deal b, .hp-tiers li.is-combo > .is-deal b { opacity: 1; font-weight: 700; }
+}
