@@ -16,12 +16,18 @@
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(t => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
-    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-      const target = $(a.getAttribute('href'));
+    // one listener for every #link, including the phone CTA bar theme.js adds later. Long jumps
+    // (the bar's "Start a project" from the top of the page) cut most of the way instantly, then
+    // glide the last screen, rather than crawling past every section in between
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href^="#"]');
+      const target = a && a.getAttribute('href').length > 1 && $(a.getAttribute('href'));
       if (!target) return;
       e.preventDefault();
-      lenis.scrollTo(target, { offset: -20 });
-    }));
+      const y = target.getBoundingClientRect().top + scrollY - 20, gap = y - scrollY;
+      if (Math.abs(gap) > innerHeight * 1.5) lenis.scrollTo(y - Math.sign(gap) * innerHeight * 0.6, { immediate: true, force: true });
+      lenis.scrollTo(y, { duration: 0.8, force: true });
+    });
   }
 
   // ---------- Illustrations: swap doodles for real images once they exist ----------
