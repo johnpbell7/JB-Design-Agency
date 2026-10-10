@@ -678,3 +678,11 @@ body { --project-pen: #f1d9c7; }
 .wf-mcard:nth-child(3) { z-index: 1; transform: translateY(52px) scale(0.88); }
 .wf-coachbox .coach-tip:not(:first-child) { visibility: hidden; }
 .wf-freeze .fa-toast { font-size: 13px; }
+
+/* Phone parade: desktop only. One tidy row, a bold caption under each phone;
+   hidden on phones, where the features below show the app in detail */
+.wf-parade-sec { padding-block: clamp(24px, 4vw, 64px); }
+.wf-parade { padding-block: clamp(36px, 5vw, 72px) clamp(28px, 4vw, 56px); }
+.wf-parade .parade__row .phone:nth-child(even) { margin-top: 0; }
+.wf-parade .parade__caption { margin-top: 22px; text-transform: none; letter-spacing: -0.01em; font-size: 15px; font-weight: 600; color: var(--ink, #18181a); }
+@media (max-width: 760px) { .wf-parade-sec { display: none; } }

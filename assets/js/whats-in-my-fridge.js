@@ -415,7 +415,8 @@
     tonight: { tap: [30, 42.6], ring: [20.5, 40.6, 20, 4.2], toast: 'Garlic is on your list' },
   };
   const parade = $('[data-parade]');
-  if (parade && hasGsap && !reduce) {
+  // (desktop only: the parade is hidden on phones)
+  if (parade && hasGsap && !reduce && !matchMedia(MOBILE).matches) {
     const phones = $$('.parade__row > .phone', parade);
     const walks = phones.map((phone, i) => {
       const shot = $('.screen img', phone);
@@ -469,43 +470,6 @@
     phones.forEach(p => mo.observe(p, { attributes: true, attributeFilter: ['class'] }));
     deck = parade.classList.contains('is-deck');
   }
-
-  // Phones: under the deck, a line on what the screen does and dots for where you are;
-  // a touch holds the deck still, and it carries on a moment after letting go
-  if (parade && hasGsap && !reduce) gsap.matchMedia().add(MOBILE, () => {
-    const phones = $$('.parade__row > .phone', parade);
-    const spans = $$('.parade__caption span', parade);
-    const deckEl = $('.parade__deck', parade);
-    if (!deckEl || phones.length < 2) return;
-    const info = document.createElement('div');
-    info.className = 'wf-deck-info'; info.setAttribute('aria-hidden', 'true');
-    info.innerHTML = `<p></p><span class="wf-dots">${phones.map(() => '<i></i>').join('')}</span>`;
-    deckEl.after(info);
-    const line = $('p', info), dots = $$('.wf-dots i', info), bar = $('.parade__now em', deckEl);
-    let cur = -1;
-    const look = () => {
-      const k = phones.findIndex(p => p.classList.contains('is-on') && !p.classList.contains('is-leaving'));
-      if (k < 0 || k === cur) return;
-      cur = k;
-      line.textContent = spans[k]?.dataset.line || '';
-      gsap.fromTo(line, { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, delay: 0.15, ease: 'expo.out', overwrite: true });
-      dots.forEach((d, i) => d.classList.toggle('on', i === k));
-    };
-    const mo = new MutationObserver(look);
-    phones.forEach(p => mo.observe(p, { attributes: true, attributeFilter: ['class'] }));
-    look();
-    const row = $('.parade__row', parade);
-    let resume = null;
-    const clock = () => gsap.getTweensOf(bar)[0];
-    const hold = () => { resume?.kill(); clock()?.pause(); };
-    const release = () => { resume?.kill(); clock()?.pause(); resume = gsap.delayedCall(1.6, () => { const r = row.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) clock()?.play(); }); };
-    row.addEventListener('touchstart', hold, { passive: true });
-    row.addEventListener('touchend', release, { passive: true });
-    return () => {
-      mo.disconnect(); resume?.kill(); info.remove();
-      row.removeEventListener('touchstart', hold); row.removeEventListener('touchend', release);
-    };
-  });
 
   // ---------- Get the app: iPhone / Android steps ----------
   const guide = $('[data-guide]');

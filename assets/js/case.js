@@ -268,6 +268,9 @@
 
   // ---------- Phone parade: phones rise in and loop-scroll, features pop out ----------
   document.querySelectorAll('[data-parade]').forEach(parade => {
+    // data-desktop-only: the page hides this parade on phones, so nothing runs there and it never becomes a deck
+    const desktopOnly = parade.hasAttribute('data-desktop-only');
+    if (desktopOnly && matchMedia('(max-width: 760px)').matches) return;
     const phones = [...parade.querySelectorAll('.phone')];
     const pops = [...parade.querySelectorAll('.pop')];
     const row = parade.querySelector('.parade__row');
@@ -327,7 +330,7 @@
     // motion blur; a caption pill (as on the films) names the screen and fills as it plays.
     // Auto-advances while on screen; arrows and a swipe step through it.
     const names = [...parade.querySelectorAll('.parade__caption span')].map(s => s.textContent);
-    if (row && phones.length > 1) gsap.matchMedia().add('(max-width: 800px)', () => {
+    if (row && phones.length > 1 && !desktopOnly) gsap.matchMedia().add('(max-width: 800px)', () => {
       const HOLD = +parade.dataset.hold || 6.5; // seconds per screen; a page can set data-hold
       let cur = 0, timer = null, live = false;
       parade.classList.add('is-deck');
