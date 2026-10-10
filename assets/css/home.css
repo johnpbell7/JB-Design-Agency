@@ -1532,3 +1532,12 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
   .hp-dots i.is-on { width: 22px; background: var(--ink); }
 }
 @media (max-width: 760px) { .faq__ask { display: none; } }
+
+/* the bundle row: highlighted, tagged, with the full price struck through */
+.hp-tiers li.is-deal { margin: 6px; padding: 13px 12px; border-radius: 12px; background: #18181a; color: #fff; }
+.hp-tiers li.is-deal + li, .hp-tiers li + li.is-deal { border-top: 0; }
+.hp-tiers li.is-deal small { opacity: 0.7; }
+.hp-tiers li.is-deal em { justify-self: start; margin-bottom: 4px; padding: 3px 9px; border-radius: 999px; background: var(--hl-yellow); color: #18181a; font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: 0.02em; }
+.hp-tiers li.is-deal b { display: grid; justify-items: end; line-height: 1.05; }
+.hp-tiers li.is-deal b::before { display: none; }
+.hp-tiers li.is-deal s { font-size: 13px; font-weight: 600; opacity: 0.55; letter-spacing: 0; }
