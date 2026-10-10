@@ -190,7 +190,7 @@ def page(p):
 '''
 
 PAGES = [
- dict(slug='web-designer-birmingham', share='web-designer-birmingham', svc='Web design',
+ dict(slug='web-designer-birmingham', share='john-bell-websites', svc='Web design',
   title='Web Designer in Birmingham · John Bell, Freelance Web Design',
   desc='Freelance web designer in Birmingham. Fast, mobile-friendly websites and Shopify shops for small businesses, designed and built by John Bell. Quotes from £500.',
   h1='Web designer <mark class="hl">in Birmingham.</mark>',
@@ -224,7 +224,7 @@ PAGES = [
         ('Do you work outside Birmingham?', 'Yes. I’m based in Birmingham, but I work with businesses all over the UK by video call and email.')],
   cta_h='Need a logo or a brochure? <mark class="hl">Let’s talk.</mark>',
   other='Need a website too? See <a href="web-designer-birmingham.html">web design in Birmingham</a>, or <a href="web-designer-leicester.html">web design in Leicester</a>. Elsewhere in the UK? See <a href="freelance-web-designer-uk.html">working with me remotely</a>.'),
- dict(slug='web-designer-leicester', share='web-designer-leicester', svc='Web design',
+ dict(slug='web-designer-leicester', share='john-bell-websites', svc='Web design',
   title='Web Designer in Leicester &amp; Leicestershire · John Bell',
   desc='Freelance web designer for Leicester and Leicestershire. Websites, online shops and branding for independents, from Loughborough to Market Harborough. From £500.',
   h1='Web designer for <mark class="hl hl--blue">Leicester and Leicestershire.</mark>',
@@ -242,7 +242,7 @@ PAGES = [
         ('Do you design logos too?', 'I do. I can design your logo and brand, then build the website to match. For Birdie Blooms I drew eight logo ideas alongside the site.')],
   cta_h='Leicestershire business? <mark class="hl">Let’s have a chat.</mark>',
   other='Looking for design in Birmingham? See <a href="web-designer-birmingham.html">web design</a> and <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>. Elsewhere in the UK? See <a href="freelance-web-designer-uk.html">freelance web design across the UK</a>.'),
- dict(slug='freelance-web-designer-uk', share='home', svc='Web design and graphic design',
+ dict(slug='freelance-web-designer-uk', share='john-bell-websites', svc='Web design and graphic design',
   title='Freelance Web Designer UK · Web &amp; Graphic Design · John Bell',
   desc='Freelance web and graphic designer working with businesses across the UK. Websites, Shopify shops, logos and print, run remotely by video call. Quotes from £500.',
   h1='Freelance web designer, <mark class="hl">working across the UK.</mark>',
