@@ -331,3 +331,15 @@
 .sv-notes { padding-block: 8px clamp(40px, 6vw, 80px); }
 .sv-notes .hp-extras { margin-top: 0; }
 .sv .site-foot__grid { margin-top: 0; border-top: 0; padding-top: 24px; }
+/* phones: the illustrations run nearly edge to edge, with a fatter highlighter behind */
+@media (max-width: 760px) {
+  .svc__media { margin-inline: calc(-1 * var(--gutter, 18px) + 14px) !important; }
+  .svc__media .art { width: 100%; margin-left: 0; }
+  .squig { inset: -4% -6%; width: 112%; height: 108%; }
+  .squig path { stroke-width: 118; opacity: 0.85; }
+}
+@media (max-width: 760px) {
+  .svc { padding-block: 28px; }
+  #shops .svc__media, #print .svc__media { margin-top: 0; }
+  .svc__grid { row-gap: 24px; }
+}
