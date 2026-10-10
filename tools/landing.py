@@ -7,7 +7,7 @@ EMAIL = 'jb.designagency89@gmail.com'
 NAV = open('tools/landing-nav.html').read()
 
 # ===== PRICES (placeholders, to be confirmed by John) =====
-WEB = [('One-page website', '£500', 'A shop window for your business: who you are, what you do, and an easy way to get in touch. No logins or back end to look after.', ['Designed for phones first', 'Changes by me, from £35', 'Set up for Google']),
+WEB = [('One-page website', '£500', 'A shop window for your business: who you are, what you do, and an easy way to get in touch. No logins or back end to look after.', ['Designed for phones first', 'Changes by me, from £35', 'Add your own editor, £150']),
        ('Small business website', '£1,200', 'Separate pages for your services, about, work and contact, with a layout that grows with your business.', ['Up to 5 pages', 'Extra pages from £100', 'Set up for Google']),
        ('Small online shop', '£1,800', 'A Shopify shop for independents, with clear product pages and a quick checkout. For bigger stores I design every page for your developer to build.', ['Shopify set-up', 'Product and collection pages', 'Big stores: designs for your developer'])]
 GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with a few routes to choose from.', ['Three first ideas', 'Colour and mono versions', 'All file types']),
@@ -23,7 +23,7 @@ STEPS = [('A quick chat', 'We talk about your business, then I send you a fixed 
          ('Built and checked', 'I build it, test it on phones and computers, and set it up for Google.'), ('Live, and looked after', 'It goes live, and I’m still around if you need anything after.')]
 
 WEB_SVCS = [('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and local services.'), ('Online shops', 'Small Shopify shops for independents. For bigger stores, I design every page and hand it to your developer.'),
-            ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup Google looks for (SEO).'), ('Easy to update', 'One-page sites need no upkeep: I make changes for you. Bigger sites come with an editor you can use yourself.'),
+            ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup Google looks for (SEO).'), ('Easy to update', 'One-page sites need no upkeep: I make changes for you, or add an editor for £150. Bigger sites come with an editor included.'),
             ('Redesigns', 'A fresh, faster version of the site you have, keeping what works.'), ('Care and updates', 'Changes, new pages and help whenever you need it after launch.')]
 GFX_SVCS = [('Logo design', 'Logos that work small and large, in colour and black and white, on screen and in print.'), ('Brand identity', 'Colours, fonts and simple rules that keep everything looking like you.'),
             ('Brochures and reports', 'Clear, well-organised layouts for brochures, annual reports and newsletters.'), ('Business cards and flyers', 'Business cards, flyers and leaflets for promotions, events and door-to-door.'),
@@ -174,7 +174,7 @@ PAGES = [
   faqs=[('How much does a website cost in Birmingham?', 'A one-page website starts from £500, a small business site from £1,200 and a small online shop from £1,800. After a quick chat I send a fixed quote, so you know the full price before we start.'),
         ('How long does a website take?', 'A small business site usually takes a few weeks from our first chat to going live. Shops and bigger sites take longer. You’ll get a timeline with your quote.'),
         ('Do I need to be in Birmingham?', 'No. I’m based in Birmingham and happy to meet locally, but most of my work happens over video calls and email, so I work with businesses all over the UK.'),
-        ('Can I update the website myself?', 'It depends on the site. A one-page site is a shop window with no back end, which keeps it cheaper, faster and more secure; when you need a change, I make it for you, from £35 or from £40 a month on a care plan. Bigger sites and shops come with an easy editor, so you can change words, photos and products yourself.'),
+        ('Can I update the website myself?', 'It depends on the site. A one-page site is a shop window with no back end, which keeps it cheaper, faster and more secure; when you need a change, I make it for you, from £35 or from £40 a month on a care plan. Rather do it yourself? I can add an easy editor to a one-page site for £150. Bigger sites and shops come with one included.'),
         ('Will my website show up on Google?', 'Every site is built to load quickly, work well on phones and include the setup Google looks for. I’ll also help you set up Google Search Console and your Google Business Profile.')],
   other='Need a logo, brand or print as well? See <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>. In Leicestershire? See <a href="web-designer-leicester.html">web design in Leicester</a>.'),
  dict(slug='graphic-designer-birmingham', share='graphic-designer-birmingham', svc='Graphic design',
@@ -206,7 +206,7 @@ PAGES = [
   faqs=[('Do you work with businesses in Leicester?', 'Yes. Several of my clients are in Leicestershire, including Birth-hood, Birdie Blooms in Ravenstone and Kibworth, and Beetle Eyes Clothing in Mountsorrel. I’m based in Birmingham and happy to meet in person.'),
         ('How much does a website cost?', 'A one-page website starts from £500, a small business site from £1,200 and a small online shop from £1,800. After a quick chat I send a fixed quote, so you know the full price before we start.'),
         ('Can you help my business show up on Google locally?', 'Yes. Every site is built to load quickly and include the setup Google looks for, and I’ll help you set up your Google Business Profile so you show up in local searches and on Maps.'),
-        ('Can I update the website myself?', 'It depends on the site. A one-page site is a shop window with no back end, which keeps it cheaper, faster and more secure; when you need a change, I make it for you, from £35 or from £40 a month on a care plan. Bigger sites and shops come with an easy editor, so you can change words, photos and products yourself.'),
+        ('Can I update the website myself?', 'It depends on the site. A one-page site is a shop window with no back end, which keeps it cheaper, faster and more secure; when you need a change, I make it for you, from £35 or from £40 a month on a care plan. Rather do it yourself? I can add an easy editor to a one-page site for £150. Bigger sites and shops come with one included.'),
         ('Do you design logos too?', 'Yes. I can design your logo and brand, then build the site to match. For Birdie Blooms I drew eight logo ideas alongside the website.')],
   other='Looking for design in Birmingham? See <a href="web-designer-birmingham.html">web design</a> and <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>.'),
 ]
