@@ -1,6 +1,6 @@
 """Builds the location landing pages in projects/ (web/graphic design in Birmingham, web design in Leicester).
 Run from the repo root:  python3 tools/landing.py
-Prices are placeholder "from" prices: change them in WEB / GFX / CARE below, re-run, and update the home page tiles."""
+The price cards are copied from the home page (index.html): change prices there, then re-run this. WEB / GFX below only feed the structured data for Google, so keep them in step."""
 import json, html
 BASE = 'https://johnpbell7.github.io/JB-Design-Agency/'
 EMAIL = 'jb.designagency89@gmail.com'
@@ -41,8 +41,17 @@ WORK = {'birth-hood': W('birth-hood.html', 'captures/birth-hood/fold-desktop.web
         'property': W('property.html', 'projects/property/spreads/sloane-1.jpg', 'Property brochure spread', 'Property marketing', 'Brochures, boards and development identities')}
 
 def prices(items):
-    cards = ''.join(f'<article class="lp-price"><h3>{n}</h3><p class="lp-price__from"><span>from</span> {p.split('/')[0]}{'<em>/' + p.split('/')[1] + '</em>' if '/' in p else ''}</p><p>{d}</p><ul>{"".join(f"<li>{x}</li>" for x in l)}</ul></article>' for n, p, d, l in items)
-    return f'<div class="lp-prices">{cards}</div><p class="lp-prices__note">{CARE}</p>'
+    """The same four price cards as the home page, copied from index.html so the prices only live in one place."""
+    import re
+    home = open('index.html').read()
+    row = home[home.index('<div class="hp-cards"'):]
+    row = row[:row.index('<div class="hp-dots"')]
+    cards = {re.search(r'<h3>(.*?)</h3>', c).group(1): '<a class="hp-card"' + c.rstrip().removesuffix('</div>').rstrip()
+             for c in row.split('<a class="hp-card"')[1:]}
+    order = ['Logos &amp; branding', 'Print', 'Websites', 'Online shops'] if items is GFX else ['Websites', 'Online shops', 'Logos &amp; branding', 'Print']
+    out = '\n'.join(cards[k] for k in order).replace('href="projects/', 'href="')
+    return (f'<div class="hp-cards">\n{out}\n</div>'
+            '<p class="hp-extras"><span>All prices are starting points</span><span>Pay in stages</span><span>Website care from £40 a month</span></p>')
 
 def page(p):
     url = f'{BASE}projects/{p["slug"]}.html'; img = f'{BASE}assets/share/{p["share"]}.jpg'
@@ -85,6 +94,7 @@ def page(p):
   <link rel="stylesheet" href="../assets/css/fonts.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/landing.css">
+  <link rel="stylesheet" href="../assets/css/prices.css">
   <script type="application/ld+json" data-seo>
 {json.dumps(ld, ensure_ascii=False, indent=1)}
   </script>
