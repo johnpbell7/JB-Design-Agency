@@ -73,3 +73,10 @@
 .hp-card:hover .hp-card__go { background: color-mix(in srgb, var(--pen) 100%, #18181a 0%); color: #18181a; }
 .hp-incl { margin-bottom: 22px; }
 @media (max-width: 700px) { .hp-card__lead { min-height: 0; } }
+
+/* the slim "need a logo too?" bar under the one-page site */
+.hp-tiers li.is-bar { margin: 0 -4px 8px; padding: 10px 12px; align-items: center; border-radius: 12px; border-top: 0; background: color-mix(in srgb, var(--pen) 70%, var(--white)); box-shadow: inset 0 0 0 1px rgb(24 24 26 / 0.08); }
+.hp-tiers li.is-bar + li { border-top: 0; }
+.hp-tiers li.is-bar span { font-size: 13.5px; }
+.hp-tiers li.is-bar small { font-size: 12px; opacity: 0.7; }
+.hp-tiers li.is-bar b { font-size: 15px; padding-top: 0; }
