@@ -1554,3 +1554,5 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
 
 /* One size for lead/body copy under headings, hero included (matches .chapter-head p) */
 html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, html body .ha__story, html body .contact__intro > p:not(.contact__where) { font-size: clamp(16px, 1.4vw, 19px); line-height: 1.7; }
+/* phones: the "…and gyms too" line stands on its own (the yellow bar is the call to action) */
+@media (max-width: 700px) { .who-more a { display: none; } }

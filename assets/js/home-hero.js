@@ -17,13 +17,11 @@
   if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => e.isIntersecting && go(), { rootMargin: '50% 0px' }).observe(imgs[0].closest('.pf-fan') || imgs[0]);
 })();
 
-/* ===== Hero backdrop picker: ?ghost=1..4 swaps the faded laptop for one of the
-   options kept as <template data-ghost="N"> in index.html. No query = laptop.
-   Runs first so the options' markup is in place before the hero animates.
-   Delete this, the unused templates and their ghostN() blocks once one is chosen. ===== */
+/* ===== Hero backdrop: on phones the work wall (<template data-ghost="1">) replaces the
+   faded laptop. Runs first so its markup is in place before the hero animates. ===== */
 (() => {
   // phones default to the work wall (columns of phone screens): a faded desktop site reads as mush that small
-  const n = new URLSearchParams(location.search).get('ghost') || (matchMedia('(max-width: 560px)').matches ? '1' : null);
+  const n = matchMedia('(max-width: 560px)').matches ? '1' : null;
   const hero = document.querySelector('[data-bt]');
   const tpl = hero && n && hero.querySelector(`template[data-ghost="${n}"]`);
   if (!tpl) return;
@@ -31,9 +29,7 @@
   hero.querySelector('.bt-ghost')?.remove();
   hero.querySelector('.bt-ghost__glow')?.remove();
   const frag = tpl.content.cloneNode(true);
-  const logos = frag.querySelector('[data-g3-logos]');
   hero.insertBefore(frag, hero.querySelector('.wrap'));
-  if (logos) hero.querySelector('.bt-proof').after(logos);
 })();
 
   (() => {
@@ -314,135 +310,3 @@
   new IntersectionObserver(([e]) => runs.forEach(t => (e.isIntersecting ? t.play() : t.pause()))).observe(root.parentElement);
 })();
 
-/* ---------------------------------------------------------------------
-   Backdrop option 2 · Big phone (ghost2)
-   One phone scrolls each project's mobile page, then crossfades to the
-   next. On each change the "grow" highlighter, the glow and the status
-   bar take that project's colours.
-   --------------------------------------------------------------------- */
-(() => {
-  const root = document.querySelector('.bt-g2');
-  if (!root) return;
-  const hero = root.parentElement;
-  const imgs = [...root.querySelectorAll('.bt-g2__page img')];
-  const screen = root.querySelector('.bt-g2__screen');
-  const grow = hero.querySelector('.bt-ln--2 .hl');
-  const paint = img => {
-    hero.style.setProperty('--g2', img.dataset.col);
-    screen.style.setProperty('--sb', img.dataset.sb);
-    screen.style.setProperty('--sbt', img.dataset.sbt);
-  };
-  paint(imgs[0]);
-  grow.style.setProperty('--pen', imgs[0].dataset.col);
-  if (!window.gsap || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  gsap.from(root.querySelector('.bt-g2__phone'), { x: 120, rotation: 18, autoAlpha: 0, duration: 1.4, delay: 0.6, ease: 'expo.out' });
-  let i = 0, live = true, timer;
-  const show = () => {
-    const img = imgs[i], prev = imgs.find(x => x.classList.contains('is-on') && x !== img);
-    imgs.forEach(x => x.classList.toggle('is-on', x === img));
-    paint(img);
-    gsap.to(grow, { '--pen': img.dataset.col, duration: 0.8, ease: 'power2.inOut' });
-    if (prev) gsap.delayedCall(1, () => gsap.set(prev, { y: 0 }));
-    const travel = Math.min(img.offsetHeight * 0.32, Math.max(0, img.offsetHeight - screen.offsetHeight));
-    gsap.fromTo(img, { y: 0 }, { y: -travel, duration: 6.5, ease: 'power1.inOut' });
-    timer = gsap.delayedCall(7.2, next);
-  };
-  const next = () => {
-    if (!live) { timer = gsap.delayedCall(1, next); return; }
-    i = (i + 1) % imgs.length;
-    const n = imgs[i];
-    n.complete && n.naturalWidth ? show() : n.addEventListener('load', show, { once: true });
-  };
-  const first = imgs[0];
-  first.complete && first.naturalWidth ? show() : first.addEventListener('load', show, { once: true });
-  new IntersectionObserver(([e]) => (live = e.isIntersecting)).observe(hero);
-})();
-
-/* ---------------------------------------------------------------------
-   Backdrop option 3 · Brand wash + client logos (ghost3)
-   The blobs drift slowly; every few seconds the wash moves to the next
-   client's colours. Hovering a logo pulls the wash to that client.
-   --------------------------------------------------------------------- */
-(() => {
-  const root = document.querySelector('.bt-g3');
-  if (!root) return;
-  const hero = root.parentElement;
-  const logos = [...hero.querySelectorAll('.bt-g3__logo')];
-  const wash = a => {
-    hero.style.setProperty('--g3a', a.style.getPropertyValue('--a'));
-    hero.style.setProperty('--g3b', a.style.getPropertyValue('--b'));
-  };
-  wash(logos[0]);
-  if (!window.gsap || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  root.querySelectorAll('.bt-g3__blob').forEach((b, k) => {
-    gsap.to(b, { xPercent: [-14, 12, -10][k], yPercent: [10, -14, 12][k], scale: [1.12, 0.9, 1.15][k], duration: 14 + k * 4, ease: 'sine.inOut', yoyo: true, repeat: -1 });
-  });
-  gsap.from(root, { autoAlpha: 0, duration: 2, delay: 0.3, ease: 'power2.out' });
-  let i = 0, held = false, live = true;
-  const cycle = () => {
-    if (!held && live) { i = (i + 1) % logos.length; wash(logos[i]); }
-    gsap.delayedCall(5, cycle);
-  };
-  gsap.delayedCall(5, cycle);
-  logos.forEach((a, k) => {
-    a.addEventListener('pointerenter', () => { held = true; i = k; wash(a); });
-    a.addEventListener('focus', () => { held = true; i = k; wash(a); });
-    a.addEventListener('pointerleave', () => (held = false));
-    a.addEventListener('blur', () => (held = false));
-  });
-  new IntersectionObserver(([e]) => (live = e.isIntersecting)).observe(hero);
-})();
-
-/* ---------------------------------------------------------------------
-   Backdrop option 4 · Browser cascade (ghost4)
-   Three windows sit in back / middle / front slots. Each scrolls its
-   page; every 5s the front window slides out and tucks in at the back
-   (loading the next site from the pool while it's hidden).
-   --------------------------------------------------------------------- */
-(() => {
-  const root = document.querySelector('.bt-g4');
-  if (!root) return;
-  const hero = root.parentElement;
-  const wins = [...root.querySelectorAll('.bt-g4__win')];
-  const pool = ['gosweet', 'patch-agency', 'birth-hood', 'nic-pouches', 'birdie-blooms', 'vsl-trade'].map(s => `assets/captures/${s}/home-desktop.webp`);
-  const SLOT = [{ x: 14, y: -36, s: 0.9 }, { x: 7, y: -18, s: 0.95 }, { x: 0, y: 0, s: 1 }]; // back, middle, front
-  const order = [...wins]; // order[k] sits in SLOT[k]
-  let nextSrc = 3, live = true;
-  const place = (w, k, dur = 0) => {
-    w.style.zIndex = k + 1;
-    return gsap.to(w, { xPercent: SLOT[k].x, yPercent: SLOT[k].y, scale: SLOT[k].s, rotation: 0, duration: dur, ease: 'power3.inOut' });
-  };
-  if (!window.gsap) return;
-  order.forEach((w, k) => place(w, k));
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const scrolls = new Map();
-  const scroll = w => {
-    const img = w.querySelector('img'), view = img.parentElement;
-    scrolls.get(w)?.kill();
-    const go = () => {
-      const travel = Math.min(img.offsetHeight * 0.5, Math.max(0, img.offsetHeight - view.offsetHeight));
-      scrolls.set(w, gsap.fromTo(img, { y: 0 }, { y: -travel, duration: 16 + Math.random() * 6, ease: 'sine.inOut', yoyo: true, repeat: -1, repeatDelay: 1 }));
-    };
-    img.complete && img.naturalWidth ? go() : img.addEventListener('load', go, { once: true });
-  };
-  wins.forEach(scroll);
-  gsap.from(wins, { yPercent: '+=12', autoAlpha: 0, duration: 1.2, ease: 'expo.out', stagger: 0.12, delay: 0.5 });
-  const shuffle = () => {
-    if (!live) return;
-    const front = order.pop();
-    order.unshift(front);
-    order.forEach((w, k) => { if (w !== front) place(w, k, 1.1); });
-    front.style.zIndex = 9;
-    gsap.timeline()
-      .to(front, { xPercent: 48, yPercent: -6, rotation: 4, duration: 0.6, ease: 'power2.in' })
-      .add(() => {
-        front.style.zIndex = 1;
-        const img = front.querySelector('img');
-        img.src = pool[nextSrc]; nextSrc = (nextSrc + 1) % pool.length;
-        scroll(front);
-      })
-      .to(front, { xPercent: SLOT[0].x, yPercent: SLOT[0].y, scale: SLOT[0].s, rotation: 0, duration: 0.9, ease: 'power3.out' });
-  };
-  gsap.delayedCall(5, function loop() { shuffle(); gsap.delayedCall(5, loop); });
-  new IntersectionObserver(([e]) => (live = e.isIntersecting)).observe(hero);
-})();

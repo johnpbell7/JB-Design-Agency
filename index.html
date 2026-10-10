@@ -38,9 +38,9 @@
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/case.css?v=2">
-  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/home.css?v=2">
   <link rel="stylesheet" href="assets/css/prices.css?v=5">
-  <link rel="stylesheet" href="assets/css/home-hero.css?v=3">
+  <link rel="stylesheet" href="assets/css/home-hero.css?v=4">
   <link rel="stylesheet" href="assets/css/about.css">
   <script type="application/ld+json">
   {
@@ -312,9 +312,7 @@
         <div class="laptop bt-ghost__laptop"><div class="laptop__lid"><div class="screen bt-ghost__screen"><picture><source media="(max-width: 560px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><img src="assets/captures/birth-hood/home-desktop.webp" alt="" data-name="Birth‑hood" data-href="projects/birth-hood.html" data-col="#ff9ed2" class="is-on" fetchpriority="high"></picture><img data-src="assets/captures/gosweet/home-desktop.webp" alt="" data-name="GoSweet" data-href="projects/gosweet.html" data-col="#b48cff"><img data-src="assets/captures/patch-agency/home-desktop.webp" alt="" data-name="PATCH" data-href="projects/patch.html" data-col="#c7f016"><img data-src="assets/captures/nic-pouches/home-desktop.webp" alt="" data-name="Nic Pouches" data-href="projects/nic-pouches.html" data-col="#7fc4ff"><img data-src="assets/captures/birdie-blooms/home-desktop.webp" alt="" data-name="Birdie Blooms" data-href="projects/birdie-blooms.html" data-col="#ffb27a"><img data-src="assets/captures/vsl-trade/home-desktop.webp" alt="" data-name="VSL Trade" data-href="projects/vsl-trade.html" data-col="#9fe58a"></div></div><div class="laptop__base"></div></div>
       </div>
 
-      <!-- ===== Hero backdrop options: ?ghost=1..4 swaps the faded laptop for one of these.
-           No query = the laptop above. Each option is self-contained (markup here, .bt-gN in
-           home-hero.css, ghostN() in home-hero.js) so the ones not picked can be deleted. ===== -->
+      <!-- Hero backdrop on phones: the work wall replaces the faded laptop (home-hero.js) -->
 
       <!-- Option 1 · Work wall: slow columns of real phone screens (filled from the phone fan's images) -->
       <template data-ghost="1">
@@ -324,43 +322,11 @@
       </template>
 
       <!-- Option 2 · Big phone: one large phone scrolling a project, "grow" picks up its colour -->
-      <template data-ghost="2">
-        <div class="bt-g2" aria-hidden="true">
-          <div class="bt-g2__glow"></div>
-          <div class="bt-g2__phone pf-phone"><span class="pf-screen bt-g2__screen">
-            <span class="pf-sb"><span>9:41</span><span class="pf-sb__icons" data-pf-icons></span></span>
-            <span class="pf-island"></span>
-            <span class="pf-screen__page bt-g2__page">
-              <img src="assets/captures/patch-agency/home-mobile.webp" alt="" data-col="#c7f016" data-sb="#070710" data-sbt="#fff" class="is-on">
-              <img src="assets/captures/gosweet/home-mobile.webp" alt="" data-col="#c9a7ff" data-sb="#faf6ff" data-sbt="#18181a" loading="lazy">
-              <img src="assets/captures/birdie-blooms/home-mobile.webp" alt="" data-col="#ffb27a" data-sb="#74655f" data-sbt="#fff" loading="lazy">
-              <img src="assets/captures/vsl-trade/home-mobile.webp" alt="" data-col="#9fe58a" data-sb="#ffffff" data-sbt="#18181a" loading="lazy">
-            </span>
-            <span class="pf-homebar"></span>
-          </span></div>
-        </div>
-      </template>
 
       <!-- Option 3 · Brand wash + client logos: no device, just a drifting wash of the current
            client's colours and one calm row of real logos under the facts strip -->
-      <template data-ghost="3">
-        <div class="bt-g3" aria-hidden="true"><span class="bt-g3__blob bt-g3__blob--a"></span><span class="bt-g3__blob bt-g3__blob--b"></span><span class="bt-g3__blob bt-g3__blob--c"></span></div>
-        <ul class="bt-g3__logos" data-g3-logos data-in aria-label="Clients">
-          <li><a href="projects/patch.html" style="--s:1.25;-webkit-mask-image:url(assets/projects/patch/logo-light.svg);mask-image:url(assets/projects/patch/logo-light.svg);--t:#8db400;--td:#c7f016;--w:3.04;--a:#c7f016;--b:#e6ff8a" class="bt-g3__logo" data-cursor="View"><span class="sr-only">PATCH</span></a></li>
-          <li><a href="projects/gosweet.html" style="--s:0.8;-webkit-mask-image:url(assets/projects/gosweet/logo.png),linear-gradient(#000,#000);mask-image:url(assets/projects/gosweet/logo.png),linear-gradient(#000,#000);--t:#7a3cc0;--td:#c9a7ff;--w:5.44;--a:#c9a7ff;--b:#ffb3d4" class="bt-g3__logo is-lum" data-cursor="View"><span class="sr-only">GoSweet</span></a></li>
-          <li><a href="projects/vsl-trade.html" style="--s:1.05;--t:#2f8f2a;--td:#8fe07a;--w:1.88;--a:#9fe58a;--b:#d6f5c9" class="bt-g3__logo is-svg" data-cursor="View"><svg viewBox="0 0 1071 568.7" aria-hidden="true"><g fill="currentColor"><path d="M415 23.6 252.6 391.9c-2.8 6.5-7.9 9.7-15.1 9.7h-58.8c-7.3 0-12.3-3-15.1-9.1L1.8 23.6C.6 21.2 0 18.6 0 15.7 0 5.2 5.3 0 15.8 0h53.4c7.3 0 12.3 3.2 15.2 9.6l124 295 123.4-295c2.8-6.4 7.9-9.6 15.2-9.6h53.4c10.5 0 15.8 5.3 15.8 15.8 0 2.8-.5 5.4-1.2 7.8z"/><path d="M1071 385.3c0 10.9-5.5 16.4-16.4 16.4H807.7c-10.9 0-16.4-5.5-16.4-16.4v-369C791.3 5.5 796.8.1 807.7.1H855c10.9 0 16.4 5.5 16.4 16.4v296.8c0 10.9 5.3 16.4 15.8 16.4h167.5c10.9 0 16.4 5.3 16.4 15.8z"/><path d="M741.4 212.6c-3.5-4.6-7.5-9-11.8-13.3-22.6-22.2-49.9-33.7-81.9-34.5h-6c0-.1.1-.1.1-.1H534.4c-10.9 0-20.3-4.5-28.2-13.6-7.9-9.1-11.8-20.1-11.8-33s4-23.3 11.9-32.4c7.9-9.1 17.4-13.6 28.3-13.6h205.9c10.6 0 15.8-5.3 15.8-15.8v-40C756.3 5.5 751 0 740.5 0H531.6c-31.7.8-58.9 12.3-81.7 34.5-6.6 6.4-12.3 13.2-17 20.4-11.7 18.3-18.4 39.9-18.5 63.2v3.3c0 .9.1 1.9.1 2.8 0 .5.1 1.1.1 1.6 0 .6.1 1.1.1 1.7 1.1 14.9 5.1 29.1 11.2 42 0 .1.1.1.1.2 5.8 11.6 13.7 22.4 23.8 32.3 22.7 22.3 49.9 33.9 81.4 34.8h6.3s0 .1-.1.1h106.8c11.3 0 20.8 4.6 28.5 13.7 7.7 9.1 11.5 20 11.5 32.6s-3.8 24-11.5 32.9c-7.7 8.9-17.2 13.4-28.5 13.4H397.6c-6.9 0-13.1 4-15.8 10.3l-21.9 49.6c-2.5 5.7 1.7 12.1 7.9 12.1h276.4c1.3 0 2.5 0 3.8-.1 31.9-.9 59.1-12.4 81.6-34.8 7.3-7.2 13.5-14.9 18.5-23.1l.1-.1c10.5-17.7 16.6-38.4 16.6-60.4 0-22.2-8.6-46.6-23.3-66.3z"/><path d="M239.7 568.7h-23.8v-75.8H183v-19.2h89.4v19.2h-32.7z"/><path d="M356.2 568.7h-23.8v-95h62c11 0 17.1 1.3 22.6 4.7 7.1 4.4 11.5 12.5 11.5 21.4 0 11.2-5.7 19.7-16.5 24.1 9.4 3.4 12.2 8.7 12.5 23.5.4 11.8 1.1 15.2 4 21.4h-26.2c-1.7-5.3-2-7.4-1.9-16.5.1-13.8-3.6-17.9-15.9-18.1h-28.3zm31.6-53.9c5.3 0 7.4-.3 9.5-1.4 3.3-1.7 5.6-5.6 5.6-9.5s-2.3-7.8-5.6-9.5c-2.1-1.1-4.3-1.4-9.5-1.4h-31.6v21.9z"/><path d="m521.8 548.2-8.8 20.5h-26.4l45.1-95h23.4l45 95h-26.6l-9.5-20.5zm26.2-34.1c-2.7-5.8-4-8.8-5.8-13.2-1.9 4.6-2.3 5.7-5.6 13.5l-6.3 14.5h24.8z"/><path d="M655 473.7h48c17.4 0 27.5 2.3 36.6 8.4 12.1 8.3 19.4 22.5 19.4 38.3s-7.3 30.3-19.8 38.9c-9.4 6.6-20.8 9.4-36.7 9.4H655zm47.8 75.7c19.4 0 30.2-10.3 30.2-28.3 0-18.1-10.8-28.2-30.2-28.2h-23.9v56.5z"/><path d="M815.3 568.7v-95h86.9v19.2h-63.1V509h55.8v19.2h-55.8v21.2h63.1v19.2z"/></g></svg><span class="sr-only">VSL Trade</span></a></li>
-          <li><a href="projects/beetle-eyes.html" style="--s:1.2;-webkit-mask-image:url(assets/projects/beetle-eyes/logo.png);mask-image:url(assets/projects/beetle-eyes/logo.png);--t:#7a3a32;--td:#e2b8a8;--w:2.46;--a:#e8c3a0;--b:#f4ede0" class="bt-g3__logo" data-cursor="View"><span class="sr-only">Beetle Eyes Clothing</span></a></li>
-        </ul>
-      </template>
 
       <!-- Option 4 · Browser cascade: three slim windows of real sites; the front one shuffles to the back -->
-      <template data-ghost="4">
-        <div class="bt-g4" aria-hidden="true">
-          <div class="bt-g4__win"><div class="bt-g4__bar"><i></i><i></i><i></i><b></b></div><div class="bt-g4__view"><img src="assets/captures/gosweet/home-desktop.webp" alt=""></div></div>
-          <div class="bt-g4__win"><div class="bt-g4__bar"><i></i><i></i><i></i><b></b></div><div class="bt-g4__view"><img src="assets/captures/patch-agency/home-desktop.webp" alt=""></div></div>
-          <div class="bt-g4__win"><div class="bt-g4__bar"><i></i><i></i><i></i><b></b></div><div class="bt-g4__view"><img src="assets/captures/birth-hood/home-desktop.webp" alt=""></div></div>
-        </div>
-      </template>
       <div class="wrap">
 
         <div class="bt-stage">
@@ -962,7 +928,7 @@
   <script src="assets/illustrations/manifest.js"></script>
   <script src="assets/js/case.js"></script>
   <script src="assets/js/home.js"></script>
-  <script src="assets/js/home-hero.js"></script>
+  <script src="assets/js/home-hero.js?v=2"></script>
   <script src="assets/js/about.js"></script>
 </body>
 </html>
