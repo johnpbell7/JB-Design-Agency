@@ -731,6 +731,139 @@
       whileSeen(tc, tl, 0.3);
     }
 
+    // Overlays: they drop in one after another as their demo arrives, then float on their own
+    $$('.wf-demo').forEach(demo => {
+      const ovs = $$('.wf-ov', demo);
+      if (!ovs.length) return;
+      gsap.set(ovs, { autoAlpha: 0, y: 24, scale: 0.85 });
+      const floats = [];
+      let started = false;
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && !started) {
+          started = true;
+          gsap.to(ovs, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, ease: 'back.out(1.8)', stagger: 0.18, delay: 0.3,
+            onComplete: () => ovs.forEach((o, i) => floats.push(gsap.to(o, { y: i % 2 ? -7 : 7, duration: 2.4 + i * 0.45, ease: 'sine.inOut', repeat: -1, yoyo: true }))) });
+        }
+        floats.forEach(f => (e.isIntersecting ? f.play() : f.pause()));
+      }, { threshold: 0.1 }).observe(demo);
+    });
+
+    // ---------- In detail: each band runs its own story on a loop ----------
+    const deep = k => $(`[data-deep="${k}"]`);
+    const callsIn = (tl, root, at) => tl.fromTo($$('.wf-call', root), { autoAlpha: 0, scale: 0.7, y: 10 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.45, ease: 'back.out(2.2)', stagger: 0.5 }, at);
+
+    // Freshness: day by day along the dairy window, amber, red, then the freezer stops the clock
+    const df = deep('fresh');
+    if (df) {
+      const track = $('[data-track]', df), fill = $('[data-fill]', df), dot = $('[data-dot]', df), day = $('[data-day]', df), pill = $('[data-fpill]', df);
+      const it = $('[data-fitem]', df), exp = $('[data-exp]', it), snow = $('[data-snow]', it), where = $('[data-where]', it), endl = $('[data-endlabel]', df);
+      const lifeD = $('[data-life="dairy"]', df), lifeF = $('[data-life="freezer"]', df);
+      const W = () => track.offsetWidth;
+      const state = (cls, label) => { ['is-soon', 'is-past', 'is-frozen'].forEach(c => { track.classList.toggle(c, c === cls); pill.classList.toggle(c, c === cls); }); pill.textContent = label; };
+      const LABELS = ['Use by 15 Oct', 'Use by 15 Oct', 'Use by 15 Oct', 'Use by 15 Oct', 'Use by 15 Oct', 'Use by 2 days', 'Use by Tomorrow', 'Use by Today', 'Expired Yesterday', 'Expired 2 days ago'];
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.6, paused: true });
+      tl.call(() => {
+        state(null, 'Fresh'); day.textContent = 'Day 0'; it.className = 'fa-item'; exp.className = 'fa-exp'; $('em', exp).textContent = 'Use by 15 Oct';
+        snow.classList.remove('on'); where.textContent = 'Fridge'; endl.textContent = 'Dairy · 7 days';
+        lifeD.classList.add('on'); lifeF.classList.remove('on'); gsap.set($$('i', track), { autoAlpha: 1 });
+      }, null, 0).set(fill, { scaleX: 0 }, 0).set(dot, { x: 0 }, 0);
+      callsIn(tl, df, 0.4);
+      for (let d = 1; d <= 9; d++) {
+        const at = 0.6 + d * 0.75;
+        tl.to(fill, { scaleX: d / 9, duration: 0.5, ease: 'power2.out' }, at)
+          .to(dot, { x: () => W() * d / 9, duration: 0.5, ease: 'power2.out' }, at)
+          .call(() => {
+            day.textContent = `Day ${d}`;
+            const cls = d >= 8 ? 'is-past' : d >= 5 ? 'is-soon' : null;
+            state(cls, d >= 8 ? 'Past its date' : d >= 5 ? 'Use soon' : 'Fresh');
+            it.className = 'fa-item' + (d >= 8 ? ' expired' : d >= 5 ? ' soon' : '');
+            exp.className = 'fa-exp' + (d >= 8 ? ' expired' : d >= 5 ? ' soon' : '');
+            $('em', exp).textContent = LABELS[d];
+          }, null, at);
+      }
+      // back to day 6, and freeze it instead
+      tl.call(() => { day.textContent = 'Day 6'; state('is-soon', 'Use soon'); it.className = 'fa-item soon'; exp.className = 'fa-exp soon'; $('em', exp).textContent = 'Use by Tomorrow'; }, null, 8.4)
+        .to(fill, { scaleX: 6 / 9, duration: 0.5 }, 8.4).to(dot, { x: () => W() * 6 / 9, duration: 0.5 }, 8.4)
+        .call(() => { snow.classList.add('on'); bump(snow); }, null, 9.3)
+        .call(() => {
+          where.textContent = 'Freezer'; it.className = 'fa-item'; exp.className = 'fa-exp'; flip($('em', exp), 'Use by 7 Dec');
+          state('is-frozen', 'Frozen'); endl.textContent = 'Freezer · 60 days'; day.textContent = 'Day 6 of 60';
+          lifeD.classList.remove('on'); lifeF.classList.add('on');
+        }, null, 9.8)
+        .to($$('i', track), { autoAlpha: 0.15, duration: 0.3 }, 9.8)
+        .to(fill, { scaleX: 6 / 60, duration: 0.8, ease: 'power3.inOut' }, 9.8)
+        .to(dot, { x: () => W() * 6 / 60, duration: 0.8, ease: 'power3.inOut' }, 9.8)
+        .to({}, { duration: 2.4 }, 10.6);
+      whileSeen(df, tl, 0.25);
+    }
+
+    // Usuals: Milk turns up on three separate days, becomes a usual, runs out, back on the list
+    const du = deep('usuals');
+    if (du) {
+      const cells = $$('.wf-cal__d', du), seen = $('[data-seen]', du), usual = $('[data-usual]', du);
+      const milk = $('[data-milk]', du), used = $('[data-usedbtn]', milk), low = $('[data-low]', du), add = $('[data-ladd]', du);
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.6, paused: true });
+      tl.call(() => { cells.forEach(c => c.classList.remove('on')); seen.textContent = '0'; used.classList.remove('on'); add.classList.remove('done'); $('span', add).textContent = 'Add'; }, null, 0)
+        .set(usual, { autoAlpha: 0, scale: 0.5 }, 0).set(low, { autoAlpha: 0, y: 20 }, 0).set(milk, { autoAlpha: 1, y: 0 }, 0);
+      callsIn(tl, du, 0.4);
+      [1, 5, 10].forEach((d, i) => tl.call(() => { cells[d].classList.add('on'); flip(seen, String(i + 1)); }, null, 0.8 + i * 1.1).fromTo(cells[d], { scale: 0.6 }, { scale: 1, duration: 0.45, ease: 'back.out(3)' }, 0.8 + i * 1.1));
+      tl.to(usual, { autoAlpha: 1, scale: 1, duration: 0.5, ease: 'back.out(2.5)' }, 4.2)
+        .call(() => { used.classList.add('on'); bump(used); }, null, 5.2)
+        .to(milk, { autoAlpha: 0.35, y: -6, duration: 0.4 }, 5.6)
+        .to(low, { autoAlpha: 1, y: 0, duration: 0.55, ease: 'back.out(1.8)' }, 6.0)
+        .call(() => { add.classList.add('done'); $('span', add).textContent = 'On list'; bump(add); }, null, 7.4)
+        .to({}, { duration: 2.2 }, 7.6);
+      whileSeen(du, tl, 0.25);
+    }
+
+    // The list puts it away: tick each item and it flies to the fridge, freezer or pantry
+    const dfl = deep('file');
+    if (dfl) {
+      const box = $('.wf-file', dfl), rows = $$('[data-to]', dfl), ticked = $('[data-fticked]', dfl);
+      const dests = Object.fromEntries($$('[data-dest]', dfl).map(d => [d.dataset.dest, d]));
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.8, paused: true });
+      tl.call(() => { rows.forEach(r => r.classList.remove('done')); ticked.textContent = '0'; Object.values(dests).forEach(d => { const b = $('b', d); b.textContent = b.dataset.n; }); }, null, 0);
+      callsIn(tl, dfl, 0.4);
+      rows.forEach((r, i) => {
+        const at = 0.8 + i * 1.15;
+        tl.call(() => {
+          r.classList.add('done'); flip(ticked, String(i + 1));
+          const d = dests[r.dataset.to], br = box.getBoundingClientRect(), rr = $('b', r).getBoundingClientRect(), dr = d.getBoundingClientRect();
+          const chip = document.createElement('span');
+          chip.className = 'wf-fly'; chip.textContent = $('b', r).textContent; box.append(chip);
+          const k = br.width / box.offsetWidth || 1;
+          gsap.fromTo(chip, { x: (rr.left - br.left) / k, y: (rr.top - br.top) / k, scale: 1, autoAlpha: 1 },
+            { x: (dr.left - br.left) / k + (dr.width / k) * 0.55, y: (dr.top - br.top) / k + 8, scale: 0.6, duration: 0.75, ease: 'power2.inOut',
+              onComplete: () => { gsap.to(chip, { autoAlpha: 0, duration: 0.2, onComplete: () => chip.remove() }); const b = $('b', d); b.textContent = String(+b.textContent + 1); bump(d); } });
+        }, null, at);
+      });
+      tl.to({}, { duration: 1.8 }, 0.8 + rows.length * 1.15);
+      whileSeen(dfl, tl, 0.25);
+    }
+
+    // Offline: the signal drops, the list still works and says so, then it syncs; and it installs
+    const dof = deep('offline');
+    if (dof) {
+      const sig = $('[data-sig]', dof), sync = $('[data-sync]', dof), rows = $$('[data-oshop]', dof);
+      const on = $('[data-neton]', dof), off = $('[data-netoff]', dof), a2hs = $('[data-a2hs]', dof), sheet = $('.wf-a2hs', dof);
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.6, paused: true });
+      tl.call(() => { sig.classList.remove('is-off'); rows.forEach(r => r.classList.remove('done')); a2hs.classList.remove('hot'); }, null, 0)
+        .set(sync, { autoAlpha: 0, height: 'auto' }, 0).set([on, off], { autoAlpha: 0 }, 0).set(sheet, { autoAlpha: 0, y: 30 }, 0);
+      callsIn(tl, dof, 0.3);
+      tl.call(() => sig.classList.add('is-off'), null, 0.8)
+        .fromTo(off, { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2.4)' }, 0.8)
+        .fromTo(sync, { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'back.out(1.8)' }, 1.2);
+      rows.slice(0, 2).forEach((r, i) => tl.call(() => { r.classList.add('done'); bump($('.fa-box', r)); }, null, 2.2 + i * 0.9));
+      tl.call(() => sig.classList.remove('is-off'), null, 4.4)
+        .to(off, { autoAlpha: 0, duration: 0.25 }, 4.4)
+        .fromTo(on, { autoAlpha: 0, scale: 0.7 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2.4)' }, 4.5)
+        .to(sync, { autoAlpha: 0, y: -8, duration: 0.35 }, 4.6)
+        .to(sheet, { autoAlpha: 1, y: 0, duration: 0.55, ease: 'expo.out' }, 5.6)
+        .call(() => a2hs.classList.add('hot'), null, 6.5)
+        .to({}, { duration: 2 }, 6.8);
+      whileSeen(dof, tl, 0.25);
+    }
+
     // Colour swatches drop in one after another
     const sw = $$('.palette .swatch');
     if (sw.length && window.ScrollTrigger) gsap.from(sw, { y: 28, autoAlpha: 0, duration: 0.6, ease: 'back.out(1.8)', stagger: 0.06, scrollTrigger: { trigger: sw[0].parentElement, start: 'top 88%', once: true } });
