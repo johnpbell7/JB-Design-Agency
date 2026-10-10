@@ -386,3 +386,21 @@ body { --sky-a: #e9eef3; --sky-b: #f4efe6; --sky-c: #f7e7cf; --hill-far: #d7dccb
   .pm-item--cover { top: 26% !important; width: 30% !important; left: 2% !important; }
   .pm-item--flyer { left: 72% !important; width: 26% !important; top: 26% !important; }
 }
+
+/* What a development needs: six services as icon cards */
+.pm-svcs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 20px); }
+.pm-svc { display: grid; align-content: start; gap: 8px; padding: clamp(22px, 2.4vw, 30px); border-radius: var(--radius-l); background: color-mix(in srgb, var(--tint) 22%, var(--white)); transition: translate 0.4s var(--ease-spring); }
+.pm-svc:hover { translate: 0 -4px; }
+.pm-svc__icon { display: grid; place-items: center; width: 74px; height: 74px; margin-bottom: 10px; border-radius: 22px; background: var(--white); box-shadow: 0 1px 2px rgb(24 24 26 / 0.06), 0 12px 24px -14px rgb(24 24 26 / 0.3); }
+.pm-svc__icon svg { width: 50px; height: 50px; overflow: visible; transition: rotate 0.5s var(--ease-spring), scale 0.5s var(--ease-spring); }
+.pm-svc:hover .pm-svc__icon svg { rotate: -6deg; scale: 1.08; }
+.pm-svc h3 { font-size: 20px; letter-spacing: -0.025em; line-height: 1.2; }
+.pm-svc p { font-size: 15px; line-height: 1.55; color: var(--grey-7); }
+@media (max-width: 900px) { .pm-svcs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+  .pm-svc { padding: 18px 16px; }
+  .pm-svc__icon { width: 58px; height: 58px; border-radius: 18px; margin-bottom: 6px; }
+  .pm-svc__icon svg { width: 40px; height: 40px; }
+  .pm-svc h3 { font-size: 16.5px; }
+  .pm-svc p { font-size: 13.5px; }
+}
