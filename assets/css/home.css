@@ -1517,8 +1517,8 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
 
 /* What's in my Fridge card: three phones in a tight fan; bigger on phones so they fill the card */
 @media (max-width: 860px) {
-  .feature__visual:has(.wf-fan) { aspect-ratio: 1 / 1.02; margin-inline: -6px; }
-  .wf-fan .phone:nth-child(1) { left: 2% !important; top: 12% !important; width: 33% !important; }
-  .wf-fan .phone:nth-child(2) { left: 65% !important; top: 12% !important; width: 33% !important; }
-  .wf-fan .phone:nth-child(3) { left: 30% !important; top: 2% !important; width: 40% !important; }
+  .feature__visual:has(.wf-fan) { aspect-ratio: 1 / 0.93; margin-inline: -6px; }
+  .wf-fan .phone:nth-child(1) { left: 5% !important; top: 11% !important; width: 31% !important; }
+  .wf-fan .phone:nth-child(2) { left: 64% !important; top: 11% !important; width: 31% !important; }
+  .wf-fan .phone:nth-child(3) { left: 31.5% !important; top: 1% !important; width: 37% !important; }
 }
