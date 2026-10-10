@@ -498,3 +498,23 @@ body { --project-pen: #b9e4c9; }
   .fa-spin, .fa-typing span, .fa-caret, .fa-nav i.pulse { animation: none !important; }
 }
 .wf-replay[hidden] { display: none; }
+
+/* Softer palette, matching the app: warm cream with its food-group pastels; green kept for buttons and the logo */
+body { --project-pen: #f1d9c7; }
+.wf-panel--sand  { background: radial-gradient(110% 120% at 85% 0%, #faf5ec 0%, #f4ecdd 60%, #ece1cc 100%); }
+.wf-panel--blush { background: radial-gradient(110% 120% at 15% 0%, #fcf4f2 0%, #f7ebe9 60%, #f0dcd8 100%); }
+.wf-panel--sky   { background: radial-gradient(110% 120% at 85% 0%, #f6f8fd 0%, #eef2fa 60%, #dfe7f5 100%); }
+.wf-panel--sage  { background: radial-gradient(110% 120% at 15% 0%, #f5f9f3 0%, #eaf3e8 60%, #dcead9 100%); }
+.wf-panel--teal  { background: radial-gradient(110% 120% at 85% 0%, #f4f9fa 0%, #e7f1f3 60%, #d8e8ec 100%); }
+.wf-panel--sand::before, .wf-panel--blush::before, .wf-panel--sky::before, .wf-panel--sage::before, .wf-panel--teal::before { opacity: 0.5; }
+.wf-get-band { background: radial-gradient(120% 140% at 85% 0%, #fbf7f0 0%, #f3eee4 55%, #ece3d3 100%); color: var(--fa-ink, #1f1b16); }
+.wf-get-band::before { background-image: radial-gradient(circle, #d8cfbe 1.5px, transparent 2px); opacity: 0.5; }
+.wf-get-band .label { color: var(--fa-ink-soft, #6b6358); }
+.wf-get-band .hl { --pen: #f1d9c7 !important; }
+.wf-get-band h2 { color: var(--fa-ink, #1f1b16); }
+.wf-get__copy > p, .wf-qr p { color: var(--fa-ink-soft, #6b6358); }
+.wf-qr p b { color: var(--fa-ink, #1f1b16); }
+.wf-get__btn { background: #2f7d5a; color: #fff; border-color: #2f7d5a; }
+.wf-get__btn:hover { background: #28694c; }
+.wf-qr__code { box-shadow: 0 0 0 1px #e7e0d3; }
+.wf-guide { box-shadow: 0 30px 50px -30px rgb(60 40 20 / 0.3); }
