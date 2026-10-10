@@ -48,7 +48,7 @@ body {
 .bb-stamps li, .bb-sticker, .bb-chip__dots i, .bb-prod, .bb-pbtn, .bb-break--card .bb-break__panel { transition: background-color 0.8s var(--ease-out), color 0.8s var(--ease-out), border-color 0.4s; }
 
 /* ---------- Hero + parade pop-outs ---------- */
-.cs-hero h1 { font-size: clamp(48px, 6.2vw, 92px); }
+/* title size: shared with Birth-hood (case.css) */
 .bb-sticker {
   position: relative; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center;
   background: var(--bloom); color: var(--on-bloom); border: 2px solid var(--bb-ink);

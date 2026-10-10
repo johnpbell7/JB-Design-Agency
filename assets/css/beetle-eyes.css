@@ -30,7 +30,7 @@ body {
 }
 
 /* "Come and rummage." is one long word too many for the standard hero size */
-.cs-hero h1 { font-size: clamp(52px, 6.6vw, 96px); }
+/* title size: shared with Birth-hood (case.css) */
 
 /* ---------- Small brand pieces (hero + parade pop-outs) ---------- */
 .be-logo-card {

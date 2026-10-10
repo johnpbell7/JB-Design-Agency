@@ -28,7 +28,7 @@ body {
 }
 
 /* ---------- Hero ---------- */
-.cs-hero .pm-h1 { font-size: clamp(44px, 5.4vw, 82px); }
+.cs-hero .pm-h1 { font-size: clamp(50px, 7.2vw, 106px); }
 
 .pm-desk { position: relative; aspect-ratio: 1 / 0.8; isolation: isolate; perspective: 1800px; }
 .pm-desk__surface {
