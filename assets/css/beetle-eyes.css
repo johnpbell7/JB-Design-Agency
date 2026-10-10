@@ -474,3 +474,5 @@ body {
   .be-map__walk-draw, .be-map__walk-chip { transition: none; }
   .be-underline::after { clip-path: inset(0); }
 }
+/* phones: hide the curtains card, it reads too much like the main home page shot */
+@media (max-width: 700px) { .be-break--site { display: none; } }
