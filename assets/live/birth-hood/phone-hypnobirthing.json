@@ -1,18 +1,15 @@
 {
-  "name": "birth-hood: Hypnobirthing",
+  "name": "birth-hood: Hypnobirthing prices",
   "mobile": {
-    "label": "Hypnobirthing",
-    "page": "index.html",
+    "label": "Hypnobirthing prices",
+    "page": "hypnobirthing.html",
     "width": 390,
     "touch": true,
-    "start": { "to": ".services-grid", "offset": 120 },
+    "start": { "to": ".next-course", "offset": 150 },
     "actions": [
-      { "wait": 1200 },
-      { "scroll": 200, "ms": 1400, "after": 700 },
-      { "tap": ".services-grid a.service-cell", "nth": 0, "after": 300 },
-      { "wait": 1200 },
-      { "scroll": 700, "ms": 2300, "after": 900 },
-      { "scroll": 800, "ms": 2400, "after": 1200 }
+      { "wait": 2600 },
+      { "scrollTo": ".power-row", "offset": 260, "ms": 3800, "after": 3400 },
+      { "scrollTo": ".offer-strip", "offset": 330, "ms": 2600, "after": 4200 }
     ]
   }
 }

@@ -1,19 +1,16 @@
 {
-  "name": "birth-hood: Birth doula",
+  "name": "birth-hood: Birth doula packages",
   "mobile": {
-    "label": "Birth doula",
-    "page": "index.html",
+    "label": "Birth doula packages",
+    "page": "birth-doula.html",
     "width": 390,
     "touch": true,
-    "start": 0,
+    "start": { "to": ".price-card", "offset": 330 },
     "actions": [
-      { "wait": 1400 },
-      { "tap": ".nav-ham", "after": 1000 },
-      { "tap": ".mob-accordion", "text": "Doula", "after": 900 },
-      { "tap": ".mob-menu a", "text": "Birth Doula", "after": 300 },
-      { "wait": 1200 },
-      { "scroll": 700, "ms": 2300, "after": 900 },
-      { "scroll": 800, "ms": 2400, "after": 1200 }
+      { "wait": 2200 },
+      { "scrollTo": ".price-card.featured", "offset": 110, "ms": 2800, "after": 3600 },
+      { "scroll": 420, "ms": 2800, "after": 1400 },
+      { "scrollTo": ".price-card", "nth": 2, "offset": 110, "ms": 2800, "after": 3000 }
     ]
   }
 }

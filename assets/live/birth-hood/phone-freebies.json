@@ -1,0 +1,15 @@
+{
+  "name": "birth-hood: Reviews and freebies",
+  "mobile": {
+    "label": "Reviews and freebies",
+    "page": "index.html",
+    "width": 390,
+    "touch": true,
+    "start": { "to": ".testimonials", "offset": 0 },
+    "actions": [
+      { "wait": 2200 },
+      { "scrollTo": ".freebies", "offset": 40, "ms": 3600, "after": 4200 },
+      { "tap": ".freebies .btn-primary", "after": 3000 }
+    ]
+  }
+}

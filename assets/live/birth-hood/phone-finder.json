@@ -7,12 +7,13 @@
     "touch": true,
     "start": { "to": ".quiz", "offset": 110 },
     "actions": [
-      { "wait": 1300 },
-      { "tap": ".quiz-option", "nth": 0, "after": 1200 },
-      { "tap": ".quiz-option", "nth": 1, "after": 1200 },
-      { "tap": ".quiz-option", "nth": 0, "after": 1200 },
-      { "tap": ".quiz-option", "nth": 2, "after": 1200 },
-      { "tap": ".quiz-option", "nth": 1, "after": 2400 }
+      { "wait": 1200 },
+      { "tap": ".quiz-option", "nth": 0, "after": 900 },
+      { "tap": ".quiz-option", "nth": 3, "after": 900 },
+      { "tap": ".quiz-option", "nth": 3, "after": 900 },
+      { "tap": ".quiz-option", "nth": 3, "after": 900 },
+      { "tap": ".quiz-option", "nth": 2, "after": 3400 },
+      { "scroll": 380, "ms": 2800, "after": 3600 }
     ]
   }
 }
