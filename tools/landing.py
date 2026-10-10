@@ -12,7 +12,7 @@ WEB = [('One-page website', '£500', 'A single scrolling page with everything a 
        ('Online shop', '£2,500', 'A Shopify shop with clear product pages and a quick checkout, or full page designs for your developer.', ['Shopify set-up', 'Product and collection pages', 'Payments and shipping'])]
 GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with a few routes to choose from.', ['Three first ideas', 'Colour and mono versions', 'All file types']),
        ('Brand identity', '£900', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
-       ('Print design', '£45/page', 'Brochures, flyers, reports, signage and packaging, laid out and sent to print ready. Priced per page, so you only pay for what you need.', ['Print-ready files', 'Help with printers', 'Brochures from £45 a page'])]
+       ('Print design', '£45/page', 'Brochures, business cards, flyers, signage and large format, designed and sent to print ready. Brochures are priced per page, so you only pay for what you need.', ['Brochures from £45 a page', 'Business cards, flyers and leaflets', 'Banners, signs and site boards', 'Printing arranged for you'])]
 CARE = 'Website care from £50 a month: changes, new pages and help when you need it.'
 
 # Towns covered, Leicester down to Birmingham (one honest list, shown on every location page)
@@ -26,8 +26,8 @@ WEB_SVCS = [('Small business websites', 'One-page and multi-page sites for trade
             ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup Google looks for (SEO).'), ('Easy to update', 'Change your words, photos and products yourself, without touching any code.'),
             ('Redesigns', 'A fresh, faster version of the site you have, keeping what works.'), ('Care and updates', 'Changes, new pages and help whenever you need it after launch.')]
 GFX_SVCS = [('Logo design', 'Logos that work small and large, in colour and black and white, on screen and in print.'), ('Brand identity', 'Colours, fonts and simple rules that keep everything looking like you.'),
-            ('Brochures and reports', 'Clear, well-organised layouts for brochures, annual reports and newsletters.'), ('Flyers and leaflets', 'Eye-catching print for promotions, events and door-to-door.'),
-            ('Signage and packaging', 'Shop signs, site boards, banners, labels and packaging.'), ('Social media graphics', 'Templates and graphics so your posts look as good as your print.')]
+            ('Brochures and reports', 'Clear, well-organised layouts for brochures, annual reports and newsletters.'), ('Business cards and flyers', 'Business cards, flyers and leaflets for promotions, events and door-to-door.'),
+            ('Large format and signage', 'Shop signs, banners, roller banners, vehicle graphics, site boards and packaging.'), ('Social media graphics', 'Templates and graphics so your posts look as good as your print.')]
 
 W = lambda h, img, alt, n, k: (h, img, alt, n, k)
 WORK = {'birth-hood': W('birth-hood.html', 'captures/birth-hood/fold-desktop.webp', 'Birth-hood website', 'Birth-hood', 'Website for a hypnobirthing and doula business in Leicestershire'),
