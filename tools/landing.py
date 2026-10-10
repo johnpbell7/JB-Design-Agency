@@ -13,7 +13,7 @@ WEB = [('One-page website', '£500', 'A shop window for your business: who you a
 GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with a few routes to choose from.', ['Three first ideas', 'Colour and mono versions', 'All file types']),
        ('Brand identity', '£750', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
        ('Print design', '£45/page', 'Brochures, business cards, flyers, signage and large format, designed and sent to print ready. Brochures are priced per page, so you only pay for what you need.', ['Brochures from £45 a page', 'Business cards, flyers and leaflets', 'Banners, signs and site boards', 'Printing arranged for you'])]
-CARE = 'Website care from £40 a month: changes, updates and help when you need it. Small jobs £35 an hour.'
+CARE = 'Website care from £40 a month: changes, updates and help when you need it.'
 
 # Towns covered, Leicester down to Birmingham (one honest list, shown on every location page)
 AREAS = ['Birmingham', 'Sutton Coldfield', 'Solihull', 'Lichfield', 'Tamworth', 'Atherstone', 'Nuneaton', 'Hinckley',
