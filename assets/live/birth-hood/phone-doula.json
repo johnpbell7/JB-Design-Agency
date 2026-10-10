@@ -5,12 +5,12 @@
     "page": "birth-doula.html",
     "width": 390,
     "touch": true,
-    "start": { "to": ".price-card", "offset": 330 },
+    "start": { "to": ".price-card", "offset": 410 },
     "actions": [
       { "wait": 2200 },
-      { "scrollTo": ".price-card.featured", "offset": 110, "ms": 2800, "after": 3600 },
-      { "scroll": 420, "ms": 2800, "after": 1400 },
-      { "scrollTo": ".price-card", "nth": 2, "offset": 110, "ms": 2800, "after": 3000 }
+      { "scrollTo": ".price-card.featured", "offset": 110, "ms": 2800, "after": 3000 },
+      { "scroll": 420, "ms": 2600, "after": 700 },
+      { "scrollTo": ".price-card", "nth": 2, "offset": 110, "ms": 2600, "after": 3400 }
     ]
   }
 }

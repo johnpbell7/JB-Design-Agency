@@ -304,11 +304,32 @@
       else if (!e.isIntersecting) near = false;
     }, { rootMargin: '600px 0px' }).observe(parade);
     new IntersectionObserver(([e]) => { seen = e.isIntersecting; P.forEach(playOrPause); wake(); }, { threshold: 0.15 }).observe(parade);
+    // On phone widths case.js stacks the phones into a deck (.is-deck) and hides all but the
+    // current one, which an IntersectionObserver can't see. A hidden deck phone doesn't play,
+    // and once it slides away it reloads its start page, so it begins its walkthrough from
+    // the top (straight away, as no other phone is playing) each time it comes round.
+    const shown = p => !parade.classList.contains('is-deck') || p.ph.classList.contains('is-on');
+    const look = p => {
+      const was = p.seen;
+      p.seen = p.inView && shown(p); playOrPause(p);
+      if (was && !p.seen && !shown(p) && p.frame && p.state === 'run') {
+        p.state = 'reset';
+        p.incoming?.remove();
+        p.incoming = frame(p, p.src);
+        p.resume.set(p.incoming, { i: 0, at: 0 });
+      }
+      wake();
+    };
     const io = new IntersectionObserver(es => es.forEach(e => {
       const p = P.find(q => q.ph === e.target); if (!p) return;
-      p.seen = e.intersectionRatio >= 0.5; playOrPause(p);
+      p.inView = e.intersectionRatio >= 0.5; look(p);
     }), { threshold: [0, 0.5, 1] });
     P.forEach(p => io.observe(p.ph));
+    if ('MutationObserver' in window) {
+      const mo = new MutationObserver(ms => ms.forEach(m => { const p = P.find(q => q.ph === m.target); if (p) look(p); }));
+      P.forEach(p => mo.observe(p.ph, { attributes: true, attributeFilter: ['class'] }));
+      new MutationObserver(() => P.forEach(look)).observe(parade, { attributes: true, attributeFilter: ['class'] });
+    }
     document.addEventListener('visibilitychange', () => { P.forEach(playOrPause); wake(); });
   }
   $$('[data-parade]').forEach(liveParade);

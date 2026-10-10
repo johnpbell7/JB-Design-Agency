@@ -5,9 +5,9 @@
     "page": "hypnobirthing.html",
     "width": 390,
     "touch": true,
-    "start": { "to": ".next-course", "offset": 150 },
+    "start": { "to": ".next-course", "offset": 130 },
     "actions": [
-      { "wait": 2600 },
+      { "wait": 3000 },
       { "scrollTo": ".power-row", "offset": 260, "ms": 3800, "after": 3400 },
       { "scrollTo": ".offer-strip", "offset": 330, "ms": 2600, "after": 4200 }
     ]

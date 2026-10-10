@@ -5,11 +5,11 @@
     "page": "index.html",
     "width": 390,
     "touch": true,
-    "start": { "to": ".testimonials", "offset": 0 },
+    "start": { "to": ".testimonials", "offset": -20 },
     "actions": [
-      { "wait": 2200 },
-      { "scrollTo": ".freebies", "offset": 40, "ms": 3600, "after": 4200 },
-      { "tap": ".freebies .btn-primary", "after": 3000 }
+      { "wait": 2000 },
+      { "scrollTo": ".freebies", "offset": 70, "ms": 3400, "after": 3600 },
+      { "tap": ".freebies .btn-primary", "after": 3400 }
     ]
   }
 }
