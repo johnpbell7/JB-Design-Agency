@@ -1527,3 +1527,21 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
   .wf-fan .phone:nth-child(2) { left: 64% !important; top: 11% !important; width: 31% !important; }
   .wf-fan .phone:nth-child(3) { left: 31.5% !important; top: 1% !important; width: 37% !important; }
 }
+
+/* "Need print? I do that too." bar under the work stack */
+.print-bar { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 28px; margin-top: 28px; padding: 22px 26px; border-radius: var(--radius-l); background: #fbf6ec; box-shadow: 0 0 0 1px var(--line); text-decoration: none; color: var(--ink); overflow: hidden; }
+.print-bar__copy { display: grid; gap: 4px; }
+.print-bar__copy b { font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.035em; line-height: 1.1; }
+.print-bar__copy > span { font-size: 15px; color: var(--grey-7); }
+.print-bar__pile { position: relative; display: flex; align-items: center; height: 96px; }
+.print-bar__pile img { height: 92px; width: auto; margin-left: -26px; border-radius: 6px; background: #fff; box-shadow: 0 10px 22px -12px rgb(24 24 26 / 0.45), 0 0 0 1px rgb(24 24 26 / 0.06); rotate: calc((var(--i) - 3) * 3deg); transition: translate 0.4s var(--ease-out), rotate 0.4s var(--ease-out); }
+.print-bar__pile img:first-child { margin-left: 0; }
+.print-bar:hover .print-bar__pile img { translate: calc((var(--i) - 3) * 5px) -6px; }
+.print-bar__go { display: inline-flex; gap: 8px; padding: 12px 18px; border-radius: 999px; background: #18181a; color: #fff; font-weight: 600; font-size: 14.5px; white-space: nowrap; }
+@media (max-width: 860px) {
+  .print-bar { grid-template-columns: 1fr; gap: 16px; padding: 20px; margin-top: 20px; }
+  .print-bar__pile { height: 84px; justify-content: flex-start; }
+  .print-bar__pile img { height: 78px; margin-left: -22px; }
+  .print-bar__go { justify-self: start; }
+  .print-bar__pile img:nth-child(n+6) { display: none; }
+}
