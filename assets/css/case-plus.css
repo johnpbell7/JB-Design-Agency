@@ -269,3 +269,12 @@ body[data-pen] .contact .hl, .contact .hl { --pen: #fff; color: #18181a; }
   [data-cp-film] .cp-steps { max-width: calc(100% - 104px); }
 }
 @media (max-width: 760px) { [data-cp-film] .cp-film__nav { bottom: -20px; } }
+
+/* What's in my Fridge: three phones fanned, no laptop (it's an app) */
+.cp-card--app .cp-card__phone.phone { right: auto; bottom: auto; top: 16%; width: 23%; }
+.cp-card--app .cp-card__phone.phone:nth-of-type(1) { left: 14%; top: 22%; rotate: -9deg; }
+.cp-card--app .cp-card__phone.phone:nth-of-type(2) { left: 63%; top: 22%; rotate: 9deg; }
+.cp-card--app .cp-card__phone.phone:nth-of-type(3) { left: 37%; top: 12%; width: 26%; z-index: 2; }
+.cp-card--app:hover .cp-card__phone.phone:nth-of-type(1) { translate: -6px -4px; rotate: -12deg; }
+.cp-card--app:hover .cp-card__phone.phone:nth-of-type(2) { translate: 6px -4px; rotate: 12deg; }
+.cp-card--app:hover .cp-card__phone.phone:nth-of-type(3) { translate: 0 -8px; rotate: 0deg; }

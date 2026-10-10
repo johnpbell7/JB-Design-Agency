@@ -261,3 +261,8 @@
   .who-card2__art img { left: 50%; top: 9%; width: 62%; translate: -50% 0; border-radius: 18px; }
   .who-card2:hover .who-card2__art img { translate: -50% -4px; }
 }
+
+/* service visuals: mockup tiles (assets/services/<service>-d/-m.webp) */
+.svc__media picture, .svc__media img { display: block; width: 100%; height: auto; }
+.svc__media img { border-radius: 28px; }
+@media (max-width: 760px) { .svc__media img { border-radius: 22px; } }
