@@ -1,7 +1,9 @@
-"""Ports two standalone hero options (heroes/hero-02 big type, hero-07 phone fan)
-into the home page: prefixes their class names so nothing clashes with the site's
+"""Ported two standalone hero options (hero-02 big type, hero-07 phone fan) from
+the old hero test pages (removed) into the home page: prefixes their class names so nothing clashes with the site's
 shared components, and writes assets/css/home-hero.css + assets/js/home-hero.js.
-Prints the two section snippets' paths for splicing into index.html."""
+Prints the two section snippets' paths for splicing into index.html.
+Kept for reference only: its heroes/ inputs were the old hero test pages (removed),
+so it no longer runs as-is."""
 import re
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
@@ -44,8 +46,8 @@ def port(path, prefix, data_renames):
 
 c2, s2, j2 = port(ROOT / 'heroes/hero-02.html', 'bt-', {'data-bigtype': 'data-bt'})
 c7, s7, j7 = port(ROOT / 'heroes/hero-07.html', 'pf-', {'data-stage': 'data-pf-stage', 'data-fan': 'data-pf-fan', 'data-scribble': 'data-pf-scribble', 'data-cap': 'data-pf-cap', 'data-dots': 'data-pf-dots', 'data-icons': 'data-pf-icons'})
-(ROOT / 'assets/css/home-hero.css').write_text('/* Home hero (big type) + phone-fan section. Ported from heroes/hero-02 and hero-07 by tools/port_hero.py */\n' + c2 + '\n/* ---- phone fan ---- */\n' + c7)
-(ROOT / 'assets/js/home-hero.js').write_text('// Home hero (big type) + phone-fan section. Ported from heroes/hero-02 and hero-07 by tools/port_hero.py\n' + j2 + '\n' + j7)
+(ROOT / 'assets/css/home-hero.css').write_text('/* Home hero (big type) + phone-fan section. Ported from the old hero test pages (removed) by tools/port_hero.py */\n' + c2 + '\n/* ---- phone fan ---- */\n' + c7)
+(ROOT / 'assets/js/home-hero.js').write_text('// Home hero (big type) + phone-fan section. Ported from the old hero test pages (removed) by tools/port_hero.py\n' + j2 + '\n' + j7)
 (ROOT / 'heroes/_hero.part.html').write_text(s2)
 (ROOT / 'heroes/_fan.part.html').write_text(s7)
 print('ok', len(c2), len(c7))

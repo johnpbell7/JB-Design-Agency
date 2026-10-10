@@ -1,4 +1,4 @@
-// Home hero (big type) + phone-fan section. Ported from heroes/hero-02 and hero-07 by tools/port_hero.py
+// Home hero (big type) + phone-fan section. Ported from the old hero test pages (removed) by tools/port_hero.py
 
 /* Phone-fan screens sit below the first screen: they start loading once the hero's
    laptop site has arrived (so they don't slow it down), or sooner if the fan nears view */

@@ -6,8 +6,7 @@ project first, every other project, and print work) and the contact form.
 
 Each page gets the blocks between <!-- cp:end --> and <!-- /cp:end -->, which
 replace the old single "Next project" link the first time it runs. The project
-list lives here, so adding a project means one new line in PROJECTS. PATCH is
-written to patch.src.html, then tools/build.py makes patch.html.
+list lives here, so adding a project means one new line in PROJECTS.
 """
 import re
 from pathlib import Path
@@ -17,7 +16,7 @@ EMAIL = 'jb.designagency89@gmail.com'
 
 # slug, page, name, tag, brand, desktop capture, phone capture (order = "next" chain)
 PROJECTS = [
-    ('patch', 'patch.src.html', 'PATCH', 'Brand + website', '#111318', 'patch-agency/fold-desktop.webp', 'patch-agency/home-mobile.webp'),
+    ('patch', 'patch.html', 'PATCH', 'Brand + website', '#111318', 'patch-agency/fold-desktop.webp', 'patch-agency/home-mobile.webp'),
     ('birth-hood', 'birth-hood.html', 'Birth-hood', 'Website', '#fe7fcc', 'birth-hood/fold-desktop.webp', 'birth-hood/home-mobile.webp'),
     ('gosweet', 'gosweet.html', 'GoSweet', 'Online shop', '#5c2a9d', 'gosweet/fold-desktop.webp', 'gosweet/home-mobile.webp'),
     ('nic-pouches', 'nic-pouches.html', 'Nic Pouches', 'Online shop', '#0070d5', 'nic-pouches/fold-desktop.webp', 'nic-pouches/home-mobile.webp'),
@@ -33,17 +32,13 @@ OTHER_PAGES = [('about', 'about.html'), ('work', 'work.html')]
 CONTACT_ONLY = {'work'}
 
 
-def href(page):
-    return 'patch.html' if page == 'patch.src.html' else page
-
-
 def card(p, next_=False):
     slug, page, name, tag, brand, desk, phone = p
     label = '<span class="cp-card__label">Next project</span>' if next_ else ''
     # a laptop and a phone on the brand colour, like the home page work cards
     devices = (f'<div class="laptop cp-card__laptop"><div class="laptop__lid"><div class="screen"><img src="../assets/captures/{desk}" alt="" loading="lazy"></div></div><div class="laptop__base"></div></div>'
                f'<div class="phone cp-card__phone"><div class="screen"><img src="../assets/captures/{phone}" alt="" loading="lazy"></div></div>')
-    return (f'        <a class="cp-card{" cp-card--next" if next_ else ""}" href="{href(page)}" style="--brand:{brand}">\n'
+    return (f'        <a class="cp-card{" cp-card--next" if next_ else ""}" href="{page}" style="--brand:{brand}">\n'
             f'          <div class="cp-card__art">{label}<i class="cp-card__glow" aria-hidden="true"></i>{devices}</div>\n'
             f'          <div class="cp-card__name"><b>{name}</b><span>{tag}</span></div>\n'
             f'        </a>')
