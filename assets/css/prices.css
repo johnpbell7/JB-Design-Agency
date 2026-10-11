@@ -165,3 +165,5 @@
 @media (max-width: 560px) { .hp-addons { margin: 4px 18px 18px; } .hp-addons li, .hp-addons b { font-size: 13.5px; } }
 /* the combo block's single column always fills the card (it sized to its content once the labels got shorter) */
 .hp-tiers li.is-combo { grid-template-columns: minmax(0, 1fr); }
+/* "from" before a tier price: small and quiet */
+.hp-tiers b i { margin-right: 3px; font-style: normal; font-size: 11px; font-weight: 600; letter-spacing: 0; opacity: 0.55; }
