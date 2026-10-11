@@ -1178,3 +1178,6 @@ body { --project-pen: #f1d9c7; }
 .wf-site { border-color: #2f7d5a; color: #2f7d5a; }
 .wf-site:hover { background: #2f7d5a; color: #fff; border-color: #2f7d5a; }
 .wf-site svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* the numbered pills above each feature title aren't needed: the timeline node already shows the number
+   (kept in the markup because the timeline reads its number from them) */
+.wf-step:not(.wf-step--in) { display: none; }
