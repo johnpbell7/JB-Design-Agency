@@ -361,3 +361,6 @@
 /* a quiet ticked note at the foot of a price list */
 .svc__opts li.is-note { justify-content: flex-start; gap: 8px; padding: 10px 0; border-bottom: 0; font-size: 14px; }
 .svc__opts li.is-note::before { content: "✓"; font-weight: 700; color: var(--ink); }
+.svc__opts li.is-note.is-plain::before { content: none; }
+.svc__opts li.is-note.is-plain { padding-top: 6px; color: var(--grey-5); font-size: 13.5px; }
+.svc__opts li.is-note.is-plain b { color: var(--grey-7); font-weight: 600; }

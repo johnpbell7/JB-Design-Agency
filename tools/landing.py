@@ -10,9 +10,9 @@ PHONE_INTL = '+447428728780'    # for tel:/sms:/WhatsApp links
 NAV = open('tools/landing-nav.html').read()
 
 # ===== PRICES (placeholders, to be confirmed by John) =====
-WEB = [('Small website', '£500', 'A shop window for your business, with who you are, what you do and an easy way to get in touch.', ['Designed for phones first', 'Small changes, quoted up front', 'Editor or bookings, quoted']),
-       ('Medium website', '£900', 'Five pages or more for your services, about, work and contact, with a layout that grows with your business.', ['5 pages and up', 'Extra pages from £100', 'Editor or bookings, quoted']),
-       ('Large website', '£1,500', 'Ten pages or more, with an editor included so you can change words and photos yourself.', ['10 pages and up', 'Editor included', 'Extra pages from £100']),
+WEB = [('Small website', '£500', 'A shop window for your business, with who you are, what you do and an easy way to get in touch.', ['Designed for phones first', 'Small changes, quoted up front', 'Edit it yourself or bookings, quoted']),
+       ('Medium website', '£900', 'Five pages or more for your services, about, work and contact, with a layout that grows with your business.', ['5 pages and up', 'Extra pages from £100', 'Edit it yourself or bookings, quoted']),
+       ('Large website', '£1,500', 'Ten pages or more, with an editor included so you can change words and photos yourself.', ['10 pages and up', 'Edit it yourself', 'Extra pages from £100']),
        ('Small online shop', '£1,800', 'A Shopify shop for independents, with clear product pages and a quick checkout. For bigger stores I design every page for your developer to build.', ['Shopify set-up', 'Product and collection pages', 'Big stores: designs for your developer'])]
 GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with options to choose from.', ['Options to choose from', 'Colour and mono versions', 'All assets in every format']),
        ('Brand identity', '£500', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
@@ -110,7 +110,7 @@ def page(p):
   <link rel="stylesheet" href="../assets/css/fonts.css">
   <link rel="stylesheet" href="../assets/css/base.css?v=5">
   <link rel="stylesheet" href="../assets/css/landing.css?v=2">
-  <link rel="stylesheet" href="../assets/css/prices.css?v=11">
+  <link rel="stylesheet" href="../assets/css/prices.css?v=13">
   <script type="application/ld+json" data-seo>
 {json.dumps(ld, ensure_ascii=False, indent=1)}
   </script>
