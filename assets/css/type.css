@@ -36,3 +36,5 @@
 /* stragglers with stronger page rules */
 html:root .wf-tl .wf-sub, html:root .wf-sub, html:root .lp-sec > div > p:not([class]) { font-size: var(--t-body); line-height: 1.65; }
 html:root .wf-tl .wf-cook .wf-feat__copy > h2, html:root .wf-feat__copy > h2 { font-size: var(--t-h2); }
+/* desktop case-study heroes: the title sits in a narrow column, so it runs smaller to stay within about four lines */
+@media (min-width: 901px) { html:root main .cs-hero h1 { font-size: clamp(50px, 5.2vw, 78px); } }

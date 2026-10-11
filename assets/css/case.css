@@ -286,7 +286,7 @@ body {
   --edge: 2px;
   position: relative;
   container-type: inline-size;
-  width: clamp(150px, 19vw, 250px); aspect-ratio: 393 / 852;
+  width: clamp(150px, 19vw, 250px); aspect-ratio: 71.6 / 147.6; /* a real iPhone body, bezel included */
   border: var(--edge) solid transparent;
   border-radius: 17% / 7.9%;
   background:

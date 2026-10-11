@@ -113,7 +113,7 @@ def page(p):
   <script type="application/ld+json" data-seo>
 {json.dumps(ld, ensure_ascii=False, indent=1)}
   </script>
-  <link rel="stylesheet" href="../assets/css/type.css?v=4">
+  <link rel="stylesheet" href="../assets/css/type.css?v=5">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
