@@ -473,6 +473,9 @@
 .bt-g1__col { width: var(--cw); height: 100%; overflow: hidden; }
 .bt-g1__col:nth-child(2) { margin-top: -12%; }
 .bt-g1__track { will-change: transform; }
+/* where each strip starts before the script takes over (set per strip in the markup; phones have their own) */
+.bt-g1__track { transform: translateY(var(--y, 0%)); }
+@media (max-width: 560px) { .bt-g1__track { transform: translateY(var(--ym, var(--y, 0%))); } }
 /* a brand change: the next site's strip fades in over the current one */
 .bt-g1__col { position: relative; }
 .bt-g1__track.is-next { position: absolute; left: 0; right: 0; top: 0; }

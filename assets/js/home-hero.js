@@ -295,11 +295,12 @@
   if (reduce) return;
   // scroll a layer from wherever it is, in its column's direction, forever
   const scroll = (st, t, from) => gsap.fromTo(t, { yPercent: from }, { yPercent: st.down ? from + 50 : from - 50, duration: st.dur, ease: 'none', repeat: -1 });
+  const phone = matchMedia('(max-width: 560px)').matches;
   // pick up from where the markup placed each strip (data-y, in yPercent), so the wall opens on the same screens
   state.forEach(st => {
-    st.t.style.transform = ''; // the markup's starting offset; GSAP takes over from here
+    const y = parseFloat(phone && st.t.dataset.ym ? st.t.dataset.ym : st.t.dataset.y);
+    st.t.style.transform = 'none'; // drop the markup's starting offset; GSAP takes over from here
     st.run = scroll(st, st.t, st.down ? -50 : 0);
-    const y = parseFloat(st.t.dataset.y);
     if (!isNaN(y)) st.run.progress(st.down ? (y + 50) / 50 : -y / 50);
   });
   // brand change: one column at a time, the new site fades in over the old one, already moving
