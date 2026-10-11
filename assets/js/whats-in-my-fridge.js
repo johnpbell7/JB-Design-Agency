@@ -887,6 +887,28 @@
       else node.innerHTML = '<svg viewBox="0 0 24 24"><use href="#fa-sparkle"/></svg>';
       sec.append(node);
     });
+    // line each node up with the first line of its title (phones: every item; desktop: the
+    // side-by-side rows only, the centred headings keep their node above the title)
+    const placeNodes = () => {
+      const wide = matchMedia('(min-width: 761px)').matches;
+      items.forEach(sec => {
+        const node = $(':scope > .wf-node', sec), h = $('h2', sec);
+        node.style.top = node.style.marginTop = '';
+        if (!h || (wide && (sec.classList.contains('wf-cook') || sec.classList.contains('wf-tl__head')))) return;
+        let y = 0, e = h;
+        while (e && e !== sec) { y += e.offsetTop; e = e.offsetParent; }
+        if (e !== sec) return;
+        const st = getComputedStyle(h), lh = parseFloat(st.lineHeight) || parseFloat(st.fontSize) * 1.1;
+        node.style.top = Math.round(y + parseFloat(st.paddingTop) + lh / 2) + 'px';
+        node.style.marginTop = -node.offsetHeight / 2 + 'px';
+      });
+    };
+    placeNodes();
+    const replace = () => { placeNodes(); if (window.ScrollTrigger) ScrollTrigger.refresh(); };
+    if (document.fonts) document.fonts.ready.then(replace);
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(replace, 150); });
+    // the demos settle as they load and play, so re-place whenever a row changes size
+    if (window.ResizeObserver) { let rq; const ro = new ResizeObserver(() => { cancelAnimationFrame(rq); rq = requestAnimationFrame(placeNodes); }); items.forEach(sec => ro.observe(sec)); }
     const fill = $('.wf-tl__line i', tlEl), nodes = $$('.wf-node', tlEl);
     if (!hasGsap || reduce || !window.ScrollTrigger) {
       if (fill) fill.style.transform = 'scaleY(1)';
@@ -908,8 +930,9 @@
         // phones: rise instead of sliding sideways, so nothing pokes past the screen edge
         const from = wide ? { x: 46 * cs } : { y: 26 };
         const fromD = wide ? { x: -46 * cs } : { y: 34 };
-        gsap.from(copy, { ...from, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 82%', once: true } });
-        gsap.from(demo, { ...fromD, autoAlpha: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 82%', once: true } });
+        // fromTo with an explicit 0 end, so a reveal already running on the same element can't leave it offset
+        gsap.fromTo(copy, from, { x: 0, y: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 82%', once: true } });
+        gsap.fromTo(demo, { ...fromD, autoAlpha: 0 }, { x: 0, y: 0, autoAlpha: 1, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: row, start: 'top 82%', once: true } });
       });
     }
   }
