@@ -547,3 +547,6 @@
     mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 55%, transparent 88%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 55%, transparent 88%); }
 }
 .pf-hi + .pf-hero__title { margin-top: 0; }
+/* Phone fan: a small picture of each site's top screen shows first; the long scrolling page loads over it */
+.pf-screen__page .pf-poster { position: absolute; left: 0; top: 0; width: 100%; height: auto; z-index: 0; }
+.pf-screen__page img:not(.pf-poster) { position: relative; z-index: 1; }

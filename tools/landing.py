@@ -58,8 +58,9 @@ def prices(items):
     home = open('index.html').read()
     row = home[home.index('<div class="hp-cards"'):]
     row = row[:row.index('<div class="hp-dots"')]
-    cards = {re.search(r'<h3>(.*?)</h3>', c).group(1): '<a class="hp-card"' + c.rstrip().removesuffix('</div>').rstrip()
-             for c in row.split('<a class="hp-card"')[1:]}
+    row = row.rstrip().removesuffix('</div>')  # the row's own closing tag
+    cards = {re.search(r'<h3>(.*?)</h3>', c).group(1): '<div class="hp-card"' + c.rstrip()
+             for c in row.split('<div class="hp-card"')[1:]}
     order = ['Logos &amp; branding', 'Print', 'Websites', 'Online shops'] if items is GFX else ['Websites', 'Online shops', 'Logos &amp; branding', 'Print']
     out = '\n'.join(cards[k] for k in order).replace('href="projects/', 'href="')
     return (f'<div class="hp-cards">\n{out}\n</div>'
@@ -111,7 +112,7 @@ def page(p):
   <link rel="stylesheet" href="../assets/css/fonts.css">
   <link rel="stylesheet" href="../assets/css/base.css?v=5">
   <link rel="stylesheet" href="../assets/css/landing.css?v=2">
-  <link rel="stylesheet" href="../assets/css/prices.css?v=16">
+  <link rel="stylesheet" href="../assets/css/prices.css?v=17">
   <script type="application/ld+json" data-seo>
 {json.dumps(ld, ensure_ascii=False, indent=1)}
   </script>

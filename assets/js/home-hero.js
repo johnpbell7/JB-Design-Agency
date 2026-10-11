@@ -91,7 +91,7 @@
 
     /* ---------- Screens gently scroll their page ---------- */
     cards.forEach((c, i) => {
-      const img = c.querySelector('img');
+      const img = c.querySelector('img[data-h]');
       const h = +img.dataset.h;
       // scroll about three screens' worth of the page, then drift back up
       const pct = -Math.min(3.2 * 1.95 * 780 / h, 0.7) * 100;
