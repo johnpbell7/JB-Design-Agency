@@ -1579,3 +1579,7 @@ html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, htm
 
 /* --dim only matters on the card itself: not inherited, so scrubbing it doesn't restyle the whole card */
 @property --dim { syntax: '<number>'; inherits: false; initial-value: 0; }
+/* the cut-out Redbacks leaflets end the pile, a size up so the red reads */
+.print-bar__pile img.is-big { height: 120px; margin-left: -14px; }
+@media (max-width: 860px) { .print-bar__pile img.is-big { height: 100px; } }
+@media (max-width: 560px) { .print-bar__pile img.is-big { height: calc(var(--ph) * 1.25); } }
