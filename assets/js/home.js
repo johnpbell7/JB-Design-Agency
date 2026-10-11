@@ -401,6 +401,8 @@
     f.dataset.queued = '1';
     whoQueue = whoQueue.then(() => new Promise(done => {
       f.addEventListener('load', done, { once: true }); setTimeout(done, 1500);
+      // the live site fades in over its poster once it has drawn its first screen
+      f.addEventListener('load', () => setTimeout(() => f.classList.add('is-ready'), 150), { once: true });
       f.src = f.dataset.src; f.removeAttribute('data-src');
     }));
   };

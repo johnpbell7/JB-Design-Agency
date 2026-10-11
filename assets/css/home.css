@@ -1583,3 +1583,8 @@ html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, htm
 .print-bar__pile img.is-big { height: 120px; margin-left: -14px; }
 @media (max-width: 860px) { .print-bar__pile img.is-big { height: 100px; } }
 @media (max-width: 560px) { .print-bar__pile img.is-big { height: calc(var(--ph) * 1.25); } }
+
+/* Who cards: a picture of each site's first screen shows straight away; the live site fades in over it once loaded */
+.who-poster { position: absolute; left: 0; top: 0; z-index: 0; width: 100%; height: auto; pointer-events: none; }
+.who-frame iframe { z-index: 1; opacity: 0; transition: opacity 0.45s ease; }
+.who-frame iframe.is-ready { opacity: 1; }
