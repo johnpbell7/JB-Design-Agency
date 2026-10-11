@@ -170,3 +170,21 @@
 .hp-addons__note { margin: 10px 0 0; font-size: 12.5px; line-height: 1.45; color: var(--grey-5); }
 .hp-addons__note b { color: var(--grey-7); font-weight: 600; }
 .hp-addons p.hp-addons__note { margin: 10px 0 0; text-transform: none; letter-spacing: 0; font-size: 12.5px; font-weight: 400; color: var(--grey-5); }
+
+/* "Need the lot?" bar under the prices: one long thin strip, logo to website, straight to a quote */
+.lot-bar { display: flex; align-items: center; gap: 18px 28px; margin-top: 18px; padding: 14px 14px 14px 30px; border-radius: 999px; background: #18181a; color: #fff; text-decoration: none; box-shadow: 0 20px 40px -26px rgb(24 24 26 / 0.6); transition: translate 0.4s var(--ease-out), box-shadow 0.4s; }
+.lot-bar:hover { translate: 0 -2px; box-shadow: 0 26px 44px -24px rgb(24 24 26 / 0.65); }
+.lot-bar__copy { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 22px; flex: 1; min-width: 0; }
+.lot-bar__copy b { color: #fff; font-size: clamp(20px, 1.7vw, 24px); font-weight: 700; letter-spacing: -0.03em; white-space: nowrap; }
+.lot-bar__copy .hl { color: #18181a; }
+.lot-bar__list { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.lot-bar__list i { font-style: normal; font-size: 13.5px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: rgb(255 255 255 / 0.1); color: rgb(255 255 255 / 0.88); white-space: nowrap; }
+.lot-bar__go { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; background: var(--hl-yellow); color: #18181a; font-size: 15px; font-weight: 700; white-space: nowrap; }
+.lot-bar__go span { transition: translate 0.3s var(--ease-out); }
+.lot-bar:hover .lot-bar__go span { translate: 3px 0; }
+@media (max-width: 860px) {
+  .lot-bar { flex-direction: column; align-items: stretch; gap: 14px; padding: 20px 18px 18px; border-radius: 22px; }
+  .lot-bar__copy { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .lot-bar__list i { font-size: 13px; padding: 5px 10px; }
+  .lot-bar__go { justify-content: center; padding: 14px 20px; }
+}

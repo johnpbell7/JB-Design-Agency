@@ -63,7 +63,8 @@ def prices(items):
     order = ['Logos &amp; branding', 'Print', 'Websites', 'Online shops'] if items is GFX else ['Websites', 'Online shops', 'Logos &amp; branding', 'Print']
     out = '\n'.join(cards[k] for k in order).replace('href="projects/', 'href="')
     return (f'<div class="hp-cards">\n{out}\n</div>'
-            '<p class="hp-extras"><span>Two rounds of amends included</span><span>All prices are starting points</span><span>Pay in stages</span><span>Hosting from £10 a month</span><span>Website care from £40 a month</span></p>')
+            '<p class="hp-extras"><span>Two rounds of amends included</span><span>All prices are starting points</span><span>Pay in stages</span><span>Hosting from £10 a month</span><span>Website care from £40 a month</span></p>'
+            '<a class="lot-bar" href="#contact"><span class="lot-bar__copy"><b>Need <mark class="hl">the lot?</mark></b><span class="lot-bar__list"><i>Logo</i><i>Branding</i><i>Full brand guidelines</i><i>Website</i></span></span><span class="lot-bar__go">Contact me for a quote <span aria-hidden="true">→</span></span></a>')
 
 def page(p):
     url = f'{BASE}projects/{p["slug"]}.html'; img = f'{BASE}assets/share/john-bell-websites.jpg'
@@ -110,7 +111,7 @@ def page(p):
   <link rel="stylesheet" href="../assets/css/fonts.css">
   <link rel="stylesheet" href="../assets/css/base.css?v=5">
   <link rel="stylesheet" href="../assets/css/landing.css?v=2">
-  <link rel="stylesheet" href="../assets/css/prices.css?v=13">
+  <link rel="stylesheet" href="../assets/css/prices.css?v=15">
   <script type="application/ld+json" data-seo>
 {json.dumps(ld, ensure_ascii=False, indent=1)}
   </script>

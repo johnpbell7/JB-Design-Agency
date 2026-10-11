@@ -364,3 +364,6 @@
 .svc__opts li.is-note.is-plain::before { content: none; }
 .svc__opts li.is-note.is-plain { padding-top: 6px; color: var(--grey-5); font-size: 13.5px; }
 .svc__opts li.is-note.is-plain b { color: var(--grey-7); font-weight: 600; }
+/* the "Need the lot?" bar sits straight under the notes, the section gap goes below it instead */
+.sv-notes:has(+ .sv-lot) { padding-bottom: 0; }
+.sv-lot { padding-bottom: clamp(40px, 6vw, 80px); }
