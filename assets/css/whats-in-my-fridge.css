@@ -1005,8 +1005,8 @@ body { --project-pen: #f1d9c7; }
   .wf-tl .wf-demo { justify-self: center; width: 358px; zoom: 1.2; }
   .wf-tl .wf-demo { min-height: 0; height: 520px; }
   .wf-tl .wf-receipt-demo { height: 540px; }
-  .wf-tl .wf-panel { top: 10%; left: 6%; right: 6%; bottom: 2%; border-radius: 40% 46% 42% 48% / 38% 40% 44% 42%; opacity: 0.85; }
-  .wf-tl .wf-panel::before { display: none; }
+  /* a soft rounded square behind each demo (was an organic oval), dotted like the phone layout */
+  .wf-tl .wf-panel { top: 10%; left: 4%; right: 4%; bottom: 2%; border-radius: 30px; }
   .wf-tl .wf-demo .phone { width: 195px; bottom: 5%; }
   .wf-tl .wf-demo .phone.at-l, .wf-tl .wf-soon .phone { left: 5%; }
   .wf-tl .wf-pull { zoom: 0.64; }
