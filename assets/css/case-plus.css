@@ -92,6 +92,8 @@
 .cp-result span { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
 .cp-result small { font-size: 13.5px; color: var(--grey-5); line-height: 1.5; }
 @media (max-width: 800px) { .cp-results { grid-template-columns: 1fr; } .cp-result + .cp-result { border-left: 0; border-top: 1px solid var(--line); } }
+/* two results: split the row in half instead of leaving an empty third column */
+@media (min-width: 801px) { .cp-results:not(:has(> .cp-result:nth-of-type(3))) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* ---------- Quote ---------- */
 .cp-quote {
