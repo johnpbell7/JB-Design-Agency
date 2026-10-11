@@ -14,18 +14,18 @@
   if (stack) {
     const cards = $$('.feature', stack);
 
-    // Phones: the sticky cards stack, but only the last few stay painted. Once a card is three
-    // deep behind the one on top it is hidden, and it comes straight back when you scroll up.
+    // The sticky cards stack, but only the last two stay painted. Once a card is two deep behind
+    // the one on top it is hidden, and it comes straight back when you scroll up (on every
+    // screen: a pile of big composited cards made scrolling the stack sluggish).
     {
       let ticking = false;
       const update = () => {
         ticking = false;
-        const small = innerWidth <= 860;
         const tops = cards.map(c => c.getBoundingClientRect().top);
         cards.forEach((c, k) => {
-          const over = cards[k + 3];
-          // buried once the card three places on has slid up over it (well into the top half)
-          c.classList.toggle('is-buried', small && !!over && tops[k + 3] < innerHeight * 0.35);
+          const over = cards[k + 2];
+          // buried once the card two places on has slid up over it (well into the top half)
+          c.classList.toggle('is-buried', !!over && tops[k + 2] < innerHeight * 0.35);
         });
       };
       addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
@@ -36,9 +36,9 @@
     if (motion) {
       cards.forEach((c, k) => {
         const next = cards[k + 1];
-        // desktop only: on phones a scrubbed scale + filter re-rasters the whole card every frame
+        // desktop only (scale + a cheap dim overlay, not a filter): on phones a scrubbed scale re-rasters the whole card every frame
         // (torn, half-painted cards on a fast flick), so there the sticky cards just stack
-        if (next) gsap.matchMedia().add('(min-width: 861px)', () => { gsap.to(c, { scale: 0.95, filter: 'brightness(0.9)', ease: 'power1.in', scrollTrigger: { trigger: next, start: 'top 45%', end: 'top 110px', scrub: true } }); });
+        if (next) gsap.matchMedia().add('(min-width: 861px)', () => { gsap.to(c, { scale: 0.95, '--dim': 0.1, ease: 'power1.in', scrollTrigger: { trigger: next, start: 'top 45%', end: 'top 110px', scrub: true } }); });
         gsap.from(c.querySelector('.feature__laptop'), { y: 60, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: c, start: 'top 80%', once: true } });
         gsap.from(c.querySelector('.feature__phone'), { x: 60, rotation: -6, opacity: 0, duration: 1, delay: 0.15, ease: 'expo.out', scrollTrigger: { trigger: c, start: 'top 80%', once: true } });
         // brand pieces pop out with a bounce as the card settles into the stack (they float in CSS)

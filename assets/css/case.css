@@ -590,3 +590,5 @@ body[data-pen] .hl { --pen: var(--project-pen); }
   content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none; border-radius: inherit;
   background: linear-gradient(122deg, rgb(255 255 255 / 0.16) 0%, rgb(255 255 255 / 0.05) 24%, transparent 42%);
 }
+/* performance: the glow is already a soft radial gradient; the blur filter only added repaints */
+.stage__glow { filter: none !important; }

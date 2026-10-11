@@ -542,6 +542,8 @@
           if (vis && whoRow()) loadWho(whoCards[k + 1]); // the next card gets ready, paused at its start
         };
         frame.addEventListener('load', () => send(vis ? 'restart' : 'pause'));
+        // off screen, stop drawing the site at all (a same-origin frame keeps rendering even when paused)
+        new IntersectionObserver(([e]) => { frame.style.visibility = e.isIntersecting ? '' : 'hidden'; }, { rootMargin: '150px 0px' }).observe(card);
         new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; update(); }, { threshold: 0.35 }).observe(card);
         if (whoGrid) new IntersectionObserver(([e]) => { inRow = e.intersectionRatio >= 0.6; update(); }, { root: whoGrid, threshold: [0, 0.6, 1] }).observe(card);
         if (fine) {
@@ -728,18 +730,18 @@
     const cards = $$('.feature', stack);
     cards.forEach((c, k) => c.style.setProperty('--k', k));
 
-    // Phones: the sticky cards stack, but only the last few stay painted. Once a card is three
-    // deep behind the one on top it is hidden, and it comes straight back when you scroll up.
+    // The sticky cards stack, but only the last two stay painted. Once a card is two deep
+    // behind the one on top it is hidden, and it comes straight back when you scroll up
+    // (on every screen: a pile of big composited cards made scrolling the stack sluggish).
     {
       let ticking = false;
       const update = () => {
         ticking = false;
-        const small = innerWidth <= 860;
         const tops = cards.map(c => c.getBoundingClientRect().top);
         cards.forEach((c, k) => {
-          const over = cards[k + 3];
-          // buried once the card three places on has slid up over it (well into the top half)
-          c.classList.toggle('is-buried', small && !!over && tops[k + 3] < innerHeight * 0.35);
+          const over = cards[k + 2];
+          // buried once the card two places on has slid up over it (well into the top half)
+          c.classList.toggle('is-buried', !!over && tops[k + 2] < innerHeight * 0.35);
         });
       };
       addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });

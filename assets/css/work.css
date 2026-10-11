@@ -418,8 +418,7 @@
 
 
 /* Phones: sticky stack is back; cards three deep behind the top one are hidden (see home.js / work.js) */
-@media (max-width: 860px) { .work-stack .feature.is-buried { visibility: hidden; } }
-@media (max-width: 860px) { .work-stack .feature.is-buried { visibility: hidden; } }
+.work-stack .feature.is-buried { visibility: hidden; }
 
 /* What's in my Fridge card: three phones in a tight fan; bigger on phones so they fill the card */
 @media (max-width: 860px) {
@@ -428,3 +427,11 @@
   .wf-fan .phone:nth-child(2) { left: 64% !important; top: 11% !important; width: 31% !important; }
   .wf-fan .phone:nth-child(3) { left: 31.5% !important; top: 1% !important; width: 37% !important; }
 }
+/* performance: the glow is already a soft radial gradient, the blur filter only cost repaints */
+.feature__glow { filter: none !important; }
+/* the card behind dims with a cheap overlay instead of a scrubbed brightness filter (that repainted the whole card every frame) */
+.feature { --dim: 0; }
+@media (min-width: 861px) { .feature { will-change: transform; } .feature::after { content: ""; position: absolute; inset: 0; z-index: 5; border-radius: inherit; background: #000; opacity: var(--dim); pointer-events: none; } }
+
+/* --dim only matters on the card itself: not inherited, so scrubbing it doesn't restyle the whole card */
+@property --dim { syntax: '<number>'; inherits: false; initial-value: 0; }

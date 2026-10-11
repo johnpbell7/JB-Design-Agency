@@ -107,7 +107,7 @@ def page(p):
   <link rel="preload" href="../assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/css/fonts.css">
-  <link rel="stylesheet" href="../assets/css/base.css?v=4">
+  <link rel="stylesheet" href="../assets/css/base.css?v=5">
   <link rel="stylesheet" href="../assets/css/landing.css?v=2">
   <link rel="stylesheet" href="../assets/css/prices.css?v=8">
   <script type="application/ld+json" data-seo>

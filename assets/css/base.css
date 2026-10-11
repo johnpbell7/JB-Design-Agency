@@ -249,12 +249,11 @@ html.nav-locked { overflow: hidden; }
   display: grid; place-items: center;
   padding: clamp(16px, 4vw, 48px);
   background: var(--veil);
-  backdrop-filter: blur(8px);
   opacity: 0; visibility: hidden;
   transition: opacity 0.35s var(--ease-out), visibility 0.35s;
   cursor: zoom-out;
 }
-.lightbox.is-open { opacity: 1; visibility: visible; }
+.lightbox.is-open { opacity: 1; visibility: visible; backdrop-filter: blur(8px); }
 .lightbox__frame { max-width: min(1400px, 100%); max-height: calc(100dvh - 64px); overflow: auto; border-radius: var(--radius-m); box-shadow: var(--shadow); }
 .lightbox img { width: auto; max-height: calc(100dvh - 64px); margin: auto; }
 .lightbox.is-tall img { max-height: none; width: min(1100px, 100%); }
