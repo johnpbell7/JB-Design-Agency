@@ -43,7 +43,7 @@ GFX_SVCS = [('Logo design', 'Logos that work tiny on a phone screen and large on
 W = lambda h, img, alt, n, k: (h, img, alt, n, k)
 WORK = {'birth-hood': W('birth-hood.html', 'captures/birth-hood/fold-desktop.webp', 'Birth-hood website', 'Birth-hood', 'Website for a hypnobirthing and doula business in Leicestershire'),
         'patch': W('patch.html', 'captures/patch-agency/fold-desktop.webp', 'PATCH website', 'PATCH', 'Brand and website for an in-store sales team'),
-        'vsl': W('vsl-trade.html', 'captures/vsl-trade/fold-desktop.webp', 'VSL Trade website', 'VSL Trade', 'Trade website for a wholesaler'),
+        'vsl': W('vsl-trade.html', 'captures/vsl-trade/fold-desktop.webp', 'VSL Trade website', 'VSL Trade', 'Brand website for a trade supplier'),
         'gosweet': W('gosweet.html', 'captures/gosweet/fold-desktop.webp', 'GoSweet online shop', 'GoSweet', 'Online shop design'),
         'birdie': W('birdie-blooms.html', 'captures/birdie-blooms/fold-desktop.webp', 'Birdie Blooms website', 'Birdie Blooms', 'Website and brand for a flower studio in Ravenstone and Kibworth'),
         'beetle': W('beetle-eyes.html', 'captures/beetle-eyes/fold-desktop.webp', 'Beetle Eyes Clothing website', 'Beetle Eyes Clothing', 'One-page site for a vintage rail in Mountsorrel'),
