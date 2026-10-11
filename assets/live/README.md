@@ -33,8 +33,8 @@ GoSweet (`assets/live/gosweet/`, used on `projects/gosweet.html`) is the referen
 
 ```html
 <script>try{localStorage.setItem("gs_signup_seen","1")}catch(e){}</script>
-<script src="../driver.js" defer></script>
-<!-- journey somewhere else: <script src="../driver.js" data-journey="other.json" defer></script> -->
+<script src="../driver.js?v=2" defer></script>
+<!-- journey somewhere else: <script src="../driver.js?v=2" data-journey="other.json" defer></script> -->
 ```
 
 The driver does nothing unless the page is framed by a same-origin parent. Opened directly,

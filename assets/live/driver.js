@@ -5,8 +5,8 @@
    page changes (it swaps the iframe with a crossfade) and play/pause.
 
    Include it on every page of a live copy, last in <head>:
-     <script src="../driver.js" defer></script>            journey.json next to the page
-     <script src="../driver.js" data-journey="j.json" defer></script>
+     <script src="../driver.js?v=2" defer></script>            journey.json next to the page
+     <script src="../driver.js?v=2" data-journey="j.json" defer></script>
    It does nothing unless the page is framed by a same-origin parent that talks to it.
 
    driver -> parent  {live:'ready', track, page} {live:'step', i, track} {live:'progress', p, i, track}
@@ -294,6 +294,22 @@
     el.dispatchEvent(new Event('change', { bubbles: true }));
   };
 
+  // "slide": ".range", "to": 1890 (or "frac": 0.5): ease a range slider's thumb to a value, like a drag
+  const slide = async (sel, a) => {
+    const el = find(sel, Object.assign({ visible: false }, a)); if (!el) return;
+    const min = +el.min || 0, max = +el.max || 100, step = +el.step || 1;
+    const v0 = +el.value, v1 = clamp(a.to != null ? +a.to : min + (max - min) * (a.frac || 0), min, max);
+    const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+    let last = v0;
+    fire(el, 'pointerdown', { buttons: 1 });
+    await anim((a.ms != null ? a.ms : 2200) * pace(), f => {
+      const v = Math.round((v0 + (v1 - v0) * ease(f)) / step) * step;
+      if (v !== last) { last = v; set.call(el, String(v)); el.dispatchEvent(new Event('input', { bubbles: true })); }
+    });
+    fire(el, 'pointerup');
+    el.dispatchEvent(new Event('change', { bubbles: true }));
+  };
+
   // nominal length of an action, for the step progress bars
   const dur = a => {
     const p = pace();
@@ -302,6 +318,7 @@
     else if (a.type) ms += a.ms != null ? a.ms : 900;
     if (a.click || a.tap) ms += 260;
     if (a.scroll != null || a.scrollTo != null) ms += (a.ms != null ? a.ms : 1300) * SCROLL;
+    if (a.slide) ms += a.ms != null ? a.ms : 2200;
     return ms * p;
   };
 
@@ -330,6 +347,7 @@
     } else if (a.scroll != null) {
       const s = scroller(a); await scrollTo((a.x ? getX(s) : getY(s)) + a.scroll, a);
     }
+    if (a.slide) await slide(a.slide, a);
     if (a.type) await type(a.type[0], a.type[1], a);
     else if (sel != null) {
       const el = await pointAt(sel, a);
