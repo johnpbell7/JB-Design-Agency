@@ -1174,3 +1174,7 @@ body { --project-pen: #f1d9c7; }
   .wf-tl .wf-off > .wf-a2hs { right: 0; bottom: 10%; width: 56%; }
 }
 .coach-ico svg { display: block; margin-top: 1px; color: var(--wf-green, #2f7d5a); }
+/* second button: out to the app's own website */
+.wf-site { border-color: #2f7d5a; color: #2f7d5a; }
+.wf-site:hover { background: #2f7d5a; color: #fff; border-color: #2f7d5a; }
+.wf-site svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
