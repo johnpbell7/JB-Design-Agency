@@ -15,7 +15,7 @@ WEB = [('One-page website', '£500', 'A shop window for your business: who you a
        ('Small online shop', '£1,800', 'A Shopify shop for independents, with clear product pages and a quick checkout. For bigger stores I design every page for your developer to build.', ['Shopify set-up', 'Product and collection pages', 'Big stores: designs for your developer'])]
 GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with a few routes to choose from.', ['Three first ideas', 'Colour and mono versions', 'All file types']),
        ('Brand identity', '£500', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
-       ('Print design', '£45/page', 'Brochures, business cards, flyers, signage and large format, designed and sent to print ready. Brochures are priced per page, so you only pay for what you need.', ['Brochures from £45 a page', 'Business cards, flyers and leaflets', 'Banners, signs and site boards', 'Printing arranged for you'])]
+       ('Print design', '£45/page', 'Brochures, business cards, flyers, signage and large format, designed and sent to print ready. Brochures are priced per page, so you only pay for what you need.', ['Brochures from £45 a page', 'Business cards, flyers and leaflets', 'Banners, signs and site boards', 'Final print supplied, quoted per job'])]
 CARE = 'Hosting from £10 a month. Website care from £40 a month, with hosting, changes, updates and help when you need it.'
 
 # Towns covered, Leicester down to Birmingham (one honest list, shown on every location page)
@@ -221,7 +221,7 @@ PAGES = [
   faqs=[('How much does a logo cost in Birmingham?', 'Logo design starts from £300 and a full brand identity from £500. Print is priced per page, with brochures from £45 a page. Whatever you need, you get a fixed quote before we start.'),
         ('How many logo ideas will I see?', 'Usually three first ideas. We then take your favourite and refine it together until it’s right, with two rounds of changes included.'),
         ('What files will I get?', 'Everything you need for print and screen: colour, black and white and reversed versions, in vector and image formats, ready for whoever needs them.'),
-        ('Can you arrange printing?', 'Yes. I send print-ready files and can recommend a printer, or deal with the printers for you.'),
+        ('Can you arrange printing?', 'Yes. I can supply the final print for any job, quoted per job, or send print-ready files if you have your own printer.'),
         ('Do you work outside Birmingham?', 'Yes. I’m based in Birmingham, but I work with businesses all over the UK by video call and email.')],
   cta_h='Need a logo or a brochure? <mark class="hl">Let’s talk.</mark>',
   other='Need a website too? See <a href="web-designer-birmingham.html">web design in Birmingham</a>, or <a href="web-designer-leicester.html">web design in Leicester</a>. Elsewhere in the UK? See <a href="freelance-web-designer-uk.html">working with me remotely</a>.'),
