@@ -17,21 +17,6 @@
   if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => e.isIntersecting && go(), { rootMargin: '50% 0px' }).observe(imgs[0].closest('.pf-fan') || imgs[0]);
 })();
 
-/* ===== Hero backdrop: on phones the work wall (<template data-ghost="1">) replaces the
-   faded laptop. Runs first so its markup is in place before the hero animates. ===== */
-(() => {
-  // phones default to the work wall (columns of phone screens): a faded desktop site reads as mush that small
-  const n = '1';
-  const hero = document.querySelector('[data-bt]');
-  const tpl = hero && n && hero.querySelector(`template[data-ghost="${n}"]`);
-  if (!tpl) return;
-  hero.dataset.ghost = n;
-  hero.querySelector('.bt-ghost')?.remove();
-  hero.querySelector('.bt-ghost__glow')?.remove();
-  const frag = tpl.content.cloneNode(true);
-  hero.insertBefore(frag, hero.querySelector('.wrap'));
-})();
-
   (() => {
     document.documentElement.classList.remove('no-js');
     const hero = document.querySelector('[data-bt]');
@@ -304,15 +289,14 @@
   };
   let next = cols.length; // the next site to bring in
   const state = cols.map((col, c) => {
-    const t = layer(sites[c % sites.length]);
-    col.append(t);
+    const t = col.querySelector('.bt-g1__track') || col.appendChild(layer(sites[c % sites.length]));
     return { col, t, run: null, down: c % 2 === 1, dur: 70 + c * 12 };
   });
   if (reduce) return;
   // scroll a layer from wherever it is, in its column's direction, forever
   const scroll = (st, t, from) => gsap.fromTo(t, { yPercent: from }, { yPercent: st.down ? from + 50 : from - 50, duration: st.dur, ease: 'none', repeat: -1 });
-  state.forEach((st, c) => { st.run = scroll(st, st.t, st.down ? -50 : 0); });
-  gsap.from(root, { autoAlpha: 0, duration: 1.6, delay: 0.5, ease: 'power2.out' });
+  // start part-way down each page, so the wall opens on a full screen of work
+  state.forEach((st, c) => { st.run = scroll(st, st.t, st.down ? -50 : 0); st.run.progress(0.12 + c * 0.17); });
   // brand change: one column at a time, the new site fades in over the old one, already moving
   let k = 0, live = true;
   const swap = () => {

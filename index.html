@@ -311,16 +311,11 @@
 
   <main id="main">
     <!-- ===================== Hero: big type ===================== -->
-    <section id="top" data-chapter="00" data-chapter-label="Hello" class="bt-hero bt-bt" data-bt aria-label="Introduction">
+    <section id="top" data-chapter="00" data-chapter-label="Hello" class="bt-hero bt-bt" data-bt data-ghost="1" aria-label="Introduction">
 
       <!-- Hero backdrop: the work wall, three columns of phone screens that change brand (home-hero.js) -->
 
-      <!-- Option 1 · Work wall: slow columns of real phone screens (filled from the phone fan's images) -->
-      <template data-ghost="1">
-        <div class="bt-g1" aria-hidden="true"><div class="bt-g1__tilt">
-          <div class="bt-g1__col" data-g1-col></div><div class="bt-g1__col" data-g1-col></div><div class="bt-g1__col" data-g1-col></div>
-        </div></div>
-      </template>
+      <div class="bt-g1" aria-hidden="true"><div class="bt-g1__tilt"><div class="bt-g1__col" data-g1-col><div class="bt-g1__track" style="transform:translateY(-6%)"><img class="bt-g1__page" src="assets/wall/patch-agency.webp" alt="" fetchpriority="high"><img class="bt-g1__page" src="assets/wall/patch-agency.webp" alt=""></div></div><div class="bt-g1__col" data-g1-col><div class="bt-g1__track" style="transform:translateY(-35.5%)"><img class="bt-g1__page" src="assets/wall/gosweet.webp" alt="" fetchpriority="high"><img class="bt-g1__page" src="assets/wall/gosweet.webp" alt=""></div></div><div class="bt-g1__col" data-g1-col><div class="bt-g1__track" style="transform:translateY(-23%)"><img class="bt-g1__page" src="assets/wall/nic-pouches.webp" alt="" fetchpriority="high"><img class="bt-g1__page" src="assets/wall/nic-pouches.webp" alt=""></div></div></div></div>
 
       <!-- Option 2 · Big phone: one large phone scrolling a project, "grow" picks up its colour -->
 
@@ -932,7 +927,7 @@
   <script src="assets/illustrations/manifest.js"></script>
   <script src="assets/js/case.js"></script>
   <script src="assets/js/home.js"></script>
-  <script src="assets/js/home-hero.js?v=3"></script>
+  <script src="assets/js/home-hero.js?v=4"></script>
   <script src="assets/js/about.js"></script>
 </body>
 </html>
