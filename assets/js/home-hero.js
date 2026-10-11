@@ -278,7 +278,7 @@
   const root = document.querySelector('.bt-g1');
   if (!root) return;
   // small 360px copies of each site's top four screens (no Birth-hood or Beetle Eyes: they show people's faces)
-  const sites = ['patch-agency', 'gosweet', 'nic-pouches', 'birdie-blooms', 'vsl-trade'].map(s => `assets/wall/${s}.webp`);
+  const sites = ['vsl-trade', 'nic-pouches', 'birdie-blooms', 'patch-agency', 'gosweet'].map(s => `assets/wall/${s}.webp`);
   const cols = [...root.querySelectorAll('[data-g1-col]')];
   const reduce = !window.gsap || matchMedia('(prefers-reduced-motion: reduce)').matches;
   const layer = src => {
@@ -295,8 +295,13 @@
   if (reduce) return;
   // scroll a layer from wherever it is, in its column's direction, forever
   const scroll = (st, t, from) => gsap.fromTo(t, { yPercent: from }, { yPercent: st.down ? from + 50 : from - 50, duration: st.dur, ease: 'none', repeat: -1 });
-  // start part-way down each page, so the wall opens on a full screen of work
-  state.forEach((st, c) => { st.run = scroll(st, st.t, st.down ? -50 : 0); st.run.progress(0.12 + c * 0.17); });
+  // pick up from where the markup placed each strip (data-y, in yPercent), so the wall opens on the same screens
+  state.forEach(st => {
+    st.t.style.transform = ''; // the markup's starting offset; GSAP takes over from here
+    st.run = scroll(st, st.t, st.down ? -50 : 0);
+    const y = parseFloat(st.t.dataset.y);
+    if (!isNaN(y)) st.run.progress(st.down ? (y + 50) / 50 : -y / 50);
+  });
   // brand change: one column at a time, the new site fades in over the old one, already moving
   let k = 0, live = true;
   const swap = () => {
