@@ -188,3 +188,8 @@
   .lot-bar__list i { font-size: 13px; padding: 5px 10px; }
   .lot-bar__go { justify-content: center; padding: 14px 20px; }
 }
+/* Phones: the tick lists stay hidden, except the amends line on logos and print */
+@media (max-width: 700px) {
+  .hp-incl:has(.is-key) { display: grid; margin-bottom: 0; }
+  .hp-incl li:not(.is-key) { display: none; }
+}
