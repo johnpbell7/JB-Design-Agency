@@ -1,14 +1,14 @@
 // Home hero (big type) + phone-fan section. Ported from the old hero test pages (removed) by tools/port_hero.py
 
-/* Phone-fan screens sit below the first screen: they start loading once the hero's
-   laptop site has arrived (so they don't slow it down), or sooner if the fan nears view */
+/* Phone-fan screens sit below the first screen: they load as the fan nears view, so they
+   don't compete with the hero on the first load */
 (() => {
   const imgs = [...document.querySelectorAll('.pf-card img[data-src]')];
   if (!imgs.length) return;
   let done = false;
   const go = () => { if (done) return; done = true; imgs.forEach(x => { if (x.dataset.srcset) { x.srcset = x.dataset.srcset; x.removeAttribute('data-srcset'); } x.src = x.dataset.src; x.removeAttribute('data-src'); }); };
   const first = document.querySelector('.bt-ghost__screen img.is-on');
-  const near = () => { if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => e.isIntersecting && go(), { rootMargin: '50% 0px' }).observe(imgs[0].closest('.pf-fan') || imgs[0]); else go(); };
+  const near = () => { if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => e.isIntersecting && go(), { rootMargin: '20% 0px' }).observe(imgs[0].closest('.pf-fan') || imgs[0]); else go(); };
   if (!first) return near(); // phones (no laptop backdrop): load the fan as it nears view
   if (first.complete && first.naturalWidth) return go();
   first.addEventListener('load', go, { once: true });
