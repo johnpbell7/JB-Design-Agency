@@ -155,3 +155,13 @@
 .hp-card .hp-card__price { grid-template-columns: auto 1fr; align-items: baseline; }
 .hp-card .hp-card__price small { grid-column: 1 / -1; }
 .hp-card .hp-card__price em { grid-column: 2; grid-row: 2; align-self: baseline; margin: 0 0 0 4px; }
+
+/* Websites card: add-ons listed under the three sizes */
+.hp-addons { margin: 6px 24px 22px; padding: 14px 0 0; border-top: 1px dashed var(--grey-3); }
+.hp-addons p { margin: 0 0 6px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-5); }
+.hp-addons ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+.hp-addons li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 14px; color: var(--grey-7); }
+.hp-addons b { flex: none; font-size: 14px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+@media (max-width: 560px) { .hp-addons { margin: 4px 18px 18px; } .hp-addons li, .hp-addons b { font-size: 13.5px; } }
+/* the combo block's single column always fills the card (it sized to its content once the labels got shorter) */
+.hp-tiers li.is-combo { grid-template-columns: minmax(0, 1fr); }
