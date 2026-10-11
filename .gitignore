@@ -16,3 +16,6 @@ tools/_key/
 
 # temporary scripts agents drop into tools/
 tools/_*
+
+# client quotes made with the quote skill: private, never published
+quotes/
