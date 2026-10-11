@@ -21,7 +21,7 @@
    faded laptop. Runs first so its markup is in place before the hero animates. ===== */
 (() => {
   // phones default to the work wall (columns of phone screens): a faded desktop site reads as mush that small
-  const n = matchMedia('(max-width: 560px)').matches ? '1' : null;
+  const n = '1';
   const hero = document.querySelector('[data-bt]');
   const tpl = hero && n && hero.querySelector(`template[data-ghost="${n}"]`);
   if (!tpl) return;
@@ -284,29 +284,57 @@
 
 /* ---------------------------------------------------------------------
    Backdrop option 1 · Work wall (ghost1)
-   Builds three columns from the phone fan's own captures, each showing
-   four screens from different depths of the pages, doubled for a
-   seamless loop. Columns run in opposite directions; paused off-screen
-   and still for reduced motion.
+   Three columns of real phone screens, each one site's page as a
+   continuous strip (doubled for a seamless loop). Columns run in
+   opposite directions, and every few seconds one column crossfades to
+   the next brand. Paused off-screen; still for reduced motion.
    --------------------------------------------------------------------- */
 (() => {
   const root = document.querySelector('.bt-g1');
   if (!root) return;
-  const shots = [...document.querySelectorAll('.pf-card .pf-screen__page img')].map(i => (i.dataset.src || i.getAttribute('src')).replace(/captures\/([^/]+)\/home-mobile(-top)?\.webp$/, 'wall/$1.webp')).filter(src => !src.includes('birth-hood')); // small 360px copies of each site's top four screens (no Birth-hood: it shows a person's face)
-  const depth = [0, 0.3, 0.12, 0.5];
+  // small 360px copies of each site's top four screens (no Birth-hood or Beetle Eyes: they show people's faces)
+  const sites = ['patch-agency', 'gosweet', 'nic-pouches', 'birdie-blooms', 'vsl-trade'].map(s => `assets/wall/${s}.webp`);
   const cols = [...root.querySelectorAll('[data-g1-col]')];
-  // Each column is one site's page as one continuous strip, doubled for a seamless loop (no gaps between sites)
-  cols.forEach((col, c) => {
-    const src = shots[(c + 1) % shots.length];
-    const page = `<img class="bt-g1__page" src="${src}" alt="" decoding="async">`;
-    col.innerHTML = `<div class="bt-g1__track">${page}${page}</div>`;
+  const reduce = !window.gsap || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const layer = src => {
+    const t = document.createElement('div');
+    t.className = 'bt-g1__track';
+    t.innerHTML = `<img class="bt-g1__page" src="${src}" alt="" decoding="async"><img class="bt-g1__page" src="${src}" alt="" decoding="async">`;
+    return t;
+  };
+  let next = cols.length; // the next site to bring in
+  const state = cols.map((col, c) => {
+    const t = layer(sites[c % sites.length]);
+    col.append(t);
+    return { col, t, run: null, down: c % 2 === 1, dur: 70 + c * 12 };
   });
-  if (!window.gsap || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (reduce) return;
+  // scroll a layer from wherever it is, in its column's direction, forever
+  const scroll = (st, t, from) => gsap.fromTo(t, { yPercent: from }, { yPercent: st.down ? from + 50 : from - 50, duration: st.dur, ease: 'none', repeat: -1 });
+  state.forEach((st, c) => { st.run = scroll(st, st.t, st.down ? -50 : 0); });
   gsap.from(root, { autoAlpha: 0, duration: 1.6, delay: 0.5, ease: 'power2.out' });
-  const runs = cols.map((col, c) => {
-    const down = c % 2 === 1;
-    return gsap.fromTo(col.firstElementChild, { yPercent: down ? -50 : 0 }, { yPercent: down ? 0 : -50, duration: 70 + c * 12, ease: 'none', repeat: -1 });
-  });
-  new IntersectionObserver(([e]) => runs.forEach(t => (e.isIntersecting ? t.play() : t.pause()))).observe(root.parentElement);
+  // brand change: one column at a time, the new site fades in over the old one, already moving
+  let k = 0, live = true;
+  const swap = () => {
+    const st = state[k % state.length]; k++;
+    const src = sites[next++ % sites.length];
+    const nt = layer(src);
+    nt.style.opacity = 0; nt.classList.add('is-next');
+    const go = () => {
+      st.col.append(nt);
+      const run = scroll(st, nt, st.down ? -50 : 0); run.progress(Math.random());
+      gsap.to(nt, { opacity: 1, duration: 1.4, ease: 'power2.inOut', onComplete: () => {
+        st.run.kill(); st.t.remove(); nt.classList.remove('is-next'); st.t = nt; st.run = run; if (!live) run.pause();
+      } });
+    };
+    const img = nt.querySelector('img');
+    img.complete ? go() : img.addEventListener('load', go, { once: true });
+  };
+  const timer = gsap.to({}, { duration: 3.2, repeat: -1, onRepeat: swap });
+  new IntersectionObserver(([e]) => {
+    live = e.isIntersecting;
+    state.forEach(st => (live ? st.run.play() : st.run.pause()));
+    live ? timer.play() : timer.pause();
+  }).observe(root.parentElement);
 })();
 
