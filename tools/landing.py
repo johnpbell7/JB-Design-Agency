@@ -14,7 +14,7 @@ WEB = [('Small website', '£500', 'One page: a shop window for your business, wi
        ('Medium website', '£850', 'Up to three pages: home, services and contact, each with room to say what it needs to.', ['Up to 3 pages', 'Extra pages from £100', 'Editor or bookings, quoted']),
        ('Large website', '£1,200', 'Up to five pages for your services, about, work and contact, with an editor included and a layout that grows with your business.', ['Up to 5 pages', 'Editor included', 'Extra pages from £100']),
        ('Small online shop', '£1,800', 'A Shopify shop for independents, with clear product pages and a quick checkout. For bigger stores I design every page for your developer to build.', ['Shopify set-up', 'Product and collection pages', 'Big stores: designs for your developer'])]
-GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with a few routes to choose from.', ['Three first ideas', 'Colour and mono versions', 'All file types']),
+GFX = [('Logo design', '£300', 'A logo that works on a van, a sign, a social profile and a favicon, with options to choose from.', ['Options to choose from', 'Colour and mono versions', 'All assets in every format']),
        ('Brand identity', '£500', 'A logo plus the colours, fonts and simple rules that keep everything looking like you.', ['Logo and variations', 'Colours and fonts', 'One-page brand guide']),
        ('Print design', '£45/page', 'Brochures, business cards, flyers, signage and large format, designed and sent to print ready. Brochures are priced per page, so you only pay for what you need.', ['Brochures from £45 a page', 'Business cards, flyers and leaflets', 'Banners, signs and site boards', 'Final print supplied, quoted per job'])]
 CARE = 'Hosting from £10 a month. Website care from £40 a month, with hosting, changes, updates and help when you need it.'
@@ -28,7 +28,7 @@ WEB_STEPS = [('A quick chat', 'You tell me about your business and what the site
              ('Built and checked', 'Built, polished and tested on phones and computers.'), ('Live, and looked after', 'It goes live, with help on hand whenever you need something changing.')]
 LEI_STEPS = [('Let’s talk', 'On a call, or in person if you’re nearby. Afterwards you get a fixed quote.'), ('See it before it’s built', 'You see the designs on both a laptop and a phone, so nothing gets built until you’ve had a proper look.'),
              ('Built and tested', 'The site is built, polished and tested on phones and computers.'), ('Launch, then support', 'Support carries on once it’s live. If something needs changing, send me a message.')]
-GFX_STEPS = [('A quick chat', 'You tell me about your business and who you want to reach, and I send you a fixed quote.'), ('First ideas', 'Usually three different directions to choose from.'),
+GFX_STEPS = [('A quick chat', 'You tell me about your business and who you want to reach, and I send you a fixed quote.'), ('First ideas', 'A few different directions to choose from.'),
              ('Refine it together', 'We take your favourite and work on it until it feels right. Two rounds of changes are included.'), ('Files and print', 'You get every file you need for print and screen, with printing arranged if you want it.')]
 
 WEB_SVCS = [('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and local services.'), ('Online shops', 'Small Shopify shops for independents. For bigger stores, every page designed and ready for your developer.'),
@@ -220,7 +220,7 @@ PAGES = [
   svcs=GFX_SVCS, steps=GFX_STEPS, price_h='Graphic design prices', prices=GFX, work_h='Some of my design work', work=['print', 'property', 'patch', 'birdie'],
   areas_line='I’m based in Birmingham and work with businesses across the West and East Midlands, from Sutton Coldfield up to Leicester. Anywhere else in the UK works too, by video call and email.',
   faqs=[('How much does a logo cost in Birmingham?', 'Logo design starts from £300 and a full brand identity from £500. Print is priced per page, with brochures from £45 a page. Whatever you need, you get a fixed quote before we start.'),
-        ('How many logo ideas will I see?', 'Usually three first ideas. We then take your favourite and refine it together until it’s right, with two rounds of changes included.'),
+        ('How many logo ideas will I see?', 'You get a few different options to choose from. We then take your favourite and refine it together until it’s right, with two rounds of amends included, and you get every asset in every format.'),
         ('What files will I get?', 'Everything you need for print and screen: colour, black and white and reversed versions, in vector and image formats, ready for whoever needs them.'),
         ('Can you arrange printing?', 'Yes. I can supply the final print for any job, quoted per job, or send print-ready files if you have your own printer.'),
         ('Do you work outside Birmingham?', 'Yes. I’m based in Birmingham, but I work with businesses all over the UK by video call and email.')],
