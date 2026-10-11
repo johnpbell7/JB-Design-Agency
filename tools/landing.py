@@ -29,7 +29,7 @@ WEB_STEPS = [('A quick chat', 'You tell me about your business and what the site
 LEI_STEPS = [('Let’s talk', 'On a call, or in person if you’re nearby. Afterwards you get a fixed quote.'), ('See it before it’s built', 'You see the designs on both a laptop and a phone, so nothing gets built until you’ve had a proper look.'),
              ('Built and tested', 'The site is built, polished and tested on phones and computers.'), ('Launch, then support', 'Support carries on once it’s live. If something needs changing, send me a message.')]
 GFX_STEPS = [('A quick chat', 'You tell me about your business and who you want to reach, and I send you a fixed quote.'), ('First ideas', 'A few different directions to choose from.'),
-             ('Refine it together', 'We take your favourite and work on it until it feels right. Two rounds of changes are included.'), ('Files and print', 'You get every file you need for print and screen, with printing arranged if you want it.')]
+             ('Refine it together', 'We take your favourite and work on it until it feels right. Two rounds of amends are included.'), ('Files and print', 'You get every file you need for print and screen, with printing arranged if you want it.')]
 
 WEB_SVCS = [('Small business websites', 'One-page and multi-page sites for trades, cafés, salons, clinics and local services.'), ('Online shops', 'Small Shopify shops for independents. For bigger stores, every page designed and ready for your developer.'),
             ('Set up for Google', 'Fast pages, proper titles and descriptions, and the behind-the-scenes setup (SEO) that Google looks for.'), ('Changes without the hassle', 'A one-page site needs no upkeep: changes are made for you, or add your own editor, quoted to suit the site. Bigger sites come with an editor included.'),
@@ -63,7 +63,7 @@ def prices(items):
     order = ['Logos &amp; branding', 'Print', 'Websites', 'Online shops'] if items is GFX else ['Websites', 'Online shops', 'Logos &amp; branding', 'Print']
     out = '\n'.join(cards[k] for k in order).replace('href="projects/', 'href="')
     return (f'<div class="hp-cards">\n{out}\n</div>'
-            '<p class="hp-extras"><span>Two rounds of changes included</span><span>All prices are starting points</span><span>Pay in stages</span><span>Hosting from £10 a month</span><span>Website care from £40 a month</span></p>')
+            '<p class="hp-extras"><span>Two rounds of amends included</span><span>All prices are starting points</span><span>Pay in stages</span><span>Hosting from £10 a month</span><span>Website care from £40 a month</span></p>')
 
 def page(p):
     url = f'{BASE}projects/{p["slug"]}.html'; img = f'{BASE}assets/share/john-bell-websites.jpg'
