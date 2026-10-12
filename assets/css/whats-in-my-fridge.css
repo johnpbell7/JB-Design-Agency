@@ -1032,7 +1032,7 @@ body { --project-pen: #f1d9c7; }
   .wf-tl .wf-deep { background: none; min-height: 0; border-radius: 0; overflow: visible; padding-inline: 0; gap: 0 120px; }
   .wf-tl .wf-deep::before { display: none; }
   .wf-tl .wf-deep__stage { position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 0; }
-  .wf-tl .wf-deep__stage::before { content: ""; position: absolute; z-index: -1; inset: 4% 2% 14%; border-radius: 44% 40% 46% 42% / 40% 44% 40% 46%; background: var(--blob, #eef2fa); opacity: 0.85; }
+  .wf-tl .wf-deep__stage::before { content: ""; position: absolute; z-index: -1; inset: 4% 2% 14%; border-radius: 28px; background: var(--blob, #eef2fa); opacity: 0.85; }
   .wf-tl .wf-deep--sky { --blob: #e8eef9; } .wf-tl .wf-deep--sage { --blob: #e4efe1; } .wf-tl .wf-deep--sand { --blob: #f1e8d8; } .wf-tl .wf-deep--blush { --blob: #f5e5e2; }
   .wf-tl .wf-deep__stage > .fa { flex: 0 0 100%; margin-bottom: 8px; }
   .wf-tl .wf-call { position: static; font-size: 13px; padding: 8px 14px 8px 10px; }
