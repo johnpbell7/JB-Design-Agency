@@ -100,7 +100,7 @@ def page(g):
         {cols["Areas"]}
         {cols["Guides"]}
       </div>
-      <div class="site-foot__base"><span>© 2026 John Bell · Designed and built by me</span><span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span></div>
+      <div class="site-foot__base"><span>© 2026 JB Design Agency</span><span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span></div>
     </div>
   </footer>
 </body>
