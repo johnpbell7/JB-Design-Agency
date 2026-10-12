@@ -550,3 +550,13 @@
 /* Phone fan: a small picture of each site's top screen shows first; the long scrolling page loads over it */
 .pf-screen__page .pf-poster { position: absolute; left: 0; top: 0; width: 100%; height: auto; z-index: 0; }
 .pf-screen__page img:not(.pf-poster) { position: relative; z-index: 1; }
+
+/* The H1 sits quietly in the row under the hero, where the services list was (the tapes below still show the list) */
+html:root main h1.bt-place { margin: 0; font-size: 14px; font-weight: 500; line-height: 1.4; letter-spacing: 0; color: var(--grey-7); text-wrap: wrap; }
+h1.bt-place span { white-space: nowrap; }
+/* Phones: the row moves above the slogan, with no line (Google reads the phone version first, so it must show) */
+@media (max-width: 560px) {
+  .bt-hero > .wrap { display: flex; flex-direction: column; }
+  .bt-hero .bt-proof { display: flex; order: -1; margin: 0 0 clamp(12px, 2.2vh, 24px); padding: 0; border-top: 0; }
+  html:root main h1.bt-place { font-size: 12.5px; }
+}

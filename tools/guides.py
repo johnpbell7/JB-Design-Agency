@@ -30,7 +30,7 @@ def page(g):
   <meta name="description" content="{g["desc"]}">
   <link rel="canonical" href="{url}">
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="John Bell · Web Designer">
+  <meta property="og:site_name" content="JB Design Agency">
   <meta property="og:locale" content="en_GB">
   <meta property="og:url" content="{url}">
   <meta property="og:title" content="{e(html.unescape(g["title"]))}">
@@ -94,7 +94,7 @@ def page(g):
   <footer class="site-foot">
     <div class="wrap">
       <div class="site-foot__grid">
-        <div class="sf-brand"><a class="sf-name" href="../index.html">John Bell</a><p>Freelance web and graphic designer. Based in Birmingham, working with businesses across the UK.</p></div>
+        <div class="sf-brand"><a class="sf-name" href="../index.html">JB Design Agency</a><p>Web design, branding, print &amp; everything in between. Freelance, based in Birmingham, working with businesses across the UK.</p></div>
         {cols["Pages"]}
         <div class="sf-col"><p class="sf-h">Get in touch</p><a href="../index.html#contact">Start a project</a><a href="mailto:{EMAIL}">Email</a><a href="tel:{PHONE_INTL}">{PHONE}</a><a class="sf-wa" href="{wa}" target="_blank" rel="noopener">{wa_svg.format(s=17)}WhatsApp me</a></div>
         {cols["Areas"]}
@@ -113,7 +113,7 @@ def table(head, rows):
 
 GUIDES = [
  dict(slug='how-much-does-a-website-cost', crumb='How much does a website cost?', read=6,
-  title='How Much Does a Website Cost in the UK? (2026 Guide) · John Bell',
+  title='How Much Does a Website Cost in the UK? (2026 Guide) · JB Design Agency',
   desc='What a small business website really costs in the UK in 2026: DIY, freelancer and agency prices, what changes the price, and the running costs after launch.',
   h1='How much does a website <mark class="hl">cost in 2026?</mark>', h1_text='How much does a website cost in 2026?',
   lede='The honest answer to the question every small business asks first, with real prices, what pushes them up or down, and what you’ll pay once the site is live.',
@@ -173,7 +173,7 @@ GUIDES = [
   other='Next: <a href="how-long-does-a-website-take.html">how long a website takes</a>, or see <a href="web-designer-birmingham.html">web design in Birmingham</a>.'),
 
  dict(slug='logo-or-website-first', crumb='Do I need a logo before a website?', read=4,
-  title='Do I Need a Logo Before a Website? · John Bell',
+  title='Do I Need a Logo Before a Website? · JB Design Agency',
   desc='Should you get a logo before your website? When it matters, when it doesn’t, and why doing both together usually saves time and money.',
   h1='Do I need a logo <mark class="hl hl--pink">before a website?</mark>', h1_text='Do I need a logo before a website?',
   lede='It’s one of the first questions new businesses ask. Here’s when a logo should come first, when you can start without one, and why doing both together often works out best.',
@@ -210,7 +210,7 @@ GUIDES = [
   other='See <a href="graphic-designer-birmingham.html">logo and graphic design</a>, or read <a href="how-much-does-a-website-cost.html">how much a website costs</a>.'),
 
  dict(slug='how-long-does-a-website-take', crumb='How long does a website take?', read=4,
-  title='How Long Does It Take to Build a Website? · John Bell',
+  title='How Long Does It Take to Build a Website? · JB Design Agency',
   desc='How long a small business website takes to build, from about a week for a small site to four weeks or more for a shop, and how to get yours live sooner.',
   h1='How long does a website <mark class="hl hl--blue">take to build?</mark>', h1_text='How long does it take to build a website?',
   lede='Realistic timings for small business websites and shops, what happens at each stage, and the one thing that holds most projects up.',
@@ -248,7 +248,7 @@ GUIDES = [
   other='Read <a href="how-much-does-a-website-cost.html">how much a website costs</a>, or see <a href="web-designer-birmingham.html">web design in Birmingham</a>.'),
 
  dict(slug='shopify-or-website', crumb='Shopify or a normal website?', read=5,
-  title='Shopify or a Normal Website? Which to Choose · John Bell',
+  title='Shopify or a Normal Website? Which to Choose · JB Design Agency',
   desc='Do you need a Shopify shop or a normal website? A plain guide for small businesses: what each is for, what they cost, and how to choose.',
   h1='Shopify or a <mark class="hl hl--green">normal website?</mark>', h1_text='Shopify or a normal website?',
   lede='If you sell something, it’s easy to assume you need an online shop. Often you do, but sometimes a normal website with a booking form or a payment link does the job for far less.',
