@@ -18,9 +18,6 @@
 .hp-tiers b::before { content: "from "; font-size: 11px; font-weight: 600; letter-spacing: 0; opacity: 0.55; }
 .hp-incl { display: grid; gap: 7px; margin: 2px 0 0; padding: 0; list-style: none; font-size: 14px; font-weight: 500; }
 .hp-incl li::before { content: "✓"; margin-right: 9px; font-weight: 700; }
-.hp-card__go { margin-top: auto; padding-top: 8px; display: inline-flex; gap: 8px; font-weight: 600; font-size: 15px; }
-.hp-card__go span { transition: translate 0.3s var(--ease-spring); }
-.hp-card:hover .hp-card__go span { translate: 5px 0; }
 /* the small print under the cards: neat ticked pills that wrap cleanly, no stray dots */
 .hp-extras { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 24px; font-size: 14px; color: var(--grey-7); }
 .hp-extras span { display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px 7px 10px; border-radius: 999px; background: var(--grey-1); white-space: nowrap; }
@@ -72,8 +69,6 @@
 .hp-tiers li.is-deal { margin: 6px -4px; padding: 14px 12px; }
 .hp-incl { margin: 6px 24px 0; padding: 16px 0 0; border-top: 1px dashed var(--grey-3); color: var(--grey-7); font-size: 13.5px; }
 .hp-incl li::before { color: var(--ink); }
-.hp-card__go { margin: auto 18px 18px; padding: 13px 18px; justify-content: center; border-radius: 999px; background: #18181a; color: #fff; font-size: 14.5px; }
-.hp-card:hover .hp-card__go { background: color-mix(in srgb, var(--pen) 100%, #18181a 0%); color: #18181a; }
 .hp-incl { margin-bottom: 22px; }
 @media (max-width: 700px) { .hp-card__lead { min-height: 0; } }
 
@@ -104,13 +99,11 @@
   .hp-tiers li.is-combo > .is-deal em, .hp-tiers li.is-deal em { display: inline-block; margin: 0 6px 0 0; vertical-align: 2px; padding: 2px 7px; font-size: 10px; }
   .hp-tiers li.is-combo > .is-deal small { display: block; }
   .hp-incl { margin: 4px 18px 0; padding-top: 12px; gap: 5px; font-size: 13px; }
-  .hp-card__go { margin: 14px 14px 14px; padding: 11px 16px; font-size: 14px; }
   .hp-incl { margin-bottom: 0; }
 }
 /* Phones: drop the tick list so each card fits on one screen (the full detail is on the prices pages) */
 @media (max-width: 700px) {
   .hp-incl { display: none; }
-  .hp-card__go { margin-top: 12px; }
 }
 /* Phones: a clear order in the coloured header (service, then price, then the line about it),
    and the row prices a step quieter than the headline price */
@@ -148,7 +141,6 @@
 /* phones: every card in the swipe row the same height, buttons lined up along the bottom */
 @media (max-width: 700px) {
   .hp-cards { align-items: stretch; }
-  .hp-card__go { margin-top: auto; }
   .hp-tiers { margin-bottom: 12px; }
 }
 /* "From" on its own line, then the price with "/page" sitting beside it */
@@ -196,9 +188,6 @@
 
 /* Cards are boxes now, with the button as the link; the button's hit area covers the whole card */
 .hp-card { cursor: pointer; }
-a.hp-card__go { text-decoration: none; }
-.hp-card__go::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
-.hp-card__go:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 /* Add-ons tucked away behind a chevron (sits above the card's link so it opens instead of navigating) */
 details.hp-addons { position: relative; z-index: 2; cursor: default; }

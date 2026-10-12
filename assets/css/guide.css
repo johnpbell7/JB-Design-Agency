@@ -1,0 +1,21 @@
+/* Guides (tools/guides.py): a readable article on the landing-page layout */
+.guide__head { padding-bottom: clamp(24px, 4vw, 48px); }
+.guide__head h1 { max-width: 14ch; font-size: clamp(40px, 6.4vw, 88px); }
+.guide__kicker { margin-bottom: 18px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-5); }
+.guide__by { margin-top: 22px; font-size: 14px; color: var(--grey-5); }
+.guide__body { max-width: 760px; padding-bottom: clamp(30px, 5vw, 60px); }
+.guide__body h2 { margin: 48px 0 14px; font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.03em; line-height: 1.15; }
+.guide__body p, .guide__body li { font-size: 17px; line-height: 1.75; color: var(--grey-7); }
+.guide__body p + p { margin-top: 14px; }
+.guide__body b { color: var(--ink); font-weight: 600; }
+.guide__body a { color: var(--ink); font-weight: 600; text-underline-offset: 3px; }
+.guide__body ul, .guide__body ol { margin: 14px 0 0; padding-left: 22px; display: grid; gap: 8px; }
+.guide__short { padding: 22px 24px; border-radius: 20px; background: var(--hl-yellow, #fff04d); }
+.guide__short-h { margin-bottom: 6px; font-size: 13px !important; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink) !important; }
+.guide__short p { color: var(--ink); }
+.guide__table { margin: 18px 0; overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; }
+.guide__table table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.guide__table th { padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--grey-5); background: var(--grey-1); }
+.guide__table td { padding: 12px 16px; border-top: 1px solid var(--line); vertical-align: top; line-height: 1.5; color: var(--grey-7); }
+.guide__table td:first-child { color: var(--ink); font-weight: 600; }
+@media (max-width: 560px) { .guide__table table { font-size: 14px; } .guide__table th, .guide__table td { padding: 10px 12px; } }
