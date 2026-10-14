@@ -133,6 +133,9 @@
   <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Great+Vibes&family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500;600&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Josefin+Sans:wght@600;700&family=Montserrat:wght@500;700;800&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet"></noscript>
   <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-800-latin.woff2" as="font" type="font/woff2" crossorigin>
   <!-- Speed: the first screen's styles are inline (tools/critical-css.mjs); the rest of the page waits, hidden, until the full
        home.bundle.css (tools/bundle-home-css.mjs) has loaded at the end of <body>. After editing any home page style, run both tools and bump ?v= in both places. -->
   <script>document.documentElement.classList.add('css-wait')</script>
@@ -489,8 +492,16 @@ html:root main h1.bt-place { font-size: 12.5px; }
 :root :is(.cs-hero__lede, .lp-hero__lede, .sv-hero__lede, .wk-hero__lede, .ab-hero__lede, .pf-hero__lede, .bt-who, .ha__story, .legal__lede, .lp-sec__lede, .svc__lede, .wf-sub, .bb-guide__lead, .cs-brief__text, .lp-more, .sv-who-more, .legal__note), :root :is(.chapter-head, .contact__intro, .cp-head, .feature__copy, .home-prices__head, .job__about, .lp-cta, .lp-faq__q, .lp-svc, .lp-sec, .lp-steps li, .pm-svc, .pr-feature__text, .service__text, .step2__card, .sv-head, .sv-q, .who-card__body, .wk-print__text, .ab-ch__copy, .ab-tile, .ab-way, .wf-get__copy, .legal__body, .bb-status__copy, .bb-pick__body, .svc__more > div, .qa__inner, .be-faq__list) > p:not([class]) { font-size: var(--t-body); line-height: 1.65; }
 /* the rest of the page waits for home.bundle.css */
 html.css-wait :is(body > :nth-child(1), body > :nth-child(3), body > :nth-child(5), #who, main > :nth-child(5), #skills, #work, #process, #prices, #faq, #about, #contact, body > :nth-child(7), #nav-menu) { display: none !important; }
+/* the first screen's words wait for Poppins (the font-wait script in index.html) */
+html.font-wait :is(.site-nav__mark, .bt-stage, .bt-foot, .bt-proof) { visibility: hidden; }
 </style>
   <!-- critical css: end -->
+  <script>(function () {   /* first-screen words stay hidden (html.font-wait) until Poppins has loaded, so they never show in a stand-in font or jump */
+    var h = document.documentElement, show = function () { h.classList.remove('font-wait'); };
+    if (!document.fonts || !document.fonts.load) return;
+    h.classList.add('font-wait'); setTimeout(show, 2500);
+    Promise.all(['400', '500', '600', '700', '800'].map(function (w) { return document.fonts.load(w + ' 1em Poppins'); })).then(show, show);
+  })();</script>
   <link rel="preload" href="assets/css/home.bundle.css?v=2" as="style">
   <script type="application/ld+json">
   {
