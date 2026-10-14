@@ -3,6 +3,7 @@
 // so a phone downloads one file before the first paint instead of eight. Looks identical.
 // It also copies assets/js/theme.js into index.html (between the theme markers), saving the phone another wait.
 // Run it after changing any of these files or theme.js:  node tools/bundle-home-css.mjs
+// then  node tools/critical-css.mjs  (the first-screen styles inline in index.html) and bump ?v= on home.bundle.css in index.html.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
