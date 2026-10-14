@@ -9,7 +9,7 @@ from footer import footer_cols
 PUBLISHED = '2026-10-12'
 
 def page(g):
-    url = f'{BASE}projects/{g["slug"]}.html'; img = f'{BASE}assets/share/john-bell-websites.jpg'
+    url = f'{BASE}projects/{g["slug"]}.html'; img = f'{BASE}assets/share/guides.jpg'
     e = lambda x: html.escape(x, quote=True)
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Article", "headline": g['h1_text'], "description": g['desc'], "url": url, "mainEntityOfPage": url, "image": img,
@@ -38,6 +38,7 @@ def page(g):
   <meta property="og:image" content="{img}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="JB Design Agency guides: plain-English answers on website costs, timescales, logos and Shopify">
   <meta property="article:published_time" content="{PUBLISHED}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{e(html.unescape(g["title"]))}">
@@ -113,7 +114,7 @@ def table(head, rows):
 
 GUIDES = [
  dict(slug='how-much-does-a-website-cost', crumb='How much does a website cost?', read=6,
-  title='How Much Does a Website Cost in the UK? (2026 Guide) · JB Design Agency',
+  title='How Much Does a Website Cost? (UK 2026) · JB Design Agency',
   desc='What a small business website really costs in the UK in 2026: DIY, freelancer and agency prices, what changes the price, and the running costs after launch.',
   h1='How much does a website <mark class="hl">cost in 2026?</mark>', h1_text='How much does a website cost in 2026?',
   lede='The honest answer to the question every small business asks first, with real prices, what pushes them up or down, and what you’ll pay once the site is live.',

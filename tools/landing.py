@@ -8,6 +8,8 @@ EMAIL = 'jb.designagency89@gmail.com'
 PHONE = '07428 728780'          # shown on the page
 PHONE_INTL = '+447428728780'    # for tel:/sms:/WhatsApp links
 NAV = open('tools/landing-nav.html').read()
+# One share image for every town page (made from Branding/Share images/build.mjs in the studio)
+SHARE_ALT = 'JB Design Agency: freelance web designer for local businesses in Birmingham, the Midlands and across the UK'
 
 # ===== PRICES (placeholders, to be confirmed by John) =====
 WEB = [('Small website', '£500', 'A shop window for your business, with who you are, what you do and an easy way to get in touch.', ['Designed for phones first', 'Small changes, quoted up front', 'Edit it yourself or bookings, quoted']),
@@ -68,7 +70,7 @@ def prices(items):
             '<a class="lot-bar" href="#contact"><span class="lot-bar__copy"><b>Need <mark class="hl">the lot?</mark></b><span class="lot-bar__list"><i>Logo</i><i>Branding</i><i>Full brand guidelines</i><i>Website</i></span></span><span class="lot-bar__go">Contact me for a quote <span aria-hidden="true">→</span></span></a>')
 
 def page(p):
-    url = f'{BASE}projects/{p["slug"]}.html'; img = f'{BASE}assets/share/john-bell-websites.jpg'
+    url = f'{BASE}projects/{p["slug"]}.html'; img = f'{BASE}assets/share/towns.jpg'; img_alt = SHARE_ALT
     t = html.unescape(p['title']); e = lambda x: html.escape(x, quote=True)
     name = p['h1'].replace('<mark class="hl">', '').replace('<mark class="hl hl--pink">', '').replace('<mark class="hl hl--blue">', '').replace('</mark>', '')
     ld = {"@context": "https://schema.org", "@graph": [
@@ -97,6 +99,7 @@ def page(p):
   <meta property="og:image" content="{img}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{e(img_alt)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{e(t)}">
   <meta name="twitter:description" content="{p["desc"]}">
@@ -194,7 +197,7 @@ def page(p):
 '''
 
 PAGES = [
- dict(slug='web-designer-birmingham', share='john-bell-websites', svc='Web design',
+ dict(slug='web-designer-birmingham', share='towns', svc='Web design',
   title='Freelance Web Designer in Birmingham · JB Design Agency',
   desc='Freelance web designer in Birmingham. Fast, mobile-friendly websites and Shopify shops for small businesses, designed and built by John Bell. Quotes from £500.',
   h1='Web designer <mark class="hl">in Birmingham.</mark>',
@@ -211,8 +214,8 @@ PAGES = [
         ('Will my website show up on Google?', 'Every site is built to load quickly, work well on phones and include the setup Google looks for. Where they’ll help, I add search pages for your main services and areas, included in the price, and I’ll help you set up Google Search Console and your Google Business Profile.')],
   cta_h='Got a website in mind? <mark class="hl">Let’s talk.</mark>',
   other='Need a logo, brand or print as well? See <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>. In Leicestershire? See <a href="web-designer-leicester.html">web design in Leicester</a>. Elsewhere? See <a href="freelance-web-designer-uk.html">freelance web design across the UK</a>.'),
- dict(slug='graphic-designer-birmingham', share='graphic-designer-birmingham', svc='Graphic design',
-  title='Graphic Designer in Birmingham · Logos &amp; Branding · JB Design Agency',
+ dict(slug='graphic-designer-birmingham', share='towns', svc='Graphic design',
+  title='Graphic Designer in Birmingham · JB Design Agency',
   desc='Freelance graphic designer in Birmingham. Logos, brand identity, brochures, flyers and packaging for small businesses, with 14 years’ agency and in-house experience.',
   h1='Graphic designer <mark class="hl hl--pink">in Birmingham.</mark>',
   lede='Logos, brand identities and print for independents and small businesses in Birmingham and across the UK. Design that holds up wherever it ends up, from the side of a van or a shop sign to a brochure or your website.',
@@ -228,7 +231,7 @@ PAGES = [
         ('Do you work outside Birmingham?', 'Yes. I’m based in Birmingham, but I work with businesses all over the UK by video call and email.')],
   cta_h='Need a logo or a brochure? <mark class="hl">Let’s talk.</mark>',
   other='Need a website too? See <a href="web-designer-birmingham.html">web design in Birmingham</a>, or <a href="web-designer-leicester.html">web design in Leicester</a>. Elsewhere in the UK? See <a href="freelance-web-designer-uk.html">working with me remotely</a>.'),
- dict(slug='web-designer-leicester', share='john-bell-websites', svc='Web design',
+ dict(slug='web-designer-leicester', share='towns', svc='Web design',
   title='Web Designer in Leicester &amp; Leicestershire · JB Design Agency',
   desc='Freelance web designer for Leicester and Leicestershire. Websites, online shops and branding for independents, from Loughborough to Market Harborough. From £500.',
   h1='Web designer for <mark class="hl hl--blue">Leicester and Leicestershire.</mark>',
@@ -246,8 +249,8 @@ PAGES = [
         ('Do you design logos too?', 'I do. I can design your logo and brand, then build the website to match. For Birdie Blooms I drew eight logo ideas alongside the site.')],
   cta_h='Leicestershire business? <mark class="hl">Let’s have a chat.</mark>',
   other='Looking for design in Birmingham? See <a href="web-designer-birmingham.html">web design</a> and <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>. Elsewhere in the UK? See <a href="freelance-web-designer-uk.html">freelance web design across the UK</a>.'),
- dict(slug='freelance-web-designer-uk', share='john-bell-websites', svc='Web design and graphic design',
-  title='Freelance Web Designer UK · Web &amp; Graphic Design · JB Design Agency',
+ dict(slug='freelance-web-designer-uk', share='towns', svc='Web design and graphic design',
+  title='Freelance Web Designer UK · JB Design Agency',
   desc='Freelance web and graphic designer working with businesses across the UK. Websites, Shopify shops, logos and print, run remotely by video call. Quotes from £500.',
   h1='Freelance web designer, <mark class="hl">working across the UK.</mark>',
   lede='I’m John, a freelance web and graphic designer based in Birmingham. I design websites, online shops, logos and print for small businesses anywhere in the UK, with the whole project run over video calls, email and shared screens.',
@@ -272,7 +275,7 @@ PAGES = [
         ('How long does it take?', 'A small website usually takes about a week from our first call to going live, a medium site two to three weeks, and larger sites and shops four weeks or more. You’ll get a timeline with your quote, and a fast turnaround can be requested.')],
   cta_h='Wherever you are, <mark class="hl">let’s talk.</mark>',
   other='Local to the Midlands? See <a href="web-designer-birmingham.html">web design in Birmingham</a>, <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a> or <a href="web-designer-leicester.html">web design in Leicester</a>.'),
- dict(slug='web-designer-sutton-coldfield', share='john-bell-websites', svc='Web design',
+ dict(slug='web-designer-sutton-coldfield', share='towns', svc='Web design',
   title='Web Designer in Sutton Coldfield · JB Design Agency',
   desc='Freelance web designer for Sutton Coldfield, from Boldmere to Mere Green. Websites, shops and branding for local businesses, by the designer of SCCC Heritage.',
   h1='Web designer for <mark class="hl hl--green">Sutton Coldfield.</mark>',
@@ -297,7 +300,7 @@ PAGES = [
         ('Can you do our logo and signage too?', 'Yes. I design logos and brands from £300, and print such as flyers, signage and banners, with printing arranged if you’d like it.')],
   cta_h='Sutton business? <mark class="hl">Let’s talk.</mark>',
   other='Close by? See <a href="web-designer-birmingham.html">web design in Birmingham</a> and <a href="graphic-designer-birmingham.html">graphic design in Birmingham</a>. Further out? See <a href="web-designer-solihull.html">Solihull</a>, <a href="web-designer-wolverhampton.html">Wolverhampton</a> or <a href="freelance-web-designer-uk.html">anywhere in the UK</a>.'),
- dict(slug='web-designer-solihull', share='john-bell-websites', svc='Web design',
+ dict(slug='web-designer-solihull', share='towns', svc='Web design',
   title='Freelance Web Designer in Solihull · JB Design Agency',
   desc='Freelance web designer for Solihull, Shirley, Knowle and Dorridge. Websites, Shopify shops, branding and event print for local businesses. Quotes from £500.',
   h1='Web designer for <mark class="hl hl--pink">Solihull.</mark>',
@@ -322,7 +325,7 @@ PAGES = [
         ('Will my site show up when people search in Solihull?', 'Every site is quick and set up the way Google expects, with search pages for the areas you cover where they’ll help, and help setting up your Google Business Profile.')],
   cta_h='Solihull business? <mark class="hl">Let’s have a chat.</mark>',
   other='Nearby? See <a href="web-designer-birmingham.html">web design in Birmingham</a>, <a href="web-designer-coventry.html">Coventry</a> or <a href="web-designer-sutton-coldfield.html">Sutton Coldfield</a>. Need print? See <a href="graphic-designer-birmingham.html">graphic design</a>.'),
- dict(slug='web-designer-wolverhampton', share='john-bell-websites', svc='Web design',
+ dict(slug='web-designer-wolverhampton', share='towns', svc='Web design',
   title='Web Designer in Wolverhampton · JB Design Agency',
   desc='Freelance web designer for Wolverhampton and the Black Country. Websites, trade sites, Shopify shops, brochures and packaging for local firms. Quotes from £500.',
   h1='Web designer for <mark class="hl">Wolverhampton.</mark>',
@@ -347,7 +350,7 @@ PAGES = [
         ('Our website is old. Can you redesign it?', 'Yes. I keep what’s working, including any pages that already rank on Google, and give you a faster, modern site that works properly on phones.')],
   cta_h='Black Country business? <mark class="hl">Let’s talk.</mark>',
   other='Nearby? See <a href="web-designer-birmingham.html">web design in Birmingham</a> or <a href="web-designer-sutton-coldfield.html">Sutton Coldfield</a>. Need print or packaging? See <a href="graphic-designer-birmingham.html">graphic design</a>.'),
- dict(slug='web-designer-coventry', share='john-bell-websites', svc='Web design',
+ dict(slug='web-designer-coventry', share='towns', svc='Web design',
   title='Freelance Web Designer in Coventry · JB Design Agency',
   desc='Freelance web designer for Coventry, Kenilworth and Leamington. Websites, Shopify shops, web apps and branding for independents and start-ups. Quotes from £500.',
   h1='Web designer for <mark class="hl hl--blue">Coventry.</mark>',

@@ -301,7 +301,7 @@ body {
 .bb-prod__img img { width: 100%; height: 100%; object-fit: cover; transition: scale 1.2s var(--ease-out); }
 .bb-prod:hover .bb-prod__img img { scale: 1.05; }
 .bb-prod__row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 3px; }
-.bb-prod__row h3 { font: 400 clamp(17px, 1.55vw, 23px)/1.1 var(--bb-serif); letter-spacing: -0.01em; }
+.bb-prod__row h3, .bb-prod__row .bb-prod__name { text-wrap: balance; font: 400 clamp(17px, 1.55vw, 23px)/1.1 var(--bb-serif); letter-spacing: -0.01em; }
 .bb-prod__row span { font-size: clamp(15px, 1.3vw, 18px); }
 .bb-prod p { font-size: clamp(12px, 1vw, 14px); line-height: 1.4; }
 .bb-pbtn {
@@ -472,14 +472,14 @@ body {
 
 /* Hero pop-out: the shop's real card */
 .bb-pop-card .bb-prod { gap: 7px; padding: 8px 8px 11px; box-shadow: 0 2px 4px rgb(43 26 22 / 0.08), 0 30px 50px -22px rgb(43 26 22 / 0.5); }
-.bb-pop-card .bb-prod__row h3 { font-size: clamp(14px, 1.15vw, 18px); }
+.bb-pop-card .bb-prod__row h3, .bb-pop-card .bb-prod__row .bb-prod__name { font-size: clamp(14px, 1.15vw, 18px); }
 .bb-pop-card .bb-prod__row span { font-size: clamp(13px, 1vw, 15px); }
 .bb-pop-card .bb-prod p { font-size: clamp(10.5px, 0.8vw, 12px); }
 .bb-pop-card .bb-pbtn { padding: 8px 11px 6px; font-size: 9px; }
 @media (max-width: 800px) {
   .bb-pop-card { --x: 0% !important; --y: 14% !important; --w: 27vw !important; }
   .bb-pop-card .bb-prod { gap: 5px; padding: 6px 6px 8px; }
-  .bb-pop-card .bb-prod__row h3 { font-size: 12.5px; }
+  .bb-pop-card .bb-prod__row h3, .bb-pop-card .bb-prod__row .bb-prod__name { font-size: 12.5px; }
   .bb-pop-card .bb-prod__row span { font-size: 12px; }
   .bb-pop-card .bb-prod p { font-size: 9.5px; }
   .bb-pop-card .bb-pbtn { padding: 6px 8px 5px; font-size: 7.5px; gap: 5px; }
