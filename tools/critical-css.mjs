@@ -81,7 +81,7 @@ try {
   for (const s of SIZES) { await size(s); await sleep(1200); await run('scrollTo(0, 0); __scan()'); }
   const { css, hide, kept, total } = await run('__extract()');
 
-  const block = `<!-- critical css: start -->\n  <style id="critical">/* first-screen styles, made by tools/critical-css.mjs from home.bundle.css: don't edit by hand */\n${css}\n/* the rest of the page waits for home.bundle.css */\nhtml.css-wait :is(${hide.join(', ')}) { display: none !important; }\n/* the first screen's words wait for Poppins (the font-wait script in index.html) */\nhtml.font-wait :is(.site-nav__mark, .bt-stage, .bt-foot, .bt-proof) { visibility: hidden; }\n</style>\n  <!-- critical css: end -->`;
+  const block = `<!-- critical css: start -->\n  <style id="critical">/* first-screen styles, made by tools/critical-css.mjs from home.bundle.css: don't edit by hand */\n${css}\n/* the rest of the page waits for home.bundle.css */\nhtml.css-wait :is(${hide.join(', ')}) { display: none !important; }\n</style>\n  <!-- critical css: end -->`;
   let html = fs.readFileSync(home, 'utf8');
   const re = /<!-- critical css: start -->[\s\S]*?<!-- critical css: end -->/;
   if (!re.test(html)) throw new Error('No critical css markers in index.html');

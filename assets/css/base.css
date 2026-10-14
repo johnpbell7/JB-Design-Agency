@@ -20,7 +20,7 @@
   --hl-green: #9df27a;
   --hl-purple: #cbb8ff;
 
-  --font: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font: "Poppins", "Poppins Fallback", ui-sans-serif, system-ui, sans-serif;
 
   --gutter: clamp(16px, 4vw, 56px);
   --max: 1320px;
