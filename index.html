@@ -40,13 +40,8 @@
   <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Great+Vibes&family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500;600&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,700..800&family=Josefin+Sans:wght@600;700&family=Montserrat:wght@500;700;800&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet"></noscript>
   <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="stylesheet" href="assets/css/base.css?v=6">
-  <link rel="stylesheet" href="assets/css/case.css?v=4">
-  <link rel="stylesheet" href="assets/css/home.css?v=14">
-  <link rel="stylesheet" href="assets/css/prices.css?v=17">
-  <link rel="stylesheet" href="assets/css/home-hero.css?v=17">
-  <link rel="stylesheet" href="assets/css/about.css">
+  <!-- One file for speed: fonts, base, case, home, prices, home-hero, about and type.css joined by tools/bundle-home-css.mjs. After editing any of them, run that script and bump ?v= here. -->
+  <link rel="stylesheet" href="assets/css/home.bundle.css?v=1">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -266,7 +261,6 @@
  ]
 }
   </script>
-  <link rel="stylesheet" href="assets/css/type.css?v=5">
 </head>
 <body class="home">
   <a class="skip" href="#main">Skip to content</a>
