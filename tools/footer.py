@@ -7,7 +7,9 @@ PAGES = [('Work', 'work.html'), ('Services', 'services.html'), ('Graphic design'
 AREAS = [('Birmingham', 'web-designer-birmingham.html'), ('Sutton Coldfield', 'web-designer-sutton-coldfield.html'), ('Solihull', 'web-designer-solihull.html'),
          ('Wolverhampton', 'web-designer-wolverhampton.html'), ('Coventry', 'web-designer-coventry.html'), ('Leicester', 'web-designer-leicester.html'), ('Across the UK', 'freelance-web-designer-uk.html')]
 GUIDES = [('What a website costs', 'how-much-does-a-website-cost.html'), ('Logo or website first?', 'logo-or-website-first.html'),
-          ('How long a website takes', 'how-long-does-a-website-take.html'), ('Shopify or a website?', 'shopify-or-website.html')]
+          ('How long a website takes', 'how-long-does-a-website-take.html'), ('Shopify or a website?', 'shopify-or-website.html'),
+          ('What a logo costs', 'how-much-does-a-logo-cost.html'), ('Wix or a web designer?', 'wix-squarespace-or-web-designer.html'),
+          ('Getting on Google', 'how-to-get-your-business-on-google.html'), ('What a website needs', 'what-should-a-small-business-website-include.html')]
 
 def footer_cols(at_root=False):
     """The three link columns. at_root: the page is index.html (links go into projects/)."""
