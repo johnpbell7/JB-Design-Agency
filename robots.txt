@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /JB-Design-Agency/assets/live/
-Disallow: /JB-Design-Agency/assets/who/
-Disallow: /JB-Design-Agency/tools/
+Disallow: /assets/live/
+Disallow: /assets/who/
+Disallow: /tools/
 
-Sitemap: https://johnpbell7.github.io/JB-Design-Agency/sitemap.xml
+Sitemap: https://jbdesignagency.co.uk/sitemap.xml
