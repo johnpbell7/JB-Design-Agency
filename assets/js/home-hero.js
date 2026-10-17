@@ -277,14 +277,15 @@
 (() => {
   const root = document.querySelector('.bt-g1');
   if (!root) return;
-  // small 360px copies of each site's top four screens (no Birth-hood or Beetle Eyes: they show people's faces)
-  const sites = ['vsl-trade', 'nic-pouches', 'birdie-blooms', 'patch-agency', 'gosweet'].map(s => `assets/wall/${s}.webp`);
+  // small 360px (and 240px for phones) copies of each site's top four screens (no Birth-hood or Beetle Eyes: they show people's faces)
+  const small = matchMedia('(max-width: 560px)').matches; // phones get the 240px copies
+  const sites = ['vsl-trade', 'nic-pouches', 'birdie-blooms', 'patch-agency', 'gosweet'].map(s => `assets/wall/${s}${small ? '-240' : ''}.webp`);
   const cols = [...root.querySelectorAll('[data-g1-col]')];
   const reduce = !window.gsap || matchMedia('(prefers-reduced-motion: reduce)').matches;
   const layer = src => {
     const t = document.createElement('div');
     t.className = 'bt-g1__track';
-    t.innerHTML = `<img class="bt-g1__page" src="${src}" alt="" decoding="async"><img class="bt-g1__page" src="${src}" alt="" decoding="async">`;
+    t.innerHTML = `<img class="bt-g1__page" src="${src}" width="360" height="3120" alt="" decoding="async"><img class="bt-g1__page" src="${src}" width="360" height="3120" alt="" decoding="async">`;
     return t;
   };
   let next = cols.length; // the next site to bring in
