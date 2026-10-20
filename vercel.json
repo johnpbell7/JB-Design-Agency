@@ -2,6 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": false,
   "redirects": [
+    { "source": "/", "has": [{ "type": "host", "value": "jb-design-agency.vercel.app" }], "destination": "https://jbdesignagency.co.uk/", "permanent": true },
     { "source": "/:path*", "has": [{ "type": "host", "value": "jb-design-agency.vercel.app" }], "destination": "https://jbdesignagency.co.uk/:path*", "permanent": true }
   ],
   "headers": [
