@@ -503,12 +503,19 @@
     $$('.cp-card').forEach((c, i) => gsap.from(c, { y: 40, opacity: 0, duration: 0.9, ease: 'expo.out', delay: (i % 3) * 0.06, scrollTrigger: { trigger: c, start: 'top 92%', once: true } }));
   }
 
-  // ---------- Contact: check the fields, then open the email app with it all filled in ----------
+  // ---------- Contact: check the fields, send straight to the inbox (FormSubmit); the email app is the fallback ----------
   const form = document.querySelector('[data-contact]');
   if (form) {
     const error = form.querySelector('[data-contact-error]');
     const to = form.dataset.to || 'jb.designagency89@gmail.com';
     const PENS = ['#ffe45c', '#7ccfff', '#ff9ad5', '#ffb36b', '#c7f016'];
+    form.insertAdjacentHTML('beforeend', '<input name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">');
+    // Sends the enquiry through FormSubmit. Rejects if it can't (offline, blocked, or the form not yet confirmed from
+    // the activation email FormSubmit sends on first use), so the email app takes over
+    const send = data => form.elements._honey.value ? Promise.resolve() : fetch(`https://formsubmit.co/ajax/${to}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ ...data, Page: location.href, _template: 'table', _captcha: 'false' })
+    }).then(r => r.json()).then(j => { if (String(j.success) !== 'true') throw new Error(j.message || 'not sent'); });
     const confetti = origin => {
       if (!hasGsap || reduce) return;
       const r = origin.getBoundingClientRect();
@@ -531,10 +538,19 @@
       if (!message.value.trim()) { problems.push('a few words about the project'); message.setAttribute('aria-invalid', 'true'); }
       if (problems.length) { error.textContent = `Please add ${problems.join(', ')}.`; form.querySelector('[aria-invalid="true"]').focus(); return; }
       error.textContent = '';
-      confetti(form.querySelector('button[type="submit"]'));
+      const btn = form.querySelector('button[type="submit"]'), label = btn.innerHTML, note = form.querySelector('.contact__note');
       const needs = $$('input[name="need"]:checked', form).map(i => i.value);
       const body = `${message.value.trim()}\n\n${needs.length ? `Looking for: ${needs.join(', ')}\n` : ''}From: ${name.value.trim()} (${email.value.trim()})\nSeen on: ${document.title}`;
-      setTimeout(() => { location.href = `mailto:${to}?subject=${encodeURIComponent('New project enquiry')}&body=${encodeURIComponent(body)}`; }, 650);
+      const mail = () => { location.href = `mailto:${to}?subject=${encodeURIComponent('New project enquiry')}&body=${encodeURIComponent(body)}`; };
+      btn.disabled = true; btn.textContent = 'Sending…';
+      send({ name: name.value.trim(), email: email.value.trim(), message: message.value.trim(), 'Looking for': needs.join(', ') || '-', 'Seen on': document.title, _subject: `New project from ${name.value.trim()}` })
+        .then(() => {
+          confetti(btn);
+          if (note) note.textContent = `Thanks ${name.value.trim().split(' ')[0]}, that’s sent. I’ll usually get back to you within a working day.`;
+          form.reset();
+        })
+        .catch(() => { confetti(btn); setTimeout(mail, 650); }) // couldn't send: open the email app with it all filled in, as before
+        .finally(() => { btn.disabled = false; btn.innerHTML = label; });
     });
   }
 })();
