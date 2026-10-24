@@ -807,7 +807,7 @@
   const sendEnquiry = (form, data) => {
     if (form.elements._honey?.value) return Promise.resolve(); // a bot filled the hidden field: pretend it went
     return fetch('https://formsubmit.co/ajax/jb.designagency89@gmail.com', {
-      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, signal: AbortSignal.timeout?.(12000), // a slow connection falls back to the email app after 12s
       body: JSON.stringify({ ...data, Page: location.href, _template: 'table', _captcha: 'false' })
     }).then(r => r.json()).then(j => { if (String(j.success) !== 'true') throw new Error(j.message || 'not sent'); });
   };

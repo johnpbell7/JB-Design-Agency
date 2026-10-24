@@ -513,7 +513,7 @@
     // Sends the enquiry through FormSubmit. Rejects if it can't (offline, blocked, or the form not yet confirmed from
     // the activation email FormSubmit sends on first use), so the email app takes over
     const send = data => form.elements._honey.value ? Promise.resolve() : fetch(`https://formsubmit.co/ajax/${to}`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, signal: AbortSignal.timeout?.(12000), // a slow connection falls back to the email app after 12s
       body: JSON.stringify({ ...data, Page: location.href, _template: 'table', _captcha: 'false' })
     }).then(r => r.json()).then(j => { if (String(j.success) !== 'true') throw new Error(j.message || 'not sent'); });
     const confetti = origin => {
