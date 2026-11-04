@@ -2705,6 +2705,7 @@ html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, htm
 .hp-addons ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; }
 .hp-addons li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 14px; color: var(--grey-7); }
 .hp-addons b { flex: none; font-size: 14px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+.hp-addons li small { display: block; margin-top: 1px; font-size: 12px; color: var(--grey-5); }
 @media (max-width: 560px) { .hp-addons { margin: 4px 18px 18px; } .hp-addons li, .hp-addons b { font-size: 13.5px; } }
 /* the combo block's single column always fills the card (it sized to its content once the labels got shorter) */
 .hp-tiers li.is-combo { grid-template-columns: minmax(0, 1fr); }
