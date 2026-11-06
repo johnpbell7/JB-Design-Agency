@@ -96,7 +96,7 @@
   .hp-tiers li.is-combo > div { padding: 10px 10px; }
   .hp-tiers li.is-combo > .is-deal { margin: 0 5px 5px; }
   .hp-tiers li.is-combo > .is-deal span { display: block; }
-  .hp-tiers li.is-combo > .is-deal em, .hp-tiers li.is-deal em { display: inline-block; margin: 0 6px 0 0; vertical-align: 2px; padding: 2px 7px; font-size: 10px; }
+  .hp-tiers li.is-combo > .is-deal em, .hp-tiers li.is-deal em { display: inline-block; margin: 0 6px 0 0; vertical-align: 2px; padding: 2px 7px; font-size: 11px; }
   .hp-tiers li.is-combo > .is-deal small { display: block; }
   .hp-incl { margin: 4px 18px 0; padding-top: 12px; gap: 5px; font-size: 13px; }
   .hp-incl { margin-bottom: 0; }
