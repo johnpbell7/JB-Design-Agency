@@ -280,3 +280,93 @@ body { --project-pen: #ffe08a; }
 .film__frame iframe { width: 100%; height: 100%; border: 0; display: block; }
 .film__close { position: absolute; top: -54px; right: 0; }
 .pr-cover--map { z-index: 6; box-shadow: 0 24px 40px -18px rgb(24 24 40 / 0.5); }
+
+/* ---------- Blue Fuel: print on the desk, then the animated ads in place ----------
+   The print half sits on the same desk as the hospital job: the magazine advert
+   on the left, two A5 postcards that turn over on the right. The online half is
+   a brand-colour panel with the ads running on a laptop and a phone (the shop
+   pages are plain grey blocks, sized in cqw so each ad keeps its true share of
+   the screen), then every size laid out at actual size. */
+.bf-print {
+  position: relative; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 64px); align-items: center;
+  padding: clamp(28px, 4.4vw, 64px); border-radius: var(--radius-l); overflow: hidden;
+  background: radial-gradient(120% 100% at 50% 0%, var(--desk-hi), var(--desk-lo)); box-shadow: inset 0 0 0 1px var(--line);
+}
+.bf-print::after { content: ""; position: absolute; inset: 0; background: var(--noise); opacity: 0.12; pointer-events: none; }
+.bf-advert { margin: 0; position: relative; z-index: 1; display: grid; gap: 14px; justify-items: center; cursor: zoom-in; }
+.bf-advert img {
+  display: block; width: min(100%, 380px); height: auto; border-radius: 2px; box-shadow: var(--item-shadow); rotate: -2deg;
+  transition: rotate 0.6s var(--ease-spring), translate 0.6s var(--ease-spring);
+}
+.bf-advert:hover img, .bf-advert:focus-visible img { rotate: 0deg; translate: 0 -8px; }
+.bf-advert figcaption, .bf-note { display: grid; gap: 2px; justify-items: center; text-align: center; }
+.bf-advert figcaption b, .bf-note b { font-size: 14px; font-weight: 600; }
+.bf-advert figcaption span, .bf-note span { font-size: 13px; color: var(--grey-5); }
+.bf-cards { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; }
+.bf-card { width: 66%; }
+.bf-card:nth-of-type(1) { justify-self: start; rotate: -3deg; }
+.bf-card:nth-of-type(2) { justify-self: end; rotate: 2.5deg; margin-top: -9%; }
+.bf-card:hover { z-index: 2; }
+.bf-note { margin-top: 18px; }
+
+.bf-web {
+  --bf-blue: #0310a7; --bf-violet: #34219a; --bf-pink: #ff6b7b;
+  position: relative; display: grid; gap: clamp(28px, 4vw, 56px); overflow: hidden; color: #fff;
+  padding: clamp(24px, 4.4vw, 64px); border-radius: var(--radius-l);
+  background:
+    radial-gradient(70% 60% at 100% 100%, rgb(255 107 123 / 0.75), transparent 70%),
+    linear-gradient(150deg, var(--bf-blue) 0%, #1712a3 45%, var(--bf-violet) 75%, #7a2e8f 100%);
+}
+.bf-web__head { display: grid; gap: 12px; justify-items: start; max-width: 60ch; }
+.bf-web__head p { font-size: clamp(16px, 1.4vw, 19px); line-height: 1.5; color: rgb(255 255 255 / 0.86); }
+.bf-kicker { padding: 4px 11px; border-radius: 999px; background: var(--job-pen); color: #18181a; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; justify-self: start; }
+
+.bf-devices { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(20px, 3vw, 48px); align-items: end; }
+.bf-laptop .screen { background: #fff; }
+.bf-page { container-type: inline-size; height: 100%; display: flex; flex-direction: column; gap: 1.6cqw; padding: 0 0 2cqw; background: #f4f4f6; }
+.bf-page i { display: block; border-radius: 0.6cqw; background: #e2e2e7; }
+.bf-page__bar { display: flex; align-items: center; gap: 2.4cqw; padding: 1.4cqw 3cqw; background: #fff; box-shadow: 0 1px 0 #e6e6ea; }
+.bf-page__logo { width: 9cqw; height: 2.6cqw; background: #cfcfd6 !important; }
+.bf-page__search { flex: 1; height: 2.8cqw; border-radius: 999px !important; }
+.bf-page__icons { width: 12cqw; height: 2.6cqw; }
+.bf-page .bf-page__leader { display: block; width: 86.7cqw; height: auto; margin: 0 auto; box-shadow: 0 0.4cqw 1.4cqw rgb(0 0 0 / 0.12); }
+.bf-page__body { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) 23.4cqw; gap: 2cqw; padding: 0 3cqw; min-height: 0; }
+.bf-page__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; align-content: start; }
+.bf-page__grid i { aspect-ratio: 1 / 1.2; background: #fff; box-shadow: inset 0 -9cqw 0 #ebebef; }
+.bf-page__side { display: grid; gap: 1.6cqw; align-content: start; }
+.bf-page__side img { display: block; width: 100%; height: auto; box-shadow: 0 0.4cqw 1.4cqw rgb(0 0 0 / 0.12); }
+.bf-page__side i { height: 3cqw; }
+.bf-page__side i + i { width: 70%; }
+
+.bf-phone { width: clamp(170px, 20vw, 250px); --status-bg: #fff; }
+.bf-feed { container-type: inline-size; position: relative; height: 100%; display: flex; flex-direction: column; gap: 4cqw; padding: 0 5cqw; background: #f4f4f6; overflow: hidden; }
+.bf-feed i { display: block; border-radius: 2cqw; background: #e2e2e7; }
+.bf-feed__bar { margin: 0 -5cqw; padding: 3cqw 5cqw; background: #fff; box-shadow: 0 1px 0 #e6e6ea; }
+.bf-feed__bar i { height: 8cqw; border-radius: 999px; }
+.bf-feed__row { display: grid; grid-template-columns: 1fr 1fr; gap: 4cqw; }
+.bf-feed__row i { aspect-ratio: 1 / 1.15; background: #fff; box-shadow: inset 0 -12cqw 0 #ebebef; }
+.bf-feed__mpu { display: block; width: 100%; height: auto; box-shadow: 0 1cqw 3cqw rgb(0 0 0 / 0.14); }
+.bf-feed .bf-feed__stick { position: absolute; left: 50%; bottom: 3cqw; width: 85.3cqw; height: auto; translate: -50% 0; box-shadow: 0 -1cqw 4cqw rgb(0 0 0 / 0.25); }
+
+.bf-sizes { display: grid; gap: clamp(18px, 2.4vw, 30px); padding-top: clamp(24px, 3vw, 40px); border-top: 1px solid rgb(255 255 255 / 0.18); }
+.bf-sizes__row { display: flex; flex-wrap: wrap; gap: clamp(18px, 2.4vw, 30px); align-items: end; }
+.bf-size { margin: 0; display: grid; gap: 8px; justify-items: start; min-width: 0; max-width: 100%; }
+.bf-size img { display: block; max-width: 100%; height: auto; box-shadow: 0 16px 30px -18px rgb(0 0 0 / 0.6); }
+.bf-size figcaption { font-size: 13px; font-weight: 600; color: rgb(255 255 255 / 0.78); font-variant-numeric: tabular-nums; }
+.bf-sizes__row--squares { display: grid; grid-template-columns: 350fr 320fr 300fr 280fr; }
+.bf-sizes__row--squares img { width: 100%; }
+.bf-sizes__row--squares .bf-size:nth-child(1) { max-width: 350px; }
+.bf-sizes__row--squares .bf-size:nth-child(2) { max-width: 320px; }
+.bf-sizes__row--squares .bf-size:nth-child(3) { max-width: 300px; }
+.bf-sizes__row--squares .bf-size:nth-child(4) { max-width: 280px; }
+
+@media (max-width: 900px) {
+  .bf-print { grid-template-columns: 1fr; }
+  .bf-advert img { width: min(78%, 340px); }
+  .bf-devices { grid-template-columns: 1fr; justify-items: center; }
+  .bf-phone { width: min(56%, 240px); }
+}
+@media (max-width: 700px) {
+  .bf-card { width: 82%; }
+  .bf-sizes__row--squares { grid-template-columns: 1fr 1fr; }
+}
