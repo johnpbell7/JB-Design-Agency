@@ -253,6 +253,7 @@ body { --project-pen: #c7f016; }
   .pk-kit__row { display: contents; }
   .pk-tile { aspect-ratio: 4 / 5; }
   .pk-tile--wide { grid-column: span 2; aspect-ratio: 4 / 3; }
+  .pk-kit__row:last-child > .pk-tile:first-child { grid-column: span 2; aspect-ratio: 1; }   /* the tote, on its own since the second jacket went */
 }
 
 /* Parade: the PATCH network drifting behind the phone, faded away from the text column */

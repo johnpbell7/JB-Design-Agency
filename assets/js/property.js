@@ -27,7 +27,10 @@
     const url = spreadUrl(slug, k + 1);
     return { l: { url, half: 'l' }, r: { url, half: 'r' } };
   });
-  const statesFor = (slug, n) => [{ l: null, r: { url: coverUrl(slug), half: 'full' } }, ...spreadsFor(slug, n)];
+  const backUrl = slug => `${BASE}backs/${slug}.jpg`;
+  // back: true adds the back cover as the last page, on the left, with the brochure closed again
+  const statesFor = (slug, n, back = false) => [{ l: null, r: { url: coverUrl(slug), half: 'full' } }, ...spreadsFor(slug, n),
+    ...(back ? [{ l: { url: backUrl(slug), half: 'full' }, r: null }] : [])];
 
   // ---------- Open brochure with a 3D page turn ----------
   class Book {
@@ -67,6 +70,7 @@
       const s = this.states[this.i];
       this.paint(this.L, s.l); this.paint(this.R, s.r);
       this.el.classList.toggle('is-closed', !s.l);
+      this.el.classList.toggle('is-closed-back', !s.r);
       this.el.dispatchEvent(new CustomEvent('turn', { detail: this.i }));
     }
     preload(i) {
@@ -98,6 +102,7 @@
       // The page underneath the turning leaf shows the next spread straight away
       if (fwd) this.paint(this.R, to.r); else this.paint(this.L, to.l);
       this.el.classList.toggle('is-closed', !to.l);
+      this.el.classList.toggle('is-closed-back', !to.r);
       const fs = this.front.querySelector('.book__shade'), bs = this.back.querySelector('.book__shade');
       gsap.set(leaf, { display: 'block', rotationY: 0, z: 0 });
       gsap.set(fs, { opacity: 0 }); gsap.set(bs, { opacity: 0.55 });
@@ -176,14 +181,16 @@
       const d = item.dataset;
       title.textContent = d.title;
       meta.textContent = `${d.place} · ${d.format}`;
-      dots.innerHTML = '<i></i>'.repeat(+d.spreads + 1);
-      book.load(statesFor(d.book, +d.spreads), +d.ratio);
+      const back = 'back' in d;
+      dots.innerHTML = '<i></i>'.repeat(+d.spreads + 1 + (back ? 1 : 0));
+      book.load(statesFor(d.book, +d.spreads, back), +d.ratio);
       book.preload(1);
       if (autoOpen) setTimeout(() => book.go(1), 450);
     };
     bookEl.addEventListener('turn', e => {
       const i = e.detail, n = book.states.length - 1;
-      count.textContent = i === 0 ? 'Cover' : `${i} / ${n}`;
+      const s0 = book.states[i];
+      count.textContent = i === 0 ? 'Cover' : !s0.r ? 'Back' : `${i} / ${n}`;
       prev.disabled = i === 0; next.disabled = i === n;
       [...dots.children].forEach((dot, k) => dot.classList.toggle('is-on', k === i));
       const s = book.states[i];

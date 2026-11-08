@@ -74,12 +74,13 @@ body {
   transition: transform 0.7s var(--ease-out);
 }
 .book.is-closed .book__pages { transform: translateX(-25%); }
+.book.is-closed-back .book__pages { transform: translateX(25%); }
 .book__shadow {
   position: absolute; left: 1%; right: 1%; bottom: -5%; height: 16%; z-index: -1; pointer-events: none;
   background: radial-gradient(closest-side, rgb(20 16 10 / 0.38), transparent); filter: blur(6px);
   transition: left 0.7s var(--ease-out), right 0.7s var(--ease-out);
 }
-.book.is-closed .book__shadow { left: 26%; right: 26%; }
+.book.is-closed .book__shadow, .book.is-closed-back .book__shadow { left: 26%; right: 26%; }
 .book__page, .book__face { position: absolute; top: 0; bottom: 0; width: 50%; background: var(--paper); }
 .book__page--l { left: 0; border-radius: 3px 0 0 3px; box-shadow: -1px 1px 0 var(--edge-1), -2px 2px 0 var(--edge-2), -3px 2px 0 var(--edge-1), -4px 3px 0 var(--edge-2); }
 .book__page--r { left: 50%; border-radius: 0 3px 3px 0; box-shadow: 1px 1px 0 var(--edge-1), 2px 2px 0 var(--edge-2), 3px 2px 0 var(--edge-1), 4px 3px 0 var(--edge-2); }

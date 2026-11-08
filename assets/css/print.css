@@ -287,8 +287,16 @@ body { --project-pen: #ffe08a; }
    a brand-colour panel with the ads running on a laptop and a phone (the shop
    pages are plain grey blocks, sized in cqw so each ad keeps its true share of
    the screen), then every size laid out at actual size. */
+/* desktop: the advert on the desk beside the ads on screen; the size wall runs full width below */
+.bf-grid { display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr); gap: clamp(16px, 2vw, 24px); align-items: stretch; }
+.bf-web--sizes { padding-block: clamp(24px, 3.4vw, 48px); }
+.bf-web--sizes .bf-sizes { padding-top: 0; border-top: 0; }
+.bf-grid .bf-web { align-content: center; }
+.bf-grid .bf-devices { gap: clamp(16px, 2vw, 28px); }
+.bf-grid .bf-phone { width: clamp(110px, 11vw, 168px); }
+@media (max-width: 1000px) { .bf-grid { grid-template-columns: 1fr; } }
 .bf-print {
-  position: relative; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 64px); align-items: center;
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; gap: clamp(24px, 4vw, 64px); align-items: center;
   padding: clamp(28px, 4.4vw, 64px); border-radius: var(--radius-l); overflow: hidden;
   background: radial-gradient(120% 100% at 50% 0%, var(--desk-hi), var(--desk-lo)); box-shadow: inset 0 0 0 1px var(--line);
 }
@@ -369,4 +377,26 @@ body { --project-pen: #ffe08a; }
 @media (max-width: 700px) {
   .bf-card { width: 82%; }
   .bf-sizes__row--squares { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- Yakinori: the two bags rendered in Blender, a close-up, then the flat printer's artwork ---------- */
+.yk { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: clamp(14px, 1.8vw, 22px); }
+.yk figure { margin: 0; }
+.yk__hero, .yk__close { border-radius: var(--radius-l); overflow: hidden; cursor: zoom-in; background: #e9e5de; }
+.yk__hero img, .yk__close img { display: block; width: 100%; height: 100%; object-fit: cover; transition: scale 0.8s var(--ease-out); }
+.yk__hero:hover img, .yk__close:hover img { scale: 1.025; }
+.yk__flats {
+  grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.4vw, 32px);
+  padding: clamp(20px, 3vw, 40px); border-radius: var(--radius-l); background: #1b1b1b; color: #fff;
+}
+.yk__flat { display: grid; gap: 10px; cursor: zoom-in; }
+.yk__flat img { display: block; width: 100%; height: auto; border-radius: 3px; background: #fff; transition: translate 0.5s var(--ease-spring); }
+.yk__flat:hover img { translate: 0 -4px; }
+.yk__flat figcaption { display: flex; gap: 10px; align-items: baseline; font-size: 14px; }
+.yk__flat figcaption b { font-weight: 600; color: var(--job-pen); }
+.yk__flat figcaption span { color: rgb(255 255 255 / 0.7); }
+@media (max-width: 800px) {
+  .yk { grid-template-columns: 1fr; }
+  .yk__close { display: none; }
+  .yk__flats { grid-template-columns: 1fr; }
 }
