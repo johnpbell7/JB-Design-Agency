@@ -135,8 +135,8 @@ GUIDES = [
         <p>These are my starting prices. Every project gets a fixed quote after a quick chat, so you know the full price before anything starts.</p>
 ''' + table(['Website', 'From', 'What you get'], [
     ['Small website', '£500', 'A one-page shop window: who you are, what you do and how to get in touch'],
-    ['Medium website', '£900', 'Five pages or more: services, about, work, contact'],
-    ['Large website', '£1,500', 'Ten pages or more, with an editor so you can change it yourself'],
+    ['Medium website', '£900', 'Up to ten pages: services, about, work, contact'],
+    ['Large website', '£1,500', 'Eleven pages or more, for bigger businesses'],
     ['Small online shop', '£1,800', 'A Shopify shop with product pages, payments and delivery set up'],
     ['Logo + small website', '£700', 'Both together, saving £100']]) + '''
         <p>Extra pages are £100 each. Search pages for your main services and towns are included, and so are two rounds of amends.</p>
@@ -169,7 +169,7 @@ GUIDES = [
         </ul>
         <p>Whoever you choose, you should get clear answers to all five before you pay a deposit.</p>
 ''',
-  faqs=[('How much does a small business website cost in the UK?', 'With a freelancer, usually £500 to £3,000 depending on pages and features. My small websites start from £500, five pages or more from £900, and ten or more from £1,500.'),
+  faqs=[('How much does a small business website cost in the UK?', 'With a freelancer, usually £500 to £3,000 depending on pages and features. My small websites start from £500, up to ten pages from £900, and eleven or more from £1,500.'),
         ('How much does an online shop cost?', 'A small Shopify shop starts from around £1,800 to design and set up, plus Shopify’s monthly fee and card fees on each sale.'),
         ('Are there monthly costs?', 'Yes: a domain (about £10–£20 a year) and hosting (from £10 a month). A care plan from £40 a month covers hosting, updates and changes.'),
         ('Do I pay everything up front?', 'No. I usually take a 50% deposit to start and the rest when the site goes live.')],
@@ -436,7 +436,7 @@ GUIDES = [
         </ul>
 
         <h2>Changing it yourself</h2>
-        <p>The main reason people choose a builder is to make changes themselves. You can have that with a designer too. A one-page site needs no logins at all: send me what needs changing and I’ll do it, quoted up front, or included on a care plan from £40 a month. If you’d rather do it yourself, I can add an editor, quoted to suit the site, and large sites from £1,500 come with one included.</p>
+        <p>The main reason people choose a builder is to make changes themselves. You can have that with a designer too. A one-page site needs no logins at all: send me what needs changing and I’ll do it, quoted up front, or included on a care plan from £40 a month. If you’d rather do it yourself, I can add an editor, quoted to suit the site.</p>
 
         <h2>Already on Wix or Squarespace?</h2>
         <p>That’s fine. Plenty of my clients started that way. When you’re ready, I can design a proper site, keep the words and photos that work, and move everything across carefully so your customers can still find you. Your domain can usually come with you. If you’re in <a href="web-designer-birmingham.html">Birmingham</a>, <a href="web-designer-wolverhampton.html">Wolverhampton</a>, <a href="web-designer-leicester.html">Leicester</a> or <a href="freelance-web-designer-uk.html">anywhere else in the UK</a>, we can talk it through on a call.</p>
@@ -536,7 +536,7 @@ GUIDES = [
     ['Work or gallery', 'Photos of real jobs, before and afters, or a few short case studies'],
     ['Contact', 'Phone, email, a short form, your hours and the areas you cover'],
     ['Privacy policy', 'Needed if your site collects any details, such as through a contact form']]) + '''
-        <p>A one-page site can cover all of this in sections, and for many trades and local services that’s plenty. My small websites start from £500, and sites with five pages or more from £900. Reviews don’t need a page of their own: they work better spread across the pages where people are making up their minds.</p>
+        <p>A one-page site can cover all of this in sections, and for many trades and local services that’s plenty. My small websites start from £500, and sites of up to ten pages from £900. Reviews don’t need a page of their own: they work better spread across the pages where people are making up their minds.</p>
 
         <h2>The top of the home page</h2>
         <p>Most people decide in a few seconds whether they’re in the right place. The first screen, before anyone scrolls, should tell them:</p>
