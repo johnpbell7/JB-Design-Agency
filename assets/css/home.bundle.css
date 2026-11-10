@@ -835,12 +835,11 @@ body[data-pen] .hl { --pen: var(--project-pen); }
 /* ---------- Brief + what I did (compact, under the hero) ----------
    <section class="cs-brief wrap"><div class="cs-brief__grid">
      <div><span class="label">The brief</span><p class="cs-brief__text">…</p></div>
-     <div><span class="label">What I did</span><ul class="cs-brief__list"><li>…</li></ul></div>
    </div></section> */
 .cs-brief { padding-block: clamp(36px, 5vw, 64px) 0; }
-.cs-brief__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(24px, 5vw, 80px); align-items: start; }
+.cs-brief__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(24px, 5vw, 80px); align-items: start; } /* one column since "What I did" went (John, 10 Nov) */
 .cs-brief__grid > div { display: grid; gap: 14px; align-content: start; }
-.cs-brief__text { font-size: clamp(21px, 2.1vw, 28px); font-weight: 500; line-height: 1.35; letter-spacing: -0.02em; max-width: 30ch; }
+.cs-brief__text { font-size: clamp(21px, 2.1vw, 28px); font-weight: 500; line-height: 1.35; letter-spacing: -0.02em; max-width: 52ch; }
 .cs-brief__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
 .cs-brief__list li { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 16px; font-weight: 500; counter-increment: brief; }
 .cs-brief__list { counter-reset: brief; }
@@ -2202,8 +2201,8 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
 .feature__glow {
   inset: -18% -6% 18% 4%;
   background:
-    radial-gradient(42% 46% at 52% 30%, rgb(255 255 255 / 0.55), transparent 70%),
-    radial-gradient(closest-side, color-mix(in srgb, var(--pen) 60%, transparent), transparent);
+    radial-gradient(42% 46% at 52% 30%, rgb(255 255 255 / 0.16), transparent 70%),
+    radial-gradient(closest-side, color-mix(in srgb, var(--pen) 32%, transparent), transparent); /* softer (John, 10 Nov) */
   filter: blur(22px);
   animation: feature-glow 7s ease-in-out infinite alternate;
 }

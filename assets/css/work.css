@@ -393,7 +393,7 @@
 .feature__link { display: inline-flex; gap: 8px; margin-top: 26px; padding: 13px 22px; border-radius: 999px; background: var(--pen); color: #18181a; font-weight: 600; font-size: 15px; transition: gap 0.3s var(--ease-spring); }
 .feature:hover .feature__link { gap: 14px; }
 .feature__visual { position: relative; aspect-ratio: 16 / 11; }
-.feature__glow { position: absolute; inset: 0 4% -6%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--pen) 55%, transparent), transparent); filter: blur(14px); }
+.feature__glow { position: absolute; inset: 0 4% -6%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--pen) 30%, transparent), transparent); filter: blur(14px); } /* softer (John, 10 Nov) */
 .feature__laptop { position: absolute; left: 0; top: 8%; width: 84%; transition: translate 0.7s var(--ease-out), rotate 0.7s var(--ease-out); }
 .feature__laptop .screen img { height: 100%; object-fit: cover; object-position: top; }
 .feature__phone .screen img { height: auto; } /* thumbnails carry width/height attributes; keep their own aspect */

@@ -1243,8 +1243,8 @@ a.foot-marquee:hover span { color: transparent; -webkit-text-stroke: 2px var(--i
 .feature__glow {
   inset: -18% -6% 18% 4%;
   background:
-    radial-gradient(42% 46% at 52% 30%, rgb(255 255 255 / 0.55), transparent 70%),
-    radial-gradient(closest-side, color-mix(in srgb, var(--pen) 60%, transparent), transparent);
+    radial-gradient(42% 46% at 52% 30%, rgb(255 255 255 / 0.16), transparent 70%),
+    radial-gradient(closest-side, color-mix(in srgb, var(--pen) 32%, transparent), transparent); /* softer (John, 10 Nov) */
   filter: blur(22px);
   animation: feature-glow 7s ease-in-out infinite alternate;
 }
