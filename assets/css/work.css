@@ -435,3 +435,10 @@
 
 /* --dim only matters on the card itself: not inherited, so scrubbing it doesn't restyle the whole card */
 @property --dim { syntax: '<number>'; inherits: false; initial-value: 0; }
+
+/* CM MainWorks: the van in its livery, and the CM badge on chalk */
+.wp-cm-van { border-radius: 0.9em; overflow: hidden; background: #eee; box-shadow: 0 2px 3px rgb(0 0 0 / 0.12), 0 1.6em 2.8em -0.8em rgb(22 38 74 / 0.4); }
+.wp-cm-van img { aspect-ratio: 16 / 9; object-fit: cover; }
+.wp-cm-badge { display: grid !important; place-items: center; aspect-ratio: 1; border-radius: 22%; background: #f5efe4; box-shadow: 0 2px 3px rgb(0 0 0 / 0.1), 0 1.2em 2.2em -0.8em rgb(22 38 74 / 0.4); }
+.wp-cm-badge img { width: 74%; }
+.wp-cm-quote { border-radius: 0.9em; overflow: hidden; background: #fff; }

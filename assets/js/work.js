@@ -43,10 +43,12 @@
         gsap.from(c.querySelector('.feature__phone'), { x: 60, rotation: -6, opacity: 0, duration: 1, delay: 0.15, ease: 'expo.out', scrollTrigger: { trigger: c, start: 'top 80%', once: true } });
         // brand pieces pop out with a bounce as the card settles into the stack (they float in CSS)
         const pops = $$('.wpop', c);
-        if (pops.length) gsap.from(pops, {
+        // fromTo, not from: the end state is stated, so the pieces always land fully visible
+        if (pops.length) gsap.fromTo(pops, {
           opacity: 0, scale: 0.3, x: (i, el) => +(el.dataset.fromX || 0), y: (i, el) => +(el.dataset.fromY || 50),
-          duration: 0.8, delay: 0.35, ease: 'back.out(2.2)', stagger: 0.14,
-          scrollTrigger: { trigger: c, start: 'top 65%', once: true },
+        }, {
+          opacity: 1, scale: 1, x: 0, y: 0, duration: 0.7, delay: 0.1, ease: 'back.out(2.2)', stagger: 0.1,
+          scrollTrigger: { trigger: c, start: 'top 80%', once: true },
         });
       });
     }

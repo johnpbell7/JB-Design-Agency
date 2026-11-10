@@ -2548,6 +2548,13 @@ html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, htm
 .who-frame iframe { z-index: 1; opacity: 0; transition: opacity 0.45s ease; }
 .who-frame iframe.is-ready { opacity: 1; }
 
+/* CM MainWorks: the van in its livery, the CM badge on chalk, his quote card */
+.wp-cm-van { border-radius: 0.9em; overflow: hidden; background: #eee; box-shadow: 0 2px 3px rgb(0 0 0 / 0.12), 0 1.6em 2.8em -0.8em rgb(22 38 74 / 0.4); }
+.wp-cm-van img { aspect-ratio: 16 / 9; object-fit: cover; }
+.wp-cm-badge { display: grid !important; place-items: center; aspect-ratio: 1; border-radius: 22%; background: #f5efe4; box-shadow: 0 2px 3px rgb(0 0 0 / 0.1), 0 1.2em 2.2em -0.8em rgb(22 38 74 / 0.4); }
+.wp-cm-badge img { width: 74%; }
+.wp-cm-quote { border-radius: 0.9em; overflow: hidden; background: #fff; }
+
 /* ===== prices.css ===== */
 /* Price cards: home page and location pages. Four service cards with "from" prices per option; a swipe row on phones */
 .hp-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: clamp(30px, 4vw, 52px); }
