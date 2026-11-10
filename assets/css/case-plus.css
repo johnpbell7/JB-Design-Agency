@@ -289,3 +289,11 @@ body[data-pen] .contact .hl, .contact .hl { --pen: #fff; color: #18181a; }
 @media (max-width: 560px) { .contact__reach { display: grid; grid-template-columns: 1fr 1fr; } .contact__reach .contact__pill:first-child { grid-column: 1 / -1; } }
 /* performance: soft radial gradient already; no blur filter */
 .cp-card__glow { filter: none !important; }
+
+/* Print closes the grid as a full-width strip, so the row never ends on one card (10 cards since CM MainWorks) */
+.cp-more .cp-card--print { grid-column: 1 / -1; }
+.cp-more .cp-card--print .cp-card__art { aspect-ratio: 3.4 / 1; }
+.cp-more .cp-card--print .cp-card__art img:nth-of-type(1) { width: 15% !important; }
+.cp-more .cp-card--print .cp-card__art img:nth-of-type(2) { width: 15% !important; }
+.cp-more .cp-card--print .cp-card__art img:nth-of-type(3) { width: 13% !important; }
+@media (max-width: 520px) { .cp-more .cp-card--print .cp-card__art { aspect-ratio: 16 / 10; } .cp-more .cp-card--print .cp-card__art img:nth-of-type(1), .cp-more .cp-card--print .cp-card__art img:nth-of-type(2) { width: 34% !important; } .cp-more .cp-card--print .cp-card__art img:nth-of-type(3) { width: 30% !important; } }
