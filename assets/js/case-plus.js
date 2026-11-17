@@ -528,6 +528,8 @@
         gsap.to(c, { y: '+=400', opacity: 0, delay: 0.8, duration: 1.1, ease: 'power1.in', onComplete: () => c.remove() });
       }
     };
+    // Counted in Vercel Web Analytics (Events > Contact: form): the page, and whether it went or fell back to the email app
+    const counted = how => { if (!form.elements._honey?.value) window.va?.('event', { name: 'Contact: form', data: { page: location.pathname, result: how } }); };
     form.addEventListener('submit', e => {
       e.preventDefault();
       const { name, email, message } = form.elements;
@@ -545,11 +547,11 @@
       btn.disabled = true; btn.textContent = 'Sending…';
       send({ name: name.value.trim(), email: email.value.trim(), message: message.value.trim(), 'Looking for': needs.join(', ') || '-', 'Seen on': document.title, _subject: `New project from ${name.value.trim()}` })
         .then(() => {
-          confetti(btn);
+          confetti(btn); counted('Sent');
           if (note) note.textContent = `Thanks ${name.value.trim().split(' ')[0]}, that’s sent. I’ll usually get back to you within a working day.`;
           form.reset();
         })
-        .catch(() => { confetti(btn); setTimeout(mail, 650); }) // couldn't send: open the email app with it all filled in, as before
+        .catch(() => { confetti(btn); counted('Email app'); setTimeout(mail, 650); }) // couldn't send: open the email app with it all filled in, as before
         .finally(() => { btn.disabled = false; btn.innerHTML = label; });
     });
   }
