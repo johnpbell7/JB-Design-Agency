@@ -3,7 +3,7 @@ Run from the repo root after adding a page or guide:  python3 tools/footer.py
 Change the lists below, not the pages. landing.py and guides.py call footer_cols() for the pages they build."""
 import glob, re
 
-PAGES = [('Work', 'work.html'), ('Services', 'services.html'), ('Graphic design', 'graphic-designer-birmingham.html'), ('Print', 'print.html'), ('About', 'about.html')]
+PAGES = [('Work', 'work.html'), ('Services', 'services.html'), ('Graphic design', 'graphic-designer-birmingham.html'), ('Websites for trades', 'web-design-for-builders.html'), ('Print', 'print.html'), ('About', 'about.html')]
 AREAS = [('Birmingham', 'web-designer-birmingham.html'), ('Sutton Coldfield', 'web-designer-sutton-coldfield.html'), ('Solihull', 'web-designer-solihull.html'),
          ('Wolverhampton', 'web-designer-wolverhampton.html'), ('Coventry', 'web-designer-coventry.html'), ('Leicester', 'web-designer-leicester.html'), ('Across the UK', 'freelance-web-designer-uk.html')]
 GUIDES = [('What a website costs', 'how-much-does-a-website-cost.html'), ('Logo or website first?', 'logo-or-website-first.html'),
