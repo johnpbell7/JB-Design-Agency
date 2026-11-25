@@ -37,28 +37,37 @@
 })();
 
 // The example results: each block plays once as it scrolls into view. Numbers count up to their real value; the
-// rings, bars, ticks and fixes are CSS transitions started by .is-in. Without .sc-anim (less motion asked for, or an
-// old browser) everything simply shows finished.
+// rings, bars, cards, ticks and fixes are CSS transitions started by .is-in. Without .sc-anim (less motion asked for,
+// or an old browser) everything simply shows finished. Numbers keep their real value until their block plays.
 (() => {
   const root = document.documentElement;
   if (!root.classList.contains('sc-anim')) return;
-  const blocks = document.querySelectorAll('[data-anim]');
+  const waiting = new Set(document.querySelectorAll('[data-anim]'));
   const count = el => {
     const to = parseFloat(el.dataset.count), dec = Number(el.dataset.dec || 0), t0 = performance.now(), ms = 1400;
-    el.textContent = (0).toFixed(dec);
+    const show = v => { el.textContent = v.toFixed(dec); };
+    show(0);
     const step = now => {
-      const k = Math.min(1, (now - t0) / ms), eased = 1 - Math.pow(2, -10 * k);
-      el.textContent = (to * (k === 1 ? 1 : eased)).toFixed(dec);
-      if (k < 1) requestAnimationFrame(step);
+      const k = Math.min(1, (now - t0) / ms);
+      show(k === 1 ? to : to * (1 - Math.pow(2, -10 * k)));
+      if (k < 1) requestAnimationFrame(step); else show(to);
     };
     requestAnimationFrame(step);
+    setTimeout(() => show(to), ms + 400); // the real value, even if frames are held back
   };
-  blocks.forEach(b => b.querySelectorAll('[data-count]').forEach(el => { el.textContent = (0).toFixed(Number(el.dataset.dec || 0)); }));
-  const io = new IntersectionObserver(entries => entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    io.unobserve(e.target);
-    e.target.classList.add('is-in');
-    e.target.querySelectorAll('[data-count]').forEach(count);
-  }), { threshold: 0.3 });
-  blocks.forEach(b => io.observe(b));
+  const play = b => {
+    if (!waiting.delete(b)) return;
+    b.classList.add('is-in');
+    b.querySelectorAll('[data-count]').forEach(count);
+  };
+  const seen = b => { const r = b.getBoundingClientRect(); return r.top < innerHeight * 0.9 && r.bottom > innerHeight * 0.1; };
+  const check = () => { waiting.forEach(b => { if (seen(b)) play(b); }); if (!waiting.size) removeEventListener('scroll', onScroll); };
+  let ticking = false;
+  const onScroll = () => { if (!ticking) { ticking = true; setTimeout(() => { ticking = false; check(); }, 120); } };
+  addEventListener('scroll', onScroll, { passive: true });
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { io.unobserve(e.target); play(e.target); } }), { threshold: 0.25 });
+    waiting.forEach(b => io.observe(b));
+  }
+  check();
 })();
