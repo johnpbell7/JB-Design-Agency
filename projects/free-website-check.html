@@ -33,7 +33,8 @@
   <link rel="stylesheet" href="../assets/css/fonts.css">
   <link rel="stylesheet" href="../assets/css/base.css?v=6">
   <link rel="stylesheet" href="../assets/css/landing.css?v=2">
-  <link rel="stylesheet" href="../assets/css/site-check.css?v=2">
+  <link rel="stylesheet" href="../assets/css/site-check.css?v=8">
+  <script>if(matchMedia("(prefers-reduced-motion: no-preference)").matches&&"IntersectionObserver"in window)document.documentElement.classList.add("sc-anim")</script>
   <script type="application/ld+json" data-seo>
 {
  "@context": "https://schema.org",
@@ -166,39 +167,72 @@
   </header>
 
   <main id="main" class="lp">
-    <section class="lp-hero wrap">
+    <section class="lp-hero wrap sc-hero">
+      <div class="sc-hero__copy">
       <h1>Free website check <mark class="hl">for your business.</mark></h1>
-      <p class="lp-hero__lede">Send me your web address and I’ll test your site the way your customers see it: on a phone, on a slow connection, and through Google’s eyes. You get a two-page report of what’s working, what I’d fix and what it would cost. It’s free, with no obligation.</p>
+      <p class="lp-hero__lede">Send me your web address and I’ll test your site the way your customers see it: on a phone, on a slow connection, and the way search engines read it. You get a two-page report of what’s working, what I’d fix and what it would cost. It’s free, with no obligation.</p>
       <div class="lp-hero__ctas"><a class="btn btn--big btn--keep" href="#check">Ask for your free check <span aria-hidden="true">→</span></a><a class="btn btn--ghost btn--big" href="#example">See an example</a></div>
       <ul class="lp-facts"><li>Free, with no strings</li><li>Looked over by me, not just a tool</li><li>Usually back within two working days</li></ul>
+      </div>
+      <div class="sc-card" data-anim role="img" aria-label="Example check: 22 seconds to open on a phone against an aim of under 3, 3.7 seconds on a computer, a 4.5 MB page, and 14 of 19 basics to fix">
+        <p class="sc-card__top"><span>Example check</span><span>A made-up plumber’s website</span></p>
+        <div class="sc-card__ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="sc-ring__track" cx="60" cy="60" r="52"/><circle class="sc-ring__arc" cx="60" cy="60" r="52" style="--arc:44.5"/></svg><div><b><span data-count="22">22</span><small>s</small></b><span>to open on a phone</span></div></div>
+        <p class="sc-card__aim">Aim: under 3 seconds</p>
+        <dl class="sc-card__stats"><div><dt>On a computer</dt><dd><span data-count="3.7" data-dec="1">3.7</span> s</dd></div><div><dt>Page size</dt><dd><span data-count="4.5" data-dec="1">4.5</span> MB</dd></div><div><dt>Basics to fix</dt><dd><span data-count="14">14</span>/19</dd></div></dl>
+      </div>
     </section>
     <section class="lp-sec wrap" id="example">
       <h2>What you’ll get</h2>
-      <p class="lp-sec__lede">A two-page report, sent as a PDF. This one is a real check, run on a made-up plumber’s website so I could show you one. Yours is about your own site.</p>
-      <div class="cp-results sc-stats" aria-label="What the example check found">
-        <div class="cp-result"><b><mark class="hl hl--pink">22s</mark></b><span>to open on a phone</span><small>The aim is under 3 seconds</small></div>
-        <div class="cp-result"><b><mark class="hl">3.7s</mark></b><span>to open on a computer</span><small>The aim is under 2.5 seconds</small></div>
-        <div class="cp-result"><b><mark class="hl hl--pink">14/19</mark></b><span>basics need attention</span><small>Secure, made for phones, set up for Google</small></div>
-        <div class="cp-result"><b><mark class="hl">5</mark></b><span>things to fix, ranked</span><small>Each with what I’d do, and a price</small></div>
-      </div>
-      <div class="sc-report">
-        <figure><a href="../assets/check/example-report-p1-1400.webp" target="_blank" rel="noopener"><img src="../assets/check/example-report-p1-1000.webp" srcset="../assets/check/example-report-p1-600.webp 600w, ../assets/check/example-report-p1-1000.webp 1000w, ../assets/check/example-report-p1-1400.webp 1400w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1240px) 45vw, 560px" alt="Example report, page 1: the website on a phone, opening in 22 seconds, and 19 basics ticked or crossed" width="1000" height="1415" loading="lazy" decoding="async"></a><figcaption><b>Page 1: speed and the basics</b>How long your site takes to open on a phone, how heavy it is, and 19 basics ticked or crossed.</figcaption></figure>
-        <figure><a href="../assets/check/example-report-p2-1400.webp" target="_blank" rel="noopener"><img src="../assets/check/example-report-p2-1000.webp" srcset="../assets/check/example-report-p2-600.webp 600w, ../assets/check/example-report-p2-1000.webp 1000w, ../assets/check/example-report-p2-1400.webp 1400w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1240px) 45vw, 560px" alt="Example report, page 2: five things to fix, each with what is happening, what it costs and what I would do, and a price" width="1000" height="1415" loading="lazy" decoding="async"></a><figcaption><b>Page 2: what I’d fix</b>The things costing you most, ranked, each with what’s happening, what it costs you and what I’d do. Then a straight price.</figcaption></figure>
+      <p class="lp-sec__lede">A two-page report by email: how your site performs, then what I’d fix and what it would cost. These are the results from a real check, run on a made-up plumber’s website so I could show you one.</p>
+      <div class="cp-results" data-anim>
+        <div class="cp-result"><b><mark class="hl hl--pink"><span data-count="22">22</span>s</mark></b><span>to open on a phone</span><small>The aim is under 3 seconds</small><span class="sc-meter is-bad" role="img" aria-label="22 seconds, far past the 3 second aim"><i style="--w:100%"></i></span></div>
+        <div class="cp-result"><b><mark class="hl"><span data-count="3.7" data-dec="1">3.7</span>s</mark></b><span>to open on a computer</span><small>The aim is under 2.5 seconds</small><span class="sc-meter is-mid" role="img" aria-label="3.7 seconds on a 10 second scale"><i style="--w:37%"></i></span></div>
+        <div class="cp-result"><b><mark class="hl hl--pink"><span data-count="14">14</span>/19</mark></b><span>basics need attention</span><small>Each one ticked or crossed</small><span class="sc-segs" role="img" aria-label="5 of 19 basics fine, 14 need attention"><i class="is-ok" style="--i:0"></i><i class="is-ok" style="--i:1"></i><i class="is-ok" style="--i:2"></i><i class="is-ok" style="--i:3"></i><i class="is-ok" style="--i:4"></i><i class="is-no" style="--i:5"></i><i class="is-no" style="--i:6"></i><i class="is-no" style="--i:7"></i><i class="is-no" style="--i:8"></i><i class="is-no" style="--i:9"></i><i class="is-no" style="--i:10"></i><i class="is-no" style="--i:11"></i><i class="is-no" style="--i:12"></i><i class="is-no" style="--i:13"></i><i class="is-no" style="--i:14"></i><i class="is-no" style="--i:15"></i><i class="is-no" style="--i:16"></i><i class="is-no" style="--i:17"></i><i class="is-no" style="--i:18"></i></span></div>
+        <div class="cp-result"><b><mark class="hl"><span data-count="5">5</span></mark></b><span>things to fix, ranked</span><small>Each with what I’d do</small><span class="sc-segs sc-segs--fix" role="img" aria-label="5 things to fix: 3 costing most, 2 worth fixing"><i class="is-no" style="--i:0"></i><i class="is-no" style="--i:1"></i><i class="is-no" style="--i:2"></i><i class="is-mid" style="--i:3"></i><i class="is-mid" style="--i:4"></i></span></div>
       </div>
     </section>
-    <section class="lp-sec wrap">
-      <h2>What the numbers mean</h2>
-      <p class="lp-sec__lede">The report is written so you can understand your own website. Here’s how to read it.</p>
-      <figure class="sc-scale" aria-label="Time to open on a phone: under 3 seconds is quick, 3 to 5 seconds is slow, over 5 seconds loses people">
-        <div class="sc-scale__bar"><span class="is-good">Quick</span><span class="is-mid">Slow</span><span class="is-bad">Losing people</span></div>
-        <div class="sc-scale__ticks"><span>0s</span><span style="left:30%">3s</span><span style="left:50%">5s</span><span style="left:100%">10s+</span></div>
-        <figcaption>Time to open on a phone. The example site took 22 seconds, right off the end.</figcaption>
-      </figure>
-      <div class="lp-svcs"><div class="lp-svc"><h3>Time to open</h3><p>How long until the main part of your page shows. On a phone, under 3 seconds is the aim. Much past 5, people give up and try the next business.</p></div><div class="lp-svc"><h3>Page size</h3><p>How much a phone has to download to show your page. Big photos are the usual cause, and often the easiest thing to fix.</p></div><div class="lp-svc"><h3>The basics</h3><p>Yes-or-no checks that decide whether people trust your site, can use it on a phone, can call you, and whether Google knows what you do.</p></div></div>
-    </section>
-    <section class="lp-sec wrap lp-areas">
+    <section class="lp-sec wrap" id="what-i-check">
       <h2>What I check</h2>
-      <div><p>The things that decide whether a visitor stays, calls you or finds you on Google in the first place:</p><ul class="lp-areas__list"><li>Speed on a phone</li><li>Page size</li><li>Secure (https)</li><li>Made for phones</li><li>Readable text</li><li>Easy to tap</li><li>Fits the screen</li><li>Tap-to-call number</li><li>Easy to contact</li><li>Page title</li><li>Description for Google</li><li>One main heading</li><li>Business details for Google</li><li>Sitemap for Google</li><li>Google allowed in</li><li>Share picture</li><li>Browser tab icon</li><li>Picture descriptions</li><li>Picture sizes</li><li>Links work</li></ul><p>Then I look over it myself, the way a customer would, before anything is sent. For a deeper look at getting found, see <a href="how-to-get-your-business-on-google.html">how to get your business on Google</a>.</p></div>
+      <p class="lp-sec__lede">Five things decide whether your website wins you work or loses it. I check all of them, then look over the site myself the way a customer would.</p>
+      <div class="sc-feats">
+        <div class="sc-feat">
+          <div class="sc-feat__copy"><h3>How fast it opens</h3><p>The time until your page actually shows, on a phone over a slow 4G connection and on a computer. Past a few seconds, people give up and ring the next business.</p></div>
+          <div class="sc-feat__vis" data-anim><div class="sc-bars" role="img" aria-label="Time to open: 22 seconds on a phone, 3.7 seconds on a computer, against an aim of under 3 seconds">
+            <div class="sc-bar"><span>On a phone</span><b><span data-count="22">22</span> s</b><i class="sc-bar__fill is-bad" style="--w:100%"></i></div>
+            <div class="sc-bar"><span>On a computer</span><b><span data-count="3.7" data-dec="1">3.7</span> s</b><i class="sc-bar__fill is-mid" style="--w:37%"></i></div>
+            <div class="sc-bars__aim" style="--at:30%"><span>Aim: 3 s</span></div>
+          </div></div>
+        </div>
+        <div class="sc-feat sc-feat--flip">
+          <div class="sc-feat__copy"><h3>How it works on a phone</h3><p>Most visitors arrive on a phone. I check the page is built for a small screen, the text is big enough to read and the buttons are big enough for a thumb.</p></div>
+          <div class="sc-feat__vis sc-feat__vis--phone" data-anim><figure class="sc-phone"><img src="../assets/check/example-phone-280.webp" srcset="../assets/check/example-phone-280.webp 280w, ../assets/check/example-phone-560.webp 560w" sizes="180px" alt="The example website on a phone: a desktop layout shrunk down, with text far too small to read" width="280" height="606" loading="lazy" decoding="async"><figcaption>The example site on a phone</figcaption></figure><div><p class="sc-big"><b><span data-count="89">89</span>%</b><span>of the text is too small to read on a phone</span><span class="sc-meter is-bad" role="img" aria-label="89% of the text too small"><i style="--w:89%"></i></span></p><ul class="sc-ticks"><li class="is-no" style="--i:0"><span class="sr">Needs attention: </span>Made for phones</li><li class="is-no" style="--i:1"><span class="sr">Needs attention: </span>Readable text</li><li class="is-ok" style="--i:2"><span class="sr">Fine: </span>Easy to tap</li><li class="is-ok" style="--i:3"><span class="sr">Fine: </span>Fits the screen</li></ul></div></div>
+        </div>
+        <div class="sc-feat">
+          <div class="sc-feat__copy"><h3>How Google reads it</h3><p>Whether Google can find your pages, knows what you do and where, and has a clear title and description to show in its results.</p></div>
+          <div class="sc-feat__vis" data-anim><div class="sc-serp" aria-label="How the example site shows in search results now"><span class="sc-serp__url">pennyfeather-plumbing.example</span><span class="sc-serp__title">Welcome</span><span class="sc-serp__desc">Pennyfeather Plumbing &amp; Heating are a family run business established in 1998 covering all areas. We offer a complete range of plumbing and…</span></div><p class="sc-vis-note">How it shows in search now: a page called “Welcome”, and words picked by Google.</p><p class="sc-big"><b><span data-count="2">2</span>/6</b><span>of the Google basics in place</span><span class="sc-segs" role="img" aria-label="2 of 6 Google basics in place"><i class="is-ok" style="--i:0"></i><i class="is-ok" style="--i:1"></i><i class="is-no" style="--i:2"></i><i class="is-no" style="--i:3"></i><i class="is-no" style="--i:4"></i><i class="is-no" style="--i:5"></i></span></p><ul class="sc-ticks"><li class="is-no" style="--i:0"><span class="sr">Needs attention: </span>Page title</li><li class="is-no" style="--i:1"><span class="sr">Needs attention: </span>Description for Google</li><li class="is-ok" style="--i:2"><span class="sr">Fine: </span>One main heading</li><li class="is-no" style="--i:3"><span class="sr">Needs attention: </span>Sitemap for Google</li><li class="is-ok" style="--i:4"><span class="sr">Fine: </span>Google allowed in</li><li class="is-no" style="--i:5"><span class="sr">Needs attention: </span>Business details for Google</li></ul></div>
+        </div>
+        <div class="sc-feat sc-feat--flip">
+          <div class="sc-feat__copy"><h3>Whether people trust it, and can reach you</h3><p>The “Not secure” warning, a phone number that calls when tapped, an easy way to get in touch, and the small signs that a business is still trading.</p></div>
+          <div class="sc-feat__vis" data-anim><div class="sc-addr" aria-label="The browser address bar shows Not secure"><span class="sc-addr__warn"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.8l6.4 11.4H1.6z"/><path d="M8 6.4v3"/><path d="M8 11.6h0"/></svg>Not secure</span><span class="sc-addr__url">pennyfeather-plumbing.example</span></div><p class="sc-vis-note">What visitors see before they see you.</p><p class="sc-big"><b><span data-count="1">1</span>/6</b><span>of the trust and contact basics in place</span><span class="sc-segs" role="img" aria-label="1 of 6 trust and contact basics in place"><i class="is-ok" style="--i:0"></i><i class="is-no" style="--i:1"></i><i class="is-no" style="--i:2"></i><i class="is-no" style="--i:3"></i><i class="is-no" style="--i:4"></i><i class="is-no" style="--i:5"></i></span></p><ul class="sc-ticks"><li class="is-no" style="--i:0"><span class="sr">Needs attention: </span>Secure (https)</li><li class="is-no" style="--i:1"><span class="sr">Needs attention: </span>Tap-to-call number</li><li class="is-ok" style="--i:2"><span class="sr">Fine: </span>Easy to contact</li><li class="is-no" style="--i:3"><span class="sr">Needs attention: </span>Footer year</li><li class="is-no" style="--i:4"><span class="sr">Needs attention: </span>Browser tab icon</li><li class="is-no" style="--i:5"><span class="sr">Needs attention: </span>Share picture</li></ul></div>
+        </div>
+        <div class="sc-feat">
+          <div class="sc-feat__copy"><h3>What’s weighing it down</h3><p>How much a phone has to download to show the page. Oversized photos are the usual cause, and often the easiest thing to fix. I check every link works, too.</p></div>
+          <div class="sc-feat__vis" data-anim><p class="sc-big"><b><span data-count="4.5" data-dec="1">4.5</span> MB</b><span>to download before the page shows. Nearly all of it is one oversized picture.</span><span class="sc-meter is-bad" role="img" aria-label="Pictures are nearly all of the 4.5 MB"><i style="--w:99%"></i></span></p><ul class="sc-ticks"><li class="is-no" style="--i:0"><span class="sr">Needs attention: </span>Picture sizes</li><li class="is-no" style="--i:1"><span class="sr">Needs attention: </span>Picture descriptions</li><li class="is-no" style="--i:2"><span class="sr">Needs attention: </span>Links work</li></ul></div>
+        </div>
+      </div>
+    </section>
+    <section class="lp-sec lp-sec--grey">
+      <div class="wrap sc-fix">
+        <div class="sc-fix__copy">
+          <h2>What I’d fix, biggest first</h2>
+          <p>Every problem is ranked by what it’s costing you, with what’s happening, what it costs you and what I’d do about it, in plain words. Then a straight price, or a note that small fixes will do.</p>
+          <p>Fix it yourself, pass it to whoever looks after your site, or ask me. There’s no pressure either way.</p>
+        </div>
+        <div class="sc-fix__vis" data-anim>
+          <ol class="sc-fixes"><li style="--i:0"><b class="sc-fixes__n is-bad">1</b><span>Browsers say it is not secure</span><em class="is-bad">Costing you most</em></li><li style="--i:1"><b class="sc-fixes__n is-bad">2</b><span>Slow to open on a phone</span><em class="is-bad">Costing you most</em></li><li style="--i:2"><b class="sc-fixes__n is-bad">3</b><span>Awkward to use on a phone</span><em class="is-bad">Costing you most</em></li><li style="--i:3"><b class="sc-fixes__n is-mid">4</b><span>Phone number does not call when tapped</span><em class="is-mid">Worth fixing</em></li><li style="--i:4"><b class="sc-fixes__n is-mid">5</b><span>Google is not told what the site is about</span><em class="is-mid">Worth fixing</em></li></ol>
+          <p class="sc-fixes__price"><span>A fresh start for the example site</span><b>Medium website, from £900</b></p>
+        </div>
+      </div>
     </section>
     <section class="lp-sec lp-sec--grey" id="check">
       <div class="wrap sc-ask">
@@ -253,6 +287,6 @@
       <div class="site-foot__base"><span>© 2026 JB Design Agency</span><span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span></div>
     </div>
   </footer>
-  <script src="../assets/js/site-check.js?v=1" defer></script>
+  <script src="../assets/js/site-check.js?v=2" defer></script>
 </body>
 </html>

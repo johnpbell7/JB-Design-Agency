@@ -35,3 +35,30 @@
     }).catch(() => { counted('Email app'); btn.disabled = false; btn.innerHTML = label; mail(); });
   });
 })();
+
+// The example results: each block plays once as it scrolls into view. Numbers count up to their real value; the
+// rings, bars, ticks and fixes are CSS transitions started by .is-in. Without .sc-anim (less motion asked for, or an
+// old browser) everything simply shows finished.
+(() => {
+  const root = document.documentElement;
+  if (!root.classList.contains('sc-anim')) return;
+  const blocks = document.querySelectorAll('[data-anim]');
+  const count = el => {
+    const to = parseFloat(el.dataset.count), dec = Number(el.dataset.dec || 0), t0 = performance.now(), ms = 1400;
+    el.textContent = (0).toFixed(dec);
+    const step = now => {
+      const k = Math.min(1, (now - t0) / ms), eased = 1 - Math.pow(2, -10 * k);
+      el.textContent = (to * (k === 1 ? 1 : eased)).toFixed(dec);
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  blocks.forEach(b => b.querySelectorAll('[data-count]').forEach(el => { el.textContent = (0).toFixed(Number(el.dataset.dec || 0)); }));
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    io.unobserve(e.target);
+    e.target.classList.add('is-in');
+    e.target.querySelectorAll('[data-count]').forEach(count);
+  }), { threshold: 0.3 });
+  blocks.forEach(b => io.observe(b));
+})();

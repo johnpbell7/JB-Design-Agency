@@ -1595,3 +1595,21 @@ html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, htm
 .wp-cm-badge { display: grid !important; place-items: center; aspect-ratio: 1; border-radius: 22%; background: #f5efe4; box-shadow: 0 2px 3px rgb(0 0 0 / 0.1), 0 1.2em 2.2em -0.8em rgb(22 38 74 / 0.4); }
 .wp-cm-badge img { width: 74%; }
 .wp-cm-quote { border-radius: 0.9em; overflow: hidden; background: #fff; }
+
+/* Free website check: the standout bar under the prices (links to projects/free-website-check.html) */
+.check-bar { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "copy go" "chips go"; align-items: center; gap: 18px 32px; margin-top: 28px; padding: clamp(24px, 3.4vw, 40px); border-radius: var(--radius-l); background: var(--hl-yellow, #fff04d); color: #18181a; text-decoration: none; box-shadow: 0 24px 50px -32px rgb(24 24 26 / 0.45); }
+.check-bar__copy { grid-area: copy; display: grid; gap: 8px; }
+.check-bar__copy b { font-size: clamp(24px, 2.6vw, 36px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.08; }
+.check-bar__copy b .hl { color: #18181a; background-color: transparent; }
+.check-bar__copy > span { max-width: 60ch; font-size: clamp(15px, 1.2vw, 17px); line-height: 1.6; color: rgb(24 24 26 / 0.75); }
+.check-bar__chips { grid-area: chips; display: flex; flex-wrap: wrap; gap: 8px; }
+.check-bar__chips i { display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border-radius: 999px; background: #fff; font-style: normal; font-size: 13.5px; font-weight: 600; }
+.check-bar__chips i::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #ff9ed2; }
+.check-bar__chips i.is-ok::before { background: #9df27a; }
+.check-bar__go { grid-area: go; display: inline-flex; gap: 8px; padding: 16px 24px; border-radius: 999px; background: #18181a; color: #fff; font-weight: 700; font-size: 15.5px; white-space: nowrap; transition: translate 0.3s var(--ease-out); }
+.check-bar:hover .check-bar__go { translate: 4px 0; }
+.check-bar:focus-visible { outline: 2px solid #18181a; outline-offset: 4px; }
+@media (max-width: 760px) {
+  .check-bar { grid-template-columns: 1fr; grid-template-areas: "copy" "chips" "go"; }
+  .check-bar__go { justify-self: start; }
+}
