@@ -193,3 +193,5 @@
 @media (max-width: 480px) { .sc-stack { aspect-ratio: 1 / 0.96; } .sc-tile--basics { top: 38%; } .sc-tile--secure { bottom: 6%; } }
 /* Phones and tablets: the cards first, above the heading */
 @media (max-width: 900px) { .sc-stack { order: -1; margin: 0 auto 8px; } }
+.lp-areas__list a { color: inherit; text-decoration: none; }
+.lp-areas__list a:hover { text-decoration: underline; text-underline-offset: 3px; }
