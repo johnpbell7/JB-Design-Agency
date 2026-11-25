@@ -280,6 +280,12 @@ body { --p-bg: #111; --p-fg: #fff; --p-muted: rgb(255 255 255 / 0.6); --p-surfac
 }
 html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, html body .ha__story, html body .contact__intro > p:not(.contact__where) { font-size: clamp(16px, 1.4vw, 19px); line-height: 1.7; }
 @property --dim { syntax: "<number>"; inherits: false; initial-value: 0; }
+.bt-check__m { display: none; }
+@media (max-width: 680px) {
+.bt-hero .bt-ctas .btn.bt-check { background: rgb(24, 24, 26); color: rgb(255, 255, 255); border-color: rgb(24, 24, 26); box-shadow: none; }
+.bt-check__d { display: none; }
+.bt-check__m { display: inline; }
+}
 .bt-hero { position: relative; isolation: isolate; overflow: hidden; min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; padding: clamp(100px, 13vh, 130px) 0px clamp(32px, 5vh, 56px); }
 .bt-bt { --F: clamp(64px, min(13.2vw, 21.5vh), 214px); }
 .bt-stage { position: relative; font-size: var(--F); }
@@ -492,7 +498,7 @@ html:root main h1.bt-place { font-size: 12.5px; }
 html.css-wait :is(body > :nth-child(1), body > :nth-child(3), body > :nth-child(5), #who, main > :nth-child(5), #skills, #work, #process, #prices, #faq, #about, #contact, body > :nth-child(7), #nav-menu) { display: none !important; }
 </style>
   <!-- critical css: end -->
-  <link rel="preload" href="assets/css/home.bundle.css?v=11" as="style">
+  <link rel="preload" href="assets/css/home.bundle.css?v=13" as="style">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -789,7 +795,7 @@ html.css-wait :is(body > :nth-child(1), body > :nth-child(3), body > :nth-child(
           <p class="bt-who" data-in>Hi, I’m John, a freelance web designer based in Birmingham. I make modern, engaging websites that give <strong>independents and small businesses</strong> a lift, with branding and print along the way.</p>
           <div class="bt-ctas" data-in>
             <a class="btn" href="#contact">Start a project <span aria-hidden="true">→</span></a>
-            <a class="btn btn--ghost" href="projects/free-website-check.html">Free website check</a>
+            <a class="btn btn--ghost bt-check" href="projects/free-website-check.html"><span class="bt-check__d">Free website check</span><span class="bt-check__m">Get a free website check <span aria-hidden="true">→</span></span></a>
           </div>
         </div>
         <div class="bt-proof" data-in>
@@ -1386,7 +1392,7 @@ html.css-wait :is(body > :nth-child(1), body > :nth-child(3), body > :nth-child(
   </footer>
 
   <!-- the full styles; the scripts below wait for them, and the next line shows the rest of the page -->
-  <link rel="stylesheet" href="assets/css/home.bundle.css?v=11">
+  <link rel="stylesheet" href="assets/css/home.bundle.css?v=13">
   <script>document.documentElement.classList.remove('css-wait')</script>
   <script>/* the brand fonts load once the page has, as the first section that uses them nears view, so they don’t compete with the first screen */
   (() => {

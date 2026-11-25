@@ -2572,6 +2572,14 @@ html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, htm
 }
 .check-bar__copy b .hl { white-space: nowrap; }
 
+/* Hero: on phones "Start a project" lives in the floating bar, so the free check is the hero's main button */
+.bt-check__m { display: none; }
+@media (max-width: 680px) {
+  .bt-hero .bt-ctas .btn.bt-check { background: #18181a; color: #fff; border-color: #18181a; box-shadow: none; }
+  .bt-check__d { display: none; }
+  .bt-check__m { display: inline; }
+}
+
 /* ===== prices.css ===== */
 /* Price cards: home page and location pages. Four service cards with "from" prices per option; a swipe row on phones */
 .hp-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: clamp(30px, 4vw, 52px); }
