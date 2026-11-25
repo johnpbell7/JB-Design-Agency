@@ -1604,8 +1604,7 @@ html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, htm
 .check-bar__copy > span { max-width: 60ch; font-size: clamp(15px, 1.2vw, 17px); line-height: 1.6; color: rgb(24 24 26 / 0.75); }
 .check-bar__chips { grid-area: chips; display: flex; flex-wrap: wrap; gap: 8px; }
 .check-bar__chips i { display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border-radius: 999px; background: #fff; font-style: normal; font-size: 13.5px; font-weight: 600; }
-.check-bar__chips i::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #ff9ed2; }
-.check-bar__chips i.is-ok::before { background: #9df27a; }
+.check-bar__chips i::before { content: ""; flex: none; width: 16px; height: 16px; border-radius: 50%; background: #9df27a center / 9px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%2318181a' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.4 6.4l2.4 2.4 4.8-5.2'/%3E%3C/svg%3E"); }
 .check-bar__go { grid-area: go; display: inline-flex; gap: 8px; padding: 16px 24px; border-radius: 999px; background: #18181a; color: #fff; font-weight: 700; font-size: 15.5px; white-space: nowrap; transition: translate 0.3s var(--ease-out); }
 .check-bar:hover .check-bar__go { translate: 4px 0; }
 .check-bar:focus-visible { outline: 2px solid #18181a; outline-offset: 4px; }
@@ -1613,3 +1612,4 @@ html body .bt-who, html body .pf-hero__lede, html body .home-prices__head p, htm
   .check-bar { grid-template-columns: 1fr; grid-template-areas: "copy" "chips" "go"; }
   .check-bar__go { justify-self: start; }
 }
+.check-bar__copy b .hl { white-space: nowrap; }
